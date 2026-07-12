@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260712a3">
+<link rel="stylesheet" href="style.css?v=20260712a4">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -25,7 +25,6 @@
   <div class="header">
     <div class="header-title">🏡 Mi Pequeña Casa</div>
     <div class="header-subtitle">拉美西語小莊園</div>
-    <button class="reminder-toggle-btn" id="reminderToggleBtn" onclick="toggleReminders()">🔔 開啟每日提醒</button>
   </div>
   <!-- ── 四 TAB 切換 ── -->
   <div class="main-tab-bar">
@@ -336,6 +335,7 @@
       <span class="farm-btn-main">📥 復耕播種開墾去</span>
       <span class="action-hint">（復位）</span>
     </button>
+    <button class="farm-btn" id="reminderToggleBtn" onclick="toggleReminders()">🔔 開啟每日提醒</button>
     <input type="file" id="backupFileInput" accept=".json,application/json" style="display:none" onchange="importBackupFile(this)">
   </div>
   <div style="text-align:center;margin:6px 0 0;font-size:10px;color:var(--tlight)">日記與學習紀錄只存在這支手機——記得偶爾打包一份收好</div>
