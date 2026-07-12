@@ -369,8 +369,6 @@ function renderDiaryCardHtml(){
 
     <div class="diary-list-title">🕰️ 時光寶瓶</div>
     <div id="diaryListArea" class="diary-list-area"></div>
-
-    ${renderTalkSectionHtml()}
   </div>`;
 }
 
@@ -572,9 +570,16 @@ function renderTalkList(){
   }).join('');
 }
 
-function renderTalkSectionHtml(){
-  return `
-    <hr class="diary-section-divider">
+function renderDiaryConnectorHtml(){
+  return `<div class="diary-card-connector">
+    <span class="connector-line"></span>
+    <span class="connector-badge">📖 挑幾句練習模仿</span>
+    <span class="connector-line"></span>
+  </div>`;
+}
+
+function renderTalkCardHtml(){
+  return `<div class="diary-card diary-paper card-container">
     <div class="diary-paper-title">💬 聊療吾心語</div>
     <div class="diary-card-sub">① 挑片語（可複選、依序接續）→ ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
 
@@ -599,7 +604,7 @@ function renderTalkSectionHtml(){
 
     <div class="diary-list-title">💬 心語紀錄</div>
     <div id="talkListArea" class="diary-list-area"></div>
-  `;
+  </div>`;
 }
 
 /* ── 📝 隨心一筆：不拘形式的雜記，跟媽媽碎語分開存 ── */
@@ -725,7 +730,7 @@ function renderNotesCardHtml(){
 function initDiaryCard(){
   const container = document.getElementById('mom-atm-container');
   if(!container) return;
-  container.insertAdjacentHTML('afterbegin', renderDiaryCardHtml() + renderNotesCardHtml());
+  container.insertAdjacentHTML('afterbegin', renderDiaryCardHtml() + renderDiaryConnectorHtml() + renderTalkCardHtml() + renderNotesCardHtml());
   const dateInput = document.getElementById('diaryDateInput');
   if(dateInput) dateInput.value = _diaryTodayISO();
   _diaryRenderKids();

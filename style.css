@@ -764,7 +764,10 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .diary-paper{background:#FBF3E3;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,rgba(139,110,60,.16) 31px);border:1px solid rgba(139,110,60,.25);border-radius:14px;padding:18px 16px;box-shadow:0 2px 10px rgba(139,110,60,.08)}
 .diary-paper-title{font-family:'Noto Serif TC',serif;font-size:19px;font-weight:900;color:#6B4A2B;margin-bottom:10px;text-align:center}
 .diary-paper .diary-card-sub{color:#9A7C54;text-align:center;margin-bottom:14px}
-.diary-section-divider{border:none;border-top:1.5px dashed rgba(139,110,60,.3);margin:22px 0 16px}
+
+.diary-card-connector{display:flex;align-items:center;gap:8px;margin:2px auto 14px;max-width:480px;width:100%;box-sizing:border-box;padding:0 16px}
+.diary-card-connector .connector-line{flex:1;height:0;border-top:1.5px dashed rgba(139,110,60,.35)}
+.diary-card-connector .connector-badge{flex-shrink:0;font-family:'Noto Serif TC',serif;font-size:11px;font-weight:700;color:#9A7C54;background:#FBF3E3;border:1px solid rgba(139,110,60,.3);border-radius:999px;padding:3px 12px;white-space:nowrap}
 
 .diary-tag-row{display:flex;flex-wrap:wrap;gap:6px 10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed rgba(139,110,60,.3)}
 .diary-tag-group{flex:0 0 auto;max-width:100%}
