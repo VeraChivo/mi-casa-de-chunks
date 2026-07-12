@@ -435,9 +435,10 @@ function _talkRenderPicker(){
   }
   el.innerHTML = `<div class="diary-tag-row">` + groups.map(g => {
     const hasSel = g.items.some(it => _talkSelectedIds.includes(it.id));
+    const rowClass = g.items.length > 8 ? 'diary-mood-row talk-row-scroll' : 'diary-mood-row';
     return `<details class="diary-tag-group"${hasSel ? ' open' : ''}>
       <summary class="diary-tag-label">${g.label}</summary>
-      <div class="diary-mood-row">
+      <div class="${rowClass}">
         ${g.items.map(it => {
           const idx = _talkSelectedIds.indexOf(it.id);
           const sel = idx !== -1;

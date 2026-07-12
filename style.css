@@ -792,6 +792,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .diary-mood-cat{font-size:11px;font-weight:800;color:#9A7C54;margin:8px 0 4px;font-family:'Noto Serif TC',serif}
 .diary-mood-cat:first-child{margin-top:0}
 .diary-mood-row{display:flex;flex-wrap:wrap;gap:6px}
+.talk-row-scroll{max-height:180px;overflow-y:auto;align-content:flex-start;padding-right:2px}
 .diary-mood-chip{position:relative;padding-left:20px}
 .diary-mood-order{position:absolute;top:-6px;left:-6px;background:#8B6E3C;color:#FFF8EC;font-size:10px;font-weight:900;border-radius:999px;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px}
 
