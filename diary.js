@@ -405,7 +405,17 @@ function _talkRenderPicker(){
 
 function talkSelectAmmo(id){
   const i = _talkSelectedIds.indexOf(id);
-  if(i === -1) _talkSelectedIds.push(id); else _talkSelectedIds.splice(i,1);
+  if(i === -1){
+    _talkSelectedIds.push(id);
+    // 選中的句子同步跟到下面的空白欄，方便直接在原句基礎上調整/插入自己的話
+    const a = AMMO_DATA.find(x => x.ammo_id === id);
+    const noteTa = document.getElementById('talkDraftNote');
+    if(a && noteTa && !noteTa.value.includes(a.core_ammo)){
+      noteTa.value = noteTa.value ? (noteTa.value + '\n' + a.core_ammo) : a.core_ammo;
+    }
+  } else {
+    _talkSelectedIds.splice(i,1);
+  }
   _talkRenderPicker();
   _talkRenderPreview();
 }
@@ -500,11 +510,11 @@ function renderTalkList(){
 function renderTalkCardHtml(){
   return `<div class="diary-card diary-paper card-container">
     <div class="diary-paper-title">💬 聊療吾心語</div>
-    <div class="diary-card-sub">① 挑幾句已解鎖的語塊（可複選、依序接續），想法先寫下來 → ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
+    <div class="diary-card-sub">① 挑幾句已解鎖的語塊（可複選、依序接續，點下去會同步跟到下面），自己調整、插入想法 → ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
 
     <div class="diary-chip-row" id="talkPickerPool"></div>
 
-    <textarea id="talkDraftNote" class="diary-draft-textarea" rows="4" placeholder="① 想法先寫在這裡，選好句子後會自動帶到媽媽原音…" oninput="talkOnNoteInput()"></textarea>
+    <textarea id="talkDraftNote" class="diary-draft-textarea" rows="4" placeholder="① 選好的句子會同步跟到這裡，自己調整、插入想法…" oninput="talkOnNoteInput()"></textarea>
 
     <div class="make-pattern-box" id="talkPreviewBox" style="display:none"></div>
 
