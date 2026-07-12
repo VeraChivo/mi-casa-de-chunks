@@ -329,10 +329,12 @@
   <!-- ── 🧳 資料保險箱：備份 / 還原 ── -->
   <div class="farming-backup-zone">
     <button class="farm-btn btn-fallow" onclick="exportBackup()">
-      📤 季度休耕喘息去 <span class="action-hint">（打包）</span>
+      <span class="farm-btn-main">📤 季度休耕喘息去</span>
+      <span class="action-hint">（打包）</span>
     </button>
     <button class="farm-btn btn-cultivate" onclick="document.getElementById('backupFileInput').click()">
-      📥 復耕播種開墾去 <span class="action-hint">（復位）</span>
+      <span class="farm-btn-main">📥 復耕播種開墾去</span>
+      <span class="action-hint">（復位）</span>
     </button>
     <input type="file" id="backupFileInput" accept=".json,application/json" style="display:none" onchange="importBackupFile(this)">
   </div>
