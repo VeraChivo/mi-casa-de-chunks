@@ -380,6 +380,7 @@ function renderDiaryCardHtml(){
 
 let _talkSelectedIds = [];
 let _talkDraftDirty = false;
+let _talkVoiceDirty = false;
 
 function getTalkDB(){
   try { return JSON.parse(localStorage.getItem('peppa_talk_diary_v1') || '[]'); } catch(e){ return []; }
@@ -462,18 +463,32 @@ function _talkBuildDraftText(){
   return _talkSelectedIds.map(id => (_talkFindPhrase(id)||{}).es).filter(Boolean).join('\n');
 }
 
+function _talkSyncVoiceFromNote(){
+  if(_talkVoiceDirty) return;
+  const noteTa = document.getElementById('talkDraftNote');
+  const voiceTa = document.getElementById('talkMamaVoice');
+  if(noteTa && voiceTa) voiceTa.value = noteTa.value;
+}
+
 function talkRegenerateDraft(){
   const ta = document.getElementById('talkDraftNote');
   if(!ta || _talkDraftDirty) return;
   ta.value = _talkBuildDraftText();
+  _talkSyncVoiceFromNote();
 }
 
 function talkOnNoteInput(){
   _talkDraftDirty = true;
+  _talkSyncVoiceFromNote();
+}
+
+function talkOnVoiceInput(){
+  _talkVoiceDirty = true;
 }
 
 function talkResetDraft(){
   _talkDraftDirty = false;
+  _talkVoiceDirty = false;
   talkRegenerateDraft();
   if(typeof toast === 'function') toast('🔄 已重新帶入選中的句子');
 }
@@ -494,11 +509,6 @@ function _talkRenderPreview(){
     <div class="card-chinese-translation">${_diaryEsc(p.zh)}</div>
   `).join('<hr style="border:none;border-top:1px dashed var(--usumizu);margin:8px 0">');
   step3.style.display = 'block';
-  const noteTa = document.getElementById('talkDraftNote');
-  const voiceTa = document.getElementById('talkMamaVoice');
-  if(voiceTa && !voiceTa.value && noteTa && noteTa.value){
-    voiceTa.value = noteTa.value;
-  }
 }
 
 function talkSave(){
@@ -517,6 +527,7 @@ function talkSave(){
 
   _talkSelectedIds = [];
   _talkDraftDirty = false;
+  _talkVoiceDirty = false;
   const noteTa = document.getElementById('talkDraftNote'); if(noteTa) noteTa.value = '';
   const voiceTa = document.getElementById('talkMamaVoice'); if(voiceTa) voiceTa.value = '';
   _talkRenderPicker();
@@ -579,7 +590,7 @@ function renderTalkSectionHtml(){
     <div id="talkStep3" style="display:none">
       <div class="diary-secret-row">
         <div class="diary-secret-label">📝 媽媽原音</div>
-        <textarea id="talkMamaVoice" rows="5" class="handwritten-style" placeholder="把想法再擴寫一下…"></textarea>
+        <textarea id="talkMamaVoice" rows="5" class="handwritten-style" placeholder="把想法再擴寫一下…" oninput="talkOnVoiceInput()"></textarea>
       </div>
       <div class="diary-draft-actions">
         <button class="diary-btn-save" onclick="talkSave()">💬 存成一篇心語</button>
