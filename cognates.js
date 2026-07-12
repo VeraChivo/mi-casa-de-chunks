@@ -126,7 +126,7 @@ const SENTENCE_COGNATES = {
     ]
   },
   'e0_s9':{
-    title:'🐷 A todos les encanta — 所有人都愛',
+    title:'🐱 A todos les encanta — 所有人都愛',
     rows:[
       '👉 <b>A todos les encanta</b> = 所有人都超愛（「他們」，les 取代 me）',
       '💡 句型升級：me encanta → te encanta → le encanta → les encanta',
