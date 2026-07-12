@@ -1504,7 +1504,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1'];
 
 function exportBackup(){
   const data = {};

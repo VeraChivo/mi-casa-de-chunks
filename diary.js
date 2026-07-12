@@ -372,6 +372,143 @@ function renderDiaryCardHtml(){
   </div>`;
 }
 
+/* ── 💬 聊療吾心語：三步驟（①語塊+空白欄 ②自動中文對照 ③媽媽原音擴寫），跟媽媽碎語分開存 ── */
+
+let _talkSelectedId = null;
+
+function getTalkDB(){
+  try { return JSON.parse(localStorage.getItem('peppa_talk_diary_v1') || '[]'); } catch(e){ return []; }
+}
+function saveTalkDB(arr){
+  try { localStorage.setItem('peppa_talk_diary_v1', JSON.stringify(arr)); } catch(e){}
+}
+function _talkGetUnlockedAmmo(){
+  if(typeof AMMO_DATA === 'undefined' || typeof ammoUnlocked === 'undefined') return [];
+  return AMMO_DATA.filter(a => ammoUnlocked.includes(a.ammo_id));
+}
+
+function _talkRenderPicker(){
+  const el = document.getElementById('talkPickerPool');
+  if(!el) return;
+  const unlocked = _talkGetUnlockedAmmo();
+  if(!unlocked.length){
+    el.innerHTML = `<div class="diary-empty-msg">還沒有解鎖任何語塊喔，先去 🌾 田間播語塊完成幾句吧</div>`;
+    return;
+  }
+  el.innerHTML = unlocked.map(a => {
+    const sel = _talkSelectedId === a.ammo_id;
+    return `<button class="diary-chip${sel?' is-selected':''}" onclick="talkSelectAmmo('${a.ammo_id}')">${_diaryEsc(a.core_ammo)}</button>`;
+  }).join('');
+}
+
+function talkSelectAmmo(id){
+  _talkSelectedId = (_talkSelectedId === id) ? null : id;
+  _talkRenderPicker();
+  _talkRenderPreview();
+}
+
+function talkOnNoteInput(){
+  // 空白欄內容即時記著，選好句子的當下會自動預帶進媽媽原音（見 _talkRenderPreview）
+}
+
+function _talkRenderPreview(){
+  const box = document.getElementById('talkPreviewBox');
+  const step3 = document.getElementById('talkStep3');
+  if(!box || !step3) return;
+  const a = _talkSelectedId ? AMMO_DATA.find(x => x.ammo_id === _talkSelectedId) : null;
+  if(!a){
+    box.style.display = 'none';
+    step3.style.display = 'none';
+    return;
+  }
+  box.style.display = 'block';
+  box.innerHTML = `
+    <div class="card-spanish-body">${_diaryEsc(a.core_ammo)}</div>
+    <div class="card-chinese-translation">${_diaryEsc(a.core_zh)}</div>
+  `;
+  step3.style.display = 'block';
+  const noteTa = document.getElementById('talkDraftNote');
+  const voiceTa = document.getElementById('talkMamaVoice');
+  if(voiceTa && !voiceTa.value && noteTa && noteTa.value){
+    voiceTa.value = noteTa.value;
+  }
+}
+
+function talkSave(){
+  if(!_talkSelectedId){ if(typeof toast === 'function') toast('先選一句已解鎖的語塊吧'); return; }
+  const a = AMMO_DATA.find(x => x.ammo_id === _talkSelectedId);
+  if(!a) return;
+  const voice = (document.getElementById('talkMamaVoice') || {}).value || '';
+  const db = getTalkDB();
+  db.unshift({ id: 'talk_' + Date.now(), ammoId: _talkSelectedId, es: a.core_ammo, zh: a.core_zh, voice, createdAt: Date.now() });
+  saveTalkDB(db);
+
+  _talkSelectedId = null;
+  const noteTa = document.getElementById('talkDraftNote'); if(noteTa) noteTa.value = '';
+  const voiceTa = document.getElementById('talkMamaVoice'); if(voiceTa) voiceTa.value = '';
+  _talkRenderPicker();
+  _talkRenderPreview();
+  renderTalkList();
+  if(typeof toast === 'function') toast('💬 已存成一篇聊療吾心語');
+  if(typeof checkStorageQuota === 'function') checkStorageQuota();
+}
+
+function talkDeleteEntry(id){
+  const db = getTalkDB().filter(t => t.id !== id);
+  saveTalkDB(db);
+  renderTalkList();
+  if(typeof toast === 'function') toast('🗑️ 已刪除這則');
+}
+
+function renderTalkList(){
+  const el = document.getElementById('talkListArea');
+  if(!el) return;
+  const db = getTalkDB();
+  if(!db.length){
+    el.innerHTML = `<div class="diary-empty-msg">還沒有任何心語紀錄，選一句語塊開始吧</div>`;
+    return;
+  }
+  el.innerHTML = db.map(t => `
+    <div class="notes-entry">
+      <div class="notes-entry-head">
+        <span class="notes-entry-ts">${_notesFormatTs(t.createdAt)}</span>
+      </div>
+      <div class="card-spanish-body">${_diaryEsc(t.es)}</div>
+      <div class="card-chinese-translation">${_diaryEsc(t.zh)}</div>
+      ${t.voice ? `<div class="notes-entry-text">${_diaryEsc(t.voice).replace(/\n/g,'<br>')}</div>` : ''}
+      <div class="diary-entry-actions">
+        <button class="diary-entry-del" onclick="talkDeleteEntry('${t.id}')">🗑️ 刪除</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTalkCardHtml(){
+  return `<div class="diary-card diary-paper card-container">
+    <div class="diary-paper-title">💬 聊療吾心語</div>
+    <div class="diary-card-sub">① 挑一句已解鎖的語塊，想法先寫下來 → ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
+
+    <div class="diary-chip-row" id="talkPickerPool"></div>
+
+    <textarea id="talkDraftNote" class="diary-draft-textarea" rows="4" placeholder="① 想法先寫在這裡，選好句子後會自動帶到媽媽原音…" oninput="talkOnNoteInput()"></textarea>
+
+    <div class="make-pattern-box" id="talkPreviewBox" style="display:none"></div>
+
+    <div id="talkStep3" style="display:none">
+      <div class="diary-secret-row">
+        <div class="diary-secret-label">📝 媽媽原音</div>
+        <textarea id="talkMamaVoice" rows="5" class="handwritten-style" placeholder="把①的想法再擴寫一下…"></textarea>
+      </div>
+      <div class="diary-draft-actions">
+        <button class="diary-btn-save" onclick="talkSave()">💬 存成一篇心語</button>
+      </div>
+    </div>
+
+    <div class="diary-list-title">💬 心語紀錄</div>
+    <div id="talkListArea" class="diary-list-area"></div>
+  </div>`;
+}
+
 /* ── 📝 隨心一筆：不拘形式的雜記，跟媽媽碎語分開存 ── */
 
 const NOTES_TAGS = [
@@ -495,7 +632,7 @@ function renderNotesCardHtml(){
 function initDiaryCard(){
   const container = document.getElementById('mom-atm-container');
   if(!container) return;
-  container.insertAdjacentHTML('afterbegin', renderDiaryCardHtml() + renderNotesCardHtml());
+  container.insertAdjacentHTML('afterbegin', renderDiaryCardHtml() + renderTalkCardHtml() + renderNotesCardHtml());
   const dateInput = document.getElementById('diaryDateInput');
   if(dateInput) dateInput.value = _diaryTodayISO();
   _diaryRenderKids();
@@ -503,6 +640,8 @@ function initDiaryCard(){
   _diaryRenderWeather();
   diaryRegenerateDraft();
   renderDiaryList();
+  _talkRenderPicker();
+  renderTalkList();
   _notesRenderTags();
   renderNotesList();
 }
@@ -513,8 +652,10 @@ document.addEventListener('DOMContentLoaded', initDiaryCard);
 function hasUnsavedDiaryContent(){
   const secretNotes = (document.getElementById('mama-secret-notes') || {}).value || '';
   const notesText = (document.getElementById('notesInput') || {}).value || '';
+  const talkNote = (document.getElementById('talkDraftNote') || {}).value || '';
+  const talkVoice = (document.getElementById('talkMamaVoice') || {}).value || '';
   diaryOnKidNoteInput();
-  return !!(secretNotes.trim() || notesText.trim() || _diaryHasKidNotes() || _diarySelMoods.length || _diarySelWeather || _diaryDraftDirty);
+  return !!(secretNotes.trim() || notesText.trim() || talkNote.trim() || talkVoice.trim() || _talkSelectedId || _diaryHasKidNotes() || _diarySelMoods.length || _diarySelWeather || _diaryDraftDirty);
 }
 window.addEventListener('beforeunload', function(e){
   if(hasUnsavedDiaryContent()){
