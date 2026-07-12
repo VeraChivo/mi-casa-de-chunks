@@ -23,7 +23,7 @@ const MOM_ATM_DATA = {
     ]
   },
   peppa_chunks: {
-    title: "👩🏻 【 馬麻小情緒 】& 🐷 【 情緒這樣說 】實戰感知卡",
+    title: "👩🏻 【 馬麻小情緒 】& 🐱 【 情緒這樣說 】實戰感知卡",
     description: "日常最常掛嘴邊、整句直接套用的生活短句與睡前呢喃。",
     items: [
       { es: "¡Buenas noches, mi amor!",          zh: "寶貝，晚安囉！",                                                                           tag: "睡前呢喃",   scene: "bedtime" },
