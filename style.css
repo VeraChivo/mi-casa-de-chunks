@@ -743,6 +743,8 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gestalt-tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px}
 .gestalt-tag.type-c{background:rgba(46,196,182,.1);border:1px solid #2ec4b6;color:#0f9f90}
 .gestalt-tag.type-d{background:rgba(173,181,189,.1);border:1px solid #adb5bd;color:#495057}
+.gestalt-tag.tag-clickable{cursor:pointer;touch-action:manipulation}
+.gestalt-tag.tag-clickable:active{opacity:.65}
 .card-spanish-body{font-size:18px;font-weight:800;color:var(--konpeki);width:100%;word-break:keep-all;white-space:normal}
 .card-chinese-translation{font-size:15px;color:var(--tmid);width:100%;display:flex;flex-direction:column;gap:5px}
 .card-example{font-size:12.5px;color:var(--tlight);font-style:italic;display:flex;flex-direction:column;gap:2px;margin-top:2px;padding-top:5px;border-top:1px dashed var(--usumizu)}

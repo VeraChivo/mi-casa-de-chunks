@@ -54,6 +54,8 @@ const MOM_ATM_DATA = {
   }
 };
 
+const MOM_TAG_GID_MAP = { puedo:'g10', puedes:'g10', puede:'g10', podemos:'g10', debe:'g11', debes:'g11', debo:'g11', debemos:'g11' };
+
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('mom-atm-container');
   if (!container) return;
@@ -108,8 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
           : `<span class="card-example">${zhEx}</span>`;
       }
 
+      const tagGid = MOM_TAG_GID_MAP[item.tag];
+      const tagHtml = tagGid
+        ? `<span class="gestalt-tag ${tagClass} tag-clickable" onclick="jumpToConjLib('${tagGid}')" title="查完整變位庫">#${item.tag} 🔄</span>`
+        : `<span class="gestalt-tag ${tagClass}">#${item.tag}</span>`;
+
       html += `<div class="mom-atm-card" data-scene="${scene}">
-        <span class="gestalt-tag ${tagClass}">#${item.tag}</span>
+        ${tagHtml}
         <div class="card-spanish-body">${lineHtml}</div>
         <div class="card-chinese-translation">${zhMain}${exHtml}</div>
       </div>`;
