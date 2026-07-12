@@ -83,12 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="mom-cards-col">`;
 
     cat.items.forEach(item => {
+      const [zhMain, zhEx] = item.zh.split('\n');
+      // 有例句的話，改用例句的西文/中文當主要顯示，不再疊加原本孤立的短句/單字
+      let displayEs = item.es, displayZh = zhMain;
+      if (zhEx) {
+        const m = zhEx.match(/^例：([\s\S]+?)\s+([一-鿿][\s\S]*)$/);
+        if (m) { displayEs = m[1]; displayZh = m[2]; }
+      }
+
       const lineHtml = (typeof renderScriptLine === 'function')
-        ? renderScriptLine(item.es)
-        : item.es;
+        ? renderScriptLine(displayEs)
+        : displayEs;
 
       if (typeof detectGestalt === 'function' && typeof triggerAutoWrite === 'function') {
-        const zhMain = item.zh.split('\n')[0];
         const words = item.es.split(/\s+/);
         for (let i = 0; i < words.length; ) {
           const r = detectGestalt(words, i);
@@ -100,16 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const scene = item.scene || '';
-      const [zhMain, zhEx] = item.zh.split('\n');
-      let exHtml = '';
-      if (zhEx) {
-        // 拆開「例：[西文] [中文]」—— 西文小字，中文放大
-        const m = zhEx.match(/^(例：[\s\S]+?)\s+([一-鿿][\s\S]*)$/);
-        exHtml = m
-          ? `<span class="card-example"><span class="ex-es">${m[1]}</span> <span class="ex-zh">${m[2]}</span></span>`
-          : `<span class="card-example">${zhEx}</span>`;
-      }
-
       const tagGid = MOM_TAG_GID_MAP[item.tag];
       const tagHtml = tagGid
         ? `<span class="gestalt-tag ${tagClass} tag-clickable" onclick="jumpToConjLib('${tagGid}')" title="查完整變位庫">#${item.tag} 🔄</span>`
@@ -118,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       html += `<div class="mom-atm-card" data-scene="${scene}">
         ${tagHtml}
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation">${zhMain}${exHtml}</div>
+        <div class="card-chinese-translation">${displayZh}</div>
       </div>`;
     });
 
