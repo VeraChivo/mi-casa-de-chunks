@@ -369,12 +369,17 @@ function renderDiaryCardHtml(){
 
     <div class="diary-list-title">🕰️ 時光寶瓶</div>
     <div id="diaryListArea" class="diary-list-area"></div>
+
+    ${renderTalkSectionHtml()}
   </div>`;
 }
 
-/* ── 💬 聊療吾心語：三步驟（①語塊+空白欄 ②自動中文對照 ③媽媽原音擴寫），跟媽媽碎語分開存 ── */
+/* ── 💬 聊療吾心語：三步驟（①片語+空白欄 ②自動中文對照 ③媽媽原音擴寫）
+   語塊池只取「情緒會說話／馬麻有話講／馬麻小情緒&情緒這樣說／心田深耕」這幾區，
+   不含田間播語塊的 ammo，跟媽媽碎語分開存，但同一張卡片呈現 ── */
 
 let _talkSelectedIds = [];
+let _talkDraftDirty = false;
 
 function getTalkDB(){
   try { return JSON.parse(localStorage.getItem('peppa_talk_diary_v1') || '[]'); } catch(e){ return []; }
@@ -382,62 +387,107 @@ function getTalkDB(){
 function saveTalkDB(arr){
   try { localStorage.setItem('peppa_talk_diary_v1', JSON.stringify(arr)); } catch(e){}
 }
-function _talkGetUnlockedAmmo(){
-  if(typeof AMMO_DATA === 'undefined' || typeof ammoUnlocked === 'undefined') return [];
-  return AMMO_DATA.filter(a => ammoUnlocked.includes(a.ammo_id));
+
+function _talkNormalizeItem(item, catLabel, i){
+  const [zhMain, zhEx] = item.zh.split('\n');
+  let es = item.es, zh = zhMain;
+  if (zhEx) {
+    const m = zhEx.match(/^例：([\s\S]+?)\s+([一-鿿][\s\S]*)$/);
+    if (m) { es = m[1]; zh = m[2]; }
+  }
+  return { id: catLabel + '__' + i, es, zh };
+}
+
+function _talkGetPhrasePool(){
+  const groups = [];
+  if (typeof MOM_ATM_DATA !== 'undefined') {
+    const wanted = [
+      ['sel_phrases',   '🛡️ 情緒會說話'],
+      ['mom_daily',     '🎀 馬麻有話講'],
+      ['peppa_chunks',  '👩🏻 馬麻小情緒 & 🐱 情緒這樣說']
+    ];
+    wanted.forEach(([key,label]) => {
+      const cat = MOM_ATM_DATA[key];
+      if (cat) groups.push({ label, items: cat.items.map((it,i) => _talkNormalizeItem(it, label, i)) });
+    });
+  }
+  if (typeof CORAZON_DATA !== 'undefined') {
+    CORAZON_DATA.forEach(cat => {
+      groups.push({ label: cat.title, items: cat.items.map((it,i) => _talkNormalizeItem(it, cat.title, i)) });
+    });
+  }
+  return groups;
+}
+
+function _talkFindPhrase(id){
+  const groups = _talkGetPhrasePool();
+  for (const g of groups) { const hit = g.items.find(it => it.id === id); if (hit) return hit; }
+  return null;
 }
 
 function _talkRenderPicker(){
   const el = document.getElementById('talkPickerPool');
   if(!el) return;
-  const unlocked = _talkGetUnlockedAmmo();
-  if(!unlocked.length){
-    el.innerHTML = `<div class="diary-empty-msg">還沒有解鎖任何語塊喔，先去 🌾 田間播語塊完成幾句吧</div>`;
+  const groups = _talkGetPhrasePool();
+  if(!groups.length){
+    el.innerHTML = `<div class="diary-empty-msg">找不到可挑選的片語</div>`;
     return;
   }
-  el.innerHTML = unlocked.map(a => {
-    const idx = _talkSelectedIds.indexOf(a.ammo_id);
-    const sel = idx !== -1;
-    const badge = sel ? `<span class="diary-mood-order">${idx+1}</span>` : '';
-    return `<button class="diary-chip diary-mood-chip${sel?' is-selected':''}" onclick="talkSelectAmmo('${a.ammo_id}')">${badge}${_diaryEsc(a.core_ammo)}</button>`;
-  }).join('');
+  el.innerHTML = groups.map(g => `
+    <div class="diary-mood-cat">${g.label}</div>
+    <div class="diary-mood-row">
+      ${g.items.map(it => {
+        const idx = _talkSelectedIds.indexOf(it.id);
+        const sel = idx !== -1;
+        const badge = sel ? `<span class="diary-mood-order">${idx+1}</span>` : '';
+        return `<button class="diary-chip diary-mood-chip${sel?' is-selected':''}" onclick="talkSelectPhrase('${it.id}')">${badge}${_diaryEsc(it.es)}</button>`;
+      }).join('')}
+    </div>
+  `).join('');
 }
 
-function talkSelectAmmo(id){
+function talkSelectPhrase(id){
   const i = _talkSelectedIds.indexOf(id);
-  if(i === -1){
-    _talkSelectedIds.push(id);
-    // 選中的句子同步跟到下面的空白欄，方便直接在原句基礎上調整/插入自己的話
-    const a = AMMO_DATA.find(x => x.ammo_id === id);
-    const noteTa = document.getElementById('talkDraftNote');
-    if(a && noteTa && !noteTa.value.includes(a.core_ammo)){
-      noteTa.value = noteTa.value ? (noteTa.value + '\n' + a.core_ammo) : a.core_ammo;
-    }
-  } else {
-    _talkSelectedIds.splice(i,1);
-  }
+  if(i === -1) _talkSelectedIds.push(id); else _talkSelectedIds.splice(i,1);
   _talkRenderPicker();
+  talkRegenerateDraft();
   _talkRenderPreview();
 }
 
+function _talkBuildDraftText(){
+  return _talkSelectedIds.map(id => (_talkFindPhrase(id)||{}).es).filter(Boolean).join('\n');
+}
+
+function talkRegenerateDraft(){
+  const ta = document.getElementById('talkDraftNote');
+  if(!ta || _talkDraftDirty) return;
+  ta.value = _talkBuildDraftText();
+}
+
 function talkOnNoteInput(){
-  // 空白欄內容即時記著，選好句子的當下會自動預帶進媽媽原音（見 _talkRenderPreview）
+  _talkDraftDirty = true;
+}
+
+function talkResetDraft(){
+  _talkDraftDirty = false;
+  talkRegenerateDraft();
+  if(typeof toast === 'function') toast('🔄 已重新帶入選中的句子');
 }
 
 function _talkRenderPreview(){
   const box = document.getElementById('talkPreviewBox');
   const step3 = document.getElementById('talkStep3');
   if(!box || !step3) return;
-  const picked = _talkSelectedIds.map(id => AMMO_DATA.find(x => x.ammo_id === id)).filter(Boolean);
+  const picked = _talkSelectedIds.map(id => _talkFindPhrase(id)).filter(Boolean);
   if(!picked.length){
     box.style.display = 'none';
     step3.style.display = 'none';
     return;
   }
   box.style.display = 'block';
-  box.innerHTML = picked.map(a => `
-    <div class="card-spanish-body">${_diaryEsc(a.core_ammo)}</div>
-    <div class="card-chinese-translation">${_diaryEsc(a.core_zh)}</div>
+  box.innerHTML = picked.map(p => `
+    <div class="card-spanish-body">${_diaryEsc(p.es)}</div>
+    <div class="card-chinese-translation">${_diaryEsc(p.zh)}</div>
   `).join('<hr style="border:none;border-top:1px dashed var(--usumizu);margin:8px 0">');
   step3.style.display = 'block';
   const noteTa = document.getElementById('talkDraftNote');
@@ -448,21 +498,21 @@ function _talkRenderPreview(){
 }
 
 function talkSave(){
-  if(!_talkSelectedIds.length){ if(typeof toast === 'function') toast('先選至少一句已解鎖的語塊吧'); return; }
-  const picked = _talkSelectedIds.map(id => AMMO_DATA.find(x => x.ammo_id === id)).filter(Boolean);
+  if(!_talkSelectedIds.length){ if(typeof toast === 'function') toast('先選至少一句片語吧'); return; }
+  const picked = _talkSelectedIds.map(id => _talkFindPhrase(id)).filter(Boolean);
   if(!picked.length) return;
   const voice = (document.getElementById('talkMamaVoice') || {}).value || '';
   const db = getTalkDB();
   db.unshift({
     id: 'talk_' + Date.now(),
-    ammoIds: _talkSelectedIds.slice(),
-    sentences: picked.map(a => ({ es: a.core_ammo, zh: a.core_zh })),
+    sentences: picked.map(p => ({ es: p.es, zh: p.zh })),
     voice,
     createdAt: Date.now()
   });
   saveTalkDB(db);
 
   _talkSelectedIds = [];
+  _talkDraftDirty = false;
   const noteTa = document.getElementById('talkDraftNote'); if(noteTa) noteTa.value = '';
   const voiceTa = document.getElementById('talkMamaVoice'); if(voiceTa) voiceTa.value = '';
   _talkRenderPicker();
@@ -484,7 +534,7 @@ function renderTalkList(){
   if(!el) return;
   const db = getTalkDB();
   if(!db.length){
-    el.innerHTML = `<div class="diary-empty-msg">還沒有任何心語紀錄，選一句語塊開始吧</div>`;
+    el.innerHTML = `<div class="diary-empty-msg">還沒有任何心語紀錄，選一句片語開始吧</div>`;
     return;
   }
   el.innerHTML = db.map(t => {
@@ -507,21 +557,25 @@ function renderTalkList(){
   }).join('');
 }
 
-function renderTalkCardHtml(){
-  return `<div class="diary-card diary-paper card-container">
+function renderTalkSectionHtml(){
+  return `
+    <hr class="diary-section-divider">
     <div class="diary-paper-title">💬 聊療吾心語</div>
-    <div class="diary-card-sub">① 挑幾句已解鎖的語塊（可複選、依序接續，點下去會同步跟到下面），自己調整、插入想法 → ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
+    <div class="diary-card-sub">① 挑片語（可複選、依序接續）→ ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
 
     <div class="diary-chip-row" id="talkPickerPool"></div>
 
-    <textarea id="talkDraftNote" class="diary-draft-textarea" rows="4" placeholder="① 選好的句子會同步跟到這裡，自己調整、插入想法…" oninput="talkOnNoteInput()"></textarea>
+    <textarea id="talkDraftNote" class="diary-draft-textarea" rows="4" placeholder="選好的片語會同步跟到這裡，自己調整、插入想法…" oninput="talkOnNoteInput()"></textarea>
+    <div class="diary-draft-actions">
+      <button class="diary-btn-reset" onclick="talkResetDraft()">🔄 重新帶入選中的句子</button>
+    </div>
 
     <div class="make-pattern-box" id="talkPreviewBox" style="display:none"></div>
 
     <div id="talkStep3" style="display:none">
       <div class="diary-secret-row">
         <div class="diary-secret-label">📝 媽媽原音</div>
-        <textarea id="talkMamaVoice" rows="5" class="handwritten-style" placeholder="把①的想法再擴寫一下…"></textarea>
+        <textarea id="talkMamaVoice" rows="5" class="handwritten-style" placeholder="把想法再擴寫一下…"></textarea>
       </div>
       <div class="diary-draft-actions">
         <button class="diary-btn-save" onclick="talkSave()">💬 存成一篇心語</button>
@@ -530,7 +584,7 @@ function renderTalkCardHtml(){
 
     <div class="diary-list-title">💬 心語紀錄</div>
     <div id="talkListArea" class="diary-list-area"></div>
-  </div>`;
+  `;
 }
 
 /* ── 📝 隨心一筆：不拘形式的雜記，跟媽媽碎語分開存 ── */
@@ -656,7 +710,7 @@ function renderNotesCardHtml(){
 function initDiaryCard(){
   const container = document.getElementById('mom-atm-container');
   if(!container) return;
-  container.insertAdjacentHTML('afterbegin', renderDiaryCardHtml() + renderTalkCardHtml() + renderNotesCardHtml());
+  container.insertAdjacentHTML('afterbegin', renderDiaryCardHtml() + renderNotesCardHtml());
   const dateInput = document.getElementById('diaryDateInput');
   if(dateInput) dateInput.value = _diaryTodayISO();
   _diaryRenderKids();
