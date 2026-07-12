@@ -325,7 +325,7 @@ const EPS=[
       {es:"Ahora mi hija,",zh:"現在我女兒，"},
     ]}]
   }},
-  {es:"Creo que tienes el corazón un poco flojo.",chunks:[{w:"Creo que",role:"v"},{w:"tienes",role:"v"},{w:"el corazón un poco flojo.",role:"o"}],zh:"我認為你的心臟有點虛弱。",en:"I think your heart is a little weak.",noteZh:"「Creo que」= 我認為，後接完整子句",noteEn:"'Creo que' = I think that... (followed by a full clause)",
+  {es:"Creo que tienes el corazón un poco flojo.",chunks:[{w:"Creo que",role:"v"},{w:"tienes",role:"v"},{w:"el corazón un poco flojo.",role:"o"}],zh:"我覺得你的心臟有點虛弱。",en:"I think your heart is a little weak.",noteZh:"「Creo que」= 我認為，後接完整子句",noteEn:"'Creo que' = I think that... (followed by a full clause)",
   expand:{
     note:"形容詞要跟身體部位的陰陽性一致，整組換才不會出錯",
     template:[{t:"Creo que tienes"},{g:"symptom"}],

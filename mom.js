@@ -47,7 +47,7 @@ const MOM_ATM_DATA = {
       { es: "por favor",                         zh: "請⋯（拜託啦）\n例：Un vaso de agua, por favor. 請給我一杯水。",                           tag: "生活指令" },
       { es: "gracias",                           zh: "謝謝\n例：Muchas gracias por la comida. 非常謝謝這頓飯。",                                 tag: "生活指令" },
       { es: "¡Dinosaurio!",                      zh: "恐龍！\n例：A Tito le gusta su dinosaurio. 迪多喜歡他的恐龍。",                          tag: "迪多專區" },
-      { es: "¡Mira, Tito!",                    zh: "迪多妳看！\n例：¡Mira, Tito, un globo! 迪多你看，一個氣球！",                           tag: "吸引注意" },
+      { es: "¡Mira, Tito!",                    zh: "迪多你看！\n例：¡Mira, Tito, un globo! 迪多你看，一個氣球！",                           tag: "吸引注意" },
       { es: "¡Logrado!",                         zh: "搞定了！/ 挑戰成功！\n例：¡Logrado! Terminamos la tarea. 搞定了！我們完成任務了。",        tag: "大成功提示" },
       { es: "¡Ve a pegarlo!",                    zh: "去貼上吧！/ 把它貼上去！\n例：¡Ve a pegarlo en tu cuaderno! 去把它貼在筆記本上吧！",      tag: "輸出發射" }
     ]

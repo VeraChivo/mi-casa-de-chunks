@@ -326,7 +326,7 @@ const GRAMMAR_DATA = [
     rule:"deber（義務）+ 原型動詞（字典查到的形式）= 應該做、必須做某事。",
     examples:[
       {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
-      {es:"Debes lavarte las manos.", zh:"你必須洗手。"},
+      {es:"Debes lavarte las manos.", zh:"你該洗手。"},
       {es:"Debemos respetar las reglas.", zh:"我們應該遵守規則。"}
     ],
     trap:"deber 變化：debo / debes / debe / debemos / debéis（拉美常用 deben）/ deben",
@@ -362,9 +362,9 @@ const GRAMMAR_DATA = [
     title:"Creo que + 子句：我認為…",
     rule:"Creo que + 完整子句 = 我認為、我覺得。表達個人意見或推測。",
     examples:[
-      {es:"Creo que tienes el corazón un poco flojo.", zh:"我認為你的心臟有點虛弱。"},
-      {es:"Creo que tienes fiebre.", zh:"我認為你發燒了。"},
-      {es:"Creo que tienes razón.", zh:"我認為你說得對。"}
+      {es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。"},
+      {es:"Creo que tienes fiebre.", zh:"我覺得你發燒了。"},
+      {es:"Creo que tienes razón.", zh:"我覺得你說得對。"}
     ],
     trap:"口語快速版：Creo que sí（我覺得是）/ Creo que no（我覺得不是）",
     source:"E3·S9"

@@ -62,8 +62,8 @@ const AMMO_DATA = [
     fire_peppa:{es:"Nita, debes ponerte las botas de agua.", zh:"妮妲，你該穿上雨鞋。", ts:null,
       chunks:[{w:"Nita,",hideYg:true},{w:"debes ponerte",role:"v",note:"deber ➔ debes（「你」）+ poner ➔ ponerte ➔ 意思：你必須穿上（deber + 原形 = 義務）"},{w:"las botas de agua.",role:"o"}]},
     fire_daily:[
-      {es:"Debes hacer la tarea.", zh:"你必須做功課。", chunks:[{w:"(tú)",role:"s"},{w:"Debes hacer",role:"v"},{w:"la tarea.",role:"o"}]},
-      {es:"Debes lavarte las manos.", zh:"你必須洗手。", chunks:[{w:"(tú)",role:"s"},{w:"Debes lavarte",role:"v"},{w:"las manos.",role:"o"}]}
+      {es:"Debes hacer la tarea.", zh:"你該做功課。", chunks:[{w:"(tú)",role:"s"},{w:"Debes hacer",role:"v"},{w:"la tarea.",role:"o"}]},
+      {es:"Debes lavarte las manos.", zh:"你該洗手。", chunks:[{w:"(tú)",role:"s"},{w:"Debes lavarte",role:"v"},{w:"las manos.",role:"o"}]}
     ]
   },
   {
@@ -371,15 +371,15 @@ const AMMO_DATA = [
   },
   {
     ammo_id:"e3_09", ep:"E3 · La Mejor Amiga",
-    core_ammo:"Creo que tienes el corazón un poco flojo.", core_zh:"我認為你的心臟有點虛弱。",
+    core_ammo:"Creo que tienes el corazón un poco flojo.", core_zh:"我覺得你的心臟有點虛弱。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Creo que tienes [身體部位] un poco [形容詞].", pattern_zh:"我認為你的 ___ 有點 ___。",
     pattern_note:"Creo que = 我認為，後接完整子句", slots:["身體部位","形容詞"],
-    fire_peppa:{es:"Creo que tienes el corazón un poco flojo.", zh:"我認為你的心臟有點虛弱。", ts:null,
+    fire_peppa:{es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。", ts:null,
       chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Creo que",role:"v",note:"creer ➔ creo（「我」）+ que（連接子句）➔ 意思：我認為…（Creo que + 完整句）"},{w:"tienes",role:"v",note:"tener ➔ tienes（「你」）➔ 意思：你有（用於身體感覺：tienes fiebre = 你發燒了）"},{w:"el corazón un poco flojo.",role:"o"}]},
     fire_daily:[
-      {es:"Creo que tienes fiebre.", zh:"我認為你發燒了。", chunks:[{w:"(yo)",role:"s"},{w:"Creo que",role:"v"},{w:"tienes",role:"v"},{w:"fiebre.",role:"o"}]},
-      {es:"Creo que tienes razón.", zh:"我認為你說得對。", chunks:[{w:"(yo)",role:"s"},{w:"Creo que",role:"v"},{w:"tienes",role:"v"},{w:"razón.",role:"o"}]}
+      {es:"Creo que tienes fiebre.", zh:"我覺得你發燒了。", chunks:[{w:"(yo)",role:"s"},{w:"Creo que",role:"v"},{w:"tienes",role:"v"},{w:"fiebre.",role:"o"}]},
+      {es:"Creo que tienes razón.", zh:"我覺得你說得對。", chunks:[{w:"(yo)",role:"s"},{w:"Creo que",role:"v"},{w:"tienes",role:"v"},{w:"razón.",role:"o"}]}
     ]
   },
   {

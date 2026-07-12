@@ -27,7 +27,7 @@ const S3_VERBS = [
   {id:"heen",   verb_yo:"he encontrado", verb_tu:null,     zh:"找到了", lock_s:"Yo",  no_subj_prefix:true,  obj_type:"noun"},
   {id:"eres",   verb_yo:null,            verb_tu:"eres",   zh:"是",     lock_s:"Tú",  no_subj_prefix:false, obj_type:"noun"},
   {id:"poder",  verb_yo:"puedo",         verb_tu:"puedes", zh:"可以",   lock_s:null,  no_subj_prefix:false, obj_type:"inf"},
-  {id:"deber",  verb_yo:"debo",          verb_tu:"debes",  zh:"必須",   lock_s:null,  no_subj_prefix:false, obj_type:"inf"},
+  {id:"deber",  verb_yo:"debo",          verb_tu:"debes",  zh:"該",     lock_s:null,  no_subj_prefix:false, obj_type:"inf"},
 ];
 
 // has_gender: true → 依 ♂/♀ 切換字尾；type: 'noun'=身分名詞／'inf'=不定詞動作
