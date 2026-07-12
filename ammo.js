@@ -132,48 +132,48 @@ const AMMO_DATA = [
     ]
   },
 
-  // ══════════ E2 · El Señor Dinosaurio Se Ha Perdido ══════════
+  // ══════════ E2 · El Señor Esqueleto Se Ha Perdido ══════════
   {
-    ammo_id:"e2_01", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
-    core_ammo:"El juguete favorito de Tito es el señor Dinosaurio.", core_zh:"迪多最喜歡的玩具是恐龍先生。",
+    ammo_id:"e2_01", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    core_ammo:"El juguete favorito de Tito es el señor Esqueleto.", core_zh:"迪多最喜歡的玩具是骷髏先生。",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分本質：es = 是（介紹事物）",
     pattern:"El juguete favorito de [人] es [名詞].", pattern_zh:"___ 最喜歡的玩具是 ___。",
     pattern_note:"favorito 放在名詞後面，跟英文相反", slots:["人","名詞"],
-    fire_peppa:{es:"El juguete favorito de Tito es el señor Dinosaurio.", zh:"迪多最喜歡的玩具是恐龍先生。", ts:null,
-      chunks:[{w:"El juguete favorito de Tito",role:"s"},{w:"es",role:"v",note:"ser ➔ es ➔ 意思：是（介紹事物身分，favorito 放在名詞後）"},{w:"el señor Dinosaurio.",role:"o"}]},
+    fire_peppa:{es:"El juguete favorito de Tito es el señor Esqueleto.", zh:"迪多最喜歡的玩具是骷髏先生。", ts:null,
+      chunks:[{w:"El juguete favorito de Tito",role:"s"},{w:"es",role:"v",note:"ser ➔ es ➔ 意思：是（介紹事物身分，favorito 放在名詞後）"},{w:"el señor Esqueleto.",role:"o"}]},
     fire_daily:[
       {es:"Mi color favorito es el azul.", zh:"我最喜歡的顏色是藍色。", chunks:[{w:"Mi color favorito",role:"s"},{w:"es",role:"v"},{w:"el azul.",role:"o"}]},
       {es:"El libro favorito de mi hermana es Harry Potter.", zh:"我姊姊最喜歡的書是哈利波特。", chunks:[{w:"El libro favorito de mi hermana",role:"s"},{w:"es",role:"v"},{w:"Harry Potter.",role:"o"}]}
     ]
   },
   {
-    ammo_id:"e2_02", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
-    core_ammo:"Cuando Tito se va a la cama el señor Dinosaurio se acurruca a su lado.", core_zh:"當迪多上床睡覺時，恐龍先生就蜷縮在他身旁。",
+    ammo_id:"e2_02", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    core_ammo:"Cuando Tito se va a la cama el señor Esqueleto se acurruca a su lado.", core_zh:"當迪多上床睡覺時，骷髏先生就蜷縮在他身旁。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Cuando [人] se va a la cama...", pattern_zh:"當 ___ 上床睡覺時…",
     pattern_note:"se va a la cama = 去睡覺，自己對自己做的動詞片語", slots:["人"],
-    fire_peppa:{es:"Cuando Tito se va a la cama el señor Dinosaurio se acurruca a su lado.", zh:"當迪多上床睡覺時，恐龍先生就蜷縮在他身旁。", ts:null,
-      chunks:[{w:"Cuando",role:"c",hideYg:true},{w:"Tito",role:"s"},{w:"se va a la cama",role:"v",note:"irse ➔ se va（自己對自己做的動詞）+ a la cama ➔ 意思：去睡覺（irse a = 去做某事）"},{w:"el señor Dinosaurio",role:"s"},{w:"se acurruca",role:"v",note:"acurrucarse ➔ se acurruca ➔ 意思：蜷縮（自己對自己做的動詞，「他/她」）"},{w:"a su lado.",role:"o"}]},
+    fire_peppa:{es:"Cuando Tito se va a la cama el señor Esqueleto se acurruca a su lado.", zh:"當迪多上床睡覺時，骷髏先生就蜷縮在他身旁。", ts:null,
+      chunks:[{w:"Cuando",role:"c",hideYg:true},{w:"Tito",role:"s"},{w:"se va a la cama",role:"v",note:"irse ➔ se va（自己對自己做的動詞）+ a la cama ➔ 意思：去睡覺（irse a = 去做某事）"},{w:"el señor Esqueleto",role:"s"},{w:"se acurruca",role:"v",note:"acurrucarse ➔ se acurruca ➔ 意思：蜷縮（自己對自己做的動詞，「他/她」）"},{w:"a su lado.",role:"o"}]},
     fire_daily:[
       {es:"Yo me voy a la cama a las nueve.", zh:"我九點去睡覺。", chunks:[{w:"Yo",role:"s"},{w:"me voy a la cama",role:"v"},{w:"a las nueve.",role:"o"}]},
       {es:"Cuando mamá se va a la cama, apaga la luz.", zh:"當媽媽上床睡覺時，她會關燈。", chunks:[{w:"Cuando",role:"c",hideYg:true},{w:"mamá",role:"s"},{w:"se va a la cama,",role:"v"},{w:"apaga",role:"v"},{w:"la luz.",role:"o"}]}
     ]
   },
   {
-    ammo_id:"e2_03", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
-    core_ammo:"Tito ha perdido al señor Dinosaurio.", core_zh:"迪多把恐龍先生弄丟了。",
+    ammo_id:"e2_03", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    core_ammo:"Tito ha perdido al señor Esqueleto.", core_zh:"迪多把骷髏先生弄丟了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] ha perdido [受詞].", pattern_zh:"___ 把 ___ 弄丟了。",
     pattern_note:"ha perdido = 已經弄丟了（已完成說法）", slots:["人","受詞"],
-    fire_peppa:{es:"Tito ha perdido al señor Dinosaurio.", zh:"迪多把恐龍先生弄丟了。", ts:null,
-      chunks:[{w:"Tito",role:"s"},{w:"ha perdido",role:"v",note:"perder ➔ perdido（-ado/-ido形）+ haber ➔ ha ➔ 意思：弄丟了（已完成說法）"},{w:"al señor Dinosaurio.",role:"o"}]},
+    fire_peppa:{es:"Tito ha perdido al señor Esqueleto.", zh:"迪多把骷髏先生弄丟了。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"ha perdido",role:"v",note:"perder ➔ perdido（-ado/-ido形）+ haber ➔ ha ➔ 意思：弄丟了（已完成說法）"},{w:"al señor Esqueleto.",role:"o"}]},
     fire_daily:[
       {es:"He perdido mi mochila.", zh:"我把我的書包弄丟了。", chunks:[{w:"(yo)",role:"s"},{w:"He perdido",role:"v"},{w:"mi mochila.",role:"o"}]},
       {es:"Papá ha perdido las llaves del coche.", zh:"爸爸把車鑰匙弄丟了。", chunks:[{w:"Papá",role:"s"},{w:"ha perdido",role:"v"},{w:"las llaves del coche.",role:"o"}]}
     ]
   },
   {
-    ammo_id:"e2_04", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
+    ammo_id:"e2_04", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"No te preocupes Tito, entre todos lo encontraremos.", core_zh:"不要擔心迪多，我們大家一起會找到牠的。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"No te preocupes, [理由].", pattern_zh:"不要擔心，___。",
@@ -186,7 +186,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_05", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
+    ammo_id:"e2_05", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Un detective es una persona muy buena encontrando cosas.", core_zh:"偵探是一個非常擅長找東西的人。",
     be_verb_type:"ser", be_verb_note:"Ser 定義身分職業：detective es = 偵探是…（本質定義）",
     pattern:"Un [職業] es una persona muy buena [-ing形態].", pattern_zh:"___ 是一個非常擅長 ___ 的人。",
@@ -199,46 +199,46 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_06", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
-    core_ammo:"Tito siempre se trae al señor Dinosaurio a la bañera.", core_zh:"迪多總是帶著恐龍先生去洗澡。",
+    ammo_id:"e2_06", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    core_ammo:"Tito siempre se trae al señor Esqueleto a la bañera.", core_zh:"迪多總是帶著骷髏先生去洗澡。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] siempre se trae [物] a [地點].", pattern_zh:"___ 總是帶著 ___ 去 ___。",
     pattern_note:"siempre 放在動詞前，表頻率", slots:["人","物","地點"],
-    fire_peppa:{es:"Tito siempre se trae al señor Dinosaurio a la bañera.", zh:"迪多總是帶著恐龍先生去洗澡。", ts:null,
-      chunks:[{w:"Tito",role:"s"},{w:"siempre se trae",role:"v",note:"traerse ➔ se trae（自己對自己做的動詞）+ siempre（頻率副詞）➔ 意思：總是帶著去（siempre 放動詞前）"},{w:"al señor Dinosaurio",role:"o"},{w:"a la bañera.",role:"o"}]},
+    fire_peppa:{es:"Tito siempre se trae al señor Esqueleto a la bañera.", zh:"迪多總是帶著骷髏先生去洗澡。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"siempre se trae",role:"v",note:"traerse ➔ se trae（自己對自己做的動詞）+ siempre（頻率副詞）➔ 意思：總是帶著去（siempre 放動詞前）"},{w:"al señor Esqueleto",role:"o"},{w:"a la bañera.",role:"o"}]},
     fire_daily:[
       {es:"Yo siempre me traigo un libro a la escuela.", zh:"我總是帶一本書去學校。", chunks:[{w:"Yo",role:"s"},{w:"siempre me traigo",role:"v"},{w:"un libro",role:"o"},{w:"a la escuela.",role:"o"}]},
       {es:"Vera siempre se trae su muñeca al parque.", zh:"薇拉總是帶她的娃娃去公園。", chunks:[{w:"Vera",role:"s"},{w:"siempre se trae",role:"v"},{w:"su muñeca",role:"o"},{w:"al parque.",role:"o"}]}
     ]
   },
   {
-    ammo_id:"e2_07", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
-    core_ammo:"¡Ya lo sé dónde está el señor Dinosaurio!", core_zh:"我知道恐龍先生在哪裡了！",
+    ammo_id:"e2_07", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    core_ammo:"¡Ya lo sé dónde está el señor Esqueleto!", core_zh:"我知道骷髏先生在哪裡了！",
     be_verb_type:"estar", be_verb_note:"Estar 表示位置：dónde está = 在哪裡（位置用 estar）",
     pattern:"¡Ya lo sé dónde está [名詞]!", pattern_zh:"我知道 ___ 在哪裡了！",
     pattern_note:"Ya lo sé = 我知道了，ya 表示已然發生", slots:["名詞"],
-    fire_peppa:{es:"¡Ya lo sé dónde está el señor Dinosaurio!", zh:"我知道恐龍先生在哪裡了！", ts:null,
-      chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"¡Ya lo sé",role:"v",note:"saber ➔ sé（「我」變化比較特別）+ ya ➔ 意思：我知道了（ya = 已然發生）"},{w:"dónde está",role:"c",note:"estar ➔ está ➔ 意思：在哪裡（位置/狀態用 estar，不用 ser）"},{w:"el señor Dinosaurio!",role:"s"}]},
+    fire_peppa:{es:"¡Ya lo sé dónde está el señor Esqueleto!", zh:"我知道骷髏先生在哪裡了！", ts:null,
+      chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"¡Ya lo sé",role:"v",note:"saber ➔ sé（「我」變化比較特別）+ ya ➔ 意思：我知道了（ya = 已然發生）"},{w:"dónde está",role:"c",note:"estar ➔ está ➔ 意思：在哪裡（位置/狀態用 estar，不用 ser）"},{w:"el señor Esqueleto!",role:"s"}]},
     fire_daily:[
       {es:"¡Ya lo sé dónde está mi mochila!", zh:"我知道我的書包在哪裡了！", chunks:[{w:"(yo)",role:"s"},{w:"¡Ya lo sé",role:"v"},{w:"dónde está",role:"c"},{w:"mi mochila!",role:"s"}]},
       {es:"¡Ya lo sé dónde está el gato!", zh:"我知道貓在哪裡了！", chunks:[{w:"(yo)",role:"s"},{w:"¡Ya lo sé",role:"v"},{w:"dónde está",role:"c"},{w:"el gato!",role:"s"}]}
     ]
   },
   {
-    ammo_id:"e2_08", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
-    core_ammo:"El señor Dinosaurio no está en la cama de Tito.", core_zh:"恐龍先生不在迪多的床上。",
+    ammo_id:"e2_08", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    core_ammo:"El señor Esqueleto no está en la cama de Tito.", core_zh:"骷髏先生不在迪多的床上。",
     be_verb_type:"estar", be_verb_note:"Estar 表示位置：no está en = 不在（estar 管位置）",
     pattern:"[名詞] no está en [地點].", pattern_zh:"___ 不在 ___。",
     pattern_note:"口訣：SER = 本質身分；ESTAR = 位置狀態", slots:["名詞","地點"],
-    fire_peppa:{es:"El señor Dinosaurio no está en la cama de Tito.", zh:"恐龍先生不在迪多的床上。", ts:null,
-      chunks:[{w:"El señor Dinosaurio",role:"s"},{w:"no está",role:"v",note:"estar ➔ está（「他/她」）+ no ➔ 意思：不在（口訣：SER=本質，ESTAR=位置）"},{w:"en la cama de Tito.",role:"o"}]},
+    fire_peppa:{es:"El señor Esqueleto no está en la cama de Tito.", zh:"骷髏先生不在迪多的床上。", ts:null,
+      chunks:[{w:"El señor Esqueleto",role:"s"},{w:"no está",role:"v",note:"estar ➔ está（「他/她」）+ no ➔ 意思：不在（口訣：SER=本質，ESTAR=位置）"},{w:"en la cama de Tito.",role:"o"}]},
     fire_daily:[
       {es:"El gato no está en la cocina.", zh:"貓不在廚房。", chunks:[{w:"El gato",role:"s"},{w:"no está",role:"v"},{w:"en la cocina.",role:"o"}]},
       {es:"Mis llaves no están en la mesa.", zh:"我的鑰匙不在桌上。", chunks:[{w:"Mis llaves",role:"s"},{w:"no están",role:"v"},{w:"en la mesa.",role:"o"}]}
     ]
   },
   {
-    ammo_id:"e2_09", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
+    ammo_id:"e2_09", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Nita y papá Pig están jugando a las damas.", core_zh:"妮妲和貓爸爸正在下西洋棋。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando = 正在做，正在做某事",
     pattern:"[人] están jugando a [遊戲].", pattern_zh:"___ 正在玩 ___。",
@@ -251,7 +251,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_10", ep:"E2 · El Señor Dinosaurio Se Ha Perdido",
+    ammo_id:"e2_10", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"¡Ya lo sé, habéis estado saltando en los charcos de barro!", core_zh:"我知道了，你們一直在泥巴坑裡跳！",
     be_verb_type:"estar", be_verb_note:"habéis estado + -ando = 一直做到現在，一直在做某事",
     pattern:"Habéis estado [動詞-ndo] en [地點].", pattern_zh:"你們一直在 ___ ___。",
@@ -583,12 +583,12 @@ const AMMO_DATA = [
   },
   {
     ammo_id:"e5_05", ep:"E5 · Cuidando a Mimi",
-    core_ammo:"Tito le enseña su dinosaurio a Mimi.", core_zh:"迪多給咪咪看他的恐龍。",
+    core_ammo:"Tito le enseña su esqueleto a Mimi.", core_zh:"迪多給咪咪看他的骷髏。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] le enseña [受詞] a [受詞].", pattern_zh:"___ 給 ___ 看 ___。",
     pattern_note:"enseñar = 展示/給看，le = 間接受詞代詞（給她/他）", slots:["人","受詞","受詞"],
-    fire_peppa:{es:"Tito le enseña su dinosaurio a Mimi.", zh:"迪多給咪咪看他的恐龍。", ts:null,
-      chunks:[{w:"Tito",role:"s"},{w:"le enseña",role:"v",note:"enseñar ➔ enseña（「他」）+ le = 間接受詞代詞 ➔ 意思：給她看（enseñar a = 展示給某人）"},{w:"su dinosaurio a Mimi.",role:"o"}]},
+    fire_peppa:{es:"Tito le enseña su esqueleto a Mimi.", zh:"迪多給咪咪看他的骷髏。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"le enseña",role:"v",note:"enseñar ➔ enseña（「他」）+ le = 間接受詞代詞 ➔ 意思：給她看（enseñar a = 展示給某人）"},{w:"su esqueleto a Mimi.",role:"o"}]},
     fire_daily:[
       {es:"Le enseño mi foto a mamá.", zh:"我給媽媽看我的照片。", chunks:[{w:"(yo)",role:"s"},{w:"Le enseño",role:"v"},{w:"mi foto a mamá.",role:"o"}]},
       {es:"Nita le enseña su libro a Tito.", zh:"妮妲給迪多看她的書。", chunks:[{w:"Nita",role:"s"},{w:"le enseña",role:"v"},{w:"su libro a Tito.",role:"o"}]}
@@ -670,7 +670,7 @@ const AMMO_DATA = [
     fire_peppa:{es:"A Nita le encanta el helado de chocolate.", zh:"妮妲超愛巧克力冰淇淋。", ts:null,
       chunks:[{w:"A Nita",role:"s"},{w:"le encanta",role:"v",note:"encantar ➔ encanta（「它」）+ le = 給她 ➔ 意思：她超愛（A + 人 + le encanta = 某人超愛某物，比 gustar 更強烈）"},{w:"el helado de chocolate.",role:"o"}]},
     fire_daily:[
-      {es:"A Tito le encanta el dinosaurio.", zh:"迪多超愛恐龍。", chunks:[{w:"A Tito",role:"s"},{w:"le encanta",role:"v"},{w:"el dinosaurio.",role:"o"}]},
+      {es:"A Tito le encanta el esqueleto.", zh:"迪多超愛骷髏。", chunks:[{w:"A Tito",role:"s"},{w:"le encanta",role:"v"},{w:"el esqueleto.",role:"o"}]},
       {es:"A mí me encanta el helado.", zh:"我超愛冰淇淋。", chunks:[{w:"A mí",role:"s"},{w:"me encanta",role:"v"},{w:"el helado.",role:"o"}]}
     ]
   },

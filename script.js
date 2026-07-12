@@ -1144,9 +1144,9 @@ const EP_COGNATES = [
     {en:'detective',es:'detective',  zh:'偵探'},
     {en:'super',    es:'súper',      zh:'超級'},
   ],
-  // E2 恐龍先生
+  // E2 骷髏先生
   [
-    {en:'dinosaur', es:'dinosaurio', zh:'恐龍'},
+    {en:'skeleton', es:'esqueleto', zh:'骷髏'},
     {en:'favorite', es:'favorito',   zh:'最喜歡的'},
     {en:'detective',es:'detective',  zh:'偵探'},
     {en:'hospital', es:'hospital',   zh:'醫院'},

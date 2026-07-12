@@ -118,19 +118,19 @@ const EPS=[
   }}
 ]},
 
-// ── E2 恐龍先生不見了 ──
-{title:"El Señor Dinosaurio Se Ha Perdido",titleZh:"恐龍先生不見了",dur:195,sentences:[
-  {es:"El juguete favorito de Tito es el señor Dinosaurio.",chunks:[{w:"El juguete favorito de Tito",role:"s"},{w:"es",role:"v"},{w:"el señor Dinosaurio.",role:"o"}],zh:"迪多最喜歡的玩具是恐龍先生。",en:"Tito's favourite toy is Mr Dinosaur.",noteZh:"「favorito」= 最喜歡的，名詞後置形容詞",noteEn:"'favorito' = favourite (comes after the word it describes)",
+// ── E2 骷髏先生不見了 ──
+{title:"El Señor Esqueleto Se Ha Perdido",titleZh:"骷髏先生不見了",dur:195,sentences:[
+  {es:"El juguete favorito de Tito es el señor Esqueleto.",chunks:[{w:"El juguete favorito de Tito",role:"s"},{w:"es",role:"v"},{w:"el señor Esqueleto.",role:"o"}],zh:"迪多最喜歡的玩具是骷髏先生。",en:"Tito's favourite toy is Mr Skeleton.",noteZh:"「favorito」= 最喜歡的，名詞後置形容詞",noteEn:"'favorito' = favourite (comes after the word it describes)",
   expand:{
     note:"de + 人 = …的（所有格）；換主人練習",
-    template:[{t:"El juguete favorito de"},{g:"name"},{t:"es el señor Dinosaurio."}],
+    template:[{t:"El juguete favorito de"},{g:"name"},{t:"es el señor Esqueleto."}],
     groups:[{label:"誰的",key:"name",options:[
       {es:"Tito",zh:"迪多"},
       {es:"Nita",zh:"妮妲"},
       {es:"Vera Oveja",zh:"薇拉羊"},
     ]}]
   }},
-  {es:"Cuando Tito se va a la cama el señor Dinosaurio se acurruca a su lado.",chunks:[{w:"Cuando",role:"c"},{w:"Tito",role:"s"},{w:"se va",role:"v"},{w:"a la cama",role:"o"},{w:"el señor Dinosaurio",role:"s"},{w:"se acurruca",role:"v"},{w:"a su lado.",role:"o"}],zh:"當迪多上床睡覺時，恐龍先生就蜷縮在他身旁。",en:"When Tito goes to bed, Mr Dinosaur cuddles up beside him.",noteZh:"「se va a la cama」= 上床睡覺；「a su lado」= 在他旁邊",noteEn:"'se va a la cama' = goes to bed; 'a su lado' = beside him",
+  {es:"Cuando Tito se va a la cama el señor Esqueleto se acurruca a su lado.",chunks:[{w:"Cuando",role:"c"},{w:"Tito",role:"s"},{w:"se va",role:"v"},{w:"a la cama",role:"o"},{w:"el señor Esqueleto",role:"s"},{w:"se acurruca",role:"v"},{w:"a su lado.",role:"o"}],zh:"當迪多上床睡覺時，骷髏先生就蜷縮在他身旁。",en:"When Tito goes to bed, Mr Skeleton cuddles up beside him.",noteZh:"「se va a la cama」= 上床睡覺；「a su lado」= 在他旁邊",noteEn:"'se va a la cama' = goes to bed; 'a su lado' = beside him",
   expand:{
     note:"套用 irse a la cama（上床睡覺）這個固定語塊，換主詞就能舉一反三",
     template:[{t:"Cuando"},{g:"person"},{t:"se va a la cama."}],
@@ -143,10 +143,10 @@ const EPS=[
       ]}
     ]
   }},
-  {es:"Tito ha perdido al señor Dinosaurio.",chunks:[{w:"Tito",role:"s"},{w:"ha perdido",role:"v"},{w:"al señor Dinosaurio.",role:"o"}],zh:"迪多把恐龍先生弄丟了。",en:"Tito has lost Mr Dinosaur.",noteZh:"「ha perdido」= 剛剛做完，已經弄丟了",noteEn:"'ha perdido' = just lost it, all done",
+  {es:"Tito ha perdido al señor Esqueleto.",chunks:[{w:"Tito",role:"s"},{w:"ha perdido",role:"v"},{w:"al señor Esqueleto.",role:"o"}],zh:"迪多把骷髏先生弄丟了。",en:"Tito has lost Mr Skeleton.",noteZh:"「ha perdido」= 剛剛做完，已經弄丟了",noteEn:"'ha perdido' = just lost it, all done",
   expand:{
     note:"ha perdido = 弄丟了，換主詞練習",
-    template:[{g:"name"},{t:"ha perdido al señor Dinosaurio."}],
+    template:[{g:"name"},{t:"ha perdido al señor Esqueleto."}],
     groups:[{label:"誰",key:"name",options:[
       {es:"Tito",zh:"迪多"},
       {es:"Nita",zh:"妮妲"},
@@ -173,33 +173,33 @@ const EPS=[
       {es:"tesoros.",zh:"寶藏"},
     ]}]
   }},
-  {es:"Tito siempre se trae al señor Dinosaurio a la bañera.",chunks:[{w:"Tito",role:"s"},{w:"siempre se trae",role:"v"},{w:"al señor Dinosaurio a la bañera.",role:"o"}],zh:"迪多總是帶著恐龍先生去洗澡。",en:"Tito always brings Mr Dinosaur to the bath.",noteZh:"「siempre」= 總是，頻率副詞放在動詞前",noteEn:"'siempre' = always (frequency adverb, placed before verb)",
+  {es:"Tito siempre se trae al señor Esqueleto a la bañera.",chunks:[{w:"Tito",role:"s"},{w:"siempre se trae",role:"v"},{w:"al señor Esqueleto a la bañera.",role:"o"}],zh:"迪多總是帶著骷髏先生去洗澡。",en:"Tito always brings Mr Skeleton to the bath.",noteZh:"「siempre」= 總是，頻率副詞放在動詞前",noteEn:"'siempre' = always (frequency adverb, placed before verb)",
   expand:{
     note:"se trae + 東西 = 隨身帶著；換掉帶去的東西練習",
     template:[{t:"Tito siempre se trae"},{g:"thing"},{t:"a la bañera."}],
     groups:[
       {label:"帶什麼",key:"thing",options:[
-        {es:"al señor Dinosaurio",zh:"恐龍先生"},
+        {es:"al señor Esqueleto",zh:"骷髏先生"},
         {es:"a su pelota",zh:"他的球"},
         {es:"a su osito",zh:"他的小熊"},
         {es:"a su libro favorito",zh:"他最喜歡的書"},
       ]}
     ]
   }},
-  {es:"¡Ya lo sé dónde está el señor Dinosaurio!",chunks:[{w:"¡Ya lo sé",role:"v"},{w:"dónde",role:"c"},{w:"está",role:"v"},{w:"el señor Dinosaurio!",role:"s"}],zh:"我知道恐龍先生在哪裡了！",en:"I know where Mr Dinosaur is!",noteZh:"「Ya lo sé」= 我知道了，ya 表示已然發生",noteEn:"'Ya lo sé' = I already know! 'ya' indicates something just realized",
+  {es:"¡Ya lo sé dónde está el señor Esqueleto!",chunks:[{w:"¡Ya lo sé",role:"v"},{w:"dónde",role:"c"},{w:"está",role:"v"},{w:"el señor Esqueleto!",role:"s"}],zh:"我知道骷髏先生在哪裡了！",en:"I know where Mr Skeleton is!",noteZh:"「Ya lo sé」= 我知道了，ya 表示已然發生",noteEn:"'Ya lo sé' = I already know! 'ya' indicates something just realized",
   expand:{
     note:"¡Ya lo sé dónde está ___! = 我知道…在哪！換要找的東西",
     template:[{t:"¡Ya lo sé dónde está"},{g:"thing"}],
     groups:[{label:"什麼東西",key:"thing",options:[
-      {es:"el señor Dinosaurio!",zh:"恐龍先生"},
+      {es:"el señor Esqueleto!",zh:"骷髏先生"},
       {es:"su pelota!",zh:"他的球"},
       {es:"su osito!",zh:"他的小熊"},
     ]}]
   }},
-  {es:"El señor Dinosaurio no está en la cama de Tito.",chunks:[{w:"El señor Dinosaurio",role:"s"},{w:"no está",role:"v"},{w:"en la cama de Tito.",role:"o"}],zh:"恐龍先生不在迪多的床上。",en:"Mr Dinosaur is not in Tito's bed.",noteZh:"「no está」= 不在（用 estar 表示位置）",noteEn:"'no está' = is not there (uses 'estar' for location)",
+  {es:"El señor Esqueleto no está en la cama de Tito.",chunks:[{w:"El señor Esqueleto",role:"s"},{w:"no está",role:"v"},{w:"en la cama de Tito.",role:"o"}],zh:"骷髏先生不在迪多的床上。",en:"Mr Skeleton is not in Tito's bed.",noteZh:"「no está」= 不在（用 estar 表示位置）",noteEn:"'no está' = is not there (uses 'estar' for location)",
   expand:{
     note:"en la cama de + 人 = 在…的床上",
-    template:[{t:"El señor Dinosaurio no está en la cama de"},{g:"name"}],
+    template:[{t:"El señor Esqueleto no está en la cama de"},{g:"name"}],
     groups:[{label:"誰的床",key:"name",options:[
       {es:"Tito",zh:"迪多"},
       {es:"Nita",zh:"妮妲"},
@@ -541,12 +541,12 @@ const EPS=[
       ]}
     ]
   }},
-  {es:"Tito le enseña su dinosaurio a Mimi.",chunks:[{w:"Tito",role:"s"},{w:"le enseña",role:"v"},{w:"su dinosaurio a Mimi.",role:"o"}],zh:"迪多給咪咪看他的恐龍。",en:"Tito shows Mimi his dinosaur.",noteZh:"「le enseña」= 給她看，enseñar 動詞「他」",noteEn:"'le enseña' = shows her, the 'he' form of enseñar",
+  {es:"Tito le enseña su esqueleto a Mimi.",chunks:[{w:"Tito",role:"s"},{w:"le enseña",role:"v"},{w:"su esqueleto a Mimi.",role:"o"}],zh:"迪多給咪咪看他的骷髏。",en:"Tito shows Mimi his skeleton.",noteZh:"「le enseña」= 給她看，enseñar 動詞「他」",noteEn:"'le enseña' = shows her, the 'he' form of enseñar",
   expand:{
     note:"le enseña su ___ a Mimi = 給她展示自己的東西",
     template:[{t:"Tito le enseña su"},{g:"thing"},{t:"a Mimi."}],
     groups:[{label:"展示什麼",key:"thing",options:[
-      {es:"dinosaurio",zh:"恐龍"},
+      {es:"esqueleto",zh:"骷髏"},
       {es:"pelota",zh:"球"},
       {es:"libro favorito",zh:"最喜歡的書"},
     ]}]

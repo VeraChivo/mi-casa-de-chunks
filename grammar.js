@@ -144,7 +144,7 @@ const GRAMMAR_DATA = [
     title:"ESTAR：位置與狀態",
     rule:"ESTAR 描述暫時性的狀態、位置，或正在進行的動作。",
     examples:[
-      {es:"El señor Dinosaurio no está en la cama de Tito.", zh:"恐龍先生不在迪多的床上。（位置）"},
+      {es:"El señor Esqueleto no está en la cama de Tito.", zh:"骷髏先生不在迪多的床上。（位置）"},
       {es:"Nita está esperando a Vera Oveja.", zh:"妮妲正在等薇拉羊。（進行中）"},
       {es:"Estoy cansada.", zh:"我現在很累。（暫時狀態）"}
     ],
@@ -209,7 +209,7 @@ const GRAMMAR_DATA = [
     rule:"haber（幫忙的動詞）+ 動詞-ado/-ido形 = 「已經做了某事」，結果跟現在有關。",
     examples:[
       {es:"Nita ha encontrado un charco pequeño.", zh:"妮妲找到了一個小水坑。（ha + encontrado）"},
-      {es:"Tito ha perdido al señor Dinosaurio.", zh:"迪多把恐龍先生弄丟了。（ha + perdido）"},
+      {es:"Tito ha perdido al señor Esqueleto.", zh:"迪多把骷髏先生弄丟了。（ha + perdido）"},
       {es:"He perdido mi mochila.", zh:"我把我的書包弄丟了。（「我」用 he）"}
     ],
     trap:"字尾規則：-ar → -ado（encontrar→encontrado）；-er/-ir → -ido（perder→perdido）",
@@ -475,7 +475,7 @@ const SENTENCE_GRAMMAR_MAP = {
    7:'g01',  // sí que es grande → SER 本質
    8:'g14',  // No pasa nada → 固定用語
    9:'g09',  // A todos les encanta → A+人+le
-  // E2 恐龍先生不見了
+  // E2 骷髏先生不見了
   10:'g01',  // juguete favorito de Tito es → SER
   11: null,  // se va a la cama（無對應文法點）
   12:'g05',  // ha perdido → 已經做了
