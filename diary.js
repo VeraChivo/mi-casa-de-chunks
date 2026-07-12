@@ -433,17 +433,20 @@ function _talkRenderPicker(){
     el.innerHTML = `<div class="diary-empty-msg">找不到可挑選的片語</div>`;
     return;
   }
-  el.innerHTML = groups.map(g => `
-    <div class="diary-mood-cat">${g.label}</div>
-    <div class="diary-mood-row">
-      ${g.items.map(it => {
-        const idx = _talkSelectedIds.indexOf(it.id);
-        const sel = idx !== -1;
-        const badge = sel ? `<span class="diary-mood-order">${idx+1}</span>` : '';
-        return `<button class="diary-chip diary-mood-chip${sel?' is-selected':''}" onclick="talkSelectPhrase('${it.id}')">${badge}${_diaryEsc(it.es)}</button>`;
-      }).join('')}
-    </div>
-  `).join('');
+  el.innerHTML = `<div class="diary-tag-row">` + groups.map(g => {
+    const hasSel = g.items.some(it => _talkSelectedIds.includes(it.id));
+    return `<details class="diary-tag-group"${hasSel ? ' open' : ''}>
+      <summary class="diary-tag-label">${g.label}</summary>
+      <div class="diary-mood-row">
+        ${g.items.map(it => {
+          const idx = _talkSelectedIds.indexOf(it.id);
+          const sel = idx !== -1;
+          const badge = sel ? `<span class="diary-mood-order">${idx+1}</span>` : '';
+          return `<button class="diary-chip diary-mood-chip${sel?' is-selected':''}" onclick="talkSelectPhrase('${it.id}')">${badge}${_diaryEsc(it.es)}</button>`;
+        }).join('')}
+      </div>
+    </details>`;
+  }).join('') + `</div>`;
 }
 
 function talkSelectPhrase(id){
@@ -563,7 +566,7 @@ function renderTalkSectionHtml(){
     <div class="diary-paper-title">💬 聊療吾心語</div>
     <div class="diary-card-sub">① 挑片語（可複選、依序接續）→ ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
 
-    <div class="diary-chip-row" id="talkPickerPool"></div>
+    <div id="talkPickerPool"></div>
 
     <textarea id="talkDraftNote" class="diary-draft-textarea" rows="4" placeholder="選好的片語會同步跟到這裡，自己調整、插入想法…" oninput="talkOnNoteInput()"></textarea>
     <div class="diary-draft-actions">
