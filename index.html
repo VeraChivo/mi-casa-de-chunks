@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>語塊學西語 · Mi Pequeña Casa</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vera-oveja.github.io/mi-casa-de-chunks/">
+<meta property="og:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
+<meta property="og:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
+<meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
+<link rel="stylesheet" href="style.css?v=20260705s15">
+</head>
+<body>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-title">🏡 Mi Pequeña Casa</div>
+    <div class="header-subtitle">拉美西語小莊園</div>
+  </div>
+  <!-- ── 四 TAB 切換 ── -->
+  <div class="main-tab-bar">
+    <button class="main-tab-btn active" id="tabBtnPlay" onclick="switchMainTab('play')">🌾 田間播語塊</button>
+    <button class="main-tab-btn" id="tabBtnKnow" onclick="switchMainTab('know')">☀️ 日光育苗場</button>
+    <button class="main-tab-btn" id="tabBtnMom" onclick="switchMainTab('mom')">🛌 床邊低語呢</button>
+    <button class="main-tab-btn" id="tabBtnPrivate" onclick="switchMainTab('private')">🗃️ 穀倉大豐收</button>
+  </div>
+
+  <!-- ══════════ TAB A：語塊遊樂場 ══════════ -->
+  <div id="tabPlay" class="main-tab-panel">
+
+  <!-- EPISODE NAV -->
+  <div class="season-nav" id="seasonNav"></div>
+
+  <!-- STAR PROGRESS -->
+  <div class="star-progress">
+    <div class="star-row" id="starRow"></div>
+    <div class="star-label" id="starLabel"></div>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="card-container">
+    <div class="card" id="mainCard">
+      <!-- 語塊區 -->
+      <div class="chunks-area" id="chunksArea"></div>
+
+      <!-- 整句（點擊聽 TTS） -->
+      <div class="full-sent" id="fullSent"></div>
+
+      <!-- 驗證理解欄位（不收合，直接顯示）-->
+      <textarea class="trans-input" id="userInput" rows="3" placeholder="試著說看看你的理解，中英文都可以唷"></textarea>
+
+      <!-- 解鎖遮罩 -->
+      <div class="unlock-zone" id="unlockZone">
+        <button class="mask-toggle-btn" onclick="revealAnswer()">✨ 揭露原釀 · 偷吃步</button>
+      </div>
+
+      <!-- 骨架看完 → 跳語塊彈藥 -->
+      <button class="btn-jump-ammo" id="jumpAmmoBtn" onclick="jumpToAmmo(currentGlobalIdx())">
+        🌾 骨架抓到了 → 入倉語塊模組
+      </button>
+      <button class="btn-jump-ammo" id="jumpStagesBtn" onclick="jumpToStages()">
+        ✨ 邁向精釀下一階 → 試著挑戰看看
+      </button>
+
+      <!-- 英西同源槓桿（逐句） -->
+      <div id="cogBox"></div>
+
+      <!-- 解鎖後展開：中文翻譯 + 說明 -->
+      <div class="answer-box" id="answerBox">
+        <div class="answer-tabs">
+          <button class="a-tab" onclick="switchLang('zh')">中文</button>
+          <button class="a-tab" onclick="switchLang('en')">EN</button>
+        </div>
+        <div class="answer-content">
+          <div class="a-lang" id="aZh">
+            <div class="a-text" id="aTextZh"></div>
+            <div class="a-ep-tag" id="aEpTagZh"></div>
+            <div class="a-note" id="aNoteZh"></div>
+          </div>
+          <div class="a-lang" id="aEn">
+            <div class="a-text" id="aTextEn"></div>
+            <div class="a-ep-tag" id="aEpTagEn"></div>
+            <div class="a-note" id="aNoteEn"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 文法情境提示（解鎖後出現） -->
+      <div id="grammarTip" style="display:none;margin:10px 0 2px"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-next" id="nextBtn" onclick="nextCard()">下一句 →</button>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="nav-btn" id="prevBtn" onclick="prevCard()">‹ 上一句</button>
+      <span class="nav-count" id="navCount">1 / 10</span>
+      <button class="nav-btn" id="nextBtnB" onclick="nextCard()">下一句 ›</button>
+    </div>
+  </div>
+
+  <!-- COMPLETE SCREEN -->
+  <div class="complete-screen" id="completeScreen">
+    <div class="complete-stars" id="completeStars"></div>
+    <div class="complete-title" id="completeTitle"></div>
+    <div class="complete-sub" id="completeSub"></div>
+    <div class="complete-cheer-fixed">
+      <div class="cf-es">¡Qué gran cosecha! 🎉</div>
+      <div class="cf-zh">這一場莊園巡禮圓滿達成，琥珀語塊已順利入倉！</div>
+    </div>
+    <div class="complete-cheer" id="completeCheer"></div>
+
+    <div class="stats">
+      <div class="stat-box"><div class="stat-num" id="finalScore">0</div><div class="stat-lbl">翻譯答對</div></div>
+      <div class="stat-box"><div class="stat-num" id="finalMake">0</div><div class="stat-lbl">造句成功</div></div>
+      <div class="stat-box"><div class="stat-num" id="finalWords">0</div><div class="stat-lbl">語塊收成</div></div>
+    </div>
+
+    <div class="ep-cognate-box">
+      <div class="ec-title">🫐 路邊小野莓，看見就要摘 🌾</div>
+      <div class="ec-sub">零成本的單字，看了就會！</div>
+      <div class="ec-list" id="ecList"></div>
+    </div>
+
+    <button class="btn-restart" onclick="restartEp()">🔁 重來一次</button>
+    <button class="btn-next-ep" id="nextEpBtn" onclick="goNextEp()">下一集 →</button>
+  </div>
+
+  <!-- ── 🧺 語塊採集籃 ── -->
+  <div class="ammo-wrap card-container">
+    <div class="ammo-book-top" onclick="toggleAmmo()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div class="pb-book-title">🧺 語塊採集籃 <span id="ammoCount">0</span> / <span id="ammoTotal">60</span> <span class="pb-title-sep" style="margin:0 0 0 2px">粒 · granos</span></div>
+        <div class="pb-book-sub">完成句子自動解鎖，點擊展開複習</div>
+      </div>
+      <span id="ammoToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+    </div>
+    <div id="ammoBody" class="ammo-body">
+      <div id="ammoEntries"></div>
+      <!-- 造句挑戰：固定在彈藥庫最底 -->
+      <div class="ammo-make-entry">
+        <div class="ammo-make-header" onclick="toggleMake()">
+          <span class="make-icon" id="makeIcon">▶</span>
+          <span class="make-title">造個句試看看吧🎊</span>
+        </div>
+        <div class="make-body" id="makeBody">
+          <div class="make-hint-text">參考句型，換掉名字或主詞，打出屬於你的句子：</div>
+          <div class="make-pattern-box" id="makePatternBox"></div>
+          <div class="expand-map" id="expandMap" style="display:none"></div>
+          <textarea class="make-free-input" id="makeFreeInput" placeholder="打打看…"></textarea>
+          <div class="make-result" id="makeResult" style="display:none"></div>
+          <button class="btn-check-make" onclick="checkMakeFree()">核對句型</button>
+          <button class="btn-reset-make" onclick="resetMakeFree()">清空重打</button>
+          <div class="make-nav-row">
+            <button class="make-nav-btn" onclick="makeNavPrev()">‹ 上一句</button>
+            <span class="make-nav-count" id="makeNavCount">1 / 10</span>
+            <button class="make-nav-btn" onclick="makeNavNext()">下一句 ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 🌾 三階段修煉關卡 ── -->
+  <div class="stages-wrap card-container">
+    <div class="stages-top" onclick="toggleStages()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div class="pb-book-title">🌾 莊園巡禮精釀程序 · Por aquí</div>
+        <div class="pb-book-sub">跟著小旗子走一圈：巡田拾語 → 入桶陳韻 → 琥珀成型</div>
+      </div>
+      <span id="stagesToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+    </div>
+    <div id="stagesBody" class="ammo-body">
+      <!-- Stage 1 -->
+      <div class="stage-section">
+        <div class="stage-header">🍃 提放醒聆</div>
+        <div class="stage-sub">🌱 巡田拾語（拼湊散落的語塊，將風味重新展現；順便 🐛 抓蟲，揪出記錯的語塊）</div>
+        <div class="stage-controls">
+          <button class="stage-btn" onclick="startStage1()">開始 / 換一句</button>
+        </div>
+        <div id="stage1Target" class="stage-target"></div>
+        <div id="stage1Chunks" class="stage-chunks"></div>
+        <div id="stage1Result" class="stage-result" style="display:none"></div>
+      </div>
+      <!-- Stage 2 -->
+      <div class="stage-section">
+        <div class="stage-header">🏺 封存醞釀</div>
+        <div class="stage-sub">🛢️ 入桶陳韻（調轉彼此視角，讓語塊帶上多重風味外衣到橡木桶內沉浸陳釀）</div>
+        <div id="stage2Cards" class="stage2-cards"></div>
+      </div>
+      <!-- Stage 3 -->
+      <div class="stage-section">
+        <div class="stage-header">🥃 琥珀熟成</div>
+        <div class="stage-sub">🥃 琥珀成型（揀選核心與補語，勾兌凝聚成完美作品<br>並開桶引流，再到留心花園瓶裝典藏）</div>
+        <div id="stage3Area" class="stage3-area"></div>
+      </div>
+    </div>
+  </div>
+
+  </div> <!-- ══════════ / TAB A：語塊遊樂場 結束 ══════════ -->
+
+  <!-- ══════════ TAB B：知識儲藏室 ══════════ -->
+  <div id="tabKnow" class="main-tab-panel" style="display:none">
+
+  <!-- ── 英西同源詞庫總覽 ── -->
+  <div class="cognate-section card-container">
+    <div class="cog-header" onclick="toggleCogLibrary()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+      <span>🫐 遍地捻野莓</span>
+      <span id="cogLibToggle" style="font-size:11px;font-weight:700">▼ 展開</span>
+    </div>
+    <div class="cog-sub">零學習成本！看英文秒猜西語意思</div>
+    <div id="cogLibraryBody" class="cog-library-body"></div>
+  </div>
+
+  <!-- ── ☯️ 太極變身鏡（上層：太極定裝鏡／下層：超級變變變） ── -->
+  <div class="taichi-outer card-container">
+    <div class="taichi-outer-header">☯️ 太極變身鏡</div>
+    <div class="taichi-outer-sub">陰陽字尾規律 ＋ 動詞變位查詢，人稱變化一次搞定</div>
+
+    <div class="taichi-outer-body">
+      <div class="gp-wrap">
+        <div class="ammo-book-top" onclick="toggleGenderPairs()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C9BD2)">
+          <div>
+            <div class="pb-book-title">⚧ 太極定裝鏡</div>
+            <div class="pb-book-sub">點字尾切換 o/a，聽真實例句</div>
+            <div class="pb-book-preview" id="genderPairsPreview"></div>
+          </div>
+          <span id="genderPairsToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+        </div>
+        <div id="genderPairsBody" class="ammo-body"></div>
+      </div>
+
+      <div class="conj-lib-wrap">
+        <div class="ammo-book-top" onclick="toggleConjLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+          <div>
+            <div class="pb-book-title">🌀 超級變變變</div>
+            <div class="pb-book-sub">ser／estar／poder／deber…完整六人稱一次查</div>
+            <div class="pb-book-preview" id="conjLibPreview"></div>
+          </div>
+          <span id="conjLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+        </div>
+        <div class="conj-lib-search-row">
+          <input type="text" id="conjLibSearch" class="conj-lib-search-input" placeholder="🔍 搜尋動詞、例句、中文…" oninput="filterConjLibrary(this.value)">
+        </div>
+        <div id="conjLibBody" class="ammo-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 🏰 莊園人物冊（原人稱代名詞查詢庫） ── -->
+  <div class="pron-lib-wrap card-container">
+    <div class="ammo-book-top" onclick="togglePronounLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+      <div>
+        <div class="pb-book-title">🏰 莊園人物冊</div>
+        <div class="pb-book-sub">主詞／直接受詞／間接受詞／反身，一次對照</div>
+        <div class="pb-book-preview">yo・tú・él/ella・nosotros…</div>
+      </div>
+      <span id="pronounLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+    </div>
+    <div id="pronounLibBody" class="ammo-body"></div>
+  </div>
+
+  <!-- ── 💬 心田深耕 · Hablar de corazón（五大人生主題真心話句庫） ── -->
+  <div class="corazon-wrap card-container">
+    <div class="ammo-book-top" onclick="toggleCorazon()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#B08BBB,#8491C3)">
+      <div>
+        <div class="pb-book-title">💬 心田深耕 · Hablar de corazón</div>
+        <div class="pb-book-sub">表達感受・關係界線・育兒・照顧者心語・自我成長，用西語說真心話</div>
+      </div>
+      <span id="corazonToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+    </div>
+    <div id="corazonBody" class="ammo-body">
+      <div id="corazonEntries"></div>
+    </div>
+  </div>
+
+  </div> <!-- ══════════ / TAB B：知識燃料站 結束 ══════════ -->
+
+  <!-- ══════════ TAB C：媽媽語塊 ATM ══════════ -->
+  <div id="tabMom" class="main-tab-panel" style="display:none">
+    <div id="mom-atm-container"></div>
+  </div>
+  <!-- ══════════ / TAB C 結束 ══════════ -->
+
+  <!-- ══════════ TAB D：私語窖 ══════════ -->
+  <div id="tabPrivate" class="main-tab-panel" style="display:none">
+
+  <!-- ── 💎 醞釀私語窖 ── -->
+  <div class="vocab-wrap card-container">
+    <div class="ammo-book-top" onclick="toggleVocabBox()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#5A6BA8)">
+      <div>
+        <div class="pb-book-title">💎 醞釀私語窖<span class="pb-title-sep">｜</span>語塊 <span id="vocabCount" class="pb-count-num">0</span> quilates</div>
+        <div class="pb-book-sub">長按語塊複製，點 ＋ 收藏，點單字聽發音</div>
+      </div>
+      <span id="vocabToggle" style="color:white;font-size:12px;font-weight:800">▲ 收起</span>
+    </div>
+    <div id="vocabBody" class="ammo-body open">
+      <div id="vocabEntries"></div>
+    </div>
+  </div>
+
+  <!-- ── 🌻 語塊花園 ── -->
+  <div class="garden-wrap card-container">
+    <div class="ammo-book-top garden-header" onclick="toggleGardenView()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#7B9E87,#4A7C5F)">
+      <div>
+        <div class="pb-book-title">🌻 語塊花園 🐝 <span id="gardenTotalCount" class="pb-count-num">0</span></div>
+        <div class="pb-book-sub">🌱 初萌芽 → 🍃 猛漲期 → 🍀 幸運草 → 🌻 日頭花開</div>
+      </div>
+      <span id="gardenViewToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+    </div>
+    <div id="gardenStatsRow" class="garden-stats-row"></div>
+    <div id="gardenQuizArea" class="garden-quiz-area" style="display:none"></div>
+    <div id="gardenViewBody" class="ammo-body">
+      <div id="gardenStages"></div>
+    </div>
+  </div>
+
+  <!-- ── 🧳 資料保險箱：備份 / 還原 ── -->
+  <div style="text-align:center;margin:24px 0 0;display:flex;gap:10px;justify-content:center">
+    <button class="nav-btn" onclick="exportBackup()">📤 打包行囊（匯出備份）</button>
+    <button class="nav-btn" onclick="document.getElementById('backupFileInput').click()">📥 行囊歸位（匯入還原）</button>
+    <input type="file" id="backupFileInput" accept=".json,application/json" style="display:none" onchange="importBackupFile(this)">
+  </div>
+  <div style="text-align:center;margin:6px 0 0;font-size:10px;color:var(--tlight)">日記與學習紀錄只存在這支手機——記得偶爾打包一份收好</div>
+
+  <div style="text-align:center;margin:20px 0 24px;">
+    <button class="nav-btn" onclick="clearLS()" style="font-size:10px;padding:4px 10px;color:var(--tlight);border-color:var(--usumizu);background:transparent;font-weight:400">🌾 重新開墾 · Empezar de nuevo（清除所有紀錄）</button>
+  </div>
+
+  </div> <!-- ══════════ / TAB D：穀倉豐收 結束 ══════════ -->
+
+  <!-- 頁尾工具列：YT頻道 + 查詢工具，同一排常駐 -->
+  <div class="query-links-row">
+    <span class="query-link" id="epBadge" onclick="toggleYgMiniRow()">▶️ YT頻道</span>
+    <a href="https://forvo.com" target="_blank" rel="noopener" class="query-link">🔊 Forvo</a>
+    <a href="https://youglish.com" target="_blank" rel="noopener" class="query-link">🎙️ YouGlish</a>
+    <a href="https://www.wordreference.com" target="_blank" rel="noopener" class="query-link">📖 WordRef</a>
+  </div>
+  <div class="yg-mini-row" id="yg-mini-row" style="display:none">
+    <span class="yg-mini-text" id="yg-mini-text"></span>
+    <span class="yg-mini-copy" onclick="copyYGUrl()">複製</span>
+  </div>
+
+  <!-- ── 文法酷庫 Modal ── -->
+  <div id="grammarModal">
+    <div class="grammar-modal-box" onclick="event.stopPropagation()">
+      <button class="grammar-modal-close" onclick="closeGrammarModal()">✕</button>
+      <div id="grammarModalContent"></div>
+    </div>
+  </div>
+
+  <!-- ── 文法/語塊說明 Bottom Sheet ── -->
+  <div id="grammarSheet">
+    <div class="grammar-sheet-box" onclick="event.stopPropagation()">
+      <button class="grammar-modal-close" onclick="closeGrammarSheet()">✕</button>
+      <div id="grammarSheetContent"></div>
+    </div>
+  </div>
+
+  <script src="episodes.js?v=20260706r1"></script>
+  <script src="ammo.js?v=20260706r1"></script>
+  <script src="cognates.js?v=20260706r1"></script>
+  <script src="grammar.js?v=20260706r1"></script>
+  <script src="stages.js?v=20260706r1"></script>
+  <script src="mom.js?v=20260706r1"></script>
+  <script src="diary.js?v=20260706a1"></script>
+  <script src="corazon.js?v=20260706a1"></script>
+  <script src="script.js?v=20260706r1"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yigú的構音練習</title>
+<link rel="stylesheet" href="style.css?v=1">
+<style>
+  body{padding:24px 16px 60px}
+  .yigu-header{width:100%;max-width:480px;text-align:center;margin-bottom:18px}
+  .yigu-title{font-size:22px;font-weight:900;color:var(--konpeki);font-family:'Kosugi Maru',sans-serif}
+  .yigu-sub{font-size:12px;color:var(--tmid);margin-top:4px}
+  .yigu-note{width:100%;max-width:480px;background:var(--bg2);border:1px dashed var(--nezumi);border-radius:12px;padding:10px 12px;font-size:11px;color:var(--tmid);margin-bottom:16px;line-height:1.6}
+
+  .ex-progress{width:100%;max-width:480px;text-align:center;font-size:12px;color:var(--tlight);font-weight:700;margin-bottom:8px}
+
+  .ex-card{width:100%;max-width:480px;background:var(--card);border-radius:20px;box-shadow:0 2px 0 rgba(159,208,222,.6),0 6px 24px rgba(0,91,152,.07);border:1.5px solid rgba(188,225,223,.7);padding:22px 18px;margin-bottom:14px;text-align:center}
+
+  .ex-word{font-size:34px;font-weight:900;color:var(--tdark);letter-spacing:.04em;margin-bottom:6px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:4px}
+  .ex-blank{display:inline-block;min-width:38px;border-bottom:3px solid var(--sora);color:var(--misora)}
+  .ex-blank.filled{border-bottom-color:var(--ok);color:var(--ok)}
+  .ex-hint{font-size:12px;color:var(--tlight);margin-bottom:16px}
+
+  .ex-speak-btn{border:none;background:var(--misora);color:#fff;font-size:13px;font-weight:800;padding:9px 18px;border-radius:999px;cursor:pointer;margin-bottom:16px;touch-action:manipulation}
+  .ex-speak-btn:active{opacity:.75}
+  .ex-speak-btn.playing{animation:pulse .5s ease infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+  .ex-options{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
+  .ex-opt{padding:10px 16px;border-radius:12px;border:1.5px solid var(--usumizu);background:#fff;font-size:18px;font-weight:800;color:var(--misora);cursor:pointer;transition:all .15s;touch-action:manipulation}
+  .ex-opt:active{transform:scale(.95)}
+  .ex-opt.correct{background:var(--ok);border-color:var(--ok);color:#fff}
+  .ex-opt.wrong{background:var(--err);border-color:var(--err);color:#fff;opacity:.6}
+  .ex-opt[disabled]{pointer-events:none}
+
+  .ex-feedback{font-size:13px;font-weight:700;min-height:20px;margin-bottom:6px}
+  .ex-feedback.ok{color:var(--ok)}
+  .ex-feedback.no{color:var(--err)}
+
+  .ex-nav{display:flex;gap:10px;width:100%;max-width:480px}
+  .ex-nav button{flex:1;padding:12px;border-radius:14px;border:none;font-size:14px;font-weight:800;cursor:pointer;touch-action:manipulation;display:block}
+  .ex-nav .yigu-btn-prev{background:var(--bg2);color:var(--tmid)}
+  .ex-nav .yigu-btn-next{background:var(--misora);color:#fff}
+  .ex-nav button:disabled{opacity:.4;pointer-events:none}
+</style>
+</head>
+<body>
+
+  <div class="yigu-header">
+    <div class="yigu-title">🚗 Yigú的構音練習</div>
+    <div class="yigu-sub">聽發音 → 選出正確的字，填進空格裡</div>
+  </div>
+
+  <div class="yigu-crosslink" style="width:100%;max-width:480px;text-align:center;margin-bottom:14px">
+    <a href="yigu-sentences.html" style="font-size:12px;color:var(--misora);font-weight:700;text-decoration:none;border-bottom:1px dashed var(--misora)">💬 切換到句子練習頁面 →</a>
+  </div>
+
+  <div class="yigu-note">
+    📖 根據<b>舌前音化</b>構音模式設計——Yigú目前是 <b>ㄍㄎ</b> 這兩個音容易被說成 ㄉ、ㄊ，干擾選項刻意放這種常見替代音。等治療師提供正式教材後，直接替換這個檔案最下面 <code>EXERCISES</code> 這份資料即可，頁面架構不用重做。
+  </div>
+
+  <div class="ex-progress" id="exProgress">1 / 1</div>
+
+  <div class="ex-card">
+    <div class="ex-word" id="exWord"></div>
+    <div class="ex-hint" id="exHint"></div>
+    <button class="ex-speak-btn" id="exSpeakBtn" onclick="playCurrent()">🔊 再聽一次</button>
+    <div class="ex-options" id="exOptions"></div>
+    <div class="ex-feedback" id="exFeedback"></div>
+  </div>
+
+  <div class="ex-nav">
+    <button class="yigu-btn-prev" id="btnPrev" onclick="goPrev()">← 上一題</button>
+    <button class="yigu-btn-next" id="btnNext" onclick="goNext()">下一題 →</button>
+  </div>
+
+<script>
+// ── 資料來源：舌前音化構音模式，Yigú目前只有 ㄍㄎ 這兩個音受影響（被說成ㄉㄊ）──
+// 干擾選項刻意放常見的 ㄉㄊ 替代音，練習分辨「正確目標音」跟「他容易講成的音」。
+// 治療師給正式教材後，直接替換這個陣列即可，其他程式碼不用動。
+const EXERCISES = [
+  { before: '', blank: '狗', after: '狗', options: ['狗','豆','貓'], hint: '看到狗狗要說「狗狗」，不是「豆豆」喔（ㄍ音）' },
+  { before: '', blank: '哥', after: '哥', options: ['哥','弟','爸'], hint: '哥哥在哪裡？（ㄍ音）' },
+  { before: '', blank: '高', after: '高', options: ['高','倒','少'], hint: '車車疊高高（ㄍ音）' },
+  { before: '', blank: '哭', after: '哭', options: ['哭','兔','笑'], hint: '不舒服的時候會哭哭（ㄎ音）' },
+  { before: '', blank: '開', after: '開', options: ['開','呆','關'], hint: '車車門打開開（ㄎ音）' },
+  { before: '', blank: '可', after: '可', options: ['可','多','好'], hint: '好棒好可愛（ㄎ音）' }
+];
+
+let idx = 0;
+let answered = false;
+
+function renderExercise(){
+  const ex = EXERCISES[idx];
+  answered = false;
+  document.getElementById('exProgress').textContent = (idx+1) + ' / ' + EXERCISES.length;
+  document.getElementById('exWord').innerHTML =
+    (ex.before || '') +
+    '<span class="ex-blank" id="exBlank">＿</span>' +
+    (ex.after || '');
+  document.getElementById('exHint').textContent = ex.hint || '';
+  document.getElementById('exFeedback').textContent = '';
+  document.getElementById('exFeedback').className = 'ex-feedback';
+
+  const optWrap = document.getElementById('exOptions');
+  optWrap.innerHTML = '';
+  // 打散選項順序，避免正解永遠在同一個位置
+  const shuffled = [...ex.options].sort(() => Math.random() - 0.5);
+  shuffled.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'ex-opt';
+    btn.textContent = opt;
+    btn.onclick = () => pickOption(opt, btn);
+    optWrap.appendChild(btn);
+  });
+
+  document.getElementById('btnPrev').disabled = (idx === 0);
+  document.getElementById('btnNext').disabled = (idx === EXERCISES.length - 1);
+
+  playCurrent();
+}
+
+function pickOption(opt, btn){
+  if(answered) return;
+  const ex = EXERCISES[idx];
+  const correct = (opt === ex.blank);
+  answered = true;
+  document.querySelectorAll('.ex-opt').forEach(b => b.disabled = true);
+  btn.classList.add(correct ? 'correct' : 'wrong');
+
+  const blankEl = document.getElementById('exBlank');
+  const fb = document.getElementById('exFeedback');
+  if(correct){
+    blankEl.textContent = ex.blank;
+    blankEl.classList.add('filled');
+    fb.textContent = '✅ 答對了！';
+    fb.classList.add('ok');
+    speak((ex.before||'') + ex.blank + (ex.after||''));
+  } else {
+    fb.textContent = '再聽一次發音，試試看';
+    fb.classList.add('no');
+    // 標出正解讓他知道答案在哪
+    document.querySelectorAll('.ex-opt').forEach(b => {
+      if(b.textContent === ex.blank) b.classList.add('correct');
+    });
+  }
+}
+
+function playCurrent(){
+  const ex = EXERCISES[idx];
+  speak((ex.before||'') + ex.blank + (ex.after||''));
+}
+
+function goPrev(){ if(idx > 0){ idx--; renderExercise(); } }
+function goNext(){ if(idx < EXERCISES.length - 1){ idx++; renderExercise(); } }
+
+// ── 簡易 TTS（跟主站語音邏輯一致，預設中文；教材若換成西語，把 lang 改成 es-MX 即可）──
+let ttsVoice = null;
+function initTTS(){
+  if(!window.speechSynthesis) return;
+  function pickVoice(){
+    const voices = speechSynthesis.getVoices();
+    ttsVoice = voices.find(v => v.lang === 'zh-TW')
+      || voices.find(v => v.lang.startsWith('zh'))
+      || null;
+  }
+  if(speechSynthesis.getVoices().length > 0) pickVoice();
+  speechSynthesis.addEventListener('voiceschanged', pickVoice);
+}
+function speak(text){
+  if(!window.speechSynthesis || !text) return;
+  try{ speechSynthesis.cancel(); }catch(e){}
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'zh-TW';
+  utt.rate = 0.75;
+  utt.pitch = 1.0;
+  if(ttsVoice) utt.voice = ttsVoice;
+  const btn = document.getElementById('exSpeakBtn');
+  if(btn) btn.classList.add('playing');
+  utt.onend = utt.onerror = () => { if(btn) btn.classList.remove('playing'); };
+  setTimeout(() => { try{ speechSynthesis.speak(utt); }catch(e){} }, 0);
+}
+
+initTTS();
+renderExercise();
+</script>
+</body>
+</html>
