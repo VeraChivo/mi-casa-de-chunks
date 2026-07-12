@@ -597,7 +597,7 @@ function renderNotesList(){
   if(!el) return;
   const db = getNotesDB();
   if(!db.length){
-    el.innerHTML = `<div class="diary-empty-msg">💡 還沒有任何足跡。今天看了一句，是不是又延伸出十個點子了？系統正在後台瘋狂敲碗妳的個人開發小故事！快寫下來，別讓靈感漏酒了</div>`;
+    el.innerHTML = `<div class="diary-empty-msg">💡 還沒有足跡喔。來寫下今天的田園日誌吧📖</div>`;
     return;
   }
   el.innerHTML = db.map(n => {
@@ -620,7 +620,7 @@ function renderNotesCardHtml(){
     <div class="diary-paper-title">🌱 靈感孵化與開發者手札</div>
     <div class="diary-card-sub">看一句想到十句延伸？開發靈感、學習方向，通通歡迎丟在這裡</div>
     <div class="diary-chip-row" id="notesTagPool"></div>
-    <textarea id="notesInput" class="diary-draft-textarea" rows="4" placeholder="想到什麼就寫下來…"></textarea>
+    <textarea id="notesInput" class="diary-draft-textarea" rows="4" placeholder="在風和日麗的這裡，留下你的耕耘點滴、心情小記…"></textarea>
     <div class="diary-draft-actions">
       <button id="btn-save-misc" class="diary-btn-save" onclick="notesSave()">🌾 收進穀倉</button>
     </div>
