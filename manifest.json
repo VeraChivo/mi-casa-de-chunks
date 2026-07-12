@@ -1,0 +1,15 @@
+{
+  "name": "Mi Pequeña Casa · 拉美西語小莊園",
+  "short_name": "Mi Casa",
+  "description": "語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EEF7F9",
+  "theme_color": "#9FD0DE",
+  "lang": "zh-TW",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

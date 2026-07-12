@@ -2311,6 +2311,109 @@ function closeGardenQuiz() {
   renderGardenView();
 }
 
+// ── 🔔 每日提醒通知（純前端，開著分頁/已加到主畫面時大多能準時跳，不保證100%）──
+const REMINDER_LS_KEY = 'peppa_reminder_enabled';
+const REMINDER_STUDY_MSGS = [
+  '太陽升起來了🌅 今天的田要不要巡一下？',
+  '語塊在田裡等你採收🌾',
+  '早安！今天先開墾一句，再去忙別的事'
+];
+const REMINDER_DIARY_MSGS = [
+  '一天要收工了，今天的心情裝瓶了嗎🍾',
+  '深夜的穀倉還亮著燈，要不要進來寫一筆🌙',
+  '睡前留一句給自己，今天過得怎麼樣？'
+];
+let _reminderTimer = null;
+
+function _reminderDateStr(d){ return d.toISOString().slice(0,10); }
+
+function _reminderPickMsg(list, dateStr){
+  const dayNum = Number(dateStr.slice(8,10)) + Number(dateStr.slice(5,7))*31;
+  return list[dayNum % list.length];
+}
+
+function _reminderShow(title, body){
+  if(navigator.serviceWorker && navigator.serviceWorker.ready){
+    navigator.serviceWorker.ready.then(reg => {
+      if(reg && reg.showNotification) reg.showNotification(title, { body, icon:'icon.svg', tag:'peppa-reminder' });
+      else new Notification(title, { body, icon:'icon.svg' });
+    }).catch(()=>{ try{ new Notification(title, { body, icon:'icon.svg' }); }catch(e){} });
+  } else {
+    try{ new Notification(title, { body, icon:'icon.svg' }); }catch(e){}
+  }
+}
+
+function checkReminders(){
+  if(Notification.permission !== 'granted') return;
+  if(localStorage.getItem(REMINDER_LS_KEY) !== '1') return;
+
+  const now = new Date();
+  const hDec = now.getHours() + now.getMinutes()/60;
+  const todayStr = _reminderDateStr(now);
+
+  // ☀️ 學習提醒 08:30–10:00
+  if(hDec >= 8.5 && hDec < 10){
+    const lastStudy = localStorage.getItem('peppa_reminder_last_study');
+    if(lastStudy !== todayStr){
+      _reminderShow('🌾 田間播語塊', _reminderPickMsg(REMINDER_STUDY_MSGS, todayStr));
+      localStorage.setItem('peppa_reminder_last_study', todayStr);
+    }
+  }
+
+  // 🌙 日記提醒 23:00–01:00（跨午夜，00:00-01:00算前一晚的循環）
+  if(hDec >= 23 || hDec < 1){
+    const cycleDate = new Date(now);
+    if(now.getHours() === 0) cycleDate.setDate(cycleDate.getDate()-1);
+    const cycleStr = _reminderDateStr(cycleDate);
+    const lastDiary = localStorage.getItem('peppa_reminder_last_diary');
+    if(lastDiary !== cycleStr){
+      _reminderShow('🛌 床邊低語呢', _reminderPickMsg(REMINDER_DIARY_MSGS, cycleStr));
+      localStorage.setItem('peppa_reminder_last_diary', cycleStr);
+    }
+  }
+}
+
+function updateReminderBtn(){
+  const btn = document.getElementById('reminderToggleBtn');
+  if(!btn) return;
+  const on = Notification && Notification.permission === 'granted' && localStorage.getItem(REMINDER_LS_KEY) === '1';
+  btn.textContent = on ? '🔕 提醒已開啟' : '🔔 開啟每日提醒';
+  btn.classList.toggle('is-on', on);
+}
+
+async function toggleReminders(){
+  if(!('Notification' in window)){
+    toast('此瀏覽器不支援通知功能');
+    return;
+  }
+  const on = Notification.permission === 'granted' && localStorage.getItem(REMINDER_LS_KEY) === '1';
+  if(on){
+    localStorage.setItem(REMINDER_LS_KEY, '0');
+    updateReminderBtn();
+    toast('已關閉每日提醒');
+    return;
+  }
+  const perm = await Notification.requestPermission();
+  if(perm === 'granted'){
+    localStorage.setItem(REMINDER_LS_KEY, '1');
+    updateReminderBtn();
+    toast('🔔 每日提醒已開啟！8:30-10:00 巡田、23:00-01:00 寫日記');
+    checkReminders();
+  } else {
+    toast('沒有通知權限，請到瀏覽器設定手動開啟');
+  }
+}
+
+function initReminders(){
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }
+  updateReminderBtn();
+  if(_reminderTimer) clearInterval(_reminderTimer);
+  _reminderTimer = setInterval(checkReminders, 60000);
+  checkReminders();
+}
+
 (function init(){
   loadFromLS();
   answered=(answeredByEp[ep]||[]).slice();
@@ -2330,4 +2433,5 @@ function closeGardenQuiz() {
   initTTS();
   initGroupButtons();
   restoreActiveTab();
+  initReminders();
 })();

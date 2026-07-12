@@ -36,6 +36,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .header-title{font-size:25px;font-weight:900;color:var(--konpeki);font-family:'Kosugi Maru',sans-serif;letter-spacing:.1em}
 .header-title span{color:var(--misora)}
 .header-subtitle{font-size:13px;font-weight:700;color:var(--tmid);margin-top:2px}
+.reminder-toggle-btn{margin-top:8px;background:white;border:1.5px solid var(--usumizu);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:800;font-family:'Nunito',sans-serif;color:var(--misora);cursor:pointer;transition:all .16s;touch-action:manipulation}
+.reminder-toggle-btn:active{opacity:.65}
+.reminder-toggle-btn.is-on{background:var(--misora);color:white;border-color:var(--misora)}
 
 .season-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;width:100%;max-width:480px;box-sizing:border-box}
 .yg-mini-row{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;padding:8px 10px;background:white;border:1px solid var(--nezumi);border-radius:12px;width:100%;max-width:480px;box-sizing:border-box}
