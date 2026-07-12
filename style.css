@@ -12,7 +12,7 @@ summary { list-style: none; outline: none; }
   --cog-silver:#CCD6F6;
   --bg:#EEF7F9;--bg2:#F5FAFA;--card:#fff;
   --tdark:#1A2E3B;--tmid:#4A6572;--tlight:#8AABB8;
-  --ok:#3DB87A;--err:#E05C5C;
+  --ok:#3DB87A;--err:#E05C5C;--mizu-midori:#6FC2A4;
   --taichi-m:#E1F5FE;--taichi-f:#E0F2F1;
   --conj-ar:rgba(159,208,222,.15);--conj-erir:rgba(132,145,195,.12);
   --mama-bg:#ECEFF1;--mama-deep:#4A148C;
@@ -200,14 +200,14 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .nav-btn:hover{background:rgba(159,208,222,.12);border-color:var(--mizu)}
 .nav-btn:disabled{opacity:.3;cursor:not-allowed}
 .nav-count{font-size:12px;font-weight:700;color:var(--tlight);min-width:46px;text-align:center}
-.farming-backup-zone{display:flex;flex-direction:column;gap:10px;max-width:320px;margin:24px auto 0}
-.farm-btn{background:white;border:1.5px solid var(--usumizu);border-radius:12px;padding:10px 16px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .16s;touch-action:manipulation}
+.farming-backup-zone{display:flex;flex-direction:row;gap:10px;max-width:340px;margin:24px auto 0}
+.farm-btn{flex:1;background:white;border:1.5px dashed var(--usumizu);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .16s;touch-action:manipulation}
 .farm-btn .action-hint{font-size:11px;font-weight:600;opacity:.65}
-.farm-btn.btn-fallow{color:var(--tmid);border-color:var(--nezumi)}
-.farm-btn.btn-fallow:hover{background:rgba(184,200,209,.15)}
+.farm-btn.btn-fallow{color:var(--wood-dark);border-color:var(--wood-brown);background:var(--canvas)}
+.farm-btn.btn-fallow:hover{background:var(--canvas-line)}
 .farm-btn.btn-fallow:active{opacity:.65}
-.farm-btn.btn-cultivate{color:var(--ok);border-color:var(--ok)}
-.farm-btn.btn-cultivate:hover{background:rgba(61,184,122,.1)}
+.farm-btn.btn-cultivate{color:var(--ok);border-color:var(--mizu-midori)}
+.farm-btn.btn-cultivate:hover{background:rgba(111,194,164,.12)}
 .farm-btn.btn-cultivate:active{opacity:.65}
 
 /* COMPLETE SCREEN EXTRAS */
