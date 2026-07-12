@@ -258,6 +258,7 @@ function unlockAmmo(globalIdx){
     if(!ammoUnlocked.includes(id)) ammoUnlocked.push(id);
   });
   renderAmmo();
+  if(typeof checkStorageQuota === 'function') checkStorageQuota();
 }
 
 function cycleAmmoStar(ammoId, gardenKey){ handleGardenProgress(gardenKey, document.querySelector('#ammo-'+ammoId+' .ammo-star')); }
@@ -482,12 +483,6 @@ function seekYT(sec){
   } else {
     toast('請先開啟下方影片播放器');
   }
-}
-
-function copyYGUrl(){
-  const el=document.getElementById('yg-mini-text');
-  if(!el) return;
-  copyTextWithFeedback(el.dataset.url||el.textContent);
 }
 
 function toggleAmmo(){
@@ -980,6 +975,7 @@ function checkMakeFree(){
     res.style.display='block';
     speakFull(val);
     toast('🔊 念你的句子給你聽！');
+    if(typeof checkStorageQuota === 'function') checkStorageQuota();
   } else {
     res.className='make-result err';
     const hint = pat.keyVerbs.length ? `記得用「${pat.keyVerbs.join(' / ')}」這個動詞喔` : '句子太短或結構不太對';
@@ -1014,7 +1010,6 @@ function render(){
     document.getElementById('makeFreeInput').className='make-free-input';
   }
 
-  document.getElementById('epBadge').textContent='▶️ YT頻道';
   document.getElementById('navCount').textContent=`${idx+1} / ${n}`;
 
   const area=document.getElementById('chunksArea');
@@ -1046,12 +1041,6 @@ function render(){
   const fsEl=document.getElementById('fullSent');
   fsEl.textContent=s.es;
   fsEl.onclick=()=>speakFull(s.es);
-
-  // ── YouGlish 語塊按鈕 keyword ──
-  const ygKw = SENTENCE_YG_KW['e'+ep+'_s'+idx] || s.chunks.find(c=>c.role==='v')?.w || s.es.slice(0,15);
-  const ygUrl = 'https://youtube.com/@peppapigespanollatinooficial?feature=shared';
-  const urlEl = document.getElementById('yg-mini-text');
-  if(urlEl){ urlEl.textContent = ygUrl; urlEl.dataset.url = ygUrl; }
 
   // ── 英西同源槓桿 details 注入 ──
   let cogBox = document.getElementById('cogBox');
@@ -1558,6 +1547,34 @@ function importBackupFile(input){
   reader.readAsText(file);
 }
 
+// ── ⚠️ localStorage 空間快滿了要提醒備份（瀏覽器上限通常約 5MB）──
+const STORAGE_WARN_BYTES = 4 * 1024 * 1024; // 抓 5MB 上限的 80% 當警戒線
+const STORAGE_WARN_LS_KEY = 'peppa_storage_warn_last';
+
+function getLocalStorageBytes(){
+  let total = 0;
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const k = localStorage.key(i);
+      const v = localStorage.getItem(k) || '';
+      total += (k.length + v.length) * 2; // UTF-16，粗估位元組數
+    }
+  }catch(e){}
+  return total;
+}
+
+function checkStorageQuota(){
+  try{
+    const bytes = getLocalStorageBytes();
+    if(bytes < STORAGE_WARN_BYTES) return;
+    const lastWarn = Number(localStorage.getItem(STORAGE_WARN_LS_KEY) || 0);
+    if(Date.now() - lastWarn < 24*60*60*1000) return; // 24 小時內只提醒一次
+    localStorage.setItem(STORAGE_WARN_LS_KEY, String(Date.now()));
+    const mb = (bytes/1024/1024).toFixed(1);
+    toast(`⚠️ 儲存空間快滿了（約 ${mb}MB），記得點「📤 季度休耕喘息去」備份一下`);
+  }catch(e){}
+}
+
 function clearLS(){
   if(!confirm('🌱 再來一場大冒險？你確定嗎')) return;
   localStorage.removeItem('peppa_es_v4');
@@ -1855,11 +1872,6 @@ function speakSentence(text){
 
 // ── INIT ──
 // ── 雙 TAB 切換（語塊遊樂場 / 知識儲藏室）──
-function toggleYgMiniRow(){
-  const row = document.getElementById('yg-mini-row');
-  if(row) row.style.display = row.style.display==='none' ? 'flex' : 'none';
-}
-
 function switchMainTab(tab){
   const panels = {
     play:    document.getElementById('tabPlay'),

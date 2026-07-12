@@ -232,6 +232,7 @@ function diarySave(){
 
   diaryResetForm();
   renderDiaryList();
+  if(typeof checkStorageQuota === 'function') checkStorageQuota();
 }
 
 function diaryResetForm(){
@@ -432,6 +433,7 @@ function notesSave(){
   _notesSelTag = null;
   _notesRenderTags();
   renderNotesList();
+  if(typeof checkStorageQuota === 'function') checkStorageQuota();
 }
 
 function notesEditEntry(id){
