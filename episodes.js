@@ -56,7 +56,7 @@ const EPS=[
       {es:"comer algo?",zh:"吃點東西？"},
     ]}]
   }},
-  {es:"Nita, debes ponerte las botas de agua.",chunks:[{w:"Nita,"},{w:"debes ponerte",role:"v"},{w:"las botas de agua.",role:"o"}],zh:"妮妲，你必須穿上雨靴。",en:"Nita, you must put on your wellies.",noteZh:"「debes + 原形動詞」= 你必須做…",noteEn:"'debes + infinitive' = you must do...",
+  {es:"Nita, debes ponerte las botas de agua.",chunks:[{w:"Nita,"},{w:"debes ponerte",role:"v"},{w:"las botas de agua.",role:"o"}],zh:"妮妲，你該穿上雨鞋。",en:"Nita, you must put on your wellies.",noteZh:"「debes + 原形動詞」= 你必須做…",noteEn:"'debes + infinitive' = you must do...",
   expand:{
     note:"debes + 原形動詞 = 你必須…（對某人說的命令句）",
     template:[{g:"name"},{t:"debes ponerte las botas de agua."}],

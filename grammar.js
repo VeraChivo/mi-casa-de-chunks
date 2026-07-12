@@ -325,7 +325,7 @@ const GRAMMAR_DATA = [
     title:"Deber + 動詞：你應該、必須",
     rule:"deber（義務）+ 原型動詞（字典查到的形式）= 應該做、必須做某事。",
     examples:[
-      {es:"Debes ponerte las botas de agua.", zh:"你必須穿上雨靴。"},
+      {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
       {es:"Debes lavarte las manos.", zh:"你必須洗手。"},
       {es:"Debemos respetar las reglas.", zh:"我們應該遵守規則。"}
     ],

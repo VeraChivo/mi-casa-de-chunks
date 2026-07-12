@@ -3,9 +3,9 @@
 // ── Stage 2: tú / yo 人稱互換 ──
 const TU_YO_PAIRS = [
   {yo:"Yo soy Nita.",          tu:"Tú eres Nita.",          zh:"我是妮妲。/你是妮妲。"},
-  {yo:"Yo estoy mojado.",       tu:"Tú estás mojado.",        zh:"我濕了。/你濕了。"},
+  {yo:"Yo estoy mojado.",       tu:"Tú estás mojado.",        zh:"我濕透了。/你濕透了。"},
   {yo:"Yo puedo salir.",        tu:"Tú puedes salir.",        zh:"我可以出去。/你可以出去。"},
-  {yo:"Yo debo ponerme las botas.", tu:"Tú debes ponerte las botas.", zh:"我必須穿雨靴。/你必須穿雨靴。"},
+  {yo:"Yo debo ponerme las botas.", tu:"Tú debes ponerte las botas.", zh:"我該穿上雨鞋。/你該穿上雨鞋。"},
   {yo:"Me encanta saltar.",     tu:"¿Te encanta saltar?",     zh:"我超愛跳。/你超愛跳嗎？"},
   {yo:"He encontrado el charco.", tu:"Has encontrado el charco.", zh:"我找到水坑了。/你找到水坑了。"},
   {yo:"No me preocupo.",       tu:"No te preocupes.",         zh:"我不擔心。/你不要擔心。"}

@@ -55,11 +55,11 @@ const AMMO_DATA = [
   },
   {
     ammo_id:"e1_05", ep:"E1 · Charcos de Barro",
-    core_ammo:"Nita, debes ponerte las botas de agua.", core_zh:"妮妲，你必須穿上雨靴。",
+    core_ammo:"Nita, debes ponerte las botas de agua.", core_zh:"妮妲，你該穿上雨鞋。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Debes [原形動詞] [受詞].", pattern_zh:"你必須 ___ ___。",
     pattern_note:"deber + 原形動詞 = 義務、必須做", slots:["原形動詞","受詞"],
-    fire_peppa:{es:"Nita, debes ponerte las botas de agua.", zh:"妮妲，你必須穿上雨靴。", ts:null,
+    fire_peppa:{es:"Nita, debes ponerte las botas de agua.", zh:"妮妲，你該穿上雨鞋。", ts:null,
       chunks:[{w:"Nita,",hideYg:true},{w:"debes ponerte",role:"v",note:"deber ➔ debes（「你」）+ poner ➔ ponerte ➔ 意思：你必須穿上（deber + 原形 = 義務）"},{w:"las botas de agua.",role:"o"}]},
     fire_daily:[
       {es:"Debes hacer la tarea.", zh:"你必須做功課。", chunks:[{w:"(tú)",role:"s"},{w:"Debes hacer",role:"v"},{w:"la tarea.",role:"o"}]},
