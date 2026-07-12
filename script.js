@@ -336,7 +336,7 @@ function renderAmmo(){
   if(ammoTotalEl) ammoTotalEl.textContent = AMMO_DATA.length;
   const el = document.getElementById('ammoEntries');
   if(!ammoUnlocked.length){
-    el.innerHTML='<div class="passbook-empty">還沒有收成 — 完成句子後自動解鎖！</div>';
+    el.innerHTML='<div class="passbook-empty">採集籃目前空空的 🧺快去巡田拾語，採收語塊吧！</div>';
     return;
   }
   const unlocked = AMMO_DATA.filter(a=>ammoUnlocked.includes(a.ammo_id));
