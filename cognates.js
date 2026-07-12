@@ -375,7 +375,7 @@ const SUFFIX_PATTERNS = [
     words: [
       {en:'patience',    es:'paciencia',    art:'la', zh:'耐心',   ex:{es:'Hay que tener paciencia.',      zh:'要有耐心。', chunks:[{w:"Hay que tener",role:"v"},{w:"paciencia.",role:"o"}]}},
       {en:'experience',  es:'experiencia',  art:'la', zh:'經驗',   ex:{es:'Tiene mucha experiencia.',      zh:'她很有經驗。', chunks:[{w:"Tiene",role:"v"},{w:"mucha experiencia.",role:"o"}]}},
-      {en:'distance',    es:'distancia',    art:'la', zh:'距離',   ex:{es:'¿Cuál es la distancia?',        zh:'距離是多少？', chunks:[{w:"¿Cuál",role:"c"},{w:"es",role:"v"},{w:"la distancia?",role:"s"}]}},
+      {en:'distance',    es:'distancia',    art:'la', zh:'距離',   ex:{es:'¿Cuál es la distancia?',        zh:'距離多遠？', chunks:[{w:"¿Cuál",role:"c"},{w:"es",role:"v"},{w:"la distancia?",role:"s"}]}},
       {en:'importance',  es:'importancia',  art:'la', zh:'重要性', ex:{es:'Tiene mucha importancia.',      zh:'這非常重要。', chunks:[{w:"Tiene",role:"v"},{w:"mucha importancia.",role:"o"}]}},
       {en:'difference',  es:'diferencia',   art:'la', zh:'差異',   ex:{es:'¿Cuál es la diferencia?',      zh:'差異在哪裡？', chunks:[{w:"¿Cuál",role:"c"},{w:"es",role:"v"},{w:"la diferencia?",role:"s"}]}},
     ]
@@ -409,7 +409,7 @@ const SUFFIX_PATTERNS = [
       {en:'doctor',    es:'doctor',    art:'el', zh:'醫生',   gendered:{ms:'doctor',fs:'doctora',mp:'doctores',fp:'doctoras'},   ex:{es:'La doctora es muy buena.',    zh:'這位醫生很厲害。', chunks:[{w:"La doctora",role:"s"},{w:"es",role:"v"},{w:"muy buena.",role:"c"}]}},
       {en:'actor',     es:'actor',     art:'el', zh:'演員',   gendered:{ms:'actor',fs:'actriz',mp:'actores',fp:'actrices'},      ex:{es:'Es un actor famoso.',         zh:'他是知名演員。', chunks:[{w:"Es",role:"v"},{w:"un actor famoso.",role:"c"}]}},
       {en:'professor', es:'profesor',  art:'el', zh:'教授',   gendered:{ms:'profesor',fs:'profesora',mp:'profesores',fp:'profesoras'}, ex:{es:'La profesora explica bien.',zh:'老師解釋得很清楚。', chunks:[{w:"La profesora",role:"s"},{w:"explica",role:"v"},{w:"bien.",role:"c"}]}},
-      {en:'director',  es:'director',  art:'el', zh:'導演',   gendered:{ms:'director',fs:'directora',mp:'directores',fp:'directoras'}, ex:{es:'La directora ganó un premio.',zh:'導演贏得了獎項。', chunks:[{w:"La directora",role:"s"},{w:"ganó",role:"v"},{w:"un premio.",role:"o"}]}},
+      {en:'director',  es:'director',  art:'el', zh:'導演',   gendered:{ms:'director',fs:'directora',mp:'directores',fp:'directoras'}, ex:{es:'La directora ganó un premio.',zh:'導演得獎了。', chunks:[{w:"La directora",role:"s"},{w:"ganó",role:"v"},{w:"un premio.",role:"o"}]}},
       {en:'inspector', es:'inspector', art:'el', zh:'督察',   gendered:{ms:'inspector',fs:'inspectora',mp:'inspectores',fp:'inspectoras'}, ex:{es:'La inspectora revisa todo.',zh:'督察檢查一切。', chunks:[{w:"La inspectora",role:"s"},{w:"revisa",role:"v"},{w:"todo.",role:"o"}]}},
     ]
   },
@@ -432,7 +432,7 @@ const SUFFIX_PATTERNS = [
       {en:'visit',    es:'visitar',    art:'', zh:'拜訪', ex:{es:'Vamos a visitar a la abuela.',    zh:'我們去探望奶奶。', chunks:[{w:"Vamos a visitar",role:"v"},{w:"a la abuela.",role:"o"}]}},
       {en:'practice', es:'practicar',  art:'', zh:'練習', ex:{es:'Hay que practicar cada día.',     zh:'每天都要練習。', chunks:[{w:"Hay que practicar",role:"v"},{w:"cada día.",role:"c"}]}},
       {en:'use',      es:'usar',       art:'', zh:'使用', ex:{es:'¿Puedo usar esto?',              zh:'我可以用這個嗎？', chunks:[{w:"¿Puedo usar",role:"v"},{w:"esto?",role:"o"}]}},
-      {en:'depend',   es:'depender',   art:'', zh:'依賴', ex:{es:'Depende de ti.',                 zh:'取決於你。', chunks:[{w:"Depende",role:"v"},{w:"de ti.",role:"o"}]}},
+      {en:'depend',   es:'depender',   art:'', zh:'依賴', ex:{es:'Depende de ti.',                 zh:'看你囉。', chunks:[{w:"Depende",role:"v"},{w:"de ti.",role:"o"}]}},
       {en:'exist',    es:'existir',    art:'', zh:'存在', ex:{es:'El amor existe.',                zh:'愛是存在的。', chunks:[{w:"El amor",role:"s"},{w:"existe.",role:"v"}]}},
       {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'不允許進入。', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
     ]

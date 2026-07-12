@@ -327,7 +327,7 @@ const GRAMMAR_DATA = [
     examples:[
       {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
       {es:"Debes lavarte las manos.", zh:"你該洗手。"},
-      {es:"Debemos respetar las reglas.", zh:"我們應該遵守規則。"}
+      {es:"Debemos respetar las reglas.", zh:"我們該遵守規則。"}
     ],
     trap:"deber 變化：debo / debes / debe / debemos / debéis（拉美常用 deben）/ deben",
     source:"E1·S5",
