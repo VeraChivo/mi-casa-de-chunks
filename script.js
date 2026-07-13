@@ -993,6 +993,7 @@ function resetMakeFree(){
 
 // ── RENDER CARD ──
 function render(){
+  saveToLS(); // 記住目前瀏覽到哪一句，重新整理不要跳回第一集第一句
   const s=cur(),n=total();
   revealed=false;makeOpen=false;builtTokens=[];
   document.getElementById('answerBox').classList.remove('show');
@@ -1384,7 +1385,7 @@ function isVocabWorthy(word){
 // ── SAVE / LOAD (LocalStorage) ──
 function saveToLS(){
   try{
-    const data = { ammoUnlocked, ammoStars, answeredByEp, svoPool };
+    const data = { ammoUnlocked, ammoStars, answeredByEp, svoPool, ep, idx };
     localStorage.setItem('peppa_es_v4', JSON.stringify(data));
   }catch(e){}
 }
@@ -1400,6 +1401,9 @@ function loadFromLS(){
     if(d.ammoStars)    ammoStars    = d.ammoStars;
     if(d.answeredByEp) answeredByEp = d.answeredByEp;
     if(d.svoPool)      svoPool      = d.svoPool;
+    // 重新整理要停在使用者原本瀏覽的那句，不要跳回第一集第一句
+    if(Number.isInteger(d.ep) && EPS[d.ep])                     ep  = d.ep;
+    if(Number.isInteger(d.idx) && d.idx < (EPS[ep]||{}).sentences?.length) idx = d.idx;
   }catch(e){}
 }
 
