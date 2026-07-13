@@ -2270,8 +2270,8 @@ function generateBattleQuestionPool(pageSize = 10) {
   return out;
 }
 
-function openGardenQuiz() {
-  const quizable = generateBattleQuestionPool(10);
+function openGardenQuiz(pageSize) {
+  const quizable = generateBattleQuestionPool(pageSize || 10);
   if (!quizable.length) { toast('還沒有語塊可以出題，先點 ☆ 收集吧！'); return; }
   _quizQueue = quizable;
   _quizIdx = 0;
@@ -2282,6 +2282,12 @@ function openGardenQuiz() {
     renderGardenQuizCard();
     quizArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+}
+
+// 點每日提醒通知直接進來的「今日小份」抓蟲，刻意壓低題數，降低啟動門檻
+function openGardenQuizToday(){
+  toast('🐛 強迫中獎！今天先抓 3 隻蟲');
+  openGardenQuiz(3);
 }
 
 function renderGardenQuizCard() {
@@ -2394,14 +2400,15 @@ function _reminderPickMsg(list, dateStr){
   return list[dayNum % list.length];
 }
 
-function _reminderShow(title, body){
+function _reminderShow(title, body, data){
+  const opts = { body, icon:'icon.svg', tag:'peppa-reminder', data };
   if(navigator.serviceWorker && navigator.serviceWorker.ready){
     navigator.serviceWorker.ready.then(reg => {
-      if(reg && reg.showNotification) reg.showNotification(title, { body, icon:'icon.svg', tag:'peppa-reminder' });
-      else new Notification(title, { body, icon:'icon.svg' });
-    }).catch(()=>{ try{ new Notification(title, { body, icon:'icon.svg' }); }catch(e){} });
+      if(reg && reg.showNotification) reg.showNotification(title, opts);
+      else new Notification(title, opts);
+    }).catch(()=>{ try{ new Notification(title, opts); }catch(e){} });
   } else {
-    try{ new Notification(title, { body, icon:'icon.svg' }); }catch(e){}
+    try{ new Notification(title, opts); }catch(e){}
   }
 }
 
@@ -2417,7 +2424,7 @@ function checkReminders(){
   if(hDec >= 8.5 && hDec < 10){
     const lastStudy = localStorage.getItem('peppa_reminder_last_study');
     if(lastStudy !== todayStr){
-      _reminderShow('🌾 田間播語塊', _reminderPickMsg(REMINDER_STUDY_MSGS, todayStr));
+      _reminderShow('🌾 田間播語塊', _reminderPickMsg(REMINDER_STUDY_MSGS, todayStr), {action:'quiz'});
       localStorage.setItem('peppa_reminder_last_study', todayStr);
     }
   }
@@ -2429,7 +2436,7 @@ function checkReminders(){
     const cycleStr = _reminderDateStr(cycleDate);
     const lastDiary = localStorage.getItem('peppa_reminder_last_diary');
     if(lastDiary !== cycleStr){
-      _reminderShow('🛌 床邊低語呢', _reminderPickMsg(REMINDER_DIARY_MSGS, cycleStr));
+      _reminderShow('🛌 床邊低語呢', _reminderPickMsg(REMINDER_DIARY_MSGS, cycleStr), {action:'diary'});
       localStorage.setItem('peppa_reminder_last_diary', cycleStr);
     }
   }
@@ -2466,6 +2473,30 @@ async function toggleReminders(){
   }
 }
 
+// 點通知深連結：?action=quiz 直接跳穀倉大豐收開抓蟲、?action=diary 跳床邊低語呢
+function handleReminderDeepLink(){
+  const params = new URLSearchParams(location.search);
+  const action = params.get('action');
+  if(!action) return;
+  history.replaceState(null, '', location.pathname);
+  if(action === 'quiz'){
+    switchMainTab('private');
+    const body = document.getElementById('gardenViewBody');
+    const t = document.getElementById('gardenViewToggle');
+    if(body && !body.classList.contains('open')){
+      body.classList.add('open');
+      if(t) t.textContent = '▲ 收起';
+    }
+    setTimeout(openGardenQuizToday, 150);
+  } else if(action === 'diary'){
+    switchMainTab('mom');
+    setTimeout(() => {
+      const el = document.getElementById('mom-atm-container');
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 150);
+  }
+}
+
 function initReminders(){
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -2498,4 +2529,5 @@ function initReminders(){
   initGroupButtons();
   restoreActiveTab();
   initReminders();
+  handleReminderDeepLink();
 })();

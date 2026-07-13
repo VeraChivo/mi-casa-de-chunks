@@ -4,12 +4,17 @@ self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); })
 
 self.addEventListener('notificationclick', (e) => {
   e.notification.close();
+  const action = (e.notification.data && e.notification.data.action) || '';
+  const targetUrl = action ? `./?action=${action}` : './';
   e.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
       for (const client of clientList) {
+        if (action && 'navigate' in client) {
+          return client.navigate(targetUrl).then(c => c.focus()).catch(() => client.focus());
+        }
         if ('focus' in client) return client.focus();
       }
-      if (self.clients.openWindow) return self.clients.openWindow('./');
+      if (self.clients.openWindow) return self.clients.openWindow(targetUrl);
     })
   );
 });
