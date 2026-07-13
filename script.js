@@ -1654,7 +1654,8 @@ function buildConjTable(conj, gId, showLabel){
 }
 
 // ── 👤 人稱代名詞查詢庫 ──
-const PERSON_ICONS = ['🙋','👉','👤','👥','🙌','👨‍👩‍👧‍👦']; // 依序：1單/2單/3單/1複/2複/3複
+const PERSON_ICONS = ['🙋','👉','👤','👥','🙌','👨‍👩‍👧‍👦']; // 依序：1單/2單/3單/1複/2複/3複（6列，主詞類專用，因為拉美 ustedes 是獨立的字）
+const PERSON_ICONS_5 = ['🙋','👉','👤','👥','👨‍👩‍👧‍👦']; // 拉美版5列（受詞/間接受詞/反身代名詞用，ustedes 跟 ellos/ellas 共用同一格）
 function renderPronounLibrary(){
   const el = document.getElementById('pronounLibBody');
   if(!el) return;
@@ -1665,7 +1666,7 @@ function renderPronounLibrary(){
       <div class="pron-rows">
         ${cat.rows.map((r,i)=>`
           <div class="pron-row${r.ex?' has-ex':''}">
-            <span class="pron-icon">${PERSON_ICONS[i]||''}</span>
+            <span class="pron-icon">${(cat.rows.length===5?PERSON_ICONS_5:PERSON_ICONS)[i]||''}</span>
             <span class="pron-es" onclick="speakWord('${escAttr(r.es)}',this)">${r.es}</span>
             <span class="pron-zh">${r.zh}</span>
             <span class="pron-en">${r.en}</span>

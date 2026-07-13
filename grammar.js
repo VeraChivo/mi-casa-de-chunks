@@ -21,8 +21,7 @@ const PRONOUN_LIBRARY = [
       {es:'te',   zh:'你（被...）',  en:'you',  ex:'Te llamo mañana. 我明天打電話給你。'},
       {es:'lo / la', zh:'他/她/它（被...）', en:'him / her / it'},
       {es:'nos',  zh:'我們（被...）', en:'us'},
-      {es:'os',   zh:'你們（被...）', en:'you all'},
-      {es:'los / las', zh:'他們/她們（被...）', en:'them'}
+      {es:'los / las', zh:'他們/她們/你們（被...，拉美 ustedes 共用這個）', en:'them / you all (LatAm)'}
     ],
     example:{es:'Compro el libro. → Lo compro.', zh:'我買這本書。→ 我買它。'}
   },
@@ -34,8 +33,7 @@ const PRONOUN_LIBRARY = [
       {es:'te',   zh:'給你',   en:'to you',  ex:'Te doy un regalo. 我給你一個禮物。'},
       {es:'le',   zh:'給他/她/您', en:'to him / to her'},
       {es:'nos',  zh:'給我們', en:'to us'},
-      {es:'os',   zh:'給你們', en:'to you all'},
-      {es:'les',  zh:'給他們/她們', en:'to them'}
+      {es:'les',  zh:'給他們/她們/你們（拉美 ustedes 共用這個）', en:'to them / to you all (LatAm)'}
     ],
     example:{es:'Doy el libro a María. → Le doy el libro.', zh:'我把書給瑪麗亞。→ 我把書給她。'},
     note:'⚡ 八卦鄰居瑪麗亞大嬸嘴巴很大：收件人是特定名字時，妳不但要在包裹上寫她的名字（a María），還要對著整座莊園大喊一聲「我是給她喔！」（Le）——兩個都要寫，少喊一聲都不行！Le doy el libro a María.'
@@ -48,8 +46,7 @@ const PRONOUN_LIBRARY = [
       {es:'te',   zh:'你自己',  en:'yourself'},
       {es:'se',   zh:'他/她自己', en:'himself / herself'},
       {es:'nos',  zh:'我們自己', en:'ourselves'},
-      {es:'os',   zh:'你們自己', en:'yourselves'},
-      {es:'se',   zh:'他們/她們自己', en:'themselves'}
+      {es:'se',   zh:'他們/她們/你們自己（拉美 ustedes 共用這個）', en:'themselves / yourselves (LatAm)'}
     ],
     example:{es:'Me lavo las manos.', zh:'我（自己）洗手。'}
   }
