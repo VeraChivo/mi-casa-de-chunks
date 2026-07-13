@@ -108,7 +108,8 @@ const GRAMMAR_CATS = [
   {key:"gustar",       label:"Gustar 句型"},
   {key:"verb-pattern", label:"動詞句型"},
   {key:"phrase",       label:"固定用語"},
-  {key:"word-order",   label:"詞序"}
+  {key:"word-order",   label:"詞序"},
+  {key:"gender",       label:"名詞陰陽性"}
 ];
 
 
@@ -535,6 +536,21 @@ const GRAMMAR_DATA = [
     trap:"少數常見形容詞（bueno好／malo壞／grande大／primero第一／otro其他）常放在名詞前面，且陽性單數名詞前會省略字尾（buen, mal, gran）——先抓住「大部分放後面」這個大原則，例外之後再慢慢熟悉。",
     crossLang:"這個「性別詞放名詞後面」的邏輯，台語（雞母 ke-bó／雞公 ke-kang／狗公 káu-kang）跟客語（雞嫲 gai-mâ／蝦公 ha-gûng）處理動物性別時也完全一樣，跟西語 gato macho／gato hembra 是同一套語序！",
     source:"彈藥庫 e4_03（前兩句）／文法補充（第三句為新編）"
+  },
+
+  {
+    id:"g22", cat:"gender",
+    title:"西語名詞都有陰陽性：連死物都算",
+    rule:"西語每個名詞都分陰陽性（el＝陽性／la＝陰性），連死物也要分，這是跟中英文最不一樣的世界觀之一。有兩層直覺可以幫忙記：①能量感——El 像太陽（發散、直接），La 像月亮（包容、承載）；②形狀感——La 常對應「凹槽／容器／收納空間」的東西，El 常對應「延伸／支撐／工具」的東西。",
+    examples:[
+      {es:"El sol brilla mucho hoy.", zh:"今天太陽很亮。（陽性：太陽，發散的能量）"},
+      {es:"La luna es hermosa.", zh:"月亮很美。（陰性：月亮，包容的能量）"},
+      {es:"La llave está en la mesa.", zh:"鑰匙在桌上。（陰性：llave 鑰匙／mesa 桌子，都是「容器／承載空間」意象）"},
+      {es:"El camino es largo.", zh:"這條路很長。（陽性：camino 路，「延伸／支撐」意象）"}
+    ],
+    trap:"少數名詞會「叛逆」——長得像甜系（-a 結尾，陰性）骨子裡卻是鹽系（陽性）：el mapa（地圖）、el día（天／日子）、el problema（問題，這個字才是跟 el programa／el sistema／el clima／el tema 同一群「源自希臘文的 -ma 陽性字」；día 和 mapa 只是剛好也以 -a 結尾，其實是各自獨立的例外，不是同一條規則，別搞混）。反過來也有長得像鹽系（-o 結尾或子音結尾）骨子裡卻是甜系（陰性）：la mano（手，少數以 -o 結尾卻陰性的常用字）、la flor（花，子音結尾卻陰性）。",
+    crossLang:"台客語也有這種『氣場』直覺：公／牯像太陽——發散、能量源頭；母／嫲像月亮——包容、孕育、承載空間，剛好呼應西語 El=太陽=發散、La=月亮=包容。形狀感也對得上：台語「螺絲母」是螺帽（凹槽、收納），跟西語 la llave／la puerta／la caja 這類「開啟空間、收納」的陰性名詞是同一種直覺；反過來 el lápiz／el puente／el árbol／el camino 這種延伸、支撐、工具型的東西，也跟台客語「公／牯＝支柱、源頭」的陽性直覺一致。",
+    source:"文法補充"
   }
 
 ];
