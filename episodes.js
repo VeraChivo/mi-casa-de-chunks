@@ -4,7 +4,7 @@
 const EPS=[
 // ── E1 泥巴坑 ──
 {title:"Charcos de Barro",titleZh:"泥巴坑",dur:187,sentences:[
-  {es:"Yo soy Gatita Nita.",chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Gatita Nita.",role:"o"}],zh:"我是小貓妮妲。",en:"I am Gatita Nita.",noteZh:"「soy」= 我是（ser 動詞「我」）",noteEn:"soy = I am (the 'I' form of ser)",
+  {es:"Yo soy Gatita Nita.",chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Gatita Nita.",role:"o"}],zh:"我是小貓妮妲。",en:"I am Gatita Nita.",noteZh:"「soy」= 是（ser 動詞「我」的變位形式，「我」的意思是 Yo 給的）",noteEn:"soy = am (the 'I' form of ser; 'I' itself comes from 'Yo')",
   expand:{
     note:"Yo soy + 名字 = 自我介紹固定句型",
     template:[{t:"Yo soy"},{g:"name"}],
