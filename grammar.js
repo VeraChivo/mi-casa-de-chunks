@@ -548,8 +548,8 @@ const GRAMMAR_DATA = [
       {es:"La llave está en la mesa.", zh:"鑰匙在桌上。（陰性：llave 鑰匙／mesa 桌子，都是「容器／承載空間」意象）"},
       {es:"El camino es largo.", zh:"這條路很長。（陽性：camino 路，「延伸／支撐」意象）"}
     ],
-    trap:"少數名詞會「叛逆」——長得像甜系（-a 結尾，陰性）骨子裡卻是鹽系（陽性）：el mapa（地圖）、el día（天／日子）、el problema（問題，這個字才是跟 el programa／el sistema／el clima／el tema 同一群「源自希臘文的 -ma 陽性字」；día 和 mapa 只是剛好也以 -a 結尾，其實是各自獨立的例外，不是同一條規則，別搞混）。反過來也有長得像鹽系（-o 結尾或子音結尾）骨子裡卻是甜系（陰性）：la mano（手，少數以 -o 結尾卻陰性的常用字）、la flor（花，子音結尾卻陰性）。答案是：有規矩——只是規矩藏在「能量感／形狀感」的直覺裡，不是死板的字尾規則，抓住這個規矩比死背例外清單更好用。",
-    crossLang:"台客語也有這種『氣場』直覺：公／牯像太陽——發散、能量源頭；母／嫲像月亮——包容、孕育、承載空間，剛好呼應西語 El=太陽=發散、La=月亮=包容。形狀感也對得上：台語「螺絲母」是螺帽（凹槽、收納），跟西語 la llave／la puerta／la caja 這類「開啟空間、收納」的陰性名詞是同一種直覺；反過來 el lápiz／el puente／el árbol／el camino 這種延伸、支撐、工具型的東西，也跟台客語「公／牯＝支柱、源頭」的陽性直覺一致。",
+    trap:"叛逆名詞：長得甜（-a 結尾）骨子裡是鹽——el mapa（地圖）、el día（日子）、el problema（問題）。真正屬於「-ma 希臘字源陽性字群」的只有 problema，跟 programa／sistema／clima／tema 同掛；día、mapa 純粹字尾巧合，各自獨立，別混為一談。長得鹽（-o 或子音結尾）骨子裡是甜的：la mano（手）、la flor（花）。規矩藏在能量感／形狀感的直覺裡，不是死板字尾規則——抓直覺，比背例外清單好用。",
+    crossLang:"台客語同一套氣場：公／牯＝太陽，發散、能量源頭；母／嫲＝月亮，包容、孕育、承載空間，跟西語 El／La 對得上。形狀感也一樣：台語「螺絲母」＝螺帽，凹槽收納，呼應 la llave／la puerta／la caja；el lápiz／el puente／el árbol／el camino 這種延伸支撐的工具感，也貼著台客語「公／牯」的陽性直覺。",
     source:"文法補充"
   }
 
