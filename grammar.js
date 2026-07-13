@@ -563,6 +563,19 @@ const GRAMMAR_DATA = [
         {person:"ellos/ellas/ustedes", form:"andan", ex:"Andan diciendo tonterías.", zh:"他們一直到處亂講些有的沒的。"}
       ]
     }
+  },
+
+  {
+    id:"g24", cat:"phrase",
+    title:"Ahorita：拉美人的彈性時間感",
+    rule:"課本教的「現在」是 ahora，但拉美日常（尤其墨西哥、哥倫比亞、中美洲）更常聽到「小現在」ahorita——字面是 ahora 加小稱字尾，意思卻彈性到嚇人：可能是『現在立刻』、『等一下下』、『幾小時後』，甚至是『再說吧（其實不太想做）』。",
+    examples:[
+      {es:"Ahorita voy.", zh:"我現在就去。（也可能只是說說，等一下才去，看語氣和場合）"},
+      {es:"Ahorita te llamo.", zh:"我等一下打給你。（時間感因人而異）"},
+      {es:"Ahoritita mismo.", zh:"真的立刻馬上。（ahoritita 是加強版，強調真的是現在）"}
+    ],
+    trap:"跟拉美朋友約時間如果聽到 ahorita，不要照字面當「馬上」——這是拉美文化裡「禮貌又不把話說死」的萬用時間詞，答應得越快，有時候反而是越委婉的「再說」。",
+    source:"文法補充"
   }
 
 ];
