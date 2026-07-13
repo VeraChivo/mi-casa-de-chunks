@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260713a3">
+<link rel="stylesheet" href="style.css?v=20260713a4">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -283,13 +283,14 @@
 
   <!-- ── 💧 文法儲水槽 ── -->
   <div class="pron-lib-wrap card-container">
-    <div class="ammo-book-top" style="cursor:default;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+    <div class="ammo-book-top" onclick="toggleGrammarSupplement()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
       <div>
         <div class="pb-book-title">💧 文法儲水槽</div>
         <div class="pb-book-sub">詞序／TENER／IR未來式…從外面引進來的文法水源，點開看詳解</div>
       </div>
+      <span id="grammarSupplementToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
-    <div id="grammarSupplementBody" class="ammo-body open"></div>
+    <div id="grammarSupplementBody" class="ammo-body"></div>
   </div>
 
   </div> <!-- ══════════ / TAB B：知識燃料站 結束 ══════════ -->
@@ -399,6 +400,6 @@
   <script src="mom.js?v=20260712a1"></script>
   <script src="diary.js?v=20260712a8"></script>
   <script src="corazon.js?v=20260712a1"></script>
-  <script src="script.js?v=20260713a5"></script>
+  <script src="script.js?v=20260713a6"></script>
 </body>
 </html>

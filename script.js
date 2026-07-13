@@ -1777,6 +1777,13 @@ function renderGrammarSupplement(){
     </div>`).join('');
 }
 
+function toggleGrammarSupplement(){
+  const body=document.getElementById('grammarSupplementBody');
+  const t=document.getElementById('grammarSupplementToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+
 // ── 💎☁️ 是・在對照站（SER vs ESTAR 快覽） ──
 function renderSerEstarStation(){
   const el = document.getElementById('serEstarBody');
