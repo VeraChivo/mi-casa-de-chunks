@@ -624,7 +624,7 @@ const EPS=[
 
 // ── E6 好吃的東西 ──
 {title:"Cosas Ricas para Comer",titleZh:"好吃的東西",dur:175,sentences:[
-  {es:"A Nita le encanta el helado de chocolate.",chunks:[{w:"A Nita",role:"s"},{w:"le encanta",role:"v"},{w:"el helado de chocolate.",role:"o"}],zh:"妮妲超愛巧克力冰淇淋。",en:"Nita loves chocolate ice cream.",noteZh:"「helado」= 冰淇淋（跟英文 ice cream 沒有同源關係；義大利文的 gelato 才是同源字）",noteEn:"'helado' = ice cream",
+  {es:"A Nita le encanta el helado de chocolate.",chunks:[{w:"A Nita",role:"s"},{w:"le encanta",role:"v"},{w:"el helado de chocolate.",role:"o"}],zh:"妮妲超愛巧克力冰淇淋。",en:"Nita loves chocolate ice cream.",noteZh:"「helado」= 冰淇淋（跟英文 ice cream 沒有同源關係；同源鏈：拉丁文 gelare 結凍 → 義大利文 gelato → 西語 helado）",noteEn:"'helado' = ice cream",
   expand:{
     note:"A + 人 + le encanta = 某人超愛，換人換食物",
     template:[{t:"A"},{g:"name"},{t:"le encanta"},{g:"food"}],
@@ -743,7 +743,7 @@ const EPS=[
       {es:"los pasteles.",zh:"蛋糕"},
     ]}]
   }},
-  {es:"Tito no quiere comer verduras.",chunks:[{w:"Tito",role:"s"},{w:"no quiere comer",role:"v"},{w:"verduras.",role:"o"}],zh:"迪多不想吃蔬菜。",en:"Tito doesn't want to eat vegetables.",noteZh:"「verduras」= 蔬菜，同源字 verdure（義大利文）",noteEn:"'verduras' = vegetables",
+  {es:"Tito no quiere comer verduras.",chunks:[{w:"Tito",role:"s"},{w:"no quiere comer",role:"v"},{w:"verduras.",role:"o"}],zh:"迪多不想吃蔬菜。",en:"Tito doesn't want to eat vegetables.",noteZh:"「verduras」= 蔬菜，同源鏈：拉丁文 viridis 綠色 → 義大利文 verdure → 西語 verduras",noteEn:"'verduras' = vegetables",
   expand:{
     note:"no quiere comer = 不想吃，換主詞換不想吃的食物",
     template:[{g:"name"},{t:"no quiere comer"},{g:"food"}],
