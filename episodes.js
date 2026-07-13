@@ -624,7 +624,7 @@ const EPS=[
 
 // ── E6 好吃的東西 ──
 {title:"Cosas Ricas para Comer",titleZh:"好吃的東西",dur:175,sentences:[
-  {es:"A Nita le encanta el helado de chocolate.",chunks:[{w:"A Nita",role:"s"},{w:"le encanta",role:"v"},{w:"el helado de chocolate.",role:"o"}],zh:"妮妲超愛巧克力冰淇淋。",en:"Nita loves chocolate ice cream.",noteZh:"「helado」= 冰淇淋，同源字 gelato",noteEn:"'helado' = ice cream",
+  {es:"A Nita le encanta el helado de chocolate.",chunks:[{w:"A Nita",role:"s"},{w:"le encanta",role:"v"},{w:"el helado de chocolate.",role:"o"}],zh:"妮妲超愛巧克力冰淇淋。",en:"Nita loves chocolate ice cream.",noteZh:"「helado」= 冰淇淋（跟英文 ice cream 沒有同源關係；義大利文的 gelato 才是同源字）",noteEn:"'helado' = ice cream",
   expand:{
     note:"A + 人 + le encanta = 某人超愛，換人換食物",
     template:[{t:"A"},{g:"name"},{t:"le encanta"},{g:"food"}],
@@ -714,7 +714,7 @@ const EPS=[
       {es:"helado?",zh:"冰淇淋"},
     ]}]
   }},
-  {es:"El pan está muy caliente.",chunks:[{w:"El pan",role:"s"},{w:"está",role:"v"},{w:"muy caliente.",role:"o"}],zh:"麵包還很燙。",en:"The bread is very hot.",noteZh:"「pan」= 麵包，同源字 panificio",noteEn:"'pan' = bread",
+  {es:"El pan está muy caliente.",chunks:[{w:"El pan",role:"s"},{w:"está",role:"v"},{w:"muy caliente.",role:"o"}],zh:"麵包還很燙。",en:"The bread is very hot.",noteZh:"「pan」= 麵包，同源字英文 pantry（食物儲藏室，字根都來自拉丁文 panis=麵包）",noteEn:"'pan' = bread",
   expand:{
     note:"está + 狀態形容詞 = 現在的狀態，換食物換狀態",
     template:[{g:"food"},{t:"está muy"},{g:"state"}],
