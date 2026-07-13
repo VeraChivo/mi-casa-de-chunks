@@ -984,7 +984,7 @@ function checkMakeFree(){
     if(!makeAnswered.includes(idx)){makeAnswered.push(idx);makeScore++;}
     const gId=SENTENCE_GRAMMAR_MAP[currentGlobalIdx()];
     const saved=gId?saveToGrammarLib(gId,val):false;
-    res.textContent=`✅ 句型對了！用了 ${verbsFound.join(' / ')}${saved?' — 已存進文法酷庫 💡':' — 很棒！'}`;
+    res.textContent=`¡Eso es! 🌟 用了 ${verbsFound.join(' / ')}${saved?' — 已存進文法酷庫 💡':' — 就是這樣！'}`;
     res.style.display='block';
     speakFull(val);
     toast('🔊 念你的句子給你聽！');
@@ -992,7 +992,7 @@ function checkMakeFree(){
   } else {
     res.className='make-result err';
     const hint = pat.keyVerbs.length ? `記得用「${pat.keyVerbs.join(' / ')}」這個動詞喔` : '句子太短或結構不太對';
-    res.textContent=`❌ ${hint}`;
+    res.textContent=`¡Ojo! 👀 ${hint}`;
     res.style.display='block';
     document.getElementById('makeFreeInput').className='make-free-input err';
   }
