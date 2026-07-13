@@ -2389,7 +2389,7 @@ function updateReminderBtn(){
   const btn = document.getElementById('reminderToggleBtn');
   if(!btn) return;
   const on = Notification && Notification.permission === 'granted' && localStorage.getItem(REMINDER_LS_KEY) === '1';
-  btn.textContent = on ? '🔕 提醒已開啟' : '🔔 開啟每日提醒';
+  btn.textContent = on ? '🔕 巡田鈴已響' : '🔔 設下巡田鈴';
   btn.classList.toggle('is-on', on);
 }
 
