@@ -107,7 +107,8 @@ const GRAMMAR_CATS = [
   {key:"tense",        label:"時態"},
   {key:"gustar",       label:"Gustar 句型"},
   {key:"verb-pattern", label:"動詞句型"},
-  {key:"phrase",       label:"固定用語"}
+  {key:"phrase",       label:"固定用語"},
+  {key:"word-order",   label:"詞序"}
 ];
 
 
@@ -480,6 +481,56 @@ const GRAMMAR_DATA = [
         {person:"ellos/ellas",form:"van",   ex:"Van a la playa.",   zh:"他們去海灘。"}
       ]
     }
+  },
+
+  {
+    id:"g19", cat:"tense",
+    title:"IR + a + 動詞：即將要做的未來式",
+    rule:"ir（去）的變位 + a + 原型動詞（字典查到的形式）= 就要去做某事，跟英文 be going to 幾乎一模一樣！這是任何人稱都能用的萬用近未來式，不是只有「我們一起來」的意思。",
+    examples:[
+      {es:"Voy a comer.", zh:"我要去吃飯了。"},
+      {es:"¿Vas a dormir?", zh:"你要去睡了嗎？"},
+      {es:"Va a llover.", zh:"要下雨了。"}
+    ],
+    trap:"跟「Vamos a + 動詞」（見另一張卡）不要搞混：那張是限定「我們一起來」，這裡任何人稱都能用。ir 也能單獨表示「去某地點」：Voy al parque.（我要去公園）——後面接地點、不接動詞。六人稱完整變位可到🌀超級變變變查 ir。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g20", cat:"verb-pattern",
+    title:"TENER：擁有、年紀、生理感覺",
+    rule:"tener 字面是「擁有」，但西語常用 tener 描述「年紀」或「生理感覺」，中英文會用 to be 處理的地方，西語卻用 to have！例如：tener hambre（有飢餓＝肚子餓了）、tener ___ años（有 ___ 歲＝ ___ 歲）。",
+    examples:[
+      {es:"Tengo hambre.", zh:"我肚子餓了。（直譯：我有飢餓）"},
+      {es:"Tito tiene seis años.", zh:"迪多六歲。（直譯：迪多有六年）"},
+      {es:"Tenemos frío.", zh:"我們很冷。（直譯：我們有冷）"}
+    ],
+    trap:"英文用 be（I am hungry / I am 6 years old），西語卻用 tener（有）——這是中英文母語者最容易直覺講錯的地方！",
+    source:"文法補充",
+    conj:{
+      verb:"tener（有）",
+      rows:[
+        {person:"yo",         form:"tengo",   ex:"Tengo hambre.",         zh:"我肚子餓了。"},
+        {person:"tú",         form:"tienes",  ex:"¿Cuántos años tienes?", zh:"你幾歲？"},
+        {person:"él/ella",    form:"tiene",   ex:"Tiene sueño.",          zh:"他想睡覺了。"},
+        {person:"nosotros",   form:"tenemos", ex:"Tenemos frío.",        zh:"我們很冷。"},
+        {person:"vosotros",   form:"tenéis",  ex:"¿Tenéis hambre?",      zh:"你們餓了嗎？", note:"拉美常用 ustedes tienen 取代"},
+        {person:"ellos/ellas",form:"tienen",  ex:"Tienen miedo.",         zh:"他們害怕。"}
+      ]
+    }
+  },
+
+  {
+    id:"g21", cat:"word-order",
+    title:"形容詞位置：放在名詞後面",
+    rule:"跟英文相反，西語的形容詞通常放在被形容的名詞之後。例如：la casa blanca（那棟白色的房子，直譯「房子 白色的」）。",
+    examples:[
+      {es:"Nita vive en una casa blanca.", zh:"妮妲住在一棟白色的房子裡。（blanca 放在 casa 後面）"},
+      {es:"Mimi es una niña feliz.", zh:"咪咪是個快樂的女孩。（feliz 放在 niña 後面）"},
+      {es:"Tito tiene una pelota roja.", zh:"迪多有一顆紅色的球。（roja 放在 pelota 後面，且形容詞字尾要跟名詞陰陽性一致）"}
+    ],
+    trap:"少數常見形容詞（bueno好／malo壞／grande大／primero第一／otro其他）常放在名詞前面，且陽性單數名詞前會省略字尾（buen, mal, gran）——先抓住「大部分放後面」這個大原則，例外之後再慢慢熟悉。",
+    source:"文法補充"
   }
 
 ];

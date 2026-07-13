@@ -1765,6 +1765,18 @@ function _grammarExChunks(es){
   }).join('');
 }
 
+// ── 🧩 文法補充包（沒有綁定特定劇情句子的零散文法點） ──
+function renderGrammarSupplement(){
+  const el = document.getElementById('grammarSupplementBody');
+  if(!el) return;
+  const items = GRAMMAR_DATA.filter(g=>g.source==='文法補充');
+  el.innerHTML = items.map(g=>`
+    <div class="gsup-row" onclick="openGrammarCard('${g.id}')">
+      <div class="gsup-title">${g.title}</div>
+      <div class="gsup-rule">${g.rule}</div>
+    </div>`).join('');
+}
+
 // ── 💎☁️ 是・在對照站（SER vs ESTAR 快覽） ──
 function renderSerEstarStation(){
   const el = document.getElementById('serEstarBody');
@@ -2471,6 +2483,7 @@ function initReminders(){
   renderPronounLibrary();
   renderGenderPairs();
   renderSerEstarStation();
+  renderGrammarSupplement();
   renderVocab();
   renderGardenView();
   initTTS();

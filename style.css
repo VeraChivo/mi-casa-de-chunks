@@ -500,6 +500,13 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .mnemonic-estar .se-col-more{color:var(--benikake)}
 @media(max-width:360px){.se-station-grid{grid-template-columns:1fr}}
 
+/* ── 文法補充包 ── */
+.gsup-row{padding:10px 12px;border-bottom:1px solid var(--bg2);cursor:pointer}
+.gsup-row:last-child{border-bottom:none}
+.gsup-row:active{background:var(--bg2)}
+.gsup-title{font-size:13px;font-weight:900;color:var(--konpeki);margin-bottom:3px}
+.gsup-rule{font-size:11.5px;color:var(--tmid);font-weight:600;line-height:1.4}
+
 /* ── ¡Variadísimo! 變位速查 ── */
 .conj-section{margin:10px 0 8px;border-radius:10px;overflow:hidden;border:1.5px solid rgba(159,208,222,.4)}
 .conj-title{font-size:11px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--misora);background:rgba(159,208,222,.12);padding:6px 12px}
