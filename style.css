@@ -93,6 +93,20 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .query-links-row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:0 0 10px;width:100%;max-width:480px;box-sizing:border-box}
 .query-link{font-size:10px;font-weight:700;color:var(--tlight);border:1px solid var(--nezumi);border-radius:999px;padding:3px 10px;text-decoration:none;transition:background .15s;cursor:pointer;user-select:none}
 .query-link:active{background:var(--bg2)}
+
+/* ── 🌻 花園新鮮度橫幅 ── */
+.gfresh-wrap{width:100%;max-width:480px;margin:0 0 12px;background:linear-gradient(135deg,#EAF6E9,#F5FAF0);border-radius:16px;padding:14px 16px;border:1.5px solid rgba(123,158,135,.35);box-sizing:border-box}
+.gfresh-msg{font-size:14px;font-weight:800;color:var(--tdark);margin-bottom:10px;text-align:center}
+.gfresh-flowers{display:flex;justify-content:center;align-items:flex-start;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.gfresh-flower{font-size:28px;display:inline-block;transition:filter .3s,transform .3s}
+.gfresh-flower.fresh-full{filter:none;transform:rotate(0deg)}
+.gfresh-flower.fresh-1{filter:saturate(.75);transform:rotate(-6deg)}
+.gfresh-flower.fresh-2{filter:saturate(.5) brightness(.95);transform:rotate(-14deg)}
+.gfresh-flower.fresh-3{filter:saturate(.3) brightness(.85);transform:rotate(-22deg)}
+.gfresh-bug{font-size:16px;margin-left:-6px}
+.gfresh-empty{font-size:12px;color:var(--tlight);font-weight:600}
+.gfresh-btn{display:block;margin:0 auto;background:var(--misora);color:white;font-weight:800;font-size:13px;border:none;border-radius:999px;padding:8px 20px;cursor:pointer}
+.gfresh-btn:active{opacity:.8}
 .sec-label{font-size:10px;font-weight:800;color:var(--tlight);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:6px}
 
 .trans-input{width:100%;border:2px solid var(--usumizu);border-radius:11px;padding:10px 13px;font-size:15px;font-family:'Nunito',sans-serif;font-weight:600;color:var(--tdark);background:var(--bg2);outline:none;transition:none;resize:none;height:72px!important;min-height:72px!important;max-height:72px!important;overflow-y:auto;margin-bottom:10px;-webkit-tap-highlight-color:transparent}

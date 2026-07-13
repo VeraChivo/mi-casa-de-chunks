@@ -1202,6 +1202,13 @@ function getGardenDB() {
 function saveGardenDB(db) {
   try { localStorage.setItem('peppa_garden_v1', JSON.stringify(db)); } catch(e) {}
 }
+// 花園新鮮度：獨立存放的單一時間戳，純視覺提示，不影響上面的熟練度資料
+function getLastWatered(){
+  try { return Number(localStorage.getItem('peppa_garden_watered_v1')) || 0; } catch(e){ return 0; }
+}
+function markWatered(){
+  try { localStorage.setItem('peppa_garden_watered_v1', String(Date.now())); } catch(e){}
+}
 const _G_LABELS = ['收藏語塊', '初萌芽', '猛漲期', '幸運草・抓蟲複習', '日頭花開'];
 
 // ── 語塊註解索引：掃 AMMO_DATA 一次，讓花園裡的每個語塊都能顯示一段中文註解 ──
@@ -1508,7 +1515,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1'];
 
 function exportBackup(){
   const data = {};
@@ -1584,12 +1591,13 @@ function clearLS(){
   localStorage.removeItem('peppa_es_v4');
   localStorage.removeItem('peppa_es_vocab_v1');
   localStorage.removeItem('peppa_garden_v1');
+  localStorage.removeItem('peppa_garden_watered_v1');
   localStorage.removeItem('peppa_es_grammar_v1');
   localStorage.removeItem('peppa_es_familiarity_v1');
   localStorage.removeItem('dynamic_phrases_db');
   ammoUnlocked=[];ammoStars={};vocabList=[];answeredByEp={};answered=[];svoPool={s:[],v:[],o:[]};
   grammarUserExamples={};chunkFamiliarity={};
-  renderAmmo();renderVocab();renderGardenView();renderConjLibrary();
+  renderAmmo();renderVocab();renderGardenView();renderConjLibrary();renderGardenFreshness();
   toast('已清除所有學習紀錄');
 }
 
@@ -2290,6 +2298,51 @@ function openGardenQuizToday(){
   openGardenQuiz(3);
 }
 
+// 切到穀倉大豐收分頁、展開語塊花園、開今日小份抓蟲——通知深連結跟花園橫幅按鈕共用
+function jumpToGardenQuizToday(){
+  switchMainTab('private');
+  const body = document.getElementById('gardenViewBody');
+  const t = document.getElementById('gardenViewToggle');
+  if(body && !body.classList.contains('open')){
+    body.classList.add('open');
+    if(t) t.textContent = '▲ 收起';
+  }
+  openGardenQuizToday();
+}
+
+// 🌻 花園新鮮度橫幅：純視覺，不影響熟練度資料
+function renderGardenFreshness(){
+  const el = document.getElementById('gardenFreshBody');
+  if(!el) return;
+  const last = getLastWatered();
+  let msg, moodCls;
+  if(!last){
+    msg = '🌱 花園還在等妳播下第一顆種子';
+    moodCls = 'fresh-full';
+  } else {
+    const days = Math.floor((Date.now() - last) / 86400000);
+    if(days <= 0){ msg = '🌻 今天飽水有朝氣，花兒很有元氣！'; moodCls = 'fresh-full'; }
+    else if(days === 1){ msg = '🌿 有點想妳了，來澆個水吧'; moodCls = 'fresh-1'; }
+    else if(days === 2){ msg = '🥀 花有點蔫了，快來看看'; moodCls = 'fresh-2'; }
+    else { msg = '🐛 糟糕，蟲跑來搗蛋了！'; moodCls = 'fresh-3'; }
+  }
+
+  const gdb = getGardenDB();
+  const pool = generateBattleQuestionPool(5);
+  const flowersHtml = pool.map(chunk => {
+    const st = (gdb[chunk]||{stage:0}).stage;
+    const icon = GARDEN_STAGES[st] || GARDEN_STAGES[1];
+    const bug = moodCls === 'fresh-3' ? '<span class="gfresh-bug">🐛</span>' : '';
+    return `<span class="gfresh-flower ${moodCls}">${icon}</span>${bug}`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="gfresh-msg">${msg}</div>
+    <div class="gfresh-flowers">${flowersHtml || '<span class="gfresh-empty">還沒有語塊可以澆水，先去田間收集吧！</span>'}</div>
+    ${pool.length ? '<button class="gfresh-btn" onclick="jumpToGardenQuizToday()">🐛 去抓蟲</button>' : ''}
+  `;
+}
+
 function renderGardenQuizCard() {
   const quizArea = document.getElementById('gardenQuizArea');
   if (!quizArea) return;
@@ -2360,6 +2413,8 @@ function gardenQuizRate(good) {
       if (gs.stage === 3) toast(`✅ 記得！出題 ${qc} / 3`);
       else toast('✅ ¡Bien! 繼續加油');
     }
+    markWatered();
+    renderGardenFreshness();
   }
   _quizFlipped = true;
   const chunk = _quizQueue[_quizIdx];
@@ -2480,14 +2535,7 @@ function handleReminderDeepLink(){
   if(!action) return;
   history.replaceState(null, '', location.pathname);
   if(action === 'quiz'){
-    switchMainTab('private');
-    const body = document.getElementById('gardenViewBody');
-    const t = document.getElementById('gardenViewToggle');
-    if(body && !body.classList.contains('open')){
-      body.classList.add('open');
-      if(t) t.textContent = '▲ 收起';
-    }
-    setTimeout(openGardenQuizToday, 150);
+    setTimeout(jumpToGardenQuizToday, 150);
   } else if(action === 'diary'){
     switchMainTab('mom');
     setTimeout(() => {
@@ -2525,6 +2573,7 @@ function initReminders(){
   renderGrammarSupplement();
   renderVocab();
   renderGardenView();
+  renderGardenFreshness();
   initTTS();
   initGroupButtons();
   restoreActiveTab();
