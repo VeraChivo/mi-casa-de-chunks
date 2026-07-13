@@ -138,6 +138,7 @@ const GRAMMAR_DATA = [
         {l:"R",label:"Relationship 關係",ex:"Es mi hermano."}
       ]
     },
+    crossLang:"快速對接：SER＝「是」——華語「是」、台語「是（sī）」、客語「係（he）」，四種語言在『本質認同』這個字上都對得起來，比死背 DOCTOR 口訣更直覺！",
     source:"E1·S1 / E1·S2 / E3·S3",
     conj:{
       verb:"ser（是）",
@@ -173,6 +174,7 @@ const GRAMMAR_DATA = [
         {l:"E",label:"Emotion 情緒",ex:"Estoy feliz."}
       ]
     },
+    crossLang:"快速對接：ESTAR＝「在」——華語「在」、台語「在、佇（tī）」、客語「在」，四種語言在『位置／暫時狀態』這個字上也對得起來。記法：SER 是本質的『是』，ESTAR 是暫時的『在』。",
     source:"E2·S8 / E3·S1",
     conj:{
       verb:"estar（在／處於狀態）",
