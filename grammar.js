@@ -488,12 +488,12 @@ const GRAMMAR_DATA = [
     title:"IR + a + 動詞：即將要做的未來式",
     rule:"ir（去）的變位 + a + 原型動詞（字典查到的形式）= 就要去做某事，跟英文 be going to 幾乎一模一樣！這是任何人稱都能用的萬用近未來式，不是只有「我們一起來」的意思。",
     examples:[
-      {es:"Voy a comer.", zh:"我要去吃飯了。"},
-      {es:"¿Vas a dormir?", zh:"你要去睡了嗎？"},
-      {es:"Va a llover.", zh:"要下雨了。"}
+      {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
+      {es:"Voy a comer.", zh:"我要去吃飯了。（新編例句，目前劇情裡還沒有這句）"},
+      {es:"¿Vas a dormir?", zh:"你要去睡了嗎？（新編例句，目前劇情裡還沒有這句）"}
     ],
     trap:"跟「Vamos a + 動詞」（見另一張卡）不要搞混：那張是限定「我們一起來」，這裡任何人稱都能用。ir 也能單獨表示「去某地點」：Voy al parque.（我要去公園）——後面接地點、不接動詞。六人稱完整變位可到🌀超級變變變查 ir。",
-    source:"文法補充"
+    source:"彈藥庫 e2_04（第一句）／文法補充（其餘為新編）"
   },
 
   {
@@ -501,12 +501,12 @@ const GRAMMAR_DATA = [
     title:"TENER：擁有、年紀、生理感覺",
     rule:"tener 字面是「擁有」，但西語常用 tener 描述「年紀」或「生理感覺」，中英文會用 to be 處理的地方，西語卻用 to have！例如：tener hambre（有飢餓＝肚子餓了）、tener ___ años（有 ___ 歲＝ ___ 歲）。",
     examples:[
-      {es:"Tengo hambre.", zh:"我肚子餓了。（直譯：我有飢餓）"},
-      {es:"Tito tiene seis años.", zh:"迪多六歲。（直譯：迪多有六年）"},
-      {es:"Tenemos frío.", zh:"我們很冷。（直譯：我們有冷）"}
+      {es:"Nita y Tito tienen una hermana nueva.", zh:"妮妲和迪多有了一個新妹妹。（劇情原句，擁有用法）"},
+      {es:"Tienes una hermana mayor.", zh:"你有一個大姊姊。（劇情原句，擁有用法，同時示範 hermana mayor＝形容詞放名詞後面）"},
+      {es:"Tito tiene seis años.", zh:"迪多六歲。（新編例句，目前劇情裡還沒有「年紀」這個用法，直譯：迪多有六年）"}
     ],
     trap:"英文用 be（I am hungry / I am 6 years old），西語卻用 tener（有）——這是中英文母語者最容易直覺講錯的地方！",
-    source:"文法補充",
+    source:"彈藥庫 e4_03（前兩句）／文法補充（年紀用法為新編）",
     conj:{
       verb:"tener（有）",
       rows:[
@@ -525,12 +525,12 @@ const GRAMMAR_DATA = [
     title:"形容詞位置：放在名詞後面",
     rule:"跟英文相反，西語的形容詞通常放在被形容的名詞之後。例如：la casa blanca（那棟白色的房子，直譯「房子 白色的」）。",
     examples:[
-      {es:"Nita vive en una casa blanca.", zh:"妮妲住在一棟白色的房子裡。（blanca 放在 casa 後面）"},
-      {es:"Mimi es una niña feliz.", zh:"咪咪是個快樂的女孩。（feliz 放在 niña 後面）"},
-      {es:"Tito tiene una pelota roja.", zh:"迪多有一顆紅色的球。（roja 放在 pelota 後面，且形容詞字尾要跟名詞陰陽性一致）"}
+      {es:"Tienes una hermana mayor.", zh:"你有一個大姊姊。（劇情原句，mayor 放在 hermana 後面）"},
+      {es:"Tenemos una casa nueva.", zh:"我們有了一棟新房子。（劇情原句，nueva 放在 casa 後面）"},
+      {es:"Mimi es una niña feliz.", zh:"咪咪是個快樂的女孩。（新編例句，feliz 放在 niña 後面）"}
     ],
     trap:"少數常見形容詞（bueno好／malo壞／grande大／primero第一／otro其他）常放在名詞前面，且陽性單數名詞前會省略字尾（buen, mal, gran）——先抓住「大部分放後面」這個大原則，例外之後再慢慢熟悉。",
-    source:"文法補充"
+    source:"彈藥庫 e4_03（前兩句）／文法補充（第三句為新編）"
   }
 
 ];

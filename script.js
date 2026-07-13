@@ -1769,7 +1769,7 @@ function _grammarExChunks(es){
 function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
   if(!el) return;
-  const items = GRAMMAR_DATA.filter(g=>g.source==='文法補充');
+  const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充'));
   el.innerHTML = items.map(g=>`
     <div class="gsup-row" onclick="openGrammarCard('${g.id}')">
       <div class="gsup-title">${g.title}</div>
