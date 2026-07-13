@@ -8,7 +8,7 @@ const PRONOUN_LIBRARY = [
       {es:'tú',             zh:'你',       en:'you'},
       {es:'él / ella',      zh:'他 / 她',  en:'he / she'},
       {es:'nosotros',       zh:'我們',     en:'we'},
-      {es:'vosotros',       zh:'你們（西班牙）', en:'you all', note:'拉美常用 ustedes 取代'},
+      {es:'ustedes',        zh:'你們（拉美通用，不分熟悉/正式）', en:'you all (LatAm)'},
       {es:'ellos / ellas',  zh:'他們 / 她們', en:'they'}
     ],
     example:{es:'Tengo hambre.', zh:'我肚子餓了。（加主詞版：Yo tengo hambre. — 兩句意思一樣，-o 字尾已代表「我」，Yo 可省略）'}
@@ -140,6 +140,7 @@ const GRAMMAR_DATA = [
       ]
     },
     crossLang:"快速對接：SER＝「是」——華語「是」、台語「是（sī）」、客語「係（he）」，四種語言在『本質認同』這個字上都對得起來，比死背 DOCTOR 口訣更直覺！",
+    quirk:"🐛 調皮特例：La boda es en la iglesia.（婚禮在教堂舉行）——明明是一次性的活動，卻用 SER，因為 SER 專門描述「事件發生的地點」（跟 tener lugar「舉行」同義）；只有實體東西本身的所在位置才輪到 ESTAR（比較：La iglesia está en el centro. 教堂在市中心）。",
     source:"E1·S1 / E1·S2 / E3·S3",
     conj:{
       verb:"ser（是）",
@@ -176,6 +177,7 @@ const GRAMMAR_DATA = [
       ]
     },
     crossLang:"快速對接：ESTAR＝「在」——華語「在」、台語「在、佇（tī）」、客語「在」，四種語言在『位置／暫時狀態』這個字上也對得起來。記法：SER 是本質的『是』，ESTAR 是暫時的『在』。",
+    quirk:"🐛 調皮特例：Está muerto.（他死了）——明明死亡看起來很永久，卻用 ESTAR，因為西語把死亡當成一種「外力造成、改變後的狀態」，跟 está roto（壞掉了）、está cansado（累了）是同一掛邏輯，不是在描述這個人的本質身分。",
     source:"E2·S8 / E3·S1",
     conj:{
       verb:"estar（在／處於狀態）",

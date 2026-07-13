@@ -1843,6 +1843,7 @@ function openGrammarCard(gId){
     ${buildConjTable(g.conj, g.id)}
     ${g.trap?`<p class="grammar-trap">${g.trap}</p>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
+    ${g.quirk?`<div class="grammar-quirk">${g.quirk}</div>`:''}
     ${userExHtml}
     <div class="grammar-source">📍 ${g.source}</div>
   `);

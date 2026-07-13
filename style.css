@@ -476,6 +476,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .grammar-ex-zh{font-size:13px;color:var(--tmid);font-weight:600}
 .grammar-trap{font-size:12px;font-weight:700;color:var(--err);margin:6px 0 4px;line-height:1.4;padding:0}
 .grammar-crosslang{font-size:12px;font-weight:700;color:var(--tmid);margin:8px 0 4px;line-height:1.5;padding:8px 10px;background:rgba(61,184,122,.08);border-radius:8px;border-left:3px solid var(--ok)}
+.grammar-quirk{font-size:12px;font-weight:700;color:var(--tmid);margin:8px 0 4px;line-height:1.5;padding:8px 10px;background:rgba(132,145,195,.1);border-radius:8px;border-left:3px solid var(--benikake)}
 .grammar-rule-emph{font-size:14.4px;font-weight:900;color:var(--tmid);line-height:1.65;margin-bottom:12px;padding:9px 11px;background:rgba(159,208,222,.1);border-radius:9px;border-left:3px solid var(--mizu)}
 .grammar-source{font-size:9px;font-weight:800;color:var(--nezumi);letter-spacing:.5px;text-transform:uppercase}
 /* 用戶造句區 */
