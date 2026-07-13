@@ -1827,6 +1827,7 @@ function openGrammarCard(gId){
     <div class="grammar-examples">${exHtml}</div>
     ${buildConjTable(g.conj, g.id)}
     ${g.trap?`<p class="grammar-trap">${g.trap}</p>`:''}
+    ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
     ${userExHtml}
     <div class="grammar-source">📍 ${g.source}</div>
   `);
