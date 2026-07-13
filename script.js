@@ -604,6 +604,19 @@ function renderCogLibrary(filter){
       html+=`</div></details>`;
     });
     html+=`</div>`;
+
+    html+=`<div class="falsecog-section"><div class="falsecog-title">🍄 小心這顆有毒：假野莓 False Cognates</div>
+      <div class="falsecog-sub">長得跟英文超像，意思卻整個歪掉，吃錯了會鬧笑話</div>`;
+    html+=FALSE_COGNATES.map(f=>`
+      <div class="falsecog-card">
+        <div class="falsecog-row">
+          <span class="cog-es" onclick="openYGPanel('${escAttr(f.es)}')">${f.art?`<span class="cog-art">${f.art}</span> `:''}${f.es}</span>
+          <span class="falsecog-notlike">🚫 不是「${f.looksLike}」（${f.wrongZh}）</span>
+        </div>
+        <div class="falsecog-real">✅ 真正意思：${f.realZh}</div>
+        <div class="falsecog-trap">${f.trap}</div>
+      </div>`).join('');
+    html+=`</div>`;
   }
 
   // 按集數分組

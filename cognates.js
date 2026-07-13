@@ -343,6 +343,18 @@ const COGNATE_LIBRARY = [
   {en:'cure',      es:'curar',     art:'',    zh:'治療／康復',      ep:'E3 · 最好的朋友'},
 ];
 
+// ── 🍄 小心這顆有毒：假野莓（False Cognates）長得像英文卻歪掉的字 ──
+const FALSE_COGNATES = [
+  {es:'embarazada', art:'', looksLike:'embarrassed', wrongZh:'尷尬', realZh:'懷孕的',
+    trap:'想說「我好尷尬」千萬別講 Estoy embarazada，大家會開始恭喜妳懷孕！尷尬要說 Qué vergüenza 或 Estoy avergonzada。'},
+  {es:'actualmente', art:'', looksLike:'actually', wrongZh:'實際上', realZh:'目前、現在',
+    trap:'真正的「實際上」要說 En realidad，actualmente 只是「現在、目前」的意思。'},
+  {es:'soportar', art:'', looksLike:'support', wrongZh:'支持', realZh:'忍受、容忍',
+    trap:'想說「我很支持我兒子」別說 Soporto a mi hijo，聽起來像「我每天忍受我兒子」！支持要用 apoyar。'},
+  {es:'éxito', art:'el', looksLike:'exit', wrongZh:'出口', realZh:'成功、成就',
+    trap:'真正的「出口」是 salida，éxito 是成功、成就的意思。'}
+];
+
 // ── 詞綴規律資料（-tion→-ción 等三組） ──
 const SUFFIX_PATTERNS = [
   {
