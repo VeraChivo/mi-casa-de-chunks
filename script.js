@@ -1579,8 +1579,13 @@ function clearLS(){
   if(!confirm('🌱 再來一場大冒險？你確定嗎')) return;
   localStorage.removeItem('peppa_es_v4');
   localStorage.removeItem('peppa_es_vocab_v1');
+  localStorage.removeItem('peppa_garden_v1');
+  localStorage.removeItem('peppa_es_grammar_v1');
+  localStorage.removeItem('peppa_es_familiarity_v1');
+  localStorage.removeItem('dynamic_phrases_db');
   ammoUnlocked=[];ammoStars={};vocabList=[];answeredByEp={};answered=[];svoPool={s:[],v:[],o:[]};
-  renderAmmo();renderVocab();
+  grammarUserExamples={};chunkFamiliarity={};
+  renderAmmo();renderVocab();renderGardenView();renderConjLibrary();
   toast('已清除所有學習紀錄');
 }
 
