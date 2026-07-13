@@ -125,6 +125,18 @@ const GRAMMAR_DATA = [
       {es:"Son las mejores amigas.", zh:"她們是最好的朋友。（本質關係）"}
     ],
     trap:"「她在廚房」= Está en la cocina，位置要用 ESTAR，不用 SER！",
+    mnemonic:{
+      icon:"💎", word:"DOCTOR", side:"ser",
+      desc:"SER 的口訣：抓住「恆久不變」的核心",
+      items:[
+        {l:"D",label:"Description 描述",ex:"外貌／個性"},
+        {l:"O",label:"Occupation 職業",ex:"Es doctora."},
+        {l:"C",label:"Characteristics 特徵",ex:"Es alto."},
+        {l:"T",label:"Time 時間",ex:"Son las tres."},
+        {l:"O",label:"Origin 國籍／出身",ex:"Soy de Taiwán."},
+        {l:"R",label:"Relationship 關係",ex:"Es mi hermano."}
+      ]
+    },
     source:"E1·S1 / E1·S2 / E3·S3",
     conj:{
       verb:"ser（是）",
@@ -149,6 +161,17 @@ const GRAMMAR_DATA = [
       {es:"Estoy cansada.", zh:"我現在很累。（暫時狀態）"}
     ],
     trap:"口訣：SER = 本質身分（永久）；ESTAR = 位置狀態（暫時）",
+    mnemonic:{
+      icon:"🌦️", word:"PLACE", side:"estar",
+      desc:"ESTAR 的口訣：抓住「暫時／此刻」的狀態",
+      items:[
+        {l:"P",label:"Position 位置／姿勢",ex:"Está sentado."},
+        {l:"L",label:"Location 地點",ex:"Estoy en casa."},
+        {l:"A",label:"Action 動作／進行式",ex:"Estamos comiendo."},
+        {l:"C",label:"Condition 狀態／健康",ex:"Está roto."},
+        {l:"E",label:"Emotion 情緒",ex:"Estoy feliz."}
+      ]
+    },
     source:"E2·S8 / E3·S1",
     conj:{
       verb:"estar（在／處於狀態）",
@@ -170,7 +193,7 @@ const GRAMMAR_DATA = [
     emph:true,
     examples:[
       {es:"Hoy está lloviendo.", zh:"今天正在下雨。（está + llovier → lloviendo）"},
-      {es:"Nita y papá Pig están jugando a las damas.", zh:"妮妲和貓爸爸正在下棋。（están + jugar → jugando）"},
+      {es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸達多正在下棋。（están + jugar → jugando）"},
       {es:"Estoy esperando el autobús.", zh:"我正在等公車。（estoy + esperar → esperando）"}
     ],
     trap:"-ar 動詞字尾換 -ando（jugar → jugando）；-er/-ir 動詞字尾換 -iendo（comer → comiendo）",

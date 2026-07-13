@@ -1765,32 +1765,53 @@ function _grammarExChunks(es){
   }).join('');
 }
 
+// ── 💎☁️ 是・在對照站（SER vs ESTAR 快覽） ──
+function renderSerEstarStation(){
+  const el = document.getElementById('serEstarBody');
+  if(!el) return;
+  const renderCol = g => (!g || !g.mnemonic) ? '' : `
+    <div class="se-col mnemonic-${g.mnemonic.side}" onclick="openGrammarCard('${g.id}')">
+      <div class="se-col-head">${g.mnemonic.icon} ${g.mnemonic.word}</div>
+      <div class="se-col-title">${g.title}</div>
+      ${g.mnemonic.items.map(it=>`<div class="se-col-row"><span class="se-col-letter">${it.l}</span><span class="se-col-label">${it.label}</span></div>`).join('')}
+      <div class="se-col-more">▶ 完整用法／變位</div>
+    </div>`;
+  el.innerHTML = `<div class="se-station-grid">${renderCol(GRAMMAR_DATA.find(g=>g.id==='g01'))}${renderCol(GRAMMAR_DATA.find(g=>g.id==='g02'))}</div>`;
+}
+
 function openGrammarCard(gId){
   const g = GRAMMAR_DATA.find(x => x.id===gId);
   if(!g) return;
   const catLabel = (GRAMMAR_CATS.find(c=>c.key===g.cat)||{label:''}).label;
   const exHtml = g.examples.map(ex =>
     `<div class="grammar-ex-row">
-      <div class="grammar-ex-es" onclick="speakSentence('${escAttr(ex.es)}')">▶</div>
       <div class="grammar-ex-chunks">${_grammarExChunks(ex.es)}</div>
       <div class="grammar-ex-zh">${ex.zh}</div>
     </div>`
   ).join('');
   const ruleClass = g.emph ? 'grammar-rule grammar-rule-emph' : 'grammar-rule';
+  const mnemonicHtml = g.mnemonic ? `
+    <div class="grammar-mnemonic mnemonic-${g.mnemonic.side}">
+      <div class="mnemonic-head">${g.mnemonic.icon} ${g.mnemonic.word} 口訣</div>
+      <div class="mnemonic-desc">${g.mnemonic.desc}</div>
+      ${g.mnemonic.items.map(it=>`<div class="mnemonic-row">
+        <span class="mnemonic-letter">${it.l}</span>
+        <span class="mnemonic-label">${it.label}</span>
+        <span class="mnemonic-ex" onclick="speakSentence('${escAttr(it.ex)}')">${it.ex}</span>
+      </div>`).join('')}
+    </div>` : '';
   const userExs = (grammarUserExamples[gId]||{}).user_examples||[];
   const userExHtml = userExs.length
     ? `<div class="grammar-user-examples">
         <div class="grammar-user-label">✏️ 你的造句</div>
-        ${userExs.map(s=>`<div class="grammar-user-ex-row">
-          <span class="grammar-ex-es" onclick="speakFull('${escAttr(s)}')">▶</span>
-          <span class="grammar-user-ex-text">${s}</span>
-        </div>`).join('')}
+        ${userExs.map(s=>`<div class="grammar-user-ex-row">${_grammarExChunks(s)}</div>`).join('')}
       </div>`
     : '';
   openGrammarSheet(`
     <div class="grammar-cat-tag">${catLabel}</div>
     <div class="grammar-title">${g.title}</div>
     <div class="${ruleClass}">${g.rule}</div>
+    ${mnemonicHtml}
     <div class="grammar-examples">${exHtml}</div>
     ${buildConjTable(g.conj, g.id)}
     ${g.trap?`<p class="grammar-trap">${g.trap}</p>`:''}
@@ -2449,6 +2470,7 @@ function initReminders(){
   renderConjLibrary();
   renderPronounLibrary();
   renderGenderPairs();
+  renderSerEstarStation();
   renderVocab();
   renderGardenView();
   initTTS();

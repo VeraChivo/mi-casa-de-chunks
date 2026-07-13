@@ -454,8 +454,6 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .grammar-rule{font-size:13px;color:var(--tmid);font-weight:600;line-height:1.65;margin-bottom:12px;padding:9px 11px;background:rgba(159,208,222,.1);border-radius:9px;border-left:3px solid var(--mizu)}
 .grammar-examples{display:flex;flex-direction:column;gap:6px;margin-bottom:11px}
 .grammar-ex-row{display:flex;flex-direction:column;gap:5px;padding:9px 11px;background:var(--bg2);border-radius:10px;border:1px solid transparent;user-select:none}
-.grammar-ex-es{font-size:14px;font-weight:800;color:var(--konpeki);line-height:1.4;cursor:pointer;flex-shrink:0}
-.grammar-ex-es:active{opacity:.6}
 .grammar-ex-chunks{display:flex;flex-wrap:wrap;align-items:center;gap:2px;row-gap:6px}
 .ge-chunk{font-size:14px;font-weight:800;color:var(--konpeki);cursor:pointer;padding:2px 3px;border-radius:5px}
 .ge-chunk:active{background:rgba(108,155,210,.2)}
@@ -468,8 +466,39 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 /* 用戶造句區 */
 .grammar-user-examples{margin:10px 0 6px;border-top:1px solid var(--bg2);padding-top:10px}
 .grammar-user-label{font-size:11px;font-weight:900;color:var(--benikake);margin-bottom:6px;letter-spacing:.4px}
-.grammar-user-ex-row{display:grid;grid-template-columns:20px 1fr;align-items:start;gap:6px;margin-bottom:5px}
-.grammar-user-ex-text{font-size:13px;font-weight:700;color:var(--konpeki);line-height:1.5;word-break:break-word}
+.grammar-user-ex-row{display:flex;flex-wrap:wrap;align-items:center;gap:2px;row-gap:6px;margin-bottom:5px}
+
+/* ── SER/ESTAR 口訣（DOCTOR／PLACE） ── */
+.grammar-mnemonic{margin:0 0 11px;padding:10px 11px;border-radius:10px;background:var(--bg2)}
+.mnemonic-ser{border-left:3px solid var(--mizu)}
+.mnemonic-estar{border-left:3px solid var(--benikake)}
+.mnemonic-head{font-size:13px;font-weight:900;margin-bottom:2px}
+.mnemonic-ser .mnemonic-head{color:var(--misora)}
+.mnemonic-estar .mnemonic-head{color:var(--benikake)}
+.mnemonic-desc{font-size:11px;color:var(--tmid);font-weight:600;margin-bottom:7px}
+.mnemonic-row{display:grid;grid-template-columns:18px 1fr auto;align-items:center;gap:7px;padding:3px 0}
+.mnemonic-letter{font-size:13px;font-weight:900;color:white;background:var(--misora);border-radius:5px;text-align:center;line-height:18px;width:18px;height:18px}
+.mnemonic-estar .mnemonic-letter{background:var(--benikake)}
+.mnemonic-label{font-size:12px;font-weight:700;color:var(--tdark)}
+.mnemonic-ex{font-size:11.5px;font-weight:700;color:var(--konpeki);cursor:pointer;text-align:right}
+.mnemonic-ex:active{opacity:.6}
+
+/* ── 是・在對照站快覽卡 ── */
+.se-station-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+.se-col{padding:10px 9px;border-radius:12px;background:var(--bg2);cursor:pointer}
+.se-col:active{opacity:.8}
+.se-col.mnemonic-ser{border:1.5px solid var(--mizu)}
+.se-col.mnemonic-estar{border:1.5px solid var(--benikake)}
+.se-col-head{font-size:15px;font-weight:900;color:var(--misora)}
+.mnemonic-estar.se-col .se-col-head{color:var(--benikake)}
+.se-col-title{font-size:10.5px;color:var(--tmid);font-weight:700;margin-bottom:6px}
+.se-col-row{display:flex;gap:6px;align-items:center;padding:2px 0}
+.se-col-letter{width:16px;height:16px;line-height:16px;text-align:center;border-radius:4px;color:white;font-size:10px;font-weight:900;background:var(--misora);flex-shrink:0}
+.mnemonic-estar .se-col-letter{background:var(--benikake)}
+.se-col-label{font-size:11px;color:var(--tdark);font-weight:700}
+.se-col-more{margin-top:6px;font-size:10px;font-weight:800;color:var(--misora);text-align:right}
+.mnemonic-estar .se-col-more{color:var(--benikake)}
+@media(max-width:360px){.se-station-grid{grid-template-columns:1fr}}
 
 /* ── ¡Variadísimo! 變位速查 ── */
 .conj-section{margin:10px 0 8px;border-radius:10px;overflow:hidden;border:1.5px solid rgba(159,208,222,.4)}
