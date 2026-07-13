@@ -1765,7 +1765,7 @@ function _grammarExChunks(es){
   }).join('');
 }
 
-// ── 🧩 文法補充包（沒有綁定特定劇情句子的零散文法點） ──
+// ── 💧 文法儲水槽（沒有綁定特定劇情句子、從外面引進來的零散文法點） ──
 function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
   if(!el) return;
