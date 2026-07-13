@@ -147,10 +147,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"soy",    ex:"Soy estudiante.",     zh:"我是學生。"},
         {person:"tú",         form:"eres",   ex:"¿Eres Nita?",        zh:"你是妮妲嗎？"},
-        {person:"él/ella",    form:"es",     ex:"Es muy gracioso.",    zh:"他很幽默。"},
+        {person:"él/ella/usted", form:"es",     ex:"Es muy gracioso.",    zh:"他很幽默。"},
         {person:"nosotros",   form:"somos",  ex:"Somos amigos.",       zh:"我們是朋友。"},
-        {person:"vosotros",   form:"sois",   ex:"Sois muy listos.",    zh:"你們很聰明。", note:"拉美常用 ustedes 取代"},
-        {person:"ellos/ellas",form:"son",    ex:"Son las mejores.",    zh:"她們是最棒的。"}
+        {person:"ellos/ellas/ustedes", form:"son",    ex:"Son las mejores.",    zh:"她們是最棒的。"}
       ]
     }
   },
@@ -184,10 +183,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"estoy",   ex:"Estoy bien.",         zh:"我很好。"},
         {person:"tú",         form:"estás",   ex:"¿Estás bien?",        zh:"你還好嗎？"},
-        {person:"él/ella",    form:"está",    ex:"Está aquí.",          zh:"他在這裡。"},
+        {person:"él/ella/usted", form:"está",    ex:"Está aquí.",          zh:"他在這裡。"},
         {person:"nosotros",   form:"estamos", ex:"Estamos en casa.",    zh:"我們在家。"},
-        {person:"vosotros",   form:"estáis",  ex:"¿Estáis listos?",    zh:"你們準備好了？", note:"拉美常用 ustedes 取代"},
-        {person:"ellos/ellas",form:"están",   ex:"Están jugando.",      zh:"他們在玩。"}
+        {person:"ellos/ellas/ustedes", form:"están",   ex:"Están jugando.",      zh:"他們在玩。"}
       ]
     }
   },
@@ -209,10 +207,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"estoy",   ex:"Estoy comiendo.",     zh:"我在吃飯。"},
         {person:"tú",         form:"estás",   ex:"¿Estás durmiendo?",   zh:"你在睡覺嗎？"},
-        {person:"él/ella",    form:"está",    ex:"Está lloviendo.",     zh:"在下雨。"},
+        {person:"él/ella/usted", form:"está",    ex:"Está lloviendo.",     zh:"在下雨。"},
         {person:"nosotros",   form:"estamos", ex:"Estamos jugando.",    zh:"我們在玩。"},
-        {person:"vosotros",   form:"estáis",  ex:"¿Estáis trabajando?", zh:"你們在工作嗎？", note:"拉美常用 ustedes 取代"},
-        {person:"ellos/ellas",form:"están",   ex:"Están hablando.",     zh:"他們在說話。"}
+        {person:"ellos/ellas/ustedes", form:"están",   ex:"Están hablando.",     zh:"他們在說話。"}
       ]
     }
   },
@@ -248,10 +245,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"he",      ex:"He comido.",          zh:"我已吃了。"},
         {person:"tú",         form:"has",     ex:"¿Has llegado?",       zh:"你到了嗎？"},
-        {person:"él/ella",    form:"ha",      ex:"Ha perdido.",         zh:"他弄丟了。"},
+        {person:"él/ella/usted", form:"ha",      ex:"Ha perdido.",         zh:"他弄丟了。"},
         {person:"nosotros",   form:"hemos",   ex:"Hemos ganado.",       zh:"我們贏了。"},
-        {person:"vosotros",   form:"habéis",  ex:"¿Habéis terminado?",  zh:"你們完成了？", note:"拉美常用 han（ustedes han）取代"},
-        {person:"ellos/ellas",form:"han",     ex:"Han salido.",         zh:"他們出去了。"}
+        {person:"ellos/ellas/ustedes", form:"han",     ex:"Han salido.",         zh:"他們出去了。"}
       ]
     }
   },
@@ -285,10 +281,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"seré",    ex:"Seré médico.",        zh:"我會成為醫生。"},
         {person:"tú",         form:"serás",   ex:"Serás famosa.",       zh:"你會出名的。"},
-        {person:"él/ella",    form:"será",    ex:"Será un buen día.",   zh:"會是美好的一天。"},
+        {person:"él/ella/usted", form:"será",    ex:"Será un buen día.",   zh:"會是美好的一天。"},
         {person:"nosotros",   form:"seremos", ex:"Seremos campeones.",  zh:"我們將是冠軍。"},
-        {person:"vosotros",   form:"seréis",  ex:"Seréis grandes.",     zh:"你們將很偉大。", note:"拉美常用 ustedes serán 取代"},
-        {person:"ellos/ellas",form:"serán",   ex:"Serán felices.",      zh:"他們將幸福。"}
+        {person:"ellos/ellas/ustedes", form:"serán",   ex:"Serán felices.",      zh:"他們將幸福。"}
       ]
     }
   },
@@ -319,7 +314,7 @@ const GRAMMAR_DATA = [
       {es:"A todos les encanta saltar en los charcos.", zh:"所有人都超愛在水坑裡跳。"},
       {es:"A mí me gusta el café.", zh:"我喜歡咖啡。（加 a mí 是為了強調）"}
     ],
-    trap:"代名詞對應：a mí me / a ti te / a él,ella le / a nosotros nos / a vosotros os（拉美用 a ustedes les）/ a ellos les",
+    trap:"代名詞對應：a mí me / a ti te / a él,ella,usted le / a nosotros nos / a ustedes,ellos,ellas les（西班牙另有 a vosotros os，拉美不用）",
     source:"E3·S6 / E1·S10"
   },
 
@@ -341,10 +336,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"puedo",   ex:"Puedo salir.",        zh:"我可以出去。"},
         {person:"tú",         form:"puedes",  ex:"¿Puedes ayudar?",     zh:"你能幫忙嗎？"},
-        {person:"él/ella",    form:"puede",   ex:"Puede volar.",        zh:"他能飛。"},
+        {person:"él/ella/usted", form:"puede",   ex:"Puede volar.",        zh:"他能飛。"},
         {person:"nosotros",   form:"podemos", ex:"Podemos jugar.",      zh:"我們可以玩。"},
-        {person:"vosotros",   form:"podéis",  ex:"¿Podéis venir?",      zh:"你們能來嗎？", note:"拉美常用 ustedes pueden 取代"},
-        {person:"ellos/ellas",form:"pueden",  ex:"Pueden correr.",      zh:"他們能跑。"}
+        {person:"ellos/ellas/ustedes", form:"pueden",  ex:"Pueden correr.",      zh:"他們能跑。"}
       ]
     }
   },
@@ -365,10 +359,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"debo",    ex:"Debo estudiar.",      zh:"我必須念書。"},
         {person:"tú",         form:"debes",   ex:"Debes comer.",        zh:"你必須吃。"},
-        {person:"él/ella",    form:"debe",    ex:"Debe dormir.",        zh:"他必須睡。"},
+        {person:"él/ella/usted", form:"debe",    ex:"Debe dormir.",        zh:"他必須睡。"},
         {person:"nosotros",   form:"debemos", ex:"Debemos salir.",      zh:"我們應該出發。"},
-        {person:"vosotros",   form:"debéis",  ex:"Debéis llegar.",      zh:"你們必須到達。", note:"拉美常用 ustedes deben 取代"},
-        {person:"ellos/ellas",form:"deben",   ex:"Deben practicar.",    zh:"他們必須練習。"}
+        {person:"ellos/ellas/ustedes", form:"deben",   ex:"Deben practicar.",    zh:"他們必須練習。"}
       ]
     }
   },
@@ -456,10 +449,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"siento",   ex:"Me siento bien.",    zh:"我覺得很好。"},
         {person:"tú",         form:"sientes",  ex:"¿Cómo te sientes?",  zh:"妳覺得怎麼樣？"},
-        {person:"él/ella",    form:"siente",   ex:"Se siente sola.",    zh:"她覺得孤單。"},
+        {person:"él/ella/usted", form:"siente",   ex:"Se siente sola.",    zh:"她覺得孤單。"},
         {person:"nosotros",   form:"sentimos", ex:"Sentimos mucho.",    zh:"我們非常遺憾。"},
-        {person:"vosotros",   form:"sentís",   ex:"¿Cómo os sentís?",  zh:"你們感覺怎麼樣？", note:"拉美常用 ustedes 取代"},
-        {person:"ellos/ellas",form:"sienten",  ex:"Sienten alegría.",   zh:"他們感到快樂。"}
+        {person:"ellos/ellas/ustedes", form:"sienten",  ex:"Sienten alegría.",   zh:"他們感到快樂。"}
       ]
     }
   },
@@ -480,10 +472,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"voy",   ex:"Voy al colegio.",   zh:"我去學校。"},
         {person:"tú",         form:"vas",   ex:"¿Vas al parque?",   zh:"你去公園嗎？"},
-        {person:"él/ella",    form:"va",    ex:"Va a casa.",         zh:"他回家去。"},
+        {person:"él/ella/usted", form:"va",    ex:"Va a casa.",         zh:"他回家去。"},
         {person:"nosotros",   form:"vamos", ex:"Vamos a jugar.",    zh:"我們去玩吧！"},
-        {person:"vosotros",   form:"vais",  ex:"¿Vais al cine?",   zh:"你們去電影院嗎？", note:"拉美常用 ustedes van 取代"},
-        {person:"ellos/ellas",form:"van",   ex:"Van a la playa.",   zh:"他們去海灘。"}
+        {person:"ellos/ellas/ustedes", form:"van",   ex:"Van a la playa.",   zh:"他們去海灘。"}
       ]
     }
   },
@@ -518,10 +509,9 @@ const GRAMMAR_DATA = [
       rows:[
         {person:"yo",         form:"tengo",   ex:"Tengo hambre.",         zh:"我肚子餓了。"},
         {person:"tú",         form:"tienes",  ex:"¿Cuántos años tienes?", zh:"你幾歲？"},
-        {person:"él/ella",    form:"tiene",   ex:"Tiene sueño.",          zh:"他想睡覺了。"},
+        {person:"él/ella/usted", form:"tiene",   ex:"Tiene sueño.",          zh:"他想睡覺了。"},
         {person:"nosotros",   form:"tenemos", ex:"Tenemos frío.",        zh:"我們很冷。"},
-        {person:"vosotros",   form:"tenéis",  ex:"¿Tenéis hambre?",      zh:"你們餓了嗎？", note:"拉美常用 ustedes tienen 取代"},
-        {person:"ellos/ellas",form:"tienen",  ex:"Tienen miedo.",         zh:"他們害怕。"}
+        {person:"ellos/ellas/ustedes", form:"tienen",  ex:"Tienen miedo.",         zh:"他們害怕。"}
       ]
     }
   },

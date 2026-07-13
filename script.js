@@ -1232,6 +1232,14 @@ function getChunkAnnotation(chunk){
   if(!_chunkAnnotIndex) _buildChunkAnnotIndex();
   return _chunkAnnotIndex[chunk] || '';
 }
+// 花園清單顯示用：把內部追蹤用的 key 轉成看得懂的字，不要直接印出原始 key
+function _gardenChunkDisplay(chunk){
+  if(chunk.startsWith('sfx_')) return { text: chunk.slice(4), speakable: true };
+  if(chunk.startsWith('ge_'))  return { text: chunk.slice(3), speakable: true };
+  if(/^s2_p\d+$/.test(chunk))  return { text: '🛢️ 入桶陳韻練習句型', speakable: false };
+  if(!/[ .,!?¡¿]/.test(chunk) && chunk.includes('_')) return { text: '🍂 舊版殘留紀錄（可忽略）', speakable: false };
+  return { text: chunk, speakable: true };
+}
 function classifyGardenStatus(countOrEntry, graduated) {
   let stage;
   if (countOrEntry && typeof countOrEntry === 'object') {
@@ -1634,7 +1642,7 @@ function buildConjTable(conj, gId, showLabel){
   const main3 = conj.rows.slice(0,3).map(renderRow).join('');
   const rest3 = conj.rows.slice(3);
   const restHtml = rest3.length
-    ? `<details class="conj-expand"><summary class="conj-expand-summary">我們／你們／他們 ▾</summary>${rest3.map(renderRow).join('')}</details>`
+    ? `<details class="conj-expand"><summary class="conj-expand-summary">我們／他們 ▾</summary>${rest3.map(renderRow).join('')}</details>`
     : '';
   const jumpBtn = gId ? `<div class="conj-jump-btn" onclick="jumpToConjLib('${gId}')">🔄 查完整變位庫 →</div>` : '';
   const labelHtml = showLabel===false ? '' : `<div class="conj-verb-label">${conj.verb}</div>`;
@@ -2214,8 +2222,10 @@ function renderGardenView() {
       const qBadge = gs.stage === 3 && qc > 0 ? `<span class="garden-chip-qc">${qc}/3</span>` : '';
       const annot = getChunkAnnotation(chunk);
       const annotHtml = annot ? `<span class="garden-chip-note">${annot}</span>` : '';
-      return `<button class="garden-chip" onclick="speakFull('${escAttr(chunk)}')" title="點擊聽發音">
-        <span class="garden-chip-es">${chunk}</span>${annotHtml}${qBadge}
+      const disp = _gardenChunkDisplay(chunk);
+      const clickAttr = disp.speakable ? ` onclick="speakFull('${escAttr(chunk)}')" title="點擊聽發音"` : '';
+      return `<button class="garden-chip"${clickAttr}>
+        <span class="garden-chip-es">${disp.text}</span>${annotHtml}${qBadge}
       </button>`;
     }).join('');
     return `<div class="garden-stage-group">
@@ -2381,7 +2391,7 @@ function renderGardenQuizCard() {
     </div>
     <div class="quiz-stage-badge">${gs.icon} ${gs.label}</div>
     ${needsMoreHtml}
-    <div class="quiz-chunk-display" onclick="speakFull('${escAttr(chunk)}')">${chunk} <span class="quiz-speak-icon">▶</span></div>
+    <div class="quiz-chunk-display"${_gardenChunkDisplay(chunk).speakable?` onclick="speakFull('${escAttr(chunk)}')"`:''}>${_gardenChunkDisplay(chunk).text} <span class="quiz-speak-icon">▶</span></div>
     ${_quizFlipped
       ? `<div class="quiz-back">
           ${examplesHtml
