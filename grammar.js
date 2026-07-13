@@ -540,6 +540,29 @@ const GRAMMAR_DATA = [
     trap:"叛逆名詞：長得甜（-a 結尾）骨子裡是鹽——el mapa（地圖）、el día（日子）、el problema（問題）。真正屬於「-ma 希臘字源陽性字群」的只有 problema，跟 programa／sistema／clima／tema 同掛；día、mapa 純粹字尾巧合，各自獨立，別混為一談。<br><br>長得鹽（-o 或子音結尾）骨子裡是甜的：la mano（手）、la flor（花）。<br><br>規矩藏在能量感／形狀感的直覺裡，不是死板字尾規則。",
     crossLang:"台客語同一套氣場：公／牯＝太陽，發散、能量源頭；母／嫲＝月亮，包容、孕育、承載空間，跟西語 El／La 對得上。<br><br>形狀感也一樣：台語「螺絲母」＝螺帽，凹槽收納，呼應 la llave／la puerta／la caja；el lápiz／el puente／el árbol／el camino 這種延伸支撐的工具感，也貼著台客語「公／牯」的陽性直覺。",
     source:"文法補充"
+  },
+
+  {
+    id:"g23", cat:"verb-pattern",
+    title:"Andar + 現在分詞：拉美口語版的「正在」",
+    rule:"andar（原意：走動、漫步）+ 動詞字尾改 -ando／-iendo，是拉美口語很愛用的「正在做」，比 estar + -ando 多一種『這陣子到處瞎忙、斷斷續續在做』的語感，不是單純陳述當下正在做。",
+    examples:[
+      {es:"¿Qué andas haciendo?", zh:"你在忙什麼？（口語常用，也帶點「你又在搞什麼鬼」的語氣）"},
+      {es:"Ando buscando trabajo.", zh:"我這陣子都在到處找工作。（斷斷續續、還沒找到）"},
+      {es:"Ando pensando en eso.", zh:"我這陣子一直在想那件事。"}
+    ],
+    trap:"andar + 現在分詞只能搭配「主動做的動作動詞」，不能用在狀態/轉變動詞上（例如不會說 ando siendo，因為 ser 是狀態動詞）。跟 estoy buscando 比，ando buscando 多了「到處/斷斷續續/還沒個結果」的感覺。",
+    source:"文法補充",
+    conj:{
+      verb:"andar（走動；口語進行式）",
+      rows:[
+        {person:"yo",         form:"ando",    ex:"Ando cansada.",        zh:"我這陣子很累。"},
+        {person:"tú",         form:"andas",   ex:"¿Qué andas haciendo?", zh:"你在忙什麼？"},
+        {person:"él/ella/usted", form:"anda", ex:"Anda buscando piso.",  zh:"他這陣子在到處找房子。"},
+        {person:"nosotros",   form:"andamos", ex:"Andamos de viaje.",    zh:"我們這陣子在到處旅行。"},
+        {person:"ellos/ellas/ustedes", form:"andan", ex:"Andan diciendo tonterías.", zh:"他們一直到處亂講些有的沒的。"}
+      ]
+    }
   }
 
 ];
