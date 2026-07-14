@@ -128,7 +128,7 @@ const GRAMMAR_DATA = [
       icon:"💎", word:"DOCTOR", side:"ser",
       desc:"SER 的口訣：抓住「恆久不變」的核心",
       items:[
-        {l:"D",label:"Description 描述",ex:"外貌／個性"},
+        {l:"D",label:"Description 描述",ex:"Es simpática."},
         {l:"O",label:"Occupation 職業",ex:"Es doctora."},
         {l:"C",label:"Characteristics 特徵",ex:"Es alto."},
         {l:"T",label:"Time 時間",ex:"Son las tres."},

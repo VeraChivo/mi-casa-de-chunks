@@ -528,7 +528,7 @@ function renderGroupFireArea(entries){
   if(!el) return;
   el.innerHTML=entries.map(a=>`
     <div class="group-fire-card">
-      <div class="group-fire-core" onclick="speakFull('${escAttr(a.core_ammo)}')">${a.core_ammo} <small style="color:var(--tlight);font-weight:500">${a.core_zh}</small></div>
+      <div class="group-fire-core" onclick="speakAmmoCore('${escAttr(a.ammo_id)}','${escAttr(a.core_ammo)}')">${a.core_ammo} <small style="color:var(--tlight);font-weight:500">${a.core_zh}</small></div>
       ${renderAmmoFireRow(a.fire_peppa,'peppa',a.ammo_id)}
       ${a.fire_daily.map((f,fi)=>renderAmmoFireRow(f,'daily',a.ammo_id,fi)).join('')}
     </div>
@@ -1826,6 +1826,19 @@ function speakGramSmart(text){
   player.play().catch(()=>speakSentence(text));
 }
 
+// ── 語塊花園/抓蟲複習用：key可能是課文語塊、也可能是整句，兩個索引都試 ──
+function speakGardenChunk(text){
+  const chunkFile = (typeof CHUNK_AUDIO_MAP!=='undefined') ? CHUNK_AUDIO_MAP[text] : null;
+  if(chunkFile){
+    const player = new Audio(chunkFile);
+    player.onerror = () => speakFull(text);
+    player.play().catch(()=>speakFull(text));
+    return;
+  }
+  if(typeof GRAM_AUDIO_MAP!=='undefined' && GRAM_AUDIO_MAP[text]){ speakGramSmart(text); return; }
+  speakFull(text);
+}
+
 function buildConjTable(conj, gId, showLabel){
   if(!conj || !conj.rows || !conj.rows.length) return '';
   const renderRow = r =>
@@ -2521,7 +2534,7 @@ function renderGardenView() {
       const annot = getChunkAnnotation(chunk);
       const annotHtml = annot ? `<span class="garden-chip-note">${annot}</span>` : '';
       const disp = _gardenChunkDisplay(chunk);
-      const clickAttr = disp.speakable ? ` onclick="speakFull('${escAttr(chunk)}')" title="點擊聽發音"` : '';
+      const clickAttr = disp.speakable ? ` onclick="speakGardenChunk('${escAttr(chunk)}')" title="點擊聽發音"` : '';
       return `<button class="garden-chip"${clickAttr}>
         <span class="garden-chip-es">${disp.text}</span>${annotHtml}${qBadge}
       </button>`;
@@ -2673,7 +2686,7 @@ function renderGardenQuizCard() {
 
   const examplesHtml = examples.length
     ? examples.map(ex => `<div class="quiz-example-row">
-        <span class="quiz-ex-es" onclick="speakFull('${escAttr(ex.es)}')">${ex.es}</span>
+        <span class="quiz-ex-es" onclick="speakGramSmart('${escAttr(ex.es)}')">${ex.es}</span>
         <span class="quiz-ex-zh">${ex.zh}</span>
       </div>`).join('')
     : '';
@@ -2689,7 +2702,7 @@ function renderGardenQuizCard() {
     </div>
     <div class="quiz-stage-badge">${gs.icon} ${gs.label}</div>
     ${needsMoreHtml}
-    <div class="quiz-chunk-display"${_gardenChunkDisplay(chunk).speakable?` onclick="speakFull('${escAttr(chunk)}')"`:''}>${_gardenChunkDisplay(chunk).text} <span class="quiz-speak-icon">▶</span></div>
+    <div class="quiz-chunk-display"${_gardenChunkDisplay(chunk).speakable?` onclick="speakGardenChunk('${escAttr(chunk)}')"`:''}>${_gardenChunkDisplay(chunk).text} <span class="quiz-speak-icon">▶</span></div>
     ${_quizFlipped
       ? `<div class="quiz-back">
           ${examplesHtml
