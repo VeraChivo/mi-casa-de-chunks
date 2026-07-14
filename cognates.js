@@ -413,7 +413,7 @@ const SUFFIX_PATTERNS = [
     hint: '心理狀態/抽象的動作。<br>動作名詞化：mover→movimiento',
     words: [
       {en:'moment',     es:'momento',      art:'el', zh:'時刻',   ex:{es:'Es el momento perfecto.',        zh:'這是完美的時刻。', chunks:[{w:"Es",role:"v"},{w:"el momento perfecto.",role:"c"}]}},
-      {en:'movement',   es:'movimiento',   art:'el', zh:'動作',   ex:{es:'Haz el movimiento lento.',      zh:'把動作放慢做。', chunks:[{w:"Haz",role:"v"},{w:"el movimiento",role:"o"},{w:"lento.",role:"c"}]}},
+      {en:'movement',   es:'movimiento',   art:'el', zh:'動作',   ex:{es:'Haz el movimiento lento.',      zh:'把動作放慢點。', chunks:[{w:"Haz",role:"v"},{w:"el movimiento",role:"o"},{w:"lento.",role:"c"}]}},
       {en:'sentiment',  es:'sentimiento',  art:'el', zh:'情感',   ex:{es:'Es un sentimiento bonito.',     zh:'這是個美好的情感。', chunks:[{w:"Es",role:"v"},{w:"un sentimiento bonito.",role:"c"}]}},
       {en:'instrument', es:'instrumento',  art:'el', zh:'樂器',   ex:{es:'El instrumento suena muy bien.', zh:'這個樂器音色很好。', chunks:[{w:"El instrumento",role:"s"},{w:"suena",role:"v"},{w:"muy bien.",role:"c"}]}},
       {en:'argument',   es:'argumento',    art:'el', zh:'論點',   ex:{es:'Es un buen argumento.',         zh:'這是個好論點。', chunks:[{w:"Es",role:"v"},{w:"un buen argumento.",role:"c"}]}},
