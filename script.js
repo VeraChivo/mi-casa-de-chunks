@@ -137,7 +137,7 @@ function speakSentenceSmart(epIdx, sentIdx, text){
   if(!files.length){ speakFull(text); return; }
   let i = 0;
   const player = new Audio();
-  player.onended = () => { i++; setTimeout(playNext, 100); };
+  player.onended = () => { i++; setTimeout(playNext, 30); };
   player.onerror = () => { speakFull(text); };
   function playNext(){
     if(i >= files.length) return;
@@ -609,7 +609,7 @@ function playCognateDual(dir){
   let i = 1;
   const player = new Audio();
   _cogDualPlayer = player;
-  player.onended = () => { i++; setTimeout(playNext, 100); };
+  player.onended = () => { i++; setTimeout(playNext, 30); };
   player.onerror = () => { toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; };
   function playNext(){
     if(i > total || player !== _cogDualPlayer) return;
@@ -1934,7 +1934,7 @@ function speakSelSentenceSmart(selEp, sentIdx, text){
   if(!files.length){ speakFull(text); return; }
   let i = 0;
   const player = new Audio();
-  player.onended = () => { i++; setTimeout(playNext, 100); };
+  player.onended = () => { i++; setTimeout(playNext, 30); };
   player.onerror = () => { speakFull(text); };
   function playNext(){
     if(i >= files.length) return;
