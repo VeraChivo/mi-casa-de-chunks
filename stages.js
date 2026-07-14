@@ -389,6 +389,42 @@ function _s3UpdateOutput3(){
   }
 }
 
+// 真人音檔對照(so.zip)：só有錄一種變位形態的動詞，主詞不符時該筆為 null → fallback TTS
+const S3_VERB_AUDIO = {
+  soy:    {Yo:'audio/vocab/so/so_v_01.mp3'},
+  estoy:  {Yo:'audio/vocab/so/so_v_02.mp3'},
+  encanta:{Yo:'audio/vocab/so/so_v_03.mp3'},
+  heen:   {Yo:'audio/vocab/so/so_v_04.mp3'},
+  eres:   {'Tú':'audio/vocab/so/so_v_05.mp3'},
+  poder:  {Yo:'audio/vocab/so/so_v_06.mp3'}, // 只錄了 puedo，puedes 沒錄
+  deber:  {'Tú':'audio/vocab/so/so_v_07.mp3'}, // 只錄了 debes，debo 沒錄
+};
+const S3_OBJ_AUDIO = [
+  {m:'audio/vocab/so/so_n_01.mp3', f:'audio/vocab/so/so_n_01.mp3'}, // estudiante
+  {m:'audio/vocab/so/so_n_02.mp3', f:'audio/vocab/so/so_n_03.mp3'}, // amigo/amiga
+  {m:'audio/vocab/so/so_n_04.mp3', f:'audio/vocab/so/so_n_04.mp3'}, // detective
+  {m:'audio/vocab/so/so_n_05.mp3', f:'audio/vocab/so/so_n_06.mp3'}, // médico/médica
+  {m:'audio/vocab/so/so_n_07.mp3', f:'audio/vocab/so/so_n_07.mp3'}, // saltar en charcos de barro
+  {m:'audio/vocab/so/so_n_08.mp3', f:'audio/vocab/so/so_n_08.mp3'}, // salir a jugar
+  {m:'audio/vocab/so/so_n_09.mp3', f:'audio/vocab/so/so_n_09.mp3'}, // ver la televisión
+  {m:'audio/vocab/so/so_n_10.mp3', f:'audio/vocab/so/so_n_10.mp3'}, // lavarme las manos
+];
+let _s3AudioPlayer = null;
+function _s3PlayAudioSeq(files, fallbackText){
+  if(_s3AudioPlayer) _s3AudioPlayer.pause();
+  let i=0;
+  const player=new Audio();
+  _s3AudioPlayer=player;
+  player.onended=()=>{ i++; setTimeout(next,100); };
+  player.onerror=()=>{ speakFull(fallbackText); };
+  function next(){
+    if(i>=files.length || player!==_s3AudioPlayer) return;
+    player.src=files[i];
+    player.play().catch(()=>speakFull(fallbackText));
+  }
+  next();
+}
+
 function s3SpeakCurrent(){
   if(!_s3SelectedVerbId||!_s3SelectedSubjEs||_s3SelectedObjIdx===null) return;
   const verb=S3_VERBS.find(v=>v.id===_s3SelectedVerbId);
@@ -396,6 +432,16 @@ function s3SpeakCurrent(){
   const obj=S3_OBJECTS[_s3SelectedObjIdx];
   const objEs=_s3Gender==='female' ? obj.es_f : obj.es_m;
   const full=verb.no_subj_prefix ? `${verbEs} ${objEs}.` : `${_s3SelectedSubjEs} ${verbEs} ${objEs}.`;
+
+  const verbAudio = (S3_VERB_AUDIO[verb.id]||{})[_s3SelectedSubjEs];
+  const objAudio = _s3Gender==='female' ? S3_OBJ_AUDIO[_s3SelectedObjIdx].f : S3_OBJ_AUDIO[_s3SelectedObjIdx].m;
+  if(verbAudio && objAudio){
+    const files=[];
+    if(!verb.no_subj_prefix) files.push(_s3SelectedSubjEs==='Yo' ? 'audio/vocab/so/Yo.mp3' : 'audio/vocab/so/Tu.mp3');
+    files.push(verbAudio, objAudio);
+    _s3PlayAudioSeq(files, full);
+    return;
+  }
   speakFull(full);
 }
 
