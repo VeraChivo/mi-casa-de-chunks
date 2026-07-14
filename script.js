@@ -1791,13 +1791,22 @@ function showGrammarTip(globalIdx){
   </div>`;
 }
 
+// ── 文法卡/變位庫例句，真人音檔優先(依例句原文精準比對)，找不到才fallback TTS ──
+function speakGramSmart(text){
+  const file = (typeof GRAM_AUDIO_MAP!=='undefined') ? GRAM_AUDIO_MAP[text] : null;
+  if(!file){ speakSentence(text); return; }
+  const player = new Audio(file);
+  player.onerror = () => speakSentence(text);
+  player.play().catch(()=>speakSentence(text));
+}
+
 function buildConjTable(conj, gId, showLabel){
   if(!conj || !conj.rows || !conj.rows.length) return '';
   const renderRow = r =>
     `<div class="conj-row">
       <span class="conj-person">${r.person}</span>
-      <span class="conj-form" onclick="speakSentence('${escAttr(r.ex)}')">${r.form}</span>
-      <span class="conj-ex" onclick="speakSentence('${escAttr(r.ex)}')">${r.ex}</span>
+      <span class="conj-form" onclick="speakConjForm('${gId}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
+      <span class="conj-ex" onclick="speakGramSmart('${escAttr(r.ex)}')">${r.ex}</span>
       <span class="conj-zh">${r.zh}</span>
       ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
     </div>`;
@@ -1875,7 +1884,7 @@ function renderConjLibrary(){
       `<div class="conj-row">
         <span class="conj-person">${r.person}</span>
         <span class="conj-form" onclick="speakConjForm('${g.id}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
-        <span class="conj-ex" onclick="speakSentence('${escAttr(r.ex)}')">${r.ex}</span>
+        <span class="conj-ex" onclick="speakGramSmart('${escAttr(r.ex)}')">${r.ex}</span>
         <span class="conj-zh">${r.zh}</span>
         ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
       </div>`;
@@ -2043,7 +2052,7 @@ function openGrammarCard(gId){
   const exHtml = g.examples.map(ex =>
     `<div class="grammar-ex-row">
       <div class="grammar-ex-chunks">${_grammarExChunks(ex.es)}</div>
-      <div class="grammar-ex-zh" onclick="speakFull('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh} <span class="ex-zh-play">▶ 整句</span></div>
+      <div class="grammar-ex-zh" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh} <span class="ex-zh-play">▶ 整句</span></div>
     </div>`
   ).join('');
   const ruleClass = g.emph ? 'grammar-rule grammar-rule-emph' : 'grammar-rule';
