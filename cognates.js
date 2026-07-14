@@ -502,7 +502,7 @@ const SUFFIX_PATTERNS = [
     words: [
       {en:'rapidly',   es:'rápidamente',   art:'', zh:'快速地', ex:{es:'Corre rápidamente.',           zh:'他跑得很快。', chunks:[{w:"Corre",role:"v"},{w:"rápidamente.",role:"c"}]}},
       {en:'exactly',   es:'exactamente',   art:'', zh:'確切地', ex:{es:'Es exactamente lo que quiero.', zh:'這正是我想要的。', chunks:[{w:"Es",role:"v"},{w:"exactamente lo que quiero.",role:"c"}]}},
-      {en:'perfectly', es:'perfectamente', art:'', zh:'完美地', ex:{es:'Entiendo perfectamente.',       zh:'我完全理解。', chunks:[{w:"Entiendo",role:"v"},{w:"perfectamente.",role:"c"}]}},
+      {en:'perfectly', es:'perfectamente', art:'', zh:'完美地', ex:{es:'Entiendo perfectamente.',       zh:'我完全理解。（完美地理解）', chunks:[{w:"Entiendo",role:"v"},{w:"perfectamente.",role:"c"}]}},
       {en:'finally',   es:'finalmente',    art:'', zh:'最後',   ex:{es:'Finalmente llegamos.',          zh:'我們終於到了。', chunks:[{w:"Finalmente",role:"c"},{w:"llegamos.",role:"v"}]}},
     ]
   },

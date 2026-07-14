@@ -863,11 +863,11 @@ let vocabList=[];
 function addToVocab(text,zh,source){
   const clean=(text||'').replace(/[¡!¿?,.:;]+$/,'').replace(/^[¡¿]+/,'').trim();
   if(!clean) return;
-  if(vocabList.some(v=>v.text===clean)){ toast('已經收藏過了！'); return; }
+  if(vocabList.some(v=>v.text===clean)){ toast('已經在私語窖存釀過了！'); return; }
   vocabList.push({id:Date.now()+Math.random(), text:clean, zh:zh||'', source:source||''});
   saveVocabToLS();
   renderVocab();
-  toast('☆ 已收藏到詞彙本！');
+  toast('☆ 已送至私語窖存釀！');
 }
 
 function removeFromVocab(id){
