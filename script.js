@@ -600,11 +600,20 @@ function jumpToAmmo(globalIdx){
 function renderGenderPairs(){
   const el = document.getElementById('genderPairsBody');
   if(!el) return;
+  const _gdb = getGardenDB();
   el.innerHTML = GENDER_PAIRS.map((p,pi)=>`
     <div class="gp-card">
       <div class="gp-zh">${p.zh}</div>
       <div class="gp-toggles">
-        ${p.options.map((o,oi)=>`<span class="gp-toggle ${o.suf==='a'?'gp-toggle-f':'gp-toggle-m'}" id="gp-${pi}-${oi}" onclick="pickGenderPair(${pi},${oi})">${o.word}</span>`).join('')}
+        ${p.options.map((o,oi)=>{
+          const worthy = isVocabWorthy(o.word);
+          const addBtnHtml = worthy ? `<span class="vocab-add-btn" onclick="event.stopPropagation();addToVocab('${escAttr(o.word)}','${escAttr(p.zh)}','太極定裝鏡')">＋</span>` : '';
+          const _key = 'gp_'+o.word;
+          const _st = (_gdb[_key]||{stage:0}).stage;
+          const _ic = GARDEN_STAGES[_st];
+          const starHtml = worthy ? `<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('gp_${escAttr(o.word)}',this)" title="語塊進度">${_ic}</span>` : '';
+          return `<span class="gp-toggle-wrap"><span class="gp-toggle ${o.suf==='a'?'gp-toggle-f':'gp-toggle-m'}" id="gp-${pi}-${oi}" onclick="pickGenderPair(${pi},${oi})">${o.word}</span>${starHtml}${addBtnHtml}</span>`;
+        }).join('')}
       </div>
       <div class="gp-example" id="gp-ex-${pi}" style="display:none"></div>
     </div>`).join('');
@@ -1466,6 +1475,7 @@ function getChunkAnnotation(chunk){
 function _gardenChunkDisplay(chunk){
   if(chunk.startsWith('sfx_')) return { text: chunk.slice(4), speakable: true };
   if(chunk.startsWith('ge_'))  return { text: chunk.slice(3), speakable: true };
+  if(chunk.startsWith('gp_'))  return { text: chunk.slice(3), speakable: true };
   if(/^s2_p\d+$/.test(chunk))  return { text: '🛢️ 入桶陳韻練習句型', speakable: false };
   if(!/[ .,!?¡¿]/.test(chunk) && chunk.includes('_')) return { text: '🍂 舊版殘留紀錄（可忽略）', speakable: false, junk: true };
   return { text: chunk, speakable: true };
@@ -2645,7 +2655,7 @@ function renderGardenView() {
       const annot = getChunkAnnotation(chunk);
       const annotHtml = annot ? `<span class="garden-chip-note">${annot}</span>` : '';
       const disp = _gardenChunkDisplay(chunk);
-      const clickAttr = disp.speakable ? ` onclick="speakGardenChunk('${escAttr(chunk)}')" title="點擊聽發音"` : '';
+      const clickAttr = disp.speakable ? ` onclick="speakGardenChunk('${escAttr(disp.text)}')" title="點擊聽發音"` : '';
       return `<button class="garden-chip"${clickAttr}>
         <span class="garden-chip-es">${disp.text}</span>${annotHtml}${qBadge}
       </button>`;
@@ -2813,7 +2823,7 @@ function renderGardenQuizCard() {
     </div>
     <div class="quiz-stage-badge">${gs.icon} ${gs.label}</div>
     ${needsMoreHtml}
-    <div class="quiz-chunk-display"${_gardenChunkDisplay(chunk).speakable?` onclick="speakGardenChunk('${escAttr(chunk)}')"`:''}>${_gardenChunkDisplay(chunk).text} <span class="quiz-speak-icon">▶</span></div>
+    <div class="quiz-chunk-display"${_gardenChunkDisplay(chunk).speakable?` onclick="speakGardenChunk('${escAttr(_gardenChunkDisplay(chunk).text)}')"`:''}>${_gardenChunkDisplay(chunk).text} <span class="quiz-speak-icon">▶</span></div>
     ${_quizFlipped
       ? `<div class="quiz-back">
           ${examplesHtml
