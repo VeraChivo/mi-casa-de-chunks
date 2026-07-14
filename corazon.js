@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       html += `<div class="mom-atm-card">
         <span class="gestalt-tag type-d">#${item.tag}</span>
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation">${item.zh}</div>
+        <div class="card-chinese-translation" onclick="speakFull('${escAttr(item.es)}')" title="點這裡聽整句">${item.zh} <span class="ex-zh-play">▶ 整句</span></div>
       </div>`;
     });
     html += `</div></div>`;

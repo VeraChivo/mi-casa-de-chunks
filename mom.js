@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       html += `<div class="mom-atm-card" data-scene="${scene}">
         ${tagHtml}
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation">${displayZh}</div>
+        <div class="card-chinese-translation" onclick="speakFull('${escAttr(displayEs)}')" title="點這裡聽整句">${displayZh} <span class="ex-zh-play">▶ 整句</span></div>
       </div>`;
     });
 

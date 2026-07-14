@@ -2091,6 +2091,10 @@ function speakSentence(text){
   const dot = document.getElementById('ttsDot');
   if(dot){ dot.classList.remove('ready'); dot.classList.add('speaking'); }
   utt.onend = () => { if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); } };
+  utt.onerror = () => {
+    if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); }
+    toast('⚠️ 語音播放失敗，可再點一次');
+  };
   setTimeout(() => {
     try{ speechSynthesis.speak(utt); }catch(e){ toast('⚠️ 語音播放失敗'); }
   }, 0);
