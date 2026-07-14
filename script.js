@@ -2108,10 +2108,14 @@ function _grammarExChunks(es, playExpr){
     const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
     return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}`;
   };
-  // 引號內的對話包成一個不斷行區塊，換行只會發生在引號之間，不會把一句對話從中間斷開
+  // 引號內的對話如果只是句子裡一小段（≤6個字），包成不斷行區塊避免斷在對話中間；
+  // 但如果整句話本身就是一個長引號（例如角色整句自我介紹），不要整句鎖死不斷行，
+  // 不然手機螢幕會被撐出去，寧可讓它照正常換行
+  const QUOTE_SEG_WORD_LIMIT = 6;
   let html = '';
   let quoteOpen = false;
   let segBuf = null;
+  let segWordCount = 0;
   words.forEach(tok=>{
     if(!tok.trim()){ if(segBuf!==null) segBuf.push(tok); else html+=tok; return; }
     const rendered = renderTok(tok);
@@ -2119,13 +2123,15 @@ function _grammarExChunks(es, playExpr){
     const wasOpen = quoteOpen;
     if(quoteCount % 2 === 1) quoteOpen = !quoteOpen;
     if(!wasOpen && quoteOpen){
-      segBuf = [rendered];
+      segBuf = [rendered]; segWordCount = 1;
     } else if(wasOpen && !quoteOpen){
-      segBuf.push(rendered);
-      html += `<span class="ge-quote-seg">${segBuf.join('')}</span>`;
-      segBuf = null;
+      segBuf.push(rendered); segWordCount++;
+      html += segWordCount <= QUOTE_SEG_WORD_LIMIT
+        ? `<span class="ge-quote-seg">${segBuf.join('')}</span>`
+        : segBuf.join('');
+      segBuf = null; segWordCount = 0;
     } else if(segBuf!==null){
-      segBuf.push(rendered);
+      segBuf.push(rendered); segWordCount++;
     } else {
       html += rendered;
     }
