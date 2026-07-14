@@ -147,6 +147,22 @@ function speakSentenceSmart(epIdx, sentIdx, text){
   playNext();
 }
 
+// ── 彈藥庫卡片標題（core_ammo）跟課文原句逐字相同，借用課文真人音檔 ──
+function speakAmmoCore(ammoId, text){
+  const m = (ammoId||'').match(/^e(\d+)_(\d+)$/);
+  if(m){ speakSentenceSmart(parseInt(m[1],10)-1, parseInt(m[2],10)-1, text); }
+  else { speakFull(text); }
+}
+
+// ── 彈藥庫「🔥全速運轉」日常例句，真人音檔優先，找不到時 fallback 回瀏覽器 TTS ──
+function speakAmmoDaily(ammoId, dailyIdx, text){
+  const file = (typeof AMMO_DAILY_AUDIO_MAP!=='undefined' && AMMO_DAILY_AUDIO_MAP[ammoId] && AMMO_DAILY_AUDIO_MAP[ammoId][dailyIdx]) || null;
+  if(!file){ speakFull(text); return; }
+  const player = new Audio(file);
+  player.onerror = () => speakFull(text);
+  player.play().catch(()=>speakFull(text));
+}
+
 // ── 真人錄音音檔優先播放（單檔版，mom.js/corazon.js 用），找不到時 fallback 回瀏覽器 TTS ──
 function speakMapSmart(map, catKey, idx, text){
   const file = (typeof window[map]!=='undefined' && window[map][catKey] && window[map][catKey][idx]) || null;
@@ -311,21 +327,23 @@ function renderAmmoFireChunks(fire, ammoId, rowType){
   }).join('')}</div>`;
 }
 
-function renderAmmoFireRow(fire, type, ammoId){
+function renderAmmoFireRow(fire, type, ammoId, dailyIdx){
   const tag = type==='peppa' ? '🎯 原句直擊（劇情原句）' : '🔥 全速運轉（日常對話）';
   const tsLabel = type==='peppa' && fire.ts!=null
     ? `<span class="ammo-fire-ts" onclick="seekYT(${fire.ts})">▶ ${Math.floor(fire.ts/60)}:${String(fire.ts%60).padStart(2,'0')}</span>`
     : '';
-  let peppaClick = '';
+  let rowClick = '';
   if(type==='peppa'){
-    if(fire.ts!=null){ peppaClick = `seekYT(${fire.ts})`; }
+    if(fire.ts!=null){ rowClick = `seekYT(${fire.ts})`; }
     else {
       // fire_peppa.es 跟課文原句完全相同，直接借用課文的真人音檔
       const m = (ammoId||'').match(/^e(\d+)_(\d+)$/);
-      peppaClick = m ? `speakSentenceSmart(${parseInt(m[1],10)-1},${parseInt(m[2],10)-1},'${escAttr(fire.es)}')` : `speakFull('${escAttr(fire.es)}')`;
+      rowClick = m ? `speakSentenceSmart(${parseInt(m[1],10)-1},${parseInt(m[2],10)-1},'${escAttr(fire.es)}')` : `speakFull('${escAttr(fire.es)}')`;
     }
+  } else {
+    rowClick = `speakAmmoDaily('${escAttr(ammoId)}',${dailyIdx},'${escAttr(fire.es)}')`;
   }
-  return `<div class="ammo-fire-row ${type}" onclick="${type==='peppa'?peppaClick:`speakFull('${escAttr(fire.es)}')`}">
+  return `<div class="ammo-fire-row ${type}" onclick="${rowClick}">
     <div class="ammo-fire-tag ${type}">${tag}${tsLabel}</div>
     <div class="ammo-fire-es">${fire.es}</div>
     <div class="ammo-fire-zh">${fire.zh}</div>
@@ -393,7 +411,7 @@ function renderAmmo(){
     const _ammoGardenDB = getGardenDB();
     const cardsHtml = g.cards.map(a=>{
       const star = GARDEN_STAGES[(_ammoGardenDB[a.core_ammo]||{stage:0}).stage||0];
-      const dailyRows = a.fire_daily.map(f=>renderAmmoFireRow(f,'daily',a.ammo_id)).join('');
+      const dailyRows = a.fire_daily.map((f,fi)=>renderAmmoFireRow(f,'daily',a.ammo_id,fi)).join('');
       const num = parseInt((a.ammo_id.match(/(\d+)$/)||['','0'])[1],10);
       const numDisplay = `<span class="ammo-num-ep">ep${epNum}-${num}</span><span class="ammo-num-sep">·</span><span class="ammo-num-text">${NUM_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-text">${ORD_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-emoji">${NUM_EMOJI[num]}</span>`;
       return `<div class="ammo-card ammo-collapsed" id="ammo-${a.ammo_id}">
@@ -403,7 +421,7 @@ function renderAmmo(){
         </div>
         <div class="ammo-card-body">
           <div class="ammo-chunk-row">
-            <span class="ammo-chunk" onclick="speakFull('${escAttr(a.core_ammo)}')">${a.core_ammo}</span>
+            <span class="ammo-chunk" onclick="speakAmmoCore('${escAttr(a.ammo_id)}','${escAttr(a.core_ammo)}')">${a.core_ammo}</span>
             ${renderBeVerbTag(a)}
           </div>
           ${renderBeVerbNote(a)}
@@ -501,7 +519,7 @@ function renderGroupFireArea(entries){
     <div class="group-fire-card">
       <div class="group-fire-core" onclick="speakFull('${escAttr(a.core_ammo)}')">${a.core_ammo} <small style="color:var(--tlight);font-weight:500">${a.core_zh}</small></div>
       ${renderAmmoFireRow(a.fire_peppa,'peppa',a.ammo_id)}
-      ${a.fire_daily.map(f=>renderAmmoFireRow(f,'daily',a.ammo_id)).join('')}
+      ${a.fire_daily.map((f,fi)=>renderAmmoFireRow(f,'daily',a.ammo_id,fi)).join('')}
     </div>
   `).join('');
 }
