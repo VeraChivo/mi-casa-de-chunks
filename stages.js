@@ -424,7 +424,7 @@ function _s3PlayAudioSeq(files, fallbackText){
   let i=0;
   const player=new Audio();
   _s3AudioPlayer=player;
-  player.onended=()=>{ i++; setTimeout(next,30); };
+  player.onended=()=>{ i++; setTimeout(next,15); };
   player.onerror=()=>{ speakFull(fallbackText); };
   function next(){
     if(i>=files.length || player!==_s3AudioPlayer) return;

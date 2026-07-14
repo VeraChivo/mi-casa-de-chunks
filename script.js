@@ -148,7 +148,7 @@ function speakSentenceSmart(epIdx, sentIdx, text){
   if(!files.length){ speakFull(text); return; }
   let i = 0;
   const player = new Audio();
-  player.onended = () => { i++; setTimeout(playNext, 30); };
+  player.onended = () => { i++; setTimeout(playNext, 15); };
   player.onerror = () => { speakFull(text); };
   function playNext(){
     if(i >= files.length) return;
@@ -1812,7 +1812,7 @@ function speakGramSmart(text){
     if(!entry.length){ speakSentence(text); return; }
     let i = 0;
     const player = new Audio();
-    player.onended = () => { i++; setTimeout(playNext, 30); };
+    player.onended = () => { i++; setTimeout(playNext, 15); };
     player.onerror = () => speakSentence(text);
     function playNext(){
       if(i >= entry.length) return;
@@ -2036,7 +2036,7 @@ function speakSelSentenceSmart(selEp, sentIdx, text){
   if(!files.length){ speakFull(text); return; }
   let i = 0;
   const player = new Audio();
-  player.onended = () => { i++; setTimeout(playNext, 30); };
+  player.onended = () => { i++; setTimeout(playNext, 15); };
   player.onerror = () => { speakFull(text); };
   function playNext(){
     if(i >= files.length) return;
