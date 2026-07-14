@@ -708,7 +708,7 @@ function renderCogLibrary(filter){
           const _sfIc=GARDEN_STAGES[_sfSt];
           const starHtml = isVocabWorthy(ck.w) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
           const dispW=ck.role==='v'?renderVWords(ck.w):ck.w;
-          return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+'" data-copy-text="'+escAttr(clean)+'" onclick="'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
+          return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+'" data-copy-text="'+escAttr(clean)+'" onclick="event.stopPropagation();'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
         }).join('');
         return `
         <div class="suffix-word-card">
@@ -720,7 +720,7 @@ function renderCogLibrary(filter){
             ${addBtnHtml}
           </div>
           ${genderHtml}
-          ${w.ex?`<div class="suffix-ex">
+          ${w.ex?`<div class="suffix-ex" onclick="${exPlayExpr}" title="點這裡聽整句">
             <div class="suffix-ex-chunks">${chunksHtml}</div>
             <span class="suffix-ex-zh">${w.ex.zh}</span>
           </div>`:''}
@@ -1010,7 +1010,7 @@ function selectExpand(key,i){
   const built=buildExpandSentence(s.expand);
   if(built){
     document.getElementById('makeFreeInput').value=built;
-    speakFull(built);
+    speakGramSmart(built);
   }
 }
 
