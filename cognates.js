@@ -29,6 +29,22 @@ const GENDER_PAIRS = [
   {zh:'朋友', options:[
     {suf:'o', word:'amigo', ex:'Tito es mi amigo.', exZh:'迪多是我朋友。（男）'},
     {suf:'a', word:'amiga', ex:'Vera Oveja es mi amiga.', exZh:'薇拉羊是我朋友。（女）'}
+  ]},
+  {zh:'演員', options:[
+    {suf:'', word:'actor', ex:'El actor es muy famoso.', exZh:'這位男演員很有名。（男）'},
+    {suf:'a', word:'actriz', ex:'La actriz es muy famosa.', exZh:'這位女演員很有名。（女，特殊變化：actor→actriz）'}
+  ]},
+  {zh:'老師／教授', options:[
+    {suf:'', word:'profesor', ex:'El profesor explica bien.', exZh:'這位男老師解釋得很清楚。（男）'},
+    {suf:'a', word:'profesora', ex:'La profesora explica bien.', exZh:'這位女老師解釋得很清楚。（女）'}
+  ]},
+  {zh:'導演', options:[
+    {suf:'', word:'director', ex:'El director ganó un premio.', exZh:'這位男導演得獎了。（男）'},
+    {suf:'a', word:'directora', ex:'La directora ganó un premio.', exZh:'這位女導演得獎了。（女）'}
+  ]},
+  {zh:'督察', options:[
+    {suf:'', word:'inspector', ex:'El inspector revisa todo.', exZh:'這位男督察檢查一切。（男）'},
+    {suf:'a', word:'inspectora', ex:'La inspectora revisa todo.', exZh:'這位女督察檢查一切。（女）'}
   ]}
 ];
 
