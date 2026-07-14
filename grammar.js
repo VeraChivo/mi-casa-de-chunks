@@ -659,4 +659,15 @@ const SENTENCE_GRAMMAR_MAP = {
   27:'g16',  // respira hondo / tose → 下指令
   28:'g13',  // Creo que tienes → Creo que
   29:'g12',  // para curarse → para + 動詞
+  // E7 手忙腳亂的早晨
+  60:'g20',  // tiene mucho sueño → TENER 家族
+  61: null,  // Mamá Cata despierta a Nita（尚無 despertar 專屬卡）
+  62:'g20',  // tiene hambre → TENER 家族
+  63:'g20',  // tiene frío → TENER 家族
+  64: null,  // Hay pan y leche（尚無 HAY 專屬卡）
+  65: null,  // Quiero desayunar con Mimi
+  66:'g20',  // tiene prisa → TENER 家族
+  67:'g20',  // ¿Tienes tiempo? → TENER 家族
+  68:'g20',  // tiene miedo de → TENER 家族
+  69: null,  // Nita se duerme en clase（尚無 dormirse 反身動詞專屬卡）
 };

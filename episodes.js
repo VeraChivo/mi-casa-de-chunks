@@ -771,5 +771,108 @@ const EPS=[
       {es:"pastel esta noche!",zh:"蛋糕"},
     ]}]
   }}
+]},
+// ── E7 手忙腳亂的早晨 ──
+{title:"Buenos Días, Casa Gato",titleZh:"手忙腳亂的早晨",dur:170,sentences:[
+  {es:"Nita tiene mucho sueño.",chunks:[{w:"Nita",role:"s"},{w:"tiene",role:"v"},{w:"mucho sueño.",role:"o"}],zh:"妮妲很想睡。",en:"Nita is very sleepy.",noteZh:"「tiene sueño」= 想睡，tener＋名詞表達生理感覺，不是「擁有」",noteEn:"'tener sueño' = to be sleepy (tener + noun for physical states)",
+  expand:{
+    note:"tiene mucho sueño = 想睡，換主詞練習",
+    template:[{g:"name"},{t:"tiene mucho sueño."}],
+    groups:[{label:"誰想睡",key:"name",options:[
+      {es:"Nita",zh:"妮妲"},
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"Mamá Cata despierta a Nita, pero Nita llega tarde.",chunks:[{w:"Mamá Cata",role:"s"},{w:"despierta",role:"v"},{w:"a Nita,",role:"o"},{w:"pero",role:"c",hideYg:true},{w:"Nita",role:"s"},{w:"llega tarde.",role:"v"}],zh:"貓媽媽叫醒妮妲，但妮妲還是遲到了。",en:"Mummy Cat wakes Nita up, but Nita is still late.",noteZh:"「despierta」= 叫醒（despertar 的「他/她」變位）",noteEn:"'despierta' = wakes (someone) up (despertar, 'he/she' form)",
+  expand:{
+    note:"Mamá Cata despierta a ___. = 貓媽媽叫醒誰，換人",
+    template:[{t:"Mamá Cata despierta a"},{g:"name"},{t:", pero llega tarde."}],
+    groups:[{label:"叫醒誰",key:"name",options:[
+      {es:"Nita",zh:"妮妲"},
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"Tito tiene hambre.",chunks:[{w:"Tito",role:"s"},{w:"tiene",role:"v"},{w:"hambre.",role:"o"}],zh:"迪多肚子餓了。",en:"Tito is hungry.",noteZh:"「tiene hambre」= 肚子餓，tener 家族常用語",noteEn:"'tener hambre' = to be hungry",
+  expand:{
+    note:"tiene hambre = 肚子餓，換主詞練習",
+    template:[{g:"name"},{t:"tiene hambre."}],
+    groups:[{label:"誰餓了",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Mimi",zh:"咪咪"},
+      {es:"Nita",zh:"妮妲"},
+    ]}]
+  }},
+  {es:"Papá Tato tiene frío.",chunks:[{w:"Papá Tato",role:"s"},{w:"tiene",role:"v"},{w:"frío.",role:"o"}],zh:"貓爸爸覺得冷。",en:"Daddy Cat is cold.",noteZh:"「tiene frío」= 覺得冷，tener 家族",noteEn:"'tener frío' = to be cold",
+  expand:{
+    note:"tiene frío = 覺得冷，換主詞練習",
+    template:[{g:"name"},{t:"tiene frío."}],
+    groups:[{label:"誰覺得冷",key:"name",options:[
+      {es:"Papá Tato",zh:"貓爸爸"},
+      {es:"Mamá Cata",zh:"貓媽媽"},
+      {es:"Mimi",zh:"咪咪"},
+    ]}]
+  }},
+  {es:"Hay pan y leche en la mesa.",chunks:[{w:"Hay",role:"v"},{w:"pan y leche en la mesa.",role:"o"}],zh:"桌上有麵包和牛奶。",en:"There's bread and milk on the table.",noteZh:"「Hay」= 有，表示存在，不分陰陽性單複數都用這個字",noteEn:"'Hay' = there is/are, never changes for gender or number",
+  expand:{
+    note:"Hay ___ en la mesa. = 桌上有…，換東西",
+    template:[{t:"Hay"},{g:"food"},{t:"en la mesa."}],
+    groups:[{label:"桌上有什麼",key:"food",options:[
+      {es:"pan y leche",zh:"麵包和牛奶"},
+      {es:"huevos y fruta",zh:"蛋和水果"},
+      {es:"café y galletas",zh:"咖啡和餅乾"},
+    ]}]
+  }},
+  {es:"Quiero desayunar con Mimi.",chunks:[{w:"Quiero desayunar",role:"v"},{w:"con Mimi.",role:"o"}],zh:"我想跟咪咪一起吃早餐。",en:"I want to have breakfast with Mimi.",noteZh:"「desayunar」= 吃早餐，Quiero + 原形動詞的另一個例子",noteEn:"'desayunar' = to have breakfast",
+  expand:{
+    note:"Quiero desayunar con ___. = 我想跟誰一起吃早餐",
+    template:[{t:"Quiero desayunar con"},{g:"name"}],
+    groups:[{label:"跟誰吃早餐",key:"name",options:[
+      {es:"Mimi.",zh:"咪咪"},
+      {es:"Nita.",zh:"妮妲"},
+      {es:"toda la familia.",zh:"全家人"},
+    ]}]
+  }},
+  {es:"Mamá Cata tiene prisa.",chunks:[{w:"Mamá Cata",role:"s"},{w:"tiene",role:"v"},{w:"prisa.",role:"o"}],zh:"貓媽媽在趕時間。",en:"Mummy Cat is in a hurry.",noteZh:"「tiene prisa」= 趕時間，tener 家族",noteEn:"'tener prisa' = to be in a hurry",
+  expand:{
+    note:"tiene prisa = 趕時間，換主詞練習",
+    template:[{g:"name"},{t:"tiene prisa."}],
+    groups:[{label:"誰在趕時間",key:"name",options:[
+      {es:"Mamá Cata",zh:"貓媽媽"},
+      {es:"Papá Tato",zh:"貓爸爸"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"¿Tienes tiempo para un café?",chunks:[{w:"¿Tienes",role:"v"},{w:"tiempo para un café?",role:"o"}],zh:"你有時間喝杯咖啡嗎？",en:"Do you have time for a coffee?",noteZh:"「tiene tiempo」= 有空，也是 tener 家族",noteEn:"'tener tiempo' = to have time",
+  expand:{
+    note:"¿Tienes tiempo para ___? = 你有時間做…嗎，換活動",
+    template:[{t:"¿Tienes tiempo para"},{g:"activity"}],
+    groups:[{label:"有時間做什麼",key:"activity",options:[
+      {es:"un café?",zh:"喝杯咖啡"},
+      {es:"desayunar?",zh:"吃早餐"},
+      {es:"hablar?",zh:"聊聊"},
+    ]}]
+  }},
+  {es:"Kito tiene miedo de llegar tarde.",chunks:[{w:"Kito",role:"s"},{w:"tiene miedo de",role:"v"},{w:"llegar tarde.",role:"o"}],zh:"哥哥害怕遲到。",en:"Kito is afraid of being late.",noteZh:"「tiene miedo de」= 害怕，後面接原形動詞",noteEn:"'tener miedo de' = to be afraid of (+ infinitive)",
+  expand:{
+    note:"tiene miedo de llegar tarde = 害怕遲到，換主詞練習",
+    template:[{g:"name"},{t:"tiene miedo de llegar tarde."}],
+    groups:[{label:"誰怕遲到",key:"name",options:[
+      {es:"Kito",zh:"哥哥"},
+      {es:"Nita",zh:"妮妲"},
+      {es:"Tito",zh:"迪多"},
+    ]}]
+  }},
+  {es:"Nita se duerme en clase y la maestra la despierta.",chunks:[{w:"Nita",role:"s"},{w:"se duerme",role:"v"},{w:"en clase",role:"o"},{w:"y",role:"c",hideYg:true},{w:"la maestra",role:"s"},{w:"la despierta.",role:"v"}],zh:"妮妲在課堂上睡著了，老師把她叫醒。",en:"Nita falls asleep in class and the teacher wakes her up.",noteZh:"「se duerme」= 睡著了（dormirse，反身動詞，跟 dormir 意思不同：dormir=睡覺的動作，dormirse=從清醒變成睡著的那個轉變）",noteEn:"'se duerme' = falls asleep (dormirse, reflexive — different from dormir 'to sleep')",
+  expand:{
+    note:"___ se duerme en clase. = 誰在課堂上睡著了，換人",
+    template:[{g:"name"},{t:"se duerme en clase y la maestra la despierta."}],
+    groups:[{label:"誰睡著了",key:"name",options:[
+      {es:"Nita",zh:"妮妲"},
+      {es:"Kito",zh:"哥哥"},
+      {es:"Tito",zh:"迪多"},
+    ]}]
+  }}
 ]}
 ];
