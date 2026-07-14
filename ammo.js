@@ -239,12 +239,12 @@ const AMMO_DATA = [
   },
   {
     ammo_id:"e2_09", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
-    core_ammo:"Nita y papá Pig están jugando a las damas.", core_zh:"妮妲和貓爸爸正在下西洋棋。",
+    core_ammo:"Nita y Papá Tato están jugando a las damas.", core_zh:"妮妲和貓爸爸正在下西洋棋。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando = 正在做，正在做某事",
     pattern:"[人] están jugando a [遊戲].", pattern_zh:"___ 正在玩 ___。",
     pattern_note:"están jugando = 正在做複數", slots:["人","遊戲"],
-    fire_peppa:{es:"Nita y papá Pig están jugando a las damas.", zh:"妮妲和貓爸爸正在下西洋棋。", ts:null,
-      chunks:[{w:"Nita y papá Pig",role:"s"},{w:"están jugando",role:"v",note:"jugar ➔ jugando + estar ➔ están ➔ 意思：正在玩（複數進行式，estar + -ing形態）"},{w:"a las damas.",role:"o"}]},
+    fire_peppa:{es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸正在下西洋棋。", ts:null,
+      chunks:[{w:"Nita y Papá Tato",role:"s"},{w:"están jugando",role:"v",note:"jugar ➔ jugando + estar ➔ están ➔ 意思：正在玩（複數進行式，estar + -ing形態）"},{w:"a las damas.",role:"o"}]},
     fire_daily:[
       {es:"Los niños están jugando al fútbol.", zh:"孩子們正在踢足球。", chunks:[{w:"Los niños",role:"s"},{w:"están jugando",role:"v"},{w:"al fútbol.",role:"o"}]},
       {es:"Mi hermano y yo estamos jugando a las cartas.", zh:"我哥哥和我正在玩牌。", chunks:[{w:"Mi hermano y yo",role:"s"},{w:"estamos jugando",role:"v"},{w:"a las cartas.",role:"o"}]}

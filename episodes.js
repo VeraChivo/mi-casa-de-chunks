@@ -206,12 +206,12 @@ const EPS=[
       {es:"Papá",zh:"爸爸"},
     ]}]
   }},
-  {es:"Nita y papá Pig están jugando a las damas.",chunks:[{w:"Nita y papá Pig",role:"s"},{w:"están jugando",role:"v"},{w:"a las damas.",role:"o"}],zh:"妮妲和貓爸爸正在玩跳棋。",en:"Nita and Daddy Cat are playing draughts.",noteZh:"「están jugando」= 現在進行式，正在玩",noteEn:"'están jugando' = happening right now, they're playing",
+  {es:"Nita y Papá Tato están jugando a las damas.",chunks:[{w:"Nita y Papá Tato",role:"s"},{w:"están jugando",role:"v"},{w:"a las damas.",role:"o"}],zh:"妮妲和貓爸爸正在玩跳棋。",en:"Nita and Daddy Cat are playing draughts.",noteZh:"「están jugando」= 現在進行式，正在玩",noteEn:"'están jugando' = happening right now, they're playing",
   expand:{
     note:"están jugando = 兩人以上都用複數動詞，換另一位玩伴",
     template:[{t:"Nita y"},{g:"name"},{t:"están jugando a las damas."}],
     groups:[{label:"跟誰玩",key:"name",options:[
-      {es:"papá Pig",zh:"貓爸爸"},
+      {es:"Papá Tato",zh:"貓爸爸"},
       {es:"mamá Pig",zh:"貓媽媽"},
       {es:"Tito",zh:"迪多"},
     ]}]
