@@ -324,9 +324,10 @@ function getPersonClass(w){
   return '';
 }
 
-function renderAmmoFireChunks(fire, ammoId, rowType){
+function renderAmmoFireChunks(fire, ammoId, rowType, playExpr){
   if(!fire.chunks || !fire.chunks.length) return '';
   const _fdb=getGardenDB();
+  const playAttr = playExpr ? ` data-playexpr="${playExpr.replace(/"/g,'&quot;')}"` : '';
   return `<div class="ammo-fire-chunks">${fire.chunks.map(c=>{
     const personCls=c.role==='s'?getPersonClass(c.w):'';
     const clean=c.w.replace(/[¡¿.,!?;:（）]/g,'').trim();
@@ -334,7 +335,7 @@ function renderAmmoFireChunks(fire, ammoId, rowType){
     const _fst=GARDEN_STAGES[(_fdb[key]||{stage:0}).stage||0];
     const starHtml=`<span class="ammo-chunk-star" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度">${_fst}</span>`;
     const disp=c.role==='v'?renderVWords(c.w):c.w;
-    return `<span class="ammo-fire-chunk role-${c.role||'plain'}${personCls?' '+personCls:''}" onclick="event.stopPropagation();ammoChunkTap('${escAttr(c.w)}',${!!c.hideYg},'${escAttr(c.note||'')}')">${disp}</span>${starHtml}`;
+    return `<span class="ammo-fire-chunk role-${c.role||'plain'}${personCls?' '+personCls:''}"${playAttr} onclick="event.stopPropagation();ammoChunkTap(this,'${escAttr(c.w)}',${!!c.hideYg},'${escAttr(c.note||'')}')">${disp}</span>${starHtml}`;
   }).join('')}</div>`;
 }
 
@@ -344,21 +345,24 @@ function renderAmmoFireRow(fire, type, ammoId, dailyIdx){
     ? `<span class="ammo-fire-ts" onclick="seekYT(${fire.ts})">▶ ${Math.floor(fire.ts/60)}:${String(fire.ts%60).padStart(2,'0')}</span>`
     : '';
   let rowClick = '';
+  let chunkPlayExpr = null; // 語塊點下去統一播整句真人音檔，跟外面的row click保持一致
   if(type==='peppa'){
     if(fire.ts!=null){ rowClick = `seekYT(${fire.ts})`; }
     else {
       // fire_peppa.es 跟課文原句完全相同，直接借用課文的真人音檔
       const m = (ammoId||'').match(/^e(\d+)_(\d+)$/);
       rowClick = m ? `speakSentenceSmart(${parseInt(m[1],10)-1},${parseInt(m[2],10)-1},'${escAttr(fire.es)}')` : `speakFull('${escAttr(fire.es)}')`;
+      chunkPlayExpr = rowClick;
     }
   } else {
     rowClick = `speakAmmoDaily('${escAttr(ammoId)}',${dailyIdx},'${escAttr(fire.es)}')`;
+    chunkPlayExpr = rowClick;
   }
   return `<div class="ammo-fire-row ${type}" onclick="${rowClick}">
     <div class="ammo-fire-tag ${type}">${tag}${tsLabel}</div>
     <div class="ammo-fire-es">${fire.es}</div>
     <div class="ammo-fire-zh">${fire.zh}</div>
-    ${renderAmmoFireChunks(fire, ammoId, type)}
+    ${renderAmmoFireChunks(fire, ammoId, type, chunkPlayExpr)}
   </div>`;
 }
 
@@ -2213,8 +2217,13 @@ function handleChunkTap(c, el, s){
   }
 }
 
-function ammoChunkTap(word, hideYg, note){
-  speakWord(word, null);
+function ammoChunkTap(el, word, hideYg, note){
+  const playExpr = el && el.dataset ? el.dataset.playexpr : null;
+  if(playExpr){
+    try{ new Function(playExpr)(); }catch(e){ speakWord(word, null); }
+  } else {
+    speakWord(word, null);
+  }
   if(note){
     openGrammarSheet(_famStarHtml(word)+'<div class="grammar-chunk-note">'+note+'</div>');
   }
@@ -2400,7 +2409,7 @@ function renderScriptLine(sentence, playExpr) {
       const gAttr = r.gId ? ` data-gid="${r.gId}"` : '';
       const ge = gardenDB[chunk] || { stage: 0, quiz_count: 0 };
       const gs = classifyGardenStatus(ge);
-      const playAttr = playExpr ? ` data-playexpr="${escAttr(playExpr)}"` : '';
+      const playAttr = playExpr ? ` data-playexpr="${playExpr.replace(/"/g,'&quot;')}"` : '';
       html += `<span class="gestalt-chunk ${r.type}"${gAttr}${playAttr} data-type="${r.type}" data-verbform="${r.verbForm}" data-assoc="${r.assoc}" data-chunk="${escAttr(chunk)}" onclick="gestaltTap(this)">${chunk}<button class="gc-star${gs.stage === 0 ? ' garden-empty' : ''}" onmousedown="event.stopPropagation();gardenStartPress(this)" onmouseup="gardenCancelPress()" onmouseleave="gardenCancelPress()" ontouchstart="event.stopPropagation();event.preventDefault();gardenStartPress(this)" ontouchend="gardenHandleTouch(this,event)" ontouchmove="gardenCancelPress()" onclick="event.stopPropagation();gestaltSave(this)" title="${escAttr(gs.label)}">${gs.icon}</button></span>`;
       i += r.length;
     } else {
