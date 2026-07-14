@@ -212,6 +212,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .cog-dual-btn:active{background:rgba(159,208,222,.2)}
 .cog-dual-pause{border-color:var(--benikake);color:var(--benikake)}
 .cog-dual-pause:active{background:rgba(132,145,195,.15)}
+.cog-dual-seek{width:100%;margin:6px 0 2px;accent-color:var(--misora)}
 .nav-count{font-size:12px;font-weight:700;color:var(--tlight);min-width:46px;text-align:center}
 .farming-backup-zone{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px;max-width:480px;margin:24px auto 0}
 .farm-btn{flex:1;min-width:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px;background:transparent;border:1px dashed var(--hairline);border-radius:12px;padding:9px 6px;font-size:11.5px;font-weight:700;white-space:nowrap;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .16s;touch-action:manipulation;color:var(--tlight)}

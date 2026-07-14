@@ -664,6 +664,8 @@ function playCognateDual(dir){
   const myGen = _cogGen;
   const pauseBtn = document.getElementById('cogDualPauseBtn');
   if(pauseBtn){ pauseBtn.textContent='⏸ 暫停'; pauseBtn.style.display=''; }
+  const seekEl = document.getElementById('cogDualSeek');
+  if(seekEl){ seekEl.style.display=''; seekEl.value=1; }
   _cogState = {
     i: 1, step: 0, total: 42,
     firstFolder:  dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en',
@@ -683,10 +685,22 @@ function _cogPlayCurrent(myGen){
   const st = _cogState;
   if(!st || st.i > st.total || !_cogDualPlayer) return;
   toast(`🎧 ${st.i}/${st.total}`);
+  const seekEl = document.getElementById('cogDualSeek');
+  if(seekEl && document.activeElement!==seekEl) seekEl.value = st.i;
   const folder = st.step===0 ? st.firstFolder : st.secondFolder;
   const prefix = st.step===0 ? st.firstPrefix : st.secondPrefix;
   _cogDualPlayer.src = `${folder}/${prefix}_${String(st.i).padStart(2,'0')}.mp3`;
   _cogDualPlayer.play().catch(()=>{ if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } });
+}
+// 拖拉進度條直接跳到第i組，不用從頭開始
+function seekCognateDual(i){
+  if(!_cogState || !_cogDualPlayer) return;
+  _cogState.i = parseInt(i,10);
+  _cogState.step = 0;
+  _cogPaused = false;
+  const pauseBtn = document.getElementById('cogDualPauseBtn');
+  if(pauseBtn) pauseBtn.textContent = '⏸ 暫停';
+  _cogPlayCurrent(_cogGen);
 }
 function _cogAdvance(myGen){
   if(myGen!==_cogGen || !_cogState || _cogDualPlayer!==_activeAudio) return;
@@ -769,7 +783,8 @@ function renderCogLibrary(filter){
       <button class="cog-dual-btn" onclick="playCognateDual('sp')">🎧 西 → 英 對照</button>
       <button class="cog-dual-btn" onclick="playCognateDual('en')">🎧 英 → 西 對照</button>
       <button class="cog-dual-btn cog-dual-pause" id="cogDualPauseBtn" style="display:none" onclick="toggleCognateDualPause(this)">⏸ 暫停</button>
-    </div>`;
+    </div>
+    <input type="range" class="cog-dual-seek" id="cogDualSeek" min="1" max="42" value="1" step="1" style="display:none" oninput="seekCognateDual(this.value)">`;
   }
 
   // 按集數分組
