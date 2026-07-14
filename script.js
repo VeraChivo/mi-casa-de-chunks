@@ -331,7 +331,7 @@ function unlockAmmo(globalIdx){
 
 function cycleAmmoStar(ammoId, gardenKey){ handleGardenProgress(gardenKey, document.querySelector('#ammo-'+ammoId+' .ammo-star')); }
 
-function escAttr(s){ return String(s).replace(/'/g,"\\'"); }
+function escAttr(s){ return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
 
 function getPersonClass(w){
   const t = w.replace(/[¡¿（）]/g,'').trim().toLowerCase();
@@ -1467,9 +1467,11 @@ function _gardenChunkDisplay(chunk){
   if(chunk.startsWith('sfx_')) return { text: chunk.slice(4), speakable: true };
   if(chunk.startsWith('ge_'))  return { text: chunk.slice(3), speakable: true };
   if(/^s2_p\d+$/.test(chunk))  return { text: '🛢️ 入桶陳韻練習句型', speakable: false };
-  if(!/[ .,!?¡¿]/.test(chunk) && chunk.includes('_')) return { text: '🍂 舊版殘留紀錄（可忽略）', speakable: false };
+  if(!/[ .,!?¡¿]/.test(chunk) && chunk.includes('_')) return { text: '🍂 舊版殘留紀錄（可忽略）', speakable: false, junk: true };
   return { text: chunk, speakable: true };
 }
+// 舊版殘留的死資料：不刪 localStorage，但不列進清單/不當抽題題庫
+function _isLegacyJunkChunk(chunk){ return !!_gardenChunkDisplay(chunk).junk; }
 function classifyGardenStatus(countOrEntry, graduated) {
   let stage;
   if (countOrEntry && typeof countOrEntry === 'object') {
@@ -2070,7 +2072,7 @@ function _grammarExChunks(es, playExpr){
   const words = es.split(/(\s+)/);
   const _gdb = getGardenDB();
   const clickExpr = playExpr || null;
-  return words.map(tok=>{
+  const renderTok = tok => {
     if(!tok.trim()) return '';
     const clean = tok.replace(/[¡¿.,!?;:]/g,'').trim();
     const onclickAttr = clickExpr ? clickExpr : `speakWord('${escAttr(clean)}',this)`;
@@ -2080,7 +2082,31 @@ function _grammarExChunks(es, playExpr){
     const _ic=GARDEN_STAGES[_st];
     const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
     return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}`;
-  }).join('');
+  };
+  // 引號內的對話包成一個不斷行區塊，換行只會發生在引號之間，不會把一句對話從中間斷開
+  let html = '';
+  let quoteOpen = false;
+  let segBuf = null;
+  words.forEach(tok=>{
+    if(!tok.trim()){ if(segBuf!==null) segBuf.push(tok); else html+=tok; return; }
+    const rendered = renderTok(tok);
+    const quoteCount = (tok.match(/"/g)||[]).length;
+    const wasOpen = quoteOpen;
+    if(quoteCount % 2 === 1) quoteOpen = !quoteOpen;
+    if(!wasOpen && quoteOpen){
+      segBuf = [rendered];
+    } else if(wasOpen && !quoteOpen){
+      segBuf.push(rendered);
+      html += `<span class="ge-quote-seg">${segBuf.join('')}</span>`;
+      segBuf = null;
+    } else if(segBuf!==null){
+      segBuf.push(rendered);
+    } else {
+      html += rendered;
+    }
+  });
+  if(segBuf) html += segBuf.join(''); // 防呆：引號沒配對完整就照常輸出，不要把內容吃掉
+  return html;
 }
 
 // ── 💧 文法儲水槽（沒有綁定特定劇情句子、從外面引進來的零散文法點） ──
@@ -2580,7 +2606,7 @@ function findChunkExamples(chunk) {
 
 function renderGardenView() {
   const db = getGardenDB();
-  const chunks = Object.keys(db);
+  const chunks = Object.keys(db).filter(c => !_isLegacyJunkChunk(c));
   const totalEl = document.getElementById('gardenTotalCount');
   if (totalEl) totalEl.textContent = chunks.length;
 
@@ -2670,7 +2696,7 @@ function gardenWeightOf(entry) {
 function generateBattleQuestionPool(pageSize = 10) {
   const db = getGardenDB();
   const weighted = [];
-  Object.keys(db).forEach(chunk => {
+  Object.keys(db).filter(c => !_isLegacyJunkChunk(c)).forEach(chunk => {
     const w = gardenWeightOf(db[chunk]);
     for (let i = 0; i < w; i++) weighted.push(chunk);
   });
