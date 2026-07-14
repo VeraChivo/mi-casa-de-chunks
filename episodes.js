@@ -874,5 +874,329 @@ const EPS=[
       {es:"Tito",zh:"迪多"},
     ]}]
   }}
+]},
+
+// ── E8 迪多和車車 ──
+{title:"Tito y el Carrito",titleZh:"迪多和車車",dur:150,sentences:[
+  {es:"Tito juega con su carrito, Chito.",chunks:[{w:"Tito",role:"s"},{w:"juega",role:"v"},{w:"con su carrito, Chito.",role:"o"}],zh:"迪多在玩他的車車奇奇。",en:"Tito plays with his little car, Chito.",noteZh:"「juega con」= 玩...（jugar 的「他/她」變位）",noteEn:"'juega con' = plays with (jugar, he/she form)",
+  expand:{
+    note:"___ juega con su carrito. = 換主詞練習",
+    template:[{g:"name"},{t:"juega con su carrito, Chito."}],
+    groups:[{label:"誰在玩車車",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Nita",zh:"妮妲"},
+      {es:"Mimi",zh:"咪咪"},
+    ]}]
+  }},
+  {es:"Mamá Cata le pregunta algo.",chunks:[{w:"Mamá Cata",role:"s"},{w:"le pregunta",role:"v"},{w:"algo.",role:"o"}],zh:"卡妲媽媽問他一件事。",en:"Mom Cata asks him something.",noteZh:"「le pregunta」= 問他/她（間接受詞 le + preguntar）",noteEn:"'le pregunta' = asks him/her (indirect object le + preguntar)",
+  expand:{
+    note:"Mamá Cata le pregunta ___. = 換問的內容",
+    template:[{t:"Mamá Cata le pregunta"},{g:"thing"}],
+    groups:[{label:"問什麼",key:"thing",options:[
+      {es:"algo.",zh:"一件事"},
+      {es:"si tiene hambre.",zh:"是不是餓了"},
+      {es:"cómo está.",zh:"他好不好"},
+    ]}]
+  }},
+  {es:"Tito solo asiente con la cabeza.",chunks:[{w:"Tito",role:"s"},{w:"solo asiente",role:"v"},{w:"con la cabeza.",role:"o"}],zh:"迪多只是點點頭。",en:"Tito just nods his head.",noteZh:"「asiente con la cabeza」= 點頭",noteEn:"'asentir con la cabeza' = to nod one's head",
+  expand:{
+    note:"___ solo asiente con la cabeza. = 換主詞練習",
+    template:[{g:"name"},{t:"solo asiente con la cabeza."}],
+    groups:[{label:"誰點頭",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+      {es:"Nita",zh:"妮妲"},
+    ]}]
+  }},
+  {es:"Para el \"no\", Tito simplemente no responde.",chunks:[{w:'Para el "no",'},{w:"Tito",role:"s"},{w:"simplemente no responde.",role:"v"}],zh:"遇到「不」的時候，迪多就是不回應。",en:"For \"no,\" Tito simply doesn't respond.",noteZh:"「no responde」= 不回應（responder 的現在式）",noteEn:"'no responde' = doesn't respond (responder, present tense)",
+  expand:{
+    note:"Para el \"no\", ___ simplemente no responde. = 換主詞練習",
+    template:[{t:'Para el "no",'},{g:"name"},{t:"simplemente no responde."}],
+    groups:[{label:"誰不回應",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+      {es:"Nita",zh:"妮妲"},
+    ]}]
+  }},
+  {es:"Tito la escucha, pero actúa como si no la oyera.",chunks:[{w:"Tito",role:"s"},{w:"la escucha,",role:"v"},{w:"pero",role:"c",hideYg:true},{w:"actúa como si no la oyera.",role:"v"}],zh:"迪多聽到了，卻裝作沒聽到。",en:"Tito hears her, but acts like he doesn't.",noteZh:"「como si no la oyera」= 假裝沒聽到（como si + 虛擬式過去式，表跟事實相反）",noteEn:"'como si + imperfect subjunctive' = as if... (contrary to fact)",
+  expand:{
+    note:"___ la escucha, pero actúa como si no la oyera. = 換主詞練習",
+    template:[{g:"name"},{t:"la escucha, pero actúa como si no la oyera."}],
+    groups:[{label:"誰裝作沒聽到",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+      {es:"Nita",zh:"妮妲"},
+    ]}]
+  }},
+  {es:"Por dentro, Mamá Cata se siente un poco frustrada.",chunks:[{w:"Por dentro,"},{w:"Mamá Cata",role:"s"},{w:"se siente",role:"v"},{w:"un poco frustrada.",role:"o"}],zh:"卡妲媽媽心裡有點火大。",en:"Inside, Mom Cata feels a little frustrated.",noteZh:"「se siente」= 覺得（sentirse 反身動詞）",noteEn:"'se siente' = feels (sentirse, reflexive)",
+  expand:{
+    note:"Por dentro, ___ se siente un poco frustrada/o. = 換主詞練習",
+    template:[{t:"Por dentro,"},{g:"name"},{t:"se siente un poco frustrada."}],
+    groups:[{label:"誰有點火大",key:"name",options:[
+      {es:"Mamá Cata",zh:"卡妲媽媽"},
+      {es:"Papá Tato",zh:"達多爸爸"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"Respira hondo y se sienta a su lado.",chunks:[{w:"Respira hondo",role:"v"},{w:"y",role:"c",hideYg:true},{w:"se sienta",role:"v"},{w:"a su lado.",role:"o"}],zh:"她深呼吸，坐到他旁邊。",en:"She breathes deeply and sits beside him.",noteZh:"「Respira hondo」= 深呼吸；隱含主詞是媽媽",noteEn:"'Respira hondo' = breathes deeply; implied subject is Mom",
+  expand:{
+    note:"Respira hondo y se sienta ___. = 換地點",
+    template:[{t:"Respira hondo y se sienta"},{g:"place"}],
+    groups:[{label:"坐在哪裡",key:"place",options:[
+      {es:"a su lado.",zh:"在他旁邊"},
+      {es:"en el suelo.",zh:"在地上"},
+      {es:"junto a la puerta.",zh:"在門邊"},
+    ]}]
+  }},
+  {es:"Ella sabe que su niño no lo hace a propósito.",chunks:[{w:"Ella",role:"s"},{w:"sabe",role:"v"},{w:"que su niño no lo hace a propósito.",role:"o"}],zh:"她清楚知道孩子不是故意的。",en:"She knows her child isn't doing it on purpose.",noteZh:"「a propósito」= 故意地",noteEn:"'a propósito' = on purpose",
+  expand:{
+    note:"Ella sabe que ___ no lo hace a propósito. = 換主詞練習",
+    template:[{t:"Ella sabe que"},{g:"name"},{t:"no lo hace a propósito."}],
+    groups:[{label:"誰不是故意的",key:"name",options:[
+      {es:"su niño",zh:"她的孩子"},
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"Pero no entiende de dónde viene su propio enojo.",chunks:[{w:"Pero",role:"c",hideYg:true},{w:"no entiende",role:"v"},{w:"de dónde viene su propio enojo.",role:"o"}],zh:"但她不懂自己的怒火是從哪裡來的。",en:"But she doesn't understand where her own anger comes from.",noteZh:"「de dónde viene」= 從哪裡來",noteEn:"'de dónde viene' = where...comes from",
+  expand:{
+    note:"no entiende de dónde viene su propio ___. = 換情緒詞",
+    template:[{t:"Pero no entiende de dónde viene su propio"},{g:"emotion"}],
+    groups:[{label:"哪種情緒",key:"emotion",options:[
+      {es:"enojo.",zh:"怒火"},
+      {es:"miedo.",zh:"恐懼"},
+      {es:"cansancio.",zh:"疲憊"},
+    ]}]
+  }},
+  {es:"Esa noche, Mamá Cata se queda pensando en sí misma.",chunks:[{w:"Esa noche,"},{w:"Mamá Cata",role:"s"},{w:"se queda pensando",role:"v"},{w:"en sí misma.",role:"o"}],zh:"那天晚上，卡妲媽媽開始想起自己。",en:"That night, Mom Cata sits thinking about herself.",noteZh:"「se queda pensando」= 陷入沉思（quedarse + Ving）",noteEn:"'se queda pensando' = stays thinking/reflecting (quedarse + gerund)",
+  expand:{
+    note:"Esa noche, ___ se queda pensando en sí misma/o. = 換主詞練習",
+    template:[{t:"Esa noche,"},{g:"name"},{t:"se queda pensando en sí misma."}],
+    groups:[{label:"誰陷入沉思",key:"name",options:[
+      {es:"Mamá Cata",zh:"卡妲媽媽"},
+      {es:"Papá Tato",zh:"達多爸爸"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }}
+]},
+
+// ── E9 我終於知道自己是誰 ──
+{title:"Por Fin Sé Quién Soy",titleZh:"我終於知道自己是誰",dur:160,sentences:[
+  {es:"Mamá Cata siempre pierde las llaves.",chunks:[{w:"Mamá Cata",role:"s"},{w:"siempre pierde",role:"v"},{w:"las llaves.",role:"o"}],zh:"卡妲媽媽總是找不到鑰匙。",en:"Mom Cata always loses her keys.",noteZh:"「pierde」= 弄丟（perder 的「她」變位）",noteEn:"'pierde' = loses (perder, 'she' form)",
+  expand:{
+    note:"___ siempre pierde ___. = 換主詞和物品",
+    template:[{g:"name"},{t:"siempre pierde"},{g:"thing"}],
+    groups:[
+      {label:"誰",key:"name",options:[
+        {es:"Mamá Cata",zh:"卡妲媽媽"},
+        {es:"Papá Tato",zh:"達多爸爸"},
+        {es:"Kito",zh:"哥哥"},
+      ]},
+      {label:"弄丟什麼",key:"thing",options:[
+        {es:"las llaves.",zh:"鑰匙"},
+        {es:"el teléfono.",zh:"手機"},
+        {es:"las gafas.",zh:"眼鏡"},
+      ]},
+    ]
+  }},
+  {es:"Pero puede concentrarse en un proyecto por horas y horas.",chunks:[{w:"Pero",role:"c",hideYg:true},{w:"puede concentrarse",role:"v"},{w:"en un proyecto por horas y horas.",role:"o"}],zh:"但她可以對一個計畫專注好幾個小時。",en:"But she can focus on a project for hours and hours.",noteZh:"「puede concentrarse」= 可以專注（poder + 反身原形動詞）",noteEn:"'puede concentrarse' = can focus (poder + reflexive infinitive)",
+  expand:{
+    note:"puede concentrarse en ___ por horas. = 換專注的事",
+    template:[{t:"Pero puede concentrarse en"},{g:"thing"},{t:"por horas y horas."}],
+    groups:[{label:"專注在什麼上",key:"thing",options:[
+      {es:"un proyecto",zh:"一個計畫"},
+      {es:"un dibujo",zh:"一幅畫"},
+      {es:"un libro",zh:"一本書"},
+    ]}]
+  }},
+  {es:"Su mente es un volcán de ideas y un caos de horarios.",chunks:[{w:"Su mente",role:"s"},{w:"es",role:"v"},{w:"un volcán de ideas y un caos de horarios.",role:"o"}],zh:"她的腦子是滿滿的點子，也是一團亂的時間表。",en:"Her mind is a volcano of ideas and a chaos of schedules.",noteZh:"隱喻句，volcán=火山、caos=混亂",noteEn:"metaphor: volcán=volcano, caos=chaos",
+  expand:{
+    note:"Su mente es un volcán de ___. = 換比喻的東西",
+    template:[{t:"Su mente es un volcán de"},{g:"thing"},{t:"y un caos de horarios."}],
+    groups:[{label:"充滿什麼",key:"thing",options:[
+      {es:"ideas",zh:"點子"},
+      {es:"planes",zh:"計畫"},
+      {es:"preguntas",zh:"問題"},
+    ]}]
+  }},
+  {es:"Un día, ve a Nita jugando de una manera muy familiar.",chunks:[{w:"Un día,"},{w:"ve",role:"v"},{w:"a Nita jugando de una manera muy familiar.",role:"o"}],zh:"有一天，她看見妮妲玩耍的樣子很眼熟。",en:"One day, she sees Nita playing in a very familiar way.",noteZh:"「a Nita」= 受詞前的人稱 a（personal a）",noteEn:"'a Nita' = personal 'a' before a person as direct object",
+  expand:{
+    note:"ve a ___ jugando de una manera muy familiar. = 換人",
+    template:[{t:"Un día, ve a"},{g:"name"},{t:"jugando de una manera muy familiar."}],
+    groups:[{label:"看見誰",key:"name",options:[
+      {es:"Nita",zh:"妮妲"},
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"\"Yo también hacía eso de pequeña,\" piensa Mamá Cata.",chunks:[{w:'"Yo',role:"s"},{w:"también hacía",role:"v"},{w:'eso de pequeña,"',role:"o"},{w:"piensa Mamá Cata.",role:"v"}],zh:"「我小時候也是這樣，」卡妲媽媽心想。",en:"\"I did that too when I was little,\" thinks Mom Cata.",noteZh:"「hacía」= 過去習慣性動作（imperfecto）",noteEn:"'hacía' = imperfect tense, habitual past action",
+  expand:{
+    note:"Yo también hacía eso ___. = 換小時候的說法",
+    template:[{t:'"Yo también hacía eso'},{g:"age"},{t:'," piensa Mamá Cata.'}],
+    groups:[{label:"小時候",key:"age",options:[
+      {es:"de pequeña,",zh:"小時候（女）"},
+      {es:"de niña,",zh:"還是女孩的時候"},
+      {es:"de joven,",zh:"年輕的時候"},
+    ]}]
+  }},
+  {es:"Empieza a leer sobre el TDAH.",chunks:[{w:"Empieza a leer",role:"v"},{w:"sobre el TDAH.",role:"o"}],zh:"她開始讀關於ADHD的資料。",en:"She starts reading about ADHD.",noteZh:"「TDAH」= Trastorno por Déficit de Atención e Hiperactividad（西語ADHD正式縮寫）",noteEn:"'TDAH' = the Spanish acronym for ADHD",
+  expand:{
+    note:"Empieza a leer sobre ___. = 換主題",
+    template:[{t:"Empieza a leer sobre"},{g:"topic"}],
+    groups:[{label:"讀什麼主題",key:"topic",options:[
+      {es:"el TDAH.",zh:"ADHD"},
+      {es:"el autismo.",zh:"自閉症"},
+      {es:"la neurodivergencia.",zh:"神經多樣性"},
+    ]}]
+  }},
+  {es:"Cada síntoma es un espejo de su propia vida.",chunks:[{w:"Cada síntoma",role:"s"},{w:"es",role:"v"},{w:"un espejo de su propia vida.",role:"o"}],zh:"每一條症狀都像照到自己的人生。",en:"Every symptom is a mirror of her own life.",noteZh:"「espejo」= 鏡子（隱喻句）",noteEn:"'espejo' = mirror (metaphor)",
+  expand:{
+    note:"Cada síntoma es un espejo de ___. = 換描述",
+    template:[{t:"Cada síntoma es un espejo de"},{g:"thing"}],
+    groups:[{label:"照到什麼",key:"thing",options:[
+      {es:"su propia vida.",zh:"她自己的人生"},
+      {es:"su infancia.",zh:"她的童年"},
+      {es:"su forma de ser.",zh:"她本來的樣子"},
+    ]}]
+  }},
+  {es:"Ahora entiende por qué es tan fuerte y tan dispersa a la vez.",chunks:[{w:"Ahora",role:"c",hideYg:true},{w:"entiende",role:"v"},{w:"por qué es tan fuerte y tan dispersa a la vez.",role:"o"}],zh:"現在她懂了，為什麼自己同時這麼堅韌又這麼散亂。",en:"Now she understands why she's so strong and so scattered at the same time.",noteZh:"「a la vez」= 同時",noteEn:"'a la vez' = at the same time",
+  expand:{
+    note:"entiende por qué es tan ___ y tan ___ a la vez. = 換兩個對比的特質",
+    template:[{t:"Ahora entiende por qué es tan"},{g:"trait1"},{t:"y tan"},{g:"trait2"},{t:"a la vez."}],
+    groups:[
+      {label:"特質一",key:"trait1",options:[
+        {es:"fuerte",zh:"堅韌"},
+        {es:"creativa",zh:"有創意"},
+      ]},
+      {label:"特質二",key:"trait2",options:[
+        {es:"dispersa",zh:"散亂"},
+        {es:"olvidadiza",zh:"健忘"},
+      ]},
+    ]
+  }},
+  {es:"No es un defecto, es su manera de ser.",chunks:[{w:"No es",role:"v"},{w:"un defecto,",role:"o"},{w:"es",role:"v"},{w:"su manera de ser.",role:"o"}],zh:"這不是缺陷，是她本來的樣子。",en:"It's not a flaw, it's her way of being.",noteZh:"「manera de ser」= 天生的樣子/個性",noteEn:"'manera de ser' = one's natural way of being",
+  expand:{
+    note:"No es un defecto, es su manera de ___. = 換描述",
+    template:[{t:"No es un defecto, es su manera de"},{g:"thing"}],
+    groups:[{label:"是什麼樣子",key:"thing",options:[
+      {es:"ser.",zh:"存在"},
+      {es:"pensar.",zh:"思考"},
+      {es:"vivir.",zh:"生活"},
+    ]}]
+  }},
+  {es:"Mamá Cata sonríe: \"Por fin sé quién soy.\"",chunks:[{w:"Mamá Cata",role:"s"},{w:"sonríe:",role:"v"},{w:'"Por fin sé quién soy."',role:"o"}],zh:"卡妲媽媽笑了：「我終於知道自己是誰了。」",en:"Mom Cata smiles: \"I finally know who I am.\"",noteZh:"「sé」= 我知道（saber 的「我」變位，不規則）",noteEn:"'sé' = I know (saber, irregular 'yo' form)",
+  expand:{
+    note:"Por fin sé ___. = 換知道的內容",
+    template:[{t:'Mamá Cata sonríe: "Por fin sé'},{g:"who"},{t:'."'}],
+    groups:[{label:"知道什麼",key:"who",options:[
+      {es:"quién soy.",zh:"我是誰"},
+      {es:"lo que necesito.",zh:"我需要什麼"},
+      {es:"por qué soy así.",zh:"我為什麼是這樣"},
+    ]}]
+  }}
+]},
+
+// ── E10 我們不是故意對衝的 ──
+{title:"Chocamos Sin Querer",titleZh:"我們不是故意對衝的",dur:160,sentences:[
+  {es:"Mamá Cata hace un plan para el día.",chunks:[{w:"Mamá Cata",role:"s"},{w:"hace",role:"v"},{w:"un plan para el día.",role:"o"}],zh:"卡妲媽媽排好了今天的行程。",en:"Mom Cata makes a plan for the day.",noteZh:"「hace un plan」= 做計畫（hacer 的「她」變位）",noteEn:"'hace un plan' = makes a plan (hacer, 'she' form)",
+  expand:{
+    note:"___ hace un plan para el día. = 換主詞練習",
+    template:[{g:"name"},{t:"hace un plan para el día."}],
+    groups:[{label:"誰排行程",key:"name",options:[
+      {es:"Mamá Cata",zh:"卡妲媽媽"},
+      {es:"Papá Tato",zh:"達多爸爸"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"A Tito no le gustan los cambios repentinos.",chunks:[{w:"A Tito",role:"o"},{w:"no le gustan",role:"v"},{w:"los cambios repentinos.",role:"s"}],zh:"迪多不喜歡突如其來的改變。",en:"Tito doesn't like sudden changes.",noteZh:"「gustar」句型：喜歡的東西當主詞，人當間接受詞",noteEn:"'gustar' construction: the liked thing is the subject, the person is the indirect object",
+  expand:{
+    note:"A ___ no le gustan los cambios repentinos. = 換主詞練習",
+    template:[{t:"A"},{g:"name"},{t:"no le gustan los cambios repentinos."}],
+    groups:[{label:"誰不喜歡改變",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+      {es:"Nita",zh:"妮妲"},
+    ]}]
+  }},
+  {es:"Él necesita todo en el mismo orden, todos los días.",chunks:[{w:"Él",role:"s"},{w:"necesita",role:"v"},{w:"todo en el mismo orden, todos los días.",role:"o"}],zh:"他需要每天都一樣的順序。",en:"He needs everything in the same order, every day.",noteZh:"「en el mismo orden」= 同樣的順序",noteEn:"'en el mismo orden' = in the same order",
+  expand:{
+    note:"necesita todo en el mismo ___. = 換描述",
+    template:[{t:"Él necesita todo en el mismo"},{g:"thing"},{t:", todos los días."}],
+    groups:[{label:"什麼要一樣",key:"thing",options:[
+      {es:"orden",zh:"順序"},
+      {es:"lugar",zh:"位置"},
+      {es:"horario",zh:"時間表"},
+    ]}]
+  }},
+  {es:"Tito quiere las cosas ahora mismo.",chunks:[{w:"Tito",role:"s"},{w:"quiere",role:"v"},{w:"las cosas ahora mismo.",role:"o"}],zh:"迪多想要的是「馬上」。",en:"Tito wants things right now.",noteZh:"「ahora mismo」= 馬上、立刻",noteEn:"'ahora mismo' = right now",
+  expand:{
+    note:"___ quiere las cosas ahora mismo. = 換主詞練習",
+    template:[{g:"name"},{t:"quiere las cosas ahora mismo."}],
+    groups:[{label:"誰想要馬上",key:"name",options:[
+      {es:"Tito",zh:"迪多"},
+      {es:"Kito",zh:"哥哥"},
+      {es:"Mimi",zh:"咪咪"},
+    ]}]
+  }},
+  {es:"El plan de Mamá Cata se rompe, otra vez.",chunks:[{w:"El plan de Mamá Cata",role:"s"},{w:"se rompe,",role:"v"},{w:"otra vez.",role:"o"}],zh:"卡妲媽媽的計畫又被打亂了。",en:"Mom Cata's plan breaks, again.",noteZh:"「se rompe」= 被打破（romperse，反身動詞表示自然發生的破壞）",noteEn:"'se rompe' = breaks (romperse, reflexive for something breaking on its own)",
+  expand:{
+    note:"El plan de ___ se rompe, otra vez. = 換主詞練習",
+    template:[{t:"El plan de"},{g:"name"},{t:"se rompe, otra vez."}],
+    groups:[{label:"誰的計畫被打亂",key:"name",options:[
+      {es:"Mamá Cata",zh:"卡妲媽媽"},
+      {es:"Papá Tato",zh:"達多爸爸"},
+      {es:"Kito",zh:"哥哥"},
+    ]}]
+  }},
+  {es:"Rehacer el plan le cuesta muchísima energía.",chunks:[{w:"Rehacer el plan",role:"s"},{w:"le cuesta",role:"v"},{w:"muchísima energía.",role:"o"}],zh:"重新安排這件事，耗掉她非常多的能量。",en:"Remaking the plan costs her a huge amount of energy.",noteZh:"「costar」句型：跟 gustar 一樣，事情當主詞、人當間接受詞",noteEn:"'costar' construction: like gustar, the thing costs energy 'to' the person",
+  expand:{
+    note:"Rehacer el plan le cuesta ___. = 換耗費的東西",
+    template:[{t:"Rehacer el plan le cuesta"},{g:"thing"}],
+    groups:[{label:"耗掉什麼",key:"thing",options:[
+      {es:"muchísima energía.",zh:"非常多能量"},
+      {es:"toda su paciencia.",zh:"她所有的耐性"},
+      {es:"mucho tiempo.",zh:"很多時間"},
+    ]}]
+  }},
+  {es:"Chocan, una y otra vez, sin querer.",chunks:[{w:"Chocan,",role:"v"},{w:"una y otra vez,",role:"o"},{w:"sin querer.",role:"o"}],zh:"他們一次又一次地對衝，誰都不是故意的。",en:"They clash, again and again, without meaning to.",noteZh:"「sin querer」= 不是故意的",noteEn:"'sin querer' = without meaning to, unintentionally",
+  expand:{
+    note:"Chocan, ___, sin querer. = 換頻率",
+    template:[{t:"Chocan,"},{g:"freq"},{t:", sin querer."}],
+    groups:[{label:"多常對衝",key:"freq",options:[
+      {es:"una y otra vez",zh:"一次又一次"},
+      {es:"todos los días",zh:"每一天"},
+      {es:"cada mañana",zh:"每天早上"},
+    ]}]
+  }},
+  {es:"Una noche, se pregunta: \"¿Por qué me cuesta tanto?\"",chunks:[{w:"Una noche,"},{w:"se pregunta:",role:"v"},{w:'"¿Por qué me cuesta tanto?"',role:"o"}],zh:"一天晚上，她問自己：「為什麼這件事讓我這麼累？」",en:"One night, she asks herself: \"Why does this cost me so much?\"",noteZh:"「se pregunta」= 問自己（preguntarse，反身動詞）",noteEn:"'se pregunta' = asks herself (preguntarse, reflexive)",
+  expand:{
+    note:"se pregunta: ¿Por qué ___? = 換問自己的內容",
+    template:[{t:'Una noche, se pregunta: "¿Por qué'},{g:"q"},{t:'?"'}],
+    groups:[{label:"問自己什麼",key:"q",options:[
+      {es:"me cuesta tanto",zh:"這麼耗我"},
+      {es:"siempre chocamos",zh:"我們總是對衝"},
+      {es:"no puedo cambiar",zh:"我沒辦法改變"},
+    ]}]
+  }},
+  {es:"Empieza a leer sobre el TDAH.",chunks:[{w:"Empieza a leer",role:"v"},{w:"sobre el TDAH.",role:"o"}],zh:"她開始讀關於ADHD的資料。",en:"She starts reading about ADHD.",noteZh:"「TDAH」= 西語ADHD正式縮寫",noteEn:"'TDAH' = the Spanish acronym for ADHD",
+  expand:{
+    note:"Empieza a leer sobre ___. = 換主題",
+    template:[{t:"Empieza a leer sobre"},{g:"topic"}],
+    groups:[{label:"讀什麼主題",key:"topic",options:[
+      {es:"el TDAH.",zh:"ADHD"},
+      {es:"el autismo.",zh:"自閉症"},
+      {es:"la regulación emocional.",zh:"情緒調節"},
+    ]}]
+  }},
+  {es:"Entiende: su energía y la regularidad de él son diferentes, no incorrectas.",chunks:[{w:"Entiende:",role:"v"},{w:"su energía y la regularidad de él",role:"s"},{w:"son",role:"v"},{w:"diferentes, no incorrectas.",role:"o"}],zh:"她懂了：她的能量模式和他的規律，只是不同，不是誰錯了。",en:"She understands: her energy and his regularity are different, not wrong.",noteZh:"「diferentes, no incorrectas」= 只是不同，不是不對",noteEn:"'diferentes, no incorrectas' = just different, not wrong",
+  expand:{
+    note:"su ___ y la regularidad de él son diferentes, no incorrectas. = 換描述的東西",
+    template:[{t:"Entiende: su"},{g:"thing"},{t:"y la regularidad de él son diferentes, no incorrectas."}],
+    groups:[{label:"她的什麼跟他不同",key:"thing",options:[
+      {es:"energía",zh:"能量模式"},
+      {es:"forma de pensar",zh:"思考方式"},
+      {es:"manera de vivir",zh:"生活方式"},
+    ]}]
+  }}
 ]}
 ];
