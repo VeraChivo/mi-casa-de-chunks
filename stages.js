@@ -268,7 +268,7 @@ function renderStage3(){
 // ── 累積詞池（從完成過的句子自動收集，見 script.js accumulateSVOPool）──
 function _s3LearnedChipRow(label, role, words){
   if(!words.length) return '';
-  const chips = words.map(w=>`<button class="s3-chip s3-learned-chip s3-learned-${role}" data-search="${escStage(w).toLowerCase()}" onclick="speakWord('${escStage(w)}',this)">${w}</button>`).join('');
+  const chips = words.map(w=>`<button class="s3-chip s3-learned-chip s3-learned-${role}" data-search="${escStage(w).toLowerCase()}" onclick="speakGardenChunk('${escStage(w)}')">${w}</button>`).join('');
   return `<div class="s3-col-wrap"><div class="s3-col-label s3-label-${role}">${label}</div><div class="s3-chip-pool">${chips}</div></div>`;
 }
 
