@@ -271,13 +271,14 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 
 /* 🍄 假野莓 False Cognates */
 .falsecog-section{margin:14px 0 8px}
-.falsecog-title{font-size:12px;font-weight:800;color:var(--err);margin-bottom:2px;letter-spacing:.03em}
-.falsecog-sub{font-size:11px;color:var(--tmid);margin-bottom:8px}
+.falsecog-title{font-size:15px;font-weight:800;color:var(--err);margin-bottom:2px;letter-spacing:.03em}
+.falsecog-sub{font-size:14px;color:var(--tmid);margin-bottom:8px}
 .falsecog-card{border:1.5px solid rgba(224,92,92,.35);background:rgba(224,92,92,.05);border-radius:10px;padding:9px 11px;margin-bottom:7px}
 .falsecog-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
-.falsecog-notlike{font-size:12px;font-weight:700;color:var(--err)}
-.falsecog-real{font-size:12.5px;font-weight:700;color:var(--ok);margin-bottom:4px}
-.falsecog-trap{font-size:11.5px;color:var(--tmid);line-height:1.5}
+.falsecog-row .cog-es{font-size:17px}
+.falsecog-notlike{font-size:15px;font-weight:700;color:var(--err)}
+.falsecog-real{font-size:15.5px;font-weight:700;color:var(--ok);margin-bottom:4px}
+.falsecog-trap{font-size:14.5px;color:var(--tmid);line-height:1.5}
 
 /* 詞綴單字卡 + 例句疊加 */
 .suffix-word-card{border-bottom:1px solid var(--bg2);padding:7px 4px;last-child:border:none}

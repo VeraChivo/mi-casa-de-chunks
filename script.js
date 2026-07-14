@@ -622,9 +622,12 @@ function toggleCogLibrary(){
 let _cogDualPlayer = null;
 let _cogPaused = false;
 let _cogState = null;
+let _cogGen = 0; // 每次重新啟動就+1，讓上一輪殘留的onended/setTimeout失效，避免切換方向時字被重播
 function playCognateDual(dir){
-  if(_cogDualPlayer){ _cogDualPlayer.pause(); }
+  if(_cogDualPlayer){ _cogDualPlayer.onended = null; _cogDualPlayer.onerror = null; _cogDualPlayer.pause(); }
   _cogPaused = false;
+  _cogGen++;
+  const myGen = _cogGen;
   const pauseBtn = document.getElementById('cogDualPauseBtn');
   if(pauseBtn){ pauseBtn.textContent='⏸ 暫停'; pauseBtn.style.display=''; }
   _cogState = {
@@ -636,31 +639,32 @@ function playCognateDual(dir){
   };
   const player = new Audio();
   _cogDualPlayer = player;
-  player.onended = _cogAdvance;
-  player.onerror = () => { toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; };
-  _cogPlayCurrent();
+  player.onended = () => _cogAdvance(myGen);
+  player.onerror = () => { if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } };
+  _cogPlayCurrent(myGen);
 }
-function _cogPlayCurrent(){
+function _cogPlayCurrent(myGen){
+  if(myGen!==_cogGen) return;
   const st = _cogState;
   if(!st || st.i > st.total || !_cogDualPlayer) return;
   toast(`🎧 ${st.i}/${st.total}`);
   const folder = st.step===0 ? st.firstFolder : st.secondFolder;
   const prefix = st.step===0 ? st.firstPrefix : st.secondPrefix;
   _cogDualPlayer.src = `${folder}/${prefix}_${String(st.i).padStart(2,'0')}.mp3`;
-  _cogDualPlayer.play().catch(()=>{ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; });
+  _cogDualPlayer.play().catch(()=>{ if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } });
 }
-function _cogAdvance(){
-  if(!_cogState) return;
+function _cogAdvance(myGen){
+  if(myGen!==_cogGen || !_cogState) return;
   if(_cogState.step===0){ _cogState.step=1; } else { _cogState.step=0; _cogState.i++; }
   if(_cogPaused) return; // 暫停中，等使用者按繼續才會播下一步
   const gap = _cogState.step===0 ? 1800 : 500; // 換組長間隔，組內兩語言間短間隔
-  setTimeout(()=>{ if(!_cogPaused) _cogPlayCurrent(); }, gap);
+  setTimeout(()=>{ if(myGen===_cogGen && !_cogPaused) _cogPlayCurrent(myGen); }, gap);
 }
 function toggleCognateDualPause(btn){
   if(!_cogState || !_cogDualPlayer) return;
   _cogPaused = !_cogPaused;
   if(_cogPaused){ _cogDualPlayer.pause(); btn.textContent='▶ 繼續'; }
-  else { btn.textContent='⏸ 暫停'; _cogPlayCurrent(); }
+  else { btn.textContent='⏸ 暫停'; _cogPlayCurrent(_cogGen); }
 }
 
 function renderCogLibrary(filter){
