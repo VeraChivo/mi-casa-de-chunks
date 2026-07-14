@@ -948,6 +948,24 @@ function buildExpandSentence(exp){
   return parts.join(' ')+'.';
 }
 
+// 常見 SER/ESTAR 混淆：ser 變位＋只能用 estar 的狀態形容詞，給貼心提示而不是單純判錯
+const SER_ESTAR_CONFUSIONS = {
+  cansado:'累',cansada:'累', feliz:'開心', contento:'開心',contenta:'開心',
+  enfermo:'生病',enferma:'生病', ocupado:'忙',ocupada:'忙',
+  enojado:'生氣',enojada:'生氣', aburrido:'無聊',aburrida:'無聊',
+  sentado:'坐著',sentada:'坐著', dormido:'睡著',dormida:'睡著'
+};
+const SER_TO_ESTAR_FORM = {soy:'estoy',eres:'estás',es:'está',somos:'estamos',son:'están'};
+function detectSerEstarConfusion(inputWords){
+  for(let i=0;i<inputWords.length-1;i++){
+    const w=inputWords[i], next=inputWords[i+1].replace(/[.!?]/g,'');
+    if(SER_TO_ESTAR_FORM[w] && SER_ESTAR_CONFUSIONS[next]){
+      return { rightForm:SER_TO_ESTAR_FORM[w], adj:next, zh:SER_ESTAR_CONFUSIONS[next] };
+    }
+  }
+  return null;
+}
+
 function checkMakeFree(){
   const val=document.getElementById('makeFreeInput').value.trim();
   const res=document.getElementById('makeResult');
@@ -991,8 +1009,13 @@ function checkMakeFree(){
     if(typeof checkStorageQuota === 'function') checkStorageQuota();
   } else {
     res.className='make-result err';
+    const confusion = detectSerEstarConfusion(inputWords);
+    if(confusion){
+      res.textContent = `🤔 你是不是想說「我${confusion.zh}了」？西語通常說 ${confusion.rightForm} ${confusion.adj}，因為這是暫時的狀態，要用 ESTAR 不是 SER。`;
+    } else {
     const hint = pat.keyVerbs.length ? `記得用「${pat.keyVerbs.join(' / ')}」這個動詞喔` : '句子太短或結構不太對';
     res.textContent=`¡Ojo! 👀 ${hint}`;
+    }
     res.style.display='block';
     document.getElementById('makeFreeInput').className='make-free-input err';
   }
