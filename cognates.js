@@ -465,6 +465,56 @@ const SUFFIX_PATTERNS = [
       {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'請勿進入。', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
     ]
   },
+  {
+    rule: '-ous → -oso / -osa（形容詞）',
+    hint: '英文「充滿⋯的」形容詞字尾，西語對應到 -oso/-osa',
+    words: [
+      {en:'famous',    es:'famoso',    art:'', zh:'有名的',  ex:{es:'Nita es muy famosa.',            zh:'妮妲很有名。', chunks:[{w:"Nita",role:"s"},{w:"es muy famosa.",role:"v"}]}},
+      {en:'furious',   es:'furioso',   art:'', zh:'憤怒的',  ex:{es:'Papá Tato está furioso.',        zh:'達多爸爸很生氣。', chunks:[{w:"Papá Tato",role:"s"},{w:"está furioso.",role:"v"}]}},
+      {en:'delicious', es:'delicioso', art:'', zh:'美味的',  ex:{es:'La comida está deliciosa.',      zh:'這道菜很好吃。', chunks:[{w:"La comida",role:"s"},{w:"está deliciosa.",role:"v"}]}},
+      {en:'curious',   es:'curioso',   art:'', zh:'好奇的',  ex:{es:'Tito es muy curioso.',           zh:'迪多很好奇。', chunks:[{w:"Tito",role:"s"},{w:"es muy curioso.",role:"v"}]}},
+    ]
+  },
+  {
+    rule: '-ly → -mente（副詞）',
+    hint: '英文最常見的副詞字尾。變形先把形容詞變陰性(字尾改a)，再接 -mente',
+    words: [
+      {en:'rapidly',   es:'rápidamente',   art:'', zh:'快速地', ex:{es:'Corre rápidamente.',           zh:'他跑得很快。', chunks:[{w:"Corre",role:"v"},{w:"rápidamente.",role:"c"}]}},
+      {en:'exactly',   es:'exactamente',   art:'', zh:'確切地', ex:{es:'Es exactamente lo que quiero.', zh:'這正是我想要的。', chunks:[{w:"Es",role:"v"},{w:"exactamente lo que quiero.",role:"c"}]}},
+      {en:'perfectly', es:'perfectamente', art:'', zh:'完美地', ex:{es:'Entiendo perfectamente.',       zh:'我完全理解。', chunks:[{w:"Entiendo",role:"v"},{w:"perfectamente.",role:"c"}]}},
+      {en:'finally',   es:'finalmente',    art:'', zh:'最後',   ex:{es:'Finalmente llegamos.',          zh:'我們終於到了。', chunks:[{w:"Finalmente",role:"c"},{w:"llegamos.",role:"v"}]}},
+    ]
+  },
+  {
+    rule: '-ic → -ico / -ica（形容詞／名詞）',
+    hint: '西語加上 o/a，重音通常落在倒數第三音節(要加重音符號)',
+    words: [
+      {en:'fantastic', es:'fantástico', art:'', zh:'棒極了的', ex:{es:'¡Qué fantástico!',              zh:'太棒了！', chunks:[{w:"¡Qué fantástico!",role:"c"}]}},
+      {en:'public',    es:'público',    art:'el', zh:'公開的／公共的', ex:{es:'Es un parque público.',  zh:'這是一座公園。', chunks:[{w:"Es",role:"v"},{w:"un parque público.",role:"c"}]}},
+      {en:'romantic',  es:'romántico',  art:'', zh:'浪漫的', ex:{es:'Es una película romántica.',      zh:'這是一部浪漫電影。', chunks:[{w:"Es",role:"v"},{w:"una película romántica.",role:"c"}]}},
+      {en:'music',     es:'música',     art:'la', zh:'音樂', ex:{es:'Me encanta la música.',           zh:'我超愛音樂。', chunks:[{w:"Me encanta",role:"v"},{w:"la música.",role:"o"}]}},
+    ]
+  },
+  {
+    rule: '-ist → -ista（職業／人）',
+    hint: '不分男女字尾，前面照性別配 el 或 la',
+    words: [
+      {en:'artist',  es:'artista',  art:'la', zh:'藝術家', ex:{es:'Ella es una gran artista.',   zh:'她是個很棒的藝術家。', chunks:[{w:"Ella",role:"s"},{w:"es una gran artista.",role:"v"}]}},
+      {en:'dentist', es:'dentista', art:'el', zh:'牙醫',   ex:{es:'Voy al dentista mañana.',     zh:'我明天要去看牙醫。', chunks:[{w:"Voy al dentista",role:"v"},{w:"mañana.",role:"c"}]}},
+      {en:'tourist', es:'turista',  art:'el', zh:'觀光客', ex:{es:'Hay muchos turistas aquí.',   zh:'這裡有很多觀光客。', chunks:[{w:"Hay muchos turistas",role:"v"},{w:"aquí.",role:"c"}]}},
+      {en:'pianist', es:'pianista', art:'el', zh:'鋼琴家', ex:{es:'Él es pianista.',             zh:'他是鋼琴家。', chunks:[{w:"Él",role:"s"},{w:"es pianista.",role:"v"}]}},
+    ]
+  },
+  {
+    rule: '-ry → -rio / -ria（名詞）',
+    hint: '英文 -ry 字尾，西語換成 -rio(陽性)或 -ria(陰性)',
+    words: [
+      {en:'salary',      es:'salario',      art:'el', zh:'薪水',     ex:{es:'El salario es bueno.',        zh:'薪水不錯。', chunks:[{w:"El salario",role:"s"},{w:"es bueno.",role:"v"}]}},
+      {en:'secretary',   es:'secretaria',   art:'la', zh:'秘書',     ex:{es:'Mi secretaria es amable.',    zh:'我的秘書人很好。', chunks:[{w:"Mi secretaria",role:"s"},{w:"es amable.",role:"v"}]}},
+      {en:'dictionary',  es:'diccionario',  art:'el', zh:'字典',     ex:{es:'Necesito un diccionario.',    zh:'我需要一本字典。', chunks:[{w:"Necesito",role:"v"},{w:"un diccionario.",role:"o"}]}},
+      {en:'anniversary', es:'aniversario',  art:'el', zh:'週年紀念', ex:{es:'Hoy es nuestro aniversario.', zh:'今天是我們的週年紀念日。', chunks:[{w:"Hoy",role:"c"},{w:"es",role:"v"},{w:"nuestro aniversario.",role:"c"}]}},
+    ]
+  },
 ];
 
 // ── 建立 cognate details HTML ──
