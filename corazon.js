@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="mom-cat-desc">${cat.desc}</div>
       <div class="mom-cards-col">`;
     cat.items.forEach((item, itemIdx) => {
-      const lineHtml = (typeof renderScriptLine === 'function') ? renderScriptLine(item.es) : item.es;
+      const lineHtml = (typeof renderScriptLine === 'function') ? renderScriptLine(item.es, `speakGramSmart('${escAttr(item.es)}')`) : item.es;
       html += `<div class="mom-atm-card">
         <span class="gestalt-tag type-d">#${item.tag}</span>
         <div class="card-spanish-body">${lineHtml}</div>

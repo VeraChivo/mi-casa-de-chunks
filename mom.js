@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const lineHtml = (typeof renderScriptLine === 'function')
-        ? renderScriptLine(displayEs)
+        ? renderScriptLine(displayEs, `speakGramSmart('${escAttr(displayEs)}')`)
         : displayEs;
 
       if (typeof detectGestalt === 'function' && typeof triggerAutoWrite === 'function') {

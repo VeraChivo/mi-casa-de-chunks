@@ -503,7 +503,7 @@ function _talkRenderPreview(){
   }
   box.style.display = 'block';
   box.innerHTML = picked.map(p => `
-    <div class="card-spanish-body">${(typeof renderScriptLine === 'function') ? renderScriptLine(p.es) : _diaryEsc(p.es)}</div>
+    <div class="card-spanish-body">${(typeof renderScriptLine === 'function') ? renderScriptLine(p.es, `speakGramSmart('${(typeof escAttr==='function'?escAttr(p.es):p.es)}')`) : _diaryEsc(p.es)}</div>
     <div class="card-chinese-translation">${_diaryEsc(p.zh)}</div>
   `).join('<hr style="border:none;border-top:1px dashed var(--usumizu);margin:8px 0">');
   step3.style.display = 'block';
@@ -553,7 +553,7 @@ function renderTalkList(){
   el.innerHTML = db.map(t => {
     const sentences = t.sentences || (t.es ? [{ es: t.es, zh: t.zh }] : []); // 相容舊版單句資料
     const sentHtml = sentences.map(s => `
-      <div class="card-spanish-body">${(typeof renderScriptLine === 'function') ? renderScriptLine(s.es) : _diaryEsc(s.es)}</div>
+      <div class="card-spanish-body">${(typeof renderScriptLine === 'function') ? renderScriptLine(s.es, `speakGramSmart('${(typeof escAttr==='function'?escAttr(s.es):s.es)}')`) : _diaryEsc(s.es)}</div>
       <div class="card-chinese-translation">${_diaryEsc(s.zh)}</div>
     `).join('<hr style="border:none;border-top:1px dashed var(--usumizu);margin:6px 0">');
     return `

@@ -1978,18 +1978,22 @@ function jumpToConjLib(gId){
   },80);
 }
 
-function _grammarExChunks(es){
+// playExpr：可傳入該句整句的播放呼叫(字串，例如"speakGramSmart('...')")，
+// 有傳就統一點哪個字都播整句真人音檔，不再各字各自TTS(跟▶整句不同調)；不傳維持原本逐字TTS
+function _grammarExChunks(es, playExpr){
   const words = es.split(/(\s+)/);
   const _gdb = getGardenDB();
+  const clickExpr = playExpr || null;
   return words.map(tok=>{
     if(!tok.trim()) return '';
     const clean = tok.replace(/[¡¿.,!?;:]/g,'').trim();
-    if(!isVocabWorthy(clean)) return `<span class="ge-chunk" onclick="event.stopPropagation();speakWord('${escAttr(clean)}',this)">${tok}</span>`;
+    const onclickAttr = clickExpr ? clickExpr : `speakWord('${escAttr(clean)}',this)`;
+    if(!isVocabWorthy(clean)) return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>`;
     const _key='ge_'+clean;
     const _st=(_gdb[_key]||{stage:0}).stage;
     const _ic=GARDEN_STAGES[_st];
     const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
-    return `<span class="ge-chunk" onclick="event.stopPropagation();speakWord('${escAttr(clean)}',this)">${tok}</span>${starHtml}`;
+    return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}`;
   }).join('');
 }
 
@@ -2038,7 +2042,7 @@ function renderSelLine(){
     <div id="selEpBody${i}" style="display:none;padding:8px 12px 4px">
       ${epi.sentences.map((s,j)=>`
         <div class="grammar-ex-row">
-          <div class="grammar-ex-chunks">${_grammarExChunks(s.es)}</div>
+          <div class="grammar-ex-chunks">${_grammarExChunks(s.es, `speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')`)}</div>
           <div class="grammar-ex-zh" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">${s.zh} <span class="ex-zh-play">▶ 整句</span></div>
         </div>`).join('')}
     </div>`).join('');
@@ -2077,7 +2081,7 @@ function openGrammarCard(gId){
   const catLabel = (GRAMMAR_CATS.find(c=>c.key===g.cat)||{label:''}).label;
   const exHtml = g.examples.map(ex =>
     `<div class="grammar-ex-row">
-      <div class="grammar-ex-chunks">${_grammarExChunks(ex.es)}</div>
+      <div class="grammar-ex-chunks">${_grammarExChunks(ex.es, `speakGramSmart('${escAttr(ex.es)}')`)}</div>
       <div class="grammar-ex-zh" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh} <span class="ex-zh-play">▶ 整句</span></div>
     </div>`
   ).join('');
@@ -2370,7 +2374,8 @@ function gestaltTapAndSave(sentence, _zh, _doSave) {
 }
 
 // 渲染帶完形偵測標記的句子 HTML（只偵測，不自動寫入）
-function renderScriptLine(sentence) {
+// playExpr：可傳入整句的播放呼叫(字串)，有傳就統一點哪個字都播整句真人音檔，不傳維持原本逐字TTS
+function renderScriptLine(sentence, playExpr) {
   const gardenDB = getGardenDB();
   const words = sentence.split(/\s+/);
   let html = '';
@@ -2381,12 +2386,14 @@ function renderScriptLine(sentence) {
       const gAttr = r.gId ? ` data-gid="${r.gId}"` : '';
       const ge = gardenDB[chunk] || { stage: 0, quiz_count: 0 };
       const gs = classifyGardenStatus(ge);
-      html += `<span class="gestalt-chunk ${r.type}"${gAttr} data-type="${r.type}" data-verbform="${r.verbForm}" data-assoc="${r.assoc}" data-chunk="${escAttr(chunk)}" onclick="gestaltTap(this)">${chunk}<button class="gc-star${gs.stage === 0 ? ' garden-empty' : ''}" onmousedown="event.stopPropagation();gardenStartPress(this)" onmouseup="gardenCancelPress()" onmouseleave="gardenCancelPress()" ontouchstart="event.stopPropagation();event.preventDefault();gardenStartPress(this)" ontouchend="gardenHandleTouch(this,event)" ontouchmove="gardenCancelPress()" onclick="event.stopPropagation();gestaltSave(this)" title="${escAttr(gs.label)}">${gs.icon}</button></span>`;
+      const playAttr = playExpr ? ` data-playexpr="${escAttr(playExpr)}"` : '';
+      html += `<span class="gestalt-chunk ${r.type}"${gAttr}${playAttr} data-type="${r.type}" data-verbform="${r.verbForm}" data-assoc="${r.assoc}" data-chunk="${escAttr(chunk)}" onclick="gestaltTap(this)">${chunk}<button class="gc-star${gs.stage === 0 ? ' garden-empty' : ''}" onmousedown="event.stopPropagation();gardenStartPress(this)" onmouseup="gardenCancelPress()" onmouseleave="gardenCancelPress()" ontouchstart="event.stopPropagation();event.preventDefault();gardenStartPress(this)" ontouchend="gardenHandleTouch(this,event)" ontouchmove="gardenCancelPress()" onclick="event.stopPropagation();gestaltSave(this)" title="${escAttr(gs.label)}">${gs.icon}</button></span>`;
       i += r.length;
     } else {
       const w = words[i];
       const wc = w.replace(/[¡!¿?.,;:]/g, '');
-      html += `<span class="gc-word" onclick="speakWord('${escAttr(wc)}',this)">${w}</span> `;
+      const onclickExpr = playExpr ? playExpr : `speakWord('${escAttr(wc)}',this)`;
+      html += `<span class="gc-word" onclick="${onclickExpr}">${w}</span> `;
       i++;
     }
   }
@@ -2395,7 +2402,12 @@ function renderScriptLine(sentence) {
 
 function gestaltTap(el) {
   const chunk = el.dataset.chunk;
-  speakWord(chunk.replace(/[¡!¿?.,;:]/g, ''), el);
+  const playExpr = el.dataset.playexpr;
+  if(playExpr){
+    try{ new Function(playExpr)(); }catch(e){ speakWord(chunk.replace(/[¡!¿?.,;:]/g, ''), el); }
+  } else {
+    speakWord(chunk.replace(/[¡!¿?.,;:]/g, ''), el);
+  }
   copyTextWithFeedback(chunk);
 }
 

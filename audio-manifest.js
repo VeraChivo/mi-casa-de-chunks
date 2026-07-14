@@ -978,3 +978,19 @@ Object.assign(GRAM_AUDIO_MAP, {
   "Hoy elijo ser amable conmigo misma.": "audio/corazon/corazon_crecimiento_04.mp3",
   "No he terminado de crecer.": "audio/corazon/corazon_crecimiento_05.mp3",
 });
+
+// 🏰莊園人物冊(PRONOUN_LIBRARY/PRONOUN_COMBO_RULES)真人音檔
+Object.assign(GRAM_AUDIO_MAP, {
+  "Yo tengo hambre": "audio/pron/pron_row_1.mp3",
+  "Te llamo mañana": "audio/pron/pron_row_2.mp3",
+  "Te doy un regalo": "audio/pron/pron_row_3.mp3",
+  "Me lavo las manos": "audio/pron/pron_row_4.mp3",
+  "Me lavo las manos.": "audio/pron/pron_row_4.mp3",
+  "Tengo hambre.": "audio/pron/pron_cat_1.mp3",
+  "Compro el libro. Lo compro.": "audio/pron/pron_cat_2.mp3",
+  "Doy el libro a María. Le doy el libro.": "audio/pron/pron_cat_3.mp3",
+  "Me lo pongo.": "audio/pron/pron_combo_1.mp3",
+  "Le lo doy. Se lo doy.": "audio/pron/pron_combo_2.mp3",
+  "Cómelo.": "audio/pron/pron_combo_3.mp3",
+  "Le estoy escribiendo. Estoy escribiéndole.": "audio/pron/pron_combo_4.mp3",
+});
