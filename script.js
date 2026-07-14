@@ -1792,10 +1792,25 @@ function showGrammarTip(globalIdx){
 }
 
 // ── 文法卡/變位庫例句，真人音檔優先(依例句原文精準比對)，找不到才fallback TTS ──
+// GRAM_AUDIO_MAP 的值可能是單一檔案(字串)，也可能是跟課文借用的分段序列(陣列，依序播放)
 function speakGramSmart(text){
-  const file = (typeof GRAM_AUDIO_MAP!=='undefined') ? GRAM_AUDIO_MAP[text] : null;
-  if(!file){ speakSentence(text); return; }
-  const player = new Audio(file);
+  const entry = (typeof GRAM_AUDIO_MAP!=='undefined') ? GRAM_AUDIO_MAP[text] : null;
+  if(!entry){ speakSentence(text); return; }
+  if(Array.isArray(entry)){
+    if(!entry.length){ speakSentence(text); return; }
+    let i = 0;
+    const player = new Audio();
+    player.onended = () => { i++; setTimeout(playNext, 30); };
+    player.onerror = () => speakSentence(text);
+    function playNext(){
+      if(i >= entry.length) return;
+      player.src = entry[i];
+      player.play().catch(()=>speakSentence(text));
+    }
+    playNext();
+    return;
+  }
+  const player = new Audio(entry);
   player.onerror = () => speakSentence(text);
   player.play().catch(()=>speakSentence(text));
 }
