@@ -131,6 +131,22 @@ function speakFull(text){
   speakWord(text.replace(/[¡¿]/g,''), null);
 }
 
+// ── 真人錄音音檔優先播放，找不到時 fallback 回瀏覽器 TTS ──
+function speakSentenceSmart(epIdx, sentIdx, text){
+  const files = (typeof AUDIO_MANIFEST!=='undefined' && AUDIO_MANIFEST[epIdx] && AUDIO_MANIFEST[epIdx][sentIdx]) || [];
+  if(!files.length){ speakFull(text); return; }
+  let i = 0;
+  const player = new Audio();
+  player.onended = () => { i++; setTimeout(playNext, 100); };
+  player.onerror = () => { speakFull(text); };
+  function playNext(){
+    if(i >= files.length) return;
+    player.src = files[i];
+    player.play().catch(()=>speakFull(text));
+  }
+  playNext();
+}
+
 function testTTS(){
   if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音朗讀'); return; }
   // Force init voices on first user tap
@@ -1077,7 +1093,7 @@ function render(){
 
   const fsEl=document.getElementById('fullSent');
   fsEl.textContent=s.es;
-  fsEl.onclick=()=>speakFull(s.es);
+  fsEl.onclick=()=>speakSentenceSmart(ep, idx, s.es);
 
   // ── 英西同源槓桿 details 注入 ──
   let cogBox = document.getElementById('cogBox');
@@ -1859,7 +1875,7 @@ function renderSelLine(){
       ${epi.sentences.map(s=>`
         <div class="grammar-ex-row">
           <div class="grammar-ex-chunks">${_grammarExChunks(s.es)}</div>
-          <div class="grammar-ex-zh">${s.zh}</div>
+          <div class="grammar-ex-zh" onclick="speakFull('${escAttr(s.es)}')" title="點這裡聽整句">${s.zh} <span class="ex-zh-play">▶ 整句</span></div>
         </div>`).join('')}
     </div>`).join('');
 }
@@ -1898,7 +1914,7 @@ function openGrammarCard(gId){
   const exHtml = g.examples.map(ex =>
     `<div class="grammar-ex-row">
       <div class="grammar-ex-chunks">${_grammarExChunks(ex.es)}</div>
-      <div class="grammar-ex-zh">${ex.zh}</div>
+      <div class="grammar-ex-zh" onclick="speakFull('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh} <span class="ex-zh-play">▶ 整句</span></div>
     </div>`
   ).join('');
   const ruleClass = g.emph ? 'grammar-rule grammar-rule-emph' : 'grammar-rule';
