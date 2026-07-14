@@ -316,7 +316,16 @@ function renderAmmoFireRow(fire, type, ammoId){
   const tsLabel = type==='peppa' && fire.ts!=null
     ? `<span class="ammo-fire-ts" onclick="seekYT(${fire.ts})">▶ ${Math.floor(fire.ts/60)}:${String(fire.ts%60).padStart(2,'0')}</span>`
     : '';
-  return `<div class="ammo-fire-row ${type}" onclick="${type==='peppa'?(fire.ts!=null?`seekYT(${fire.ts})`:''):`speakFull('${escAttr(fire.es)}')`}">
+  let peppaClick = '';
+  if(type==='peppa'){
+    if(fire.ts!=null){ peppaClick = `seekYT(${fire.ts})`; }
+    else {
+      // fire_peppa.es 跟課文原句完全相同，直接借用課文的真人音檔
+      const m = (ammoId||'').match(/^e(\d+)_(\d+)$/);
+      peppaClick = m ? `speakSentenceSmart(${parseInt(m[1],10)-1},${parseInt(m[2],10)-1},'${escAttr(fire.es)}')` : `speakFull('${escAttr(fire.es)}')`;
+    }
+  }
+  return `<div class="ammo-fire-row ${type}" onclick="${type==='peppa'?peppaClick:`speakFull('${escAttr(fire.es)}')`}">
     <div class="ammo-fire-tag ${type}">${tag}${tsLabel}</div>
     <div class="ammo-fire-es">${fire.es}</div>
     <div class="ammo-fire-zh">${fire.zh}</div>
