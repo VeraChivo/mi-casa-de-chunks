@@ -756,7 +756,7 @@ function renderCogLibrary(filter){
       <div class="falsecog-card">
         <div class="falsecog-row">
           <span class="cog-es" onclick="openYGPanel('${escAttr(f.es)}')">${f.art?`<span class="cog-art">${f.art}</span> `:''}${f.es}</span>
-          <span class="falsecog-notlike">🚫 不是「${f.looksLike}」（${f.wrongZh}）</span>
+          <span class="falsecog-notlike"><span class="falsecog-icon">🚫</span> 不是「${f.looksLike}」（${f.wrongZh}）</span>
         </div>
         <div class="falsecog-real">✅ 真正意思：${f.realZh}</div>
         <div class="falsecog-trap">${f.trap}</div>
