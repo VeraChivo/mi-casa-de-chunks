@@ -634,10 +634,12 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 /* 陰陽字尾語塊卡 */
 .gp-card{background:white;border-bottom:1px solid var(--bg2);padding:9px 16px;text-align:center}
 .gp-card:last-child{border-bottom:none;border-radius:0 0 14px 14px}
-.gp-zh{font-size:15px;font-weight:800;color:var(--konpeki);margin-bottom:6px}
-.gp-toggles{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.gp-toggle-wrap{display:inline-flex;align-items:center;gap:2px}
-.gp-toggle{font-size:16px;font-weight:900;padding:8px 16px;border-radius:10px;border:1.5px dashed var(--misora);color:var(--misora);background:white;cursor:pointer;transition:all .15s}
+.gp-zh{font-size:15px;font-weight:800;color:var(--konpeki);margin-bottom:6px;text-align:center}
+.gp-toggles{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.gp-toggle-wrap{display:inline-flex;align-items:center;gap:1px}
+.gp-toggle{font-size:14px;font-weight:900;padding:7px 10px;border-radius:9px;border:1.5px dashed var(--misora);color:var(--misora);background:white;cursor:pointer;transition:all .15s}
+.gp-toggle-wrap .ge-chunk-star{font-size:8px;margin-right:0}
+.gp-toggle-wrap .vocab-add-btn{width:15px;height:15px;font-size:10px}
 .gp-toggle-m{background:var(--taichi-m)}
 .gp-toggle-f{background:var(--taichi-f)}
 .gp-toggle.active{background:var(--misora);color:white;border-style:solid}
