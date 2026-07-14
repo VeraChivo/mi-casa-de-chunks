@@ -617,21 +617,28 @@ function toggleCogLibrary(){
   t.textContent=open?'▲ 收起':'▼ 展開';
 }
 
-// ── 🎧 同源詞英西對照雙語朗讀（42組，依序播放） ──
+// ── 🎧 同源詞英西對照雙語朗讀（42組，每組唸兩語言配對，組間留時間讓妳跟讀） ──
 let _cogDualPlayer = null;
 function playCognateDual(dir){
   if(_cogDualPlayer){ _cogDualPlayer.pause(); _cogDualPlayer = null; }
   const total = 42;
-  const folder = dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en';
-  const prefix = dir==='sp' ? 'sp-sp-eng' : 'eng-sp-eng';
-  let i = 1;
+  let i = 1, step = 0; // step 0=第一語言, 1=第二語言
   const player = new Audio();
   _cogDualPlayer = player;
-  player.onended = () => { i++; setTimeout(playNext, 30); };
+  const firstFolder  = dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en';
+  const firstPrefix  = dir==='sp' ? 'sp-sp-eng' : 'eng-sp-eng';
+  const secondFolder = dir==='sp' ? 'audio/vocab/cognates_en' : 'audio/vocab/cognates_sp';
+  const secondPrefix = dir==='sp' ? 'eng-sp-eng' : 'sp-sp-eng';
+  player.onended = () => {
+    if(step===0){ step=1; setTimeout(playNext, 500); }   // 同一組內兩語言間短暫停頓
+    else { step=0; i++; setTimeout(playNext, 1800); }    // 換下一組前留久一點給妳跟讀
+  };
   player.onerror = () => { toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; };
   function playNext(){
     if(i > total || player !== _cogDualPlayer) return;
     toast(`🎧 ${i}/${total}`);
+    const folder = step===0 ? firstFolder : secondFolder;
+    const prefix = step===0 ? firstPrefix : secondPrefix;
     player.src = `${folder}/${prefix}_${String(i).padStart(2,'0')}.mp3`;
     player.play().catch(()=>{ toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; });
   }
