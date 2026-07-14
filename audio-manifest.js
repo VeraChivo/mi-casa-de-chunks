@@ -262,6 +262,10 @@ const GP_AUDIO_MAP=[
   ["audio/gp/gp_4_0.mp3", "audio/gp/gp_4_1.mp3"],
   ["audio/gp/gp_5_0.mp3", "audio/gp/gp_5_1.mp3"],
   ["audio/gp/gp_6_0.mp3", "audio/gp/gp_6_1.mp3"],
+  ["audio/gp/gp_7_0.mp3", "audio/gp/gp_7_1.mp3"],
+  ["audio/gp/gp_8_0.mp3", "audio/gp/gp_8_1.mp3"],
+  ["audio/gp/gp_9_0.mp3", "audio/gp/gp_9_1.mp3"],
+  ["audio/gp/gp_10_0.mp3", "audio/gp/gp_10_1.mp3"],
 ];
 
 // ammo.js（彈藥庫）「🔥全速運轉」日常例句 真人音檔，key=ammo_id，值=依序2個檔案
