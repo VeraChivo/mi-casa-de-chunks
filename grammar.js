@@ -90,6 +90,7 @@ function renderPronounComboRules(){
         <div class="pron-cat-hint">${r.hint}</div>
         <div class="pron-example" onclick="speakGramSmart('${String(r.speakEs||r.example.es).replace(/'/g,"\\'")}')">
           <div class="pron-ex-es">▶ ${r.example.es}</div>
+          ${r.speakEs && r.speakEs!==r.example.es ? `<div class="pron-ex-speak">🔊 實際播放：${r.speakEs}</div>` : ''}
           <div class="pron-ex-zh">${r.example.zh}</div>
         </div>
       </div>`).join('')}
