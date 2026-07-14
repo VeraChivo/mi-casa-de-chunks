@@ -448,7 +448,7 @@ const SUFFIX_PATTERNS = [
       {en:'history',   es:'historia',  art:'la', zh:'歷史',   ex:{es:'Me gusta la historia.',          zh:'我喜歡歷史。', chunks:[{w:"Me gusta",role:"v"},{w:"la historia.",role:"s"}]}},
       {en:'memory',    es:'memoria',   art:'la', zh:'記憶',   ex:{es:'Tiene buena memoria.',           zh:'她記憶力很好。', chunks:[{w:"Tiene",role:"v"},{w:"buena memoria.",role:"o"}]}},
       {en:'pharmacy',  es:'farmacia',  art:'la', zh:'藥局',   ex:{es:'Voy a la farmacia.',             zh:'我去藥局。', chunks:[{w:"Voy",role:"v"},{w:"a la farmacia.",role:"o"}]}},
-      {en:'victory',   es:'victoria',  art:'la', zh:'勝利',   ex:{es:'¡Es la victoria!',              zh:'是勝利！', chunks:[{w:"¡Es",role:"v"},{w:"la victoria!",role:"c"}]}},
+      {en:'victory',   es:'victoria',  art:'la', zh:'勝利',   ex:{es:'¡Es la victoria!',              zh:'是勝利！（贏了🌟）', chunks:[{w:"¡Es",role:"v"},{w:"la victoria!",role:"c"}]}},
       {en:'biology',   es:'biología',  art:'la', zh:'生物學', ex:{es:'Estudio biología.',              zh:'我念生物學。', chunks:[{w:"Estudio",role:"v"},{w:"biología.",role:"o"}]}},
       {en:'economy',   es:'economía',  art:'la', zh:'經濟',   ex:{es:'La economía crece.',             zh:'經濟在成長。', chunks:[{w:"La economía",role:"s"},{w:"crece.",role:"v"}]}},
     ]
