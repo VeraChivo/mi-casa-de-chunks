@@ -500,6 +500,23 @@ const GRAMMAR_DATA = [
       {es:"Tito tiene seis años.", zh:"迪多六歲。（新編例句，目前劇情裡還沒有「年紀」這個用法，直譯：迪多有六年）"}
     ],
     trap:"英文用 be（I am hungry / I am 6 years old），西語卻用 tener（有）——這是中英文母語者最容易直覺講錯的地方！",
+    family:{
+      title:"🌳 Tengo + 名詞 家族",
+      intro:"別只背「tener」這個動詞，把整串「Tengo + 名詞」的固定搭配當一個家族背起來——中英文用 be 處理的感覺/狀態，西語統一用 tener（有）帶出來。",
+      items:[
+        {es:"Tengo hambre.", zh:"我餓了。"},
+        {es:"Tengo sed.", zh:"我渴了。"},
+        {es:"Tengo sueño.", zh:"我想睡了。"},
+        {es:"Tengo frío.", zh:"我冷了。"},
+        {es:"Tengo calor.", zh:"我熱了。"},
+        {es:"Tengo miedo.", zh:"我害怕。"},
+        {es:"Tengo razón.", zh:"我是對的。"},
+        {es:"Tengo prisa.", zh:"我在趕時間。"},
+        {es:"Tengo tiempo.", zh:"我有空。"},
+        {es:"Tengo suerte.", zh:"我很幸運。"},
+        {es:"Tengo ganas de bailar.", zh:"我想跳舞。（tener ganas de + 原形動詞＝想做某事）"}
+      ]
+    },
     source:"彈藥庫 e4_03（前兩句）／文法補充（年紀用法為新編）",
     conj:{
       verb:"tener（有）",

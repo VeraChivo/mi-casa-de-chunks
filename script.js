@@ -1872,6 +1872,16 @@ function openGrammarCard(gId){
         <span class="mnemonic-ex" onclick="speakSentence('${escAttr(it.ex)}')">${it.ex}</span>
       </div>`).join('')}
     </div>` : '';
+  const familyHtml = g.family ? `
+    <div class="grammar-family">
+      <div class="family-title">${g.family.title}</div>
+      <div class="family-intro">${g.family.intro}</div>
+      <div class="family-items">${g.family.items.map(it=>`
+        <div class="family-item" onclick="speakFull('${escAttr(it.es)}')">
+          <span class="family-es">${it.es}</span>
+          <span class="family-zh">${it.zh}</span>
+        </div>`).join('')}</div>
+    </div>` : '';
   const userExs = (grammarUserExamples[gId]||{}).user_examples||[];
   const userExHtml = userExs.length
     ? `<div class="grammar-user-examples">
@@ -1886,6 +1896,7 @@ function openGrammarCard(gId){
     ${mnemonicHtml}
     <div class="grammar-examples">${exHtml}</div>
     ${buildConjTable(g.conj, g.id)}
+    ${familyHtml}
     ${g.trap?`<p class="grammar-trap">${g.trap}</p>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
     ${g.quirk?`<div class="grammar-quirk">${g.quirk}</div>`:''}
