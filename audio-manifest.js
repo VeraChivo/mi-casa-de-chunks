@@ -1,6 +1,54 @@
 // 音檔清單:預先錄製的真人TTS音檔,取代預設瀏覽器TTS,找不到時fallback回speakFull()
 // 結構: AUDIO_MANIFEST[epIndex][sentenceIdx] = ["audio/eX/file1.mp3", ...] 依序播放
 const AUDIO_MANIFEST={
+  0:[
+    ["audio/e1/01_yo_soy.mp3","audio/e1/02_gatita_nita.mp3"],
+    ["audio/e1/03_este_es.mp3","audio/e1/04_mi_hermano.mp3","audio/e1/05_tito.mp3"],
+    ["audio/e1/06_hoy_esta_lloviendo.mp3","audio/e1/07_asi_que.mp3","audio/e1/08_no_pueden_jugar.mp3"],
+    ["audio/e1/09_podemos_salir.mp3","audio/e1/10_a_jugar.mp3"],
+    ["audio/e1/11_nita_debes_ponerte.mp3","audio/e1/12_las_botas_de_agua.mp3"],
+    ["audio/e1/13_me_encanta_saltar.mp3","audio/e1/14_en_los_charcos.mp3"],
+    ["audio/e1/15_nita_ha_encontrado.mp3","audio/e1/16_un_charco_pequeno.mp3"],
+    ["audio/e1/17_ese_charco.mp3","audio/e1/18_si_que_es_grande.mp3"],
+    ["audio/e1/19_no_pasa_nada.mp3","audio/e1/20_solo_es_barro.mp3"],
+    [], // 缺:「A todos les encanta saltar en los charcos de barro.」沒有對應音檔,fallback回TTS
+  ],
+  1:[
+    ["audio/e2/21_juguete_favorito.mp3","audio/e2/22_de_tito.mp3","audio/e2/23_es_senor_esqueleto.mp3"],
+    ["audio/e2/24_cuando_tito_se_va.mp3","audio/e2/25_a_la_cama.mp3","audio/e2/26_se_acurruca.mp3","audio/e2/27_a_su_lado.mp3"],
+    ["audio/e2/28_tito_ha_perdido.mp3"],
+    ["audio/e2/29_no_te_preocupes.mp3","audio/e2/30_entre_todos.mp3","audio/e2/31_lo_encontraremos.mp3"],
+    ["audio/e2/32_un_detective.mp3","audio/e2/33_es_una_persona.mp3","audio/e2/34_muy_buena.mp3","audio/e2/35_encontrando_cosas.mp3"],
+    ["audio/e2/36_siempre_se_trae.mp3","audio/e2/37_a_la_banera.mp3"],
+    ["audio/e2/38_ya_lo_se.mp3","audio/e2/39_donde_esta.mp3"],
+    ["audio/e2/40_no_esta_en_la_cama.mp3"],
+    [], // 缺:41號音檔還是舊版「papá Pig」用字,跟修正後的「Papá Tato」不符,先fallback回TTS
+    [], // 缺:44號音檔還是舊版西班牙「habéis」用法,跟修正後的拉美「ustedes han」不符,先fallback回TTS
+  ],
+  2:[
+    ["audio/e3/54_nita_esperando.mp3","audio/e3/55_mejor_amiga.mp3","audio/e3/56_vera_ove_ja.mp3"],
+    ["audio/e3/57_nita_quiere_vera.mp3","audio/e3/58_vera_quiere_nita.mp3"],
+    ["audio/e3/59_mejores_amigas.mp3"],
+    ["audio/e3/60_no_tito.mp3","audio/e3/61_este_juego_solo.mp3","audio/e3/62_ninas_mayores.mp3"],
+    ["audio/e3/63_soy_princesa.mp3","audio/e3/64_salida_cuento.mp3"],
+    ["audio/e3/65_no_le_gusta.mp3","audio/e3/66_jugar_solo.mp3"],
+    ["audio/e3/67_yo_sere_doctora.mp3","audio/e3/68_tu_seras_enfermera.mp3"],
+    ["audio/e3/69_respira_hondo.mp3","audio/e3/70_despues_tose.mp3"],
+    ["audio/e3/71_creo_que_tienes.mp3","audio/e3/72_corazon_flojo.mp3"],
+    ["audio/e3/73_todos_necesitan.mp3","audio/e3/74_muchas_galletas.mp3","audio/e3/75_para_curarse.mp3"],
+  ],
+  3:[
+    ["audio/e4/76_mama_cata.mp3","audio/e4/77_ha_tenido_bebe.mp3"],
+    ["audio/e4/78_se_llama_mimi.mp3"],
+    ["audio/e4/79_nita_tito_tienen.mp3","audio/e4/80_hermana_nueva.mp3"],
+    ["audio/e4/81_mimi_es.mp3","audio/e4/82_muy_pequenita.mp3"],
+    ["audio/e4/83_tito_quiere_mucho.mp3","audio/e4/84_a_su_hermanita.mp3"],
+    ["audio/e4/85_papa_tato.mp3","audio/e4/86_esta_muy_feliz.mp3"],
+    ["audio/e4/87_toda_la_familia.mp3","audio/e4/88_esta_esperando.mp3","audio/e4/89_a_mimi.mp3"],
+    ["audio/e4/90_nita_ya_es.mp3","audio/e4/91_hermana_mayor.mp3"],
+    ["audio/e4/92_vamos_a_cuidar.mp3","audio/e4/93_mimi_juntos.mp3"],
+    ["audio/e4/94_bienvenida.mp3","audio/e4/95_a_la_familia_mimi.mp3"],
+  ],
   4:[
     ["audio/e5/01a_S_Mimi.mp3","audio/e5/01b_V_llora_mucho.mp3","audio/e5/01c_O_por_la_noche.mp3"],
     ["audio/e5/02a_S_Mama_Cata.mp3","audio/e5/02b_V_le_da_de_comer.mp3","audio/e5/02c_O_a_Mimi.mp3"],
