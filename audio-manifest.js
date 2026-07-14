@@ -1021,7 +1021,6 @@ Object.assign(GRAM_AUDIO_MAP, {
   "Es el momento perfecto.": "audio/sfx/sfx_3_0.mp3",
   "Haz el movimiento lento.": "audio/sfx/sfx_3_1.mp3",
   "Es un sentimiento bonito.": "audio/sfx/sfx_3_2.mp3",
-  "Toca el instrumento bien.": "audio/sfx/sfx_3_3.mp3",
   "Es un buen argumento.": "audio/sfx/sfx_3_4.mp3",
   "Todo es posible.": "audio/sfx/sfx_4_0.mp3",
   "¡Es terrible!": "audio/sfx/sfx_4_1.mp3",
