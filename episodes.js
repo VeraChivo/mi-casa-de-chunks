@@ -864,10 +864,10 @@ const EPS=[
       {es:"Tito",zh:"迪多"},
     ]}]
   }},
-  {es:"Nita se duerme en clase y la maestra la despierta.",chunks:[{w:"Nita",role:"s"},{w:"se duerme",role:"v"},{w:"en clase",role:"o"},{w:"y",role:"c",hideYg:true},{w:"la maestra",role:"s"},{w:"la despierta.",role:"v"}],zh:"妮妲在課堂上睡著了，老師把她叫醒。",en:"Nita falls asleep in class and the teacher wakes her up.",noteZh:"「se duerme」= 睡著了（dormirse，反身動詞，跟 dormir 意思不同：dormir=睡覺的動作，dormirse=從清醒變成睡著的那個轉變）",noteEn:"'se duerme' = falls asleep (dormirse, reflexive — different from dormir 'to sleep')",
+  {es:"Nita se duerme en clase y Vivi la despierta.",chunks:[{w:"Nita",role:"s"},{w:"se duerme",role:"v"},{w:"en clase",role:"o"},{w:"y",role:"c",hideYg:true},{w:"Vivi",role:"s"},{w:"la despierta.",role:"v"}],zh:"妮妲在課堂上睡著了，薇薇老師把她叫醒。",en:"Nita falls asleep in class and Vivi wakes her up.",noteZh:"「se duerme」= 睡著了（dormirse，反身動詞，跟 dormir 意思不同：dormir=睡覺的動作，dormirse=從清醒變成睡著的那個轉變）；Vivi＝薇薇安老師",noteEn:"'se duerme' = falls asleep (dormirse, reflexive — different from dormir 'to sleep'); Vivi = teacher Vivian",
   expand:{
     note:"___ se duerme en clase. = 誰在課堂上睡著了，換人",
-    template:[{g:"name"},{t:"se duerme en clase y la maestra la despierta."}],
+    template:[{g:"name"},{t:"se duerme en clase y Vivi la despierta."}],
     groups:[{label:"誰睡著了",key:"name",options:[
       {es:"Nita",zh:"妮妲"},
       {es:"Kito",zh:"哥哥"},
