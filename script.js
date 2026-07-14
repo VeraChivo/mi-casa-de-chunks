@@ -574,11 +574,38 @@ function toggleCogLibrary(){
   t.textContent=open?'▲ 收起':'▼ 展開';
 }
 
+// ── 🎧 同源詞英西對照雙語朗讀（42組，依序播放） ──
+let _cogDualPlayer = null;
+function playCognateDual(dir){
+  if(_cogDualPlayer){ _cogDualPlayer.pause(); _cogDualPlayer = null; }
+  const total = 42;
+  const folder = dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en';
+  const prefix = dir==='sp' ? 'sp-sp-eng' : 'eng-sp-eng';
+  let i = 1;
+  const player = new Audio();
+  _cogDualPlayer = player;
+  player.onended = () => { i++; setTimeout(playNext, 100); };
+  player.onerror = () => { toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; };
+  function playNext(){
+    if(i > total || player !== _cogDualPlayer) return;
+    toast(`🎧 ${i}/${total}`);
+    player.src = `${folder}/${prefix}_${String(i).padStart(2,'0')}.mp3`;
+    player.play().catch(()=>{ toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; });
+  }
+  playNext();
+}
+
 function renderCogLibrary(filter){
   const body=document.getElementById('cogLibraryBody');
   if(!body) return;
   const q=(filter||'').toLowerCase().trim();
   let html=`<input type="text" class="cog-search" id="cogSearchInput" placeholder="🔍 搜尋英文／西語／中文…" value="${(filter||'').replace(/"/g,'&quot;')}">`;
+  if(!q){
+    html+=`<div class="cog-dual-row">
+      <button class="cog-dual-btn" onclick="playCognateDual('sp')">🎧 西 → 英 對照</button>
+      <button class="cog-dual-btn" onclick="playCognateDual('en')">🎧 英 → 西 對照</button>
+    </div>`;
+  }
 
   // 詞綴規律區（無搜尋時顯示）
   if(!q){
