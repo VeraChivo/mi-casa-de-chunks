@@ -196,7 +196,9 @@ function _s1Undo(i, built, visibleChunks, fire){
 function speakStage2(i, who, text){
   const file = (typeof STAGE2_AUDIO_MAP!=='undefined' && STAGE2_AUDIO_MAP[i]) ? STAGE2_AUDIO_MAP[i][who] : null;
   if(!file){ speakSentence(text); return; }
+  _stopActiveAudio();
   const player = new Audio(file);
+  _activeAudio = player;
   player.onerror = () => speakSentence(text);
   player.play().catch(()=>speakSentence(text));
 }
@@ -421,9 +423,11 @@ const S3_OBJ_AUDIO = [
 let _s3AudioPlayer = null;
 function _s3PlayAudioSeq(files, fallbackText){
   if(_s3AudioPlayer) _s3AudioPlayer.pause();
+  _stopActiveAudio();
   let i=0;
   const player=new Audio();
   _s3AudioPlayer=player;
+  _activeAudio=player;
   player.onended=()=>{ i++; setTimeout(next,15); };
   player.onerror=()=>{ speakFull(fallbackText); };
   function next(){

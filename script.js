@@ -73,7 +73,9 @@ function pronounceVocab(text){
     // 語塊/句子：先試試看是不是課文原句(真人音檔)，抓不到才TTS
     const chunkFile = (typeof CHUNK_AUDIO_MAP!=='undefined') ? CHUNK_AUDIO_MAP[text] : null;
     if(chunkFile){
+      _stopActiveAudio();
       const player = new Audio(chunkFile);
+      _activeAudio = player;
       player.onerror = () => speakWord(clean, null);
       player.play().catch(()=>speakWord(clean, null));
       return;
@@ -82,6 +84,13 @@ function pronounceVocab(text){
     speakWord(clean, null);
   }
   else openWordReference(clean); // 單字 → WordReference
+}
+
+// ── 全站共用：確保任何時候只有一個真人音檔在播放，快速連點語塊不會疊在一起 ──
+let _activeAudio = null;
+function _stopActiveAudio(){
+  if(_activeAudio){ try{ _activeAudio.pause(); }catch(e){} _activeAudio = null; }
+  try{ if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
 }
 
 // ── SPEECH SYNTHESIS (TTS) ──
@@ -113,6 +122,7 @@ function speakWord(text, el){
   if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音'); return; }
   const clean = text.replace(/[¡!¿?,.:;\s]/g,'').trim();
   if(!clean) return;
+  _stopActiveAudio();
   // Must cancel first on Android or it queues silently
   try{ speechSynthesis.cancel(); }catch(e){}
   const utt = new SpeechSynthesisUtterance(clean);
@@ -146,12 +156,14 @@ function speakFull(text){
 function speakSentenceSmart(epIdx, sentIdx, text){
   const files = (typeof AUDIO_MANIFEST!=='undefined' && AUDIO_MANIFEST[epIdx] && AUDIO_MANIFEST[epIdx][sentIdx]) || [];
   if(!files.length){ speakFull(text); return; }
+  _stopActiveAudio();
   let i = 0;
   const player = new Audio();
+  _activeAudio = player;
   player.onended = () => { i++; setTimeout(playNext, 15); };
   player.onerror = () => { speakFull(text); };
   function playNext(){
-    if(i >= files.length) return;
+    if(i >= files.length || player !== _activeAudio) return;
     player.src = files[i];
     player.play().catch(()=>speakFull(text));
   }
@@ -169,7 +181,9 @@ function speakAmmoCore(ammoId, text){
 function speakAmmoDaily(ammoId, dailyIdx, text){
   const file = (typeof AMMO_DAILY_AUDIO_MAP!=='undefined' && AMMO_DAILY_AUDIO_MAP[ammoId] && AMMO_DAILY_AUDIO_MAP[ammoId][dailyIdx]) || null;
   if(!file){ speakFull(text); return; }
+  _stopActiveAudio();
   const player = new Audio(file);
+  _activeAudio = player;
   player.onerror = () => speakFull(text);
   player.play().catch(()=>speakFull(text));
 }
@@ -178,7 +192,9 @@ function speakAmmoDaily(ammoId, dailyIdx, text){
 function speakMapSmart(map, catKey, idx, text){
   const file = (typeof window[map]!=='undefined' && window[map][catKey] && window[map][catKey][idx]) || null;
   if(!file){ speakFull(text); return; }
+  _stopActiveAudio();
   const player = new Audio(file);
+  _activeAudio = player;
   player.onerror = () => speakFull(text);
   player.play().catch(()=>speakFull(text));
 }
@@ -610,7 +626,9 @@ function pickGenderPair(pi, oi){
   exEl.innerHTML = `<span class="gp-ex-es">▶ ${o.ex}</span><span class="gp-ex-zh">${o.exZh}</span>`;
   const file = (typeof GP_AUDIO_MAP!=='undefined' && GP_AUDIO_MAP[pi] && GP_AUDIO_MAP[pi][oi]) || null;
   if(file){
+    _stopActiveAudio();
     const player = new Audio(file);
+    _activeAudio = player;
     player.onerror = () => speakSentence(o.ex);
     player.play().catch(()=>speakSentence(o.ex));
   } else {
@@ -640,6 +658,7 @@ let _cogState = null;
 let _cogGen = 0; // 每次重新啟動就+1，讓上一輪殘留的onended/setTimeout失效，避免切換方向時字被重播
 function playCognateDual(dir){
   if(_cogDualPlayer){ _cogDualPlayer.onended = null; _cogDualPlayer.onerror = null; _cogDualPlayer.pause(); }
+  _stopActiveAudio();
   _cogPaused = false;
   _cogGen++;
   const myGen = _cogGen;
@@ -654,12 +673,13 @@ function playCognateDual(dir){
   };
   const player = new Audio();
   _cogDualPlayer = player;
+  _activeAudio = player;
   player.onended = () => _cogAdvance(myGen);
   player.onerror = () => { if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } };
   _cogPlayCurrent(myGen);
 }
 function _cogPlayCurrent(myGen){
-  if(myGen!==_cogGen) return;
+  if(myGen!==_cogGen || _cogDualPlayer!==_activeAudio) return;
   const st = _cogState;
   if(!st || st.i > st.total || !_cogDualPlayer) return;
   toast(`🎧 ${st.i}/${st.total}`);
@@ -669,7 +689,7 @@ function _cogPlayCurrent(myGen){
   _cogDualPlayer.play().catch(()=>{ if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } });
 }
 function _cogAdvance(myGen){
-  if(myGen!==_cogGen || !_cogState) return;
+  if(myGen!==_cogGen || !_cogState || _cogDualPlayer!==_activeAudio) return;
   if(_cogState.step===0){ _cogState.step=1; } else { _cogState.step=0; _cogState.i++; }
   if(_cogPaused) return; // 暫停中，等使用者按繼續才會播下一步
   const gap = _cogState.step===0 ? 1800 : 500; // 換組長間隔，組內兩語言間短間隔
@@ -1812,14 +1832,16 @@ function showGrammarTip(globalIdx){
 function speakGramSmart(text){
   const entry = (typeof GRAM_AUDIO_MAP!=='undefined') ? GRAM_AUDIO_MAP[text] : null;
   if(!entry){ speakSentence(text); return; }
+  _stopActiveAudio();
   if(Array.isArray(entry)){
     if(!entry.length){ speakSentence(text); return; }
     let i = 0;
     const player = new Audio();
+    _activeAudio = player;
     player.onended = () => { i++; setTimeout(playNext, 15); };
     player.onerror = () => speakSentence(text);
     function playNext(){
-      if(i >= entry.length) return;
+      if(i >= entry.length || player !== _activeAudio) return;
       player.src = entry[i];
       player.play().catch(()=>speakSentence(text));
     }
@@ -1827,6 +1849,7 @@ function speakGramSmart(text){
     return;
   }
   const player = new Audio(entry);
+  _activeAudio = player;
   player.onerror = () => speakSentence(text);
   player.play().catch(()=>speakSentence(text));
 }
@@ -1835,7 +1858,9 @@ function speakGramSmart(text){
 function speakGardenChunk(text){
   const chunkFile = (typeof CHUNK_AUDIO_MAP!=='undefined') ? CHUNK_AUDIO_MAP[text] : null;
   if(chunkFile){
+    _stopActiveAudio();
     const player = new Audio(chunkFile);
+    _activeAudio = player;
     player.onerror = () => speakFull(text);
     player.play().catch(()=>speakFull(text));
     return;
@@ -1912,7 +1937,9 @@ function speakConjForm(gId, person, formText){
   const verbCode = CONJ_AUDIO_VERB[gId];
   const personCode = CONJ_AUDIO_PERSON[person];
   if(verbCode && personCode){
+    _stopActiveAudio();
     const player = new Audio(`audio/vocab/conj/conj_${verbCode}_${personCode}.mp3`);
+    _activeAudio = player;
     player.onerror = () => speakWord(formText);
     player.play().catch(()=>speakWord(formText));
     return;
@@ -2038,12 +2065,14 @@ function toggleGrammarSupplement(){
 function speakSelSentenceSmart(selEp, sentIdx, text){
   const files = (typeof SEL_AUDIO_MANIFEST!=='undefined' && SEL_AUDIO_MANIFEST[selEp] && SEL_AUDIO_MANIFEST[selEp][sentIdx]) || [];
   if(!files.length){ speakFull(text); return; }
+  _stopActiveAudio();
   let i = 0;
   const player = new Audio();
+  _activeAudio = player;
   player.onended = () => { i++; setTimeout(playNext, 15); };
   player.onerror = () => { speakFull(text); };
   function playNext(){
-    if(i >= files.length) return;
+    if(i >= files.length || player !== _activeAudio) return;
     player.src = files[i];
     player.play().catch(()=>speakFull(text));
   }
@@ -2188,11 +2217,13 @@ function _famStarHtml(word){
 function speakChunkSmart(text, el){
   const file = (typeof CHUNK_AUDIO_MAP!=='undefined') ? CHUNK_AUDIO_MAP[text] : null;
   if(!file){ speakWord(text, el); return; }
+  _stopActiveAudio();
   if(el) el.classList.add('playing');
   const dot = document.getElementById('ttsDot');
   if(dot){ dot.classList.remove('ready'); dot.classList.add('speaking'); }
   const done = () => { if(el) el.classList.remove('playing'); if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); } };
   const player = new Audio(file);
+  _activeAudio = player;
   player.onended = done;
   player.onerror = () => { done(); speakWord(text, el); };
   player.play().catch(()=>{ done(); speakWord(text, el); });
@@ -2231,6 +2262,7 @@ function ammoChunkTap(el, word, hideYg, note){
 
 function speakSentence(text){
   if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音'); return; }
+  _stopActiveAudio();
   try{ speechSynthesis.cancel(); }catch(e){}
   const utt = new SpeechSynthesisUtterance(text);
   utt.lang = 'es-MX';
