@@ -23,7 +23,7 @@ const PRONOUN_LIBRARY = [
       {es:'nos',  zh:'我們（被...）', en:'us'},
       {es:'los / las', zh:'他們/她們/你們（被...，拉美 ustedes 共用這個）', en:'them / you all (LatAm)'}
     ],
-    example:{es:'Compro el libro. → Lo compro.', zh:'我買這本書。→ 我買它。'}
+    example:{es:'Compro el libro. → Lo compro.', speakEs:'Compro el libro. Lo compro.', zh:'我買這本書。→ 我買它。'}
   },
   {
     cat:'👥 八卦鄰居', catEn:'（動作的收件人，像英文的 to him / to her）',
@@ -35,7 +35,7 @@ const PRONOUN_LIBRARY = [
       {es:'nos',  zh:'給我們', en:'to us'},
       {es:'les',  zh:'給他們/她們/你們（拉美 ustedes 共用這個）', en:'to them / to you all (LatAm)'}
     ],
-    example:{es:'Doy el libro a María. → Le doy el libro.', zh:'我把書給瑪麗亞。→ 我把書給她。'},
+    example:{es:'Doy el libro a María. → Le doy el libro.', speakEs:'Doy el libro a María. Le doy el libro.', zh:'我把書給瑪麗亞。→ 我把書給她。'},
     note:'⚡ 八卦鄰居瑪麗亞大嬸嘴巴很大：收件人是特定名字時，妳不但要在包裹上寫她的名字（a María），還要對著整座莊園大喊一聲「我是給她喔！」（Le）——兩個都要寫，少喊一聲都不行！Le doy el libro a María.'
   },
   {
@@ -64,19 +64,19 @@ const PRONOUN_COMBO_RULES = [
     title:'🎭 驚天大變身',
     titleSub:'八卦鄰居遇到倒楣作物 → le/les 變 se',
     hint:'八卦鄰居（le/les）遇到單複數倒楣作物（lo/la/los/las）時，唸起來會音韻大撞車<br>（Le lo 像警車在叫），這時 le/les 會瞬間變裝成 se',
-    example:{es:'Le lo doy (✗) → Se lo doy. (✓)', zh:'我把書給他。<br>（<span class="nowrap">Le lo doy</span> 唸起來卡，要變成 <span class="nowrap">Se lo doy</span>）'}
+    example:{es:'Le lo doy (✗) → Se lo doy. (✓)', speakEs:'Le lo doy. Se lo doy.', zh:'我把書給他。<br>（<span class="nowrap">Le lo doy</span> 唸起來卡，要變成 <span class="nowrap">Se lo doy</span>）'}
   },
   {
     title:'📢 命令大聲公',
     titleSub:'角色全部黏到動詞屁股後面',
     hint:'農夫開啟「命令模式」叫別人做事時，角色們會變成跟屁蟲，全部塞到動詞後面合併成一個新單字',
-    example:{es:'Comer + lo → Cómelo.', zh:'吃掉它！（Comer 吃 ＋ lo 作物，黏在一起）'}
+    example:{es:'Comer + lo → Cómelo.', speakEs:'Cómelo.', zh:'吃掉它！（Comer 吃 ＋ lo 作物，黏在一起）'}
   },
   {
     title:'🏃 正在忙碌中',
     titleSub:'站前面或抱屁股，兩種都可以',
     hint:'農夫正在做某件事（-ando/-iendo）時，角色可以選擇站在動詞前面，也可以選擇黏到動詞屁股後面，兩種說法都對',
-    example:{es:'Le estoy escribiendo. ＝ Estoy escribiéndole.', zh:'我正在寫信給她。（兩種說法都可以）'}
+    example:{es:'Le estoy escribiendo. ＝ Estoy escribiéndole.', speakEs:'Le estoy escribiendo. Estoy escribiéndole.', zh:'我正在寫信給她。（兩種說法都可以）'}
   }
 ];
 
@@ -88,7 +88,7 @@ function renderPronounComboRules(){
         <div class="pron-cat-header">${r.title}</div>
         <div class="pron-combo-titlesub">${r.titleSub}</div>
         <div class="pron-cat-hint">${r.hint}</div>
-        <div class="pron-example" onclick="speakSentence('${String(r.example.es).replace(/'/g,"\\'").split(' (')[0].split(' →')[0].split(' ＝')[0]}')">
+        <div class="pron-example" onclick="speakGramSmart('${String(r.speakEs||r.example.es).replace(/'/g,"\\'")}')">
           <div class="pron-ex-es">▶ ${r.example.es}</div>
           <div class="pron-ex-zh">${r.example.zh}</div>
         </div>

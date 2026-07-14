@@ -69,7 +69,18 @@ function openWordReference(word){
 function pronounceVocab(text){
   const clean=String(text).replace(/[¡¿.,!?;:（）]/g,'').trim();
   if(!clean) return;
-  if(clean.includes(' ')) speakWord(clean, null); // 語塊/句子 → TTS
+  if(clean.includes(' ')){
+    // 語塊/句子：先試試看是不是課文原句(真人音檔)，抓不到才TTS
+    const chunkFile = (typeof CHUNK_AUDIO_MAP!=='undefined') ? CHUNK_AUDIO_MAP[text] : null;
+    if(chunkFile){
+      const player = new Audio(chunkFile);
+      player.onerror = () => speakWord(clean, null);
+      player.play().catch(()=>speakWord(clean, null));
+      return;
+    }
+    if(typeof GRAM_AUDIO_MAP!=='undefined' && GRAM_AUDIO_MAP[text]){ speakGramSmart(text); return; }
+    speakWord(clean, null);
+  }
   else openWordReference(clean); // 單字 → WordReference
 }
 
@@ -820,7 +831,7 @@ function renderVocab(){
       <div class="vocab-text">
         <div class="vocab-es" onclick="pronounceVocab('${escAttr(v.text)}')" ontouchstart="vocabLongPressStart('${escAttr(v.text)}')" ontouchend="vocabLongPressCancel()" ontouchmove="vocabLongPressCancel()" onmousedown="vocabLongPressStart('${escAttr(v.text)}')" onmouseup="vocabLongPressCancel()" onmouseleave="vocabLongPressCancel()">${v.text}</div>
         ${v.zh ? `<div class="vocab-zh">${v.zh}</div>` : ''}
-        ${ex ? `<div class="vocab-example" onclick="speakFull('${escAttr(ex.es)}')"><span class="vocab-example-es">${ex.es}</span><span class="vocab-example-zh">${ex.zh}</span></div>` : ''}
+        ${ex ? `<div class="vocab-example" onclick="speakGramSmart('${escAttr(ex.es)}')"><span class="vocab-example-es">${ex.es}</span><span class="vocab-example-zh">${ex.zh}</span></div>` : ''}
         <div class="vocab-source">${v.source}</div>
       </div>
       <div class="vocab-right">
@@ -1856,10 +1867,10 @@ function renderPronounLibrary(){
             <span class="pron-es" onclick="speakWord('${escAttr(r.es)}',this)">${r.es}</span>
             <span class="pron-zh">${r.zh}</span>
             <span class="pron-en">${r.en}</span>
-            ${r.ex?`<span class="pron-row-ex" onclick="speakFull('${escAttr(r.ex.split('.')[0])}')">${r.ex}</span>`:''}
+            ${r.ex?`<span class="pron-row-ex" onclick="speakGramSmart('${escAttr(r.ex.split('.')[0])}')">${r.ex}</span>`:''}
           </div>`).join('')}
       </div>
-      ${cat.example?`<div class="pron-example" onclick="speakSentence('${escAttr(cat.example.es)}')">
+      ${cat.example?`<div class="pron-example" onclick="speakGramSmart('${escAttr(cat.example.speakEs||cat.example.es)}')">
         <div class="pron-ex-es">▶ ${cat.example.es}</div>
         <div class="pron-ex-zh">${cat.example.zh}</div>
       </div>`:''}
