@@ -2273,8 +2273,10 @@ function speakSentence(text){
   const dot = document.getElementById('ttsDot');
   if(dot){ dot.classList.remove('ready'); dot.classList.add('speaking'); }
   utt.onend = () => { if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); } };
-  utt.onerror = () => {
+  utt.onerror = (e) => {
     if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); }
+    // 'canceled'/'interrupted' 是我們自己主動打斷前一句造成的，不是真的播放失敗，不用跳提示
+    if(e && (e.error==='canceled' || e.error==='interrupted')) return;
     toast('⚠️ 語音播放失敗，可再點一次');
   };
   setTimeout(() => {
