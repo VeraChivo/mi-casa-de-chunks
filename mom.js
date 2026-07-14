@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       html += `<div class="mom-atm-card" data-scene="${scene}">
         ${tagHtml}
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation" onclick="speakMapSmart('MOM_AUDIO_MAP','${audioShort}',${itemIdx},'${escAttr(displayEs)}')" title="點這裡聽整句">${displayZh} <span class="ex-zh-play">▶ 整句</span></div>
+        <div class="card-chinese-translation" onclick="speakMapSmart('MOM_AUDIO_MAP','${audioShort}',${itemIdx},'${escAttr(displayEs)}')" title="點這裡聽整句">${displayZh}</div>
       </div>`;
     });
 

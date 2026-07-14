@@ -142,10 +142,10 @@ function speakWord(text, el){
     if(el) el.classList.remove('playing');
     if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); }
   };
-  // Wrap in setTimeout(0) — helps some Android WebView trigger correctly
+  // cancel()後立刻speak()，Chrome常常會把新句子開頭幾個字吃掉，留夠時間讓引擎重置再開口
   setTimeout(() => {
     try{ speechSynthesis.speak(utt); }catch(e){ toast('⚠️ 語音播放失敗'); }
-  }, 0);
+  }, 150);
 }
 
 function speakFull(text){
@@ -2131,7 +2131,7 @@ function renderSelLine(){
       ${epi.sentences.map((s,j)=>`
         <div class="grammar-ex-row">
           <div class="grammar-ex-chunks">${_grammarExChunks(s.es, `speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')`)}</div>
-          <div class="grammar-ex-zh" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">${s.zh} <span class="ex-zh-play">▶ 整句</span></div>
+          <div class="grammar-ex-zh" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">${s.zh}</div>
         </div>`).join('')}
     </div>`).join('');
 }
@@ -2170,7 +2170,7 @@ function openGrammarCard(gId){
   const exHtml = g.examples.map(ex =>
     `<div class="grammar-ex-row">
       <div class="grammar-ex-chunks">${_grammarExChunks(ex.es, `speakGramSmart('${escAttr(ex.es)}')`)}</div>
-      <div class="grammar-ex-zh" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh} <span class="ex-zh-play">▶ 整句</span></div>
+      <div class="grammar-ex-zh" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh}</div>
     </div>`
   ).join('');
   const ruleClass = g.emph ? 'grammar-rule grammar-rule-emph' : 'grammar-rule';
@@ -2322,7 +2322,7 @@ function speakSentence(text){
   };
   setTimeout(() => {
     try{ speechSynthesis.speak(utt); }catch(e){ toast('⚠️ 語音播放失敗'); }
-  }, 0);
+  }, 150);
 }
 
 // ── INIT ──
