@@ -617,32 +617,50 @@ function toggleCogLibrary(){
   t.textContent=open?'▲ 收起':'▼ 展開';
 }
 
-// ── 🎧 同源詞英西對照雙語朗讀（42組，每組唸兩語言配對，組間留時間讓妳跟讀） ──
+// ── 🎧 同源詞英西對照雙語朗讀（42組，每組唸兩語言配對，組間留時間讓妳跟讀）──
+// 有獨立的⏸暫停/▶繼續按鈕，妳可以自己控制節奏，不用相信我猜的間隔秒數
 let _cogDualPlayer = null;
+let _cogPaused = false;
+let _cogState = null;
 function playCognateDual(dir){
-  if(_cogDualPlayer){ _cogDualPlayer.pause(); _cogDualPlayer = null; }
-  const total = 42;
-  let i = 1, step = 0; // step 0=第一語言, 1=第二語言
+  if(_cogDualPlayer){ _cogDualPlayer.pause(); }
+  _cogPaused = false;
+  const pauseBtn = document.getElementById('cogDualPauseBtn');
+  if(pauseBtn){ pauseBtn.textContent='⏸ 暫停'; pauseBtn.style.display=''; }
+  _cogState = {
+    i: 1, step: 0, total: 42,
+    firstFolder:  dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en',
+    firstPrefix:  dir==='sp' ? 'sp-sp-eng' : 'eng-sp-eng',
+    secondFolder: dir==='sp' ? 'audio/vocab/cognates_en' : 'audio/vocab/cognates_sp',
+    secondPrefix: dir==='sp' ? 'eng-sp-eng' : 'sp-sp-eng',
+  };
   const player = new Audio();
   _cogDualPlayer = player;
-  const firstFolder  = dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en';
-  const firstPrefix  = dir==='sp' ? 'sp-sp-eng' : 'eng-sp-eng';
-  const secondFolder = dir==='sp' ? 'audio/vocab/cognates_en' : 'audio/vocab/cognates_sp';
-  const secondPrefix = dir==='sp' ? 'eng-sp-eng' : 'sp-sp-eng';
-  player.onended = () => {
-    if(step===0){ step=1; setTimeout(playNext, 500); }   // 同一組內兩語言間短暫停頓
-    else { step=0; i++; setTimeout(playNext, 1800); }    // 換下一組前留久一點給妳跟讀
-  };
-  player.onerror = () => { toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; };
-  function playNext(){
-    if(i > total || player !== _cogDualPlayer) return;
-    toast(`🎧 ${i}/${total}`);
-    const folder = step===0 ? firstFolder : secondFolder;
-    const prefix = step===0 ? firstPrefix : secondPrefix;
-    player.src = `${folder}/${prefix}_${String(i).padStart(2,'0')}.mp3`;
-    player.play().catch(()=>{ toast('⚠️ 音檔播放失敗，已停止'); _cogDualPlayer = null; });
-  }
-  playNext();
+  player.onended = _cogAdvance;
+  player.onerror = () => { toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; };
+  _cogPlayCurrent();
+}
+function _cogPlayCurrent(){
+  const st = _cogState;
+  if(!st || st.i > st.total || !_cogDualPlayer) return;
+  toast(`🎧 ${st.i}/${st.total}`);
+  const folder = st.step===0 ? st.firstFolder : st.secondFolder;
+  const prefix = st.step===0 ? st.firstPrefix : st.secondPrefix;
+  _cogDualPlayer.src = `${folder}/${prefix}_${String(st.i).padStart(2,'0')}.mp3`;
+  _cogDualPlayer.play().catch(()=>{ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; });
+}
+function _cogAdvance(){
+  if(!_cogState) return;
+  if(_cogState.step===0){ _cogState.step=1; } else { _cogState.step=0; _cogState.i++; }
+  if(_cogPaused) return; // 暫停中，等使用者按繼續才會播下一步
+  const gap = _cogState.step===0 ? 1800 : 500; // 換組長間隔，組內兩語言間短間隔
+  setTimeout(()=>{ if(!_cogPaused) _cogPlayCurrent(); }, gap);
+}
+function toggleCognateDualPause(btn){
+  if(!_cogState || !_cogDualPlayer) return;
+  _cogPaused = !_cogPaused;
+  if(_cogPaused){ _cogDualPlayer.pause(); btn.textContent='▶ 繼續'; }
+  else { btn.textContent='⏸ 暫停'; _cogPlayCurrent(); }
 }
 
 function renderCogLibrary(filter){
@@ -650,12 +668,6 @@ function renderCogLibrary(filter){
   if(!body) return;
   const q=(filter||'').toLowerCase().trim();
   let html=`<input type="text" class="cog-search" id="cogSearchInput" placeholder="🔍 搜尋英文／西語／中文…" value="${(filter||'').replace(/"/g,'&quot;')}">`;
-  if(!q){
-    html+=`<div class="cog-dual-row">
-      <button class="cog-dual-btn" onclick="playCognateDual('sp')">🎧 西 → 英 對照</button>
-      <button class="cog-dual-btn" onclick="playCognateDual('en')">🎧 英 → 西 對照</button>
-    </div>`;
-  }
 
   // 詞綴規律區（無搜尋時顯示）
   if(!q){
@@ -710,6 +722,14 @@ function renderCogLibrary(filter){
         <div class="falsecog-trap">${f.trap}</div>
       </div>`).join('');
     html+=`</div>`;
+  }
+
+  if(!q){
+    html+=`<div class="cog-dual-row">
+      <button class="cog-dual-btn" onclick="playCognateDual('sp')">🎧 西 → 英 對照</button>
+      <button class="cog-dual-btn" onclick="playCognateDual('en')">🎧 英 → 西 對照</button>
+      <button class="cog-dual-btn cog-dual-pause" id="cogDualPauseBtn" style="display:none" onclick="toggleCognateDualPause(this)">⏸ 暫停</button>
+    </div>`;
   }
 
   // 按集數分組
