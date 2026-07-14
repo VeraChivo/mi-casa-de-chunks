@@ -1863,19 +1863,33 @@ function toggleGrammarSupplement(){
 }
 
 // ── 🧠 內心擬人線：小小自我蛻變攻略（只讀＋聽發音，跟溫馨線分開的獨立線）──
+function speakSelSentenceSmart(selEp, sentIdx, text){
+  const files = (typeof SEL_AUDIO_MANIFEST!=='undefined' && SEL_AUDIO_MANIFEST[selEp] && SEL_AUDIO_MANIFEST[selEp][sentIdx]) || [];
+  if(!files.length){ speakFull(text); return; }
+  let i = 0;
+  const player = new Audio();
+  player.onended = () => { i++; setTimeout(playNext, 100); };
+  player.onerror = () => { speakFull(text); };
+  function playNext(){
+    if(i >= files.length) return;
+    player.src = files[i];
+    player.play().catch(()=>speakFull(text));
+  }
+  playNext();
+}
 function renderSelLine(){
   const el = document.getElementById('selBody');
   if(!el || typeof SEL_EPS==='undefined') return;
   el.innerHTML = SEL_EPS.map((epi,i)=>`
-    <div class="gsup-row" onclick="toggleSelEp(${i})" style="cursor:pointer">
+    <div class="gsup-row sel-ep-header" onclick="toggleSelEp(${i})" style="cursor:pointer">
       <div class="gsup-title">📖 ${epi.titleZh}</div>
       <div class="gsup-rule" id="selEpToggleLabel${i}">▼ 展開</div>
     </div>
     <div id="selEpBody${i}" style="display:none;padding:8px 12px 4px">
-      ${epi.sentences.map(s=>`
+      ${epi.sentences.map((s,j)=>`
         <div class="grammar-ex-row">
           <div class="grammar-ex-chunks">${_grammarExChunks(s.es)}</div>
-          <div class="grammar-ex-zh" onclick="speakFull('${escAttr(s.es)}')" title="點這裡聽整句">${s.zh} <span class="ex-zh-play">▶ 整句</span></div>
+          <div class="grammar-ex-zh" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">${s.zh} <span class="ex-zh-play">▶ 整句</span></div>
         </div>`).join('')}
     </div>`).join('');
 }

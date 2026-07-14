@@ -11,7 +11,7 @@ const AUDIO_MANIFEST={
     ["audio/e1/15_nita_ha_encontrado.mp3","audio/e1/16_un_charco_pequeno.mp3"],
     ["audio/e1/17_ese_charco.mp3","audio/e1/18_si_que_es_grande.mp3"],
     ["audio/e1/19_no_pasa_nada.mp3","audio/e1/20_solo_es_barro.mp3"],
-    [], // 缺:「A todos les encanta saltar en los charcos de barro.」沒有對應音檔,fallback回TTS
+    ["audio/fix/E1_10_1_V.mp3","audio/fix/E1_10_2_Inf.mp3","audio/fix/E1_10_3_O.mp3"],
   ],
   1:[
     ["audio/e2/21_juguete_favorito.mp3","audio/e2/22_de_tito.mp3","audio/e2/23_es_senor_esqueleto.mp3"],
@@ -22,8 +22,8 @@ const AUDIO_MANIFEST={
     ["audio/e2/36_siempre_se_trae.mp3","audio/e2/37_a_la_banera.mp3"],
     ["audio/e2/38_ya_lo_se.mp3","audio/e2/39_donde_esta.mp3"],
     ["audio/e2/40_no_esta_en_la_cama.mp3"],
-    [], // 缺:41號音檔還是舊版「papá Pig」用字,跟修正後的「Papá Tato」不符,先fallback回TTS
-    [], // 缺:44號音檔還是舊版西班牙「habéis」用法,跟修正後的拉美「ustedes han」不符,先fallback回TTS
+    ["audio/fix/E2_09_1_S.mp3","audio/fix/E2_09_2_V.mp3","audio/fix/E2_09_3_O.mp3"],
+    ["audio/fix/E2_10_1_Int.mp3","audio/fix/E2_10_2_S.mp3","audio/fix/E2_10_3_V.mp3","audio/fix/E2_10_4_O.mp3"],
   ],
   2:[
     ["audio/e3/54_nita_esperando.mp3","audio/e3/55_mejor_amiga.mp3","audio/e3/56_vera_ove_ja.mp3"],
@@ -75,7 +75,7 @@ const AUDIO_MANIFEST={
   ],
   6:[
     ["audio/e7/01a_S_Nita.mp3","audio/e7/01b_V_tiene.mp3","audio/e7/01c_O_mucho_sueno.mp3"],
-    ["audio/e7/02a_S_Mama_Cata.mp3","audio/e7/02b_V_despierta.mp3","audio/e7/02c_O_a_Nita.mp3"],
+    ["audio/fix/E7_02_1_S.mp3","audio/fix/E7_02_2_V.mp3","audio/fix/E7_02_3_O.mp3","audio/fix/E7_02_4_Conj.mp3","audio/fix/E7_02_5_S.mp3","audio/fix/E7_02_6_V.mp3"],
     ["audio/e7/03a_S_Tito.mp3","audio/e7/03b_V_tiene.mp3","audio/e7/03c_O_hambre.mp3"],
     ["audio/e7/04a_S_Papa_Tato.mp3","audio/e7/04b_V_tiene.mp3","audio/e7/04c_O_frio.mp3"],
     ["audio/e7/05a_S_Hay_impersonal.mp3","audio/e7/05b_V_hay.mp3","audio/e7/05c_O_pan_y_leche.mp3"],
@@ -83,7 +83,7 @@ const AUDIO_MANIFEST={
     ["audio/e7/07a_S_Mama_Cata.mp3","audio/e7/07b_V_tiene.mp3","audio/e7/07c_O_prisa.mp3"],
     ["audio/e7/08a_S_Tu_omitido.mp3","audio/e7/08b_V_tienes.mp3","audio/e7/08c_O_tiempo_para_un_cafe.mp3"],
     ["audio/e7/09a_S_Kito.mp3","audio/e7/09b_V_tiene.mp3","audio/e7/09c_O_miedo_de_llegar_tarde.mp3"],
-    ["audio/e7/10a_S_Vivi.mp3","audio/e7/10b_V_la_despierta.mp3","audio/e7/10c_O_a_Nita.mp3"],
+    ["audio/fix/E7_10_1_S.mp3","audio/fix/E7_10_2_V.mp3","audio/fix/E7_10_3_Prep.mp3","audio/fix/E7_10_4_Conj.mp3","audio/fix/E7_10_5_S.mp3","audio/fix/E7_10_6_V.mp3"],
   ],
   7:[
     ["audio/e8/01a_S_Tito.mp3","audio/e8/01b_V_juega.mp3","audio/e8/01c_O_con_su_carrito.mp3"],
@@ -120,5 +120,46 @@ const AUDIO_MANIFEST={
     ["audio/e10/08a_S_Ella_omitido.mp3","audio/e10/08b_V_se_pregunta.mp3","audio/e10/08c_O_por_que_me_cuesta_tanto.mp3"],
     ["audio/e10/09a_S_Ella_omitido.mp3","audio/e10/09b_V_empieza_a_leer.mp3","audio/e10/09c_O_sobre_el_TDAH.mp3"],
     ["audio/e10/10a_S_Su_energia_y_la_regularidad.mp3","audio/e10/10b_V_son.mp3","audio/e10/10c_O_diferentes.mp3"],
+  ],
+};
+
+// SEL 內心擬人線專用音檔清單:SEL_AUDIO_MANIFEST[selEpIndex][sentenceIdx]
+// 檔名只標文法角色沒有序號,順序是依句子結構人工比對排列,非字母排序
+const SEL_AUDIO_MANIFEST={
+  0:[
+    ["audio/sel1/SEL1_01_S.mp3","audio/sel1/SEL1_01_V.mp3","audio/sel1/SEL1_01_O.mp3"],
+    ["audio/sel1/SEL1_02_Conj.mp3","audio/sel1/SEL1_02_V.mp3"],
+    ["audio/sel1/SEL1_03_V.mp3","audio/sel1/SEL1_03_Quote.mp3"],
+    ["audio/sel1/SEL1_04_S.mp3","audio/sel1/SEL1_04_Quote.mp3"],
+    ["audio/sel1/SEL1_05_S.mp3","audio/sel1/SEL1_05_O_V.mp3"],
+    ["audio/sel1/SEL1_06_V.mp3","audio/sel1/SEL1_06_O.mp3"],
+    ["audio/sel1/SEL1_07_Adv.mp3","audio/sel1/SEL1_07_S_V.mp3"],
+    ["audio/sel1/SEL1_08_S.mp3","audio/sel1/SEL1_08_V.mp3"],
+    ["audio/sel1/SEL1_09_Adv.mp3","audio/sel1/SEL1_09_V.mp3"],
+    ["audio/sel1/SEL1_10_S.mp3","audio/sel1/SEL1_10_Quote.mp3"],
+  ],
+  1:[
+    ["audio/sel2/SEL2_01_Prep.mp3","audio/sel2/SEL2_01_V.mp3","audio/sel2/SEL2_01_S.mp3"],
+    ["audio/sel2/SEL2_02_S_V.mp3","audio/sel2/SEL2_02_V_O.mp3"],
+    ["audio/sel2/SEL2_03_S_V.mp3","audio/sel2/SEL2_03_Adv_V.mp3"],
+    ["audio/sel2/SEL2_04_S_V.mp3","audio/sel2/SEL2_04_V_O.mp3"],
+    ["audio/sel2/SEL2_05_S_V.mp3","audio/sel2/SEL2_05_V_Adv.mp3"],
+    ["audio/sel2/SEL2_06_S_V.mp3","audio/sel2/SEL2_06_V_Adv.mp3"],
+    ["audio/sel2/SEL2_07_S_V.mp3","audio/sel2/SEL2_07_V_O.mp3"],
+    ["audio/sel2/SEL2_08_S_V.mp3","audio/sel2/SEL2_08_Adv_V.mp3"],
+    ["audio/sel2/SEL2_09_S_V.mp3","audio/sel2/SEL2_09_V_O.mp3"],
+    ["audio/sel2/SEL2_10_S_V.mp3","audio/sel2/SEL2_10_V_Adv.mp3"],
+  ],
+  2:[
+    ["audio/sel3/SEL3_01_S.mp3","audio/sel3/SEL3_01_V.mp3","audio/sel3/SEL3_01_O.mp3"],
+    ["audio/sel3/SEL3_02_S.mp3","audio/sel3/SEL3_02_V.mp3","audio/sel3/SEL3_02_Prep.mp3"],
+    ["audio/sel3/SEL3_03_Conj_S.mp3","audio/sel3/SEL3_03_V.mp3","audio/sel3/SEL3_03_Adv.mp3"],
+    ["audio/sel3/SEL3_04_Prep.mp3","audio/sel3/SEL3_04_V.mp3","audio/sel3/SEL3_04_S.mp3"],
+    ["audio/sel3/SEL3_05_Adv_V.mp3","audio/sel3/SEL3_05_S.mp3","audio/sel3/SEL3_05_Prep.mp3"],
+    ["audio/sel3/SEL3_06_Prep.mp3","audio/sel3/SEL3_06_S.mp3","audio/sel3/SEL3_06_V_O.mp3"],
+    ["audio/sel3/SEL3_07_S_V.mp3","audio/sel3/SEL3_07_Rel.mp3","audio/sel3/SEL3_07_Adv.mp3"],
+    ["audio/sel3/SEL3_08_Conj_S.mp3","audio/sel3/SEL3_08_V.mp3","audio/sel3/SEL3_08_Gerund.mp3"],
+    ["audio/sel3/SEL3_09_S_V.mp3","audio/sel3/SEL3_09_Rel.mp3","audio/sel3/SEL3_09_V_O.mp3"],
+    ["audio/sel3/SEL3_10_Adv.mp3","audio/sel3/SEL3_10_S.mp3","audio/sel3/SEL3_10_V.mp3"],
   ],
 };
