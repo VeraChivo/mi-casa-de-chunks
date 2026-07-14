@@ -192,6 +192,15 @@ function _s1Undo(i, built, visibleChunks, fire){
   _s1RenderTarget(built, visibleChunks, fire);
 }
 
+// ── Stage 2: 你我互換 真人音檔優先，找不到才TTS ──
+function speakStage2(i, who, text){
+  const file = (typeof STAGE2_AUDIO_MAP!=='undefined' && STAGE2_AUDIO_MAP[i]) ? STAGE2_AUDIO_MAP[i][who] : null;
+  if(!file){ speakSentence(text); return; }
+  const player = new Audio(file);
+  player.onerror = () => speakSentence(text);
+  player.play().catch(()=>speakSentence(text));
+}
+
 // ── Stage 2: 你我互換 render ──
 function renderStage2(){
   const el = document.getElementById('stage2Cards');
@@ -204,8 +213,8 @@ function renderStage2(){
     const _icon = _gs[_stage];
     return `
     <div class="stage2-row">
-      <span class="stage2-yo-text" onclick="speakSentence('${escStage(p.yo)}')">${p.yo}</span>
-      <span class="stage2-tu-text" onclick="speakSentence('${escStage(p.tu)}')">${p.tu}</span>
+      <span class="stage2-yo-text" onclick="speakStage2(${i},'yo','${escStage(p.yo)}')">${p.yo}</span>
+      <span class="stage2-tu-text" onclick="speakStage2(${i},'tu','${escStage(p.tu)}')">${p.tu}</span>
     </div>
     <div class="stage2-zh-row">
       <span class="stage2-zh-text">${p.zh}</span>

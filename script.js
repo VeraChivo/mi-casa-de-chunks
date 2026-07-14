@@ -695,6 +695,7 @@ function renderCogLibrary(filter){
           ? `<div class="suffix-gender-row"><span class="sg-cell gender-ms">el ${w.gendered.ms}</span><span class="sg-cell gender-fs">la ${w.gendered.fs}</span><span class="sg-cell gender-mp">los ${w.gendered.mp}</span><span class="sg-cell gender-fp">las ${w.gendered.fp}</span></div>`
           : '';
         const addBtnHtml = isVocabWorthy(w.es) ? `<span class="vocab-add-btn" onclick="addToVocab('${escAttr(w.es)}','${escAttr(w.zh)}','詞綴規律')">＋</span>` : '';
+        const exPlayExpr = w.ex ? `speakGramSmart('${escAttr(w.ex.es)}')` : '';
         const chunksHtml = (w.ex?.chunks||[]).map(ck=>{
           const clean=ck.w.replace(/^[¡¿]+|[.!?,;:]+$/g,'').trim();
           if(!clean) return '<span class="suffix-ex-punct">'+ck.w+'</span>';
@@ -703,7 +704,7 @@ function renderCogLibrary(filter){
           const _sfIc=GARDEN_STAGES[_sfSt];
           const starHtml = isVocabWorthy(ck.w) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
           const dispW=ck.role==='v'?renderVWords(ck.w):ck.w;
-          return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+'" data-copy-text="'+escAttr(clean)+'" onclick="speakWord(\''+escAttr(clean)+'\',this)">'+dispW+'</span>'+starHtml+'</span>';
+          return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+'" data-copy-text="'+escAttr(clean)+'" onclick="'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
         }).join('');
         return `
         <div class="suffix-word-card">
@@ -1606,7 +1607,7 @@ function showComplete(){
 
   const cogs = EP_COGNATES[ep] || [];
   document.getElementById('ecList').innerHTML = cogs.map(c=>`
-    <div class="ec-item" onclick="speakFull('${escAttr(c.es)}')" title="點擊聽西語發音">
+    <div class="ec-item" onclick="speakGramSmart('${escAttr(c.es)}')" title="點擊聽西語發音">
       <span class="ec-en">${c.en}</span>
       <span class="ec-arrow">→</span>
       <span class="ec-es">${c.es} <span class="ec-play">▶</span></span>
@@ -1877,7 +1878,7 @@ function renderPronounLibrary(){
         ${cat.rows.map((r,i)=>`
           <div class="pron-row${r.ex?' has-ex':''}">
             <span class="pron-icon">${(cat.rows.length===5?PERSON_ICONS_5:PERSON_ICONS)[i]||''}</span>
-            <span class="pron-es" onclick="speakWord('${escAttr(r.es)}',this)">${r.es}</span>
+            <span class="pron-es" onclick="speakGramSmart('${escAttr(r.es)}')">${r.es}</span>
             <span class="pron-zh">${r.zh}</span>
             <span class="pron-en">${r.en}</span>
             ${r.ex?`<span class="pron-row-ex" onclick="speakGramSmart('${escAttr(r.ex.split('.')[0])}')">${r.ex}</span>`:''}
@@ -2106,7 +2107,7 @@ function openGrammarCard(gId){
       ${g.mnemonic.items.map(it=>`<div class="mnemonic-row">
         <span class="mnemonic-letter">${it.l}</span>
         <span class="mnemonic-label">${it.label}</span>
-        <span class="mnemonic-ex" onclick="speakSentence('${escAttr(it.ex)}')">${it.ex}</span>
+        <span class="mnemonic-ex" onclick="speakGramSmart('${escAttr(it.ex)}')">${it.ex}</span>
       </div>`).join('')}
     </div>` : '';
   const familyHtml = g.family ? `
@@ -2114,7 +2115,7 @@ function openGrammarCard(gId){
       <div class="family-title">${g.family.title}</div>
       <div class="family-intro">${g.family.intro}</div>
       <div class="family-items">${g.family.items.map(it=>`
-        <div class="family-item" onclick="speakFull('${escAttr(it.es)}')">
+        <div class="family-item" onclick="speakGramSmart('${escAttr(it.es)}')">
           <span class="family-es">${it.es}</span>
           <span class="family-zh">${it.zh}</span>
         </div>`).join('')}</div>
