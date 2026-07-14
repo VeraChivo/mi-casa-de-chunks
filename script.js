@@ -716,6 +716,11 @@ function toggleCognateDualPause(btn){
   else { btn.textContent='⏸ 暫停'; _cogPlayCurrent(_cogGen); }
 }
 
+let _cogViewMode = 'ep'; // 'ep'=依集數（預設）｜'pattern'=依規律分組
+function toggleCogViewMode(){
+  _cogViewMode = _cogViewMode==='pattern' ? 'ep' : 'pattern';
+  renderCogLibrary();
+}
 function renderCogLibrary(filter){
   const body=document.getElementById('cogLibraryBody');
   if(!body) return;
@@ -784,30 +789,51 @@ function renderCogLibrary(filter){
       <button class="cog-dual-btn" onclick="playCognateDual('en')">🎧 英 → 西 對照</button>
       <button class="cog-dual-btn cog-dual-pause" id="cogDualPauseBtn" style="display:none" onclick="toggleCognateDualPause(this)">⏸ 暫停</button>
     </div>
-    <input type="range" class="cog-dual-seek" id="cogDualSeek" min="1" max="42" value="1" step="1" style="display:none" oninput="seekCognateDual(this.value)">`;
+    <input type="range" class="cog-dual-seek" id="cogDualSeek" min="1" max="42" value="1" step="1" style="display:none" oninput="seekCognateDual(this.value)">
+    <div class="cog-dual-row">
+      <button class="cog-dual-btn" onclick="toggleCogViewMode()">${_cogViewMode==='pattern'?'📖 改看依集數':'🧩 改看依規律'}</button>
+    </div>`;
   }
 
-  // 按集數分組
-  const epOrder=[];
-  const groups={};
-  COGNATE_LIBRARY.forEach(c=>{
-    if(q && !(c.en.toLowerCase().includes(q)||c.es.toLowerCase().includes(q)||c.zh.includes(q))) return;
-    if(!groups[c.ep]){groups[c.ep]=[];epOrder.push(c.ep);}
-    groups[c.ep].push(c);
-  });
-  if(!epOrder.length && q){
-    html+=`<div class="passbook-empty">找不到符合的詞彙</div>`;
-  } else {
-    epOrder.forEach(epLabel=>{
-      html+=`<div class="cog-group"><div class="cog-group-title">${epLabel}</div><div class="cog-row-list">`;
-      html+=groups[epLabel].map(c=>`
+  const _rowHtml = c => `
         <div class="cog-row">
           <span class="cog-en">${c.en}</span>
           <span class="cog-arrow">→</span>
           <span class="cog-es" onclick="openYGPanel('${escAttr(c.es)}')">${c.art?`<span class="cog-art">${c.art}</span> `:''}${c.es}</span>
           <span class="cog-zh">${c.zh}</span>
           <span class="vocab-add-btn" onclick="addToVocab('${escAttr(c.es)}','${escAttr(c.zh)}','同源詞庫')">＋</span>
-        </div>`).join('');
+        </div>`;
+
+  const filtered = COGNATE_LIBRARY.filter(c => !q || c.en.toLowerCase().includes(q)||c.es.toLowerCase().includes(q)||c.zh.includes(q));
+  if(!filtered.length && q){
+    html+=`<div class="passbook-empty">找不到符合的詞彙</div>`;
+  } else if(!q && _cogViewMode==='pattern'){
+    // 依規律分組（同一份資料換個角度看，不影響原始 ep 分類）
+    const patOrder=['suffix','double','sound','core','other'];
+    const groups={};
+    filtered.forEach(c=>{
+      const tag = (typeof COGNATE_PATTERN_TAGS!=='undefined' && COGNATE_PATTERN_TAGS[c.en]) || 'other';
+      if(!groups[tag]) groups[tag]=[];
+      groups[tag].push(c);
+    });
+    patOrder.forEach(tag=>{
+      if(!groups[tag]) return;
+      const label = (typeof COGNATE_PATTERN_LABELS!=='undefined' && COGNATE_PATTERN_LABELS[tag]) || tag;
+      html+=`<div class="cog-group"><div class="cog-group-title">${label}</div><div class="cog-row-list">`;
+      html+=groups[tag].map(_rowHtml).join('');
+      html+=`</div></div>`;
+    });
+  } else {
+    // 按集數分組（原本的預設檢視）
+    const epOrder=[];
+    const groups={};
+    filtered.forEach(c=>{
+      if(!groups[c.ep]){groups[c.ep]=[];epOrder.push(c.ep);}
+      groups[c.ep].push(c);
+    });
+    epOrder.forEach(epLabel=>{
+      html+=`<div class="cog-group"><div class="cog-group-title">${epLabel}</div><div class="cog-row-list">`;
+      html+=groups[epLabel].map(_rowHtml).join('');
       html+=`</div></div>`;
     });
   }

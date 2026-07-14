@@ -359,6 +359,27 @@ const COGNATE_LIBRARY = [
   {en:'cure',      es:'curar',     art:'',    zh:'治療／康復',      ep:'E3 · 最好的朋友'},
 ];
 
+// ── 同源詞「依規律」分類標籤（key=en，純瀏覽用的覆蓋分類，不影響上面依集數的原始資料）──
+// VERA 覺得依集數看很難發現規律，加這層純視圖切換，同一份資料換個角度看
+const COGNATE_PATTERN_TAGS = {
+  // 🔤 字尾公式：跟 SUFFIX_PATTERNS 的公式對得上
+  doctor:'suffix', infirmary:'suffix',
+  // 🔡 雙子音簡化：英文雙子音到西語變單子音（tt/ss/ff/rr→單一子音）
+  boots:'double', pass:'double', princess:'double', barren:'double',
+  // 🌊 語音演變：拉丁字根走了不同路線，字形變化較大
+  juggle:'sound', charcoal:'sound', enchant:'sound', encounter:'sound',
+  chamber:'sound', preoccupy:'sound', respire:'sound', game:'sound',
+  // ⭐ 高頻核心字：太常用，各自保留最古老樣貌，不走公式
+  germane:'core', dad:'core', where:'core', much:'core', major:'core',
+};
+const COGNATE_PATTERN_LABELS = {
+  suffix:'🔤 字尾公式（背公式秒懂）',
+  double:'🔡 雙子音簡化（英文少打一個字母）',
+  sound:'🌊 語音演變（字根繞了個彎，形狀變比較多）',
+  core:'⭐ 高頻核心字（太常用了，各自獨立背）',
+  other:'🌱 老朋友（字根相通，不硬套公式）',
+};
+
 // ── 🍄 小心這顆有毒：假野莓（False Cognates）長得像英文卻歪掉的字 ──
 const FALSE_COGNATES = [
   {es:'embarazada', art:'', looksLike:'embarrassed', wrongZh:'尷尬', realZh:'懷孕的',
