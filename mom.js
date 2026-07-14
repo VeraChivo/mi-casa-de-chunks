@@ -111,13 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const scene = item.scene || '';
       const tagGid = MOM_TAG_GID_MAP[item.tag];
       const tagHtml = tagGid
-        ? `<span class="gestalt-tag ${tagClass} tag-clickable" onclick="jumpToConjLib('${tagGid}')" title="查完整變位庫">#${item.tag} 🔄</span>`
+        ? `<span class="gestalt-tag ${tagClass} tag-clickable" onclick="event.stopPropagation();jumpToConjLib('${tagGid}')" title="查完整變位庫">#${item.tag} 🔄</span>`
         : `<span class="gestalt-tag ${tagClass}">#${item.tag}</span>`;
+      const playCardExpr = `speakMapSmart('MOM_AUDIO_MAP','${audioShort}',${itemIdx},'${escAttr(displayEs)}')`;
 
-      html += `<div class="mom-atm-card" data-scene="${scene}">
+      html += `<div class="mom-atm-card" data-scene="${scene}" onclick="${playCardExpr}" title="點這裡聽整句">
         ${tagHtml}
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation" onclick="speakMapSmart('MOM_AUDIO_MAP','${audioShort}',${itemIdx},'${escAttr(displayEs)}')" title="點這裡聽整句">${displayZh}</div>
+        <div class="card-chinese-translation">${displayZh}</div>
       </div>`;
     });
 

@@ -87,10 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="mom-cards-col">`;
     cat.items.forEach((item, itemIdx) => {
       const lineHtml = (typeof renderScriptLine === 'function') ? renderScriptLine(item.es, `speakGramSmart('${escAttr(item.es)}')`) : item.es;
-      html += `<div class="mom-atm-card">
+      const playCardExpr = `speakMapSmart('CORAZON_AUDIO_MAP','${cat.id}',${itemIdx},'${escAttr(item.es)}')`;
+      html += `<div class="mom-atm-card" onclick="${playCardExpr}" title="點這裡聽整句">
         <span class="gestalt-tag type-d">#${item.tag}</span>
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation" onclick="speakMapSmart('CORAZON_AUDIO_MAP','${cat.id}',${itemIdx},'${escAttr(item.es)}')" title="點這裡聽整句">${item.zh}</div>
+        <div class="card-chinese-translation">${item.zh}</div>
       </div>`;
     });
     html += `</div></div>`;

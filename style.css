@@ -834,7 +834,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .mom-cat-title{font-size:14px;font-weight:800;color:var(--konpeki);margin-bottom:3px}
 .mom-cat-desc{font-size:11px;color:var(--tmid);margin-bottom:10px}
 .mom-cards-col{display:flex;flex-direction:column;gap:7px}
-.mom-atm-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:12px;border:1.5px solid var(--usumizu);border-radius:10px;background:white}
+.mom-atm-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:12px;border:1.5px solid var(--usumizu);border-radius:10px;background:white;cursor:pointer}
 .gestalt-tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px}
 .gestalt-tag.type-c{background:rgba(46,196,182,.1);border:1px solid #2ec4b6;color:#0f9f90}
 .gestalt-tag.type-d{background:rgba(173,181,189,.1);border:1px solid #adb5bd;color:#495057}

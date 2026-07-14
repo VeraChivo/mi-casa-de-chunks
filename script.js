@@ -318,6 +318,14 @@ const SENTENCE_AMMO_MAP2 = {
   45:['e5_06'], 46:['e5_07'], 47:['e5_08'], 48:['e5_09'], 49:['e5_10'],
   50:['e6_01'], 51:['e6_02'], 52:['e6_03'], 53:['e6_04'], 54:['e6_05'],
   55:['e6_06'], 56:['e6_07'], 57:['e6_08'], 58:['e6_09'], 59:['e6_10'],
+  60:['e7_01'], 61:['e7_02'], 62:['e7_03'], 63:['e7_04'], 64:['e7_05'],
+  65:['e7_06'], 66:['e7_07'], 67:['e7_08'], 68:['e7_09'], 69:['e7_10'],
+  70:['e8_01'], 71:['e8_02'], 72:['e8_03'], 73:['e8_04'], 74:['e8_05'],
+  75:['e8_06'], 76:['e8_07'], 77:['e8_08'], 78:['e8_09'], 79:['e8_10'],
+  80:['e9_01'], 81:['e9_02'], 82:['e9_03'], 83:['e9_04'], 84:['e9_05'],
+  85:['e9_06'], 86:['e9_07'], 87:['e9_08'], 88:['e9_09'], 89:['e9_10'],
+  90:['e10_01'], 91:['e10_02'], 92:['e10_03'], 93:['e10_04'], 94:['e10_05'],
+  95:['e10_06'], 96:['e10_07'], 97:['e10_08'], 98:['e10_09'], 99:['e10_10'],
 };
 
 function unlockAmmo(globalIdx){
@@ -2528,13 +2536,13 @@ function renderScriptLine(sentence, playExpr) {
       const ge = gardenDB[chunk] || { stage: 0, quiz_count: 0 };
       const gs = classifyGardenStatus(ge);
       const playAttr = playExpr ? ` data-playexpr="${playExpr.replace(/"/g,'&quot;')}"` : '';
-      html += `<span class="gestalt-chunk ${r.type}"${gAttr}${playAttr} data-type="${r.type}" data-verbform="${r.verbForm}" data-assoc="${r.assoc}" data-chunk="${escAttr(chunk)}" onclick="gestaltTap(this)">${chunk}<button class="gc-star${gs.stage === 0 ? ' garden-empty' : ''}" onmousedown="event.stopPropagation();gardenStartPress(this)" onmouseup="gardenCancelPress()" onmouseleave="gardenCancelPress()" ontouchstart="event.stopPropagation();event.preventDefault();gardenStartPress(this)" ontouchend="gardenHandleTouch(this,event)" ontouchmove="gardenCancelPress()" onclick="event.stopPropagation();gestaltSave(this)" title="${escAttr(gs.label)}">${gs.icon}</button></span>`;
+      html += `<span class="gestalt-chunk ${r.type}"${gAttr}${playAttr} data-type="${r.type}" data-verbform="${r.verbForm}" data-assoc="${r.assoc}" data-chunk="${escAttr(chunk)}" onclick="event.stopPropagation();gestaltTap(this)">${chunk}<button class="gc-star${gs.stage === 0 ? ' garden-empty' : ''}" onmousedown="event.stopPropagation();gardenStartPress(this)" onmouseup="gardenCancelPress()" onmouseleave="gardenCancelPress()" ontouchstart="event.stopPropagation();event.preventDefault();gardenStartPress(this)" ontouchend="gardenHandleTouch(this,event)" ontouchmove="gardenCancelPress()" onclick="event.stopPropagation();gestaltSave(this)" title="${escAttr(gs.label)}">${gs.icon}</button></span>`;
       i += r.length;
     } else {
       const w = words[i];
       const wc = w.replace(/[¡!¿?.,;:]/g, '');
       const onclickExpr = playExpr ? playExpr : `speakWord('${escAttr(wc)}',this)`;
-      html += `<span class="gc-word" onclick="${onclickExpr}">${w}</span> `;
+      html += `<span class="gc-word" onclick="event.stopPropagation();${onclickExpr}">${w}</span> `;
       i++;
     }
   }

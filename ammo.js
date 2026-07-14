@@ -791,4 +791,531 @@ const AMMO_DATA = [
       {es:"¡Vamos a comer juntos!", zh:"我們一起吃吧！", chunks:[{w:"(nosotros)",role:"s"},{w:"¡Vamos a comer juntos!",role:"v"}]}
     ]
   },
+  // ══════════ E7 · Buenos Días, Casa Gato ══════════
+  {
+    ammo_id:"e7_01", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Nita tiene mucho sueño.", core_zh:"妮妲很想睡。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] tiene mucho sueño.", pattern_zh:"___ 很想睡。",
+    pattern_note:"tener + sueño，表達生理感覺，不是「擁有」", slots:["人物"],
+    fire_peppa:{es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。", ts:null,
+      chunks:[{w:"Nita",role:"s"},{w:"tiene",role:"v",note:"tener ➔ 變位 tiene（「她」）➔ 意思：想睡（生理感覺，不是擁有）"},{w:"mucho sueño.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo tengo mucho sueño.", zh:"我很想睡。", chunks:[{w:"(yo)",role:"s"},{w:"tengo",role:"v"},{w:"mucho sueño.",role:"o"}]},
+      {es:"Mimi tiene sueño después de comer.", zh:"咪咪吃飽後想睡覺。", chunks:[{w:"Mimi",role:"s"},{w:"tiene sueño",role:"v"},{w:"después de comer.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_02", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Mamá Cata despierta a Nita, pero Nita llega tarde.", core_zh:"貓媽媽叫醒妮妲，但妮妲還是遲到了。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物1] despierta a [人物2], pero llega tarde.", pattern_zh:"___ 叫醒 ___，但還是遲到了。",
+    pattern_note:"despertar「他/她」變位是 despierta；llegar tarde = 遲到", slots:["人物1","人物2"],
+    fire_peppa:{es:"Mamá Cata despierta a Nita, pero Nita llega tarde.", zh:"貓媽媽叫醒妮妲，但妮妲還是遲到了。", ts:null,
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"despierta",role:"v",note:"despertar ➔ 變位 despierta（「她」）➔ 意思：叫醒"},{w:"a Nita,",role:"o"},{w:"pero",role:"c",hideYg:true},{w:"Nita",role:"s"},{w:"llega tarde.",role:"v"}]},
+    fire_daily:[
+      {es:"Papá Tato despierta a Tito, pero Tito llega tarde.", zh:"貓爸爸叫醒迪多，但迪多還是遲到了。", chunks:[{w:"Papá Tato",role:"s"},{w:"despierta",role:"v"},{w:"a Tito,",role:"o"},{w:"pero",role:"c",hideYg:true},{w:"Tito",role:"s"},{w:"llega tarde.",role:"v"}]},
+      {es:"Yo me despierto tarde todos los días.", zh:"我每天都很晚才醒來。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"me despierto",role:"v"},{w:"tarde todos los días.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_03", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Tito tiene hambre.", core_zh:"迪多肚子餓了。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] tiene hambre.", pattern_zh:"___ 肚子餓了。",
+    pattern_note:"tener hambre = 肚子餓，tener 家族常用語", slots:["人物"],
+    fire_peppa:{es:"Tito tiene hambre.", zh:"迪多肚子餓了。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"tiene",role:"v",note:"tener ➔ 變位 tiene（「他」）➔ 意思：肚子餓（tener 家族生理感覺）"},{w:"hambre.",role:"o"}]},
+    fire_daily:[
+      {es:"Nosotros tenemos hambre ahora.", zh:"我們現在肚子餓了。", chunks:[{w:"Nosotros",role:"s"},{w:"tenemos",role:"v"},{w:"hambre ahora.",role:"o"}]},
+      {es:"¿Tienes hambre, Mimi?", zh:"咪咪，妳肚子餓了嗎？", chunks:[{w:"¿Tienes",role:"v"},{w:"hambre,",role:"o"},{w:"Mimi?",role:"s"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_04", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Papá Tato tiene frío.", core_zh:"貓爸爸覺得冷。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] tiene frío.", pattern_zh:"___ 覺得冷。",
+    pattern_note:"tener frío = 覺得冷，tener 家族", slots:["人物"],
+    fire_peppa:{es:"Papá Tato tiene frío.", zh:"貓爸爸覺得冷。", ts:null,
+      chunks:[{w:"Papá Tato",role:"s"},{w:"tiene",role:"v",note:"tener ➔ 變位 tiene（「他」）➔ 意思：覺得冷"},{w:"frío.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo tengo mucho frío hoy.", zh:"我今天覺得好冷。", chunks:[{w:"(yo)",role:"s"},{w:"tengo",role:"v"},{w:"mucho frío hoy.",role:"o"}]},
+      {es:"Los niños tienen frío en invierno.", zh:"孩子們冬天會覺得冷。", chunks:[{w:"Los niños",role:"s"},{w:"tienen",role:"v"},{w:"frío en invierno.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_05", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Hay pan y leche en la mesa.", core_zh:"桌上有麵包和牛奶。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Hay [東西] en la mesa.", pattern_zh:"桌上有 ___。",
+    pattern_note:"Hay = 有，表示存在，不分陰陽性單複數都用這個字", slots:["東西"],
+    fire_peppa:{es:"Hay pan y leche en la mesa.", zh:"桌上有麵包和牛奶。", ts:null,
+      chunks:[{w:"Hay",role:"v",note:"hay ➔ 萬用「有」，不分陰陽性單複數 ➔ 意思：有"},{w:"pan y leche en la mesa.",role:"o"}]},
+    fire_daily:[
+      {es:"Hay muchos juguetes en el suelo.", zh:"地上有很多玩具。", chunks:[{w:"Hay",role:"v"},{w:"muchos juguetes en el suelo.",role:"o"}]},
+      {es:"¿Hay café en la cocina?", zh:"廚房裡有咖啡嗎？", chunks:[{w:"¿Hay",role:"v"},{w:"café en la cocina?",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_06", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Quiero desayunar con Mimi.", core_zh:"我想跟咪咪一起吃早餐。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Quiero desayunar con [人物].", pattern_zh:"我想跟 ___ 一起吃早餐。",
+    pattern_note:"Quiero + 原形動詞，desayunar = 吃早餐", slots:["人物"],
+    fire_peppa:{es:"Quiero desayunar con Mimi.", zh:"我想跟咪咪一起吃早餐。", ts:null,
+      chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Quiero desayunar",role:"v",note:"querer ➔ quiero（「我」）+ desayunar ➔ 意思：我想吃早餐"},{w:"con Mimi.",role:"o"}]},
+    fire_daily:[
+      {es:"Quiero desayunar con toda la familia.", zh:"我想跟全家人一起吃早餐。", chunks:[{w:"(yo)",role:"s"},{w:"Quiero desayunar",role:"v"},{w:"con toda la familia.",role:"o"}]},
+      {es:"¿Quieres desayunar conmigo?", zh:"你想跟我一起吃早餐嗎？", chunks:[{w:"¿Quieres desayunar",role:"v"},{w:"conmigo?",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_07", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Mamá Cata tiene prisa.", core_zh:"貓媽媽在趕時間。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] tiene prisa.", pattern_zh:"___ 在趕時間。",
+    pattern_note:"tener prisa = 趕時間，tener 家族", slots:["人物"],
+    fire_peppa:{es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。", ts:null,
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"tiene",role:"v",note:"tener ➔ 變位 tiene（「她」）➔ 意思：趕時間"},{w:"prisa.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo tengo prisa esta mañana.", zh:"我今天早上在趕時間。", chunks:[{w:"(yo)",role:"s"},{w:"tengo",role:"v"},{w:"prisa esta mañana.",role:"o"}]},
+      {es:"No tengas prisa, hay tiempo.", zh:"不要趕，還有時間。", chunks:[{w:"No tengas",role:"v"},{w:"prisa,",role:"o"},{w:"hay tiempo.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_08", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"¿Tienes tiempo para un café?", core_zh:"你有時間喝杯咖啡嗎？",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"¿Tienes tiempo para [活動]?", pattern_zh:"你有時間 ___ 嗎？",
+    pattern_note:"tener tiempo = 有空，也是 tener 家族", slots:["活動"],
+    fire_peppa:{es:"¿Tienes tiempo para un café?", zh:"你有時間喝杯咖啡嗎？", ts:null,
+      chunks:[{w:"¿Tienes",role:"v",note:"tener ➔ 變位 tienes（「你」）➔ 意思：你有嗎"},{w:"tiempo para un café?",role:"o"}]},
+    fire_daily:[
+      {es:"¿Tienes tiempo para hablar?", zh:"你有時間聊聊嗎？", chunks:[{w:"¿Tienes",role:"v"},{w:"tiempo para hablar?",role:"o"}]},
+      {es:"No tengo tiempo para eso ahora.", zh:"我現在沒有時間做那件事。", chunks:[{w:"No tengo",role:"v"},{w:"tiempo para eso ahora.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_09", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Kito tiene miedo de llegar tarde.", core_zh:"哥哥害怕遲到。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] tiene miedo de [原形動詞].", pattern_zh:"___ 害怕 ___。",
+    pattern_note:"tener miedo de + 原形動詞 = 害怕做某事", slots:["人物","原形動詞"],
+    fire_peppa:{es:"Kito tiene miedo de llegar tarde.", zh:"哥哥害怕遲到。", ts:null,
+      chunks:[{w:"Kito",role:"s"},{w:"tiene miedo de",role:"v",note:"tener miedo de ➔ 變位 tiene（「他」）➔ 意思：害怕"},{w:"llegar tarde.",role:"o"}]},
+    fire_daily:[
+      {es:"Nita tiene miedo de la oscuridad.", zh:"妮妲害怕黑暗。", chunks:[{w:"Nita",role:"s"},{w:"tiene miedo de",role:"v"},{w:"la oscuridad.",role:"o"}]},
+      {es:"Yo tengo miedo de equivocarme.", zh:"我害怕犯錯。", chunks:[{w:"(yo)",role:"s"},{w:"tengo miedo de",role:"v"},{w:"equivocarme.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e7_10", ep:"E7 · Buenos Días, Casa Gato",
+    core_ammo:"Nita se duerme en clase y Vivi la despierta.", core_zh:"妮妲在課堂上睡著了，薇薇老師把她叫醒。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] se duerme en clase.", pattern_zh:"___ 在課堂上睡著了。",
+    pattern_note:"se duerme(dormirse) = 睡著了，反身動詞，跟 dormir(睡覺的動作) 不同", slots:["人物"],
+    fire_peppa:{es:"Nita se duerme en clase y Vivi la despierta.", zh:"妮妲在課堂上睡著了，薇薇老師把她叫醒。", ts:null,
+      chunks:[{w:"Nita",role:"s"},{w:"se duerme",role:"v",note:"dormirse ➔ 變位 se duerme（「她」）➔ 意思：睡著了（反身動詞，跟 dormir 不同）"},{w:"en clase",role:"o"},{w:"y",role:"c",hideYg:true},{w:"Vivi",role:"s"},{w:"la despierta.",role:"v"}]},
+    fire_daily:[
+      {es:"Tito se duerme en el sofá.", zh:"迪多在沙發上睡著了。", chunks:[{w:"Tito",role:"s"},{w:"se duerme",role:"v"},{w:"en el sofá.",role:"o"}]},
+      {es:"Me duermo temprano los domingos.", zh:"我星期天很早就睡著了。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Me duermo",role:"v"},{w:"temprano los domingos.",role:"c"}]}
+    ]
+  },
+
+  // ══════════ E8 · Tito y el Carrito ══════════
+  {
+    ammo_id:"e8_01", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Tito juega con su carrito, Chito.", core_zh:"迪多在玩他的車車奇奇。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] juega con su [物品].", pattern_zh:"___ 在玩他的 ___。",
+    pattern_note:"juega con = 玩...（jugar「他/她」變位）", slots:["人物","物品"],
+    fire_peppa:{es:"Tito juega con su carrito, Chito.", zh:"迪多在玩他的車車奇奇。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"juega",role:"v",note:"jugar ➔ 變位 juega（「他」）➔ 意思：玩"},{w:"con su carrito, Chito.",role:"o"}]},
+    fire_daily:[
+      {es:"Mimi juega con su muñeca.", zh:"咪咪在玩她的娃娃。", chunks:[{w:"Mimi",role:"s"},{w:"juega",role:"v"},{w:"con su muñeca.",role:"o"}]},
+      {es:"¿Con qué juegas normalmente?", zh:"你平常都玩什麼？", chunks:[{w:"¿Con qué",role:"o"},{w:"juegas",role:"v"},{w:"normalmente?",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_02", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Mamá Cata le pregunta algo.", core_zh:"卡妲媽媽問他一件事。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] le pregunta [事情].", pattern_zh:"___ 問他/她 ___。",
+    pattern_note:"le pregunta = 問他/她（間接受詞 le + preguntar）", slots:["人物","事情"],
+    fire_peppa:{es:"Mamá Cata le pregunta algo.", zh:"卡妲媽媽問他一件事。", ts:null,
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"le pregunta",role:"v",note:"preguntar ➔ le + pregunta（「她」）➔ 意思：問他"},{w:"algo.",role:"o"}]},
+    fire_daily:[
+      {es:"Le pregunto si está bien.", zh:"我問他是不是還好。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Le pregunto",role:"v"},{w:"si está bien.",role:"o"}]},
+      {es:"Papá Tato le pregunta cómo le fue el día.", zh:"貓爸爸問她今天過得怎麼樣。", chunks:[{w:"Papá Tato",role:"s"},{w:"le pregunta",role:"v"},{w:"cómo le fue el día.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_03", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Tito solo asiente con la cabeza.", core_zh:"迪多只是點點頭。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] solo asiente con la cabeza.", pattern_zh:"___ 只是點點頭。",
+    pattern_note:"asentir con la cabeza = 點頭", slots:["人物"],
+    fire_peppa:{es:"Tito solo asiente con la cabeza.", zh:"迪多只是點點頭。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"solo asiente",role:"v",note:"asentir ➔ 變位 asiente（「他」）➔ 意思：點頭同意"},{w:"con la cabeza.",role:"o"}]},
+    fire_daily:[
+      {es:"Ella asiente con la cabeza y sonríe.", zh:"她點點頭，笑了。", chunks:[{w:"Ella",role:"s"},{w:"asiente",role:"v"},{w:"con la cabeza",role:"o"},{w:"y sonríe.",role:"c"}]},
+      {es:"Yo solo asentí, no dije nada.", zh:"我只是點了頭，什麼都沒說。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"solo asentí,",role:"v"},{w:"no dije nada.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_04", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Para el \"no\", Tito simplemente no responde.", core_zh:"遇到「不」的時候，迪多就是不回應。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] simplemente no responde.", pattern_zh:"___ 就是不回應。",
+    pattern_note:"no responde = 不回應（responder 現在式）", slots:["人物"],
+    fire_peppa:{es:"Para el \"no\", Tito simplemente no responde.", zh:"遇到「不」的時候，迪多就是不回應。", ts:null,
+      chunks:[{w:'Para el "no",'},{w:"Tito",role:"s"},{w:"simplemente no responde.",role:"v",note:"responder ➔ no responde（「他」）➔ 意思：不回應"}]},
+    fire_daily:[
+      {es:"Cuando está enojado, simplemente no responde.", zh:"他生氣的時候，就是不回應。", chunks:[{w:"Cuando está enojado,"},{w:"simplemente no responde.",role:"v"}]},
+      {es:"Yo no respondo cuando estoy cansada.", zh:"我累的時候不會回應。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"no respondo",role:"v"},{w:"cuando estoy cansada.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_05", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Tito la escucha, pero actúa como si no la oyera.", core_zh:"迪多聽到了，卻裝作沒聽到。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] actúa como si no la oyera.", pattern_zh:"___ 裝作沒聽到。",
+    pattern_note:"como si + 虛擬式過去式，表跟事實相反", slots:["人物"],
+    fire_peppa:{es:"Tito la escucha, pero actúa como si no la oyera.", zh:"迪多聽到了，卻裝作沒聽到。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"la escucha,",role:"v"},{w:"pero",role:"c",hideYg:true},{w:"actúa como si no la oyera.",role:"v",note:"como si + 虛擬式過去式 ➔ 意思：裝作沒聽到（跟事實相反）"}]},
+    fire_daily:[
+      {es:"Ella actúa como si no supiera nada.", zh:"她裝作什麼都不知道。", chunks:[{w:"Ella",role:"s"},{w:"actúa",role:"v"},{w:"como si no supiera nada.",role:"o"}]},
+      {es:"Lo escucho, pero no siempre respondo.", zh:"我聽到了，但不一定會回應。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Lo escucho,",role:"v"},{w:"pero no siempre respondo.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_06", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Por dentro, Mamá Cata se siente un poco frustrada.", core_zh:"卡妲媽媽心裡有點火大。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] se siente un poco frustrada/o.", pattern_zh:"___ 心裡有點火大。",
+    pattern_note:"se siente = 覺得（sentirse 反身動詞）", slots:["人物"],
+    fire_peppa:{es:"Por dentro, Mamá Cata se siente un poco frustrada.", zh:"卡妲媽媽心裡有點火大。", ts:null,
+      chunks:[{w:"Por dentro,"},{w:"Mamá Cata",role:"s"},{w:"se siente",role:"v",note:"sentirse ➔ 變位 se siente（「她」）➔ 意思：覺得"},{w:"un poco frustrada.",role:"o"}]},
+    fire_daily:[
+      {es:"Me siento un poco cansado hoy.", zh:"我今天覺得有點累。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Me siento",role:"v"},{w:"un poco cansado hoy.",role:"o"}]},
+      {es:"¿Cómo te sientes por dentro?", zh:"你心裡覺得怎麼樣？", chunks:[{w:"¿Cómo",role:"c"},{w:"te sientes",role:"v"},{w:"por dentro?",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_07", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Respira hondo y se sienta a su lado.", core_zh:"她深呼吸，坐到他旁邊。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Respira hondo y se sienta [地點].", pattern_zh:"她深呼吸，坐 ___。",
+    pattern_note:"Respira hondo = 深呼吸，隱含主詞", slots:["地點"],
+    fire_peppa:{es:"Respira hondo y se sienta a su lado.", zh:"她深呼吸，坐到他旁邊。", ts:null,
+      chunks:[{w:"Respira hondo",role:"v",note:"respirar ➔ 變位 respira（隱含「她」）➔ 意思：深呼吸"},{w:"y",role:"c",hideYg:true},{w:"se sienta",role:"v"},{w:"a su lado.",role:"o"}]},
+    fire_daily:[
+      {es:"Respiro hondo antes de hablar.", zh:"我說話前先深呼吸。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Respiro hondo",role:"v"},{w:"antes de hablar.",role:"c"}]},
+      {es:"Se sienta en el suelo a jugar.", zh:"他坐在地上玩。", chunks:[{w:"(él)",role:"s",hideYg:true},{w:"Se sienta",role:"v"},{w:"en el suelo a jugar.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_08", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Ella sabe que su niño no lo hace a propósito.", core_zh:"她清楚知道孩子不是故意的。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Ella sabe que [人物] no lo hace a propósito.", pattern_zh:"她知道 ___ 不是故意的。",
+    pattern_note:"a propósito = 故意地", slots:["人物"],
+    fire_peppa:{es:"Ella sabe que su niño no lo hace a propósito.", zh:"她清楚知道孩子不是故意的。", ts:null,
+      chunks:[{w:"Ella",role:"s"},{w:"sabe",role:"v",note:"saber ➔ 變位 sabe（「她」）➔ 意思：知道"},{w:"que su niño no lo hace a propósito.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo sé que no lo hiciste a propósito.", zh:"我知道你不是故意的。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"sé",role:"v"},{w:"que no lo hiciste a propósito.",role:"o"}]},
+      {es:"Sabemos que ella no lo hace a propósito.", zh:"我們知道她不是故意的。", chunks:[{w:"(nosotros)",role:"s",hideYg:true},{w:"Sabemos",role:"v"},{w:"que ella no lo hace a propósito.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_09", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Pero no entiende de dónde viene su propio enojo.", core_zh:"但她不懂自己的怒火是從哪裡來的。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"No entiende de dónde viene su propio [情緒].", pattern_zh:"她不懂自己的 ___ 是從哪裡來的。",
+    pattern_note:"de dónde viene = 從哪裡來", slots:["情緒"],
+    fire_peppa:{es:"Pero no entiende de dónde viene su propio enojo.", zh:"但她不懂自己的怒火是從哪裡來的。", ts:null,
+      chunks:[{w:"Pero",role:"c",hideYg:true},{w:"no entiende",role:"v",note:"entender ➔ no entiende（「她」）➔ 意思：不懂"},{w:"de dónde viene su propio enojo.",role:"o"}]},
+    fire_daily:[
+      {es:"No entiendo de dónde viene mi propio cansancio.", zh:"我不懂自己的疲憊是從哪裡來的。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"No entiendo",role:"v"},{w:"de dónde viene mi propio cansancio.",role:"o"}]},
+      {es:"¿Sabes de dónde viene ese ruido?", zh:"你知道那個聲音是從哪裡來的嗎？", chunks:[{w:"¿Sabes",role:"v"},{w:"de dónde viene ese ruido?",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e8_10", ep:"E8 · Tito y el Carrito",
+    core_ammo:"Esa noche, Mamá Cata se queda pensando en sí misma.", core_zh:"那天晚上，卡妲媽媽開始想起自己。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Esa noche, [人物] se queda pensando en sí misma/o.", pattern_zh:"那天晚上，___ 開始想起自己。",
+    pattern_note:"se queda pensando = 陷入沉思（quedarse + Ving）", slots:["人物"],
+    fire_peppa:{es:"Esa noche, Mamá Cata se queda pensando en sí misma.", zh:"那天晚上，卡妲媽媽開始想起自己。", ts:null,
+      chunks:[{w:"Esa noche,"},{w:"Mamá Cata",role:"s"},{w:"se queda pensando",role:"v",note:"quedarse + pensando ➔ 意思：陷入沉思"},{w:"en sí misma.",role:"o"}]},
+    fire_daily:[
+      {es:"Me quedo pensando en lo que pasó.", zh:"我一直在想剛剛發生的事。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Me quedo pensando",role:"v"},{w:"en lo que pasó.",role:"o"}]},
+      {es:"Se queda mirando por la ventana.", zh:"他一直望著窗外。", chunks:[{w:"(él)",role:"s",hideYg:true},{w:"Se queda mirando",role:"v"},{w:"por la ventana.",role:"o"}]}
+    ]
+  },
+
+  // ══════════ E9 · Por Fin Sé Quién Soy ══════════
+  {
+    ammo_id:"e9_01", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Mamá Cata siempre pierde las llaves.", core_zh:"卡妲媽媽總是找不到鑰匙。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] siempre pierde [物品].", pattern_zh:"___ 總是弄丟 ___。",
+    pattern_note:"perder 是調皮動詞，變位時 e 變 ie（pierde），nosotros/vosotros 不變", slots:["人物","物品"],
+    fire_peppa:{es:"Mamá Cata siempre pierde las llaves.", zh:"卡妲媽媽總是找不到鑰匙。", ts:null,
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"siempre pierde",role:"v",note:"perder ➔ 變位 pierde（e➔ie，「她」）➔ 意思：弄丟"},{w:"las llaves.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo siempre pierdo el teléfono.", zh:"我總是弄丟手機。", chunks:[{w:"(yo)",role:"s"},{w:"siempre pierdo",role:"v"},{w:"el teléfono.",role:"o"}]},
+      {es:"No pierdas la paciencia.", zh:"別失去耐心。", chunks:[{w:"No pierdas",role:"v"},{w:"la paciencia.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_02", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Pero puede concentrarse en un proyecto por horas y horas.", core_zh:"但她可以對一個計畫專注好幾個小時。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Puede concentrarse en [事情] por horas.", pattern_zh:"她可以對 ___ 專注好幾個小時。",
+    pattern_note:"puede concentrarse = 可以專注（poder + 反身原形動詞）", slots:["事情"],
+    fire_peppa:{es:"Pero puede concentrarse en un proyecto por horas y horas.", zh:"但她可以對一個計畫專注好幾個小時。", ts:null,
+      chunks:[{w:"Pero",role:"c",hideYg:true},{w:"puede concentrarse",role:"v",note:"poder ➔ puede（「她」）+ concentrarse ➔ 意思：可以專注"},{w:"en un proyecto por horas y horas.",role:"o"}]},
+    fire_daily:[
+      {es:"Puedo concentrarme en la música por horas.", zh:"我可以對音樂專注好幾個小時。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Puedo concentrarme",role:"v"},{w:"en la música por horas.",role:"o"}]},
+      {es:"¿Puedes concentrarte con tanto ruido?", zh:"這麼吵你還能專注嗎？", chunks:[{w:"¿Puedes concentrarte",role:"v"},{w:"con tanto ruido?",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_03", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Su mente es un volcán de ideas y un caos de horarios.", core_zh:"她的腦子是滿滿的點子，也是一團亂的時間表。",
+    be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：es = 是（隱喻句的本質描述）",
+    pattern:"Su mente es un volcán de [東西].", pattern_zh:"她的腦子是滿滿的 ___。",
+    pattern_note:"隱喻句，volcán = 火山、caos = 混亂", slots:["東西"],
+    fire_peppa:{es:"Su mente es un volcán de ideas y un caos de horarios.", zh:"她的腦子是滿滿的點子，也是一團亂的時間表。", ts:null,
+      chunks:[{w:"Su mente",role:"s"},{w:"es",role:"v",note:"ser ➔ 變位 es ➔ 意思：是（隱喻本質描述）"},{w:"un volcán de ideas y un caos de horarios.",role:"o"}]},
+    fire_daily:[
+      {es:"Mi cabeza es un volcán de preguntas.", zh:"我的腦子是滿滿的問題。", chunks:[{w:"Mi cabeza",role:"s"},{w:"es",role:"v"},{w:"un volcán de preguntas.",role:"o"}]},
+      {es:"Su cuarto es un caos total.", zh:"他的房間亂七八糟。", chunks:[{w:"Su cuarto",role:"s"},{w:"es",role:"v"},{w:"un caos total.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_04", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Un día, ve a Nita jugando de una manera muy familiar.", core_zh:"有一天，她看見妮妲玩耍的樣子很眼熟。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Ve a [人物] jugando de una manera muy familiar.", pattern_zh:"她看見 ___ 玩耍的樣子很眼熟。",
+    pattern_note:"a Nita = 受詞前的人稱 a（personal a）", slots:["人物"],
+    fire_peppa:{es:"Un día, ve a Nita jugando de una manera muy familiar.", zh:"有一天，她看見妮妲玩耍的樣子很眼熟。", ts:null,
+      chunks:[{w:"Un día,"},{w:"ve",role:"v",note:"ver ➔ 變位 ve（「她」）➔ 意思：看見"},{w:"a Nita jugando de una manera muy familiar.",role:"o"}]},
+    fire_daily:[
+      {es:"Veo a Tito construyendo algo increíble.", zh:"我看到迪多在蓋一個超酷的東西。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Veo",role:"v"},{w:"a Tito construyendo algo increíble.",role:"o"}]},
+      {es:"La vi llorando en su cuarto.", zh:"我看到她在房間裡哭。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"La vi",role:"v"},{w:"llorando en su cuarto.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_05", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"\"Yo también hacía eso de pequeña,\" piensa Mamá Cata.", core_zh:"「我小時候也是這樣，」卡妲媽媽心想。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Yo también hacía eso [時期].", pattern_zh:"我 ___ 也是這樣。",
+    pattern_note:"hacía = 過去習慣性動作（imperfecto）", slots:["時期"],
+    fire_peppa:{es:"\"Yo también hacía eso de pequeña,\" piensa Mamá Cata.", zh:"「我小時候也是這樣，」卡妲媽媽心想。", ts:null,
+      chunks:[{w:'"Yo',role:"s"},{w:"también hacía",role:"v",note:"hacer ➔ hacía（imperfecto，「我」）➔ 意思：以前常做"},{w:'eso de pequeña,"',role:"o"},{w:"piensa Mamá Cata.",role:"v"}]},
+    fire_daily:[
+      {es:"Yo también jugaba así de niño.", zh:"我小時候也是這樣玩的。", chunks:[{w:"(yo)",role:"s"},{w:"también jugaba así",role:"v"},{w:"de niño.",role:"c"}]},
+      {es:"De joven, hacía lo mismo.", zh:"年輕的時候，我也是這樣做的。", chunks:[{w:"De joven,"},{w:"hacía lo mismo.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_06", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Empieza a leer sobre el TDAH.", core_zh:"她開始讀關於ADHD的資料。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Empieza a leer sobre [主題].", pattern_zh:"她開始讀關於 ___ 的資料。",
+    pattern_note:"empieza a + 原形動詞 = 開始做某事", slots:["主題"],
+    fire_peppa:{es:"Empieza a leer sobre el TDAH.", zh:"她開始讀關於ADHD的資料。", ts:null,
+      chunks:[{w:"Empieza a leer",role:"v",note:"empezar ➔ empieza（「她」）+ a leer ➔ 意思：開始讀"},{w:"sobre el TDAH.",role:"o"}]},
+    fire_daily:[
+      {es:"Empiezo a leer sobre la neurodivergencia.", zh:"我開始讀關於神經多樣性的資料。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Empiezo a leer",role:"v"},{w:"sobre la neurodivergencia.",role:"o"}]},
+      {es:"¿Cuándo empiezas a estudiar?", zh:"你什麼時候開始讀書？", chunks:[{w:"¿Cuándo",role:"c"},{w:"empiezas a estudiar?",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_07", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Cada síntoma es un espejo de su propia vida.", core_zh:"每一條症狀都像照到自己的人生。",
+    be_verb_type:"ser", be_verb_note:"Ser 描述本質：es = 是（隱喻句）",
+    pattern:"Cada síntoma es un espejo de [東西].", pattern_zh:"每一條症狀都像照到 ___。",
+    pattern_note:"espejo = 鏡子（隱喻句）", slots:["東西"],
+    fire_peppa:{es:"Cada síntoma es un espejo de su propia vida.", zh:"每一條症狀都像照到自己的人生。", ts:null,
+      chunks:[{w:"Cada síntoma",role:"s"},{w:"es",role:"v",note:"ser ➔ 變位 es ➔ 意思：是（隱喻本質描述）"},{w:"un espejo de su propia vida.",role:"o"}]},
+    fire_daily:[
+      {es:"Cada palabra es un espejo de su corazón.", zh:"每一句話都像照到她的心。", chunks:[{w:"Cada palabra",role:"s"},{w:"es",role:"v"},{w:"un espejo de su corazón.",role:"o"}]},
+      {es:"Este dibujo es un espejo de mi infancia.", zh:"這幅畫像照到我的童年。", chunks:[{w:"Este dibujo",role:"s"},{w:"es",role:"v"},{w:"un espejo de mi infancia.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_08", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Ahora entiende por qué es tan fuerte y tan dispersa a la vez.", core_zh:"現在她懂了，為什麼自己同時這麼堅韌又這麼散亂。",
+    be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：es = 是（描述兩種對比的特質）",
+    pattern:"Entiende por qué es tan [特質1] y tan [特質2] a la vez.", pattern_zh:"她懂了為什麼自己同時這麼 ___ 又這麼 ___。",
+    pattern_note:"a la vez = 同時", slots:["特質1","特質2"],
+    fire_peppa:{es:"Ahora entiende por qué es tan fuerte y tan dispersa a la vez.", zh:"現在她懂了，為什麼自己同時這麼堅韌又這麼散亂。", ts:null,
+      chunks:[{w:"Ahora",role:"c",hideYg:true},{w:"entiende",role:"v",note:"entender ➔ 變位 entiende（「她」）➔ 意思：懂了"},{w:"por qué es tan fuerte y tan dispersa a la vez.",role:"o"}]},
+    fire_daily:[
+      {es:"Es tan creativa y tan olvidadiza a la vez.", zh:"她同時這麼有創意又這麼健忘。", chunks:[{w:"(ella)",role:"s",hideYg:true},{w:"Es",role:"v"},{w:"tan creativa y tan olvidadiza a la vez.",role:"o"}]},
+      {es:"Entiendo por qué eres así.", zh:"我懂了為什麼你會這樣。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Entiendo",role:"v"},{w:"por qué eres así.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_09", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"No es un defecto, es su manera de ser.", core_zh:"這不是缺陷，是她本來的樣子。",
+    be_verb_type:"ser", be_verb_note:"Ser 描述本質：no es/es = 不是/是（身分本質的否定與肯定對照）",
+    pattern:"No es un defecto, es su manera de [動詞].", pattern_zh:"這不是缺陷，是她 ___ 的樣子。",
+    pattern_note:"manera de ser = 天生的樣子/個性", slots:["動詞"],
+    fire_peppa:{es:"No es un defecto, es su manera de ser.", zh:"這不是缺陷，是她本來的樣子。", ts:null,
+      chunks:[{w:"No es",role:"v",note:"ser ➔ no es ➔ 意思：不是"},{w:"un defecto,",role:"o"},{w:"es",role:"v",note:"ser ➔ es ➔ 意思：是"},{w:"su manera de ser.",role:"o"}]},
+    fire_daily:[
+      {es:"No es flojera, es su manera de pensar.", zh:"這不是懶惰，是他思考的方式。", chunks:[{w:"No es",role:"v"},{w:"flojera,",role:"o"},{w:"es",role:"v"},{w:"su manera de pensar.",role:"o"}]},
+      {es:"Esto no es un error, es tu manera de vivir.", zh:"這不是錯誤，是你生活的方式。", chunks:[{w:"Esto no es",role:"v"},{w:"un error,",role:"o"},{w:"es",role:"v"},{w:"tu manera de vivir.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e9_10", ep:"E9 · Por Fin Sé Quién Soy",
+    core_ammo:"Mamá Cata sonríe: \"Por fin sé quién soy.\"", core_zh:"卡妲媽媽笑了：「我終於知道自己是誰了。」",
+    be_verb_type:"ser", be_verb_note:"Ser 描述身分：soy = 我是（quién soy = 我是誰，身分認同）",
+    pattern:"Por fin sé [知道的內容].", pattern_zh:"我終於知道 ___ 了。",
+    pattern_note:"sé = 我知道（saber 的「我」變位，不規則）", slots:["知道的內容"],
+    fire_peppa:{es:"Mamá Cata sonríe: \"Por fin sé quién soy.\"", zh:"卡妲媽媽笑了：「我終於知道自己是誰了。」", ts:null,
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"sonríe:",role:"v"},{w:'"Por fin sé quién soy."',role:"o",note:"saber ➔ sé（不規則，「我」）➔ 意思：我知道；soy ➔ 意思：我是（身分認同）"}]},
+    fire_daily:[
+      {es:"Por fin sé lo que necesito.", zh:"我終於知道我需要什麼了。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Por fin sé",role:"v"},{w:"lo que necesito.",role:"o"}]},
+      {es:"Ahora sé por qué soy así.", zh:"現在我知道我為什麼是這樣了。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Ahora sé",role:"v"},{w:"por qué soy así.",role:"o"}]}
+    ]
+  },
+
+  // ══════════ E10 · Chocamos Sin Querer ══════════
+  {
+    ammo_id:"e10_01", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Mamá Cata hace un plan para el día.", core_zh:"卡妲媽媽排好了今天的行程。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] hace un plan para el día.", pattern_zh:"___ 排好了今天的行程。",
+    pattern_note:"hace un plan = 做計畫（hacer「她」變位）", slots:["人物"],
+    fire_peppa:{es:"Mamá Cata hace un plan para el día.", zh:"卡妲媽媽排好了今天的行程。", ts:null,
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"hace",role:"v",note:"hacer ➔ 變位 hace（「她」）➔ 意思：做"},{w:"un plan para el día.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo hago un plan para el fin de semana.", zh:"我排好了週末的行程。", chunks:[{w:"(yo)",role:"s"},{w:"hago",role:"v"},{w:"un plan para el fin de semana.",role:"o"}]},
+      {es:"¿Hacemos un plan juntos?", zh:"我們一起排計畫好嗎？", chunks:[{w:"¿Hacemos",role:"v"},{w:"un plan juntos?",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_02", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"A Tito no le gustan los cambios repentinos.", core_zh:"迪多不喜歡突如其來的改變。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"A [人物] no le gustan los cambios repentinos.", pattern_zh:"___ 不喜歡突如其來的改變。",
+    pattern_note:"gustar 句型：喜歡的東西當主詞，人當間接受詞", slots:["人物"],
+    fire_peppa:{es:"A Tito no le gustan los cambios repentinos.", zh:"迪多不喜歡突如其來的改變。", ts:null,
+      chunks:[{w:"A Tito",role:"o"},{w:"no le gustan",role:"v",note:"gustar ➔ le gustan（否定）➔ 意思：不喜歡（gustar句型反著講）"},{w:"los cambios repentinos.",role:"s"}]},
+    fire_daily:[
+      {es:"A mí no me gustan los cambios de última hora.", zh:"我不喜歡臨時的改變。", chunks:[{w:"A mí",role:"o"},{w:"no me gustan",role:"v"},{w:"los cambios de última hora.",role:"s"}]},
+      {es:"A ella le gustan las rutinas fijas.", zh:"她喜歡固定的作息。", chunks:[{w:"A ella",role:"o"},{w:"le gustan",role:"v"},{w:"las rutinas fijas.",role:"s"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_03", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Él necesita todo en el mismo orden, todos los días.", core_zh:"他需要每天都一樣的順序。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Necesita todo en el mismo [東西].", pattern_zh:"他需要每天都一樣的 ___。",
+    pattern_note:"en el mismo orden = 同樣的順序", slots:["東西"],
+    fire_peppa:{es:"Él necesita todo en el mismo orden, todos los días.", zh:"他需要每天都一樣的順序。", ts:null,
+      chunks:[{w:"Él",role:"s"},{w:"necesita",role:"v",note:"necesitar ➔ 變位 necesita（「他」）➔ 意思：需要"},{w:"todo en el mismo orden, todos los días.",role:"o"}]},
+    fire_daily:[
+      {es:"Necesito todo en el mismo lugar.", zh:"我需要每樣東西都在同樣的位置。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Necesito",role:"v"},{w:"todo en el mismo lugar.",role:"o"}]},
+      {es:"Ella necesita el mismo horario cada día.", zh:"她需要每天都一樣的時間表。", chunks:[{w:"Ella",role:"s"},{w:"necesita",role:"v"},{w:"el mismo horario cada día.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_04", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Tito quiere las cosas ahora mismo.", core_zh:"迪多想要的是「馬上」。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人物] quiere las cosas ahora mismo.", pattern_zh:"___ 想要的是「馬上」。",
+    pattern_note:"ahora mismo = 馬上、立刻", slots:["人物"],
+    fire_peppa:{es:"Tito quiere las cosas ahora mismo.", zh:"迪多想要的是「馬上」。", ts:null,
+      chunks:[{w:"Tito",role:"s"},{w:"quiere",role:"v",note:"querer ➔ 變位 quiere（「他」）➔ 意思：想要"},{w:"las cosas ahora mismo.",role:"o"}]},
+    fire_daily:[
+      {es:"Yo quiero una respuesta ahora mismo.", zh:"我現在馬上就要答案。", chunks:[{w:"(yo)",role:"s"},{w:"quiero",role:"v"},{w:"una respuesta ahora mismo.",role:"o"}]},
+      {es:"Los niños quieren jugar ahora mismo.", zh:"孩子們現在馬上就想玩。", chunks:[{w:"Los niños",role:"s"},{w:"quieren",role:"v"},{w:"jugar ahora mismo.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_05", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"El plan de Mamá Cata se rompe, otra vez.", core_zh:"卡妲媽媽的計畫又被打亂了。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"El plan de [人物] se rompe, otra vez.", pattern_zh:"___ 的計畫又被打亂了。",
+    pattern_note:"se rompe = 被打破（romperse，反身動詞表自然發生的破壞）", slots:["人物"],
+    fire_peppa:{es:"El plan de Mamá Cata se rompe, otra vez.", zh:"卡妲媽媽的計畫又被打亂了。", ts:null,
+      chunks:[{w:"El plan de Mamá Cata",role:"s"},{w:"se rompe,",role:"v",note:"romperse ➔ 變位 se rompe ➔ 意思：被打破（自然發生）"},{w:"otra vez.",role:"o"}]},
+    fire_daily:[
+      {es:"Mi horario se rompe cada semana.", zh:"我的時間表每個禮拜都被打亂。", chunks:[{w:"Mi horario",role:"s"},{w:"se rompe",role:"v"},{w:"cada semana.",role:"o"}]},
+      {es:"Todo se rompe cuando llega tarde.", zh:"他一遲到，所有計畫就亂了。", chunks:[{w:"Todo",role:"s"},{w:"se rompe",role:"v"},{w:"cuando llega tarde.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_06", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Rehacer el plan le cuesta muchísima energía.", core_zh:"重新安排這件事，耗掉她非常多的能量。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Le cuesta muchísima [東西].", pattern_zh:"這件事耗掉她非常多的 ___。",
+    pattern_note:"costar 句型：跟 gustar 一樣，事情當主詞、人當間接受詞", slots:["東西"],
+    fire_peppa:{es:"Rehacer el plan le cuesta muchísima energía.", zh:"重新安排這件事，耗掉她非常多的能量。", ts:null,
+      chunks:[{w:"Rehacer el plan",role:"s"},{w:"le cuesta",role:"v",note:"costar ➔ le cuesta ➔ 意思：耗掉她（costar句型跟gustar同邏輯）"},{w:"muchísima energía.",role:"o"}]},
+    fire_daily:[
+      {es:"Eso me cuesta mucho tiempo.", zh:"那件事耗掉我很多時間。", chunks:[{w:"Eso",role:"s"},{w:"me cuesta",role:"v"},{w:"mucho tiempo.",role:"o"}]},
+      {es:"Le cuesta toda su paciencia.", zh:"這耗掉了他所有的耐性。", chunks:[{w:"(esto)",role:"s",hideYg:true},{w:"Le cuesta",role:"v"},{w:"toda su paciencia.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_07", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Chocan, una y otra vez, sin querer.", core_zh:"他們一次又一次地對衝，誰都不是故意的。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Chocan, [頻率], sin querer.", pattern_zh:"他們 ___ 地對衝，誰都不是故意的。",
+    pattern_note:"sin querer = 不是故意的", slots:["頻率"],
+    fire_peppa:{es:"Chocan, una y otra vez, sin querer.", zh:"他們一次又一次地對衝，誰都不是故意的。", ts:null,
+      chunks:[{w:"Chocan,",role:"v",note:"chocar ➔ 變位 chocan（「他們」）➔ 意思：對衝"},{w:"una y otra vez,",role:"o"},{w:"sin querer.",role:"o"}]},
+    fire_daily:[
+      {es:"Chocamos todos los días, sin querer.", zh:"我們每一天都會對衝，不是故意的。", chunks:[{w:"(nosotros)",role:"s",hideYg:true},{w:"Chocamos",role:"v"},{w:"todos los días,",role:"c"},{w:"sin querer.",role:"c"}]},
+      {es:"Le hice daño sin querer.", zh:"我不小心傷到了他，不是故意的。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Le hice daño",role:"v"},{w:"sin querer.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_08", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Una noche, se pregunta: \"¿Por qué me cuesta tanto?\"", core_zh:"一天晚上，她問自己：「為什麼這件事讓我這麼累？」",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Se pregunta: ¿Por qué [問題]?", pattern_zh:"她問自己：「為什麼 ___？」",
+    pattern_note:"se pregunta = 問自己（preguntarse，反身動詞）", slots:["問題"],
+    fire_peppa:{es:"Una noche, se pregunta: \"¿Por qué me cuesta tanto?\"", zh:"一天晚上，她問自己：「為什麼這件事讓我這麼累？」", ts:null,
+      chunks:[{w:"Una noche,"},{w:"se pregunta:",role:"v",note:"preguntarse ➔ 變位 se pregunta（「她」）➔ 意思：問自己"},{w:'"¿Por qué me cuesta tanto?"',role:"o"}]},
+    fire_daily:[
+      {es:"Me pregunto por qué siempre chocamos.", zh:"我問自己為什麼我們總是對衝。", chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"Me pregunto",role:"v"},{w:"por qué siempre chocamos.",role:"o"}]},
+      {es:"Se pregunta si puede cambiar.", zh:"他問自己是不是能改變。", chunks:[{w:"(él)",role:"s",hideYg:true},{w:"Se pregunta",role:"v"},{w:"si puede cambiar.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_09", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Empieza a leer sobre el TDAH.", core_zh:"她開始讀關於ADHD的資料。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Empieza a leer sobre [主題].", pattern_zh:"她開始讀關於 ___ 的資料。",
+    pattern_note:"empieza a + 原形動詞 = 開始做某事", slots:["主題"],
+    fire_peppa:{es:"Empieza a leer sobre el TDAH.", zh:"她開始讀關於ADHD的資料。", ts:null,
+      chunks:[{w:"Empieza a leer",role:"v",note:"empezar ➔ empieza（「她」）+ a leer ➔ 意思：開始讀"},{w:"sobre el TDAH.",role:"o"}]},
+    fire_daily:[
+      {es:"Empieza a leer sobre la regulación emocional.", zh:"她開始讀關於情緒調節的資料。", chunks:[{w:"(ella)",role:"s",hideYg:true},{w:"Empieza a leer",role:"v"},{w:"sobre la regulación emocional.",role:"o"}]},
+      {es:"Empezamos a entender mejor.", zh:"我們開始更了解了。", chunks:[{w:"(nosotros)",role:"s",hideYg:true},{w:"Empezamos a entender",role:"v"},{w:"mejor.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e10_10", ep:"E10 · Chocamos Sin Querer",
+    core_ammo:"Entiende: su energía y la regularidad de él son diferentes, no incorrectas.", core_zh:"她懂了：她的能量模式和他的規律，只是不同，不是誰錯了。",
+    be_verb_type:"ser", be_verb_note:"Ser 描述本質：son = 是（描述兩種特質的對照，不是暫時狀態）",
+    pattern:"Su [東西] y la regularidad de él son diferentes, no incorrectas.", pattern_zh:"她的 ___ 和他的規律，只是不同，不是誰錯了。",
+    pattern_note:"diferentes, no incorrectas = 只是不同，不是不對", slots:["東西"],
+    fire_peppa:{es:"Entiende: su energía y la regularidad de él son diferentes, no incorrectas.", zh:"她懂了：她的能量模式和他的規律，只是不同，不是誰錯了。", ts:null,
+      chunks:[{w:"Entiende:",role:"v"},{w:"su energía y la regularidad de él",role:"s"},{w:"son",role:"v",note:"ser ➔ 變位 son（「他們」）➔ 意思：是（本質對照，非暫時狀態）"},{w:"diferentes, no incorrectas.",role:"o"}]},
+    fire_daily:[
+      {es:"Somos diferentes, no incorrectos.", zh:"我們只是不同，不是誰錯了。", chunks:[{w:"(nosotros)",role:"s",hideYg:true},{w:"Somos",role:"v"},{w:"diferentes, no incorrectos.",role:"o"}]},
+      {es:"Su forma de pensar es diferente, no incorrecta.", zh:"他的思考方式只是不同，不是不對。", chunks:[{w:"Su forma de pensar",role:"s"},{w:"es",role:"v"},{w:"diferente, no incorrecta.",role:"o"}]}
+    ]
+  },
 ];
