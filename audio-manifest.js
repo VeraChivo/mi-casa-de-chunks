@@ -252,3 +252,14 @@ const CORAZON_AUDIO_MAP={
   ],
 };
 
+
+// 太極定裝鏡（陰陽字尾例句）真人音檔
+const GP_AUDIO_MAP=[
+  ["audio/gp/gp_0_0.mp3", "audio/gp/gp_0_1.mp3"],
+  ["audio/gp/gp_1_0.mp3", "audio/gp/gp_1_1.mp3"],
+  ["audio/gp/gp_2_0.mp3", "audio/gp/gp_2_1.mp3"],
+  ["audio/gp/gp_3_0.mp3", "audio/gp/gp_3_1.mp3"],
+  ["audio/gp/gp_4_0.mp3", "audio/gp/gp_4_1.mp3"],
+  ["audio/gp/gp_5_0.mp3", "audio/gp/gp_5_1.mp3"],
+  ["audio/gp/gp_6_0.mp3", "audio/gp/gp_6_1.mp3"],
+];

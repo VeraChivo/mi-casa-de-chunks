@@ -566,7 +566,14 @@ function pickGenderPair(pi, oi){
   const exEl = document.getElementById(`gp-ex-${pi}`);
   exEl.style.display = 'block';
   exEl.innerHTML = `<span class="gp-ex-es">▶ ${o.ex}</span><span class="gp-ex-zh">${o.exZh}</span>`;
-  speakSentence(o.ex);
+  const file = (typeof GP_AUDIO_MAP!=='undefined' && GP_AUDIO_MAP[pi] && GP_AUDIO_MAP[pi][oi]) || null;
+  if(file){
+    const player = new Audio(file);
+    player.onerror = () => speakSentence(o.ex);
+    player.play().catch(()=>speakSentence(o.ex));
+  } else {
+    speakSentence(o.ex);
+  }
 }
 
 function toggleGenderPairs(){
