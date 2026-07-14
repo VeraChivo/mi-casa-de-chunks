@@ -216,10 +216,10 @@ const EPS=[
       {es:"Tito",zh:"迪多"},
     ]}]
   }},
-  {es:"¡Ya lo sé, habéis estado saltando en los charcos de barro!",chunks:[{w:"¡Ya lo sé,",role:"v"},{w:"habéis estado saltando",role:"v"},{w:"en los charcos de barro!",role:"o"}],zh:"我知道了，你們一直在泥巴坑裡跳！",en:"I know, you've been jumping in muddy puddles!",noteZh:"「habéis estado + 動名詞」= 現在完成進行式，一直在做…",noteEn:"'habéis estado + -ing' = you've been doing it for a while",
+  {es:"¡Ya lo sé, ustedes han estado saltando en los charcos de barro!",chunks:[{w:"¡Ya lo sé,",role:"v"},{w:"ustedes han estado saltando",role:"v"},{w:"en los charcos de barro!",role:"o"}],zh:"我知道了，你們一直在泥巴坑裡跳！",en:"I know, you've been jumping in muddy puddles!",noteZh:"「ustedes han estado + 動名詞」= 現在完成進行式，一直在做…（拉美用 ustedes，不用 vosotros）",noteEn:"'ustedes han estado + -ing' = you've been doing it for a while (LatAm uses ustedes, not vosotros)",
   expand:{
-    note:"habéis estado + Ving = 你們一直在做…（現在完成進行式）",
-    template:[{t:"¡Ya lo sé, habéis estado"},{g:"activity"}],
+    note:"ustedes han estado + Ving = 你們一直在做…（現在完成進行式）",
+    template:[{t:"¡Ya lo sé, ustedes han estado"},{g:"activity"}],
     groups:[{label:"一直在做什麼",key:"activity",options:[
       {es:"saltando en los charcos de barro!",zh:"在泥巴坑裡跳"},
       {es:"jugando con la pelota!",zh:"玩球"},

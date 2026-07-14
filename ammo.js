@@ -252,15 +252,15 @@ const AMMO_DATA = [
   },
   {
     ammo_id:"e2_10", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
-    core_ammo:"¡Ya lo sé, habéis estado saltando en los charcos de barro!", core_zh:"我知道了，你們一直在泥巴坑裡跳！",
-    be_verb_type:"estar", be_verb_note:"habéis estado + -ando = 一直做到現在，一直在做某事",
-    pattern:"Habéis estado [動詞-ndo] en [地點].", pattern_zh:"你們一直在 ___ ___。",
-    pattern_note:"habéis estado + -ing形態 = 完成進行式", slots:["動詞-ndo","地點"],
-    fire_peppa:{es:"¡Ya lo sé, habéis estado saltando en los charcos de barro!", zh:"我知道了，你們一直在泥巴坑裡跳！", ts:null,
-      chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"¡Ya lo sé,",role:"v",note:"saber ➔ sé（變化比較特別）+ ya ➔ 意思：我知道了（強調已知）"},{w:"habéis estado saltando",role:"v",note:"saltar ➔ saltando + haber ➔ habéis + estar ➔ estado ➔ 意思：你們一直在跳（一直做到現在）"},{w:"en los charcos de barro!",role:"o"}]},
+    core_ammo:"¡Ya lo sé, ustedes han estado saltando en los charcos de barro!", core_zh:"我知道了，你們一直在泥巴坑裡跳！",
+    be_verb_type:"estar", be_verb_note:"han estado + -ando = 一直做到現在，一直在做某事（拉美用 ustedes，不用 vosotros）",
+    pattern:"Ustedes han estado [動詞-ndo] en [地點].", pattern_zh:"你們一直在 ___ ___。",
+    pattern_note:"ustedes han estado + -ing形態 = 完成進行式", slots:["動詞-ndo","地點"],
+    fire_peppa:{es:"¡Ya lo sé, ustedes han estado saltando en los charcos de barro!", zh:"我知道了，你們一直在泥巴坑裡跳！", ts:null,
+      chunks:[{w:"(yo)",role:"s",hideYg:true},{w:"¡Ya lo sé,",role:"v",note:"saber ➔ sé（變化比較特別）+ ya ➔ 意思：我知道了（強調已知）"},{w:"ustedes han estado saltando",role:"v",note:"saltar ➔ saltando + haber ➔ han + estar ➔ estado ➔ 意思：你們一直在跳（一直做到現在）"},{w:"en los charcos de barro!",role:"o"}]},
     fire_daily:[
-      {es:"Habéis estado corriendo en el parque.", zh:"你們一直在公園裡跑步。", chunks:[{w:"(vosotros)",role:"s"},{w:"Habéis estado corriendo",role:"v"},{w:"en el parque.",role:"o"}]},
-      {es:"Habéis estado cantando toda la tarde.", zh:"你們整個下午都在唱歌。", chunks:[{w:"(vosotros)",role:"s"},{w:"Habéis estado cantando",role:"v"},{w:"toda la tarde.",role:"o"}]}
+      {es:"Ustedes han estado corriendo en el parque.", zh:"你們一直在公園裡跑步。", chunks:[{w:"(ustedes)",role:"s"},{w:"Han estado corriendo",role:"v"},{w:"en el parque.",role:"o"}]},
+      {es:"Ustedes han estado cantando toda la tarde.", zh:"你們整個下午都在唱歌。", chunks:[{w:"(ustedes)",role:"s"},{w:"Han estado cantando",role:"v"},{w:"toda la tarde.",role:"o"}]}
     ]
   },
 

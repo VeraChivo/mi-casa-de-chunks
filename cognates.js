@@ -44,7 +44,7 @@ const SENTENCE_YG_KW = {
   'e1_s2':'ha perdido',        'e1_s3':'No te preocupes',
   'e1_s4':'Un detective',      'e1_s5':'siempre se trae',
   'e1_s6':'Ya lo sé',          'e1_s7':'no está en la cama',
-  'e1_s8':'están jugando',     'e1_s9':'habéis estado saltando',
+  'e1_s8':'están jugando',     'e1_s9':'han estado saltando',
   'e2_s0':'está esperando',    'e2_s1':'quiere mucho',
   'e2_s2':'Son las mejores amigas', 'e2_s3':'solo para niñas',
   'e2_s4':'Soy una princesa',  'e2_s5':'no le gusta jugar solo',
@@ -206,10 +206,10 @@ const SENTENCE_COGNATES = {
     ]
   },
   'e1_s9':{
-    title:'🚀 habéis estado saltando — 完成進行式',
+    title:'🚀 han estado saltando — 完成進行式',
     rows:[
-      '👉 <b>habéis estado + -ando</b> = you have been doing（完成進行式）',
-      '💡 英文 have been jumping = habéis estado saltando，結構完全平行！',
+      '👉 <b>han estado + -ando</b> = you have been doing（完成進行式，拉美用 ustedes han，不用 vosotros habéis）',
+      '💡 英文 have been jumping = han estado saltando，結構完全平行！',
       '🎯 這是西語最複雜時態之一，跟著故事情境就學會了！',
     ]
   },
