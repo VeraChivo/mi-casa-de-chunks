@@ -1534,6 +1534,12 @@ function copyTextWithFeedback(txt){
     ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done();
   }
 }
+function copyWholeEpisode(){
+  const data = epData();
+  if(!data || !data.sentences) return;
+  const fullText = data.sentences.map(s=>s.es).join('\n');
+  copyTextWithFeedback(fullText);
+}
 function bindLongPressCopy(el, text){
   if(!el || el.dataset.lpcBound) return;
   el.dataset.lpcBound = '1';
