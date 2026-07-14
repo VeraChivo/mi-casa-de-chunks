@@ -338,6 +338,7 @@ function s3SetGender(g){
 }
 
 function s3SelectSubj(es){
+  const turningOn = _s3SelectedSubjEs !== es;
   _s3SelectedSubjEs=(_s3SelectedSubjEs===es) ? null : es;
   if(_s3SelectedSubjEs && _s3SelectedVerbId){
     const verb=S3_VERBS.find(v=>v.id===_s3SelectedVerbId);
@@ -348,9 +349,14 @@ function s3SelectSubj(es){
   const vp=document.getElementById('s3VerbPool');
   if(vp) vp.innerHTML=_renderS3VerbChips();
   _s3UpdateOutput3();
+  if(turningOn && _s3SelectedSubjEs){
+    const file = _s3SelectedSubjEs==='Yo' ? 'audio/vocab/so/Yo.mp3' : 'audio/vocab/so/Tu.mp3';
+    _s3PlayAudioSeq([file], _s3SelectedSubjEs);
+  }
 }
 
 function s3SelectVerb(vid){
+  const turningOn = _s3SelectedVerbId !== vid;
   if(_s3SelectedVerbId===vid){
     _s3SelectedVerbId=null;
   } else {
@@ -366,13 +372,31 @@ function s3SelectVerb(vid){
   const op=document.getElementById('s3ObjPool');
   if(op) op.innerHTML=_renderS3ObjChips();
   _s3UpdateOutput3();
+  if(turningOn && _s3SelectedVerbId){
+    const verb=S3_VERBS.find(v=>v.id===_s3SelectedVerbId);
+    const audioMap = (typeof S3_VERB_AUDIO!=='undefined' && S3_VERB_AUDIO[verb.id]) || {};
+    const subjKey = _s3SelectedSubjEs || (verb.verb_yo!==null ? 'Yo' : 'Tú');
+    const file = audioMap[subjKey];
+    const fallback = subjKey==='Tú' ? (verb.verb_tu||verb.verb_yo) : (verb.verb_yo||verb.verb_tu);
+    if(file) _s3PlayAudioSeq([file], fallback);
+    else speakFull(fallback);
+  }
 }
 
 function s3SelectObj(idx){
+  const turningOn = _s3SelectedObjIdx !== idx;
   _s3SelectedObjIdx=(_s3SelectedObjIdx===idx) ? null : idx;
   const op=document.getElementById('s3ObjPool');
   if(op) op.innerHTML=_renderS3ObjChips();
   _s3UpdateOutput3();
+  if(turningOn && _s3SelectedObjIdx!==null){
+    const audio = (typeof S3_OBJ_AUDIO!=='undefined' && S3_OBJ_AUDIO[_s3SelectedObjIdx]) || {};
+    const file = _s3Gender==='female' ? audio.f : audio.m;
+    const obj = S3_OBJECTS[_s3SelectedObjIdx];
+    const fallback = _s3Gender==='female' ? obj.es_f : obj.es_m;
+    if(file) _s3PlayAudioSeq([file], fallback);
+    else speakFull(fallback);
+  }
 }
 
 function _s3UpdateOutput3(){
