@@ -2347,8 +2347,8 @@ function renderDynamicConjugationExamples(verbForm) {
     const personEl = isMama ? `<span class="conj-person conj-person-mama" title="來自媽媽區">mamá</span>` : `<span class="conj-person"></span>`;
     return `<div class="conj-row${rowCls}">
       ${personEl}
-      <span class="conj-form" onclick="speakFull('${escAttr(fullSentence)}')">${verbForm}</span>
-      <span class="conj-ex" onclick="speakFull('${escAttr(fullSentence)}')">${fullSentence}</span>
+      <span class="conj-form" onclick="speakGramSmart('${escAttr(fullSentence)}')">${verbForm}</span>
+      <span class="conj-ex" onclick="speakGramSmart('${escAttr(fullSentence)}')">${fullSentence}</span>
       ${zh ? `<span class="conj-zh">${zh}</span>` : ''}
     </div>`;
   }).join('');
