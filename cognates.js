@@ -460,7 +460,7 @@ const SUFFIX_PATTERNS = [
       {en:'visit',    es:'visitar',    art:'', zh:'拜訪', ex:{es:'Vamos a visitar a la abuela.',    zh:'我們去探望奶奶。', chunks:[{w:"Vamos a visitar",role:"v"},{w:"a la abuela.",role:"o"}]}},
       {en:'practice', es:'practicar',  art:'', zh:'練習', ex:{es:'Hay que practicar cada día.',     zh:'每天都要練習。', chunks:[{w:"Hay que practicar",role:"v"},{w:"cada día.",role:"c"}]}},
       {en:'use',      es:'usar',       art:'', zh:'使用', ex:{es:'¿Puedo usar esto?',              zh:'我可以用這個嗎？', chunks:[{w:"¿Puedo usar",role:"v"},{w:"esto?",role:"o"}]}},
-      {en:'depend',   es:'depender',   art:'', zh:'依賴', ex:{es:'Depende de ti.',                 zh:'看你囉。', chunks:[{w:"Depende",role:"v"},{w:"de ti.",role:"o"}]}},
+      {en:'depend',   es:'depender',   art:'', zh:'依賴', ex:{es:'Depende de ti.',                 zh:'靠你囉。', chunks:[{w:"Depende",role:"v"},{w:"de ti.",role:"o"}]}},
       {en:'exist',    es:'existir',    art:'', zh:'存在', ex:{es:'El amor existe.',                zh:'愛是存在的。', chunks:[{w:"El amor",role:"s"},{w:"existe.",role:"v"}]}},
       {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'不允許進入。', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
     ]
