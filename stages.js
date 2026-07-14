@@ -396,8 +396,8 @@ const S3_VERB_AUDIO = {
   encanta:{Yo:'audio/vocab/so/so_v_03.mp3'},
   heen:   {Yo:'audio/vocab/so/so_v_04.mp3'},
   eres:   {'Tú':'audio/vocab/so/so_v_05.mp3'},
-  poder:  {Yo:'audio/vocab/so/so_v_06.mp3'}, // 只錄了 puedo，puedes 沒錄
-  deber:  {'Tú':'audio/vocab/so/so_v_07.mp3'}, // 只錄了 debes，debo 沒錄
+  poder:  {Yo:'audio/vocab/so/so_v_06.mp3', 'Tú':'audio/vocab/conj/conj_poder_tu.mp3'}, // puedes 借用變位庫既有音檔
+  deber:  {'Tú':'audio/vocab/so/so_v_07.mp3', Yo:'audio/vocab/conj/conj_deber_yo.mp3'}, // debo 借用變位庫既有音檔
 };
 const S3_OBJ_AUDIO = [
   {m:'audio/vocab/so/so_n_01.mp3', f:'audio/vocab/so/so_n_01.mp3'}, // estudiante
