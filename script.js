@@ -1489,12 +1489,15 @@ function showComplete(){
     CHEERS[Math.floor(Math.random()*CHEERS.length)];
 
   const nextEpBtn = document.getElementById('nextEpBtn');
+  const finaleEgg = document.getElementById('completeFinaleEgg');
   if(ep < EPS.length-1){
     nextEpBtn.classList.remove('locked');
     nextEpBtn.textContent = '下一集 →';
+    finaleEgg.style.display = 'none';
   } else {
     nextEpBtn.classList.add('locked');
     nextEpBtn.textContent = '🎉 S1 全集完成！';
+    finaleEgg.style.display = '';
   }
 
   renderAmmo();
