@@ -483,7 +483,7 @@ const SUFFIX_PATTERNS = [
       {en:'use',      es:'usar',       art:'', zh:'使用', ex:{es:'¿Puedo usar esto?',              zh:'我可以用這個嗎？', chunks:[{w:"¿Puedo usar",role:"v"},{w:"esto?",role:"o"}]}},
       {en:'depend',   es:'depender',   art:'', zh:'依賴', ex:{es:'Depende de ti.',                 zh:'靠你囉。', chunks:[{w:"Depende",role:"v"},{w:"de ti.",role:"o"}]}},
       {en:'exist',    es:'existir',    art:'', zh:'存在', ex:{es:'El amor existe.',                zh:'愛是存在的。', chunks:[{w:"El amor",role:"s"},{w:"existe.",role:"v"}]}},
-      {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'請勿進入。', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
+      {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'請勿進入。（不允許進入）', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
     ]
   },
   {
@@ -492,7 +492,7 @@ const SUFFIX_PATTERNS = [
     words: [
       {en:'famous',    es:'famoso',    art:'', zh:'有名的',  ex:{es:'Nita es muy famosa.',            zh:'妮妲很有名。', chunks:[{w:"Nita",role:"s"},{w:"es muy famosa.",role:"v"}]}},
       {en:'furious',   es:'furioso',   art:'', zh:'憤怒的',  ex:{es:'Papá Tato está furioso.',        zh:'達多爸爸很生氣。', chunks:[{w:"Papá Tato",role:"s"},{w:"está furioso.",role:"v"}]}},
-      {en:'delicious', es:'delicioso', art:'', zh:'美味的',  ex:{es:'La comida está deliciosa.',      zh:'這道菜很好吃。', chunks:[{w:"La comida",role:"s"},{w:"está deliciosa.",role:"v"}]}},
+      {en:'delicious', es:'delicioso', art:'', zh:'美味的',  ex:{es:'La comida está deliciosa.',      zh:'這道菜很美味。', chunks:[{w:"La comida",role:"s"},{w:"está deliciosa.",role:"v"}]}},
       {en:'curious',   es:'curioso',   art:'', zh:'好奇的',  ex:{es:'Tito es muy curioso.',           zh:'迪多很好奇。', chunks:[{w:"Tito",role:"s"},{w:"es muy curioso.",role:"v"}]}},
     ]
   },

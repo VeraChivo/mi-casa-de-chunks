@@ -444,7 +444,7 @@ function renderAmmo(){
       const star = GARDEN_STAGES[(_ammoGardenDB[a.core_ammo]||{stage:0}).stage||0];
       const dailyRows = a.fire_daily.map((f,fi)=>renderAmmoFireRow(f,'daily',a.ammo_id,fi)).join('');
       const num = parseInt((a.ammo_id.match(/(\d+)$/)||['','0'])[1],10);
-      const numDisplay = `<span class="ammo-num-ep">ep${epNum}-${num}</span><span class="ammo-num-sep">·</span><span class="ammo-num-text">${NUM_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-text">${ORD_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-emoji">${NUM_EMOJI[num]}</span>`;
+      const numDisplay = `<span class="ammo-num-ep">EP${epNum}-${num}</span><span class="ammo-num-sep">·</span><span class="ammo-num-text">${NUM_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-text">${ORD_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-emoji">${NUM_EMOJI[num]}</span>`;
       return `<div class="ammo-card ammo-collapsed" id="ammo-${a.ammo_id}">
         <div class="ammo-header" onclick="toggleAmmoCard('${a.ammo_id}')">
           <span class="ammo-num">${numDisplay}</span>
@@ -540,7 +540,7 @@ function syncGroupBtn(){
     .map(k=>AMMO_DATA.find(a=>a.ammo_id===k)).filter(Boolean);
   renderGroupFireArea(entries);
   const badge=document.getElementById('seqEpBadge');
-  if(badge) badge.textContent=`ep${ep+1}. ${epData().titleZh}`;
+  if(badge) badge.textContent=`EP${ep+1}. ${epData().titleZh}`;
 }
 
 function renderGroupFireArea(entries){
