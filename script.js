@@ -2123,8 +2123,22 @@ function _famStarHtml(word){
   return `<button class="fam-star-btn" data-word="${escAttr(word)}" data-state="${s}" onclick="cycleFamiliarity('${escAttr(word)}')" title="${FAM_LABELS[s]}">${FAM_STARS[s]}</button>`;
 }
 
+// ── 首頁課文S/V/O語塊，真人音檔優先(依語塊原文精準比對)，找不到才fallback TTS ──
+function speakChunkSmart(text, el){
+  const file = (typeof CHUNK_AUDIO_MAP!=='undefined') ? CHUNK_AUDIO_MAP[text] : null;
+  if(!file){ speakWord(text, el); return; }
+  if(el) el.classList.add('playing');
+  const dot = document.getElementById('ttsDot');
+  if(dot){ dot.classList.remove('ready'); dot.classList.add('speaking'); }
+  const done = () => { if(el) el.classList.remove('playing'); if(dot){ dot.classList.remove('speaking'); dot.classList.add('ready'); } };
+  const player = new Audio(file);
+  player.onended = done;
+  player.onerror = () => { done(); speakWord(text, el); };
+  player.play().catch(()=>{ done(); speakWord(text, el); });
+}
+
 function handleChunkTap(c, el, s){
-  speakWord(c.w, el);
+  speakChunkSmart(c.w, el);
   if(c.note){
     openGrammarSheet(_famStarHtml(c.w)+'<div class="grammar-chunk-note">'+c.note+'</div>');
   }
