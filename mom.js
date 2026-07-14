@@ -55,6 +55,7 @@ const MOM_ATM_DATA = {
 };
 
 const MOM_TAG_GID_MAP = { puedo:'g10', puedes:'g10', puede:'g10', podemos:'g10', debe:'g11', debes:'g11', debo:'g11', debemos:'g11' };
+const MOM_AUDIO_KEY_MAP = { sel_phrases:'sel', mom_daily:'daily', peppa_chunks:'chunks' };
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('mom-atm-container');
@@ -82,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div id="momCatBody_${key}" class="ammo-body">
       <div class="mom-cards-col">`;
 
-    cat.items.forEach(item => {
+    const audioShort = MOM_AUDIO_KEY_MAP[key];
+    cat.items.forEach((item, itemIdx) => {
       const [zhMain, zhEx] = item.zh.split('\n');
       // 有例句的話，改用例句的西文/中文當主要顯示，不再疊加原本孤立的短句/單字
       let displayEs = item.es, displayZh = zhMain;
@@ -115,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       html += `<div class="mom-atm-card" data-scene="${scene}">
         ${tagHtml}
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation" onclick="speakFull('${escAttr(displayEs)}')" title="點這裡聽整句">${displayZh} <span class="ex-zh-play">▶ 整句</span></div>
+        <div class="card-chinese-translation" onclick="speakMapSmart('MOM_AUDIO_MAP','${audioShort}',${itemIdx},'${escAttr(displayEs)}')" title="點這裡聽整句">${displayZh} <span class="ex-zh-play">▶ 整句</span></div>
       </div>`;
     });
 

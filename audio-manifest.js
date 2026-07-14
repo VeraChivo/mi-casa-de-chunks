@@ -163,3 +163,92 @@ const SEL_AUDIO_MANIFEST={
     ["audio/sel3/SEL3_10_Adv.mp3","audio/sel3/SEL3_10_S.mp3","audio/sel3/SEL3_10_V.mp3"],
   ],
 };
+
+// mom.js（🛡️情緒會說話／🎀馬麻有話講／👩🏻馬麻小情緒＆情緒這樣說）真人整句音檔
+const MOM_AUDIO_MAP={
+  sel:[
+    "audio/mom/mom_sel_01.mp3",
+    "audio/mom/mom_sel_02.mp3",
+    "audio/mom/mom_sel_03.mp3",
+    "audio/mom/mom_sel_04.mp3",
+  ],
+  daily:[
+    "audio/mom/mom_daily_01.mp3",
+    "audio/mom/mom_daily_02.mp3",
+    "audio/mom/mom_daily_03.mp3",
+    "audio/mom/mom_daily_04.mp3",
+    "audio/mom/mom_daily_05.mp3",
+    "audio/mom/mom_daily_06.mp3",
+    "audio/mom/mom_daily_07.mp3",
+  ],
+  chunks:[
+    "audio/mom/mom_chunks_01.mp3",
+    "audio/mom/mom_chunks_02.mp3",
+    "audio/mom/mom_chunks_03.mp3",
+    "audio/mom/mom_chunks_04.mp3",
+    "audio/mom/mom_chunks_05.mp3",
+    "audio/mom/mom_chunks_06.mp3",
+    "audio/mom/mom_chunks_07.mp3",
+    "audio/mom/mom_chunks_08.mp3",
+    "audio/mom/mom_chunks_09.mp3",
+    "audio/mom/mom_chunks_10.mp3",
+    "audio/mom/mom_chunks_11.mp3",
+    "audio/mom/mom_chunks_12.mp3",
+    "audio/mom/mom_chunks_13.mp3",
+    "audio/mom/mom_chunks_14.mp3",
+    "audio/mom/mom_chunks_15.mp3",
+    "audio/mom/mom_chunks_16.mp3",
+    "audio/mom/mom_chunks_17.mp3",
+    "audio/mom/mom_chunks_18.mp3",
+    "audio/mom/mom_chunks_19.mp3",
+    "audio/mom/mom_chunks_20.mp3",
+    "audio/mom/mom_chunks_21.mp3",
+    "audio/mom/mom_chunks_22.mp3",
+    "audio/mom/mom_chunks_23.mp3",
+    "audio/mom/mom_chunks_24.mp3",
+  ],
+};
+
+
+// corazon.js（💬心田深耕五大主題）真人整句音檔
+const CORAZON_AUDIO_MAP={
+  sentimientos:[
+    "audio/corazon/corazon_sentimientos_01.mp3",
+    "audio/corazon/corazon_sentimientos_02.mp3",
+    "audio/corazon/corazon_sentimientos_03.mp3",
+    "audio/corazon/corazon_sentimientos_04.mp3",
+    "audio/corazon/corazon_sentimientos_05.mp3",
+    "audio/corazon/corazon_sentimientos_06.mp3",
+  ],
+  limites:[
+    "audio/corazon/corazon_limites_01.mp3",
+    "audio/corazon/corazon_limites_02.mp3",
+    "audio/corazon/corazon_limites_03.mp3",
+    "audio/corazon/corazon_limites_04.mp3",
+    "audio/corazon/corazon_limites_05.mp3",
+  ],
+  crianza:[
+    "audio/corazon/corazon_crianza_01.mp3",
+    "audio/corazon/corazon_crianza_02.mp3",
+    "audio/corazon/corazon_crianza_03.mp3",
+    "audio/corazon/corazon_crianza_04.mp3",
+    "audio/corazon/corazon_crianza_05.mp3",
+  ],
+  cuidadora:[
+    "audio/corazon/corazon_cuidadora_01.mp3",
+    "audio/corazon/corazon_cuidadora_02.mp3",
+    "audio/corazon/corazon_cuidadora_03.mp3",
+    "audio/corazon/corazon_cuidadora_04.mp3",
+    "audio/corazon/corazon_cuidadora_05.mp3",
+    "audio/corazon/corazon_cuidadora_06.mp3",
+    "audio/corazon/corazon_cuidadora_07.mp3",
+  ],
+  crecimiento:[
+    "audio/corazon/corazon_crecimiento_01.mp3",
+    "audio/corazon/corazon_crecimiento_02.mp3",
+    "audio/corazon/corazon_crecimiento_03.mp3",
+    "audio/corazon/corazon_crecimiento_04.mp3",
+    "audio/corazon/corazon_crecimiento_05.mp3",
+  ],
+};
+

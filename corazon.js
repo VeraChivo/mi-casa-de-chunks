@@ -85,12 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="mom-cat-title">${cat.title}</div>
       <div class="mom-cat-desc">${cat.desc}</div>
       <div class="mom-cards-col">`;
-    cat.items.forEach(item => {
+    cat.items.forEach((item, itemIdx) => {
       const lineHtml = (typeof renderScriptLine === 'function') ? renderScriptLine(item.es) : item.es;
       html += `<div class="mom-atm-card">
         <span class="gestalt-tag type-d">#${item.tag}</span>
         <div class="card-spanish-body">${lineHtml}</div>
-        <div class="card-chinese-translation" onclick="speakFull('${escAttr(item.es)}')" title="點這裡聽整句">${item.zh} <span class="ex-zh-play">▶ 整句</span></div>
+        <div class="card-chinese-translation" onclick="speakMapSmart('CORAZON_AUDIO_MAP','${cat.id}',${itemIdx},'${escAttr(item.es)}')" title="點這裡聽整句">${item.zh} <span class="ex-zh-play">▶ 整句</span></div>
       </div>`;
     });
     html += `</div></div>`;

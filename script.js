@@ -147,6 +147,15 @@ function speakSentenceSmart(epIdx, sentIdx, text){
   playNext();
 }
 
+// ── 真人錄音音檔優先播放（單檔版，mom.js/corazon.js 用），找不到時 fallback 回瀏覽器 TTS ──
+function speakMapSmart(map, catKey, idx, text){
+  const file = (typeof window[map]!=='undefined' && window[map][catKey] && window[map][catKey][idx]) || null;
+  if(!file){ speakFull(text); return; }
+  const player = new Audio(file);
+  player.onerror = () => speakFull(text);
+  player.play().catch(()=>speakFull(text));
+}
+
 function testTTS(){
   if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音朗讀'); return; }
   // Force init voices on first user tap
