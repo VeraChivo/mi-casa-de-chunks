@@ -1778,6 +1778,20 @@ function togglePronounLib(){
 }
 
 // ── 🔄 動詞變位庫（獨立瀏覽區）──
+// gId → 音檔用動詞代號（g03跟g02變位相同,共用estar）
+const CONJ_AUDIO_VERB = {g01:'ser',g02:'estar',g03:'estar',g05:'haber',g07:'serfut',g10:'poder',g11:'deber',g17:'sentir',g18:'ir',g20:'tener',g23:'andar'};
+const CONJ_AUDIO_PERSON = {'yo':'yo','tú':'tu','él/ella/usted':'el','nosotros':'nos','ellos/ellas/ustedes':'ellos'};
+function speakConjForm(gId, person, formText){
+  const verbCode = CONJ_AUDIO_VERB[gId];
+  const personCode = CONJ_AUDIO_PERSON[person];
+  if(verbCode && personCode){
+    const player = new Audio(`audio/vocab/conj/conj_${verbCode}_${personCode}.mp3`);
+    player.onerror = () => speakWord(formText);
+    player.play().catch(()=>speakWord(formText));
+    return;
+  }
+  speakWord(formText);
+}
 function renderConjLibrary(){
   const el = document.getElementById('conjLibBody');
   if(!el) return;
@@ -1786,7 +1800,7 @@ function renderConjLibrary(){
     const renderStdRow = r =>
       `<div class="conj-row">
         <span class="conj-person">${r.person}</span>
-        <span class="conj-form" onclick="speakSentence('${escAttr(r.ex)}')">${r.form}</span>
+        <span class="conj-form" onclick="speakConjForm('${g.id}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
         <span class="conj-ex" onclick="speakSentence('${escAttr(r.ex)}')">${r.ex}</span>
         <span class="conj-zh">${r.zh}</span>
         ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
