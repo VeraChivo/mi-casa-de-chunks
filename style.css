@@ -281,6 +281,11 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .falsecog-icon{font-size:13px}
 .falsecog-real{font-size:15.5px;font-weight:700;color:var(--ok);margin-bottom:4px}
 .falsecog-trap{font-size:14.5px;color:var(--tmid);line-height:1.5}
+.falsecog-ex{border-radius:8px;padding:7px 10px;margin-top:6px;cursor:pointer}
+.falsecog-ex-wrong{background:rgba(224,92,92,.09);border:1px dashed rgba(224,92,92,.4)}
+.falsecog-ex-right{background:rgba(61,184,122,.09);border:1px solid rgba(61,184,122,.35)}
+.falsecog-ex-es{font-size:14.5px;font-weight:800;color:var(--tdark);margin-bottom:2px}
+.falsecog-ex-zh{font-size:13px;color:var(--tmid);line-height:1.5}
 
 /* 詞綴單字卡 + 例句疊加 */
 .suffix-word-card{border-bottom:1px solid var(--bg2);padding:7px 4px;last-child:border:none}

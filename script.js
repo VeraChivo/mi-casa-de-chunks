@@ -787,7 +787,14 @@ function renderCogLibrary(filter){
           <span class="falsecog-notlike"><span class="falsecog-icon">🚫</span> 不是「${f.looksLike}」（${f.wrongZh}）</span>
         </div>
         <div class="falsecog-real">✅ 真正意思：${f.realZh}</div>
-        <div class="falsecog-trap">${f.trap}</div>
+        ${f.wrongEx ? `<div class="falsecog-ex falsecog-ex-wrong" onclick="speakGramSmart('${escAttr(f.wrongEx.es)}')">
+          <div class="falsecog-ex-es">▶ ${f.wrongEx.es}</div>
+          <div class="falsecog-ex-zh">${f.wrongEx.zh}</div>
+        </div>` : ''}
+        ${f.rightEx ? `<div class="falsecog-ex falsecog-ex-right" onclick="speakGramSmart('${escAttr(f.rightEx.es)}')">
+          <div class="falsecog-ex-es">▶ ${f.rightEx.es}</div>
+          <div class="falsecog-ex-zh">${f.rightEx.zh}</div>
+        </div>` : ''}
       </div>`).join('');
     html+=`</div>`;
   }

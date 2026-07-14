@@ -383,13 +383,21 @@ const COGNATE_PATTERN_LABELS = {
 // ── 🍄 小心這顆有毒：假野莓（False Cognates）長得像英文卻歪掉的字 ──
 const FALSE_COGNATES = [
   {es:'embarazada', art:'', looksLike:'embarrassed', wrongZh:'尷尬', realZh:'懷孕的',
-    trap:'想說「我好尷尬」千萬別講 Estoy embarazada，大家會開始恭喜妳懷孕！尷尬要說 Qué vergüenza 或 Estoy avergonzada。'},
+    trap:'想說「我好尷尬」千萬別講 Estoy embarazada，大家會開始恭喜妳懷孕！尷尬要說 Qué vergüenza 或 Estoy avergonzada。',
+    wrongEx:{es:'¡Estoy tan embarazada ahora mismo!', zh:'😳 字面：「我現在好懷孕！」（本來只是想講尷尬）'},
+    rightEx:{es:'¡Qué vergüenza! Me equivoqué de nombre.', zh:'✅ 真的想講尷尬：「好尷尬！我叫錯名字了。」'}},
   {es:'actualmente', art:'', looksLike:'actually', wrongZh:'實際上', realZh:'目前、現在',
-    trap:'真正的「實際上」要說 En realidad，actualmente 只是「現在、目前」的意思。'},
+    trap:'真正的「實際上」要說 En realidad，actualmente 只是「現在、目前」的意思。',
+    wrongEx:{es:'Actualmente, no sé qué está pasando.', zh:'😅 這句其實是「目前我不知道發生什麼事」，不是「實際上」'},
+    rightEx:{es:'En realidad, no sé qué está pasando.', zh:'✅ 真的想講「實際上」，要換這個字'}},
   {es:'soportar', art:'', looksLike:'support', wrongZh:'支持', realZh:'忍受、容忍',
-    trap:'想說「我很支持我兒子」別說 Soporto a mi hijo，聽起來像「我每天忍受我兒子」！支持要用 apoyar。'},
+    trap:'想說「我很支持我兒子」別說 Soporto a mi hijo，聽起來像「我每天忍受我兒子」！支持要用 apoyar。',
+    wrongEx:{es:'Yo soporto mucho a mi hijo.', zh:'😬 字面：「我每天忍受我兒子。」（聽起來很嫌棄自己小孩）'},
+    rightEx:{es:'Yo apoyo mucho a mi hijo.', zh:'✅ 真心支持孩子：「我很支持我兒子。」'}},
   {es:'éxito', art:'el', looksLike:'exit', wrongZh:'出口', realZh:'成功、成就',
-    trap:'真正的「出口」是 salida，éxito 是成功、成就的意思。'}
+    trap:'真正的「出口」是 salida，éxito 是成功、成就的意思。',
+    wrongEx:{es:'¿Dónde está el éxito de este edificio?', zh:'🤔 字面問：「這棟大樓的『成功』在哪？」（其實是問出口）'},
+    rightEx:{es:'¿Dónde está la salida de este edificio?', zh:'✅ 真的想問出口：「這棟大樓的出口在哪裡？」'}}
 ];
 
 // ── 詞綴規律資料（-tion→-ción 等三組） ──
