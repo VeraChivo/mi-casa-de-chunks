@@ -462,7 +462,7 @@ const SUFFIX_PATTERNS = [
       {en:'use',      es:'usar',       art:'', zh:'使用', ex:{es:'¿Puedo usar esto?',              zh:'我可以用這個嗎？', chunks:[{w:"¿Puedo usar",role:"v"},{w:"esto?",role:"o"}]}},
       {en:'depend',   es:'depender',   art:'', zh:'依賴', ex:{es:'Depende de ti.',                 zh:'靠你囉。', chunks:[{w:"Depende",role:"v"},{w:"de ti.",role:"o"}]}},
       {en:'exist',    es:'existir',    art:'', zh:'存在', ex:{es:'El amor existe.',                zh:'愛是存在的。', chunks:[{w:"El amor",role:"s"},{w:"existe.",role:"v"}]}},
-      {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'不允許進入。', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
+      {en:'permit',   es:'permitir',   art:'', zh:'允許', ex:{es:'No se permite entrar.',          zh:'請勿進入。', chunks:[{w:"No se permite",role:"v"},{w:"entrar.",role:"o"}]}},
     ]
   },
 ];
