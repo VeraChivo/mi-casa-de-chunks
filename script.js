@@ -2099,14 +2099,14 @@ function _grammarExChunks(es, playExpr){
   const clickExpr = playExpr || null;
   const renderTok = tok => {
     if(!tok.trim()) return '';
-    const clean = tok.replace(/[¡¿.,!?;:]/g,'').trim();
+    const clean = tok.replace(/[¡¿.,!?;:"]/g,'').trim();
     const onclickAttr = clickExpr ? clickExpr : `speakWord('${escAttr(clean)}',this)`;
     if(!isVocabWorthy(clean)) return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>`;
     const _key='ge_'+clean;
     const _st=(_gdb[_key]||{stage:0}).stage;
     const _ic=GARDEN_STAGES[_st];
     const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
-    return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}`;
+    return `<span class="ge-chunk-unit"><span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}</span>`;
   };
   // 引號內的對話如果只是句子裡一小段（≤6個字），包成不斷行區塊避免斷在對話中間；
   // 但如果整句話本身就是一個長引號（例如角色整句自我介紹），不要整句鎖死不斷行，

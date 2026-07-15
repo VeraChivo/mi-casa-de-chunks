@@ -499,6 +499,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .ge-chunk-star:active{transform:scale(1.3);opacity:1}
 .ge-quote-seg{white-space:nowrap;display:inline-flex;align-items:center}
 .ge-glue{white-space:nowrap;display:inline-flex;align-items:center}
+.ge-chunk-unit{display:inline-flex;align-items:center;white-space:nowrap}
 .grammar-ex-zh{font-size:13px;color:var(--tmid);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
 .ex-zh-play{font-size:11px;font-weight:800;color:var(--misora);white-space:nowrap}
 .grammar-trap{font-size:12px;font-weight:700;color:var(--err);margin:6px 0 4px;line-height:1.4;padding:0}
