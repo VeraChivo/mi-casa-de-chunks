@@ -11,7 +11,8 @@ const feedbackTemplates = {
     { text: "¡A estudiar! — 看答案再試試！", emoji: "📖" },
     { text: "¡Ojo! — 這裡有個小陷阱，看答案再試試！", emoji: "👀" },
     { text: "¡Ánimo! — 差一點點，再調整一下！", emoji: "💪" },
-    { text: "¡No te rindas! — 換個思路再挑戰一次！", emoji: "⚡" }
+    { text: "¡No te rindas! — 換個思路再挑戰一次！", emoji: "⚡" },
+    { text: "¡Tranquila! — 別緊張，還不熟，手滑難免～", emoji: "🤗" }
   ],
   reveal: [
     { text: "¡Ya está! — 又學會一句了唷 🎊", emoji: "👆" },
