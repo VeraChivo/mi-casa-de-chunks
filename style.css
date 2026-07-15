@@ -434,11 +434,11 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .cog-search:focus{border-color:var(--mizu)}
 
 /* COMPLETE */
-.complete-screen{display:none;text-align:center;background:white;border-radius:20px;padding:34px 22px;width:100%;max-width:480px;border:1.5px solid var(--usumizu);box-shadow:0 6px 28px rgba(0,91,152,.08)}
+.complete-screen{display:none;text-align:center;background:white;border-radius:20px;padding:18px 22px;width:100%;max-width:480px;border:1.5px solid var(--usumizu);box-shadow:0 6px 28px rgba(0,91,152,.08)}
 .complete-screen.show{display:block;animation:cardIn .4s ease}
-.complete-stars{margin:18px 0 8px;max-width:100%}
+.complete-stars{margin:0 0 14px;max-width:100%}
 .complete-title{font-size:22px;font-weight:900;color:var(--konpeki)}
-.complete-sub{font-size:13px;color:var(--tlight);margin-top:4px;margin-bottom:18px}
+.complete-sub{font-size:13px;color:var(--tlight);margin-top:4px;margin-bottom:10px}
 .stats{display:flex;gap:10px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
 .stat-box{background:var(--bg2);border-radius:12px;padding:11px 16px;border:1px solid var(--usumizu)}
 .stat-num{font-size:26px;font-weight:900;color:var(--konpeki)}
