@@ -1760,17 +1760,21 @@ function buildLevelUpData(epIndex){
   });
   const personItems = Object.keys(personCounts).map(k=>_LEVELUP_PRONOUN_LABELS[k]||k);
 
-  // 🌳 語塊樹根：本集解鎖的彈藥卡(SENTENCE_AMMO_MAP2既有)，樹幹=core_ammo，枝椏=fire_daily
-  const treeItems = [];
+  // 🌳 語塊樹根：本集解鎖的彈藥卡(SENTENCE_AMMO_MAP2既有)，樹幹=core_ammo開頭動詞短語，
+  // 枝椏=fire_daily的中文短意(不放完整西語例句，維持小盆栽的輕巧感)；只挑前2張卡當代表，
+  // 不然一集10張卡全部列出來會撐爆版面(跟同一排的其他蠟封完全不成比例)
+  const treeItemsAll = [];
   for(let i=0;i<10;i++){
     const ids = (typeof SENTENCE_AMMO_MAP2!=='undefined' ? SENTENCE_AMMO_MAP2[startIdx+i] : null) || [];
     ids.forEach(aid=>{
       const a = (typeof AMMO_DATA!=='undefined') ? AMMO_DATA.find(x=>x.ammo_id===aid) : null;
-      if(a && !treeItems.find(t=>t.core===a.core_ammo)){
-        treeItems.push({ core: a.core_ammo, branches: (a.fire_daily||[]).map(f=>f.es) });
+      if(a && !treeItemsAll.find(t=>t.core===a.core_ammo)){
+        const trunk = (a.pattern||a.core_ammo||'').split(/[\[.]/)[0].trim() || a.core_ammo;
+        treeItemsAll.push({ core: trunk, branches: (a.fire_daily||[]).map(f=>f.zh).filter(Boolean).slice(0,2) });
       }
     });
   }
+  const treeItems = treeItemsAll.slice(0,2);
 
   return { grammarItems, cogs, wordSet: wordSet.slice(0,6), personItems, treeItems };
 }
