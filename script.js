@@ -2217,9 +2217,9 @@ function renderSelLine(){
     </div>
     <div id="selEpBody${i}" style="display:none;padding:8px 12px 4px">
       ${epi.sentences.map((s,j)=>`
-        <div class="grammar-ex-row">
+        <div class="grammar-ex-row" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">
           <div class="grammar-ex-chunks">${_grammarExChunks(s.es, `speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')`)}</div>
-          <div class="grammar-ex-zh" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">${s.zh}</div>
+          <div class="grammar-ex-zh">${s.zh}</div>
         </div>`).join('')}
     </div>`).join('');
 }
@@ -2256,9 +2256,9 @@ function openGrammarCard(gId){
   if(!g) return;
   const catLabel = (GRAMMAR_CATS.find(c=>c.key===g.cat)||{label:''}).label;
   const exHtml = g.examples.map(ex =>
-    `<div class="grammar-ex-row">
+    `<div class="grammar-ex-row" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">
       <div class="grammar-ex-chunks">${_grammarExChunks(ex.es, `speakGramSmart('${escAttr(ex.es)}')`)}</div>
-      <div class="grammar-ex-zh" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">${ex.zh}</div>
+      <div class="grammar-ex-zh">${ex.zh}</div>
     </div>`
   ).join('');
   const ruleClass = g.emph ? 'grammar-rule grammar-rule-emph' : 'grammar-rule';
