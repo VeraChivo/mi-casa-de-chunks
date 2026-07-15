@@ -1733,7 +1733,8 @@ function buildLevelUpData(epIndex){
   }
   const grammarItems = grammarIds.map(gId=>{
     const g = (typeof GRAMMAR_DATA!=='undefined') ? GRAMMAR_DATA.find(x=>x.id===gId) : null;
-    return g ? {id:gId, title:g.title} : null;
+    const es = g && g.examples && g.examples[0] ? g.examples[0].es : (g ? g.title : null);
+    return g ? {id:gId, es} : null;
   }).filter(Boolean);
 
   // 🫐 同源詞＋高頻字：EP_COGNATES(既有) + 本集動詞/受詞語塊(既有chunks，不重複)
@@ -1770,7 +1771,7 @@ function buildLevelUpData(epIndex){
       const a = (typeof AMMO_DATA!=='undefined') ? AMMO_DATA.find(x=>x.ammo_id===aid) : null;
       if(a && !treeItemsAll.find(t=>t.core===a.core_ammo)){
         const trunk = (a.pattern||a.core_ammo||'').split(/[\[.]/)[0].trim() || a.core_ammo;
-        treeItemsAll.push({ core: trunk, branches: (a.fire_daily||[]).map(f=>f.zh).filter(Boolean).slice(0,2) });
+        treeItemsAll.push({ core: trunk, branches: (a.fire_daily||[]).map(f=>f.es).filter(Boolean).slice(0,2) });
       }
     });
   }
@@ -1781,13 +1782,15 @@ function buildLevelUpData(epIndex){
 function renderLevelUpCert(data){
   const seal = (cls, icon, label, bodyHtml, empty) => `
     <div class="levelup-seal ${cls}${empty?' is-empty':''}">
-      <div class="levelup-seal-icon">${icon}</div>
-      <div class="levelup-seal-label">${label}</div>
+      <div class="levelup-seal-head">
+        <span class="levelup-seal-icon">${icon}</span>
+        <span class="levelup-seal-label">${label}</span>
+      </div>
       <div class="levelup-seal-body">${empty ? '本集尚未集到' : bodyHtml}</div>
     </div>`;
 
   const grammarEmpty = !data.grammarItems.length;
-  const grammarHtml = data.grammarItems.map(g=>`<span class="levelup-chip" onclick="event.stopPropagation();closeGrammarSheet();openGrammarCard('${g.id}')">${g.title}</span>`).join('');
+  const grammarHtml = data.grammarItems.map(g=>`<span class="levelup-chip" onclick="event.stopPropagation();closeGrammarSheet();openGrammarCard('${g.id}')">${g.es}</span>`).join('');
 
   const cogWordEmpty = !(data.cogs.length || data.wordSet.length);
   const cogWordHtml = [
@@ -1809,9 +1812,9 @@ function renderLevelUpCert(data){
     <div class="levelup-cert">
       <div class="levelup-cert-title">🎖️ 晉級證書</div>
       <div class="levelup-grid">
-        ${seal('amber','📐','文法點', grammarHtml, grammarEmpty)}
-        ${seal('sapphire','🫐','同源詞．高頻字', cogWordHtml, cogWordEmpty)}
-        ${seal('amethyst','🗣️','人稱稱謂', personHtml, personEmpty)}
+        ${seal('amber','📐','文法根基', grammarHtml, grammarEmpty)}
+        ${seal('sapphire','🫐','同源高頻', cogWordHtml, cogWordEmpty)}
+        ${seal('amethyst','🗣️','變位高手', personHtml, personEmpty)}
         ${seal('ruby','🌳','語塊樹根', treeHtml, treeEmpty)}
       </div>
     </div>`;

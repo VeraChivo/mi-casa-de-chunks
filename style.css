@@ -446,27 +446,29 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 /* 🎖️ 晉級證書：四色寶石蠟封（取代星星） */
 .levelup-cert{font-size:14px;letter-spacing:normal;word-break:normal;margin-bottom:10px;text-align:left}
 .levelup-cert-title{font-size:16px;font-weight:900;color:var(--konpeki);text-align:center;margin-bottom:10px}
-.levelup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
-.levelup-seal{border-radius:14px;padding:12px 10px;text-align:center;border:1.5px solid transparent;max-height:260px;overflow-y:auto}
-.levelup-seal-icon{width:34px;height:34px;line-height:34px;border-radius:50%;font-size:16px;margin:0 auto 4px;box-shadow:inset 0 -2px 4px rgba(0,0,0,.15)}
-.levelup-seal-label{font-size:12px;font-weight:800;margin-bottom:6px}
-.levelup-seal-body{font-size:11px;line-height:1.5;display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
-.levelup-seal.is-empty{opacity:.45}
-.levelup-seal.is-empty .levelup-seal-body{font-style:italic}
-.levelup-seal.amber{background:rgba(201,122,43,.08);border-color:rgba(201,122,43,.3)}
+.levelup-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:14px;overflow:hidden;border:1.5px solid var(--usumizu)}
+.levelup-seal{padding:10px 8px;text-align:center;border:none}
+.levelup-seal:nth-child(1),.levelup-seal:nth-child(2){border-bottom:1px solid rgba(0,0,0,.08)}
+.levelup-seal:nth-child(1),.levelup-seal:nth-child(3){border-right:1px solid rgba(0,0,0,.08)}
+.levelup-seal-head{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:6px}
+.levelup-seal-icon{width:24px;height:24px;line-height:24px;border-radius:50%;font-size:12px;flex-shrink:0;box-shadow:inset 0 -2px 4px rgba(0,0,0,.15)}
+.levelup-seal-label{font-size:13px;font-weight:800}
+.levelup-seal-body{font-size:12px;line-height:1.55;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-content:flex-start;height:104px;overflow-y:auto}
+.levelup-seal.is-empty .levelup-seal-body{opacity:.45;font-style:italic;align-items:center}
+.levelup-seal.amber{background:rgba(201,122,43,.08)}
 .levelup-seal.amber .levelup-seal-icon{background:#C97A2B;color:#fff}
 .levelup-seal.amber .levelup-seal-label{color:#C97A2B}
-.levelup-seal.sapphire{background:rgba(44,90,160,.08);border-color:rgba(44,90,160,.3)}
+.levelup-seal.sapphire{background:rgba(44,90,160,.08)}
 .levelup-seal.sapphire .levelup-seal-icon{background:#2C5AA0;color:#fff}
 .levelup-seal.sapphire .levelup-seal-label{color:#2C5AA0}
-.levelup-seal.amethyst{background:rgba(123,75,148,.08);border-color:rgba(123,75,148,.3)}
+.levelup-seal.amethyst{background:rgba(123,75,148,.08)}
 .levelup-seal.amethyst .levelup-seal-icon{background:#7B4B94;color:#fff}
 .levelup-seal.amethyst .levelup-seal-label{color:#7B4B94}
-.levelup-seal.ruby{background:rgba(163,38,56,.08);border-color:rgba(163,38,56,.3)}
+.levelup-seal.ruby{background:rgba(163,38,56,.08)}
 .levelup-seal.ruby .levelup-seal-icon{background:#A32638;color:#fff}
 .levelup-seal.ruby .levelup-seal-label{color:#A32638}
 .levelup-chip{background:white;border-radius:7px;padding:3px 7px;font-weight:700;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.levelup-tree{width:100%;text-align:left;font-size:11px;margin-bottom:4px}
+.levelup-tree{width:100%;text-align:left;font-size:12px;margin-bottom:4px}
 .levelup-tree-trunk{font-weight:800}
 .levelup-tree-branch{padding-left:12px;color:var(--tmid)}
 .btn-restart{background:var(--misora);color:white;border:none;border-radius:11px;padding:12px 22px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,91,152,.22);transition:all .16s;margin-right:6px}
