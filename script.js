@@ -1257,6 +1257,10 @@ function render(){
   if(tipEl) tipEl.style.display='none';
   document.getElementById('userInput').value='';
   document.getElementById('userInput').className='trans-input';
+  if(document.getElementById('transFeedback')){
+    document.getElementById('transFeedback').style.display='none';
+    document.getElementById('transFeedback').innerHTML='';
+  }
   document.getElementById('makeBody').classList.remove('show');
   document.getElementById('makeIcon').classList.remove('open');
   document.getElementById('makeResult').style.display='none';
@@ -1355,8 +1359,17 @@ function revealAnswer(){
     answeredByEp[ep]=answered;
     const val=document.getElementById('userInput').value.trim();
     const ok=val.length>1&&smartMatch(val,s);
-    if(ok){score++;document.getElementById('userInput').classList.add('correct');const _fb=getRandomFeedback('correct');toastLong(_fb.emoji+' '+_fb.text);}
-    else if(val.length>1){document.getElementById('userInput').classList.add('wrong');const _fb=getRandomFeedback('incorrect');toast(_fb.emoji+' '+_fb.text);}
+    const fb=document.getElementById('transFeedback');
+    if(ok){
+      score++;document.getElementById('userInput').classList.add('correct');
+      const _fb=getRandomFeedback('correct');toastLong(_fb.emoji+' '+_fb.text);
+      if(fb){fb.className='make-result ok';fb.textContent=`${_fb.emoji} ${_fb.text}`;fb.style.display='block';}
+    }
+    else if(val.length>1){
+      document.getElementById('userInput').classList.add('wrong');
+      const _fb=getRandomFeedback('incorrect');toast(_fb.emoji+' '+_fb.text);
+      if(fb){fb.className='make-result err';fb.innerHTML=`${_fb.emoji} ${_fb.text}下面附正確範例，也可以重新輸入一次試試看<br><button class="retry-btn" onclick="event.stopPropagation();retryAnswer()">🔄 重新嘗試</button>`;fb.style.display='block';}
+    }
     else{const _fb=getRandomFeedback('reveal');toast(_fb.emoji+' '+_fb.text);}
     addToPassbook(s);
     const globalIdx = ep * 10 + idx;
@@ -1364,6 +1377,21 @@ function revealAnswer(){
     saveToLS();
     renderStars();
   }
+}
+
+function retryAnswer(){
+  const i=answered.indexOf(idx);
+  if(i!==-1){answered.splice(i,1);answeredByEp[ep]=answered;}
+  revealed=false;
+  document.getElementById('answerBox').classList.remove('show');
+  const uz=document.getElementById('unlockZone'); if(uz) uz.style.display='';
+  document.getElementById('nextBtn').style.display='none';
+  const ui=document.getElementById('userInput');
+  ui.value=''; ui.className='trans-input'; ui.focus();
+  const fb=document.getElementById('transFeedback');
+  if(fb){fb.style.display='none';fb.innerHTML='';}
+  const tip=document.getElementById('grammarTip'); if(tip) tip.style.display='none';
+  renderStars();
 }
 
 function switchLang(lang){

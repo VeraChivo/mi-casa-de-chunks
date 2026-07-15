@@ -135,6 +135,8 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .make-result.ok{background:#F0FDF4;color:var(--ok)}
 .make-result.err{background:#FFF5F5;color:var(--err)}
 .make-result.tip{background:rgba(159,208,222,.12);color:var(--tmid);border-left:3px solid var(--mizu)}
+.retry-btn{margin-top:6px;font-size:12px;font-weight:800;color:var(--err);background:#fff;border:1.5px solid var(--err);border-radius:8px;padding:5px 10px;cursor:pointer}
+.retry-btn:active{background:var(--err);color:#fff}
 /* EXPAND WORD MAP */
 .expand-map{margin-bottom:10px;display:flex;flex-direction:column;gap:8px}
 .expand-group{}
