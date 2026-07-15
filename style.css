@@ -436,7 +436,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 /* COMPLETE */
 .complete-screen{display:none;text-align:center;background:white;border-radius:20px;padding:34px 22px;width:100%;max-width:480px;border:1.5px solid var(--usumizu);box-shadow:0 6px 28px rgba(0,91,152,.08)}
 .complete-screen.show{display:block;animation:cardIn .4s ease}
-.complete-stars{font-size:28px;margin-bottom:8px;letter-spacing:2px;line-height:1.45;word-break:break-all;overflow-wrap:anywhere;max-width:100%}
+.complete-stars{margin:18px 0 8px;max-width:100%}
 .complete-title{font-size:22px;font-weight:900;color:var(--konpeki)}
 .complete-sub{font-size:13px;color:var(--tlight);margin-top:4px;margin-bottom:18px}
 .stats{display:flex;gap:10px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
