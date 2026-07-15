@@ -2141,17 +2141,17 @@ function _grammarExChunks(es, playExpr){
   // 但如果整句話本身就是一個長引號（例如角色整句自我介紹），不要整句鎖死不斷行，
   // 不然手機螢幕會被撐出去，寧可讓它照正常換行
   const QUOTE_SEG_WORD_LIMIT = 6;
-  // 短字（不限定冠詞/介系詞，任何≤6字母的字，含nueve/quiere這類）容易斷行時
+  // 短字（不限定冠詞/介系詞，任何≤7字母的字，含nueve/quiere/Siempre這類）容易斷行時
   // 單獨落在行尾變孤兒——關鍵是要「往後」黏住下一個字（往前黏沒用，因為斷點在
   // 短字的後面），連續遇到好幾個短字就一路往後黏成一組，直到遇到一個長字收尾；
   // 安全上限(累積字元數)避免整段短字連環黏成一長串撐爆手機螢幕
-  const GLUE_MAX_LEN = 6;
+  const GLUE_MAX_LEN = 7;
   const GLUE_RUN_CAP = 20;
   let html = '';
   let quoteOpen = false;
   let segBuf = null;
   let segWordCount = 0;
-  let runBuf = null; // {pieces:[], len:0} 目前正在往後累積、還沒收尾的黏字小組
+  let runBuf = null; // {pieces:[], len:0, count:0, startWasOpen} 目前正在往後累積、還沒收尾的黏字小組
   // wordCount要算「真正的字數」，不是「黏成一組後的組數」——不然長引號裡的字被黏字小組
   // 打包壓縮成幾組，會讓QUOTE_SEG_WORD_LIMIT誤判成字數很少的短引號，反而把長引號整句
   // 鎖死不斷行，撐爆手機螢幕（跟QUOTE_SEG_WORD_LIMIT原本要擋的問題一樣）
@@ -2165,12 +2165,14 @@ function _grammarExChunks(es, playExpr){
     } else if(segBuf!==null){ segBuf.push(piece); segWordCount+=wordCount; }
     else html += piece;
   };
+  const startRun = (rendered, len, startWasOpen) => { runBuf = {pieces:[rendered], len, count:1, startWasOpen}; };
+  const pushRun = (rendered, len) => { runBuf.pieces.push(rendered); runBuf.len+=len; runBuf.count++; };
   const flushRun = () => {
-    if(runBuf===null) return {piece:'', count:0};
-    const count = runBuf.pieces.length;
-    const piece = count>1 ? `<span class="ge-glue">${runBuf.pieces.join('')}</span>` : runBuf.pieces.join('');
+    if(runBuf===null) return null;
+    const {pieces, count, startWasOpen} = runBuf;
+    const piece = pieces.length>1 ? `<span class="ge-glue">${pieces.join('')}</span>` : pieces.join('');
     runBuf = null;
-    return {piece, count};
+    return {piece, count, startWasOpen};
   };
   words.forEach(tok=>{
     if(!tok.trim()){
@@ -2190,26 +2192,45 @@ function _grammarExChunks(es, playExpr){
     const isShort = clean.length>0 && clean.length<=GLUE_MAX_LEN;
 
     if(hasQuote){
-      // 引號開/關的字不參與黏字小組：先把正在跑的小組收尾輸出（此時引號狀態還沒變，
-      // 用wasOpen當作前後一致的狀態，不要跟這個字自己的開/關轉換搞混，避免segBuf被收兩次）；
-      // 這個字本身再單獨照舊走引號開/關的轉換邏輯
-      if(runBuf!==null){ const r = flushRun(); routeOutput(r.piece, wasOpen, wasOpen, r.count); }
+      const openingNow = !wasOpen && quoteOpen;
+      const closingNow = wasOpen && !quoteOpen;
+      if(closingNow){
+        // 引號收尾的字，就算它自己不算「短字」，也讓它當黏字小組的最後一員一起收尾——
+        // 這樣才能接住「引號最後一個字被斷行斷成孤兒」的情況（例如 adentro."）
+        if(runBuf===null) startRun(rendered, clean.length, wasOpen); else pushRun(rendered, clean.length);
+        const r = flushRun();
+        if(r.startWasOpen !== wasOpen){
+          // 這組從「引號開頭」一路撐到「引號收尾」都沒被打斷過(整句引號=同一個黏字小組)，
+          // 頭尾狀態相同，routeOutput的邊界判斷看不出中間穿過引號，這裡直接自己判斷要不要包nowrap
+          html += r.count <= QUOTE_SEG_WORD_LIMIT ? `<span class="ge-quote-seg">${r.piece}</span>` : r.piece;
+        } else {
+          routeOutput(r.piece, r.startWasOpen, quoteOpen, r.count);
+        }
+        return;
+      }
+      // 引號開頭的字（非收尾）：先把正在跑的小組收尾（維持原狀態，不算轉換，避免segBuf收兩次）
+      if(runBuf!==null){ const r = flushRun(); routeOutput(r.piece, r.startWasOpen, r.startWasOpen, r.count); }
+      if(openingNow && isShort){
+        // 引號開頭字本身是短字（例如"Yo）：讓它當黏字小組的開頭，等後面的字來黏，
+        // 不要讓它自己孤零零卡在引號最前面
+        startRun(rendered, clean.length, wasOpen);
+        return;
+      }
       routeOutput(rendered, wasOpen, quoteOpen, 1);
       return;
     }
 
     if(runBuf!==null){
-      runBuf.pieces.push(rendered);
-      runBuf.len += clean.length;
+      pushRun(rendered, clean.length);
       if(isShort && runBuf.len < GLUE_RUN_CAP) return; // 還是短字，繼續往後累積
-      const r = flushRun(); routeOutput(r.piece, wasOpen, quoteOpen, r.count); // 遇到長字（或超過安全上限）收尾
+      const r = flushRun(); routeOutput(r.piece, r.startWasOpen, quoteOpen, r.count); // 遇到長字（或超過安全上限）收尾
       return;
     }
 
-    if(isShort){ runBuf = {pieces:[rendered], len:clean.length}; return; }
+    if(isShort){ startRun(rendered, clean.length, wasOpen); return; }
     routeOutput(rendered, wasOpen, quoteOpen, 1);
   });
-  if(runBuf!==null){ const r = flushRun(); routeOutput(r.piece, quoteOpen, quoteOpen, r.count); }
+  if(runBuf!==null){ const r = flushRun(); routeOutput(r.piece, r.startWasOpen, quoteOpen, r.count); }
   if(segBuf) html += segBuf.join(''); // 防呆：引號沒配對完整就照常輸出，不要把內容吃掉
   return html;
 }
