@@ -225,16 +225,6 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .farm-btn.is-on{border-style:solid;border-color:var(--misora);color:var(--misora);background:rgba(139,176,219,.08)}
 
 /* COMPLETE SCREEN EXTRAS */
-.ep-cognate-box{background:linear-gradient(135deg,rgba(138,196,222,.12),rgba(132,145,195,.1));border:1.5px solid var(--usumizu);border-radius:14px;padding:14px 16px;margin-bottom:14px;text-align:left}
-.ec-title{font-size:13px;font-weight:900;color:var(--konpeki);margin-bottom:2px}
-.ec-sub{font-size:11px;color:var(--tlight);font-weight:600;margin-bottom:10px}
-.ec-list{display:flex;flex-direction:column;gap:6px}
-.ec-item{display:flex;align-items:center;gap:8px;background:white;border-radius:9px;padding:7px 10px;border:1px solid var(--usumizu);cursor:pointer;user-select:none}
-.ec-play{font-size:9px;color:var(--sora);vertical-align:middle}
-.ec-en{font-size:13px;font-weight:700;color:var(--tmid);min-width:70px}
-.ec-arrow{color:var(--mizu);font-size:13px}
-.ec-es{font-size:14px;font-weight:900;color:var(--konpeki);flex:1}
-.ec-zh{font-size:11px;color:var(--tlight);font-weight:600}
 .complete-cheer-fixed{margin-bottom:8px}
 .cf-es{font-size:17px;font-weight:900;color:#B87800;line-height:1.4}
 .cf-zh{font-size:15px;font-weight:800;color:#B87800;line-height:1.5;margin-top:2px}
@@ -453,6 +443,32 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .stat-box{background:var(--bg2);border-radius:12px;padding:11px 16px;border:1px solid var(--usumizu)}
 .stat-num{font-size:26px;font-weight:900;color:var(--konpeki)}
 .stat-lbl{font-size:11px;color:var(--tlight);font-weight:700;margin-top:2px}
+/* 🎖️ 晉級證書：四色寶石蠟封（取代星星） */
+.levelup-cert{font-size:14px;letter-spacing:normal;word-break:normal;margin-bottom:10px;text-align:left}
+.levelup-cert-title{font-size:16px;font-weight:900;color:var(--konpeki);text-align:center;margin-bottom:10px}
+.levelup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.levelup-seal{border-radius:14px;padding:12px 10px;text-align:center;border:1.5px solid transparent}
+.levelup-seal-icon{width:34px;height:34px;line-height:34px;border-radius:50%;font-size:16px;margin:0 auto 4px;box-shadow:inset 0 -2px 4px rgba(0,0,0,.15)}
+.levelup-seal-label{font-size:12px;font-weight:800;margin-bottom:6px}
+.levelup-seal-body{font-size:11px;line-height:1.5;display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.levelup-seal.is-empty{opacity:.45}
+.levelup-seal.is-empty .levelup-seal-body{font-style:italic}
+.levelup-seal.amber{background:rgba(201,122,43,.08);border-color:rgba(201,122,43,.3)}
+.levelup-seal.amber .levelup-seal-icon{background:#C97A2B;color:#fff}
+.levelup-seal.amber .levelup-seal-label{color:#C97A2B}
+.levelup-seal.sapphire{background:rgba(44,90,160,.08);border-color:rgba(44,90,160,.3)}
+.levelup-seal.sapphire .levelup-seal-icon{background:#2C5AA0;color:#fff}
+.levelup-seal.sapphire .levelup-seal-label{color:#2C5AA0}
+.levelup-seal.amethyst{background:rgba(123,75,148,.08);border-color:rgba(123,75,148,.3)}
+.levelup-seal.amethyst .levelup-seal-icon{background:#7B4B94;color:#fff}
+.levelup-seal.amethyst .levelup-seal-label{color:#7B4B94}
+.levelup-seal.ruby{background:rgba(163,38,56,.08);border-color:rgba(163,38,56,.3)}
+.levelup-seal.ruby .levelup-seal-icon{background:#A32638;color:#fff}
+.levelup-seal.ruby .levelup-seal-label{color:#A32638}
+.levelup-chip{background:white;border-radius:7px;padding:3px 7px;font-weight:700;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.levelup-tree{width:100%;text-align:left;font-size:11px;margin-bottom:4px}
+.levelup-tree-trunk{font-weight:800}
+.levelup-tree-branch{padding-left:12px;color:var(--tmid)}
 .btn-restart{background:var(--misora);color:white;border:none;border-radius:11px;padding:12px 22px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,91,152,.22);transition:all .16s;margin-right:6px}
 .btn-restart:hover{background:var(--konpeki)}
 .btn-next-ep{background:linear-gradient(135deg,var(--sora),var(--misora));color:white;border:none;border-radius:11px;padding:12px 16px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .16s}

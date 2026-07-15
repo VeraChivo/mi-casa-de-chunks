@@ -1708,6 +1708,111 @@ function loadFromLS(){
   }catch(e){}
 }
 
+// ── 🎖️ 晉級證書：完成畫面的四色寶石蠟封（取代星星，全部用既有資料盤點，不生新內容）──
+const _LEVELUP_PRONOUN_LABELS = { yo:'yo', 'tú':'tú', nosotros:'nosotros/nosotras', '3s':'él/ella/usted', '3p':'ellos/ellas/ustedes' };
+function _levelUpClassifySubject(raw){
+  const s = String(raw||'').replace(/[¡¿!.,;:()]/g,'').trim();
+  if(!s) return null;
+  const low = s.toLowerCase();
+  if(/\byo\b/.test(low) || /^me\b/.test(low)) return 'yo';
+  if(/\bt[uú]\b/.test(low)) return 'tú';
+  if(/\bnosotros\b|\bnosotras\b/.test(low)) return 'nosotros';
+  if(/\bellos\b|\bellas\b|\bustedes\b/.test(low)) return '3p';
+  if(/\btodos\b|\btodas\b/.test(low) || / y /.test(s)) return '3p';
+  return '3s'; // 具名主詞(Nita/Tito...)或él/ella/usted，都算單數第三人稱
+}
+function buildLevelUpData(epIndex){
+  const startIdx = epIndex*10;
+  const epi = EPS[epIndex];
+
+  // 📐 文法點：本集句子對應的文法卡(SENTENCE_GRAMMAR_MAP，去重)
+  const grammarIds = [];
+  for(let i=0;i<10;i++){
+    const gId = SENTENCE_GRAMMAR_MAP[startIdx+i];
+    if(gId && !grammarIds.includes(gId)) grammarIds.push(gId);
+  }
+  const grammarItems = grammarIds.map(gId=>{
+    const g = (typeof GRAMMAR_DATA!=='undefined') ? GRAMMAR_DATA.find(x=>x.id===gId) : null;
+    return g ? {id:gId, title:g.title} : null;
+  }).filter(Boolean);
+
+  // 🫐 同源詞＋高頻字：EP_COGNATES(既有) + 本集動詞/受詞語塊(既有chunks，不重複)
+  const cogs = (typeof EP_COGNATES!=='undefined' && EP_COGNATES[epIndex]) || [];
+  const wordSet = [];
+  if(epi) epi.sentences.forEach(s=>{
+    (s.chunks||[]).forEach(c=>{
+      if(c.role==='v'||c.role==='o'){
+        const w = c.w.replace(/[¡¿!.,;:()]/g,'').trim();
+        if(w && w.length<=14 && !wordSet.includes(w)) wordSet.push(w);
+      }
+    });
+  });
+
+  // 🗣️ 人稱稱謂：本集句子主詞涵蓋哪些人稱(既有chunks role:'s')
+  const personCounts = {};
+  if(epi) epi.sentences.forEach(s=>{
+    (s.chunks||[]).forEach(c=>{
+      if(c.role==='s'){
+        const cat = _levelUpClassifySubject(c.w);
+        if(cat) personCounts[cat] = true;
+      }
+    });
+  });
+  const personItems = Object.keys(personCounts).map(k=>_LEVELUP_PRONOUN_LABELS[k]||k);
+
+  // 🌳 語塊樹根：本集解鎖的彈藥卡(SENTENCE_AMMO_MAP2既有)，樹幹=core_ammo，枝椏=fire_daily
+  const treeItems = [];
+  for(let i=0;i<10;i++){
+    const ids = (typeof SENTENCE_AMMO_MAP2!=='undefined' ? SENTENCE_AMMO_MAP2[startIdx+i] : null) || [];
+    ids.forEach(aid=>{
+      const a = (typeof AMMO_DATA!=='undefined') ? AMMO_DATA.find(x=>x.ammo_id===aid) : null;
+      if(a && !treeItems.find(t=>t.core===a.core_ammo)){
+        treeItems.push({ core: a.core_ammo, branches: (a.fire_daily||[]).map(f=>f.es) });
+      }
+    });
+  }
+
+  return { grammarItems, cogs, wordSet: wordSet.slice(0,6), personItems, treeItems };
+}
+function renderLevelUpCert(data){
+  const seal = (cls, icon, label, bodyHtml, empty) => `
+    <div class="levelup-seal ${cls}${empty?' is-empty':''}">
+      <div class="levelup-seal-icon">${icon}</div>
+      <div class="levelup-seal-label">${label}</div>
+      <div class="levelup-seal-body">${empty ? '本集尚未集到' : bodyHtml}</div>
+    </div>`;
+
+  const grammarEmpty = !data.grammarItems.length;
+  const grammarHtml = data.grammarItems.map(g=>`<span class="levelup-chip" onclick="event.stopPropagation();closeGrammarSheet();openGrammarCard('${g.id}')">${g.title}</span>`).join('');
+
+  const cogWordEmpty = !(data.cogs.length || data.wordSet.length);
+  const cogWordHtml = [
+    ...data.cogs.map(c=>`<span class="levelup-chip" onclick="event.stopPropagation();speakGramSmart('${escAttr(c.es)}')">${c.es}</span>`),
+    ...data.wordSet.map(w=>`<span class="levelup-chip" onclick="event.stopPropagation();speakWord('${escAttr(w)}')">${w}</span>`)
+  ].join('');
+
+  const personEmpty = !data.personItems.length;
+  const personHtml = data.personItems.map(p=>`<span class="levelup-chip">${p}</span>`).join('');
+
+  const treeEmpty = !data.treeItems.length;
+  const treeHtml = data.treeItems.map(t=>`
+    <div class="levelup-tree">
+      <div class="levelup-tree-trunk">🌳 ${t.core}</div>
+      ${t.branches.map(b=>`<div class="levelup-tree-branch">↳ ${b}</div>`).join('')}
+    </div>`).join('');
+
+  return `
+    <div class="levelup-cert">
+      <div class="levelup-cert-title">🎖️ 晉級證書</div>
+      <div class="levelup-grid">
+        ${seal('amber','📐','文法點', grammarHtml, grammarEmpty)}
+        ${seal('sapphire','🫐','同源詞．高頻字', cogWordHtml, cogWordEmpty)}
+        ${seal('amethyst','🗣️','人稱稱謂', personHtml, personEmpty)}
+        ${seal('ruby','🌳','語塊樹根', treeHtml, treeEmpty)}
+      </div>
+    </div>`;
+}
+
 // ── COMPLETE SCREEN ──
 function showComplete(){
   document.querySelector('.card-container').style.display='none';
@@ -1716,24 +1821,12 @@ function showComplete(){
   cs.classList.add('show');
 
   const n = total();
-  let stars = '';
-  for(let i=0;i<n;i++) stars+='⭐';
-  stars += ' 🌟';
-  document.getElementById('completeStars').textContent = stars;
+  document.getElementById('completeStars').innerHTML = renderLevelUpCert(buildLevelUpData(ep));
   document.getElementById('completeTitle').textContent = `🌻 完成這場莊園探險了！`;
   document.getElementById('completeSub').textContent   = `${epData().titleZh} · 全 ${n} 句`;
   document.getElementById('finalScore').textContent    = score;
   document.getElementById('finalMake').textContent     = makeScore;
   document.getElementById('finalWords').textContent    = ammoUnlocked.length;
-
-  const cogs = EP_COGNATES[ep] || [];
-  document.getElementById('ecList').innerHTML = cogs.map(c=>`
-    <div class="ec-item" onclick="speakGramSmart('${escAttr(c.es)}')" title="點擊聽西語發音">
-      <span class="ec-en">${c.en}</span>
-      <span class="ec-arrow">→</span>
-      <span class="ec-es">${c.es} <span class="ec-play">▶</span></span>
-      <span class="ec-zh">${c.zh}</span>
-    </div>`).join('');
 
   document.getElementById('completeCheer').textContent =
     CHEERS[Math.floor(Math.random()*CHEERS.length)];
