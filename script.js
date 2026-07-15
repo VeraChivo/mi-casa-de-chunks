@@ -2112,18 +2112,40 @@ function _grammarExChunks(es, playExpr){
   // 但如果整句話本身就是一個長引號（例如角色整句自我介紹），不要整句鎖死不斷行，
   // 不然手機螢幕會被撐出去，寧可讓它照正常換行
   const QUOTE_SEG_WORD_LIMIT = 6;
-  // 短的冠詞/介系詞縮寫（el/la/una/al...）容易斷行時單獨落在行尾變孤兒，
-  // 黏住跟它後面那個字綁成一個不斷行小組（跟引號分開處理，避免規則互相打架）
-  const GLUE_SHORT = /^(el|la|los|las|un|una|unos|unas|al|del)$/i;
+  // 短字（不限定冠詞/介系詞，任何≤6字母的字，含nueve/quiere這類）容易斷行時
+  // 單獨落在行尾變孤兒——關鍵是要「往後」黏住下一個字（往前黏沒用，因為斷點在
+  // 短字的後面），連續遇到好幾個短字就一路往後黏成一組，直到遇到一個長字收尾；
+  // 安全上限(累積字元數)避免整段短字連環黏成一長串撐爆手機螢幕
+  const GLUE_MAX_LEN = 6;
+  const GLUE_RUN_CAP = 20;
   let html = '';
   let quoteOpen = false;
   let segBuf = null;
   let segWordCount = 0;
-  let pendingGlue = null; // {rendered, ws} 待黏合的短字，等下一個字一起輸出
-  const pushOut = piece => { if(segBuf!==null){ segBuf.push(piece); segWordCount++; } else html += piece; };
+  let runBuf = null; // {pieces:[], len:0} 目前正在往後累積、還沒收尾的黏字小組
+  // wordCount要算「真正的字數」，不是「黏成一組後的組數」——不然長引號裡的字被黏字小組
+  // 打包壓縮成幾組，會讓QUOTE_SEG_WORD_LIMIT誤判成字數很少的短引號，反而把長引號整句
+  // 鎖死不斷行，撐爆手機螢幕（跟QUOTE_SEG_WORD_LIMIT原本要擋的問題一樣）
+  const routeOutput = (piece, wasOpen, quoteOpenNow, wordCount) => {
+    wordCount = wordCount || 1;
+    if(!wasOpen && quoteOpenNow){ segBuf=[piece]; segWordCount=wordCount; }
+    else if(wasOpen && !quoteOpenNow){
+      segBuf.push(piece); segWordCount+=wordCount;
+      html += segWordCount <= QUOTE_SEG_WORD_LIMIT ? `<span class="ge-quote-seg">${segBuf.join('')}</span>` : segBuf.join('');
+      segBuf=null; segWordCount=0;
+    } else if(segBuf!==null){ segBuf.push(piece); segWordCount+=wordCount; }
+    else html += piece;
+  };
+  const flushRun = () => {
+    if(runBuf===null) return {piece:'', count:0};
+    const count = runBuf.pieces.length;
+    const piece = count>1 ? `<span class="ge-glue">${runBuf.pieces.join('')}</span>` : runBuf.pieces.join('');
+    runBuf = null;
+    return {piece, count};
+  };
   words.forEach(tok=>{
     if(!tok.trim()){
-      if(pendingGlue!==null) pendingGlue.ws += tok;
+      if(runBuf!==null) runBuf.pieces.push(tok);
       else if(segBuf!==null) segBuf.push(tok);
       else html += tok;
       return;
@@ -2135,38 +2157,30 @@ function _grammarExChunks(es, playExpr){
       const quoteCount = (tok.match(/"/g)||[]).length;
       if(quoteCount % 2 === 1) quoteOpen = !quoteOpen;
     }
-
-    if(pendingGlue!==null){
-      const glued = `<span class="ge-glue">${pendingGlue.rendered}${pendingGlue.ws}${rendered}</span>`;
-      pendingGlue = null;
-      if(!wasOpen && quoteOpen){ segBuf=[glued]; segWordCount=1; }
-      else if(wasOpen && !quoteOpen){
-        segBuf.push(glued); segWordCount++;
-        html += segWordCount <= QUOTE_SEG_WORD_LIMIT ? `<span class="ge-quote-seg">${segBuf.join('')}</span>` : segBuf.join('');
-        segBuf=null; segWordCount=0;
-      } else pushOut(glued);
-      return;
-    }
-
     const clean = tok.replace(/[¡¿.,!?;:"]/g,'');
-    if(!wasOpen && !hasQuote && !quoteOpen && GLUE_SHORT.test(clean)){
-      pendingGlue = {rendered, ws:''};
+    const isShort = clean.length>0 && clean.length<=GLUE_MAX_LEN;
+
+    if(hasQuote){
+      // 引號開/關的字不參與黏字小組：先把正在跑的小組收尾輸出（此時引號狀態還沒變，
+      // 用wasOpen當作前後一致的狀態，不要跟這個字自己的開/關轉換搞混，避免segBuf被收兩次）；
+      // 這個字本身再單獨照舊走引號開/關的轉換邏輯
+      if(runBuf!==null){ const r = flushRun(); routeOutput(r.piece, wasOpen, wasOpen, r.count); }
+      routeOutput(rendered, wasOpen, quoteOpen, 1);
       return;
     }
 
-    if(!wasOpen && quoteOpen){
-      segBuf = [rendered]; segWordCount = 1;
-    } else if(wasOpen && !quoteOpen){
-      segBuf.push(rendered); segWordCount++;
-      html += segWordCount <= QUOTE_SEG_WORD_LIMIT
-        ? `<span class="ge-quote-seg">${segBuf.join('')}</span>`
-        : segBuf.join('');
-      segBuf = null; segWordCount = 0;
-    } else {
-      pushOut(rendered);
+    if(runBuf!==null){
+      runBuf.pieces.push(rendered);
+      runBuf.len += clean.length;
+      if(isShort && runBuf.len < GLUE_RUN_CAP) return; // 還是短字，繼續往後累積
+      const r = flushRun(); routeOutput(r.piece, wasOpen, quoteOpen, r.count); // 遇到長字（或超過安全上限）收尾
+      return;
     }
+
+    if(isShort){ runBuf = {pieces:[rendered], len:clean.length}; return; }
+    routeOutput(rendered, wasOpen, quoteOpen, 1);
   });
-  if(pendingGlue) pushOut(pendingGlue.rendered);
+  if(runBuf!==null){ const r = flushRun(); routeOutput(r.piece, quoteOpen, quoteOpen, r.count); }
   if(segBuf) html += segBuf.join(''); // 防呆：引號沒配對完整就照常輸出，不要把內容吃掉
   return html;
 }
