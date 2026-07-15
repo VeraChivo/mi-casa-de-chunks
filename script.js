@@ -2112,16 +2112,48 @@ function _grammarExChunks(es, playExpr){
   // 但如果整句話本身就是一個長引號（例如角色整句自我介紹），不要整句鎖死不斷行，
   // 不然手機螢幕會被撐出去，寧可讓它照正常換行
   const QUOTE_SEG_WORD_LIMIT = 6;
+  // 短的冠詞/介系詞縮寫（el/la/una/al...）容易斷行時單獨落在行尾變孤兒，
+  // 黏住跟它後面那個字綁成一個不斷行小組（跟引號分開處理，避免規則互相打架）
+  const GLUE_SHORT = /^(el|la|los|las|un|una|unos|unas|al|del)$/i;
   let html = '';
   let quoteOpen = false;
   let segBuf = null;
   let segWordCount = 0;
+  let pendingGlue = null; // {rendered, ws} 待黏合的短字，等下一個字一起輸出
+  const pushOut = piece => { if(segBuf!==null){ segBuf.push(piece); segWordCount++; } else html += piece; };
   words.forEach(tok=>{
-    if(!tok.trim()){ if(segBuf!==null) segBuf.push(tok); else html+=tok; return; }
+    if(!tok.trim()){
+      if(pendingGlue!==null) pendingGlue.ws += tok;
+      else if(segBuf!==null) segBuf.push(tok);
+      else html += tok;
+      return;
+    }
     const rendered = renderTok(tok);
-    const quoteCount = (tok.match(/"/g)||[]).length;
+    const hasQuote = tok.includes('"');
     const wasOpen = quoteOpen;
-    if(quoteCount % 2 === 1) quoteOpen = !quoteOpen;
+    if(hasQuote){
+      const quoteCount = (tok.match(/"/g)||[]).length;
+      if(quoteCount % 2 === 1) quoteOpen = !quoteOpen;
+    }
+
+    if(pendingGlue!==null){
+      const glued = `<span class="ge-glue">${pendingGlue.rendered}${pendingGlue.ws}${rendered}</span>`;
+      pendingGlue = null;
+      if(!wasOpen && quoteOpen){ segBuf=[glued]; segWordCount=1; }
+      else if(wasOpen && !quoteOpen){
+        segBuf.push(glued); segWordCount++;
+        html += segWordCount <= QUOTE_SEG_WORD_LIMIT ? `<span class="ge-quote-seg">${segBuf.join('')}</span>` : segBuf.join('');
+        segBuf=null; segWordCount=0;
+      } else pushOut(glued);
+      return;
+    }
+
+    const clean = tok.replace(/[¡¿.,!?;:"]/g,'');
+    if(!wasOpen && !hasQuote && !quoteOpen && GLUE_SHORT.test(clean)){
+      pendingGlue = {rendered, ws:''};
+      return;
+    }
+
     if(!wasOpen && quoteOpen){
       segBuf = [rendered]; segWordCount = 1;
     } else if(wasOpen && !quoteOpen){
@@ -2130,12 +2162,11 @@ function _grammarExChunks(es, playExpr){
         ? `<span class="ge-quote-seg">${segBuf.join('')}</span>`
         : segBuf.join('');
       segBuf = null; segWordCount = 0;
-    } else if(segBuf!==null){
-      segBuf.push(rendered); segWordCount++;
     } else {
-      html += rendered;
+      pushOut(rendered);
     }
   });
+  if(pendingGlue) pushOut(pendingGlue.rendered);
   if(segBuf) html += segBuf.join(''); // 防呆：引號沒配對完整就照常輸出，不要把內容吃掉
   return html;
 }
