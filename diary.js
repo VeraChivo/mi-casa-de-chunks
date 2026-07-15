@@ -87,14 +87,35 @@ function diaryOnKidNoteInput(){
   });
   diaryRegenerateDraft();
 }
+function speakDiaryMood(id){
+  const file = (typeof DIARY_MOOD_AUDIO_MAP!=='undefined') ? DIARY_MOOD_AUDIO_MAP[id] : null;
+  const m = _diaryFindMood(id);
+  if(typeof _stopActiveAudio==='function') _stopActiveAudio();
+  if(!file){ if(m && typeof speakWord==='function') speakWord(m.es); return; }
+  const player = new Audio(file);
+  _activeAudio = player;
+  player.onerror = () => { if(m && typeof speakWord==='function') speakWord(m.es); };
+  player.play().catch(()=>{ if(m && typeof speakWord==='function') speakWord(m.es); });
+}
+function speakDiaryWeather(id){
+  const file = (typeof DIARY_WEATHER_AUDIO_MAP!=='undefined') ? DIARY_WEATHER_AUDIO_MAP[id] : null;
+  if(typeof _stopActiveAudio==='function') _stopActiveAudio();
+  if(!file){ if(typeof speakWord==='function') speakWord(id); return; }
+  const player = new Audio(file);
+  _activeAudio = player;
+  player.onerror = () => { if(typeof speakWord==='function') speakWord(id); };
+  player.play().catch(()=>{ if(typeof speakWord==='function') speakWord(id); });
+}
 function diaryToggleMood(id){
   const i = _diarySelMoods.indexOf(id);
-  if(i===-1) _diarySelMoods.push(id); else _diarySelMoods.splice(i,1);
+  if(i===-1){ _diarySelMoods.push(id); speakDiaryMood(id); } else _diarySelMoods.splice(i,1);
   _diaryRenderMoods();
   diaryRegenerateDraft();
 }
 function diarySelectWeather(id){
+  const newlySelected = _diarySelWeather !== id;
   _diarySelWeather = (_diarySelWeather===id) ? null : id;
+  if(newlySelected) speakDiaryWeather(id);
   _diaryRenderWeather();
   diaryRegenerateDraft();
 }

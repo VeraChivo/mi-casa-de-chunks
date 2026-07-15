@@ -1177,3 +1177,31 @@ Object.assign(GRAM_AUDIO_MAP, {
   "les": "audio/pronoun/pronoun_word_17.mp3",
   "se": "audio/pronoun/pronoun_word_18.mp3",
 });
+
+// ── 💙 Vivencias de mamá：心情/天氣 chip 發音（key = DIARY_MOODS/DIARY_WEATHER 的 id）──
+const DIARY_MOOD_AUDIO_MAP={
+  "Sereno": "audio/diary/Sereno_a.mp3",
+  "Tranquilo": "audio/diary/Tranquilo_a.mp3",
+  "Descansado": "audio/diary/Descansado_a.mp3",
+  "Agotado": "audio/diary/Agotado_a.mp3",
+  "Abrumado": "audio/diary/Abrumado_a.mp3",
+  "Paciente": "audio/diary/Paciente.mp3",
+  "Contento": "audio/diary/Contento_a.mp3",
+  "Satisfecho": "audio/diary/Satisfecho_a.mp3",
+  "Agradecido": "audio/diary/Agradecido_a.mp3",
+  "Estimulado": "audio/diary/Estimulado_a.mp3",
+  "Impaciente": "audio/diary/Impaciente.mp3",
+  "Distraido": "audio/diary/Distraído_a.mp3",
+  "Inspirado": "audio/diary/Inspirado_a.mp3",
+  "Mimado": "audio/diary/Mimado_a.mp3",
+  "Aliviado": "audio/diary/Aliviado_a.mp3",
+  "Maduro": "audio/diary/Maduro_a.mp3",
+  "Esperanzado": "audio/diary/Esperanzado_a.mp3",
+};
+const DIARY_WEATHER_AUDIO_MAP={
+  "soleado": "audio/diary/soleado.mp3",
+  "nublado": "audio/diary/nublado.mp3",
+  "llovizna": "audio/diary/llovizna.mp3",
+  "lluvia": "audio/diary/lluvia.mp3",
+  "viento": "audio/diary/viento.mp3",
+};
