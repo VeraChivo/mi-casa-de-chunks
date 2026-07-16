@@ -109,7 +109,8 @@ const GRAMMAR_CATS = [
   {key:"word-order",   label:"詞序"},
   {key:"gender",       label:"名詞陰陽性"},
   {key:"subjunctive",  label:"虛擬語氣"},
-  {key:"connector",    label:"連接詞"}
+  {key:"connector",    label:"連接詞"},
+  {key:"confusable",   label:"易混淆詞組"}
 ];
 
 
@@ -727,6 +728,50 @@ const GRAMMAR_DATA = [
       {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（sino：前面否定，後面在替換掉前面被否定的東西）"}
     ],
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），一律用 pero。這是初學者最容易搞混的一組連接詞。",
+    source:"文法補充"
+  },
+
+  // ══ 易混淆詞組 ══
+
+  {
+    id:"g33", cat:"confusable",
+    title:"por vs para：都翻成「為了/因為」，方向完全相反",
+    rule:"por 看「原因／交換／經過的路徑」——往回看，因為什麼、用什麼換、穿過哪裡；para 看「目的／對象／期限」——往前看，為了什麼、給誰、到什麼時候。",
+    examples:[
+      {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。（por：原因，因為你的幫忙）"},
+      {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。（por：經過的路徑）"},
+      {es:"Compré este regalo para Mimi.", zh:"我幫咪咪買了這個禮物。（para：接收禮物的對象）"},
+      {es:"Necesito terminar esto para el viernes.", zh:"我星期五之前得完成這個。（para：期限）"}
+    ],
+    trap:"混淆時問自己：這是在講「為什麼發生／怎麼換來的／穿過哪裡」（por）還是「要往哪裡去／給誰／到什麼時候」（para）？口訣：por＝因為，para＝為了。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g34", cat:"confusable",
+    title:"saber vs conocer：都翻成「知道」，一個是資訊一個是熟悉感",
+    rule:"saber＝知道「事實／資訊／怎麼做」（saber + 原形動詞＝會做某事）；conocer＝「認識／熟悉」人、地方、事物，強調本人親自接觸過的熟悉感。",
+    examples:[
+      {es:"Nita sabe hablar español.", zh:"妮妲會說西語。（saber+原形動詞：知道怎麼做某事）"},
+      {es:"¿Sabes qué hora es?", zh:"你知道現在幾點嗎？（saber：知道事實／資訊）"},
+      {es:"Conozco a Vera Oveja desde hace mucho tiempo.", zh:"我認識薇拉羊很久了。（conocer：認識人）"},
+      {es:"¿Conoces esta ciudad?", zh:"你熟悉這座城市嗎？（conocer：對地方熟悉、去過）"}
+    ],
+    trap:"認識「人」一定要用 conocer，而且受詞是人時前面要加 a（conocer a alguien）——這是中文母語者最容易漏掉的地方，Sé a Vera 是錯的，要說 Conozco a Vera。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g35", cat:"confusable",
+    title:"pedir vs preguntar：中文都是「問」，西語看你是在要東西還是要答案",
+    rule:"pedir＝「要／請求」得到東西或請對方做動作（pedir algo／pedir que + 虛擬式）；preguntar＝「問」問題、尋求資訊（preguntar algo／preguntar si...）。",
+    examples:[
+      {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。（pedir：要求／索取東西）"},
+      {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。（pedir + que + 虛擬式：請求對方做動作，呼應WEIRDO口訣裡的R=Requests）"},
+      {es:"Nita pregunta dónde está el gato.", zh:"妮妲問貓在哪裡。（preguntar：問問題，尋求資訊）"},
+      {es:"Voy a preguntarle su nombre.", zh:"我要去問他的名字。（preguntar：問資訊）"}
+    ],
+    trap:"中文都會說「問」，但西語要先分清楚：是在「要東西／請對方做動作」（pedir）還是「單純問問題找答案」（preguntar）——搞混這兩個是中文母語者最常見的錯誤之一。",
     source:"文法補充"
   }
 
