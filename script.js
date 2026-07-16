@@ -2162,15 +2162,21 @@ function renderConjLibrary(){
   const el = document.getElementById('conjLibBody');
   if(!el) return;
   const verbs = GRAMMAR_DATA.filter(g=>g.conj && g.conj.rows && g.conj.rows.length);
+  const gdb = getGardenDB();
   el.innerHTML = verbs.map(g=>{
-    const renderStdRow = r =>
-      `<div class="conj-row">
+    const renderStdRow = r => {
+      const key = 'ge_'+r.form;
+      const st = (gdb[key]||{stage:0}).stage;
+      const starHtml = `<span class="ge-chunk-star${st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度：點一下記錄熟練度">${GARDEN_STAGES[st]}</span>`;
+      return `<div class="conj-row">
         <span class="conj-person">${r.person}</span>
         <span class="conj-form" onclick="speakConjForm('${g.id}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
         <span class="conj-ex" onclick="speakGramSmart('${escAttr(r.ex)}')">${r.ex}</span>
+        ${starHtml}
         <span class="conj-zh">${r.zh}</span>
         ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
       </div>`;
+    };
     const renderAllRows = rows => rows.map(r =>
       renderStdRow(r) + renderDynamicConjugationExamples(r.form.toLowerCase())
     ).join('');
