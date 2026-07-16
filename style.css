@@ -602,10 +602,17 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gsup-row:last-child{border-bottom:none}
 .gsup-row:active{background:var(--bg2)}
 .gsup-title{font-size:13px;font-weight:900;color:var(--konpeki);margin-bottom:3px}
+.gsup-title-row{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:3px}
+.gsup-title-row .gsup-title{margin-bottom:0;flex:1}
+.gsup-level-badge{font-size:13px;flex-shrink:0}
 .gsup-rule{font-size:11.5px;color:var(--tmid);font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .sel-ep-header{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .sel-ep-header .gsup-title{margin-bottom:0;flex:1}
 .sel-ep-header .gsup-rule{-webkit-line-clamp:unset;white-space:nowrap;flex-shrink:0}
+.gsup-level-filter{display:flex;gap:6px;padding:8px 12px 2px;flex-wrap:wrap}
+.gsup-level-chip{font-size:11px;font-weight:800;padding:4px 10px;border-radius:14px;background:var(--bg2);color:var(--tmid);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
+.gsup-level-chip:active{opacity:.7}
+.gsup-level-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
 
 /* ── ¡Variadísimo! 變位速查 ── */
 .conj-section{margin:10px 0 8px;border-radius:10px;overflow:hidden;border:1.5px solid rgba(159,208,222,.4)}

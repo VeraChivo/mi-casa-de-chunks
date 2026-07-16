@@ -208,7 +208,7 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     - **待確認**：VERA問「通過才能領勳章？」——是否要把①的Google鍵盤辨識成功／③的GPT對話完成，設計成里程碑勳章的解鎖條件之一(不只是累積語塊量)，尚未定案，等之後真的要做里程碑系統時一併決定。
 
   **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
-  - [ ] **比較級（comparativo）grammar.js 目前零覆蓋，已備好內容待建卡（2026-07-16 VERA帶回，已查證屬實）**：西語比較級公式跟英文邏輯不同的教學重點——英文依單字長短分裂（bigger vs more beautiful），西語一律統一套公式，不分長短字：
+  - [x] **比較級文法卡＋CEFR等級標籤/篩選 全部完成（2026-07-16）**：新增3張比較級卡（grammar.js g50/g51/g52，cat:"phrase"）——g50 más/menos+形容詞+que（公式，不加字尾）、g51 tan+形容詞+como（大地雷：後面固定接como不是que）、g52 mejor/peor/mayor/menor四個不規則比較級。**同時完成CEFR等級標籤系統**：新增`GRAMMAR_LEVEL_TIERS`（🌱護土嫩芽=a1a2、💧甘露超頻=b1、🍯蜂王蜜釀=b2c1，VERA指定的命名），全部52張文法卡（含新的3張比較級卡）都已評估分類加上`level`欄位（分佈：a1a2×22、b1×21、b2c1×9，加總52張）。💧文法儲水槽新增等級篩選chip列（`renderGrammarSupplement`/`filterGrammarSupplementByLevel`），每張卡右上角也顯示等級小圖示。**維持不分級鎖住的定案**——篩選純粹是顯示/隱藏，隨時可切回「全部」看到所有卡片，不是內容鎖。已用Node模擬DOM驗證篩選切換正確、無crash。（本地commit未push，依指示先不部署）：西語比較級公式跟英文邏輯不同的教學重點——英文依單字長短分裂（bigger vs more beautiful），西語一律統一套公式，不分長短字：
     - **más + 形容詞 + que**（更...比...）：`Este charco es más grande que mi cama.`
     - **menos + 形容詞 + que**（比較不...比...）：`El Bug es menos difícil que ayer.`
     - **tan + 形容詞 + como**（一樣...跟...一樣，⚠️最大地雷：後面固定接como不是que，跟英文as...as邏輯對不上，初學者常誤用tan...que）：`Esta galleta es tan dulce como la miel.`

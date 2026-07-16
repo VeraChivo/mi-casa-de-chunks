@@ -120,7 +120,7 @@ const GRAMMAR_DATA = [
   // ══ SER vs ESTAR ══
 
   {
-    id:"g01", cat:"ser-estar",
+    id:"g01", cat:"ser-estar", level:"a1a2",
     title:"SER：身分與本質",
     rule:"SER 描述恆久不變的特質：身分、職業、國籍、關係、本質描述。",
     examples:[
@@ -157,7 +157,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g02", cat:"ser-estar",
+    id:"g02", cat:"ser-estar", level:"a1a2",
     title:"ESTAR：位置與狀態",
     rule:"ESTAR 描述暫時性的狀態、位置，或正在進行的動作。",
     examples:[
@@ -193,7 +193,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g03", cat:"ser-estar",
+    id:"g03", cat:"ser-estar", level:"a1a2",
     title:"ESTAR + -ando：正在做某事",
     rule:"ESTAR（正確人稱）+ 動詞字尾改成 -ando / -iendo = 正在做某事。就像英文的 -ing！",
     emph:true,
@@ -217,7 +217,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g04", cat:"ser-estar",
+    id:"g04", cat:"ser-estar", level:"a1a2",
     title:"SER vs ESTAR + 描述詞：意思大不同！",
     rule:"同一個描述詞接 SER 或 ESTAR，意思會完全不同！SER = 本質評價；ESTAR = 當下感受。",
     examples:[
@@ -232,7 +232,7 @@ const GRAMMAR_DATA = [
   // ══ 時態 ══
 
   {
-    id:"g05", cat:"tense",
+    id:"g05", cat:"tense", level:"a1a2",
     title:"「已經做了」：haber + 動詞-ado/-ido形",
     rule:"haber（幫忙的動詞）+ 動詞-ado/-ido形 = 「已經做了某事」，結果跟現在有關。",
     examples:[
@@ -255,7 +255,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g06", cat:"tense",
+    id:"g06", cat:"tense", level:"b1",
     title:"「一直做到現在」：haber + estado + -ando",
     rule:"haber + estado + 動詞-ando = 「一直在做某事直到現在」，動作從過去延續到現在。",
     examples:[
@@ -268,7 +268,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g07", cat:"tense",
+    id:"g07", cat:"tense", level:"a1a2",
     title:"SER 說「將來的事」：seré / serás / será",
     rule:"SER 動詞表示「將來成為」某種身分或角色，常用於角色扮演或預測。",
     examples:[
@@ -293,7 +293,7 @@ const GRAMMAR_DATA = [
   // ══ Gustar 句型 ══
 
   {
-    id:"g08", cat:"gustar",
+    id:"g08", cat:"gustar", level:"a1a2",
     title:"Me gusta vs Me encanta：喜歡的程度",
     rule:"中文腦：「我喜歡這首歌。」→ 西語腦：「這首歌讓我覺得喜歡。」→ Me gusta esta canción. 動詞跟著「被喜歡的事物」走，不是說話者！Me gusta（單數事物）/ Me gustan（複數事物）；Me encanta = 我超愛（比 gusta 強 10 倍）。",
     examples:[
@@ -308,7 +308,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g09", cat:"gustar",
+    id:"g09", cat:"gustar", level:"a1a2",
     title:"A + 人 + le gusta：某人喜歡",
     rule:"A + 人名或代名詞 + le/les + gusta(n) + 名詞或原型動詞。",
     examples:[
@@ -323,7 +323,7 @@ const GRAMMAR_DATA = [
   // ══ 動詞句型 ══
 
   {
-    id:"g10", cat:"verb-pattern",
+    id:"g10", cat:"verb-pattern", level:"a1a2",
     title:"¿Podemos + 動詞?：我們可以…嗎？",
     rule:"poder 就是英文的 'can'，用來問「可以嗎」或說「能夠做」。podemos + 原型動詞（字典查到的形式）= 我們能夠 ___。",
     examples:[
@@ -346,7 +346,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g11", cat:"verb-pattern",
+    id:"g11", cat:"verb-pattern", level:"a1a2",
     title:"Deber + 動詞：你應該、必須",
     rule:"deber（義務）+ 原型動詞（字典查到的形式）= 應該做、必須做某事。",
     examples:[
@@ -369,7 +369,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g12", cat:"verb-pattern",
+    id:"g12", cat:"verb-pattern", level:"a1a2",
     title:"Para + 動詞：為了做某事",
     rule:"para + 原型動詞 = 為了…、目的是…。表示「目的」。",
     examples:[
@@ -382,7 +382,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g13", cat:"verb-pattern",
+    id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que + 子句：我認為…",
     rule:"Creo que + 完整子句 = 我認為、我覺得。表達個人意見或推測。",
     examples:[
@@ -397,7 +397,7 @@ const GRAMMAR_DATA = [
   // ══ 固定用語 ══
 
   {
-    id:"g14", cat:"phrase",
+    id:"g14", cat:"phrase", level:"a1a2",
     title:"No pasa nada：沒關係、沒事",
     rule:"字面意思「什麼都沒發生」，是西語最高頻的安慰語之一。",
     examples:[
@@ -410,7 +410,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g15", cat:"phrase",
+    id:"g15", cat:"phrase", level:"a1a2",
     title:"No te preocupes：不要擔心",
     rule:"preocuparse = 讓自己擔心起來；no te preocupes = 別讓自己擔心。對「你」說不要擔心。",
     examples:[
@@ -423,7 +423,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g16", cat:"phrase",
+    id:"g16", cat:"phrase", level:"a1a2",
     title:"直接下指令（對你說）",
     rule:"對「你」直接下指令：直接用動詞「他/她」的形式就行了，就像英文命令句去掉 You 一樣。",
     examples:[
@@ -436,7 +436,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g17", cat:"verb-pattern",
+    id:"g17", cat:"verb-pattern", level:"a1a2",
     title:"Sentir：感受情緒動詞",
     rule:"sentir（感受、覺得）用於描述情緒感受。常見句型：¿Cómo te sientes?（妳覺得怎麼樣？）",
     examples:[
@@ -459,7 +459,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g18", cat:"verb-pattern",
+    id:"g18", cat:"verb-pattern", level:"a1a2",
     title:"Vamos a + 動詞：我們來一起…",
     rule:"vamos a + 原型動詞 = let's + 動詞。也是 ir 動詞 nosotros 現在式。",
     examples:[
@@ -482,7 +482,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g19", cat:"tense",
+    id:"g19", cat:"tense", level:"a1a2",
     title:"IR + a + 動詞：即將要做的未來式",
     rule:"ir（去）的變位 + a + 原型動詞（字典查到的形式）= 就要去做某事，跟英文 be going to 幾乎一模一樣！這是任何人稱都能用的萬用近未來式，不是只有「我們一起來」的意思。",
     examples:[
@@ -496,7 +496,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g20", cat:"verb-pattern",
+    id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：擁有、年紀、生理感覺",
     rule:"tener 字面是「擁有」，但西語常用 tener 描述「年紀」或「生理感覺」，中英文會用 to be 處理的地方，西語卻用 to have！例如：tener hambre（有飢餓＝肚子餓了）、tener ___ años（有 ___ 歲＝ ___ 歲）。",
     examples:[
@@ -536,7 +536,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g21", cat:"word-order",
+    id:"g21", cat:"word-order", level:"a1a2",
     title:"形容詞位置：放在名詞後面",
     rule:"跟英文相反，西語的形容詞通常放在被形容的名詞之後。例如：la casa blanca（那棟白色的房子，直譯「房子 白色的」）。",
     examples:[
@@ -550,7 +550,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g22", cat:"gender",
+    id:"g22", cat:"gender", level:"a1a2",
     title:"可鹽可甜（有規矩？）：西語名詞陰陽性",
     rule:"奇異世界：el＝陽性／la＝陰性，連不會動的死物也不放過。<br><br>①能量感——El 像太陽（發散、直接），La 像月亮（包容、承載）。<br>②形狀感——El 常對應延伸／支撐／工具，La 常對應凹槽／容器／收納空間。",
     examples:[
@@ -565,7 +565,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g23", cat:"verb-pattern",
+    id:"g23", cat:"verb-pattern", level:"b1",
     title:"Andar + 現在分詞：拉美口語版的「正在」",
     rule:"andar（原意：走動、漫步）+ 動詞字尾改 -ando／-iendo，是拉美口語很愛用的「正在做」，比 estar + -ando 多一種『這陣子到處瞎忙、斷斷續續在做』的語感，不是單純陳述當下正在做。",
     examples:[
@@ -588,7 +588,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g24", cat:"phrase",
+    id:"g24", cat:"phrase", level:"b1",
     title:"Ahorita：拉美人的彈性時間感",
     rule:"課本教的「現在」是 ahora，但拉美日常（尤其墨西哥、哥倫比亞、中美洲）更常聽到「小現在」ahorita——字面是 ahora 加小稱字尾，意思卻彈性到嚇人：可能是『現在立刻』、『等一下下』、『幾小時後』，甚至是『再說吧（其實不太想做）』。",
     examples:[
@@ -601,7 +601,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g25", cat:"phrase",
+    id:"g25", cat:"phrase", level:"b1",
     title:"¿Qué tal?：字面翻譯會誤導的招呼語",
     rule:"教科書常把 ¿Qué tal? 直接翻成「你好」，但字面意思其實是「最近如何？／近來怎樣？」——是在問對方的近況，不是單純打招呼的空話，回答時通常會真的簡短說一下近況。",
     examples:[
@@ -614,7 +614,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g26", cat:"phrase",
+    id:"g26", cat:"phrase", level:"b1",
     title:"Vale：西班牙很愛講，拉美卻少見",
     rule:"Vale（好、OK，源自動詞 valer「值得」）是西班牙日常對話裡超高頻的詞，但在拉美很多地方反而少講，各地有自己愛用的說法：阿根廷愛講 dale，哥倫比亞／中美洲愛講 listo。",
     examples:[
@@ -629,7 +629,7 @@ const GRAMMAR_DATA = [
   // ══ 虛擬語氣（Subjuntivo） ══
 
   {
-    id:"g27", cat:"subjunctive",
+    id:"g27", cat:"subjunctive", level:"b2c1",
     title:"虛擬語氣入門：WEIRDO觸發詞",
     rule:"主要子句是「願望／情緒／非人稱評論／請求／懷疑或否定／Ojalá」這六類，而且**主要子句的主詞跟後面子句的主詞不一樣**時，que 後面的動詞要變成虛擬式（不是陳述式）。如果主詞相同，直接用原形動詞就好，不用 que + 虛擬式。",
     examples:[
@@ -664,7 +664,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g28", cat:"subjunctive",
+    id:"g28", cat:"subjunctive", level:"b2c1",
     title:"情緒動詞句型：主詞不同才觸發虛擬式",
     rule:"句型＝(A+人稱代詞)＋間接受詞＋情緒動詞＋infinitivo/sustantivo/que+虛擬式。同一個主詞造成自己的情緒反應時，用原形動詞；情緒反應的人（我）跟造成情緒的動作主詞（別人）不同時，才用 que + 虛擬式。",
     examples:[
@@ -678,7 +678,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g29", cat:"subjunctive",
+    id:"g29", cat:"subjunctive", level:"b2c1",
     title:"Ojalá (que) / ¡Que + 虛擬式!：日常祝福語小補給包",
     rule:"很多日常祝福語其實是「Espero que...」被省略掉 Espero 的簡化版——直接用 ¡Que + 虛擬式!開頭，是超高頻的口語祝福句型。Ojalá（源自阿拉伯語，字面「願真主保佑」）也一樣，後面固定接虛擬式表達願望。",
     examples:[
@@ -694,7 +694,7 @@ const GRAMMAR_DATA = [
   // ══ 連接詞 ══
 
   {
-    id:"g30", cat:"connector",
+    id:"g30", cat:"connector", level:"a1a2",
     title:"porque：因為",
     rule:"porque（因為）後面一定要接「完整的一句話」（有自己的主詞+動詞），用來說明原因。跟長得很像的 por 不一樣：por 是介系詞，後面直接接名詞就好，不用整句。",
     examples:[
@@ -707,7 +707,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g31", cat:"connector",
+    id:"g31", cat:"connector", level:"b1",
     title:"sino / sino que：否定句後的修正",
     rule:"sino 用在「前面是否定句」的情況，修正/替換成正確答案，中文常翻成「不是A而是B」。後面接名詞/形容詞/介系詞短語用 sino；後面要接一整句（有自己的主詞+動詞）就要用 sino que。",
     examples:[
@@ -720,7 +720,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g32", cat:"connector",
+    id:"g32", cat:"connector", level:"b1",
     title:"pero vs sino：都翻成「但是」，用法差很大",
     rule:"pero＝單純轉折（不管前面是肯定句還是否定句，就是「雖然...但是...」）；sino＝前面一定要是否定句，而且後面在「取代/糾正」被否定掉的東西，才能用。",
     examples:[
@@ -735,7 +735,7 @@ const GRAMMAR_DATA = [
   // ══ 易混淆詞組 ══
 
   {
-    id:"g33", cat:"confusable",
+    id:"g33", cat:"confusable", level:"b1",
     title:"por vs para：都翻成「為了/因為」，方向完全相反",
     rule:"por 看「原因／交換／經過的路徑」——往回看，因為什麼、用什麼換、穿過哪裡；para 看「目的／對象／期限」——往前看，為了什麼、給誰、到什麼時候。",
     examples:[
@@ -749,7 +749,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g34", cat:"confusable",
+    id:"g34", cat:"confusable", level:"b1",
     title:"saber vs conocer：都翻成「知道」，一個是資訊一個是熟悉感",
     rule:"saber＝知道「事實／資訊／怎麼做」（saber + 原形動詞＝會做某事）；conocer＝「認識／熟悉」人、地方、事物，強調本人親自接觸過的熟悉感。",
     examples:[
@@ -763,7 +763,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g35", cat:"confusable",
+    id:"g35", cat:"confusable", level:"b1",
     title:"pedir vs preguntar：中文都是「問」，西語看你是在要東西還是要答案",
     rule:"pedir＝「要／請求」得到東西或請對方做動作（pedir algo／pedir que + 虛擬式）；preguntar＝「問」問題、尋求資訊（preguntar algo／preguntar si...）。",
     examples:[
@@ -779,7 +779,7 @@ const GRAMMAR_DATA = [
   // ══ B2 成語語塊 ══
 
   {
-    id:"g36", cat:"phrase",
+    id:"g36", cat:"phrase", level:"b2c1",
     title:"Darle vueltas a algo：鑽牛角尖",
     rule:"字面「把某件事轉來轉去」，意思是反覆思考同一件事、停不下來地一直想，中文的「鑽牛角尖」剛好對得上。",
     examples:[
@@ -792,7 +792,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g37", cat:"phrase",
+    id:"g37", cat:"phrase", level:"b2c1",
     title:"Estar de brazos cruzados：袖手旁觀",
     rule:"字面「雙手交叉站著」，意思是什麼都不做、袖手旁觀，帶一點批評對方該行動卻沒行動的語氣。",
     examples:[
@@ -805,7 +805,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g38", cat:"phrase",
+    id:"g38", cat:"phrase", level:"b2c1",
     title:"Hacer la vista gorda：睜一隻眼閉一隻眼",
     rule:"字面「把視線變模糊」，意思是故意忽視某件事、睜一隻眼閉一隻眼，跟英文 turn a blind eye 是同一種「眼睛」隱喻，兩種語言剛好對得上。",
     examples:[
@@ -818,7 +818,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g39", cat:"phrase",
+    id:"g39", cat:"phrase", level:"b1",
     title:"Caer bien / caer mal：第一印象好壞",
     rule:"caer 字面是「掉落」，但 caer bien/mal a alguien 是形容某人給你的印象好或差——句型結構跟 gustar 一樣是「反過來說」：造成印象的人是主詞，不是「我」。",
     examples:[
@@ -831,7 +831,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g40", cat:"phrase",
+    id:"g40", cat:"phrase", level:"b2c1",
     title:"Ponerse las pilas：打起精神、加把勁",
     rule:"字面「幫自己裝上電池」，意思是打起精神、振作起來、加把勁去做某件事。",
     examples:[
@@ -844,7 +844,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g41", cat:"verb-pattern",
+    id:"g41", cat:"verb-pattern", level:"b1",
     title:"Echar：萬用動詞，意思看後面接什麼",
     rule:"echar 字面是「丟、扔」，但西語日常有好幾組固定搭配延伸出去，意思差很大，是典型的「萬用動詞」——一定要看後面接什麼才能確定意思。",
     examples:[
@@ -857,7 +857,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g42", cat:"verb-pattern",
+    id:"g42", cat:"verb-pattern", level:"b1",
     title:"Quedar en algo：約定好、講好",
     rule:"quedar 本身有「剩下／留下／變成」等意思，但 quedar en + 事情／quedar en que... 是固定搭配，意思是雙方「約定好、講好」要做某件事。",
     examples:[
@@ -872,7 +872,7 @@ const GRAMMAR_DATA = [
   // ══ B2 詞彙清單 ══
 
   {
-    id:"g43", cat:"vocab",
+    id:"g43", cat:"vocab", level:"b2c1",
     title:"B2心理形容詞：描述複雜情緒與心理狀態",
     rule:"A1-A2 常用的情緒字（feliz開心/triste難過）不夠用了，B2 需要更精準描述複雜心理狀態的形容詞——這些字幾乎都搭配 estar 或 sentirse（感覺起來），不是 ser，因為講的是暫時的心理狀態，不是永久本質。",
     examples:[
@@ -899,7 +899,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g44", cat:"vocab",
+    id:"g44", cat:"vocab", level:"b2c1",
     title:"B2社會時事詞彙",
     rule:"日常對話升級到能討論社會議題的B2詞彙——這些字常出現在新聞、社群討論、對社會現象發表意見的場合。",
     examples:[
@@ -927,7 +927,7 @@ const GRAMMAR_DATA = [
   // ══ 拉美文化小卡 ══
 
   {
-    id:"g45", cat:"phrase",
+    id:"g45", cat:"phrase", level:"b1",
     title:"打招呼與拜訪禮節：入境隨俗小提醒",
     rule:"拉美的問候禮儀比表面看起來複雜——例如「眼神接觸」不是單純「有禮貌」的規定式禮節，在跨社會地位／年齡的情境下，直視反而可能被解讀成挑釁，這點跟東亞「對長輩避免直視」的邏輯有共通之處，不是「眼神接觸＝尊重」這麼簡單。拜訪別人家時，進門先問候是基本禮貌，這點跟台灣習慣很像；日常聊天如果不熟，通常會避開政治話題。",
     examples:[
@@ -940,7 +940,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g46", cat:"phrase",
+    id:"g46", cat:"phrase", level:"b1",
     title:"各國口頭禪對照",
     rule:"拉美西語不是統一腔調，各國有自己愛用的口頭禪——這是額外認識文化差異用的補充知識，角色台詞仍維持「泛拉美中性詞」，不會因為這張卡就讓角色忽然講出某個特定國家的腔調。",
     examples:[
@@ -966,7 +966,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g47", cat:"phrase",
+    id:"g47", cat:"phrase", level:"b1",
     title:"一詞多義地雷：同一個字，各地意思差很大",
     rule:"有些西語字看起來一樣，在不同國家意思天差地遠，甚至從「可愛的」變成「粗俗的」，跨國溝通時要特別小心。",
     examples:[
@@ -979,7 +979,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g48", cat:"phrase",
+    id:"g48", cat:"phrase", level:"b1",
     title:"跨國禁忌小提醒",
     rule:"拉美各國有自己的禁忌文化，出發前先知道能避免尷尬。",
     examples:[
@@ -991,7 +991,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g49", cat:"phrase",
+    id:"g49", cat:"phrase", level:"b1",
     title:"拉美街頭美食與可可地圖",
     rule:"用食物認識文化是最沒有壓力的入門方式——每個國家都有自己的招牌小吃，可可／熱巧克力的喝法也各地不同。",
     examples:[
@@ -1001,8 +1001,56 @@ const GRAMMAR_DATA = [
     ],
     trap:"哥倫比亞／厄瓜多有把起司丟進熱巧克力裡一起喝的傳統喝法（chocolate con queso），聽起來奇怪但當地人很喜歡；肉桂等香料建議選天然的，不是人工香精調味。",
     source:"文法補充"
+  },
+
+  // ══ 比較級 ══
+
+  {
+    id:"g50", cat:"phrase", level:"b1",
+    title:"Más / Menos + 形容詞 + que：比較級公式",
+    rule:"跟英文不同！英文依單字長短分裂（bigger vs more beautiful），西語不管單字長短，一律套同一個公式：más（更）／menos（比較不）+ 形容詞 + que（比）。",
+    examples:[
+      {es:"Este charco es más grande que mi cama.", zh:"這個水坑比我的床更大。"},
+      {es:"El bug es menos difícil que ayer.", zh:"這個bug比昨天不難了。"},
+      {es:"Nita es más alta que Tito.", zh:"妮妲比迪多高。"}
+    ],
+    trap:"英文會在形容詞加字尾（taller）或加more（more beautiful），西語完全不加字尾——直接把 más／menos 像貼紙一樣貼在形容詞前面就好，形容詞本身不用變形。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g51", cat:"phrase", level:"b1",
+    title:"Tan + 形容詞 + como：一樣...跟...一樣（大地雷：como不是que）",
+    rule:"同等比較「一樣...」英文是 as + 形容詞 + as（前後同一個字），西語是 tan + 形容詞 + como——後面固定接 como，不能接 que，這是初學者最常踩的雷。",
+    examples:[
+      {es:"El bebé es tan lindo como tú.", zh:"寶寶跟你一樣可愛。"},
+      {es:"Esta galleta es tan dulce como la miel.", zh:"這塊餅乾跟蜂蜜一樣甜。"},
+      {es:"Tito es tan curioso como Nita.", zh:"迪多跟妮妲一樣好奇。"}
+    ],
+    trap:"❌ tan...que 是錯的組合（que 是「比較級」的專利，跟 más/menos 配對）；✅ tan...como 才是「同等比較」的固定搭配，後面一定要接 como，牢記這個地雷組合不要混。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g52", cat:"phrase", level:"b1",
+    title:"Mejor / Peor / Mayor / Menor：四個不規則比較級",
+    rule:"這四個字是比較級的傲嬌大魔王——前面絕對不能加 más 或 menos，它們自己就是「更好/更慘/更大/更小」的完整比較級形態，跟英文 good→better、bad→worse 是同一種邏輯。",
+    examples:[
+      {es:"Tu ayuda es mejor que un café.", zh:"你的幫忙比咖啡更好。"},
+      {es:"El clima es peor hoy.", zh:"今天天氣更糟。"},
+      {es:"Mi hermano mayor juega en el lodo.", zh:"我哥哥（年紀較大的）在泥巴裡玩。"}
+    ],
+    trap:"❌ más bueno／más malo 是錯的，要說 mejor／peor；mayor／menor 除了比較級（年長/年幼）也常直接當形容詞用（hermano mayor＝哥哥、hermana menor＝妹妹），不是每次都在做比較。",
+    source:"文法補充"
   }
 
+];
+
+/* CEFR 等級標籤（不當內容鎖，只當導覽用的視覺標籤＋篩選）*/
+const GRAMMAR_LEVEL_TIERS = [
+  {key:"a1a2", icon:"🌱", label:"護土嫩芽"},
+  {key:"b1",   icon:"💧", label:"甘露超頻"},
+  {key:"b2c1", icon:"🍯", label:"蜂王蜜釀"}
 ];
 
 /* 全局句子索引（ep*10 + sentenceIdx）→ grammar_id

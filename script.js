@@ -2357,15 +2357,36 @@ function _grammarExChunks(es, playExpr){
 }
 
 // ── 💧 文法儲水槽（沒有綁定特定劇情句子、從外面引進來的零散文法點） ──
+// 等級標籤只是導覽輔助，不是內容鎖：篩選只是隱藏/顯示，隨時可以切回「全部」看到所有卡片
+let _gsupLevelFilter = 'all';
+function _gsupLevelInfo(levelKey){
+  return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
+}
 function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
+  const filterEl = document.getElementById('grammarLevelFilter');
   if(!el) return;
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充'));
-  el.innerHTML = items.map(g=>`
+  if(filterEl){
+    const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
+    filterEl.innerHTML = chip('all','📋','全部') + GRAMMAR_LEVEL_TIERS.map(t=>chip(t.key, t.icon, t.label)).join('');
+  }
+  const shown = _gsupLevelFilter==='all' ? items : items.filter(g=>g.level===_gsupLevelFilter);
+  el.innerHTML = shown.map(g=>{
+    const lv = _gsupLevelInfo(g.level);
+    return `
     <div class="gsup-row" onclick="openGrammarCard('${g.id}')">
-      <div class="gsup-title">${g.title}</div>
+      <div class="gsup-title-row">
+        <span class="gsup-title">${g.title}</span>
+        <span class="gsup-level-badge" title="${lv.label}">${lv.icon}</span>
+      </div>
       <div class="gsup-rule">${g.rule}</div>
-    </div>`).join('');
+    </div>`;
+  }).join('') || `<div class="garden-empty-msg">這個等級目前還沒有卡片</div>`;
+}
+function filterGrammarSupplementByLevel(key){
+  _gsupLevelFilter = key;
+  renderGrammarSupplement();
 }
 
 function toggleGrammarSupplement(){
