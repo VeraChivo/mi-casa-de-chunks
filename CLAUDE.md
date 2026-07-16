@@ -169,7 +169,8 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     - B2詞彙清單：心理形容詞(agobiado/decepcionado/exigente/indiferente/frustrado)、社會時事詞(peatón/ciudadano/polémica/prejuicio/igualdad/desempeñar/ocio)、萬用動詞(echar的多義：丟/開除/倒水/echar de menos想念；quedar en algo=約定好)
     - 成語語塊：darle vueltas a algo(鑽牛角尖)、estar de brazos cruzados(袖手旁觀)、hacer la vista gorda(睜一隻眼閉一隻眼)、caer bien/mal(第一印象好壞，拉美口語me cae gordo=我看他不順眼)、ponerse las pilas(振作起來)
     - 拉美俚語箱：墨西哥chido/¡qué onda!、哥倫比亞bacano/parce/vaina(萬用「東西」)、阿根廷che/copado；網路縮寫(xq/gpi/tkm)
-  - **🟡 中（要動UI但範圍可控，等地基打好再做）**：太極變身鏡加「陳述式↔虛擬式」切換鈕（同人稱看tengo變tenga）；心田深耕新增B2子分類（🔥拉美修羅場/🎬流行樂陳釀）
+    - **太極變身鏡：陳述式vs虛擬式對比（2026-07-15 改案，降級成小工程）**：原本想做「切換鈕」，VERA後來確認**不用切換鈕，直接把兩種形式並排列出**(如 tengo(陳述式) / tenga(虛擬式) 並排顯示)，不用點擊互動——這樣改成純內容/既有卡片格式就能做，不是UI工程。**確立為之後的標準做法**：只要遇到「陳述式vs虛擬式」這類對比，一律用直接並排靜態顯示，不做切換鈕。
+  - **🟡 中（要動UI但範圍可控，等地基打好再做）**：心田深耕新增B2子分類（🔥拉美修羅場/🎬流行樂陳釀）
   - **🔴 大（真正新功能，放最後）**：歌詞填空模組（選歌+版權+新互動元件）、留言區抓蟲模組（模擬社群貼文UI，全新元件）、「✨邁向精釀下一階」整體切換鈕架構
 
   **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
