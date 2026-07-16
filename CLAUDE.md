@@ -208,6 +208,12 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     - **待確認**：VERA問「通過才能領勳章？」——是否要把①的Google鍵盤辨識成功／③的GPT對話完成，設計成里程碑勳章的解鎖條件之一(不只是累積語塊量)，尚未定案，等之後真的要做里程碑系統時一併決定。
 
   **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
+  - [ ] **比較級（comparativo）grammar.js 目前零覆蓋，已備好內容待建卡（2026-07-16 VERA帶回，已查證屬實）**：西語比較級公式跟英文邏輯不同的教學重點——英文依單字長短分裂（bigger vs more beautiful），西語一律統一套公式，不分長短字：
+    - **más + 形容詞 + que**（更...比...）：`Este charco es más grande que mi cama.`
+    - **menos + 形容詞 + que**（比較不...比...）：`El Bug es menos difícil que ayer.`
+    - **tan + 形容詞 + como**（一樣...跟...一樣，⚠️最大地雷：後面固定接como不是que，跟英文as...as邏輯對不上，初學者常誤用tan...que）：`Esta galleta es tan dulce como la miel.`
+    - **四個不規則比較級（跟英文good→better/bad→worse同一種邏輯，前面不能加más/menos）**：mejor(更好)、peor(更慘/更糟)、mayor(年長/較大)、menor(年幼/較小)。例：`Tu ayuda es mejor que un café.`／`Mi hermano mayor juega en el lodo.`
+    - 已查證：文法規則正確，跟英文對比的教學角度也正確；grammar.js目前完全沒有比較級專屬卡（只有"mejor/peor"零星出現在其他不相關語境如`las mejores amigas`最高級用法）。之後建卡時可以拆2-3張（más/menos+que一張、tan+como地雷一張、四個不規則比較級一張），皆可標`source:"文法補充"`直接進💧文法儲水槽，不用改UI。
   - [x] **連接詞文法卡 porque/sino/pero 已完成（2026-07-16，見 grammar.js g30/g31/g32，新分類`cat:"connector"`）**：g30 porque（因為，後面接完整子句，跟介系詞por接名詞的差異）／g31 sino/sino que（否定句後修正，「不是A而是B」，依後面是不是完整子句判斷用sino還是sino que）／g32 pero vs sino 對比卡（判斷口訣：後面是不是在「取代/糾正」前面被否定的東西）。皆為新造Nita/Tito情境例句，source標「文法補充」自動進💧文法儲水槽，已用Node模擬`_grammarExChunks`驗證無crash。既有連接詞句子盤點（供對照）：episodes.js 目前有13句已標`role:'c'`——así que(E1×1)、pero(E7/E8×2/E9×2)、y(E3×2/E10×3)、Cuando(E2×1)、Después(E3×1)。
   - [x] **易混淆詞組 por/para、saber/conocer、pedir/preguntar 已完成（2026-07-16，見 grammar.js g33/g34/g35，新分類`cat:"confusable"`）**：g33 por vs para（口訣：por＝因為看原因/交換/路徑，para＝為了看目的/對象/期限）／g34 saber vs conocer（saber=知道事實/會做某事，conocer=認識人地方事物，含「認識人受詞要加a」的中文母語者常見錯誤提醒）／g35 pedir vs preguntar（pedir=要東西/請求動作，preguntar=問問題找資訊，g35第二句`Le pido a Nita que me ayude.`呼應g27 WEIRDO口訣的R=Requests）。皆新造Nita/Tito情境例句，source標「文法補充」，已用Node模擬驗證無crash。
   - [x] **虛擬語氣（subjuntivo）零覆蓋已補完（2026-07-16 完成，見 grammar.js g27/g28/g29）**：原本 grammar.js 26張卡零覆蓋，是最大文法空缺，已新增3張卡＋新分類`cat:"subjunctive"`（GRAMMAR_CATS新增「虛擬語氣」標籤）：**g27「虛擬語氣入門：WEIRDO觸發詞」**（WEIRDO口訣完整六類＋判斷關鍵是「兩子句主詞是否相同」，含5人稱現在虛擬式變位表，示範動詞hablar）；**g28「情緒動詞句型：主詞不同才觸發虛擬式」**（VERA查證過的4句情緒動詞例句，示範同主詞用原形動詞vs不同主詞用que+虛擬式的對比，含第④句「A mí me pone de mal humor que la gente haga ruido en el teatro.」這個最自然的真實例句）；**g29「Ojalá (que) / ¡Que + 虛擬式!：日常祝福語小補給包」**（¡Que tengas un buen día!這類高頻口語祝福句，Ojalá加不加que的地區差異已標註「母語論壇觀察，非查證得到的正式規則，待老師確認」）。三張皆用`source:"文法補充"`，會自動出現在💧文法儲水槽清單，不用另外改UI。已用Node.js模擬`_grammarExChunks`/`buildConjTable`驗證無crash、無`[object Object]`。
