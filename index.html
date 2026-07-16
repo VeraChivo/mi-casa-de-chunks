@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260716a2">
+<link rel="stylesheet" href="style.css?v=20260716a3">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -25,6 +25,22 @@
   <div class="header">
     <div class="header-title">🏡 Mi Pequeña Casa</div>
     <div class="header-subtitle">拉美西語小莊園</div>
+    <button class="header-tour-btn" onclick="showWelcomeTour(true)" title="莊園導覽">❓ 莊園導覽</button>
+  </div>
+
+  <!-- ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從上面「❓ 莊園導覽」重新打開） ── -->
+  <div id="welcomeTourOverlay" style="display:none">
+    <div class="welcome-tour-card">
+      <div id="welcomeTourBody"></div>
+      <div class="welcome-tour-dots" id="welcomeTourDots"></div>
+      <div class="welcome-tour-nav">
+        <button class="welcome-tour-skip" onclick="closeWelcomeTour()">跳過</button>
+        <div class="welcome-tour-nav-right">
+          <button class="welcome-tour-prev" id="welcomeTourPrevBtn" onclick="welcomeTourPrev()">◀ 上一步</button>
+          <button class="welcome-tour-next" id="welcomeTourNextBtn" onclick="welcomeTourNext()">下一步 ▶</button>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- ── 四 TAB 切換 ── -->
   <div class="main-tab-bar">
@@ -439,6 +455,6 @@
   <script src="mom.js?v=20260716a1"></script>
   <script src="diary.js?v=20260715a2"></script>
   <script src="corazon.js?v=20260715a3"></script>
-  <script src="script.js?v=20260716a3"></script>
+  <script src="script.js?v=20260716a4"></script>
 </body>
 </html>

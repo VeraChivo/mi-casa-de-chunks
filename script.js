@@ -3273,6 +3273,50 @@ function handleReminderDeepLink(){
   }
 }
 
+// ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從「❓ 莊園導覽」重新打開）──
+const WELCOME_TOUR_STEPS = [
+  {icon:"🌾", title:"田間播語塊", desc:"這是妳每天播種語言的田地。點開劇集，跟著莊園主家一句一句學西語，完成句子還能解鎖彈藥庫語塊。"},
+  {icon:"☀️", title:"日光育苗場", desc:"這裡收藏著文法儲水槽、動詞變位查詢、SEL情緒篇章、假同源詞警示……所有知識養分都在這裡，隨時回來翻閱。"},
+  {icon:"🛌", title:"床邊低語呢", desc:"媽媽的深夜角落——情緒語塊、心田深耕真心話、日記手札，都收在這裡。"},
+  {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"}
+];
+let _welcomeTourStep = 0;
+function showWelcomeTour(force){
+  if(!force){
+    try{ if(localStorage.getItem('peppa_welcome_tour_seen_v1')) return; }catch(e){}
+  }
+  _welcomeTourStep = 0;
+  renderWelcomeTourStep();
+  document.getElementById('welcomeTourOverlay').style.display = 'flex';
+}
+function renderWelcomeTourStep(){
+  const s = WELCOME_TOUR_STEPS[_welcomeTourStep];
+  document.getElementById('welcomeTourBody').innerHTML = `
+    <div class="welcome-tour-icon">${s.icon}</div>
+    <div class="welcome-tour-title">${s.title}</div>
+    <div class="welcome-tour-desc">${s.desc}</div>`;
+  document.getElementById('welcomeTourDots').innerHTML = WELCOME_TOUR_STEPS
+    .map((_,i)=>`<span class="welcome-tour-dot${i===_welcomeTourStep?' active':''}"></span>`).join('');
+  const prevBtn = document.getElementById('welcomeTourPrevBtn');
+  const nextBtn = document.getElementById('welcomeTourNextBtn');
+  prevBtn.disabled = _welcomeTourStep === 0;
+  nextBtn.textContent = _welcomeTourStep === WELCOME_TOUR_STEPS.length-1 ? '開始探索莊園吧！' : '下一步 ▶';
+}
+function welcomeTourNext(){
+  if(_welcomeTourStep >= WELCOME_TOUR_STEPS.length-1){ closeWelcomeTour(); return; }
+  _welcomeTourStep++;
+  renderWelcomeTourStep();
+}
+function welcomeTourPrev(){
+  if(_welcomeTourStep <= 0) return;
+  _welcomeTourStep--;
+  renderWelcomeTourStep();
+}
+function closeWelcomeTour(){
+  document.getElementById('welcomeTourOverlay').style.display = 'none';
+  try{ localStorage.setItem('peppa_welcome_tour_seen_v1', '1'); }catch(e){}
+}
+
 function initReminders(){
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -3309,4 +3353,5 @@ function initReminders(){
   restoreActiveTab();
   initReminders();
   handleReminderDeepLink();
+  showWelcomeTour(false);
 })();
