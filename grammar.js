@@ -108,7 +108,8 @@ const GRAMMAR_CATS = [
   {key:"phrase",       label:"固定用語"},
   {key:"word-order",   label:"詞序"},
   {key:"gender",       label:"名詞陰陽性"},
-  {key:"subjunctive",  label:"虛擬語氣"}
+  {key:"subjunctive",  label:"虛擬語氣"},
+  {key:"connector",    label:"連接詞"}
 ];
 
 
@@ -685,6 +686,47 @@ const GRAMMAR_DATA = [
       {es:"Ojalá que llueva pronto.", zh:"希望快點下雨。"}
     ],
     trap:"「Ojalá」後面加不加 que，兩種說法都有人講、且後面都一定要接虛擬式——網路上常聽到「拉美習慣加 que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。可以確定的是：Ojalá + 原形動詞（不接 que 也不接虛擬式）不符合 RAE 規範，這個要避免。",
+    source:"文法補充"
+  },
+
+  // ══ 連接詞 ══
+
+  {
+    id:"g30", cat:"connector",
+    title:"porque：因為",
+    rule:"porque（因為）後面一定要接「完整的一句話」（有自己的主詞+動詞），用來說明原因。跟長得很像的 por 不一樣：por 是介系詞，後面直接接名詞就好，不用整句。",
+    examples:[
+      {es:"Nita está cansada porque no durmió bien anoche.", zh:"妮妲很累，因為她昨晚沒睡好。"},
+      {es:"Tito no quiere hablar porque tiene vergüenza.", zh:"迪多不想說話，因為他覺得害羞。"},
+      {es:"No fuimos al parque porque estaba lloviendo.", zh:"我們沒去公園，因為在下雨。"}
+    ],
+    trap:"porque 後面接「主詞+動詞」的完整句子；如果原因只是一個名詞、不是一整句話，要換成 por + 名詞（例如 por la lluvia／因為下雨），不能說 porque la lluvia。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g31", cat:"connector",
+    title:"sino / sino que：否定句後的修正",
+    rule:"sino 用在「前面是否定句」的情況，修正/替換成正確答案，中文常翻成「不是A而是B」。後面接名詞/形容詞/介系詞短語用 sino；後面要接一整句（有自己的主詞+動詞）就要用 sino que。",
+    examples:[
+      {es:"Nita no es maleducada, sino que tiene ansiedad social.", zh:"妮妲不是沒禮貌，而是有社交焦慮。（後面是完整子句，用 sino que）"},
+      {es:"Esto no es un problema, sino una oportunidad.", zh:"這不是問題，而是機會。（後面只是名詞，用 sino）"},
+      {es:"Tito no está enojado, sino cansado.", zh:"迪多不是生氣，而是累了。（後面是形容詞，用 sino）"}
+    ],
+    trap:"判斷用 sino 還是 sino que，看後面是不是一個完整句子（有自己的主詞+動詞）——有主詞+動詞用 sino que，只是名詞/形容詞/介系詞短語用 sino。sino 一定要「前面是否定句、後面在做替換/修正」才能用，這跟 pero 的單純轉折不一樣（見下一張卡對照）。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g32", cat:"connector",
+    title:"pero vs sino：都翻成「但是」，用法差很大",
+    rule:"pero＝單純轉折（不管前面是肯定句還是否定句，就是「雖然...但是...」）；sino＝前面一定要是否定句，而且後面在「取代/糾正」被否定掉的東西，才能用。",
+    examples:[
+      {es:"Quiero ir, pero no tengo tiempo.", zh:"我想去，但是我沒時間。（pero：單純轉折，前面是肯定句）"},
+      {es:"No quiero ir, pero lo haré por ti.", zh:"我不想去，但我會為你去做。（pero：前面雖是否定句，後面只是轉折、不是在替換前面的內容，還是用 pero）"},
+      {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（sino：前面否定，後面在替換掉前面被否定的東西）"}
+    ],
+    trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），一律用 pero。這是初學者最容易搞混的一組連接詞。",
     source:"文法補充"
   }
 
