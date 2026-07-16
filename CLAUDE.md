@@ -139,6 +139,30 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
   這3集連同 SEL 線一起，是 2026-07-14 這批「6集批次」的溫馨線部分（另外3集是SEL線，見上方小小自我蛻變攻略）。
 
 ### 待處理
+- [ ] **📋 2026-07-15 大量討論記錄（連接詞/拉美文化/ND議題/UI設計，全部尚未執行，純記錄避免遺忘）**：VERA 從隔壁AI帶回一大批素材，逐條核對過事實正確性，先分級記錄，之後排時間再一項項動工。
+
+  **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
+  - **連接詞文法卡**：porque（因為）、sino（否定句後修正，「不是A而是B」）、pero vs sino 差異、易混淆動詞組 por/para、saber/conocer、pedir/preguntar，皆已備好例句草稿（Nita/Tito情境）。既有連接詞句子盤點：episodes.js 目前有13句已標`role:'c'`——así que(E1×1)、pero(E7/E8×2/E9×2)、y(E3×2/E10×3)、Cuando(E2×1)、Después(E3×1)；但porque、sino目前**零例句**，grammar.js也**完全沒有連接詞專屬卡**。
+  - **虛擬語氣（subjuntivo）**：grammar.js 26張卡**零覆蓋**，是最大文法空缺。已備WEIRDO口訣草稿、Quiero que/Espero que/Ojalá(que)例句、¡Que tengas un buen día!這類日常祝福句。適合帶去問老師的問題：「拉美口語什麼時候『一定要用』虛擬語氣，用錯會不會顯得沒禮貌？」「Ojalá que一定要接虛擬式嗎？」
+  - **拉美地陪文化卡**：問候禮儀（握手/擁抱/眼神接觸——查證後這條比想像複雜，拉美文化中直視在跨社會地位/年齡情境下也可能被解讀成挑釁，跟東亞「對長輩避免直視」邏輯有共通點，不是單純「眼神接觸=尊重」的規定式敘述，寫法要溫和中性）、拜訪禮節（進門先問候，跟台灣習慣像）、避談政治、街頭美食巡迴（墨西哥Tacos al pastor/Tamal、加勒比Tostones沾酪梨醬、哥斯大黎加Gallo Pinto、阿根廷Choripán/Fugazzeta——VERA個人對阿根廷這組沒興趣但內容可留）、可可/熱巧克力（咖啡地圖已擱置改用這個，含哥倫比亞/厄瓜多起司熱巧克力 Chocolate con queso，VERA很喜歡要放進地圖，肉桂偏好天然的不要人工香精）。
+  - **跨國禁忌小專題**（VERA確認獨立成一個小專題）：烏拉圭忌諱13、星期五、青色；避免用食指指人（提醒：這條很多文化都有，非拉美獨有，用詞要注意）。
+  - **各國口頭禪對照**：墨西哥Este.../阿根廷Che、Viste/智利句尾Po/哥倫比亞Pues；肯定語Dale(通用)、Ya、¡Ándale!(墨西哥)。**一詞多義地雷**：Guagua（**已訂正**：智利/秘魯=嬰兒源自蓋丘亞語，古巴/波多黎各/加那利群島=公車，隔壁AI原始資料寫反了）、Coger（哥倫比亞普通"拿"，墨西哥/阿根廷等地粗俗）、Palta(祕魯智利)vs Aguacate(其他地區，酪梨)。
+  - Voseo（vos取代tú，阿根廷/烏拉圭）——**⚠️注意這個之前已經定案不做**（維持tú/ustedes標準拉美用法），這批新素材又重提，之後若要重新考慮要先跟VERA確認是否推翻原決定。
+  - **一致性小bug待確認**：`.full-sent`（整句朗讀顯示框）目前用襯線體`Noto Serif TC`，跟隔壁AI建議的「ADHD友善用無襯線體」原則不符，其餘UI已經是Nunito無襯線體，這處是唯一例外，待VERA確認要不要改成無襯線。
+
+  **🟡 中成本（新UI元件，範圍可控）**
+  - **連接詞專區**：獨立於💧文法儲水槽的新卡片，收納pero/porque/y/sino/así que，用既有13句劇情句＋新造句當例句；**搜尋要支援中/英/西三語**（VERA指定）。
+  - **社交電量表西語版**：VERA看到「Autismo Real」運動提到的社交電量／過載視覺化很喜歡，想做西語版，還沒想放哪個分頁。
+  - **螢光筆設計系統（精簡版，數值已定案）**：語塊(內容)border-radius:8px圓潤／連接詞(邏輯)border-radius:0方形；padding節奏——y/and左右2px(緊湊)、pero/but左右15px(呼吸感)；底色透明度約rgba/hsla 0.2讓文字融進底色。**注意**：原始隔壁AI提案還有虛線底線標主謂一致、S/V小標籤徽章、拼圖凹凸接口等技巧，已建議VERA不要全部疊加(违反網站一貫的簡約原則)，只留這3個最有感的技巧。
+  - **ND倡議者延伸連結**：Cecilia Acuña(@neurodivergente.ar 阿根廷)、Paula Vallejo(@neurodivergencias.org 智利)、Adriana Díaz Enciso(@tdah.mx 墨西哥)、Aü Comunidad Autista(墨西哥)、Fundación BRINCAR/Autismored(阿根廷)——**VERA已定調處理方式：只放超連結（類似友站連結），不寫他們的介紹內容**，降低真人真名曝光風險；之後真的要放時仍需先查證連結本身正確性。
+  - **智利Ley TEA自閉症法案、哥倫比亞PIAR個別化調整計畫**（VERA對照：台灣叫IEP）、Neuroafirmativa(肯定式照護)、Camuflaje social(社交偽裝/masking)、Autismo Real運動——這些是拉美ND文化的知識點，還沒決定放哪個分頁，可能跟聊療吾心語或SEL線有關。
+
+  **🔴 高成本（真正的新功能）**
+  - **英文轉運站/多語干擾防護**：輸入基礎英文自動跳出對應西語語塊，目前網站**完全沒有這個功能**（唯一的搜尋框是動詞變位庫的過濾搜尋，不是翻譯站）。
+  - **拉美地圖點擊挑戰**：互動地圖，點國家跳出該地區角色專屬台詞（如Ahorita/Vos+Che），需要地圖圖形、多國台詞內容、新錄音，是全新互動元件。
+  - **亡靈節(Día de los Muertos)特輯**：VERA明確表示很喜歡想開專題，內容量比一般trivia重（象徵/由來/常見誤解要寫清楚），不需要新UI但要花時間好好寫。
+  - **SVO骨架vs連接詞膠水模式切換系統**：如果連接詞真的要上鮮豔顏色分類，需要跟既有SVO配色系統(S=虛線框/V=實色底/O=實線框)分層，避免打架，隔壁AI提案是做「模式切換」(SVO模式/花園模式)，這是真正的新UI邏輯，不是小改。
+
 - [x] **💧 文法儲水槽（2026-07-13 完成，見 grammar.js g19/g20/g21＋script.js renderGrammarSupplement()）**：VERA 貼來三個新文法點——形容詞位置（放名詞後面，跟英文相反）、TENER（除了「擁有」還用於表達年紀/生理感覺）、IR + a + 動詞（萬用近未來式，不限「我們」）。新增 grammar.js g19（IR近未來，cat:tense）／g20（TENER，含六人稱變位表，cat:verb-pattern）／g21（形容詞位置，新增 cat:"word-order" 詞序分類）。**這三個沒有對應到特定劇情句子**，為了不讓新內容變成點不到的孤兒資料，在 ☀️日光育苗場新增常駐卡「💧 文法儲水槽」，用 `source` 欄位含「文法補充」關鍵字篩選 GRAMMAR_DATA 自動列出可點清單，之後同類的零散文法點只要 source 標上「文法補充」就會自動出現，不用再改 UI。TENER 因為有 conj 變位表，同時也會自動出現在既有的🌀超級變變變裡。**⚠️ VERA 事後追問「沒有例句沒關係嗎」，發現初版三張卡的例句全是我新編的、沒有掛到劇情原句——已補查回 ammo.js 彈藥庫，把能找到的真實原句換上去**：g20（TENER）與 g21（形容詞位置）現在第一、二句都改用彈藥庫 e4_03 的真實原句（`Nita y Tito tienen una hermana nueva.` / `Tienes una hermana mayor.` / `Tenemos una casa nueva.`，同時示範了「擁有」跟「形容詞放名詞後面」兩件事）；g19（IR近未來）第一句改用彈藥庫 e2_04 的真實原句 `Todo va a salir bien.`。**仍是新編、目前劇情裡還沒有對應原句的部分**：TENER 表「年紀」的用法（`Tito tiene seis años.`）、IR 的第一/二人稱近未來（`Voy a comer.` / `¿Vas a dormir?`）——這兩處西語圈子本身確認正確，但還不是「劇情裡真的出現過」的句子，每個 example 的 zh 欄位已標註「新編例句」以資區別，source 欄位也拆成「彈藥庫 xxx（第N句）／文法補充（其餘為新編）」的格式，之後要幫這兩處補真正的劇情句子時，可以直接搜尋這個標註定位。**卡片名稱定案為「💧 文法儲水槽」**（VERA 嫌原本暫名「🧩 文法補充包」不夠貼莊園主題，提出「挖渠引水：建立語意的流通渠道」的意象——這些文法點不是從劇情裡長出來的，是額外從外面引進來的通用文法水源，灌進莊園滋養主線；最後定案用「儲水槽」而非「引水渠」，把水存起來的畫面更貼合「補充庫」的功能）。**⚠️ 流程提醒**：VERA 明確要求之後**取名字這類主觀/風格決定要先跟她討論再動手**，不要做完才回頭改，並確認過改名字本身很便宜（純文字置換，不算燒額度）。
 - [x] **💎☁️ 是・在對照站（SER vs ESTAR，2026-07-13 完成，見 grammar.js g01/g02 的 mnemonic 欄位＋script.js renderSerEstarStation()）**：VERA 貼來 SER 的 DOCTOR 口訣（Description/Occupation/Characteristics/Time/Origin/Relationship）與 ESTAR 的 PLACE 口訣（Position/Location/Action/Condition/Emotion），已整理進 grammar.js g01（SER）/g02（ESTAR）的新 `mnemonic` 欄位，並在 ☀️日光育苗場（tabKnow）新增一張常駐（不需展開）快覽卡，取名**「💎☁️ 是・在對照站」**——左右兩欄分別對應 SER/ESTAR 口訣重點，點卡片＝跳進原本的 `openGrammarCard()` 文法詳解彈窗（完整例句＋六人稱變位表都在裡面，沒有另外重做一套頁面）。色彩沿用既有 CSS 變數不 hardcode：SER＝`--mizu`/`--misora`（水色家族），ESTAR＝`--benikake`（紅掛空色，作對比色，呼應 VERA 提議的「SER鑽石💎／ESTAR天氣☀️」聯想）。**同時修掉一個一致性問題**：VERA 截圖圈出文法彈窗例句旁多了一個獨立「▶」播放鍵，跟全站「點語塊本身發音」慣例（renderScriptLine／_grammarExChunks）不一致，已移除該按鈕（含「你的造句」區塊），統一改成點語塊本身發音。**順手修正一個換皮遺漏**：grammar.js g03 例句殘留的 `papá Pig`（2026-07-06 換皮掃描漏網）已改為 `Papá Tato`。
 - [x] **📤 日記匯出備份按鈕**（2026-07-06 完成）：穀倉大豐收分頁底部「🧳 資料保險箱」＝📤 打包行囊（匯出備份）＋📥 行囊歸位（匯入還原）。備份範圍＝全站 9 個 localStorage key（學習進度＋花園＋詞彙＋文法＋日記＋手札＋聊療吾心語），下載成 mi-casa-backup-日期.json；匯入前有覆蓋確認、完成自動重新整理。函數在 script.js（exportBackup/importBackupFile/BACKUP_KEYS）。
