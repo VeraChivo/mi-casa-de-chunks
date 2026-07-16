@@ -259,11 +259,11 @@ const GRAMMAR_DATA = [
     title:"「一直做到現在」：haber + estado + -ando",
     rule:"haber + estado + 動詞-ando = 「一直在做某事直到現在」，動作從過去延續到現在。",
     examples:[
-      {es:"Habéis estado saltando en los charcos de barro.", zh:"你們一直在泥巴坑裡跳。"},
+      {es:"Ustedes han estado chapoteando en los charcos de barro.", zh:"你們一直在泥巴坑裡玩水。"},
       {es:"He estado estudiando toda la tarde.", zh:"我整個下午都在念書。"},
       {es:"Mamá ha estado cocinando.", zh:"媽媽一直在煮飯。"}
     ],
-    trap:"habéis = 你們（西班牙用法）；拉美常用 han + estado 取代。英語對應：have been + -ing",
+    trap:"拉美用 ustedes + han + estado；vosotros + habéis + estado 是西班牙用法，這個網站教拉美西語優先練 han。英語對應：have been + -ing",
     source:"E2·S10"
   },
 
@@ -298,7 +298,7 @@ const GRAMMAR_DATA = [
     rule:"中文腦：「我喜歡這首歌。」→ 西語腦：「這首歌讓我覺得喜歡。」→ Me gusta esta canción. 動詞跟著「被喜歡的事物」走，不是說話者！Me gusta（單數事物）/ Me gustan（複數事物）；Me encanta = 我超愛（比 gusta 強 10 倍）。",
     examples:[
       {es:"Me gusta el chocolate.", zh:"我喜歡巧克力。（單數 → gusta）"},
-      {es:"Me encanta saltar en los charcos.", zh:"我超愛在水坑裡跳。"},
+      {es:"Me encanta chapotear en los charcos.", zh:"我超愛在水坑裡玩水。"},
       {es:"Me gustan las galletas.", zh:"我喜歡餅乾。（複數 → gustan）"},
       {es:"No me gusta la lluvia.", zh:"我不喜歡下雨。（否定：前面加 no）"},
       {es:"¿Te gusta el chocolate?", zh:"你喜歡巧克力嗎？（問句：me換成 te）"}
@@ -313,7 +313,7 @@ const GRAMMAR_DATA = [
     rule:"A + 人名或代名詞 + le/les + gusta(n) + 名詞或原型動詞。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
-      {es:"A todos les encanta saltar en los charcos.", zh:"所有人都超愛在水坑裡跳。"},
+      {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"},
       {es:"A mí me gusta el café.", zh:"我喜歡咖啡。（加 a mí 是為了強調）"}
     ],
     trap:"代名詞對應：a mí me / a ti te / a él,ella,usted le / a nosotros nos / a ustedes,ellos,ellas les（西班牙另有 a vosotros os，拉美不用）",

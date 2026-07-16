@@ -36,7 +36,7 @@ const S3_OBJECTS = [
   {es_m:"amigo",                     es_f:"amiga",                    zh:"朋友",      has_gender:true,  type:"noun"},
   {es_m:"detective",                 es_f:"detective",                zh:"偵探",      has_gender:false, type:"noun"},
   {es_m:"médico",                    es_f:"médica",                   zh:"醫生",      has_gender:true,  type:"noun"},
-  {es_m:"saltar en charcos de barro",es_f:"saltar en charcos de barro",zh:"跳泥巴水坑",has_gender:false, type:"inf"},
+  {es_m:"chapotear en charcos de barro",es_f:"chapotear en charcos de barro",zh:"玩泥巴水坑",has_gender:false, type:"inf"},
   {es_m:"salir a jugar",             es_f:"salir a jugar",            zh:"出去玩",    has_gender:false, type:"inf"},
   {es_m:"ver la televisión",         es_f:"ver la televisión",        zh:"看電視",    has_gender:false, type:"inf"},
   {es_m:"lavarme las manos",         es_f:"lavarme las manos",        zh:"洗手",      has_gender:false, type:"inf"},
@@ -439,7 +439,7 @@ const S3_OBJ_AUDIO = [
   {m:'audio/vocab/so/so_n_02.mp3', f:'audio/vocab/so/so_n_03.mp3'}, // amigo/amiga
   {m:'audio/vocab/so/so_n_04.mp3', f:'audio/vocab/so/so_n_04.mp3'}, // detective
   {m:'audio/vocab/so/so_n_05.mp3', f:'audio/vocab/so/so_n_06.mp3'}, // médico/médica
-  {m:'audio/vocab/so/so_n_07.mp3', f:'audio/vocab/so/so_n_07.mp3'}, // saltar en charcos de barro
+  {m:'audio/vocab/so/so_n_07.mp3', f:'audio/vocab/so/so_n_07.mp3'}, // chapotear en charcos de barro（音檔待重錄，目前仍是舊字saltar的錄音）
   {m:'audio/vocab/so/so_n_08.mp3', f:'audio/vocab/so/so_n_08.mp3'}, // salir a jugar
   {m:'audio/vocab/so/so_n_09.mp3', f:'audio/vocab/so/so_n_09.mp3'}, // ver la televisión
   {m:'audio/vocab/so/so_n_10.mp3', f:'audio/vocab/so/so_n_10.mp3'}, // lavarme las manos

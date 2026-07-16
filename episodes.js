@@ -67,10 +67,10 @@ const EPS=[
       {es:"Mi hija,",zh:"我女兒"},
     ]}]
   }},
-  {es:"¡Me encanta saltar en los charcos!",chunks:[{w:"¡Me",role:"s"},{w:"encanta",role:"v"},{w:"saltar en los charcos!",role:"o"}],zh:"我超愛在水坑裡跳！",en:"I love jumping in puddles!",noteZh:"「Me encanta」= 我超愛，比 me gusta 更強烈",noteEn:"'Me encanta' = I love it (stronger than 'me gusta')",
+  {es:"¡Me encanta chapotear en los charcos!",chunks:[{w:"¡Me",role:"s"},{w:"encanta",role:"v"},{w:"chapotear en los charcos!",role:"o"}],zh:"我超愛在水坑裡玩水！",en:"I love splashing in puddles!",noteZh:"「Me encanta」= 我超愛，比 me gusta 更強烈",noteEn:"'Me encanta' = I love it (stronger than 'me gusta')",
   expand:{
     note:"encanta 動詞不變，只換前面的間接受詞（英文的 to him / to her / to them）代名詞（我/你/他）",
-    template:[{g:"who"},{t:"encanta saltar en los charcos!"}],
+    template:[{g:"who"},{t:"encanta chapotear en los charcos!"}],
     groups:[{label:"誰超愛",key:"who",options:[
       {es:"¡Me",zh:"我"},
       {es:"¡Te",zh:"你"},
@@ -106,12 +106,12 @@ const EPS=[
       {es:"pintura.",zh:"顏料"},
     ]}]
   }},
-  {es:"A todos les encanta saltar en los charcos de barro.",chunks:[{w:"A todos les",role:"s"},{w:"encanta",role:"v"},{w:"saltar en los charcos de barro.",role:"o"}],zh:"所有人都超愛在泥巴坑裡跳！",en:"Everyone loves jumping in muddy puddles!",noteZh:"「A todos les encanta」= 所有人都超愛，「他們」",noteEn:"'A todos les encanta' = everyone loves it (the 'they' form)",
+  {es:"A todos les encanta chapotear en los charcos de barro.",chunks:[{w:"A todos les",role:"s"},{w:"encanta",role:"v"},{w:"chapotear en los charcos de barro.",role:"o"}],zh:"所有人都超愛在泥巴坑裡玩水！",en:"Everyone loves splashing in muddy puddles!",noteZh:"「A todos les encanta」= 所有人都超愛，「他們」",noteEn:"'A todos les encanta' = everyone loves it (the 'they' form)",
   expand:{
     note:"A todos les encanta + 原形動詞 = 所有人都超愛…",
     template:[{t:"A todos les encanta"},{g:"activity"}],
     groups:[{label:"做什麼",key:"activity",options:[
-      {es:"saltar en los charcos de barro.",zh:"在泥巴坑裡跳"},
+      {es:"chapotear en los charcos de barro.",zh:"在泥巴坑裡玩水"},
       {es:"bailar.",zh:"跳舞"},
       {es:"cantar.",zh:"唱歌"},
     ]}]
@@ -216,12 +216,12 @@ const EPS=[
       {es:"Tito",zh:"迪多"},
     ]}]
   }},
-  {es:"¡Ya lo sé, ustedes han estado saltando en los charcos de barro!",chunks:[{w:"¡Ya lo sé,",role:"v"},{w:"ustedes han estado saltando",role:"v"},{w:"en los charcos de barro!",role:"o"}],zh:"我知道了，你們一直在泥巴坑裡跳！",en:"I know, you've been jumping in muddy puddles!",noteZh:"「ustedes han estado + 動名詞」= 現在完成進行式，一直在做…（拉美用 ustedes，不用 vosotros）",noteEn:"'ustedes han estado + -ing' = you've been doing it for a while (LatAm uses ustedes, not vosotros)",
+  {es:"¡Ya lo sé, ustedes han estado chapoteando en los charcos de barro!",chunks:[{w:"¡Ya lo sé,",role:"v"},{w:"ustedes han estado chapoteando",role:"v"},{w:"en los charcos de barro!",role:"o"}],zh:"我知道了，你們一直在泥巴坑裡玩水！",en:"I know, you've been splashing in muddy puddles!",noteZh:"「ustedes han estado + 動名詞」= 現在完成進行式，一直在做…（拉美用 ustedes，不用 vosotros）",noteEn:"'ustedes han estado + -ing' = you've been doing it for a while (LatAm uses ustedes, not vosotros)",
   expand:{
     note:"ustedes han estado + Ving = 你們一直在做…（現在完成進行式）",
     template:[{t:"¡Ya lo sé, ustedes han estado"},{g:"activity"}],
     groups:[{label:"一直在做什麼",key:"activity",options:[
-      {es:"saltando en los charcos de barro!",zh:"在泥巴坑裡跳"},
+      {es:"chapoteando en los charcos de barro!",zh:"在泥巴坑裡玩水"},
       {es:"jugando con la pelota!",zh:"玩球"},
       {es:"cantando en la ducha!",zh:"在浴室唱歌"},
     ]}]
