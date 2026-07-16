@@ -154,6 +154,14 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
   - **B2（中高級）**：💧文法儲水槽要上架過去虛擬式(Imperfecto de Subjuntivo)＋條件式(Condicional)；🧺語塊採集籃要有12-20字的抽象情感+假說複合句；💬心田深耕要能承載長篇論述（如拉美社會對自閉症教養污名化的探討）；CSS視覺要能表現「雙層嵌套邏輯線」處理多子句長句
   - **Ojalá vs Ojalá que 地區差異**：查證後這個規則性說法（拉美常加que/西班牙常不加que）主要來自「母語論壇觀察」，不是查證得到的權威方言學資料，已標註「待老師確認」不是定案事實；但「不論加不加que後面都要虛擬式」跟「Ojalá+原形動詞不符合RAE規範」這兩點是確定正確的。
 
+  **🚀 B2升級路線圖（五模組化提案，2026-07-15，不破壞既有A1-A2架構，用「✨邁向精釀下一階」切換鈕解鎖）**：
+  1. **💧文法儲水槽**：現在虛擬式(Subjuntivo Presente)、過去虛擬式+條件式(與現在事實相反的假設)、無人稱/被動SE（Se dice que.../Se habla español.）
+  2. **🌾穀倉大豐收**：新增「拉美道地俚語(Modismos)語塊箱」——墨西哥chido/¡qué onda!、哥倫比亞bacano/parce、阿根廷che/copado；網路縮寫語塊(xq/gpi/tkm)設計成拼字配對遊戲
+  3. **💬心田深耕**：擴充論證/抽象語塊——A pesar de.../Por lo tanto.../Desde mi punto de vista...；社群留言區常見的酸人/反諷用語
+  4. **新模組「☀️日光育苗場：音樂與貼文實戰微操」**：歌詞填空挑戰(挑含虛擬式的拉美流行歌，如Camilo/Rosalía，挖空動詞讓使用者用太極變身鏡推測變位)、留言區抓蟲(模擬IG貼文+三則網民留言，判斷贊同/反對/黑色幽默)
+  5. **☯️太極變身鏡**：加入陳述式vs虛擬式切換（同一人稱看tengo變tenga的語感差異）
+  - 全站維持**無動畫**設計原則（CLAUDE.md既有定案：ADHD友善、純CSS靜態渲染、零建置成本），任何新提案帶動畫效果的都會簡化成靜態版本，不是這批才開始這樣做。
+
   **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
   - **連接詞文法卡**：porque（因為）、sino（否定句後修正，「不是A而是B」）、pero vs sino 差異、易混淆動詞組 por/para、saber/conocer、pedir/preguntar，皆已備好例句草稿（Nita/Tito情境）。既有連接詞句子盤點：episodes.js 目前有13句已標`role:'c'`——así que(E1×1)、pero(E7/E8×2/E9×2)、y(E3×2/E10×3)、Cuando(E2×1)、Después(E3×1)；但porque、sino目前**零例句**，grammar.js也**完全沒有連接詞專屬卡**。
   - **虛擬語氣（subjuntivo）**：grammar.js 26張卡**零覆蓋**，是最大文法空缺。已備WEIRDO口訣草稿、Quiero que/Espero que/Ojalá(que)例句、¡Que tengas un buen día!這類日常祝福句。適合帶去問老師的問題：「拉美口語什麼時候『一定要用』虛擬語氣，用錯會不會顯得沒禮貌？」「Ojalá que一定要接虛擬式嗎？」**VERA另外備好一組「情緒動詞句型」例句(2026-07-15 查證文法皆正確)，可直接用：句型＝(A+人稱代詞)+間接受詞+情緒動詞+infinitivo/sustantivo/que+subjuntivo。① A mí me pone nervioso hablar en público.(公開說話讓我很緊張) ② Me relaja escuchar el agua de un arroyo en un bosque.(在森林中聽溪水聲讓我感到放鬆) ③ Me da vergüenza hablar con desconocidos.(和陌生人說話讓我感到害羞) ④ A mí me pone de mal humor que la gente haga ruido en el teatro.(有人在劇院裡製造噪音讓我心情不好)——**第④句是最自然的虛擬語氣真實例句**(情緒反應主詞≠動作主詞，que後面接虛擬式haga)，可以直接當虛擬語氣文法卡的核心例句。
