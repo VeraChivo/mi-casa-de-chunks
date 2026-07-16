@@ -922,6 +922,85 @@ const GRAMMAR_DATA = [
     },
     trap:"desempeñar 幾乎都跟「un papel／un rol」連用（desempeñar un papel importante＝扮演重要角色），記整組固定搭配比單獨背這個動詞更好用。",
     source:"文法補充"
+  },
+
+  // ══ 拉美文化小卡 ══
+
+  {
+    id:"g45", cat:"phrase",
+    title:"打招呼與拜訪禮節：入境隨俗小提醒",
+    rule:"拉美的問候禮儀比表面看起來複雜——例如「眼神接觸」不是單純「有禮貌」的規定式禮節，在跨社會地位／年齡的情境下，直視反而可能被解讀成挑釁，這點跟東亞「對長輩避免直視」的邏輯有共通之處，不是「眼神接觸＝尊重」這麼簡單。拜訪別人家時，進門先問候是基本禮貌，這點跟台灣習慣很像；日常聊天如果不熟，通常會避開政治話題。",
+    examples:[
+      {es:"¡Buenas! ¿Cómo están todos?", zh:"大家好！大家都好嗎？（拜訪時進門先問候）"},
+      {es:"Mucho gusto en conocerlo.", zh:"很高興認識您。（正式場合的問候語）"},
+      {es:"Prefiero no hablar de política en la mesa.", zh:"我比較不想在餐桌上聊政治。（日常聊天常見的迴避話題）"}
+    ],
+    trap:"握手／擁抱因地區和熟悉度而異，沒有單一標準；眼神接觸也不是「越直視越有禮貌」，在某些情境下（跨輩分／地位）反而要拿捏分寸，跟台灣「對長輩不要一直盯著看」的直覺其實有共通點。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g46", cat:"phrase",
+    title:"各國口頭禪對照",
+    rule:"拉美西語不是統一腔調，各國有自己愛用的口頭禪——這是額外認識文化差異用的補充知識，角色台詞仍維持「泛拉美中性詞」，不會因為這張卡就讓角色忽然講出某個特定國家的腔調。",
+    examples:[
+      {es:"Este... no sé qué decir.", zh:"呃...我不知道要說什麼。（墨西哥常見口頭禪 Este...，類似中文的「這個...」）"},
+      {es:"¿Viste? Te lo dije.", zh:"你看到了吧？我早就跟你說了。（阿根廷常用 ¿Viste?，確認對方有沒有注意到）"},
+      {es:"¡Dale, vamos!", zh:"好，走吧！（Dale：拉美通用的肯定語，「好/來吧」）"}
+    ],
+    family:{
+      title:"🗺️ 各國口頭禪小地圖",
+      intro:"這些是文化知識補充，不是要妳學會每個國家的腔調——認得、聽得懂就好。",
+      items:[
+        {es:"Este...", zh:"墨西哥：「這個...」的口頭禪墊詞"},
+        {es:"Che / ¿Viste?", zh:"阿根廷：「欸／你看吧」的口頭禪"},
+        {es:"...po", zh:"智利：句尾常加的語氣詞，類似中文的「啦」"},
+        {es:"Pues", zh:"哥倫比亞：句子常見的墊詞"},
+        {es:"Dale", zh:"拉美通用肯定語：好、來吧"},
+        {es:"Ya", zh:"通用肯定語：好了、可以"},
+        {es:"¡Ándale!", zh:"墨西哥：加油／快點／就是這樣"}
+      ]
+    },
+    trap:"這些是文化知識補充，角色台詞維持「泛拉美中性詞」（如 Dale／Listo／Genial），不會因為這張卡就讓角色忽然講出某個特定國家的腔調。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g47", cat:"phrase",
+    title:"一詞多義地雷：同一個字，各地意思差很大",
+    rule:"有些西語字看起來一樣，在不同國家意思天差地遠，甚至從「可愛的」變成「粗俗的」，跨國溝通時要特別小心。",
+    examples:[
+      {es:"La guagua se durmió en el coche.", zh:"嬰兒在車上睡著了。（智利／秘魯：guagua＝嬰兒，源自蓋丘亞語）"},
+      {es:"Espera la guagua en la parada.", zh:"在站牌等公車。（古巴／波多黎各／加那利群島：guagua＝公車）"},
+      {es:"¿Me puedes coger ese libro?", zh:"可以幫我拿那本書嗎？（哥倫比亞：coger＝普通的「拿」，但在墨西哥／阿根廷等地帶粗俗意味）"}
+    ],
+    trap:"guagua 在智利／秘魯是「嬰兒」，在古巴／波多黎各／加那利群島卻是「公車」，兩個意思完全不相干；coger 在哥倫比亞很普通，但墨西哥／阿根廷等地帶性暗示、算粗俗，保險起見換成 agarrar 或 tomar 比較不會踩雷。另外 palta（祕魯／智利）跟 aguacate（其他地區）都是「酪梨」，只是地區用字不同，沒有地雷。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g48", cat:"phrase",
+    title:"跨國禁忌小提醒",
+    rule:"拉美各國有自己的禁忌文化，出發前先知道能避免尷尬。",
+    examples:[
+      {es:"En Uruguay, algunas personas evitan el número trece.", zh:"在烏拉圭，有些人會避諱數字13。"},
+      {es:"Es mejor no señalar a alguien con el dedo.", zh:"最好不要用食指指著別人。（提醒：這個禁忌很多文化都有，不是拉美獨有）"}
+    ],
+    trap:"烏拉圭部分人忌諱數字13、星期五、青色，這是當地部分文化傳統，不是全拉美通用禁忌；用食指指人被視為不禮貌則是跨文化常見的禮儀提醒，不是拉美特有的規矩。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g49", cat:"phrase",
+    title:"拉美街頭美食與可可地圖",
+    rule:"用食物認識文化是最沒有壓力的入門方式——每個國家都有自己的招牌小吃，可可／熱巧克力的喝法也各地不同。",
+    examples:[
+      {es:"Los tacos al pastor son mi comida favorita.", zh:"墨西哥牧羊人塔可是我最愛的食物。"},
+      {es:"En Costa Rica, el gallo pinto es el desayuno típico.", zh:"在哥斯大黎加，加約賓多（米豆飯）是典型的早餐。"},
+      {es:"El chocolate con queso es una combinación curiosa.", zh:"起司熱巧克力是個很特別的組合。（哥倫比亞／厄瓜多的傳統喝法）"}
+    ],
+    trap:"哥倫比亞／厄瓜多有把起司丟進熱巧克力裡一起喝的傳統喝法（chocolate con queso），聽起來奇怪但當地人很喜歡；肉桂等香料建議選天然的，不是人工香精調味。",
+    source:"文法補充"
   }
 
 ];
