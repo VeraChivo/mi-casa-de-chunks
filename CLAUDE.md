@@ -162,6 +162,16 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
   5. **☯️太極變身鏡**：加入陳述式vs虛擬式切換（同一人稱看tengo變tenga的語感差異）
   - 全站維持**無動畫**設計原則（CLAUDE.md既有定案：ADHD友善、純CSS靜態渲染、零建置成本），任何新提案帶動畫效果的都會簡化成靜態版本，不是這批才開始這樣做。
 
+  **📊 B2內容小/中/大工程量分級＋輕重緩急（2026-07-15 第二輪盤點，VERA明確要求先做地基）**：
+  - **🟢 小（純內容，優先，是後面地獄梗/歌詞/留言區都需要的地基）**：
+    - 文法儲水槽新增：過去虛擬式(Imperfecto de Subjuntivo：fuera/tuviera/hiciera)、現在完成虛擬式(haya+過去分詞)、Si+過去虛擬+條件式(與現在事實相反假設)、Aunque雙用法(+陳述=事實/+虛擬=假設)、無人稱被動SE(Se vende/Se dice que)、變成類動詞(volverse/quedarse/ponerse差異)
+    - 語塊模組新增：WEIRDO句型例句(No creo que sea/Me molesta que hables/Es una lástima que no hayas venido)、讓步轉折(Por más que estudie/A no ser que tenga que/No es que no quiera sino que no puedo)、假設句(Como si lo supiera todo/¿Y si fuéramos a la playa?)
+    - B2詞彙清單：心理形容詞(agobiado/decepcionado/exigente/indiferente/frustrado)、社會時事詞(peatón/ciudadano/polémica/prejuicio/igualdad/desempeñar/ocio)、萬用動詞(echar的多義：丟/開除/倒水/echar de menos想念；quedar en algo=約定好)
+    - 成語語塊：darle vueltas a algo(鑽牛角尖)、estar de brazos cruzados(袖手旁觀)、hacer la vista gorda(睜一隻眼閉一隻眼)、caer bien/mal(第一印象好壞，拉美口語me cae gordo=我看他不順眼)、ponerse las pilas(振作起來)
+    - 拉美俚語箱：墨西哥chido/¡qué onda!、哥倫比亞bacano/parce/vaina(萬用「東西」)、阿根廷che/copado；網路縮寫(xq/gpi/tkm)
+  - **🟡 中（要動UI但範圍可控，等地基打好再做）**：太極變身鏡加「陳述式↔虛擬式」切換鈕（同人稱看tengo變tenga）；心田深耕新增B2子分類（🔥拉美修羅場/🎬流行樂陳釀）
+  - **🔴 大（真正新功能，放最後）**：歌詞填空模組（選歌+版權+新互動元件）、留言區抓蟲模組（模擬社群貼文UI，全新元件）、「✨邁向精釀下一階」整體切換鈕架構
+
   **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
   - **連接詞文法卡**：porque（因為）、sino（否定句後修正，「不是A而是B」）、pero vs sino 差異、易混淆動詞組 por/para、saber/conocer、pedir/preguntar，皆已備好例句草稿（Nita/Tito情境）。既有連接詞句子盤點：episodes.js 目前有13句已標`role:'c'`——así que(E1×1)、pero(E7/E8×2/E9×2)、y(E3×2/E10×3)、Cuando(E2×1)、Después(E3×1)；但porque、sino目前**零例句**，grammar.js也**完全沒有連接詞專屬卡**。
   - **虛擬語氣（subjuntivo）**：grammar.js 26張卡**零覆蓋**，是最大文法空缺。已備WEIRDO口訣草稿、Quiero que/Espero que/Ojalá(que)例句、¡Que tengas un buen día!這類日常祝福句。適合帶去問老師的問題：「拉美口語什麼時候『一定要用』虛擬語氣，用錯會不會顯得沒禮貌？」「Ojalá que一定要接虛擬式嗎？」**VERA另外備好一組「情緒動詞句型」例句(2026-07-15 查證文法皆正確)，可直接用：句型＝(A+人稱代詞)+間接受詞+情緒動詞+infinitivo/sustantivo/que+subjuntivo。① A mí me pone nervioso hablar en público.(公開說話讓我很緊張) ② Me relaja escuchar el agua de un arroyo en un bosque.(在森林中聽溪水聲讓我感到放鬆) ③ Me da vergüenza hablar con desconocidos.(和陌生人說話讓我感到害羞) ④ A mí me pone de mal humor que la gente haga ruido en el teatro.(有人在劇院裡製造噪音讓我心情不好)——**第④句是最自然的虛擬語氣真實例句**(情緒反應主詞≠動作主詞，que後面接虛擬式haga)，可以直接當虛擬語氣文法卡的核心例句。
