@@ -63,7 +63,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .chunks-area{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-content:center;min-height:108px;margin-bottom:14px;padding:12px 8px;background:var(--bg2);border-radius:13px;border:1px solid var(--usumizu)}
 #cogBox{min-height:54px;margin-bottom:12px}
 .chunk{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;user-select:none}
-.chunk-pill{font-size:15px;font-weight:800;border-radius:10px;padding:8px 14px;line-height:1.3;transition:opacity .15s;min-height:34px;display:flex;align-items:center;gap:5px;user-select:none}
+.chunk-pill{font-size:15px;font-weight:800;border-radius:8px;padding:8px 14px;line-height:1.3;transition:opacity .15s;min-height:34px;display:flex;align-items:center;gap:5px;user-select:none}
 .chunk:active .chunk-pill{opacity:.75}
 
 /* 主詞 S — 虛線框 */
@@ -75,8 +75,10 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .v-ws{display:inline}
 /* 受詞 O — 實線框 */
 .chunks-area .chunk-pill.role-o{border:1.5px solid var(--o-deepblue);color:var(--o-deepblue);background:white}
-/* 連接詞 C — 淡色無框 */
-.chunks-area .chunk-pill.role-c{background:rgba(108,155,210,.15);color:var(--tmid);border:none}
+/* 連接詞 C — 螢光筆風格：方角、透明底色，y類緊湊/pero類寬鬆帶呼吸感 */
+.chunks-area .chunk-pill.role-c{background:rgba(108,155,210,.2);color:var(--tmid);border:none;border-radius:0}
+.chunks-area .chunk-pill.role-c.conn-flow{padding-left:4px;padding-right:4px}
+.chunks-area .chunk-pill.role-c.conn-pause{padding-left:15px;padding-right:15px}
 .chunks-area .chunk-pill.role-plain{background:rgba(184,200,209,.2);color:var(--tmid);border:none}
 .chunks-area .chunk-pill.role-s.person-yo{border-color:var(--konpeki)}
 .chunks-area .chunk-pill.role-s.person-tu{border-color:var(--benikake)}
@@ -291,7 +293,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .suffix-ex-chunk.role-s{border:1.5px dashed var(--s-babyblue);color:var(--konpeki);background:white}
 .suffix-ex-chunk.role-v{background:var(--v-navy);color:var(--v-gold);border:none}
 .suffix-ex-chunk.role-o{border:1.5px solid var(--o-deepblue);color:var(--o-deepblue);background:white}
-.suffix-ex-chunk.role-c{background:rgba(108,155,210,.15);color:var(--tmid);border:none}
+.suffix-ex-chunk.role-c{background:rgba(108,155,210,.2);color:var(--tmid);border:none;border-radius:0}
+.suffix-ex-chunk.role-c.conn-flow{padding-left:3px;padding-right:3px}
+.suffix-ex-chunk.role-c.conn-pause{padding-left:11px;padding-right:11px}
 .suffix-chunk-star{font-size:15px;cursor:pointer;opacity:.85;margin-right:4px;color:#F5A623;transition:all .15s}
 .suffix-chunk-star:active{transform:scale(1.3);opacity:1}
 .suffix-ex-punct{font-size:12px;font-weight:700;color:var(--tlight);padding:2px 1px}
@@ -397,7 +401,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .ammo-fire-chunk.role-s{border:1.5px dashed var(--s-babyblue);color:var(--konpeki);background:white}
 .ammo-fire-chunk.role-v{background:var(--v-navy);color:var(--v-gold);border:none}
 .ammo-fire-chunk.role-o{border:1.5px solid var(--o-deepblue);color:var(--o-deepblue);background:white}
-.ammo-fire-chunk.role-c{background:rgba(108,155,210,.15);color:var(--tmid);border:none}
+.ammo-fire-chunk.role-c{background:rgba(108,155,210,.2);color:var(--tmid);border:none;border-radius:0}
+.ammo-fire-chunk.role-c.conn-flow{padding-left:3px;padding-right:3px}
+.ammo-fire-chunk.role-c.conn-pause{padding-left:11px;padding-right:11px}
 .ammo-fire-chunk.role-plain{background:rgba(184,200,209,.2);color:var(--tmid);border:none}
 .ammo-chunk-star{font-size:15px;cursor:pointer;opacity:.85;margin-right:4px;color:#F5A623;transition:all .15s}
 .ammo-chunk-star:active{transform:scale(1.3);opacity:1}

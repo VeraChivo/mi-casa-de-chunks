@@ -349,6 +349,18 @@ function getPersonClass(w){
   return '';
 }
 
+// 連接詞螢光筆：role='c'不是每次都真的是連接詞(cognates.js裡也拿role:'c'標過純補語片語)，
+// 要用「字本身是不是真的連接詞」來判斷，不能只看role，才不會誤套到不相干的片語上。
+// y類(順接)緊湊、pero類(轉折/因果)寬鬆帶呼吸感——數值跟樣式已跟VERA定案。
+const CONN_FLOW = new Set(['y','e','o','u','también','además']);
+const CONN_PAUSE = new Set(['pero','sino','aunque','sin embargo','porque','ya que','así que','por eso','cuando','después','entonces']);
+function connFlowClass(w){
+  const clean = String(w||'').replace(/[¡¿!.,;:]/g,'').trim().toLowerCase();
+  if(CONN_FLOW.has(clean)) return 'conn-flow';
+  if(CONN_PAUSE.has(clean)) return 'conn-pause';
+  return '';
+}
+
 function renderAmmoFireChunks(fire, ammoId, rowType, playExpr){
   if(!fire.chunks || !fire.chunks.length) return '';
   const _fdb=getGardenDB();
@@ -360,7 +372,8 @@ function renderAmmoFireChunks(fire, ammoId, rowType, playExpr){
     const _fst=GARDEN_STAGES[(_fdb[key]||{stage:0}).stage||0];
     const starHtml=`<span class="ammo-chunk-star" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度">${_fst}</span>`;
     const disp=c.role==='v'?renderVWords(c.w):c.w;
-    return `<span class="ammo-fire-chunk role-${c.role||'plain'}${personCls?' '+personCls:''}"${playAttr} onclick="event.stopPropagation();ammoChunkTap(this,'${escAttr(c.w)}',${!!c.hideYg},'${escAttr(c.note||'')}')">${disp}</span>${starHtml}`;
+    const connCls=c.role==='c'?connFlowClass(c.w):'';
+    return `<span class="ammo-fire-chunk role-${c.role||'plain'}${personCls?' '+personCls:''}${connCls?' '+connCls:''}"${playAttr} onclick="event.stopPropagation();ammoChunkTap(this,'${escAttr(c.w)}',${!!c.hideYg},'${escAttr(c.note||'')}')">${disp}</span>${starHtml}`;
   }).join('')}</div>`;
 }
 
@@ -765,7 +778,8 @@ function renderCogLibrary(filter){
           const _sfIc=GARDEN_STAGES[_sfSt];
           const starHtml = isVocabWorthy(ck.w) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
           const dispW=ck.role==='v'?renderVWords(ck.w):ck.w;
-          return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+'" data-copy-text="'+escAttr(clean)+'" onclick="event.stopPropagation();'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
+          const connCls=ck.role==='c'?connFlowClass(ck.w):'';
+          return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+(connCls?' '+connCls:'')+'" data-copy-text="'+escAttr(clean)+'" onclick="event.stopPropagation();'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
         }).join('');
         return `
         <div class="suffix-word-card">
@@ -1280,7 +1294,8 @@ function render(){
     const famState=getFamState(c.w);
     const famCls=famState>0?' '+FAM_CLASSES[famState]:'';
     const pill=document.createElement('div');
-    pill.className='chunk-pill role-'+(c.role||'plain')+(personCls?' '+personCls:'')+famCls;
+    const connCls=c.role==='c'?connFlowClass(c.w):'';
+    pill.className='chunk-pill role-'+(c.role||'plain')+(personCls?' '+personCls:'')+famCls+(connCls?' '+connCls:'');
     pill.dataset.famWord=c.w;
     const word=document.createElement('span');
     if(c.role==='v'){ word.innerHTML=renderVWords(c.w); } else { word.textContent=c.w; }
