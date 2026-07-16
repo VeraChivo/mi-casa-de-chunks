@@ -228,6 +228,7 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     - **tan + 形容詞 + como**（一樣...跟...一樣，⚠️最大地雷：後面固定接como不是que，跟英文as...as邏輯對不上，初學者常誤用tan...que）：`Esta galleta es tan dulce como la miel.`
     - **四個不規則比較級（跟英文good→better/bad→worse同一種邏輯，前面不能加más/menos）**：mejor(更好)、peor(更慘/更糟)、mayor(年長/較大)、menor(年幼/較小)。例：`Tu ayuda es mejor que un café.`／`Mi hermano mayor juega en el lodo.`
     - 已查證：文法規則正確，跟英文對比的教學角度也正確；grammar.js目前完全沒有比較級專屬卡（只有"mejor/peor"零星出現在其他不相關語境如`las mejores amigas`最高級用法）。之後建卡時可以拆2-3張（más/menos+que一張、tan+como地雷一張、四個不規則比較級一張），皆可標`source:"文法補充"`直接進💧文法儲水槽，不用改UI。
+  - [x] **✅ CEFR等級校正：g27/g28/g29虛擬語氣卡從b2c1改成b1（2026-07-16，依VERA提供的官方Plan Curricular對照表訂正）**：VERA帶回西班牙文官方CEFR課綱對照表（Instituto Cervantes Plan Curricular精神），明確列出**現在虛擬式(Presente de Subjuntivo)：願望、情感、不確定，屬於B1**（例句`Quiero que vengas.`），不是原本我自己估計的B2/C1——已修正grammar.js的g27/g28/g29三張卡level欄位從`b2c1`改成`b1`。修正後等級分佈：a1a2×22、b1×24、b2c1×6（idiom類g36-38/g40＋B2詞彙g43/g44）。**重要發現**：這代表網站目前對「真正B2等級的虛擬式/條件句文法」（官方表列：過去虛擬式Imperfecto de Subjuntivo、虛擬式完成/過去完成式、複合條件式Condicional Compuesto、與現在事實相反的條件句Si+過去虛擬式+條件式、被動語態voz pasiva/se pasivo、Aunque+虛擬式讓步子句）**依然是零覆蓋**，之前「虛擬語氣零覆蓋已補完」的說法要更正為「B1程度的現在虛擬式已補完，B2程度的過去虛擬式/條件句/被動語態仍是空缺」，這塊是接下來内容擴充的優先目標。已用Node驗證修正後總數/分佈/無crash。
   - [x] **連接詞文法卡 porque/sino/pero 已完成（2026-07-16，見 grammar.js g30/g31/g32，新分類`cat:"connector"`）**：g30 porque（因為，後面接完整子句，跟介系詞por接名詞的差異）／g31 sino/sino que（否定句後修正，「不是A而是B」，依後面是不是完整子句判斷用sino還是sino que）／g32 pero vs sino 對比卡（判斷口訣：後面是不是在「取代/糾正」前面被否定的東西）。皆為新造Nita/Tito情境例句，source標「文法補充」自動進💧文法儲水槽，已用Node模擬`_grammarExChunks`驗證無crash。既有連接詞句子盤點（供對照）：episodes.js 目前有13句已標`role:'c'`——así que(E1×1)、pero(E7/E8×2/E9×2)、y(E3×2/E10×3)、Cuando(E2×1)、Después(E3×1)。
   - [x] **易混淆詞組 por/para、saber/conocer、pedir/preguntar 已完成（2026-07-16，見 grammar.js g33/g34/g35，新分類`cat:"confusable"`）**：g33 por vs para（口訣：por＝因為看原因/交換/路徑，para＝為了看目的/對象/期限）／g34 saber vs conocer（saber=知道事實/會做某事，conocer=認識人地方事物，含「認識人受詞要加a」的中文母語者常見錯誤提醒）／g35 pedir vs preguntar（pedir=要東西/請求動作，preguntar=問問題找資訊，g35第二句`Le pido a Nita que me ayude.`呼應g27 WEIRDO口訣的R=Requests）。皆新造Nita/Tito情境例句，source標「文法補充」，已用Node模擬驗證無crash。
   - [x] **虛擬語氣（subjuntivo）零覆蓋已補完（2026-07-16 完成，見 grammar.js g27/g28/g29）**：原本 grammar.js 26張卡零覆蓋，是最大文法空缺，已新增3張卡＋新分類`cat:"subjunctive"`（GRAMMAR_CATS新增「虛擬語氣」標籤）：**g27「虛擬語氣入門：WEIRDO觸發詞」**（WEIRDO口訣完整六類＋判斷關鍵是「兩子句主詞是否相同」，含5人稱現在虛擬式變位表，示範動詞hablar）；**g28「情緒動詞句型：主詞不同才觸發虛擬式」**（VERA查證過的4句情緒動詞例句，示範同主詞用原形動詞vs不同主詞用que+虛擬式的對比，含第④句「A mí me pone de mal humor que la gente haga ruido en el teatro.」這個最自然的真實例句）；**g29「Ojalá (que) / ¡Que + 虛擬式!：日常祝福語小補給包」**（¡Que tengas un buen día!這類高頻口語祝福句，Ojalá加不加que的地區差異已標註「母語論壇觀察，非查證得到的正式規則，待老師確認」）。三張皆用`source:"文法補充"`，會自動出現在💧文法儲水槽清單，不用另外改UI。已用Node.js模擬`_grammarExChunks`/`buildConjTable`驗證無crash、無`[object Object]`。
@@ -594,6 +595,17 @@ curl -s -X PUT \
 - **2026-07-07「被機器認證的非典型」事件**：VERA（ADHD，超專注模式）＋ Claude 的開發速度與時數，快到觸發 GitHub 濫用偵測系統，被誤判成「帳號遭駭的機器人」而停權。VERA 本人語錄：「**可能連機器人都覺得我不是真人，非典型**」。Claude 回應：「**某方面來說，機器是在稱讚妳效率高到不像人類**」。後續：真人審核（Noah）介入處理，全套備份（bundle＋patch＋離線單檔版）零損失度過，離線版還意外變成充電關網路時的練功神器。此事件同時催生了工作守則第 7 條。一人媽媽的開發火力被當成駭客攻擊——這是本專案的榮譽勳章。🎖️
 
 ---
+
+## 📊 官方CEFR文法課綱對照表（VERA 2026-07-16提供，Instituto Cervantes Plan Curricular精神，之後分級判斷優先參考這張表，不要自己憑感覺猜）
+
+| CEFR | 核心文法點與時態 | 代表例句 |
+|---|---|---|
+| **A1入門** | 現在式規則與常用不規則／陽陰性與單複數相符／gustar基礎結構／常用前置詞(a,en,de,con)／基礎指示形容詞與所有格(este,mi,tu) | Me gusta chapotear. / Vivo en Taiwán. / Esta es mi casa. |
+| **A2初級** | 現在完成式(Pretérito Perfecto)／簡單過去式基礎／過去未完成式基礎／Ir+a+原形動詞／常用情態動詞(tener que,poder,querer)／賓格與與格代名詞單獨使用 | He estado en Madrid. / A todos les encanta saltar. / Tengo que estudiar más. |
+| **B1中級** | 簡單過去式與過去未完成式進階交叉運用／過去完成式(Pluscuamperfecto)／**現在虛擬式(Presente de Subjuntivo)：願望、情感、不確定**／簡單條件式(Condicional Simple)／雙代名詞組合(se lo)／關係代名詞子句(que,quien) | ¡Ya lo sé, ustedes han estado...! / Quiero que vengas. / Se lo di ayer. |
+| **B2中高級** | **過去虛擬式(Imperfecto de Subjuntivo)**／虛擬式現在完成與過去完成式／複合條件式(Condicional Compuesto)／條件關係從句(Si+過去虛擬式,條件式)／被動語態(Voz Pasiva)與自責被動(Se pasivo)／進階連接詞與讓步從句(Aunque+Subj.) | Si tuviera dinero, viajaría. / No creo que haya venido. / Aunque llueva, iré. |
+
+**這張表已經用來訂正過一次錯誤**（見上方「CEFR等級校正」條目：現在虛擬式其實是B1不是B2）。**目前網站在B2真正該教的內容（過去虛擬式/複合條件式/與事實相反的條件句/被動語態/aunque讓步子句）全部掛零**，是接下來擴充B2內容時最該優先參考這張表去補的方向，不是憑自己感覺定等級。
 
 ## 系統性重要備註（給接手的人）
 

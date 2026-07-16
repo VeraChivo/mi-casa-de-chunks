@@ -629,7 +629,7 @@ const GRAMMAR_DATA = [
   // ══ 虛擬語氣（Subjuntivo） ══
 
   {
-    id:"g27", cat:"subjunctive", level:"b2c1",
+    id:"g27", cat:"subjunctive", level:"b1",
     title:"虛擬語氣入門：WEIRDO觸發詞",
     rule:"主要子句是「願望／情緒／非人稱評論／請求／懷疑或否定／Ojalá」這六類，而且**主要子句的主詞跟後面子句的主詞不一樣**時，que 後面的動詞要變成虛擬式（不是陳述式）。如果主詞相同，直接用原形動詞就好，不用 que + 虛擬式。",
     examples:[
@@ -664,7 +664,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g28", cat:"subjunctive", level:"b2c1",
+    id:"g28", cat:"subjunctive", level:"b1",
     title:"情緒動詞句型：主詞不同才觸發虛擬式",
     rule:"句型＝(A+人稱代詞)＋間接受詞＋情緒動詞＋infinitivo/sustantivo/que+虛擬式。同一個主詞造成自己的情緒反應時，用原形動詞；情緒反應的人（我）跟造成情緒的動作主詞（別人）不同時，才用 que + 虛擬式。",
     examples:[
@@ -678,7 +678,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g29", cat:"subjunctive", level:"b2c1",
+    id:"g29", cat:"subjunctive", level:"b1",
     title:"Ojalá (que) / ¡Que + 虛擬式!：日常祝福語小補給包",
     rule:"很多日常祝福語其實是「Espero que...」被省略掉 Espero 的簡化版——直接用 ¡Que + 虛擬式!開頭，是超高頻的口語祝福句型。Ojalá（源自阿拉伯語，字面「願真主保佑」）也一樣，後面固定接虛擬式表達願望。",
     examples:[
