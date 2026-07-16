@@ -139,7 +139,15 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
   這3集連同 SEL 線一起，是 2026-07-14 這批「6集批次」的溫馨線部分（另外3集是SEL線，見上方小小自我蛻變攻略）。
 
 ### 待處理
-- [ ] **📋 2026-07-15 大量討論記錄（連接詞/拉美文化/ND議題/UI設計，全部尚未執行，純記錄避免遺忘）**：VERA 從隔壁AI帶回一大批素材，逐條核對過事實正確性，先分級記錄，之後排時間再一項項動工。
+- [ ] **📋 2026-07-15 大量討論記錄二：SEL進階/亡靈節特輯/情緒工具（全部尚未執行，純記錄避免遺忘）**：
+  - **✅ 連接詞螢光筆已上線**（見下方「已完成」區）：方角+透明底色(rgba(108,155,210,.2))+y類緊湊padding/pero類寬鬆padding，只用空間節奏區分順接/轉折，沒有另外分顏色；只套在role='c'裡真正是連接詞的字（用字典比對，不是只看role，避免誤套cognates.js裡借用過role:'c'標純補語的舊資料）。
+  - **SEL Episode 4「進階情緒語塊」草案（已備好10句，尚未寫進sel.js）**：9個既有情緒角色（曲屈/茫茫/唆唆/糾揪/倦倦/譴譴/嬉汐/憨憨/錐心魔）各自的原句擴寫成帶連接詞子句的進階版（如「Yo soy Tristeza. A veces solo quiero llorar, de hecho, no tengo que buscar una razón inmediata...」），第10句是綜合統整句。用意是同時複習情緒角色+練習轉折(sin embargo/a pesar de eso)、因果(por lo tanto/por eso)、補充(además/al mismo tiempo)、強調(en realidad/sobre todo)這幾類連接詞。**不用拆上下集**，剛好10句符合既有架構。附帶一份「語塊功能表」＋「給老師的建議」，這塊定位是老師/家長參考文件（比照yigu-sentences.html模式），不是使用者互動內容。
+  - **情緒轉盤（Plutchik's Wheel of Emotions）**：中心大類情緒、外圈延伸更精細的情緒詞，用意是練習「情緒顆粒度」（emotional granularity）——例如從「Estoy triste」細緻化成「Decepcionado(失望)」「Melancólico(憂鬱)」，這個「找詞過程」本身就是自我覺察練習。可對應到SEL既有的9個小情緒角色，也可能發展出新集數。
+  - **其他情緒工具參考（供之後設計SEL內容參考，非Plutchik輪之外的補充）**：情緒溫度計（1-10強度量表，練習在情緒還低分時就自我調節，不用等到失控）、情緒光譜圖（把相近情緒排成一條線，如「憂慮→極度恐懼」，練習分辨「不舒服」到底是委屈/焦慮/孤單）、情緒卡/敘事投射卡（隔壁AI指出：SEL既有的「閣樓小情緒」角色化設計，本身就已經是這種「外化技巧」的實踐，等於既有設計方向已經被驗證）。
+  - **跨語言情緒對照技巧**：練習「這個詞在中文裡有這種溫暖的感覺，但在西語裡可以用哪個詞對應」，可以當SEL進階內容的一種練習形式。
+  - **亡靈節特輯《El Camino de la Memoria 記憶之旅》10句劇本草案（已備好，尚未寫進episodes.js）**：分準備(1-3)/衝突與理解(4-7)/重逢與永恆(8-10)三階段，例句如「Hoy es un día especial y toda la familia viene.」「El cementerio es silencioso pero está lleno de luz.」「La muerte es natural pero el amor es para siempre.」等，每句都標了連接詞的y(緊湊)/pero(加寬呼吸感)/porque(說明原因)UI提示。**顏色決定：不做橘/紫專屬配色，維持全站統一的淡藍色連接詞螢光筆**；但可以考慮把進度花朵emoji（renderStars()目前寫死🌼/🌻）換成萬壽菊/亡靈節主題圖示，這個改動很小（只是換emoji，不是資料結構問題），只在這一集套用。**圖示候選（同時也要用在媽媽區）**：🏵️/🌼(花朵替換)、🕯️(陪伴/照亮迷宮意象)、🦋(君主斑蝶，靈魂歸來，也呼應ADHD孩子飛行路徑不規則但美麗的比喻)。
+  - **媽媽區「跨國際不孤單心語」草稿（已備好文字，尚未寫進corazon.js或媽媽區）**：核心語句「A veces el camino de nuestros hijos parece un laberinto, pero cada pieza que encajan es un paso a casa.」+ 一段跨國(台北/馬德里/墨西哥城)ND家長團結的心語文字，可搭配🕯️/🦋圖示。查證過真實素材可用：西語ND家長支持網絡 **Madretea**（自我定位「溫暖擁抱」）、約翰霍普金斯醫院的全西語拉丁裔媽媽自閉症支持團體、UCSF研究（ND孩子的媽媽約半數長期處於高度憂鬱狀態）。
+  - **待VERA決定**：SEL Episode 4／亡靈節E11／媽媽區心語，這三塊都是內容已經草擬好、只差實際動工寫進資料檔的狀態，之後有額度要選一個先做時可以直接來看這段記錄。
 
   **🟢 低成本（純文字/例句內容，套用既有卡片格式，不用改UI）**
   - **連接詞文法卡**：porque（因為）、sino（否定句後修正，「不是A而是B」）、pero vs sino 差異、易混淆動詞組 por/para、saber/conocer、pedir/preguntar，皆已備好例句草稿（Nita/Tito情境）。既有連接詞句子盤點：episodes.js 目前有13句已標`role:'c'`——así que(E1×1)、pero(E7/E8×2/E9×2)、y(E3×2/E10×3)、Cuando(E2×1)、Después(E3×1)；但porque、sino目前**零例句**，grammar.js也**完全沒有連接詞專屬卡**。
