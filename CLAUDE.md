@@ -587,6 +587,10 @@ curl -s -X PUT \
 10. **斷行排版：討厭短字孤兒（2026-07-15 完成，見 `_grammarExChunks` 的 `GLUE_SHORT`／`.ge-glue`）**：VERA 不喜歡短的功能詞（una/las/al/el 這類）被斷行斷到自己單獨落在行尾/行首、跟後面的字分開。**做法**：延伸原本的引號不斷行機制（`ge-quote-seg`），短冠詞/介系詞縮寫（el/la/los/las/un/una/unos/unas/al/del）遇到時會自動跟下一個字黏成一個不斷行的小單位（`ge-glue`），換行只會發生在這個小組外面，不會把短字單獨留在行尾。
 11. **錄音檔案：先錄整句一次，事後再切割分段（2026-07-15 教訓＋VERA提出的做法）**：SEL 小小自我蛻變攻略曾經把一句話拆成好幾段分開錄（S/V/O/Conj這種文法角色命名，每段各自單獨開口說），結果其中一段整個沒錄到，變成播放時「漏字」，而且用檔名（如 SEL1_02_Conj.mp3）完全看不出漏了什麼，除錯很難。**VERA確認的正確流程**：先把整句話完整說一次錄成一個檔案，確保內容不會漏字，之後再從這個完整版切割出需要的分段檔案（S/V/O/Conj等）——不是分開分次錄。切好的分段檔名還是照現有規則對應文法角色/內容，方便之後除錯回頭找到那顆「整句原始版」對照。
 12. **錄音稿一律直接附Colab可執行的gTTS腳本，不要只給文字檔（2026-07-16 VERA 定案，之後每次都要照做）**：VERA 目前用 Google Colab 跑 gTTS 產生音檔，不是手動貼去TTS網站——之後每次需要她重新錄音/補音檔，除了列出「檔名.mp3 → 要轉換的內容（沒寫內容就用檔名本身當內容）」的文字稿之外，**一定要額外附一份可以直接貼進Colab執行的Python腳本**，規格固定：①用`gTTS`函式庫②口音固定`lang='es', tld='com.mx'`（拉美西語腔）③輸出檔名格式`.mp3`④全部產生完後用`zipfile`打包成一個zip⑤結尾一定要加`from google.colab import files`＋`files.download(zip_path)`，讓她跑完程式碼會自動彈出下載視窗，不用手動一個一個找檔案下載。腳本given前務必先本地驗證邏輯（迴圈/zip打包/檔名對應）沒問題，`!pip install`那行是Colab筆記本專屬的magic command，本地Python語法檢查時要跳過那行不算錯誤。範例見 scratchpad 裡的 `chapotear_audio_colab.py`。
+13. **切分音檔時要注意的文法陷阱（2026-07-16 VERA補充官方課綱時一併提到）**：幫句子切成多個chunk音檔時，這幾種文法結構容易在切點choose錯位置、把發音切斷：
+    - **命令句+代名詞連寫**（A2肯定命令句如`¡Hazlo!`／`¡Mírate!`）：代名詞黏在動詞後面變成一個字，發音是一體的，不要在動詞和代名詞中間切開。
+    - **否定命令句**（B1，用虛擬式，如`¡No lo hagas!`）：跟肯定命令句結構不同（代名詞跑到動詞前面），是完全不同的字序，錄音/切音檔時不要套用肯定命令句的切法。
+    - **時間連接詞+動詞連讀**（Mientras.../Antes de.../Después de...）：這類連接詞後面接的動詞唸的時候容易黏在一起，切音檔時要特別注意在連接詞跟動詞之間，或整組一起切，避免切在奇怪的中間點造成斷句怪異。
 
 ---
 
@@ -604,6 +608,8 @@ curl -s -X PUT \
 | **A2初級** | 現在完成式(Pretérito Perfecto)／簡單過去式基礎／過去未完成式基礎／Ir+a+原形動詞／常用情態動詞(tener que,poder,querer)／賓格與與格代名詞單獨使用 | He estado en Madrid. / A todos les encanta saltar. / Tengo que estudiar más. |
 | **B1中級** | 簡單過去式與過去未完成式進階交叉運用／過去完成式(Pluscuamperfecto)／**現在虛擬式(Presente de Subjuntivo)：願望、情感、不確定**／簡單條件式(Condicional Simple)／雙代名詞組合(se lo)／關係代名詞子句(que,quien) | ¡Ya lo sé, ustedes han estado...! / Quiero que vengas. / Se lo di ayer. |
 | **B2中高級** | **過去虛擬式(Imperfecto de Subjuntivo)**／虛擬式現在完成與過去完成式／複合條件式(Condicional Compuesto)／條件關係從句(Si+過去虛擬式,條件式)／被動語態(Voz Pasiva)與自責被動(Se pasivo)／進階連接詞與讓步從句(Aunque+Subj.) | Si tuviera dinero, viajaría. / No creo que haya venido. / Aunque llueva, iré. |
+| **C1高級**（2026-07-16補充，目前網站完全沒有這個等級的內容，先備著以防未來教材難度提高） | 虛擬式與條件式的進階極端假設（如 De haberlo sabido...）／複雜的相對從句(el cual, cuyo)／高階修飾副詞 | De haber sabido que llovería, no habría salido.（要是早知道會下雨，我就不出門了。） |
+| **C2精通**（2026-07-16補充，同上，先備著） | 古語時態／極高度文學修辭結構／完全母語化的慣用語文法化 | Por más que se esmerase, no logró convencerlo.（無論他再怎麼努力，也無法說服他。） |
 
 **這張表已經用來訂正過一次錯誤**（見上方「CEFR等級校正」條目：現在虛擬式其實是B1不是B2）。**目前網站在B2真正該教的內容（過去虛擬式/複合條件式/與事實相反的條件句/被動語態/aunque讓步子句）全部掛零**，是接下來擴充B2內容時最該優先參考這張表去補的方向，不是憑自己感覺定等級。
 
