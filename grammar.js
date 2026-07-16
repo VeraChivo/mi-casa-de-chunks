@@ -773,6 +773,99 @@ const GRAMMAR_DATA = [
     ],
     trap:"中文都會說「問」，但西語要先分清楚：是在「要東西／請對方做動作」（pedir）還是「單純問問題找答案」（preguntar）——搞混這兩個是中文母語者最常見的錯誤之一。",
     source:"文法補充"
+  },
+
+  // ══ B2 成語語塊 ══
+
+  {
+    id:"g36", cat:"phrase",
+    title:"Darle vueltas a algo：鑽牛角尖",
+    rule:"字面「把某件事轉來轉去」，意思是反覆思考同一件事、停不下來地一直想，中文的「鑽牛角尖」剛好對得上。",
+    examples:[
+      {es:"Deja de darle vueltas a lo mismo.", zh:"別再鑽牛角尖想同一件事了。"},
+      {es:"Llevo todo el día dándole vueltas a este problema.", zh:"我一整天都在反覆想這個問題。"},
+      {es:"No le des más vueltas, ya está decidido.", zh:"別再想了，已經決定了。"}
+    ],
+    trap:"常跟 dejar de（停止）或 no + 命令式 一起用，勸別人別再鑽牛角尖時很好用：Deja de darle vueltas / No le des más vueltas。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g37", cat:"phrase",
+    title:"Estar de brazos cruzados：袖手旁觀",
+    rule:"字面「雙手交叉站著」，意思是什麼都不做、袖手旁觀，帶一點批評對方該行動卻沒行動的語氣。",
+    examples:[
+      {es:"No podemos quedarnos de brazos cruzados.", zh:"我們不能袖手旁觀。"},
+      {es:"Él siempre está de brazos cruzados cuando hay trabajo.", zh:"每次有工作要做，他總是在那邊什麼都不做。"},
+      {es:"Ante esta situación, no hay que estar de brazos cruzados.", zh:"面對這種情況，不該袖手旁觀。"}
+    ],
+    trap:"常跟 quedarse 連用（quedarse de brazos cruzados），比單純的 estar 多一種「明明可以做點什麼卻選擇不做」的批評語氣。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g38", cat:"phrase",
+    title:"Hacer la vista gorda：睜一隻眼閉一隻眼",
+    rule:"字面「把視線變模糊」，意思是故意忽視某件事、睜一隻眼閉一隻眼，跟英文 turn a blind eye 是同一種「眼睛」隱喻，兩種語言剛好對得上。",
+    examples:[
+      {es:"El profesor hizo la vista gorda con la tarea tarde.", zh:"老師對遲交的作業睜一隻眼閉一隻眼。"},
+      {es:"A veces hay que hacer la vista gorda con los pequeños errores.", zh:"有時候對小錯誤要睜一隻眼閉一隻眼。"},
+      {es:"No podemos seguir haciendo la vista gorda con esto.", zh:"我們不能再對這件事視而不見了。"}
+    ],
+    trap:"固定跟 con（對於...）連用：hacer la vista gorda con algo，後面接被忽視的那件事。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g39", cat:"phrase",
+    title:"Caer bien / caer mal：第一印象好壞",
+    rule:"caer 字面是「掉落」，但 caer bien/mal a alguien 是形容某人給你的印象好或差——句型結構跟 gustar 一樣是「反過來說」：造成印象的人是主詞，不是「我」。",
+    examples:[
+      {es:"Nita me cae muy bien.", zh:"我對妮妲印象很好。（字面：妮妲讓我覺得很好）"},
+      {es:"Ese chico me cae mal.", zh:"我對那個男生印象不好。"},
+      {es:"Me cae gordo.", zh:"我看他不順眼。（拉美口語，比 cae mal 更直接、更帶情緒）"}
+    ],
+    trap:"跟 gustar 句型結構一模一樣（間接受詞 + 動詞 + 主詞）：問自己「是誰造成這個印象？」，那個人才是文法上的主詞，不是「我」。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g40", cat:"phrase",
+    title:"Ponerse las pilas：打起精神、加把勁",
+    rule:"字面「幫自己裝上電池」，意思是打起精神、振作起來、加把勁去做某件事。",
+    examples:[
+      {es:"¡Ponte las pilas, el examen es mañana!", zh:"打起精神！明天就要考試了！"},
+      {es:"Tienes que ponerte las pilas con este proyecto.", zh:"你得對這個計畫更認真加把勁。"},
+      {es:"Vamos a ponernos las pilas.", zh:"我們一起打起精神吧。"}
+    ],
+    trap:"反身動詞 ponerse，字尾要跟著主詞變（ponte/ponerte/ponernos）——對「你」下命令時最常聽到的是 ¡Ponte las pilas!",
+    source:"文法補充"
+  },
+
+  {
+    id:"g41", cat:"verb-pattern",
+    title:"Echar：萬用動詞，意思看後面接什麼",
+    rule:"echar 字面是「丟、扔」，但西語日常有好幾組固定搭配延伸出去，意思差很大，是典型的「萬用動詞」——一定要看後面接什麼才能確定意思。",
+    examples:[
+      {es:"Echaron a Tito del equipo.", zh:"迪多被踢出隊了。（echar a alguien de... ＝開除/趕走）"},
+      {es:"¿Me echas un poco de agua?", zh:"可以幫我倒一點水嗎？（echar ＝倒/加）"},
+      {es:"Echo de menos a mi familia.", zh:"我想念我的家人。（echar de menos ＝想念）"}
+    ],
+    trap:"echar 本身意思很廣（丟/倒/放/趕），不能只背「echar=丟」就套用所有句子——重點是記住整組固定搭配（echar a alguien／echar de menos），把它們當語塊背，不要拆開單獨背 echar。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g42", cat:"verb-pattern",
+    title:"Quedar en algo：約定好、講好",
+    rule:"quedar 本身有「剩下／留下／變成」等意思，但 quedar en + 事情／quedar en que... 是固定搭配，意思是雙方「約定好、講好」要做某件事。",
+    examples:[
+      {es:"Quedamos en vernos a las cinco.", zh:"我們約好五點見面。"},
+      {es:"¿En qué quedamos?", zh:"我們到底講好了什麼？（釐清之前的約定）"},
+      {es:"Quedé en llamarte esta noche.", zh:"我說好今晚會打給你。"}
+    ],
+    trap:"這個 quedar en 跟「quedarse（留下，反身動詞）」是不同用法，不要搞混——quedar en 重點在「en」後面接的是約定的內容。",
+    source:"文法補充"
   }
 
 ];
