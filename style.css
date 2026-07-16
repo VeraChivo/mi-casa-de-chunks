@@ -582,6 +582,21 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .mnemonic-estar .se-col-more{color:var(--benikake)}
 @media(max-width:360px){.se-station-grid{grid-template-columns:1fr}}
 
+.is-pair-wrap{padding:8px 10px}
+.is-pair-row{margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed var(--usumizu)}
+.is-pair-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.is-pair-verb{font-size:11px;font-weight:800;color:var(--tmid);margin-bottom:4px}
+.is-pair-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.is-pair-col{padding:8px 9px;border-radius:10px;background:var(--bg2);cursor:pointer}
+.is-pair-col:active{opacity:.8}
+.is-pair-col.is-indic{border-left:3px solid var(--mizu)}
+.is-pair-col.is-subj{border-left:3px solid var(--benikake)}
+.is-pair-label{font-size:10px;font-weight:800;color:var(--tmid);margin-bottom:3px}
+.is-pair-col.is-subj .is-pair-label{color:var(--benikake)}
+.is-pair-es{font-size:13px;font-weight:700;color:var(--tdark);margin-bottom:2px}
+.is-pair-zh{font-size:10.5px;color:var(--tmid)}
+@media(max-width:360px){.is-pair-cols{grid-template-columns:1fr}}
+
 /* ── 文法補充包 ── */
 .gsup-row{padding:10px 12px;border-bottom:1px solid var(--bg2);cursor:pointer}
 .gsup-row:last-child{border-bottom:none}

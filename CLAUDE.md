@@ -169,7 +169,7 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     - B2詞彙清單：心理形容詞(agobiado/decepcionado/exigente/indiferente/frustrado)、社會時事詞(peatón/ciudadano/polémica/prejuicio/igualdad/desempeñar/ocio)、萬用動詞(echar的多義：丟/開除/倒水/echar de menos想念；quedar en algo=約定好)
     - 成語語塊：darle vueltas a algo(鑽牛角尖)、estar de brazos cruzados(袖手旁觀)、hacer la vista gorda(睜一隻眼閉一隻眼)、caer bien/mal(第一印象好壞，拉美口語me cae gordo=我看他不順眼)、ponerse las pilas(振作起來)
     - 拉美俚語箱：墨西哥chido/¡qué onda!、哥倫比亞bacano/parce/vaina(萬用「東西」)、阿根廷che/copado；網路縮寫(xq/gpi/tkm)
-    - **太極變身鏡：陳述式vs虛擬式對比（2026-07-15 改案，降級成小工程）**：原本想做「切換鈕」，VERA後來確認**不用切換鈕，直接把兩種形式並排列出**(如 tengo(陳述式) / tenga(虛擬式) 並排顯示)，不用點擊互動——這樣改成純內容/既有卡片格式就能做，不是UI工程。**確立為之後的標準做法**：只要遇到「陳述式vs虛擬式」這類對比，一律用直接並排靜態顯示，不做切換鈕。
+    - [x] **太極變身鏡：陳述式vs虛擬式對比已完成（2026-07-16，見 index.html「🪞 陳述式↔虛擬式：直接對照」＋script.js INDIC_SUBJ_PAIRS/renderIndicSubjPairs）**：原本想做「切換鈕」，VERA後來確認**不用切換鈕，直接把兩種形式並排列出**，不用點擊互動。已在💎☁️是・在對照站與💧文法儲水槽之間新增一張常駐（不用展開）靜態卡片，5組動詞（hablar/tener/querer/poder/ser，涵蓋規則變化＋e→ie/o→ue詞幹變化＋完全不規則）左陳述式／右虛擬式並排，點任一句都能聽發音，重用`_grammarExChunks`不用另寫渲染邏輯。CSS新增`.is-pair-*`，仿照既有`.se-col`雙欄卡片樣式。**確立為之後的標準做法**：只要遇到「陳述式vs虛擬式」這類對比，一律用直接並排靜態顯示，不做切換鈕。
   - **🟡 中（要動UI但範圍可控，等地基打好再做）**：心田深耕新增B2子分類（🔥拉美修羅場/🎬流行樂陳釀）
   - **🔴 大（真正新功能，放最後）**：歌詞填空模組（選歌+版權+新互動元件）、「✨邁向精釀下一階」整體切換鈕架構
 

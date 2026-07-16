@@ -2430,6 +2430,33 @@ function renderSerEstarStation(){
   el.innerHTML = `<div class="se-station-grid">${renderCol(GRAMMAR_DATA.find(g=>g.id==='g01'))}${renderCol(GRAMMAR_DATA.find(g=>g.id==='g02'))}</div>`;
 }
 
+// ── 🪞 陳述式 ↔ 虛擬式：直接對照（靜態並排，不做切換鈕）──
+const INDIC_SUBJ_PAIRS = [
+  {verb:"hablar", indic:{es:"Hablas español.", zh:"你說西語。"}, subj:{es:"Espero que hables español.", zh:"希望你會說西語。"}},
+  {verb:"tener",  indic:{es:"Tienes miedo.", zh:"你會怕。"}, subj:{es:"No creo que tengas miedo.", zh:"我不覺得你會怕。"}},
+  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我懷疑你想要冰淇淋。"}},
+  {verb:"poder",  indic:{es:"Puedes venir.", zh:"你可以來。"}, subj:{es:"Espero que puedas venir.", zh:"希望你可以來。"}},
+  {verb:"ser",    indic:{es:"Eres feliz.", zh:"你很快樂。"}, subj:{es:"Espero que seas feliz.", zh:"希望你快樂。"}}
+];
+function renderIndicSubjPairs(){
+  const el = document.getElementById('indSubjBody');
+  if(!el) return;
+  const col = (cls,label,side) => `
+    <div class="is-pair-col ${cls}" onclick="event.stopPropagation();speakGramSmart('${escAttr(side.es)}')">
+      <div class="is-pair-label">${label}</div>
+      <div class="is-pair-es">${_grammarExChunks(side.es, `speakGramSmart('${escAttr(side.es)}')`)}</div>
+      <div class="is-pair-zh">${side.zh}</div>
+    </div>`;
+  el.innerHTML = INDIC_SUBJ_PAIRS.map(p=>`
+    <div class="is-pair-row">
+      <div class="is-pair-verb">${p.verb}</div>
+      <div class="is-pair-cols">
+        ${col('is-indic','陳述式',p.indic)}
+        ${col('is-subj','虛擬式',p.subj)}
+      </div>
+    </div>`).join('');
+}
+
 function openGrammarCard(gId){
   const g = GRAMMAR_DATA.find(x => x.id===gId);
   if(!g) return;
@@ -3244,6 +3271,7 @@ function initReminders(){
   renderPronounLibrary();
   renderGenderPairs();
   renderSerEstarStation();
+  renderIndicSubjPairs();
   renderGrammarSupplement();
   renderSelLine();
   renderVocab();
