@@ -107,7 +107,8 @@ const GRAMMAR_CATS = [
   {key:"verb-pattern", label:"動詞句型"},
   {key:"phrase",       label:"固定用語"},
   {key:"word-order",   label:"詞序"},
-  {key:"gender",       label:"名詞陰陽性"}
+  {key:"gender",       label:"名詞陰陽性"},
+  {key:"subjunctive",  label:"虛擬語氣"}
 ];
 
 
@@ -619,6 +620,71 @@ const GRAMMAR_DATA = [
       {es:"Listo, nos vemos mañana.", zh:"好，我們明天見。（哥倫比亞／中美洲）"}
     ],
     trap:"西班牙人講 Vale，拉美人一聽就知道妳學的是「西班牙腔」——這個網站教的是拉美西語，日常回應優先練 dale／listo／va，Vale 認得就好，不用當成自己的預設用語。",
+    source:"文法補充"
+  },
+
+  // ══ 虛擬語氣（Subjuntivo） ══
+
+  {
+    id:"g27", cat:"subjunctive",
+    title:"虛擬語氣入門：WEIRDO觸發詞",
+    rule:"主要子句是「願望／情緒／非人稱評論／請求／懷疑或否定／Ojalá」這六類，而且**主要子句的主詞跟後面子句的主詞不一樣**時，que 後面的動詞要變成虛擬式（不是陳述式）。如果主詞相同，直接用原形動詞就好，不用 que + 虛擬式。",
+    examples:[
+      {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。（否定信念 D=Doubt/Denial，觸發虛擬式 esté）"},
+      {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Ojalá/O 類，Espero que 的省略版）"},
+      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（情緒 E=Emotions，主詞是「我」但吵鬧的是「別人」，主詞不同才觸發虛擬式 haga）"}
+    ],
+    mnemonic:{
+      icon:"🌪️", word:"WEIRDO", side:"subj",
+      desc:"六種會觸發虛擬式的主要子句類型",
+      items:[
+        {l:"W",label:"Wishes 願望",ex:"Quiero que vengas."},
+        {l:"E",label:"Emotions 情緒反應",ex:"Me alegra que estés aquí."},
+        {l:"I",label:"Impersonal 非人稱評論",ex:"Es importante que estudies."},
+        {l:"R",label:"Requests 請求",ex:"Te pido que me ayudes."},
+        {l:"D",label:"Doubt/Denial 懷疑或否定",ex:"No creo que sea verdad."},
+        {l:"O",label:"Ojalá 祈願",ex:"Ojalá que tengas suerte."}
+      ]
+    },
+    trap:"判斷關鍵不是「這句話難不難」，是**兩個子句的主詞是不是同一個人**：Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）。",
+    source:"文法補充",
+    conj:{
+      verb:"hablar（虛擬式現在式，規則 -ar 動詞示範）",
+      rows:[
+        {person:"yo",         form:"hable",    ex:"Ojalá que hable bien.",           zh:"希望我表現得好。"},
+        {person:"tú",         form:"hables",   ex:"Quiero que hables conmigo.",      zh:"我希望你跟我說話。"},
+        {person:"él/ella/usted", form:"hable", ex:"Espero que hable pronto.",       zh:"希望他快點開口說話。"},
+        {person:"nosotros",   form:"hablemos", ex:"Es importante que hablemos de esto.", zh:"我們有必要聊聊這件事。"},
+        {person:"ellos/ellas/ustedes", form:"hablen", ex:"No creo que hablen español.", zh:"我不認為他們會說西語。"}
+      ]
+    }
+  },
+
+  {
+    id:"g28", cat:"subjunctive",
+    title:"情緒動詞句型：主詞不同才觸發虛擬式",
+    rule:"句型＝(A+人稱代詞)＋間接受詞＋情緒動詞＋infinitivo/sustantivo/que+虛擬式。同一個主詞造成自己的情緒反應時，用原形動詞；情緒反應的人（我）跟造成情緒的動作主詞（別人）不同時，才用 que + 虛擬式。",
+    examples:[
+      {es:"A mí me pone nervioso hablar en público.", zh:"公開說話讓我很緊張。（同一主詞：是「我」自己說話讓自己緊張，用原形動詞 hablar）"},
+      {es:"Me relaja escuchar el agua de un arroyo en un bosque.", zh:"在森林中聽溪水聲讓我感到放鬆。（同一主詞，用原形動詞 escuchar）"},
+      {es:"Me da vergüenza hablar con desconocidos.", zh:"和陌生人說話讓我感到害羞。（同一主詞，用原形動詞 hablar）"},
+      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（主詞不同：情緒的人是「我」，製造噪音的是「別人 la gente」，才用 que+虛擬式 haga）"}
+    ],
+    trap:"前三句看起來很像句型④，但差別在「動作是誰做的」——前三句都是「我自己在做那個動作」（我自己說話/我自己聽水聲），所以用原形動詞；句型④是「別人做的動作」讓我心情不好，主詞換人了，才需要 que + 虛擬式。這是最容易搞混、也最能看出真的懂不懂虛擬式的地方。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g29", cat:"subjunctive",
+    title:"Ojalá (que) / ¡Que + 虛擬式!：日常祝福語小補給包",
+    rule:"很多日常祝福語其實是「Espero que...」被省略掉 Espero 的簡化版——直接用 ¡Que + 虛擬式!開頭，是超高頻的口語祝福句型。Ojalá（源自阿拉伯語，字面「願真主保佑」）也一樣，後面固定接虛擬式表達願望。",
+    examples:[
+      {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
+      {es:"¡Que te mejores pronto!", zh:"祝你早日康復！"},
+      {es:"¡Que duermas bien!", zh:"祝你睡個好覺！"},
+      {es:"Ojalá que llueva pronto.", zh:"希望快點下雨。"}
+    ],
+    trap:"「Ojalá」後面加不加 que，兩種說法都有人講、且後面都一定要接虛擬式——網路上常聽到「拉美習慣加 que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。可以確定的是：Ojalá + 原形動詞（不接 que 也不接虛擬式）不符合 RAE 規範，這個要避免。",
     source:"文法補充"
   }
 
