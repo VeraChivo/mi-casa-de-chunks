@@ -110,7 +110,8 @@ const GRAMMAR_CATS = [
   {key:"gender",       label:"名詞陰陽性"},
   {key:"subjunctive",  label:"虛擬語氣"},
   {key:"connector",    label:"連接詞"},
-  {key:"confusable",   label:"易混淆詞組"}
+  {key:"confusable",   label:"易混淆詞組"},
+  {key:"vocab",        label:"B2詞彙"}
 ];
 
 
@@ -865,6 +866,61 @@ const GRAMMAR_DATA = [
       {es:"Quedé en llamarte esta noche.", zh:"我說好今晚會打給你。"}
     ],
     trap:"這個 quedar en 跟「quedarse（留下，反身動詞）」是不同用法，不要搞混——quedar en 重點在「en」後面接的是約定的內容。",
+    source:"文法補充"
+  },
+
+  // ══ B2 詞彙清單 ══
+
+  {
+    id:"g43", cat:"vocab",
+    title:"B2心理形容詞：描述複雜情緒與心理狀態",
+    rule:"A1-A2 常用的情緒字（feliz開心/triste難過）不夠用了，B2 需要更精準描述複雜心理狀態的形容詞——這些字幾乎都搭配 estar 或 sentirse（感覺起來），不是 ser，因為講的是暫時的心理狀態，不是永久本質。",
+    examples:[
+      {es:"Cata se siente agobiada por tantas tareas.", zh:"卡妲被那麼多待辦事項壓得喘不過氣。"},
+      {es:"Nita está harta de repetir lo mismo.", zh:"妮妲受夠了一直重複同樣的事。"},
+      {es:"Me siento inseguro cuando hablo en público.", zh:"我在公開演講時覺得沒有安全感。"}
+    ],
+    family:{
+      title:"🧠 B2心理形容詞小詞庫",
+      intro:"字尾要跟主詞的陰陽性一致（agobiado／agobiada），這裡列的是陽性預設形，實際用時記得改字尾。",
+      items:[
+        {es:"agobiado", zh:"壓得喘不過氣、心力交瘁（陰性：agobiada）"},
+        {es:"decepcionado", zh:"失望（陰性：decepcionada）"},
+        {es:"exigente", zh:"要求很高、嚴格（字尾不分陰陽性）"},
+        {es:"indiferente", zh:"漠不關心、無所謂（字尾不分陰陽性）"},
+        {es:"frustrado", zh:"挫折、灰心（陰性：frustrada）"},
+        {es:"estresado", zh:"壓力大（陰性：estresada）"},
+        {es:"inseguro", zh:"沒有安全感、不自信（陰性：insegura）"},
+        {es:"harto", zh:"受夠了、厭煩（陰性：harta）"}
+      ]
+    },
+    trap:"這些形容詞常跟 estar／sentirse 搭配，不是 ser——因為都是暫時的心理狀態，不是永久本質，跟💎☁️是・在對照站的 ESTAR 用法一致。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g44", cat:"vocab",
+    title:"B2社會時事詞彙",
+    rule:"日常對話升級到能討論社會議題的B2詞彙——這些字常出現在新聞、社群討論、對社會現象發表意見的場合。",
+    examples:[
+      {es:"El peatón cruzó la calle con cuidado.", zh:"行人小心地過了馬路。"},
+      {es:"Todo ciudadano tiene derecho a la igualdad.", zh:"每個公民都有平等的權利。"},
+      {es:"Este tema se ha vuelto una gran polémica.", zh:"這個議題變成很大的爭議。"}
+    ],
+    family:{
+      title:"🏛️ B2社會時事詞小詞庫",
+      intro:"這些字單獨背意義不大，重點是能組進句子裡討論社會議題——挑幾個試著自己造句看看。",
+      items:[
+        {es:"peatón", zh:"行人"},
+        {es:"ciudadano", zh:"公民"},
+        {es:"polémica", zh:"爭議"},
+        {es:"prejuicio", zh:"偏見"},
+        {es:"igualdad", zh:"平等"},
+        {es:"desempeñar", zh:"擔任、發揮（...作用/角色）"},
+        {es:"ocio", zh:"休閒"}
+      ]
+    },
+    trap:"desempeñar 幾乎都跟「un papel／un rol」連用（desempeñar un papel importante＝扮演重要角色），記整組固定搭配比單獨背這個動詞更好用。",
     source:"文法補充"
   }
 
