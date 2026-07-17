@@ -290,6 +290,24 @@ const CHUNK_MILESTONES = [
   { n:180, cefr:'C1', badge:'🏆', name:'莊園金牌', msg:'金牌傳奇！180 顆複利語塊達成。你能跟著 Reggaeton 饒舌，完全融入拉美社交圈。',
     song:{ artist:'Rosalía', title:'Despechá', chunk:'Que Dios me libre', t:38, yt:'https://www.youtube.com/watch?v=Aloe79Wjq34&t=38s' } }
 ];
+
+// 晉級祝賀語塊：依 CEFR 分兩組隨機抽選，避免每次晉級看到同一句
+const CELEBRATION_NEN_YA = [ // A1/A2 護土嫩芽 ~ 甘露初沁
+  {es:"¡Hola amigo!", zh:"嗨，朋友！恭喜你跨出第一步。小莊園的口說外掛已偷偷為你開啟：試著對麥克風大聲唸出這句話，只要能精準識別，就代表你的西語口說跨出完美的第一步囉！"},
+  {es:"¡Muy bien!", zh:"做得好！你成長的速度，快到真寶寶都來不及吃完一整包小餅乾！這張徽章是屬於你的，快用這句超短語塊，去跟蜂巢裡的小蜜蜂打個招呼吧！"},
+  {es:"¡Vamos, vamos!", zh:"衝啊、衝啊！偵測到基礎算力正在瘋狂萌芽。小蜜蜂工頭在後台高舉板手為你歡呼，這句簡單的西語你已經完全掌握了，準備好迎接下一個語塊了嗎？"},
+  {es:"¡Eres el mejor!", zh:"你最棒了！偵測到強大的口說算力，你的語塊樹正在瘋狂抽高！文法儲水槽的燃料已經超頻，請保持這個完美的發音，讓複利雪球滾得更大！"},
+  {es:"¡Gran cosecha!", zh:"大豐收！你今天的學習複利直接讓莊園長出黃金果實！小蜜蜂已經把這份資產累積里程碑刻在功德榜上了，趕快大聲唸出下一個句子，繼續擴建你的綠色領地！"}
+];
+const CELEBRATION_CHAO_PIN = [ // B1/B2/C1 蜂蜜初採 ~ 莊園金牌
+  {es:"El interés compuesto es más paciente que el viento, pero hace crecer tu bosque.", zh:"複利比風更有耐心，但它能讓你的森林（資產）長大。"},
+  {es:"Acumular tus tesoros de chunks es tan hermoso como ver florecer el panal.", zh:"累積你的「語塊寶藏」，跟看著蜂巢開花（繁榮）一樣美麗。"},
+  {es:"Una raíz profunda es menos frágil que una hoja suelta. ¡Sigue practicando!", zh:"一條深根，比一片飄落的葉子還不脆弱（更堅固）。繼續練習吧！"}
+];
+function pickCelebrationMessage(cefr){
+  const pool = (cefr==='A1' || cefr==='A2') ? CELEBRATION_NEN_YA : CELEBRATION_CHAO_PIN;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
 function _msGetSeen(){ try{ return JSON.parse(localStorage.getItem('peppa_milestones_v1')||'[]'); }catch(e){ return []; } }
 function _msSave(seen){ try{ localStorage.setItem('peppa_milestones_v1', JSON.stringify(seen)); }catch(e){} }
 function _checkNewMilestone(){
@@ -3593,13 +3611,15 @@ function getMorningBriefHTML(){
   const today = _td.charAt(0).toUpperCase() + _td.slice(1);
   // 里程碑慶祝（若有新達標未顯示，彈出後即標記已見）
   const ms = popNewMilestone();
+  const celebMsg = ms ? pickCelebrationMessage(ms.cefr) : null;
   const celebHtml = ms ? `<div class="ms-celeb">
     <div class="ms-celeb-badge">${ms.badge}</div>
     <div class="ms-celeb-title">🎉 解鎖里程碑！</div>
     <div class="ms-celeb-name">${ms.name}（${ms.cefr}）</div>
     <div class="ms-celeb-msg">${ms.msg}</div>
     <div class="ms-celeb-tip">
-      <div class="ms-celeb-tip-text">🌱 恭喜晉級！小莊園口說外掛大法已向您揭密：現在開始，挑戰句子時試著西語語音輸出這句話！如果能精準判別西語，代表你的口說能力已獲得官方大數據的 100% 認可！</div>
+      <div class="ms-celeb-tip-es" onclick="speakFull('${escAttr(celebMsg.es)}')" style="cursor:pointer">${celebMsg.es}</div>
+      <div class="ms-celeb-tip-text">${celebMsg.zh}</div>
       <div class="ms-celeb-tip-cta">🗣️ 快去找真人聊聊天！</div>
     </div>
   </div>` : '';

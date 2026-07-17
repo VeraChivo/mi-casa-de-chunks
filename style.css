@@ -1122,12 +1122,12 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .lf-filter-chip{font-size:11px;font-weight:800;padding:4px 10px;border-radius:14px;background:var(--bg2);color:var(--tmid);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .lf-filter-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
 .morning-brief-card{padding:2px 0 6px}
-.morning-brief-banner{background:linear-gradient(135deg,var(--konpeki),#2a5f8a);border-radius:14px;padding:14px 16px 12px;margin-bottom:14px;text-align:center}
-.morning-brief-tag{display:block;font-size:18px;font-weight:900;color:white;letter-spacing:.3px;margin-bottom:5px}
-.morning-brief-day{font-size:12px;color:rgba(255,255,255,.8);margin:0;font-weight:600;text-transform:capitalize}
+.morning-brief-banner{background:#FBF9F4;border-top:4px solid #1a1a1a;border-bottom:1px solid #1a1a1a;border-radius:2px;padding:16px 16px 14px;margin-bottom:14px;text-align:center}
+.morning-brief-tag{display:block;font-size:20px;font-weight:900;color:#1a1a1a;font-family:'Noto Serif TC',serif;letter-spacing:.5px;margin-bottom:4px}
+.morning-brief-day{font-size:12px;color:#5a5248;margin:0;font-weight:600;font-family:'Noto Serif TC',serif;font-style:italic;text-transform:capitalize}
 .morning-brief-section{font-size:11px;font-weight:800;color:var(--misora);letter-spacing:.4px;margin-bottom:8px}
 .morning-brief-song{font-size:14px;font-weight:800;color:var(--konpeki);margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.morning-brief-lyric{font-size:15px;line-height:1.7;color:var(--tdark);margin-bottom:8px;padding:10px 12px;background:var(--bg2);border-radius:10px}
+.morning-brief-lyric{font-size:15px;line-height:1.7;color:#3a2e0f;margin-bottom:8px;padding:10px 12px;background:#FFFBEA;border:1px solid #F5E6B8;border-radius:10px}
 .morning-brief-blank{border-bottom:2px solid var(--misora);padding:0 14px;letter-spacing:2px;color:transparent;background:var(--usumizu);border-radius:4px}
 .morning-brief-hint{font-size:12px;color:var(--tmid);margin-bottom:10px;font-style:italic}
 .morning-brief-yt{display:inline-block;font-size:12px;color:var(--misora);text-decoration:none;font-weight:700;margin-bottom:12px;padding:4px 0}
@@ -1138,18 +1138,6 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .make-stt-hint{font-size:11px;font-weight:600;color:var(--tmid);display:block;margin-top:5px}
 .make-notes-btn{margin-top:6px;background:transparent;border:1.5px solid var(--misora);border-radius:999px;padding:4px 14px;font-size:12px;font-weight:700;color:var(--misora);cursor:pointer;font-family:'Nunito',sans-serif;display:inline-block}
 .make-notes-btn:active{background:var(--misora);color:white}
-@media(prefers-color-scheme:dark){
-  .lf-card{background:#1e2a32;border-color:#2a3840}
-  .lf-input{background:#253038;color:#dde6eb;border-color:#3a4d5a}
-  .lf-grammar-note{background:#182028}
-  .morning-brief-lyric{background:#1e2a32}
-  .morning-brief-rule{background:#1e2a32}
-}
-:root[data-theme="dark"] .lf-card{background:#1e2a32;border-color:#2a3840}
-:root[data-theme="dark"] .lf-input{background:#253038;color:#dde6eb;border-color:#3a4d5a}
-:root[data-theme="dark"] .lf-grammar-note{background:#182028}
-:root[data-theme="dark"] .morning-brief-lyric{background:#1e2a32}
-:root[data-theme="dark"] .morning-brief-rule{background:#1e2a32}
 /* 里程碑勳章條 */
 .ms-strip{display:flex;align-items:center;gap:6px;padding:8px 16px 6px;flex-wrap:wrap;border-bottom:1px solid rgba(188,225,223,.4);background:var(--bg2)}
 .ms-badge{font-size:20px;line-height:1;cursor:default;transition:transform .15s}
@@ -1168,6 +1156,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .ms-celeb-yt{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:#c9a84c;padding:5px 14px;border-radius:20px;text-decoration:none}
 .ms-celeb-yt:hover{background:#a88930}
 .ms-celeb-tip{margin-top:10px;padding:10px 12px;background:rgba(61,184,122,.08);border-radius:10px;border:1px solid rgba(61,184,122,.3);text-align:left}
+.ms-celeb-tip-es{font-size:13px;font-weight:800;color:var(--konpeki);line-height:1.5;margin-bottom:4px}
 .ms-celeb-tip-text{font-size:12px;color:var(--tmid);line-height:1.55;margin-bottom:6px}
 .ms-celeb-tip-cta{font-size:13px;font-weight:800;color:var(--ok);text-align:center}
 /* ── 蜂巢築巢觀測儀 ── */
