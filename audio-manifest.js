@@ -2,16 +2,16 @@
 // 結構: AUDIO_MANIFEST[epIndex][sentenceIdx] = ["audio/eX/file1.mp3", ...] 依序播放
 const AUDIO_MANIFEST={
   0:[
-    ["audio/e1/01_yo_soy.mp3","audio/e1/02_gatita_nita.mp3"],
-    ["audio/e1/03_este_es.mp3","audio/e1/04_mi_hermano.mp3","audio/e1/05_tito.mp3"],
-    ["audio/e1/06_hoy_esta_lloviendo.mp3","audio/e1/07_asi_que.mp3","audio/e1/08_no_pueden_jugar.mp3"],
-    ["audio/e1/09_podemos_salir.mp3","audio/e1/10_a_jugar.mp3"],
-    ["audio/e1/11_nita_debes_ponerte.mp3","audio/e1/12_las_botas_de_agua.mp3"],
-    ["audio/e1/13_me_encanta_saltar.mp3","audio/e1/14_en_los_charcos.mp3"],
-    ["audio/e1/15_nita_ha_encontrado.mp3","audio/e1/16_un_charco_pequeno.mp3"],
-    ["audio/e1/17_ese_charco.mp3","audio/e1/18_si_que_es_grande.mp3"],
-    ["audio/e1/19_no_pasa_nada.mp3","audio/e1/20_solo_es_barro.mp3"],
-    ["audio/fix/E1_10_1_V.mp3","audio/fix/E1_10_2_Inf.mp3","audio/fix/E1_10_3_O.mp3"],
+    ["audio/e1/01_a_nita_le_gusta.mp3","audio/e1/02_estar_en_los_rincones.mp3"],
+    ["audio/e1/03_el_rincon_favorito.mp3","audio/e1/04_es_muy_tranquilo.mp3"],
+    ["audio/e1/05_hoy_tito_quiere.mp3","audio/e1/06_jugar_a_las_escondidas.mp3"],
+    ["audio/e1/07_nita_se_esconde.mp3","audio/e1/08_nadie_la_puede_encontrar.mp3"],
+    ["audio/e1/09_de_repente_empieza.mp3"],
+    ["audio/e1/10_sin_pensar.mp3","audio/e1/11_nita_sale_corriendo.mp3"],
+    ["audio/e1/12_nita_chapotea.mp3","audio/e1/13_pero.mp3","audio/e1/14_la_ropa_se_moja.mp3"],
+    ["audio/e1/15_la_ropa_mojada.mp3","audio/e1/16_le_molesta_mucho.mp3"],
+    ["audio/e1/17_nita_corre_a_casa.mp3","audio/e1/18_vuelve_a_su_rincon.mp3"],
+    ["audio/e1/19_papa_tato_mama_cata.mp3","audio/e1/20_sin_decir_nada.mp3"],
   ],
   1:[
     ["audio/e2/21_juguete_favorito.mp3","audio/e2/22_de_tito.mp3","audio/e2/23_es_senor_esqueleto.mp3"],

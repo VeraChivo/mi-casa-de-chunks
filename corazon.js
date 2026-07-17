@@ -65,6 +65,19 @@ const CORAZON_DATA = [
       { es: "Hoy elijo ser amable conmigo misma.",         zh: "今天我選擇溫柔對待自己。",       tag: "自我疼惜" },
       { es: "No he terminado de crecer.",                  zh: "我還沒長完，還在長大。",         tag: "成長心態" }
     ]
+  },
+  {
+    id: "solidaridad",
+    title: "🕯️ No estamos solas · 跨國際不孤單",
+    desc: "在台北、在馬德里、在墨西哥城——ND孩子的媽媽，跨越語言與時區彼此看見",
+    items: [
+      { es: "A veces el camino de nuestros hijos parece un laberinto, pero cada pieza que encajan es un paso a casa.", zh: "有時候孩子的路看起來像迷宮，但他們拼上的每一片，都是回家的一步。", tag: "核心心語" },
+      { es: "En Taipéi, en Madrid, en Ciudad de México: todas cargamos lo mismo.", zh: "在台北、在馬德里、在墨西哥城——我們都背負著同樣的重量。", tag: "跨國連結" },
+      { es: "El cansancio de una mamá de niño neurodivergente es real, aunque pocos lo ven.", zh: "神經多樣性孩子的媽媽的疲憊是真實的，即使很少人看見。", tag: "被看見" },
+      { es: "No necesitamos tener todo resuelto para abrazarnos.", zh: "我們不需要解決一切，才能彼此擁抱。", tag: "互相支持" },
+      { es: "Aquí, una vela encendida por ti, desde el otro lado del mundo.", zh: "在這裡，來自世界另一端，為你點的一根蠟燭。", tag: "跨國支持" },
+      { es: "Que tu hijo florezca a su propio ritmo, aunque el mundo no entienda todavía.", zh: "願你的孩子用他自己的節奏開花，即使世界還不明白。", tag: "同理陪伴" }
+    ]
   }
 ];
 

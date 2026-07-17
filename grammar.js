@@ -111,7 +111,8 @@ const GRAMMAR_CATS = [
   {key:"subjunctive",  label:"虛擬語氣"},
   {key:"connector",    label:"連接詞"},
   {key:"confusable",   label:"易混淆詞組"},
-  {key:"vocab",        label:"B2詞彙"}
+  {key:"vocab",        label:"B2詞彙"},
+  {key:"slang",        label:"拉美俚語"}
 ];
 
 
@@ -1042,6 +1043,151 @@ const GRAMMAR_DATA = [
     ],
     trap:"❌ más bueno／más malo 是錯的，要說 mejor／peor；mayor／menor 除了比較級（年長/年幼）也常直接當形容詞用（hermano mayor＝哥哥、hermana menor＝妹妹），不是每次都在做比較。",
     source:"文法補充"
+  },
+
+  // ══ B2 虛擬語氣進階 ══
+
+  {
+    id:"g53", cat:"subjunctive", level:"b2c1",
+    title:"過去虛擬式：Imperfecto de Subjuntivo",
+    rule:"當主要子句的動詞是**過去時態**（quería、pidió、esperaba…），而且滿足 WEIRDO 條件時，que 後面要用過去虛擬式（Imperfecto de Subjuntivo）。<br><br>規則變化：<br>• -AR 動詞：hablar → habl<b>ara</b>（我說了但那是在過去語境裡的願望）<br>• -ER / -IR 動詞：comer → com<b>iera</b>、vivir → viv<b>iera</b><br><br>高頻不規則形（背這幾個最夠用）：<br>ser／ir → fuera／fuera　tener → tuviera　hacer → hiciera　poder → pudiera　decir → dijera　haber → hubiera",
+    examples:[
+      {es:"Mamá Cata quería que Nita durmiera temprano.", zh:"卡妲媽媽希望妮妲早點睡。（quería=過去，→過去虛擬式 durmiera）"},
+      {es:"Tito pidió que todos tuvieran paciencia.", zh:"迪多請求大家有點耐心。（pidió=過去，→ tuvieran）"},
+      {es:"Era importante que la familia estuviera unida.", zh:"家人團結在一起是很重要的事。（Era=過去非人稱，→ estuviera）"}
+    ],
+    trap:"記憶公式：主句是過去時態 → que 後面用過去虛擬式。主句是現在時態（quiero/es importante）→ 用現在虛擬式（見 g27）。兩套虛擬式不混用，時間一對上就知道選哪個。",
+    source:"文法補充",
+    conj:{
+      verb:"hablar（過去虛擬式 -ra 形，LatAm 優先用 -ra 不用 -se）",
+      rows:[
+        {person:"yo",                    form:"hablara",  ex:"Ojalá que hablara más.",    zh:"要是我多說一點就好了。"},
+        {person:"tú",                    form:"hablaras", ex:"Quería que hablaras conmigo.",zh:"我希望你跟我說話。"},
+        {person:"él/ella/usted",         form:"hablara",  ex:"Era importante que hablara.",zh:"重要的是他開口說話。"},
+        {person:"nosotros",              form:"habláramos",ex:"Pidió que habláramos despacio.",zh:"她要求我們說話慢一點。"},
+        {person:"ellos/ellas/ustedes",   form:"hablaran", ex:"No creía que hablaran español.",zh:"我不相信他們會說西語。"}
+      ]
+    }
+  },
+
+  {
+    id:"g54", cat:"subjunctive", level:"b2c1",
+    title:"現在完成虛擬式：haya + 過去分詞",
+    rule:"當 WEIRDO 主句的動詞是**現在時態**，但後面子句說的是一件「可能已經發生」的事，que 後面就用「現在完成虛擬式」：**haya / hayas / haya / hayamos / hayan + 過去分詞（-ado/-ido）**。<br><br>白話判斷法：說的是「現在懷疑/希望/擔心——某件過去的事有沒有發生」→ haya + 過去分詞。",
+    examples:[
+      {es:"No creo que Nita haya terminado de comer.", zh:"我不相信妮妲已經吃完了。（現在不信 → 對已發生的事）"},
+      {es:"Espero que Tito haya dormido bien anoche.", zh:"希望迪多昨晚睡得好。（現在希望 → 對已發生的事）"},
+      {es:"Es una lástima que no hayas venido.", zh:"你沒來真是太可惜了。（現在惋惜 → 對已不來的事實）"}
+    ],
+    trap:"跟一般現在完成式（He terminado. → 我已經吃完了）的差別是：一般完成式是陳述「確實發生」，現在完成虛擬式是在「懷疑/希望/擔心某件事有沒有發生」——後面那個不確定性才是觸發虛擬式的關鍵。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g55", cat:"subjunctive", level:"b2c1",
+    title:"Si + 過去虛擬式 + 條件式：與現實相反的假設",
+    rule:"這是西語假設句的 B2 大魔王：說一件**目前並非事實**的假設，格式固定——<br><br>**Si + 過去虛擬式（-ra 形） + 條件式（-ría）**<br><br>對照：Si + 現在陳述式 + 未來式 = 真實可能（見 g19 IR 近未來式旁邊的用法）<br>Si tuviera dinero, compraría → 我沒有錢（所以才假設）<br>Si tengo dinero, compraré → 我可能有錢（真實可能性）",
+    examples:[
+      {es:"Si tuviera más tiempo, dormiría una siesta cada día.", zh:"如果我有更多時間，我每天都要午睡。（事實：沒時間）"},
+      {es:"Si fuera viernes, saldríamos a pasear.", zh:"如果今天是週五，我們就出去散步了。（事實：今天不是週五）"},
+      {es:"Si pudiera hablar español, viajaría por toda América Latina.", zh:"如果我能說西語，我就要遊遍整個拉丁美洲。（學到一半的感嘆版）"}
+    ],
+    trap:"兩套 Si 句不可混搭：Si tuviera + compraría ✅；Si tengo + compraría ❌（時態搭配要一致）。過去虛擬式永遠搭條件式，現在陳述式永遠搭未來式——選定一組就成對用到底。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g56", cat:"connector", level:"b2c1",
+    title:"Aunque：雖然（陳述式）vs 即使（虛擬式）",
+    rule:"aunque 是 B2 的雙面刃連接詞——後面接陳述式還是虛擬式，意思完全不同：<br><br>• **aunque + 陳述式** = **雖然**（事實讓步，承認這件事確實發生）<br>• **aunque + 虛擬式** = **即使**（假設讓步，這件事還沒確定，只是假設）",
+    examples:[
+      {es:"Aunque está cansada, Nita sigue dibujando.", zh:"雖然很累，妮妲還是繼續畫畫。（está 陳述式 → 她確實很累，這是事實）"},
+      {es:"Aunque esté cansada, Nita seguirá dibujando.", zh:"即使（萬一）累了，妮妲也還是會繼續畫畫。（esté 虛擬式 → 她現在不一定累，是假設情況）"},
+      {es:"Aunque llueva, iremos a la fiesta.", zh:"就算下雨，我們也要去派對。（虛擬式，現在不知道會不會下雨）"}
+    ],
+    trap:"判斷訣竅：說話時你**確定這件事正在發生/已經發生**？用陳述式。你只是**假設/承認一種可能性**，不確定？用虛擬式。同一個 aunque，一字之差，語氣截然不同。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g57", cat:"verb-pattern", level:"b2c1",
+    title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
+    rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞數量要跟後面的名詞一致（單數→動詞單數，複數→複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用第三人稱單數",
+    examples:[
+      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節被（大家）慶祝著。（se pasivo，主詞 el Día 是單數）"},
+      {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。（se pasivo，flores 複數 → venden 複數）"},
+      {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（se impersonal，que 後面整句，動詞固定單數）"}
+    ],
+    trap:"SE 被動的動詞要跟名詞在數上一致（Se vende pan. vs Se venden flores.）；SE 無人稱沒有可以配對的名詞主詞，所以永遠是第三人稱單數 se dice/se puede/se considera。判斷有沒有「東西/名詞」是誰在被動受到那個動作——有的話是 SE 被動，沒有的話是 SE 無人稱。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g58", cat:"verb-pattern", level:"b2c1",
+    title:"Ponerse / Quedarse / Volverse：三種「變成」",
+    rule:"西語有三個表示「變成/成為」的動詞，各有各的語感：<br><br>• **ponerse + 形容詞** = 暫時性情緒／生理狀態的突然改變（「一下子就...」）<br>• **quedarse + 形容詞** = 某件事發生後留下的結果狀態（「結果變成...」）<br>• **volverse + 形容詞／名詞** = 逐漸且深層的改變，像性格或本質變了（「越來越...、變成了...這樣的人」）",
+    examples:[
+      {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候立刻很開心。（ponerse：情緒瞬間浮現）"},
+      {es:"Tito se quedó dormido en el sofá.", zh:"迪多（看著看著）就在沙發上睡著了。（quedarse：某件事導致的結果狀態）"},
+      {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時天空慢慢變成橘色。（volverse：漸進深層的改變）"}
+    ],
+    trap:"三個都能翻成「變」，但語感差很多：ponerse 強調「突然冒出來的情緒或感覺」（短暫）；quedarse 強調「發生完某事後的結果」（留下來）；volverse 強調「慢慢從根本上改變了」（深層）。不確定時，情緒變化先選 ponerse，結果狀態選 quedarse，性格本質改變選 volverse。",
+    source:"文法補充"
+  },
+
+  // ══ 拉美俚語箱 ══
+
+  {
+    id:"g59", cat:"slang", level:"b2c1",
+    title:"拉美各地道地口語：三國俚語地圖",
+    rule:"同一件事，不同國家的拉美人說法完全不一樣——這些俚語聽起來很道地，但要注意地區差異，最安全的辦法是先認識、聽懂，在對話裡自然帶出再說。角色台詞仍用泛拉美中性詞（Dale/Listo/Genial），這些俚語是「聽得懂」補充，不是取代中性詞。",
+    examples:[
+      {es:"¡Qué onda, wey! — 🇲🇽 墨西哥打招呼（「什麼情況啊，哥們！」）", zh:"¡Qué onda! 字面是「什麼波浪/什麼感覺」，等同於「哇塞！」「怎麼啦？」，wey（guey 諧音版）是朋友間的稱呼（哥們/老兄）。"},
+      {es:"¡Eso está muy chido! — 🇲🇽 墨西哥（「超讚的！」）", zh:"chido/chida 是墨西哥年輕人說「很酷、很棒」的詞，類似英語 cool，在墨西哥以外不常聽到。"},
+      {es:"¡Qué bacano! — 🇨🇴 哥倫比亞（「太讚了！太棒了！」）", zh:"bacano 是哥倫比亞和部分加勒比海地區的「很棒」，類似 chido，同樣具地區性。"}
+    ],
+    family:{
+      title:"🗺️ 三國俚語速查",
+      intro:"聽懂 > 主動使用。先認識這些字，聽到不懵就算成功；說的時候注意你在和哪個國家的人說話。",
+      items:[
+        {es:"🇲🇽 chido/chida", zh:"好棒／很酷（墨西哥，類似 cool）"},
+        {es:"🇲🇽 ¡Qué onda!", zh:"什麼情況！／哇塞！（墨西哥打招呼/驚嘆）"},
+        {es:"🇲🇽 wey / güey", zh:"哥們、老兄（墨西哥朋友間稱呼，正式場合不用）"},
+        {es:"🇨🇴 bacano", zh:"很棒、很酷（哥倫比亞、加勒比海地區）"},
+        {es:"🇨🇴 parce", zh:"朋友、哥們（哥倫比亞，parcerito 更親昵）"},
+        {es:"🇨🇴 vaina", zh:"萬用「東西／事情」（哥倫比亞/委內瑞拉，¿Qué es esa vaina?＝那是什麼東西？）"},
+        {es:"🇦🇷 che", zh:"喂／哎（阿根廷打招呼或引起注意，¡Che, mirá eso!＝喂，看那個！）"},
+        {es:"🇦🇷 copado/copada", zh:"很棒、很酷（阿根廷，類似 chido）"}
+      ]
+    },
+    trap:"¡Qué onda! 只在墨西哥超高頻——到阿根廷說可能會有點奇怪；dale（好的/走吧）跟 listo（好了/準備好）才是最泛拉美、哪裡都用的同意語。不確定對方是哪國人時，先用 Dale/Listo/Genial 最安全。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g60", cat:"slang", level:"b2c1",
+    title:"西語網路縮寫：IG/Twitter 拉美網民語言",
+    rule:"拉美社群媒體有一套自己的縮寫系統，混合了西語縮寫和通用拉丁字母縮寫，要讀懂拉美 IG 留言或 Twitter 回文，這幾個必須認識。",
+    examples:[
+      {es:"xq no fuiste? — 為什麼你沒來？", zh:"xq = porque（因為／為什麼），是 por qué 的縮寫，口語常見。注意：正式書寫絕對不用 xq，這是純網路用語。"},
+      {es:"gpi a todas! — 感謝所有人！", zh:"gpi = gracias por invitar（謝謝邀請），常見於社群貼文感謝標籤、回覆留言。"},
+      {es:"tkm, no tengo palabras ❤️ — 我愛你，我無言以對❤️", zh:"tkm = te quiero mucho（非常愛你/非常喜歡你），跟 tqm 是同一組，是親友間最常用的網路結尾語。"}
+    ],
+    family:{
+      title:"📱 拉美網路縮寫速查",
+      intro:"這些都只用在社群媒體、訊息、貼文——不寫進正式文件。認得就好，主動使用前先感受一下對話的語氣對不對。",
+      items:[
+        {es:"xq / x q", zh:"porque（因為）or por qué（為什麼）"},
+        {es:"gpi", zh:"gracias por invitar（謝謝邀請）"},
+        {es:"tkm / tqm", zh:"te quiero mucho（非常愛你/很喜歡你）"},
+        {es:"ntp", zh:"no te preocupes（別擔心）"},
+        {es:"q", zh:"que（在縮寫裡 q 常代替 que，例：q tal?＝¿Qué tal?）"},
+        {es:"msj", zh:"mensaje（訊息），「mándame un msj」＝給我傳個訊"},
+        {es:"jaja / jajaja", zh:"哈哈／哈哈哈（西語笑聲，類似英語 lol，j 在西語唸/x/ 所以 jaja 才是正確的笑聲拼法，不是 haha）"}
+      ]
+    },
+    trap:"xq 的讀法是「por qué」或「porque」——看語境判斷。「¿xq no viniste?」是問「為什麼沒來」（疑問），「xq estaba ocupado」是答「因為我很忙」（原因）。jaja 裡的 j 唸作/x/（類似英語 h），所以網路上說 jaja 是真實發音，不是拼錯。",
+    source:"文法補充"
   }
 
 ];
@@ -1056,17 +1202,17 @@ const GRAMMAR_LEVEL_TIERS = [
 /* 全局句子索引（ep*10 + sentenceIdx）→ grammar_id
    null = 該句沒有對應的主要文法點 */
 const SENTENCE_GRAMMAR_MAP = {
-  // E1 泥巴坑
-   0:'g01',  // Yo soy Gatita Nita. → SER 身分
-   1:'g01',  // Este es mi hermano → SER 關係
-   2:'g03',  // está lloviendo → ESTAR + -ando
-   3:'g10',  // ¿Podemos salir? → Podemos
-   4:'g11',  // debes ponerte → Deber
-   5:'g08',  // Me encanta saltar → encanta
-   6:'g05',  // ha encontrado → 已經做了
-   7:'g01',  // sí que es grande → SER 本質
-   8:'g14',  // No pasa nada → 固定用語
-   9:'g09',  // A todos les encanta → A+人+le
+  // E1 妮妲的角落
+   0:'g09',  // A Nita le gusta estar → gustar 句型
+   1:'g01',  // rincón favorito es muy tranquilo → SER 描述
+   2:'g10',  // Tito quiere jugar → querer + infinitive
+   3:'g10',  // nadie la puede encontrar → poder
+   4: null,  // empieza a llover（無專屬文法卡）
+   5: null,  // sin pensar, sale corriendo（無專屬文法卡）
+   6:'g32',  // pero → 連接詞轉折卡
+   7:'g09',  // la ropa mojada le molesta → molestar 跟 gustar 同句型
+   8: null,  // vuelve a su rincón（無專屬文法卡）
+   9: null,  // se sientan cerca, sin decir nada（無專屬文法卡）
   // E2 骷髏先生不見了
   10:'g01',  // juguete favorito de Tito es → SER
   11: null,  // se va a la cama（無對應文法點）
@@ -1100,4 +1246,15 @@ const SENTENCE_GRAMMAR_MAP = {
   67:'g20',  // ¿Tienes tiempo? → TENER 家族
   68:'g20',  // tiene miedo de → TENER 家族
   69: null,  // Nita se duerme en clase（尚無 dormirse 反身動詞專屬卡）
+  // E11 亡靈節 El Camino de la Memoria
+  100:'g01',  // Hoy es el Día → SER 描述事件
+  101:'g30',  // porque son el camino → porque 子句
+  102:'g32',  // pero escucha → pero 轉折
+  103:'g32',  // es silencioso pero está → pero 轉折（SER/ESTAR 對比）
+  104: null,  // y reconoce caras → y 順接，無專屬卡
+  105:'g30',  // porque los queremos → porque 子句
+  106:'g32',  // pero no quiere soltarla → pero 轉折
+  107: null,  // y comparte historias → y 順接，無專屬卡
+  108:'g32',  // pero sí cambia de forma → pero 強調對比
+  109:'g32',  // pero el amor es para siempre → pero 轉折
 };

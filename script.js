@@ -2358,20 +2358,44 @@ function _grammarExChunks(es, playExpr){
 
 // ── 💧 文法儲水槽（沒有綁定特定劇情句子、從外面引進來的零散文法點） ──
 // 等級標籤只是導覽輔助，不是內容鎖：篩選只是隱藏/顯示，隨時可以切回「全部」看到所有卡片
+const GRAMMAR_TOPIC_IDS = {
+  culture: ['g24','g25','g26','g45','g46','g47','g48','g49'],
+  daily:   ['g14','g15','g16','g36','g37','g38','g39','g40','g43','g44']
+};
+const GRAMMAR_TOPIC_CHIPS = [
+  {key:'all',     icon:'📋', label:'全部'},
+  {key:'grammar', icon:'🔧', label:'文法骨架'},
+  {key:'culture', icon:'🌍', label:'文化地圖'},
+  {key:'daily',   icon:'💬', label:'日常開口'}
+];
+function _gsupTopicFor(id){
+  if(GRAMMAR_TOPIC_IDS.culture.includes(id)) return 'culture';
+  if(GRAMMAR_TOPIC_IDS.daily.includes(id)) return 'daily';
+  return 'grammar';
+}
 let _gsupLevelFilter = 'all';
+let _gsupTopicFilter = 'all';
 function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
 function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
   const filterEl = document.getElementById('grammarLevelFilter');
+  const topicEl = document.getElementById('grammarTopicFilter');
   if(!el) return;
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充'));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
     filterEl.innerHTML = chip('all','📋','全部') + GRAMMAR_LEVEL_TIERS.map(t=>chip(t.key, t.icon, t.label)).join('');
   }
-  const shown = _gsupLevelFilter==='all' ? items : items.filter(g=>g.level===_gsupLevelFilter);
+  if(topicEl){
+    topicEl.innerHTML = GRAMMAR_TOPIC_CHIPS.map(t=>`<span class="gsup-level-chip${_gsupTopicFilter===t.key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByTopic('${t.key}')">${t.icon} ${t.label}</span>`).join('');
+  }
+  const shown = items.filter(g=>{
+    const levelOk = _gsupLevelFilter==='all' || g.level===_gsupLevelFilter;
+    const topicOk = _gsupTopicFilter==='all' || _gsupTopicFor(g.id)===_gsupTopicFilter;
+    return levelOk && topicOk;
+  });
   el.innerHTML = shown.map(g=>{
     const lv = _gsupLevelInfo(g.level);
     return `
@@ -2382,10 +2406,14 @@ function renderGrammarSupplement(){
       </div>
       <div class="gsup-rule">${g.rule}</div>
     </div>`;
-  }).join('') || `<div class="garden-empty-msg">這個等級目前還沒有卡片</div>`;
+  }).join('') || `<div class="garden-empty-msg">這個分類目前沒有符合的卡片</div>`;
 }
 function filterGrammarSupplementByLevel(key){
   _gsupLevelFilter = key;
+  renderGrammarSupplement();
+}
+function filterGrammarSupplementByTopic(key){
+  _gsupTopicFilter = key;
   renderGrammarSupplement();
 }
 
@@ -2470,9 +2498,8 @@ const INDIC_SUBJ_PAIRS = [
 function renderIndicSubjPairs(){
   const el = document.getElementById('indSubjBody');
   if(!el) return;
-  const col = (cls,label,side) => `
+  const col = (cls,side) => `
     <div class="is-pair-col ${cls}" onclick="event.stopPropagation();speakGramSmart('${escAttr(side.es)}')">
-      <div class="is-pair-label">${label}</div>
       <div class="is-pair-es">${_grammarExChunks(side.es, `speakGramSmart('${escAttr(side.es)}')`)}</div>
       <div class="is-pair-zh">${side.zh}</div>
     </div>`;
@@ -2480,8 +2507,8 @@ function renderIndicSubjPairs(){
     <div class="is-pair-row">
       <div class="is-pair-verb">${p.verb}</div>
       <div class="is-pair-cols">
-        ${col('is-indic','直述句（眼前呈現）',p.indic)}
-        ${col('is-subj','腦內劇場（祝福／期盼）',p.subj)}
+        ${col('is-indic',p.indic)}
+        ${col('is-subj',p.subj)}
       </div>
     </div>`).join('');
 }
@@ -2543,9 +2570,61 @@ const LYRICS_FILL_DATA = [
     after:'— no importa, yo te quiero igual.',
     hint:'Si + 陳述式現在式 = 真實可能的條件',
     grammar:'「Si vienes o si vas」用的是陳述式直述式，不是虛擬式！Si + 現在陳述式表示「真實可能發生的條件」。跟 Beyoncé 那句對比：Si fuera（虛擬式）= 與現實相反；Si vas（陳述式）= 去或不去都有可能，是開放的真實情境。'
+  },
+  {
+    id:'lf05', artist:'Tradicional', song:'Los Pollitos Dicen', level:'a0', levelLabel:'A0',
+    yt:'https://www.youtube.com/results?search_query=Los+Pollitos+Dicen',
+    ytLabel:'▶ 搜尋這首',
+    before:'Los pollitos dicen pío pío pío / cuando',
+    blank:'tienen',
+    after:'hambre cuando tienen frío.',
+    hint:'tienen = tener 第三人稱複數 (ellos)',
+    grammar:'「Tienen hambre / tienen frío」用 TENER 表達生理狀態，不是說「它們是飢餓的」。TENER 家族：tener hambre（餓）/ tener frío（冷）/ tener sed（渴）/ tener sueño（睏）——這些都是搭配 tener 的固定搭配，不用 estar + 形容詞。tener 第三人稱複數 ellos/ellas → tienen。'
+  },
+  {
+    id:'lf06', artist:'Tradicional', song:'Arroz con Leche', level:'a0', levelLabel:'A0',
+    yt:'https://www.youtube.com/results?search_query=Arroz+con+Leche+canci%C3%B3n+infantil',
+    ytLabel:'▶ 搜尋這首',
+    before:'Arroz con leche, me',
+    blank:'quiero',
+    after:'casar con una señorita de aquí.',
+    hint:'quiero = querer 第一人稱單數 (yo)',
+    grammar:'「Quiero casar」第一人稱「我想要…」，querer 是不規則動詞（e→ie 詞幹變化）：quiero / quieres / quiere / queremos / quieren。後面接原形動詞（casar），注意：casarse 反身動詞「結婚」，歌詞傳統唱法省略了 me，可視為詩歌韻律省略。'
+  },
+  {
+    id:'lf07', artist:'Tradicional', song:'Estrellita ¿Dónde Estás?', level:'a0', levelLabel:'A0',
+    yt:'https://www.youtube.com/results?search_query=Estrellita+d%C3%B3nde+est%C3%A1s+canci%C3%B3n',
+    ytLabel:'▶ 搜尋這首',
+    before:'Estrellita, ¿dónde',
+    blank:'estás',
+    after:'? Me pregunto lo que eres.',
+    hint:'estás = estar 第二人稱單數 (tú)',
+    grammar:'「¿Dónde estás?」你在哪裡？ESTAR 用於位置（在哪裡），不用 SER。這是 ESTAR 最基礎的用法之一——問地點永遠用 estar，而不是 ser。五人稱：estoy / estás / está / estamos / están。這首歌是西語版的《Twinkle Twinkle Little Star》。'
+  },
+  {
+    id:'lf08', artist:'Tradicional', song:'La Araña Pequeñita', level:'a0', levelLabel:'A0',
+    yt:'https://www.youtube.com/results?search_query=La+ara%C3%B1a+peque%C3%B1ita',
+    ytLabel:'▶ 搜尋這首',
+    before:'La araña pequeñita',
+    blank:'subió',
+    after:'/ subió / subió, subió.',
+    hint:'subió = subir 第三人稱單數簡單過去式',
+    grammar:'「Subió」爬上去了——簡單過去式（Pretérito Indefinido），表示一個已完成的動作。subir 是規則 -ir 動詞的過去式變化：yo subí / tú subiste / él subió / nosotros subimos / ellos subieron。對比現在式 sube（正在爬）vs 過去式 subió（爬上去了，完成了）。'
+  },
+  {
+    id:'lf09', artist:'Tradicional', song:'De Colores', level:'a1', levelLabel:'A1',
+    yt:'https://www.youtube.com/results?search_query=De+Colores+canci%C3%B3n+infantil',
+    ytLabel:'▶ 搜尋這首',
+    before:'De colores, de colores',
+    blank:'se visten',
+    after:'los campos en la primavera.',
+    hint:'se visten = vestirse 反身動詞第三人稱複數',
+    grammar:'「Se visten los campos」田野披上（色彩）——反身動詞 vestirse（穿衣/披上）搭配複數主詞 los campos 用 se visten。反身動詞五人稱：me visto / te vistes / se viste / nos vestimos / se visten。這首歌是拉美農民/工人運動的著名民謠，1960年代由 César Chávez 採用為抗爭歌曲。'
   }
 ];
+let _lfFilter = 'all';
 let _lyricsFillOpen = false;
+function filterLyricsFill(key){ _lfFilter = key; renderLyricsFill(); }
 function toggleLyricsFill(){
   _lyricsFillOpen = !_lyricsFillOpen;
   const body = document.getElementById('lyricsFillBody');
@@ -2558,7 +2637,21 @@ function toggleLyricsFill(){
 function renderLyricsFill(){
   const el = document.getElementById('lyricsFillBody');
   if(!el) return;
-  el.innerHTML = LYRICS_FILL_DATA.map(lf => `
+  const filterChips = [
+    {key:'all', label:'📋 全部'},
+    {key:'nursery', label:'🎵 兒歌 A0–A1'},
+    {key:'grammar', label:'🎓 文法闖關 B1–B2'}
+  ];
+  const filtered = _lfFilter === 'nursery'
+    ? LYRICS_FILL_DATA.filter(x=>['a0','a1'].includes(x.level))
+    : _lfFilter === 'grammar'
+    ? LYRICS_FILL_DATA.filter(x=>['b1','b2'].includes(x.level))
+    : LYRICS_FILL_DATA;
+  el.innerHTML = `
+    <div class="lf-filter-row">${filterChips.map(c=>`
+      <button class="lf-filter-chip${_lfFilter===c.key?' active':''}" onclick="filterLyricsFill('${c.key}')">${c.label}</button>`).join('')}
+    </div>
+    ${filtered.map(lf => `
     <div class="lf-card" id="lf-card-${lf.id}">
       <div class="lf-header">
         <div class="lf-artist-song">
@@ -2580,7 +2673,7 @@ function renderLyricsFill(){
       </div>
       <div class="lf-feedback" id="lff-${lf.id}" style="display:none"></div>
       <div class="lf-grammar-note" id="lfg-${lf.id}" style="display:none">${lf.grammar}</div>
-    </div>`).join('');
+    </div>`).join('')}`;
 }
 function checkLyric(id){
   const lf = LYRICS_FILL_DATA.find(x=>x.id===id);
@@ -3399,6 +3492,73 @@ function handleReminderDeepLink(){
   }
 }
 
+// ── 🌅 農間小報（回訪者每日一次自動彈出，使用導覽區 modal 基礎架構）──
+function getMorningBriefHTML(){
+  const day = Math.floor(Date.now()/86400000);
+  const count = (ammoUnlocked||[]).length;
+  const today = new Date().toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
+  let lf = null, gcard = null, sectionLabel = '', isLyric = true;
+  if(count < 15){
+    const pool = LYRICS_FILL_DATA.filter(x=>['a0','a1'].includes(x.level));
+    lf = pool[day % pool.length];
+    sectionLabel = '🎵 今日兒歌語塊';
+  } else if(count < 45){
+    const pool = LYRICS_FILL_DATA.filter(x=>['b1','b2'].includes(x.level));
+    lf = pool[day % pool.length];
+    sectionLabel = '🎓 今日歌詞填空';
+  } else {
+    const ids = ['g45','g46','g47','g48','g49'];
+    const GRAMMAR_DATA_REF = (typeof GRAMMAR_DATA !== 'undefined') ? GRAMMAR_DATA : [];
+    gcard = GRAMMAR_DATA_REF.find(x=>x.id===ids[day%ids.length]);
+    sectionLabel = '🌍 今日文化小卡';
+    isLyric = false;
+  }
+  if(isLyric && lf){
+    return `<div class="morning-brief-card">
+      <span class="morning-brief-tag">🌅 農間小報</span>
+      <div class="morning-brief-day">${today}</div>
+      <div class="morning-brief-section">${sectionLabel}</div>
+      <div class="morning-brief-song"><span>${lf.artist}</span><span>《${lf.song}》</span><span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span></div>
+      <div class="morning-brief-lyric">${lf.before} <span class="morning-brief-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${lf.after}</div>
+      <div class="morning-brief-hint">💡 ${lf.hint}</div>
+      <a class="morning-brief-yt" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
+      <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 去今日探索</button>
+    </div>`;
+  }
+  if(!isLyric && gcard){
+    const ex = gcard.examples && gcard.examples[0];
+    return `<div class="morning-brief-card">
+      <span class="morning-brief-tag">🌅 農間小報</span>
+      <div class="morning-brief-day">${today}</div>
+      <div class="morning-brief-section">${sectionLabel}</div>
+      <div class="morning-brief-song">${gcard.title}</div>
+      <div class="morning-brief-rule">${gcard.rule}</div>
+      ${ex?`<div class="morning-brief-lyric" onclick="speakGramSmart('${escAttr(ex.es)}')" style="cursor:pointer">${ex.es}<div style="font-size:11px;color:var(--tmid);margin-top:4px">${ex.zh}</div></div>`:''}
+      <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 去今日探索</button>
+    </div>`;
+  }
+  return `<div class="morning-brief-card"><span class="morning-brief-tag">🌅 農間小報</span><button class="morning-brief-close" onclick="closeMorningBrief()">✕ 關閉</button></div>`;
+}
+function showMorningBrief(){
+  const overlay = document.getElementById('welcomeTourOverlay');
+  if(!overlay) return;
+  const dots = document.getElementById('welcomeTourDots');
+  const nav = overlay.querySelector('.welcome-tour-nav');
+  if(dots) dots.innerHTML = '';
+  if(nav) nav.style.display = 'none';
+  const body = document.getElementById('welcomeTourBody');
+  if(body) body.innerHTML = getMorningBriefHTML();
+  overlay.style.display = 'flex';
+}
+function closeMorningBrief(){
+  const overlay = document.getElementById('welcomeTourOverlay');
+  if(!overlay) return;
+  const nav = overlay.querySelector('.welcome-tour-nav');
+  if(nav) nav.style.display = '';
+  overlay.style.display = 'none';
+  try{ localStorage.setItem('peppa_brief_day_v1', String(Math.floor(Date.now()/86400000))); }catch(e){}
+}
+
 // ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從「❓ 莊園導覽」重新打開）──
 const WELCOME_TOUR_STEPS = [
   {icon:"🌾", title:"田間播語塊", desc:"這裡是妳每日播種語言的田地。點開劇中精選片段，跟著莊園主人拆解句子；一詞一句學西語，完成句子還能解鎖彈藥庫語塊。"},
@@ -3408,12 +3568,31 @@ const WELCOME_TOUR_STEPS = [
 ];
 let _welcomeTourStep = 0;
 function showWelcomeTour(force){
-  if(!force){
-    try{ if(localStorage.getItem('peppa_welcome_tour_seen_v1')) return; }catch(e){}
+  let seen = false;
+  try{ seen = !!localStorage.getItem('peppa_welcome_tour_seen_v1'); }catch(e){}
+  // Ensure tour nav is restored before any rendering
+  const overlay = document.getElementById('welcomeTourOverlay');
+  if(overlay){
+    const nav = overlay.querySelector('.welcome-tour-nav');
+    if(nav) nav.style.display = '';
   }
-  _welcomeTourStep = 0;
-  renderWelcomeTourStep();
-  document.getElementById('welcomeTourOverlay').style.display = 'flex';
+  if(!seen){
+    // First visit: show 4-step tour
+    _welcomeTourStep = 0;
+    renderWelcomeTourStep();
+    if(overlay) overlay.style.display = 'flex';
+    return;
+  }
+  // Returning visitor
+  if(!force){
+    // Auto page-load: only show once per day
+    const todayDay = Math.floor(Date.now()/86400000);
+    let lastDay = 0;
+    try{ lastDay = parseInt(localStorage.getItem('peppa_brief_day_v1')||'0')||0; }catch(e){}
+    if(lastDay === todayDay) return;
+  }
+  // Show 農間小報 (forced via ❓ button, or first auto-load of the day)
+  showMorningBrief();
 }
 function renderWelcomeTourStep(){
   const s = WELCOME_TOUR_STEPS[_welcomeTourStep];

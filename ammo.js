@@ -1,8 +1,8 @@
 /* ── 語塊彈藥庫資料：S1 E1~E6，每句一張卡，共 60 張 ── */
 const AMMO_DATA = [
-  // ══════════ E1 · Charcos de Barro ══════════
+  // ══════════ E1 · El Rincón de Nita ══════════
   {
-    ammo_id:"e1_01", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_01", ep:"E1 · El Rincón de Nita",
     core_ammo:"Yo soy Gatita Nita.", core_zh:"我是小貓妮妲。",
     be_verb_type:"ser", be_verb_note:"Ser 用在身分本質：Yo soy = 我是（恆久不變的身分）",
     pattern:"Yo soy [身分/名字].", pattern_zh:"我是 ___。",
@@ -15,7 +15,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_02", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_02", ep:"E1 · El Rincón de Nita",
     core_ammo:"Este es mi hermano pequeño Tito.", core_zh:"這是我的小弟弟迪多。",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分關係：Este es = 這是（介紹某人）",
     pattern:"Este es mi [關係] [名字].", pattern_zh:"這是我的 ___ ___。",
@@ -28,7 +28,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_03", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_03", ep:"E1 · El Rincón de Nita",
     core_ammo:"Hoy está lloviendo así que no pueden jugar fuera.", core_zh:"今天在下雨，所以不能去外面玩。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando/-iendo = 正在做，描述正在發生的事",
     pattern:"Hoy está [動詞-ndo].", pattern_zh:"今天正在 ___。",
@@ -41,7 +41,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_04", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_04", ep:"E1 · El Rincón de Nita",
     core_ammo:"¿Podemos salir a jugar?", core_zh:"我們可以出去玩嗎？",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¿Podemos [原形動詞]?", pattern_zh:"我們可以 ___ 嗎？",
@@ -54,7 +54,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_05", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_05", ep:"E1 · El Rincón de Nita",
     core_ammo:"Nita, debes ponerte las botas de agua.", core_zh:"妮妲，你該穿上雨鞋。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Debes [原形動詞] [受詞].", pattern_zh:"你必須 ___ ___。",
@@ -67,7 +67,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_06", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_06", ep:"E1 · El Rincón de Nita",
     core_ammo:"¡Me encanta chapotear en los charcos!", core_zh:"我超愛在水坑裡玩水！",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¡Me encanta [原形動詞]!", pattern_zh:"我超愛 ___！",
@@ -80,7 +80,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_07", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_07", ep:"E1 · El Rincón de Nita",
     core_ammo:"Nita ha encontrado un charco pequeño.", core_zh:"妮妲找到了一個小水坑。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] ha encontrado [受詞].", pattern_zh:"___ 找到了 ___。",
@@ -93,7 +93,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_08", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_08", ep:"E1 · El Rincón de Nita",
     core_ammo:"¡Ese charco sí que es grande!", core_zh:"那個水坑真的好大！",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：sí que es = 真的是（強調語氣）",
     pattern:"¡Ese [名詞] sí que es [形容詞]!", pattern_zh:"那個 ___ 真的好 ___！",
@@ -106,7 +106,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_09", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_09", ep:"E1 · El Rincón de Nita",
     core_ammo:"No pasa nada. Sólo es barro.", core_zh:"沒關係，只是泥巴而已。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質：Sólo es = 只是（描述事物本質）",
     pattern:"No pasa nada. Sólo es [名詞].", pattern_zh:"沒關係，只是 ___ 而已。",
@@ -119,7 +119,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_10", ep:"E1 · Charcos de Barro",
+    ammo_id:"e1_10", ep:"E1 · El Rincón de Nita",
     core_ammo:"A todos les encanta chapotear en los charcos de barro.", core_zh:"所有人都超愛在泥巴坑裡玩水！",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A todos les encanta [原形動詞].", pattern_zh:"所有人都超愛 ___。",

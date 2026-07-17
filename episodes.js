@@ -2,118 +2,113 @@
 // chunks: {w:"詞/詞組", role:"s"|"v"|"o"|undefined} — role 決定氣泡樣式
 // s=主詞(虛線框) v=動詞(實色底) o=受詞/補語(實線框，也用於整句包框) 無role=連接詞等純文字
 const EPS=[
-// ── E1 泥巴坑 ──
-{title:"Charcos de Barro",titleZh:"泥巴坑",dur:187,sentences:[
-  {es:"Yo soy Gatita Nita.",chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Gatita Nita.",role:"o"}],zh:"我是小貓妮妲。",en:"I am Gatita Nita.",noteZh:"Yo soy = 我是（表身分/狀態）",noteEn:"Yo soy = I am",
+// ── E1 妮妲的角落 ──
+{title:"El Rincón de Nita",titleZh:"妮妲的角落",dur:187,sentences:[
+  {es:"A Nita le gusta estar en los rincones.",chunks:[{w:"A Nita le",role:"s"},{w:"gusta",role:"v"},{w:"estar en los rincones.",role:"o"}],zh:"妮妲喜歡待在角落裡。",en:"Nita likes to be in corners.",noteZh:"A Nita le gusta = 妮妲喜歡…（gustar 句型，人放在句首用 A）",noteEn:"'A Nita le gusta' = Nita likes... (gustar puts the person first with A)",
   expand:{
-    note:"Yo soy + 名字 = 自我介紹固定句型",
-    template:[{t:"Yo soy"},{g:"name"}],
-    groups:[{label:"名字",key:"name",options:[
-      {es:"Gatita Nita",zh:"小貓妮妲"},
+    note:"A + 人 + le gusta + 動詞原形 = 某人喜歡做某事",
+    template:[{t:"A"},{g:"who"},{t:"le gusta estar en los rincones."}],
+    groups:[{label:"誰喜歡",key:"who",options:[
+      {es:"Nita",zh:"妮妲"},
       {es:"Tito",zh:"迪多"},
-      {es:"Vera Oveja",zh:"薇拉羊"},
+      {es:"Mimi",zh:"咪咪"},
     ]}]
   }},
-  {es:"Este es mi hermano pequeño Tito.",chunks:[{w:"Este",role:"s"},{w:"es",role:"v"},{w:"mi hermano pequeño Tito.",role:"o"}],zh:"這是我的小弟弟迪多。",en:"This is my little brother Tito.",noteZh:"「hermano pequeño」= 小弟弟；pequeño = 小的（o）",noteEn:"'hermano' = brother; 'pequeño' = little (masculine)",
+  {es:"El rincón favorito de Nita es muy tranquilo.",chunks:[{w:"El rincón favorito de Nita",role:"s"},{w:"es",role:"v"},{w:"muy tranquilo.",role:"o"}],zh:"妮妲最愛的角落非常安靜。",en:"Nita's favourite corner is very quiet.",noteZh:"形容詞放名詞後面：rincón favorito（最愛的角落）；SER 描述固定特質",noteEn:"Adjectives come after nouns: rincón favorito (favourite corner); SER describes character",
   expand:{
-    pattern:"____ es mi [關係] [大小] [名字]",
-    note:"Este/Esta 跟著關係詞的性別走 — 選了 hermana 就要用 Esta",
-    fixed:["es","mi"],
+    note:"muy + 形容詞 = 非常…（描述固定特質用 SER es）",
+    template:[{t:"El rincón favorito de Nita es muy"},{g:"adj"}],
+    groups:[{label:"怎麼樣",key:"adj",options:[
+      {es:"tranquilo.",zh:"安靜的"},
+      {es:"pequeño.",zh:"小小的"},
+      {es:"acogedor.",zh:"舒適的"},
+    ]}]
+  }},
+  {es:"Hoy, Tito quiere jugar a las escondidas.",chunks:[{w:"Hoy,"},{w:"Tito",role:"s"},{w:"quiere",role:"v"},{w:"jugar a las escondidas.",role:"o"}],zh:"今天，迪多想玩躲貓貓。",en:"Today, Tito wants to play hide-and-seek.",noteZh:"quiere + 原形動詞 = 想要做…",noteEn:"'quiere + infinitive' = wants to do...",
+  expand:{
+    note:"quiere + 原形動詞 = 想要做某事，換人換活動",
+    template:[{g:"name"},{t:"quiere"},{g:"activity"}],
     groups:[
-      {label:"關係詞",key:"rel",options:[
-        {es:"hermano",zh:"兄弟",gender:"m"},
-        {es:"hermana",zh:"姊妹",gender:"f"},
+      {label:"誰想",key:"name",options:[
+        {es:"Tito",zh:"迪多"},
+        {es:"Nita",zh:"妮妲"},
+        {es:"Mimi",zh:"咪咪"},
       ]},
-      {label:"大小",key:"size",options:[
-        {es:"mayor",zh:"大的（哥/姐）",gender:"both"},
-        {es:"pequeño",zh:"小的（弟）",gender:"m"},
-        {es:"pequeña",zh:"小的（妹）",gender:"f"},
-      ]},
-      {label:"名字",key:"name",options:[
-        {es:"Tito",zh:"迪多",gender:"m"},
-        {es:"Luna",zh:"露娜",gender:"f"},
-        {es:"Vera",zh:"你自己",gender:"f"},
+      {label:"做什麼",key:"activity",options:[
+        {es:"jugar a las escondidas.",zh:"玩躲貓貓"},
+        {es:"correr en el jardín.",zh:"在花園裡跑"},
+        {es:"descansar.",zh:"休息"},
       ]},
     ]
   }},
-  {es:"Hoy está lloviendo así que no pueden jugar fuera.",chunks:[{w:"Hoy"},{w:"está lloviendo",role:"v"},{w:"así que",role:"c"},{w:"no pueden jugar fuera.",role:"v"}],zh:"今天在下雨，所以不能去外面玩。",en:"Today it is raining so they cannot play outside.",noteZh:"「está lloviendo」= 現在進行式，正在下雨",noteEn:"'está lloviendo' = happening right now, it's raining",
+  {es:"Nita se esconde en el rincón y nadie la puede encontrar.",chunks:[{w:"Nita",role:"s"},{w:"se esconde",role:"v"},{w:"en el rincón",role:"o"},{w:"y",role:"c"},{w:"nadie la puede encontrar.",role:"v"}],zh:"妮妲躲進角落，誰也找不到她。",en:"Nita hides in the corner and nobody can find her.",noteZh:"se esconde = 躲（反身動詞）；nadie = 沒有任何人",noteEn:"'se esconde' = hides (reflexive verb); 'nadie' = nobody",
   expand:{
-    note:"está + Ving = 正在…（天氣現在進行式）",
-    template:[{t:"Hoy está"},{g:"weather"},{t:"así que no pueden jugar fuera."}],
-    groups:[{label:"天氣",key:"weather",options:[
-      {es:"lloviendo",zh:"下雨"},
-      {es:"nevando",zh:"下雪"},
-      {es:"tronando",zh:"打雷"},
+    note:"se esconde en + 地點 = 躲進某個地方",
+    template:[{t:"Nita se esconde en"},{g:"place"},{t:"y nadie la puede encontrar."}],
+    groups:[{label:"躲哪裡",key:"place",options:[
+      {es:"el rincón",zh:"角落"},
+      {es:"el armario",zh:"衣櫥"},
+      {es:"el jardín",zh:"花園"},
     ]}]
   }},
-  {es:"¿Podemos salir a jugar?",chunks:[{w:"¿Podemos",role:"v"},{w:"salir a jugar?",role:"o"}],zh:"我們可以出去玩嗎？",en:"Can we go out to play?",noteZh:"「¿Podemos…?」= 我們可以…嗎？（poder 動詞一人稱複數）",noteEn:"'¿Podemos?' = Can we? (poder = to be able to)",
+  {es:"De repente, empieza a llover.",chunks:[{w:"De repente,"},{w:"empieza a llover.",role:"v"}],zh:"突然，開始下雨了。",en:"Suddenly, it starts to rain.",noteZh:"empieza a + 原形動詞 = 開始做某事；De repente = 突然",noteEn:"'empieza a + infinitive' = starts to...; 'De repente' = suddenly",
   expand:{
-    note:"¿Podemos + 原形動詞…? = 徵求許可的萬用句型",
-    template:[{t:"¿Podemos"},{g:"activity"}],
-    groups:[{label:"做什麼",key:"activity",options:[
-      {es:"salir a jugar?",zh:"出去玩？"},
-      {es:"ver la tele?",zh:"看電視？"},
-      {es:"comer algo?",zh:"吃點東西？"},
+    note:"empieza a + 原形動詞 = 開始…（換動作）",
+    template:[{t:"De repente, empieza a"},{g:"action"}],
+    groups:[{label:"開始什麼",key:"action",options:[
+      {es:"llover.",zh:"下雨"},
+      {es:"tronar.",zh:"打雷"},
+      {es:"nevar.",zh:"下雪"},
     ]}]
   }},
-  {es:"Nita, debes ponerte las botas de agua.",chunks:[{w:"Nita,"},{w:"debes ponerte",role:"v"},{w:"las botas de agua.",role:"o"}],zh:"妮妲，你該穿上雨鞋。",en:"Nita, you must put on your wellies.",noteZh:"「debes + 原形動詞」= 你必須做…",noteEn:"'debes + infinitive' = you must do...",
+  {es:"Sin pensar, Nita sale corriendo al jardín.",chunks:[{w:"Sin pensar,"},{w:"Nita",role:"s"},{w:"sale corriendo",role:"v"},{w:"al jardín.",role:"o"}],zh:"不假思索，妮妲衝出去到花園裡。",en:"Without thinking, Nita runs out to the garden.",noteZh:"sin + 原形動詞 = 不做某事；sale corriendo = 跑著出去（動詞＋現在分詞）",noteEn:"'sin + infinitive' = without doing...; 'sale corriendo' = runs out (verb + -ando)",
   expand:{
-    note:"debes + 原形動詞 = 你必須…（對某人說的命令句）",
-    template:[{g:"name"},{t:"debes ponerte las botas de agua."}],
-    groups:[{label:"跟誰說",key:"name",options:[
-      {es:"Nita,",zh:"妮妲"},
-      {es:"Tito,",zh:"迪多"},
-      {es:"Mi hijo,",zh:"我兒子"},
-      {es:"Mi hija,",zh:"我女兒"},
+    note:"sin pensar = 不假思索，是衝動行為的固定說法",
+    template:[{t:"Sin pensar, Nita sale corriendo"},{g:"place"}],
+    groups:[{label:"衝去哪",key:"place",options:[
+      {es:"al jardín.",zh:"到花園"},
+      {es:"a la calle.",zh:"到街上"},
+      {es:"a la cocina.",zh:"到廚房"},
     ]}]
   }},
-  {es:"¡Me encanta chapotear en los charcos!",chunks:[{w:"¡Me",role:"s"},{w:"encanta",role:"v"},{w:"chapotear en los charcos!",role:"o"}],zh:"我超愛在水坑裡玩水！",en:"I love splashing in puddles!",noteZh:"「Me encanta」= 我超愛，比 me gusta 更強烈",noteEn:"'Me encanta' = I love it (stronger than 'me gusta')",
+  {es:"Nita chapotea en los charcos, pero la ropa se moja.",chunks:[{w:"Nita",role:"s"},{w:"chapotea",role:"v"},{w:"en los charcos,",role:"o"},{w:"pero",role:"c"},{w:"la ropa se moja.",role:"v"}],zh:"妮妲在水坑裡玩水，但是衣服被弄濕了。",en:"Nita splashes in the puddles, but her clothes get wet.",noteZh:"pero = 但是（轉折）；se moja = 被弄濕（反身動詞表結果）",noteEn:"'pero' = but (contrast); 'se moja' = gets wet (reflexive showing result)",
   expand:{
-    note:"encanta 動詞不變，只換前面的間接受詞（英文的 to him / to her / to them）代名詞（我/你/他）",
-    template:[{g:"who"},{t:"encanta chapotear en los charcos!"}],
-    groups:[{label:"誰超愛",key:"who",options:[
-      {es:"¡Me",zh:"我"},
-      {es:"¡Te",zh:"你"},
-      {es:"¡Le",zh:"他／她"},
+    note:"pero 轉折：前面好玩，後面出現小麻煩",
+    template:[{t:"Nita chapotea en los charcos, pero"},{g:"problem"}],
+    groups:[{label:"但是…",key:"problem",options:[
+      {es:"la ropa se moja.",zh:"衣服被弄濕了"},
+      {es:"tiene frío.",zh:"她覺得很冷"},
+      {es:"se cae.",zh:"她跌倒了"},
     ]}]
   }},
-  {es:"Nita ha encontrado un charco pequeño.",chunks:[{w:"Nita",role:"s"},{w:"ha encontrado",role:"v"},{w:"un charco pequeño.",role:"o"}],zh:"妮妲找到了一個小水坑。",en:"Nita has found a small puddle.",noteZh:"「ha encontrado」= 剛剛做完，已經找到了",noteEn:"'ha encontrado' = just found it, all done",
+  {es:"La ropa mojada le molesta mucho a Nita.",chunks:[{w:"La ropa mojada",role:"s"},{w:"le molesta mucho",role:"v"},{w:"a Nita.",role:"o"}],zh:"濕掉的衣服讓妮妲非常不舒服。",en:"The wet clothes bother Nita a lot.",noteZh:"molesta 跟 gusta 一樣：讓人不舒服的東西當主詞，人在後用 a",noteEn:"'molesta' works like 'gusta': the annoying thing is the subject, person comes last with 'a'",
   expand:{
-    note:"ha encontrado = 剛剛做完，換主詞練習",
-    template:[{g:"name"},{t:"ha encontrado un charco pequeño."}],
-    groups:[{label:"誰",key:"name",options:[
-      {es:"Nita",zh:"妮妲"},
-      {es:"Tito",zh:"迪多"},
-      {es:"Vera Oveja",zh:"薇拉羊"},
+    note:"le molesta = 讓某人不舒服（跟 le gusta 同一套句型）",
+    template:[{g:"thing"},{t:"le molesta mucho a Nita."}],
+    groups:[{label:"什麼讓她不舒服",key:"thing",options:[
+      {es:"La ropa mojada",zh:"濕掉的衣服"},
+      {es:"El ruido fuerte",zh:"很大的聲音"},
+      {es:"La luz brillante",zh:"很亮的光"},
     ]}]
   }},
-  {es:"¡Ese charco sí que es grande!",chunks:[{w:"¡Ese charco",role:"s"},{w:"sí que es",role:"v"},{w:"grande!",role:"o"}],zh:"那個水坑真的好大！",en:"That puddle really is big!",noteZh:"「sí que」= 強調語氣，真的是、確實是",noteEn:"'sí que' adds emphasis: it really is / it truly is",
+  {es:"Nita corre a casa y vuelve a su rincón.",chunks:[{w:"Nita",role:"s"},{w:"corre",role:"v"},{w:"a casa",role:"o"},{w:"y",role:"c"},{w:"vuelve a su rincón.",role:"v"}],zh:"妮妲跑回家，回到她的角落。",en:"Nita runs home and goes back to her corner.",noteZh:"a casa = 回家（沒有冠詞）；vuelve a = 回到某個地方",noteEn:"'a casa' = home (no article in Spanish); 'vuelve a' = goes back to",
   expand:{
-    note:"sí que + 形容詞 = 強調語氣，換形容詞就能形容別的東西",
-    template:[{t:"¡Ese charco sí que es"},{g:"adj"}],
-    groups:[{label:"多大",key:"adj",options:[
-      {es:"grande!",zh:"大的"},
-      {es:"pequeño!",zh:"小的"},
+    note:"vuelve a + 地點 = 回到某個地方",
+    template:[{t:"Nita corre a casa y vuelve a"},{g:"place"}],
+    groups:[{label:"回到哪裡",key:"place",options:[
+      {es:"su rincón.",zh:"她的角落"},
+      {es:"su habitación.",zh:"她的房間"},
+      {es:"su cama.",zh:"她的床"},
     ]}]
   }},
-  {es:"No pasa nada. Sólo es barro.",chunks:[{w:"No pasa nada.",role:"v"},{w:"Sólo"},{w:"es",role:"v"},{w:"barro.",role:"o"}],zh:"沒關係，只是泥巴而已。",en:"It's okay. It's only mud.",noteZh:"「No pasa nada」= 沒關係，西語最常用的安慰語！",noteEn:"'No pasa nada' = It's okay / No worries. Super common!",
+  {es:"Papá Tato y Mamá Cata se sientan cerca, sin decir nada.",chunks:[{w:"Papá Tato y Mamá Cata",role:"s"},{w:"se sientan",role:"v"},{w:"cerca,",role:"o"},{w:"sin decir nada.",role:"o"}],zh:"達多爸爸和卡妲媽媽就坐在旁邊，什麼也沒說。",en:"Papá Tato and Mamá Cata sit nearby, without saying anything.",noteZh:"se sientan = 坐下（反身動詞）；sin decir nada = 什麼也不說",noteEn:"'se sientan' = sit down (reflexive); 'sin decir nada' = without saying a word",
   expand:{
-    note:"No pasa nada. Sólo es ___. = 安慰句型，換弄髒/弄倒的東西",
-    template:[{t:"No pasa nada. Sólo es"},{g:"thing"}],
-    groups:[{label:"只是",key:"thing",options:[
-      {es:"barro.",zh:"泥巴"},
-      {es:"agua.",zh:"水"},
-      {es:"pintura.",zh:"顏料"},
-    ]}]
-  }},
-  {es:"A todos les encanta chapotear en los charcos de barro.",chunks:[{w:"A todos les",role:"s"},{w:"encanta",role:"v"},{w:"chapotear en los charcos de barro.",role:"o"}],zh:"所有人都超愛在泥巴坑裡玩水！",en:"Everyone loves splashing in muddy puddles!",noteZh:"「A todos les encanta」= 所有人都超愛，「他們」",noteEn:"'A todos les encanta' = everyone loves it (the 'they' form)",
-  expand:{
-    note:"A todos les encanta + 原形動詞 = 所有人都超愛…",
-    template:[{t:"A todos les encanta"},{g:"activity"}],
-    groups:[{label:"做什麼",key:"activity",options:[
-      {es:"chapotear en los charcos de barro.",zh:"在泥巴坑裡玩水"},
-      {es:"bailar.",zh:"跳舞"},
-      {es:"cantar.",zh:"唱歌"},
+    note:"sin decir nada = 安靜地陪伴，是示範不強迫的實踐",
+    template:[{g:"who"},{t:"se sientan cerca, sin decir nada."}],
+    groups:[{label:"誰陪著",key:"who",options:[
+      {es:"Papá Tato y Mamá Cata",zh:"達多爸爸和卡妲媽媽"},
+      {es:"Mamá Cata",zh:"卡妲媽媽"},
+      {es:"Papá Tato",zh:"達多爸爸"},
     ]}]
   }}
 ]},
@@ -1196,6 +1191,116 @@ const EPS=[
       {es:"energía",zh:"能量模式"},
       {es:"forma de pensar",zh:"思考方式"},
       {es:"manera de vivir",zh:"生活方式"},
+    ]}]
+  }}
+]},
+// ── E11 亡靈節 ──
+{title:"El Camino de la Memoria",titleZh:"記憶之旅",dur:200,sentences:[
+  {es:"Hoy es el Día de los Muertos y toda la familia se prepara.",chunks:[{w:"Hoy"},{w:"es",role:"v"},{w:"el Día de los Muertos",role:"o"},{w:"y",role:"c"},{w:"toda la familia",role:"s"},{w:"se prepara.",role:"v"}],zh:"今天是亡靈節，全家人都在準備。",en:"Today is the Day of the Dead and the whole family is getting ready.",noteZh:"y = 而且（順接）；Día de los Muertos = 亡靈節（11月1-2日，墨西哥文化）",noteEn:"y = and (simple sequence); Día de los Muertos = Day of the Dead (Nov 1-2, Mexican culture)",
+  expand:{
+    note:"Hoy es ___ y toda la familia se prepara. = 換今天是什麼日子",
+    template:[{t:"Hoy es"},{g:"day"},{t:"y toda la familia se prepara."}],
+    groups:[{label:"今天是",key:"day",options:[
+      {es:"el Día de los Muertos",zh:"亡靈節"},
+      {es:"un día especial",zh:"一個特別的日子"},
+      {es:"el cumpleaños de Mimi",zh:"咪咪的生日"},
+    ]}]
+  }},
+  {es:"Mamá Cata pone flores de cempasúchil porque son el camino de vuelta.",chunks:[{w:"Mamá Cata",role:"s"},{w:"pone",role:"v"},{w:"flores de cempasúchil",role:"o"},{w:"porque",role:"c"},{w:"son el camino de vuelta.",role:"v"}],zh:"卡妲媽媽放上萬壽菊，因為那是靈魂回來的路。",en:"Mamá Cata puts out marigolds because they are the path back.",noteZh:"porque = 因為（說明原因）；cempasúchil = 萬壽菊，亡靈節代表花",noteEn:"porque = because (gives reason); cempasúchil = marigold, the flower of the Day of the Dead",
+  expand:{
+    note:"Mamá Cata pone ___ porque son el camino de vuelta. = 換放什麼",
+    template:[{t:"Mamá Cata pone"},{g:"thing"},{t:"porque son el camino de vuelta."}],
+    groups:[{label:"放什麼",key:"thing",options:[
+      {es:"flores de cempasúchil",zh:"萬壽菊"},
+      {es:"velas encendidas",zh:"點亮的蠟燭"},
+      {es:"fotos de la familia",zh:"家族照片"},
+    ]}]
+  }},
+  {es:"Tito no entiende la muerte, pero escucha con atención.",chunks:[{w:"Tito",role:"s"},{w:"no entiende",role:"v"},{w:"la muerte,",role:"o"},{w:"pero",role:"c"},{w:"escucha con atención.",role:"v"}],zh:"迪多不懂死亡是什麼，但他認真在聽。",en:"Tito doesn't understand death, but he listens carefully.",noteZh:"pero = 但是（轉折）；escuchar con atención = 認真聆聽",noteEn:"pero = but (contrast); escuchar con atención = listen carefully",
+  expand:{
+    note:"Tito no entiende ___, pero escucha con atención. = 換不懂什麼",
+    template:[{t:"Tito no entiende"},{g:"thing"},{t:", pero escucha con atención."}],
+    groups:[{label:"不懂什麼",key:"thing",options:[
+      {es:"la muerte",zh:"死亡"},
+      {es:"por qué hay que esperar",zh:"為什麼要等"},
+      {es:"todas las palabras",zh:"所有的字"},
+    ]}]
+  }},
+  {es:"El cementerio es silencioso pero está lleno de luz.",chunks:[{w:"El cementerio",role:"s"},{w:"es",role:"v"},{w:"silencioso",role:"o"},{w:"pero",role:"c"},{w:"está",role:"v"},{w:"lleno de luz.",role:"o"}],zh:"墓地很安靜，但到處都是光。",en:"The cemetery is silent but full of light.",noteZh:"SER vs ESTAR：es silencioso（固定特質）/ está lleno de luz（當下狀態）",noteEn:"SER vs ESTAR: es silencioso (permanent quality) / está lleno de luz (current state)",
+  expand:{
+    note:"El cementerio es silencioso pero está lleno de ___. = 換充滿什麼",
+    template:[{t:"El cementerio es silencioso pero está lleno de"},{g:"thing"}],
+    groups:[{label:"充滿什麼",key:"thing",options:[
+      {es:"luz.",zh:"光"},
+      {es:"flores.",zh:"花"},
+      {es:"recuerdos.",zh:"回憶"},
+    ]}]
+  }},
+  {es:"Nita mira las fotos y reconoce caras que nunca ha visto.",chunks:[{w:"Nita",role:"s"},{w:"mira",role:"v"},{w:"las fotos",role:"o"},{w:"y",role:"c"},{w:"reconoce",role:"v"},{w:"caras que nunca ha visto.",role:"o"}],zh:"妮妲看著照片，認出了她從來沒見過的臉。",en:"Nita looks at the photos and recognises faces she has never seen.",noteZh:"y = 而且（連接兩個動作）；nunca ha visto = 從來沒見過（現在完成式）",noteEn:"y = and (connecting two actions); nunca ha visto = has never seen (present perfect)",
+  expand:{
+    note:"Nita mira ___ y reconoce ___. = 換看什麼、認出什麼",
+    template:[{t:"Nita mira"},{g:"look"},{t:"y reconoce"},{g:"who"}],
+    groups:[
+      {label:"看什麼",key:"look",options:[
+        {es:"las fotos",zh:"照片"},
+        {es:"los dibujos",zh:"圖畫"},
+        {es:"las cartas",zh:"信件"},
+      ]},
+      {label:"認出什麼",key:"who",options:[
+        {es:"caras que nunca ha visto.",zh:"從來沒見過的臉"},
+        {es:"la escritura de la abuela.",zh:"外婆的筆跡"},
+        {es:"el lugar de antes.",zh:"以前的地方"},
+      ]}
+    ]
+  }},
+  {es:"Papá Tato dice: \"Los recordamos porque los queremos.\"",chunks:[{w:"Papá Tato",role:"s"},{w:"dice:",role:"v"},{w:'"Los recordamos',role:"o"},{w:"porque",role:"c"},{w:'los queremos."',role:"v"}],zh:"達多爸爸說：「我們記得他們，因為我們愛他們。」",en:"Papá Tato says: \"We remember them because we love them.\"",noteZh:"porque = 因為（說明記得的理由）；recordar = 記得、紀念",noteEn:"porque = because (explains the reason); recordar = to remember, to honour",
+  expand:{
+    note:"Los recordamos porque ___. = 換記得他們的理由",
+    template:[{t:'Papá Tato dice: "Los recordamos porque'},{g:"reason"},{t:'."'}],
+    groups:[{label:"為什麼記得他們",key:"reason",options:[
+      {es:"los queremos",zh:"我們愛他們"},
+      {es:"fueron importantes",zh:"他們很重要"},
+      {es:"siguen en nuestro corazón",zh:"他們還在我們心裡"},
+    ]}]
+  }},
+  {es:"Mimi abraza su flor naranja, pero no quiere soltarla.",chunks:[{w:"Mimi",role:"s"},{w:"abraza",role:"v"},{w:"su flor naranja,",role:"o"},{w:"pero",role:"c"},{w:"no quiere soltarla.",role:"v"}],zh:"咪咪抱著她的橘色花朵，但是不想放手。",en:"Mimi hugs her orange flower, but doesn't want to let it go.",noteZh:"pero = 但是（轉折出感受）；soltar = 放手、放開",noteEn:"pero = but (reveals her feeling); soltar = to let go, to release",
+  expand:{
+    note:"Mimi abraza ___, pero no quiere soltarla. = 換抱著什麼",
+    template:[{t:"Mimi abraza"},{g:"thing"},{t:", pero no quiere soltarla."}],
+    groups:[{label:"抱著什麼",key:"thing",options:[
+      {es:"su flor naranja",zh:"她的橘色花朵"},
+      {es:"su osito de peluche",zh:"她的小熊玩偶"},
+      {es:"la foto de la abuela",zh:"外婆的照片"},
+    ]}]
+  }},
+  {es:"La familia se sienta junta y comparte historias de los que se fueron.",chunks:[{w:"La familia",role:"s"},{w:"se sienta junta",role:"v"},{w:"y",role:"c"},{w:"comparte",role:"v"},{w:"historias de los que se fueron.",role:"o"}],zh:"一家人坐在一起，分享著那些離去的人的故事。",en:"The family sits together and shares stories of those who have gone.",noteZh:"y = 而且（連接兩個動作）；los que se fueron = 那些離去的人",noteEn:"y = and (connecting two actions); los que se fueron = those who have gone",
+  expand:{
+    note:"La familia se sienta junta y comparte ___. = 換分享什麼",
+    template:[{t:"La familia se sienta junta y comparte"},{g:"what"}],
+    groups:[{label:"分享什麼",key:"what",options:[
+      {es:"historias de los que se fueron.",zh:"離去的人的故事"},
+      {es:"fotos de antes.",zh:"以前的照片"},
+      {es:"recuerdos del pasado.",zh:"過去的回憶"},
+    ]}]
+  }},
+  {es:"El amor no se muere, pero sí cambia de forma.",chunks:[{w:"El amor",role:"s"},{w:"no se muere,",role:"v"},{w:"pero",role:"c"},{w:"sí"},{w:"cambia de forma.",role:"v"}],zh:"愛不會死，但它的形式會改變。",en:"Love doesn't die, but it does change form.",noteZh:"no... pero sí = 不是A，但確實是B（sí 強調肯定）；cambia de forma = 改變形式",noteEn:"no... pero sí = not A, but it does B (sí adds emphasis); cambia de forma = changes form",
+  expand:{
+    note:"El amor no se muere, pero sí ___. = 換確實發生什麼",
+    template:[{t:"El amor no se muere, pero sí"},{g:"change"}],
+    groups:[{label:"確實發生什麼",key:"change",options:[
+      {es:"cambia de forma.",zh:"改變形式"},
+      {es:"sigue con nosotros.",zh:"繼續陪著我們"},
+      {es:"vive en los recuerdos.",zh:"活在回憶裡"},
+    ]}]
+  }},
+  {es:"La muerte es natural pero el amor es para siempre.",chunks:[{w:"La muerte",role:"s"},{w:"es",role:"v"},{w:"natural",role:"o"},{w:"pero",role:"c"},{w:"el amor",role:"s"},{w:"es",role:"v"},{w:"para siempre.",role:"o"}],zh:"死亡是自然的，但愛是永恆的。",en:"Death is natural but love is forever.",noteZh:"pero = 但是（轉折）；para siempre = 永遠（para 表達無限期限）",noteEn:"pero = but (final contrast); para siempre = forever (para expresses unlimited duration)",
+  expand:{
+    note:"La muerte es natural pero ___. = 換轉折後什麼是永恆的",
+    template:[{t:"La muerte es natural pero"},{g:"contrast"}],
+    groups:[{label:"但什麼是永恆",key:"contrast",options:[
+      {es:"el amor es para siempre.",zh:"愛是永恆的"},
+      {es:"el recuerdo no se va.",zh:"記憶不會離開"},
+      {es:"la familia sigue unida.",zh:"家人仍然團聚"},
     ]}]
   }}
 ]}
