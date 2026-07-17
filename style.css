@@ -181,6 +181,16 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .make-nav-btn{flex:1;background:transparent;border:1.5px solid var(--usumizu);border-radius:999px;padding:6px 0;font-size:12px;font-weight:700;color:var(--tmid);cursor:pointer;font-family:'Nunito',sans-serif;transition:background .15s}
 .make-nav-btn:active{background:var(--bg2)}
 .make-nav-count{font-size:12px;font-weight:700;color:var(--tlight);white-space:nowrap;text-align:center}
+/* 🎙️ 雙音軌錄放對比 */
+.echo-row{display:flex;gap:8px;margin-top:12px}
+.echo-btn{flex:1;padding:9px 6px;border-radius:20px;border:1.5px solid var(--usumizu);font-size:12.5px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;background:white;color:var(--tmid);transition:all .15s}
+.echo-btn-ref{border-color:var(--misora);color:var(--misora)}
+.echo-btn-ref:active{background:var(--misora);color:white}
+.echo-btn-rec{border-color:var(--benikake);color:var(--benikake)}
+.echo-btn-rec:active{background:var(--benikake);color:white}
+.echo-btn-rec.echo-recording{background:var(--err);border-color:var(--err);color:white;animation:echo-pulse 1.2s ease-in-out infinite}
+@keyframes echo-pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.echo-hint{font-size:11px;color:var(--tmid);text-align:center;margin-top:6px}
 /* passbook star */
 .pb-star{font-size:16px;cursor:pointer;flex-shrink:0;line-height:1;transition:transform .15s;user-select:none}
 .pb-star:active{transform:scale(1.4)}

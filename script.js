@@ -1327,9 +1327,87 @@ function resetMakeFree(){
   document.getElementById('makeResult').style.display='none';
 }
 
+// ── 🎙️ 雙音軌錄放對比：🐝小蜜蜂導師（官方發音）vs 🎙️輪到我仿說（錄自己的聲音跟著比對）──
+// iOS/Safari 要求 AudioContext/getUserMedia 必須綁在使用者主動點擊事件裡才會放行，
+// 所以 getUserMedia() 一定要寫在 onClick 觸發的 echoStartRecording() 裡面，不能提前呼叫。
+let _echoRecorder = null;
+let _echoChunks = [];
+let _echoBlobUrl = null;
+let _echoState = 'idle'; // idle | recording | ready
+function echoPlayRef(){ speakSentenceSmart(ep, idx, cur().es); }
+function _echoSetBtn(label, recording){
+  const btn = document.getElementById('echoRecBtn');
+  if(!btn) return;
+  btn.textContent = label;
+  btn.classList.toggle('echo-recording', !!recording);
+}
+function _echoSetHint(text, clickable){
+  const hint = document.getElementById('echoHint');
+  if(!hint) return;
+  if(!text){ hint.style.display='none'; hint.onclick=null; return; }
+  hint.textContent = text;
+  hint.style.display = 'block';
+  hint.style.cursor = clickable ? 'pointer' : 'default';
+  hint.style.textDecoration = clickable ? 'underline' : 'none';
+  hint.onclick = clickable ? echoResetForNewSentence : null;
+}
+function echoResetForNewSentence(){
+  if(_echoRecorder && _echoRecorder.state === 'recording'){
+    try{ _echoRecorder.stop(); }catch(e){}
+  }
+  if(_echoBlobUrl){ try{ URL.revokeObjectURL(_echoBlobUrl); }catch(e){} }
+  _echoBlobUrl = null;
+  _echoChunks = [];
+  _echoState = 'idle';
+  _echoSetBtn('🎙️ 輪到我仿說', false);
+  _echoSetHint('', false);
+}
+function echoToggleRecord(){
+  if(_echoState === 'idle') echoStartRecording();
+  else if(_echoState === 'recording') echoStopRecording();
+  else if(_echoState === 'ready') echoPlayRecording();
+}
+function echoStartRecording(){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === 'undefined'){
+    toast('這個瀏覽器不支援錄音功能，換個瀏覽器試試看吧');
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+    let mr;
+    try{ mr = new MediaRecorder(stream); }
+    catch(e){ toast('這個瀏覽器不支援錄音功能，換個瀏覽器試試看吧'); stream.getTracks().forEach(t=>t.stop()); return; }
+    _echoRecorder = mr;
+    _echoChunks = [];
+    mr.ondataavailable = (e)=>{ if(e.data && e.data.size>0) _echoChunks.push(e.data); };
+    mr.onstop = ()=>{
+      stream.getTracks().forEach(t=>t.stop());
+      if(_echoBlobUrl){ try{ URL.revokeObjectURL(_echoBlobUrl); }catch(e){} }
+      const blob = new Blob(_echoChunks, {type: mr.mimeType || 'audio/webm'});
+      _echoBlobUrl = URL.createObjectURL(blob);
+      _echoState = 'ready';
+      _echoSetBtn('▶️ 播放我的仿說', false);
+      _echoSetHint('🔄 想重錄嗎？點這裡', true);
+    };
+    mr.start();
+    _echoState = 'recording';
+    _echoSetBtn('⏹️ 停止錄音', true);
+    _echoSetHint('🔴 錄音中，講完按一下停止', false);
+  }).catch(()=>{
+    toast('🎙️ 沒有拿到麥克風權限，去瀏覽器設定開啟後再試一次');
+  });
+}
+function echoStopRecording(){
+  if(_echoRecorder && _echoRecorder.state === 'recording') _echoRecorder.stop();
+}
+function echoPlayRecording(){
+  if(!_echoBlobUrl) return;
+  new Audio(_echoBlobUrl).play().catch(()=>toast('播放失敗，再試一次看看'));
+}
+
 // ── RENDER CARD ──
 function render(){
   saveToLS(); // 記住目前瀏覽到哪一句，重新整理不要跳回第一集第一句
+  echoResetForNewSentence(); // 換句子時錄音狀態歸零，不跨句子沿用
   const s=cur(),n=total();
   revealed=false;makeOpen=false;builtTokens=[];
   document.getElementById('answerBox').classList.remove('show');

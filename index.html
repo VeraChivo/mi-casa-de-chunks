@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260717a18">
+<link rel="stylesheet" href="style.css?v=20260717a19">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -186,6 +186,13 @@
             <span class="make-nav-count" id="makeNavCount">1 / 10</span>
             <button class="make-nav-btn" onclick="makeNavNext()">下一句 ›</button>
           </div>
+
+          <!-- 🎙️ 造完句最後才念：雙音軌錄放對比 -->
+          <div class="echo-row" id="echoRow">
+            <button class="echo-btn echo-btn-ref" id="echoRefBtn" onclick="echoPlayRef()">🐝 小蜜蜂導師</button>
+            <button class="echo-btn echo-btn-rec" id="echoRecBtn" onclick="echoToggleRecord()">🎙️ 輪到我仿說</button>
+          </div>
+          <div class="echo-hint" id="echoHint" style="display:none"></div>
         </div>
       </div>
     </div>
@@ -554,6 +561,6 @@
   <script src="diary.js?v=20260715a2"></script>
   <script src="corazon.js?v=20260717a5"></script>
   <script src="news.js?v=20260717a6"></script>
-  <script src="script.js?v=20260717a18"></script>
+  <script src="script.js?v=20260717a19"></script>
 </body>
 </html>
