@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260717a13">
+<link rel="stylesheet" href="style.css?v=20260717a15">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -232,9 +232,6 @@
   <!-- ══════════ TAB B：知識儲藏室 ══════════ -->
   <div id="tabKnow" class="main-tab-panel" style="display:none">
 
-  <!-- ── 社交電量表 ── -->
-  <div id="socialBatteryWrap" class="card-container" style="padding:10px 10px 0"></div>
-
   <!-- ── 英西同源詞庫總覽 ── -->
   <div class="cognate-section card-container">
     <div class="cog-header" onclick="toggleCogLibrary()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center">
@@ -317,7 +314,7 @@
   </div>
 
   <!-- ── 🎵 歌詞填空 · 聽歌學語法 ── -->
-  <div class="pron-lib-wrap card-container">
+  <div class="pron-lib-wrap card-container" id="lyricsFillSection">
     <div class="ammo-book-top" onclick="toggleLyricsFill()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C6FAF)">
       <div>
         <div class="pb-book-title">🎵 聽歌填空 · 語法闖關</div>
@@ -517,10 +514,10 @@
 
     <!-- 築巢日誌 -->
     <div class="hv-log-section">
-      <div class="hv-log-hd" onclick="toggleChangelog()">
+      <div class="hv-log-hd">
         <span class="hv-log-label">📋 築巢日誌 · Registro de Obra</span>
-        <button id="changelogToggleBtn" class="cl-toggle-btn">▼ 展開</button>
       </div>
+      <div id="changelogLatest" class="cl-latest"></div>
       <div id="changelogWrap" class="cl-wrap">
         <div id="changelogBody" class="cl-body"></div>
       </div>
@@ -566,6 +563,6 @@
   <script src="diary.js?v=20260715a2"></script>
   <script src="corazon.js?v=20260717a5"></script>
   <script src="news.js?v=20260717a6"></script>
-  <script src="script.js?v=20260717a14"></script>
+  <script src="script.js?v=20260717a15"></script>
 </body>
 </html>

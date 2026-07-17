@@ -49,5 +49,17 @@ const SEL_EPS=[
   {es:"Pero Esperanza fluye dentro del Corazón, buscando el camino.",zh:"但嬉汐在本心裡流動，一直在找路。",en:"But Esperanza flows within the Heart, searching for the way."},
   {es:"Ella es quien empuja al Yo Pequeñito a salir del desván.",zh:"是她推著小小自我走出閣樓。",en:"She is the one who pushes Little Self to leave the attic."},
   {es:"Un día, el Corazón Verdadero volverá a estar completo.",zh:"有一天，本心會重新變得完整。",en:"One day, the True Heart will become whole again."}
+]},
+{title:"La Batería Social",titleZh:"社交電量",sentences:[
+  {es:"Dentro de Cata vive una batería social invisible.",zh:"卡妲心裡住著一個看不見的社交電量表。",en:"Inside Cata lives an invisible social battery."},
+  {es:"Cuando está llena, ella puede reír, escuchar y estar con todos.",zh:"電滿的時候，她可以笑、可以聽、可以陪伴每一個人。",en:"When it's full, she can laugh, listen, and be with everyone."},
+  {es:"Pero hablar, escuchar y fingir también gastan batería.",zh:"但說話、聆聽，甚至假裝，也在耗電。",en:"But talking, listening, and pretending also drain the battery."},
+  {es:"Cansancio es quien primero nota cuando la batería baja.",zh:"倦倦是第一個注意到電量下降的人。",en:"Cansancio is the first to notice when the battery drops."},
+  {es:'"Ya no puedo sonreír más," susurra Cansancio.',zh:"「我沒辦法再多笑一次了」，倦倦小小聲說。",en:'"I can\'t smile anymore," Cansancio whispers.'},
+  {es:"Nadie ve la batería, por eso a veces la gente no entiende.",zh:"沒有人看得見這個電量表，所以有時候別人不理解。",en:"Nobody sees the battery, that's why people sometimes don't understand."},
+  {es:"No es que Cata no quiera estar contigo, es que necesita recargar.",zh:"不是卡妲不想陪你，是她需要充電。",en:"It's not that Cata doesn't want to be with you, she just needs to recharge."},
+  {es:"Recargar no es egoísmo, es cuidar el Corazón Verdadero.",zh:"充電不是自私，是在照顧本心。",en:"Recharging isn't selfish, it's taking care of the True Heart."},
+  {es:"Un rincón silencioso, un poco de tiempo a solas: eso basta.",zh:"一個安靜的角落，一點獨處的時間，這樣就夠了。",en:"A quiet corner, a little time alone: that's enough."},
+  {es:"Cuando la batería vuelve a subir, Cata regresa, más llena y más ella misma.",zh:"電量回升之後，卡妲會回來，更飽滿、更像她自己。",en:"When the battery rises again, Cata comes back, fuller and more herself."}
 ]}
 ];

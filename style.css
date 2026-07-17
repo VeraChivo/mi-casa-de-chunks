@@ -712,20 +712,6 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-tense-block{display:none}
 .conj-tense-block.active{display:block}
 
-/* 社交電量表 */
-.sb-card{background:white;border-radius:14px;border:1.5px solid var(--usumizu);padding:12px 16px;margin:0 0 10px}
-.sb-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.sb-icon{font-size:22px}
-.sb-title{font-size:14px;font-weight:900;color:var(--konpeki);flex:1}
-.sb-pct{font-size:14px;font-weight:900;color:var(--tmid)}
-.sb-bar-track{height:10px;background:var(--bg2);border-radius:99px;overflow:hidden;margin-bottom:6px}
-.sb-bar-fill{height:100%;border-radius:99px;transition:width .4s ease,background .4s ease;min-width:4px}
-.sb-status{font-size:12px;font-weight:700;color:var(--tmid);display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.sb-redirect{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px}
-.sb-redirect-msg{font-size:12px;font-weight:700;color:var(--err)}
-.sb-redirect-btn{font-size:11px;font-weight:800;padding:4px 10px;background:var(--misora);color:white;border:none;border-radius:20px;cursor:pointer}
-.sb-redirect-btn:active{opacity:.7}
-
 /* 陰陽字尾語塊卡 */
 .gp-card{background:white;border-bottom:1px solid var(--bg2);padding:9px 16px;text-align:center}
 .gp-card:last-child{border-bottom:none;border-radius:0 0 14px 14px}
@@ -1091,6 +1077,8 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 
 /* ── 🎵 歌詞填空 ── */
 .lf-card{background:var(--bg2);border:1.5px solid var(--usumizu);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.lf-card.lf-card-flash{animation:lf-flash-pulse 1.6s ease}
+@keyframes lf-flash-pulse{0%,100%{box-shadow:none}30%{box-shadow:0 0 0 3px rgba(108,155,210,.55)}}
 .lf-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
 .lf-artist-song{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .lf-level{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.5px}
@@ -1130,7 +1118,10 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .morning-brief-lyric{font-size:15px;line-height:1.7;color:#3a2e0f;margin-bottom:8px;padding:10px 12px;background:#FFFBEA;border:1px solid #F5E6B8;border-radius:10px}
 .morning-brief-blank{border-bottom:2px solid var(--misora);padding:0 14px;letter-spacing:2px;color:transparent;background:var(--usumizu);border-radius:4px}
 .morning-brief-hint{font-size:12px;color:var(--tmid);margin-bottom:10px;font-style:italic}
-.morning-brief-yt{display:inline-block;font-size:12px;color:var(--misora);text-decoration:none;font-weight:700;margin-bottom:12px;padding:4px 0}
+.morning-brief-yt{display:inline-block;font-size:12px;color:var(--misora);text-decoration:none;font-weight:700;padding:4px 0}
+.morning-brief-links{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.morning-brief-answer-btn{font-size:12px;font-weight:800;color:white;background:var(--misora);border:none;border-radius:20px;padding:6px 14px;cursor:pointer;font-family:'Nunito',sans-serif}
+.morning-brief-answer-btn:active{opacity:.85}
 .morning-brief-rule{font-size:12.5px;line-height:1.6;color:var(--tmid);padding:10px 12px;background:var(--bg2);border-radius:10px;margin-bottom:10px}
 .morning-brief-close{display:block;width:100%;margin-top:12px;padding:11px;background:var(--misora);color:white;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif}
 .morning-brief-close:active{opacity:.85}
@@ -1194,14 +1185,9 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .cl-section{background:var(--bg2);border-top:1px solid var(--usumizu);padding:10px 16px 14px}
 .cl-section-hd{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:2px 0 8px}
 .cl-section-label{font-size:13px;font-weight:800;color:var(--konpeki)}
-.cl-toggle-btn{background:none;border:none;font-size:11px;color:var(--tmid);cursor:pointer;padding:2px 6px;font-weight:700}
-.cl-wrap{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.cl-wrap.cl-open{max-height:240px;overflow:hidden;position:relative}
-/* 電影謝幕感：內容往上捲，hover暫停 */
-.cl-body{animation:cl-scroll 55s linear infinite;animation-play-state:paused}
-.cl-wrap.cl-open .cl-body{animation-play-state:running}
-.cl-wrap.cl-open .cl-body:hover{animation-play-state:paused}
-@keyframes cl-scroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.cl-latest{padding:2px 0 4px}
+.cl-latest .cl-entry{padding-top:0}
+.cl-wrap{max-height:220px;overflow-y:auto;border-top:1px dashed var(--usumizu);margin-top:4px}
 .cl-entry{padding:10px 0 6px}
 .cl-meta{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .cl-date{font-size:11px;font-weight:800;color:var(--misora)}
@@ -1266,11 +1252,3 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 /* 版權頁腳 */
 .news-footer{font-size:10px;color:var(--tlight);text-align:center;padding:8px 14px 14px;line-height:1.6}
 .news-footer a{color:var(--misora);text-decoration:none}
-/* dark mode */
-@media(prefers-color-scheme:dark){
-  .news-item{background:#1e2a32;border-color:#2a3840}
-  .news-blank-input{background:rgba(108,155,210,.15);color:#9fd0de}
-  .news-blank-input:focus{background:rgba(108,155,210,.25)}
-}
-:root[data-theme="dark"] .news-item{background:#1e2a32;border-color:#2a3840}
-:root[data-theme="dark"] .news-blank-input{background:rgba(108,155,210,.15);color:#9fd0de}

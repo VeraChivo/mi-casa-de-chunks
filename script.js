@@ -3647,7 +3647,10 @@ function getMorningBriefHTML(){
       <div class="morning-brief-song"><span>${lf.artist}</span><span>《${lf.song}》</span><span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span></div>
       <div class="morning-brief-lyric">${lf.before} <span class="morning-brief-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${lf.after}</div>
       <div class="morning-brief-hint">💡 ${lf.hint}</div>
-      <a class="morning-brief-yt" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
+      <div class="morning-brief-links">
+        <a class="morning-brief-yt" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
+        <button class="morning-brief-answer-btn" onclick="jumpToLyricAnswer('${lf.id}')">🔎 去核對答案</button>
+      </div>
       <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 去今日探索</button>
     </div>`;
   }
@@ -3682,6 +3685,25 @@ function closeMorningBrief(){
   if(nav) nav.style.display = '';
   overlay.style.display = 'none';
   try{ localStorage.setItem('peppa_brief_day_v1', String(Math.floor(Date.now()/86400000))); }catch(e){}
+}
+
+// 農間小報彈窗「去核對答案」：關彈窗、切到日光育苗場、展開歌詞填空、捲到那張卡並閃一下
+function jumpToLyricAnswer(lfId){
+  closeMorningBrief();
+  switchMainTab('know');
+  _lyricsFillOpen = true;
+  const body = document.getElementById('lyricsFillBody');
+  const tog = document.getElementById('lyricsFillToggle');
+  if(body) body.classList.add('open');
+  if(tog) tog.textContent = '▲ 收起';
+  renderLyricsFill();
+  setTimeout(() => {
+    const card = document.getElementById('lf-card-'+lfId);
+    if(!card) return;
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.classList.add('lf-card-flash');
+    setTimeout(() => card.classList.remove('lf-card-flash'), 1600);
+  }, 200);
 }
 
 // ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從「❓ 莊園導覽」重新打開）──
@@ -3860,7 +3882,6 @@ function checkNewsBug(id){
     fbEl.innerHTML = `<span class="news-fb-ok">✅ ¡Exacto! <strong>${item.task.answer}</strong>（${item.task.zh}）</span>`;
     inputEl.disabled = true;
     inputEl.style.borderBottom = '2px solid var(--ok)';
-    drainSocialBattery();
     if(item.task.type==='bug'){
       const bugEl = document.getElementById('news-bug-'+id);
       if(bugEl) bugEl.classList.add('news-bug-fixed');
@@ -3869,58 +3890,6 @@ function checkNewsBug(id){
   } else {
     fbEl.innerHTML = `<span class="news-fb-err">¡Ojo! 👀 — ${item.task.hint}</span>`;
   }
-}
-
-// ─── 社交電量表 ────────────────────────────────────────────────
-const SOCIAL_BATTERY_KEY = 'peppa_social_battery_v1';
-
-function getSocialBattery(){
-  const s = localStorage.getItem(SOCIAL_BATTERY_KEY);
-  return s !== null ? parseInt(s, 10) : 100;
-}
-
-function setSocialBattery(val){
-  const v = Math.max(0, Math.min(100, val));
-  localStorage.setItem(SOCIAL_BATTERY_KEY, v);
-  renderSocialBattery();
-}
-
-function drainSocialBattery(){
-  setSocialBattery(getSocialBattery() - 50);
-}
-
-function rechargeSocialBattery(){
-  setSocialBattery(100);
-}
-
-function renderSocialBattery(){
-  const wrap = document.getElementById('socialBatteryWrap');
-  if(!wrap) return;
-  const pct = getSocialBattery();
-  const isEmpty = pct <= 0;
-  const barColor = pct > 60 ? 'var(--ok)' : pct > 30 ? 'var(--sora)' : 'var(--err)';
-  const icon = pct >= 100 ? '⚡' : pct >= 50 ? '🔋' : pct > 0 ? '🪫' : '💤';
-  const statusText = pct >= 100 ? '滿電狀態，大腦全速運轉！' :
-                     pct >= 50  ? '還有電，繼續加油！' :
-                     pct >  0   ? '快沒電了，去充個電吧！' :
-                                  '社交電量耗盡——';
-  const redirectHtml = isEmpty
-    ? `<div class="sb-redirect">
-        <span class="sb-redirect-msg">🛌 到床邊低語呢充充電吧～</span>
-        <button class="sb-redirect-btn" onclick="switchMainTab('mom');rechargeSocialBattery()">前往充電</button>
-       </div>`
-    : '';
-  wrap.innerHTML = `<div class="sb-card">
-    <div class="sb-header">
-      <span class="sb-icon">${icon}</span>
-      <span class="sb-title">社交電量表</span>
-      <span class="sb-pct">${pct}%</span>
-    </div>
-    <div class="sb-bar-track">
-      <div class="sb-bar-fill" style="width:${pct}%;background:${barColor}"></div>
-    </div>
-    <div class="sb-status">${statusText}${redirectHtml}</div>
-  </div>`;
 }
 
 // ── 蜂巢謝誌：更新記錄 ──
@@ -3968,24 +3937,17 @@ const CHANGELOG_DATA=[
   ]}
 ];
 
-function renderChangelog(){
-  const el=document.getElementById('changelogBody');
-  if(!el)return;
-  const html=CHANGELOG_DATA.map((entry,i)=>`
-    <div class="cl-entry">
-      <div class="cl-meta"><span class="cl-date">${entry.date}</span><span class="cl-tag">${entry.tag}</span></div>
-      <ul class="cl-items">${entry.items.map(it=>`<li>${it}</li>`).join('')}</ul>
-    </div>${i<CHANGELOG_DATA.length-1?'<div class="cl-divider"></div>':''}
-  `).join('');
-  el.innerHTML=html+html;
+function _clEntryHtml(entry){
+  return `<div class="cl-entry">
+    <div class="cl-meta"><span class="cl-date">${entry.date}</span><span class="cl-tag">${entry.tag}</span></div>
+    <ul class="cl-items">${entry.items.map(it=>`<li>${it}</li>`).join('')}</ul>
+  </div>`;
 }
-
-function toggleChangelog(){
-  const w=document.getElementById('changelogWrap');
-  if(!w)return;
-  const open=w.classList.toggle('cl-open');
-  const btn=document.getElementById('changelogToggleBtn');
-  if(btn)btn.textContent=open?'▲ 收起':'▼ 展開';
+function renderChangelog(){
+  const latestEl=document.getElementById('changelogLatest');
+  const bodyEl=document.getElementById('changelogBody');
+  if(latestEl) latestEl.innerHTML=_clEntryHtml(CHANGELOG_DATA[0]);
+  if(bodyEl) bodyEl.innerHTML=CHANGELOG_DATA.slice(1).map(_clEntryHtml).join('<div class="cl-divider"></div>');
 }
 
 (function init(){
@@ -4007,7 +3969,6 @@ function toggleChangelog(){
   renderIndicSubjPairs();
   renderGrammarSupplement();
   renderNewsSection();
-  renderSocialBattery();
   renderSelLine();
   renderChangelog();
   renderVocab();
