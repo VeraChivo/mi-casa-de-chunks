@@ -154,6 +154,36 @@ const GRAMMAR_DATA = [
         {person:"nosotros",   form:"somos",  ex:"Somos amigos.",       zh:"我們是朋友。"},
         {person:"ellos/ellas/ustedes", form:"son",    ex:"Son las mejores.",    zh:"她們是最棒的。"}
       ]
+    },
+    conj_subj:{
+      verb:"ser（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"sea",     ex:"Espero que sea posible.",    zh:"希望這是可行的。"},
+        {person:"tú",                  form:"seas",    ex:"Quiero que seas feliz.",     zh:"我希望你快樂。"},
+        {person:"él/ella/usted",       form:"sea",     ex:"Ojalá sea verdad.",         zh:"希望這是真的。"},
+        {person:"nosotros",            form:"seamos",  ex:"Para que seamos amigos.",   zh:"為了讓我們成為好朋友。"},
+        {person:"ellos/ellas/ustedes", form:"sean",    ex:"Espero que sean amables.",  zh:"希望他們都很友善。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"ser（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"fuera",    ex:"Si yo fuera tú...",           zh:"如果我是你的話..."},
+        {person:"tú",                  form:"fueras",   ex:"Si fueras más paciente...",   zh:"如果你更有耐心的話..."},
+        {person:"él/ella/usted",       form:"fuera",    ex:"Como si fuera fácil.",        zh:"好像這很簡單似的。"},
+        {person:"nosotros",            form:"fuéramos", ex:"Ojalá fuéramos más rápidos.", zh:"要是我們更快就好了。"},
+        {person:"ellos/ellas/ustedes", form:"fueran",   ex:"Si fueran distintos...",      zh:"如果他們不一樣的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"ser（條件式）",
+      rows:[
+        {person:"yo",                  form:"sería",    ex:"Eso sería genial.",          zh:"那會很棒。"},
+        {person:"tú",                  form:"serías",   ex:"¿Serías tan amable?",        zh:"你能這麼好嗎？"},
+        {person:"él/ella/usted",       form:"sería",    ex:"Sería un buen día.",         zh:"那會是美好的一天。"},
+        {person:"nosotros",            form:"seríamos", ex:"Seríamos más felices.",      zh:"我們會更快樂。"},
+        {person:"ellos/ellas/ustedes", form:"serían",   ex:"Serían perfectos juntos.",   zh:"他們在一起會很完美。"}
+      ]
     }
   },
 
@@ -189,6 +219,36 @@ const GRAMMAR_DATA = [
         {person:"él/ella/usted", form:"está",    ex:"Está aquí.",          zh:"他在這裡。"},
         {person:"nosotros",   form:"estamos", ex:"Estamos en casa.",    zh:"我們在家。"},
         {person:"ellos/ellas/ustedes", form:"están",   ex:"Están jugando.",      zh:"他們在玩。"}
+      ]
+    },
+    conj_subj:{
+      verb:"estar（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"esté",      ex:"Espero que estés bien.",       zh:"希望你一切安好。"},
+        {person:"tú",                  form:"estés",     ex:"Quiero que estés tranquila.",  zh:"我希望你平靜下來。"},
+        {person:"él/ella/usted",       form:"esté",      ex:"Ojalá esté aquí pronto.",      zh:"希望他快點在這裡。"},
+        {person:"nosotros",            form:"estemos",   ex:"Para que estemos juntos.",     zh:"為了讓我們在一起。"},
+        {person:"ellos/ellas/ustedes", form:"estén",     ex:"Espero que estén bien.",       zh:"希望他們都好。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"estar（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"estuviera",    ex:"Si estuviera allí...",            zh:"如果我在那裡的話..."},
+        {person:"tú",                  form:"estuvieras",   ex:"Ojalá estuvieras aquí.",          zh:"要是你在這裡就好了。"},
+        {person:"él/ella/usted",       form:"estuviera",    ex:"Como si estuviera enferma.",      zh:"好像她病了似的。"},
+        {person:"nosotros",            form:"estuviéramos", ex:"Si estuviéramos juntos...",       zh:"如果我們在一起的話..."},
+        {person:"ellos/ellas/ustedes", form:"estuvieran",   ex:"Si estuvieran aquí, ayudarían.", zh:"如果他們在這裡，就會幫忙了。"}
+      ]
+    },
+    conj_cond:{
+      verb:"estar（條件式）",
+      rows:[
+        {person:"yo",                  form:"estaría",    ex:"Yo estaría feliz.",         zh:"我會很快樂。"},
+        {person:"tú",                  form:"estarías",   ex:"¿Estarías bien?",           zh:"你會沒事嗎？"},
+        {person:"él/ella/usted",       form:"estaría",    ex:"Estaría mejor así.",        zh:"這樣會好一點。"},
+        {person:"nosotros",            form:"estaríamos", ex:"Estaríamos más tranquilos.",zh:"我們會更平靜。"},
+        {person:"ellos/ellas/ustedes", form:"estarían",   ex:"Estarían cansados.",        zh:"他們會很累。"}
       ]
     }
   },
@@ -251,6 +311,36 @@ const GRAMMAR_DATA = [
         {person:"él/ella/usted", form:"ha",      ex:"Ha perdido.",         zh:"他弄丟了。"},
         {person:"nosotros",   form:"hemos",   ex:"Hemos ganado.",       zh:"我們贏了。"},
         {person:"ellos/ellas/ustedes", form:"han",     ex:"Han salido.",         zh:"他們出去了。"}
+      ]
+    },
+    conj_subj:{
+      verb:"haber（現在虛擬式，用於現在完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"haya",    ex:"No creo que haya venido.",    zh:"我不覺得他來了。"},
+        {person:"tú",                  form:"hayas",   ex:"Espero que hayas descansado.",zh:"希望你有好好休息。"},
+        {person:"él/ella/usted",       form:"haya",    ex:"Ojalá haya llegado bien.",    zh:"希望他平安抵達了。"},
+        {person:"nosotros",            form:"hayamos", ex:"Para que hayamos aprendido.", zh:"為了讓我們有所學習。"},
+        {person:"ellos/ellas/ustedes", form:"hayan",   ex:"Es posible que hayan salido.",zh:"他們可能已經出發了。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"haber（過去未完成虛擬式，用於過去完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"hubiera",    ex:"Si hubiera sabido antes...",       zh:"如果我早點知道的話..."},
+        {person:"tú",                  form:"hubieras",   ex:"Ojalá hubieras venido.",           zh:"要是你有來就好了。"},
+        {person:"él/ella/usted",       form:"hubiera",    ex:"Si hubiera estudiado más...",      zh:"如果他有多念一點書的話..."},
+        {person:"nosotros",            form:"hubiéramos", ex:"Si hubiéramos llegado a tiempo...",zh:"如果我們有準時到的話..."},
+        {person:"ellos/ellas/ustedes", form:"hubieran",   ex:"Si hubieran avisado...",           zh:"如果他們有事先通知的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"haber（條件式，用於條件完成式）",
+      rows:[
+        {person:"yo",                  form:"habría",    ex:"Lo habría hecho antes.",   zh:"我本來早就做了。"},
+        {person:"tú",                  form:"habrías",   ex:"¿Lo habrías intentado?",   zh:"你本來會試試看嗎？"},
+        {person:"él/ella/usted",       form:"habría",    ex:"Habría sido mejor así.",   zh:"那樣本來會更好。"},
+        {person:"nosotros",            form:"habríamos", ex:"Habríamos llegado antes.", zh:"我們本來早就到了。"},
+        {person:"ellos/ellas/ustedes", form:"habrían",   ex:"Habrían venido juntos.",   zh:"他們本來會一起來的。"}
       ]
     }
   },
@@ -343,6 +433,36 @@ const GRAMMAR_DATA = [
         {person:"nosotros",   form:"podemos", ex:"Podemos jugar.",      zh:"我們可以玩。"},
         {person:"ellos/ellas/ustedes", form:"pueden",  ex:"Pueden correr.",      zh:"他們能跑。"}
       ]
+    },
+    conj_subj:{
+      verb:"poder（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"pueda",    ex:"Espero que pueda venir.",      zh:"希望他能來。"},
+        {person:"tú",                  form:"puedas",   ex:"Quiero que puedas descansar.", zh:"我希望你能休息。"},
+        {person:"él/ella/usted",       form:"pueda",    ex:"Ojalá pueda lograrlo.",        zh:"希望他能做到。"},
+        {person:"nosotros",            form:"podamos",  ex:"Para que podamos ayudar.",     zh:"為了讓我們能幫上忙。"},
+        {person:"ellos/ellas/ustedes", form:"puedan",   ex:"Espero que puedan quedarse.",  zh:"希望他們能留下來。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"poder（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"pudiera",    ex:"Si pudiera, lo haría.",       zh:"如果我能做到，我就做了。"},
+        {person:"tú",                  form:"pudieras",   ex:"Ojalá pudieras venir.",       zh:"要是你能來就好了。"},
+        {person:"él/ella/usted",       form:"pudiera",    ex:"Si pudiera, descansaría.",    zh:"如果他能的話，他就休息了。"},
+        {person:"nosotros",            form:"pudiéramos", ex:"Si pudiéramos salir...",      zh:"如果我們能出去的話..."},
+        {person:"ellos/ellas/ustedes", form:"pudieran",   ex:"Si pudieran quedarse...",     zh:"如果他們能留下的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"poder（條件式）",
+      rows:[
+        {person:"yo",                  form:"podría",    ex:"¿Podría ayudarte?",          zh:"我可以幫你嗎？"},
+        {person:"tú",                  form:"podrías",   ex:"¿Podrías venir mañana?",     zh:"你明天能來嗎？"},
+        {person:"él/ella/usted",       form:"podría",    ex:"Podría ser mejor.",          zh:"這樣可能會更好。"},
+        {person:"nosotros",            form:"podríamos", ex:"Podríamos intentarlo.",      zh:"我們可以試試看。"},
+        {person:"ellos/ellas/ustedes", form:"podrían",   ex:"Podrían ayudarnos.",         zh:"他們可以幫我們。"}
+      ]
     }
   },
 
@@ -365,6 +485,36 @@ const GRAMMAR_DATA = [
         {person:"él/ella/usted", form:"debe",    ex:"Debe dormir.",        zh:"他必須睡。"},
         {person:"nosotros",   form:"debemos", ex:"Debemos salir.",      zh:"我們應該出發。"},
         {person:"ellos/ellas/ustedes", form:"deben",   ex:"Deben practicar.",    zh:"他們必須練習。"}
+      ]
+    },
+    conj_subj:{
+      verb:"deber（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"deba",    ex:"No creo que deba ir sola.",   zh:"我不覺得她應該一個人去。"},
+        {person:"tú",                  form:"debas",   ex:"Es importante que debas saber.",zh:"你應該要知道這件事。"},
+        {person:"él/ella/usted",       form:"deba",    ex:"Ojalá no deba hacerlo.",      zh:"希望她不必這樣做。"},
+        {person:"nosotros",            form:"debamos", ex:"Para que debamos respetar.",  zh:"為了讓我們都應該尊重。"},
+        {person:"ellos/ellas/ustedes", form:"deban",   ex:"Es necesario que deban venir.",zh:"他們有必要來。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"deber（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"debiera",    ex:"Si debiera elegir...",           zh:"如果我必須選擇的話..."},
+        {person:"tú",                  form:"debieras",   ex:"Ojalá debieras saberlo.",        zh:"要是你早該知道就好了。"},
+        {person:"él/ella/usted",       form:"debiera",    ex:"Si debiera quedarse...",         zh:"如果他必須留下的話..."},
+        {person:"nosotros",            form:"debiéramos", ex:"Si debiéramos hacerlo...",       zh:"如果我們必須做的話..."},
+        {person:"ellos/ellas/ustedes", form:"debieran",   ex:"Si debieran practicar más...",   zh:"如果他們應該多練習的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"deber（條件式）",
+      rows:[
+        {person:"yo",                  form:"debería",    ex:"Yo debería descansar.",      zh:"我應該休息了。"},
+        {person:"tú",                  form:"deberías",   ex:"Deberías comer algo.",       zh:"你應該吃點東西。"},
+        {person:"él/ella/usted",       form:"debería",    ex:"Debería pedir perdón.",      zh:"他應該道歉。"},
+        {person:"nosotros",            form:"deberíamos", ex:"Deberíamos hablar.",         zh:"我們應該好好談談。"},
+        {person:"ellos/ellas/ustedes", form:"deberían",   ex:"Deberían llegar pronto.",    zh:"他們應該快到了。"}
       ]
     }
   },
@@ -456,6 +606,36 @@ const GRAMMAR_DATA = [
         {person:"nosotros",   form:"sentimos", ex:"Sentimos mucho.",    zh:"我們非常遺憾。"},
         {person:"ellos/ellas/ustedes", form:"sienten",  ex:"Sienten alegría.",   zh:"他們感到快樂。"}
       ]
+    },
+    conj_subj:{
+      verb:"sentir（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"sienta",    ex:"Espero que no lo sienta así.", zh:"希望她不要這樣感受。"},
+        {person:"tú",                  form:"sientas",   ex:"Quiero que te sientas bien.",  zh:"我希望你覺得好一些。"},
+        {person:"él/ella/usted",       form:"sienta",    ex:"Ojalá lo sienta mejor.",       zh:"希望他感覺好一點。"},
+        {person:"nosotros",            form:"sintamos",  ex:"Para que lo sintamos juntos.", zh:"為了讓我們一起感受。"},
+        {person:"ellos/ellas/ustedes", form:"sientan",   ex:"Espero que se sientan cómodos.",zh:"希望他們感到自在。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"sentir（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"sintiera",    ex:"Si lo sintiera, lo diría.",      zh:"如果我有感覺，我就說了。"},
+        {person:"tú",                  form:"sintieras",   ex:"Ojalá lo sintieras también.",    zh:"要是你也有這個感受就好了。"},
+        {person:"él/ella/usted",       form:"sintiera",    ex:"Como si lo sintiera de verdad.", zh:"好像他真的有感受到似的。"},
+        {person:"nosotros",            form:"sintiéramos", ex:"Si lo sintiéramos juntos...",    zh:"如果我們能一起感受的話..."},
+        {person:"ellos/ellas/ustedes", form:"sintieran",   ex:"Si sintieran lo mismo...",       zh:"如果他們有同樣的感受的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"sentir（條件式）",
+      rows:[
+        {person:"yo",                  form:"sentiría",    ex:"Yo sentiría lo mismo.",       zh:"我也會有同樣的感受。"},
+        {person:"tú",                  form:"sentirías",   ex:"¿Cómo te sentirías?",         zh:"你會有什麼感受？"},
+        {person:"él/ella/usted",       form:"sentiría",    ex:"Sentiría más calma.",         zh:"她會感覺更平靜。"},
+        {person:"nosotros",            form:"sentiríamos", ex:"Nos sentiríamos mejor.",      zh:"我們會感覺好一些。"},
+        {person:"ellos/ellas/ustedes", form:"sentirían",   ex:"Se sentirían solos.",         zh:"他們會感到孤單。"}
+      ]
     }
   },
 
@@ -478,6 +658,36 @@ const GRAMMAR_DATA = [
         {person:"él/ella/usted", form:"va",    ex:"Va a casa.",         zh:"他回家去。"},
         {person:"nosotros",   form:"vamos", ex:"Vamos a jugar.",    zh:"我們去玩吧！"},
         {person:"ellos/ellas/ustedes", form:"van",   ex:"Van a la playa.",   zh:"他們去海灘。"}
+      ]
+    },
+    conj_subj:{
+      verb:"ir（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"vaya",    ex:"Espero que vaya bien.",        zh:"希望一切順利。"},
+        {person:"tú",                  form:"vayas",   ex:"Quiero que vayas con cuidado.",zh:"我希望你小心走。"},
+        {person:"él/ella/usted",       form:"vaya",    ex:"Ojalá vaya pronto.",           zh:"希望她快點去。"},
+        {person:"nosotros",            form:"vayamos", ex:"Para que vayamos juntos.",     zh:"為了讓我們一起去。"},
+        {person:"ellos/ellas/ustedes", form:"vayan",   ex:"Espero que vayan bien.",       zh:"希望他們一切順利。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"ir（過去未完成虛擬式）⚠️ fuera 與 ser 同形，依上下文判斷",
+      rows:[
+        {person:"yo",                  form:"fuera",    ex:"Si fuera a casa...",           zh:"如果我回家的話...", note:"⚠️ fuera 與 ser 的過去虛擬式同形，依上下文判斷"},
+        {person:"tú",                  form:"fueras",   ex:"Ojalá fueras allí.",           zh:"要是你去那裡就好了。"},
+        {person:"él/ella/usted",       form:"fuera",    ex:"Como si fuera al trabajo.",    zh:"好像他去上班似的。"},
+        {person:"nosotros",            form:"fuéramos", ex:"Si fuéramos juntos...",        zh:"如果我們一起去的話..."},
+        {person:"ellos/ellas/ustedes", form:"fueran",   ex:"Si fueran con cuidado...",     zh:"如果他們小心前進的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"ir（條件式）",
+      rows:[
+        {person:"yo",                  form:"iría",    ex:"Yo iría contigo.",            zh:"我會和你一起去。"},
+        {person:"tú",                  form:"irías",   ex:"¿Irías sin mí?",              zh:"你會不帶我就走嗎？"},
+        {person:"él/ella/usted",       form:"iría",    ex:"Iría al parque.",             zh:"他會去公園。"},
+        {person:"nosotros",            form:"iríamos", ex:"Iríamos de viaje.",           zh:"我們會去旅行。"},
+        {person:"ellos/ellas/ustedes", form:"irían",   ex:"Irían juntos.",               zh:"他們會一起去。"}
       ]
     }
   },
@@ -533,6 +743,36 @@ const GRAMMAR_DATA = [
         {person:"nosotros",   form:"tenemos", ex:"Tenemos frío.",        zh:"我們很冷。"},
         {person:"ellos/ellas/ustedes", form:"tienen",  ex:"Tienen miedo.",         zh:"他們害怕。"}
       ]
+    },
+    conj_subj:{
+      verb:"tener（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"tenga",    ex:"Espero que tenga tiempo.",      zh:"希望她有時間。"},
+        {person:"tú",                  form:"tengas",   ex:"Quiero que tengas cuidado.",    zh:"我希望你小心。"},
+        {person:"él/ella/usted",       form:"tenga",    ex:"Ojalá tenga suerte.",           zh:"希望他幸運。"},
+        {person:"nosotros",            form:"tengamos", ex:"Para que tengamos paciencia.",  zh:"為了讓我們有耐心。"},
+        {person:"ellos/ellas/ustedes", form:"tengan",   ex:"Espero que tengan energía.",    zh:"希望他們有精力。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"tener（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"tuviera",    ex:"Si tuviera dinero...",           zh:"如果我有錢的話..."},
+        {person:"tú",                  form:"tuvieras",   ex:"Ojalá tuvieras tiempo.",         zh:"要是你有時間就好了。"},
+        {person:"él/ella/usted",       form:"tuviera",    ex:"Si tuviera miedo, lo diría.",    zh:"如果他害怕，他就說了。"},
+        {person:"nosotros",            form:"tuviéramos", ex:"Si tuviéramos más tiempo...",    zh:"如果我們有更多時間的話..."},
+        {person:"ellos/ellas/ustedes", form:"tuvieran",   ex:"Si tuvieran hambre, comerían.", zh:"如果他們餓了，就會吃了。"}
+      ]
+    },
+    conj_cond:{
+      verb:"tener（條件式）⚠️ 不規則詞幹 tendr-",
+      rows:[
+        {person:"yo",                  form:"tendría",    ex:"Yo tendría miedo también.",   zh:"我也會害怕的。", note:"⚠️ 不規則詞幹 tendr-（不是 tener-）"},
+        {person:"tú",                  form:"tendrías",   ex:"¿Tendrías tiempo mañana?",    zh:"你明天有時間嗎？"},
+        {person:"él/ella/usted",       form:"tendría",    ex:"Tendría más cuidado.",        zh:"他會更加小心。"},
+        {person:"nosotros",            form:"tendríamos", ex:"Tendríamos que salir.",       zh:"我們就得出發了。"},
+        {person:"ellos/ellas/ustedes", form:"tendrían",   ex:"Tendrían hambre.",            zh:"他們會餓的。"}
+      ]
     }
   },
 
@@ -584,6 +824,36 @@ const GRAMMAR_DATA = [
         {person:"él/ella/usted", form:"anda", ex:"Anda buscando piso.",  zh:"他這陣子在到處找房子。"},
         {person:"nosotros",   form:"andamos", ex:"Andamos de viaje.",    zh:"我們這陣子在到處旅行。"},
         {person:"ellos/ellas/ustedes", form:"andan", ex:"Andan diciendo tonterías.", zh:"他們一直到處亂講些有的沒的。"}
+      ]
+    },
+    conj_subj:{
+      verb:"andar（現在虛擬式）",
+      rows:[
+        {person:"yo",                  form:"ande",    ex:"No quiero que ande buscando problemas.", zh:"我不希望他到處惹麻煩。"},
+        {person:"tú",                  form:"andes",   ex:"Espero que andes bien.",                 zh:"希望你一切順利。"},
+        {person:"él/ella/usted",       form:"ande",    ex:"Ojalá no ande tan cansada.",             zh:"希望她不要這麼累。"},
+        {person:"nosotros",            form:"andemos", ex:"Para que andemos con cuidado.",          zh:"為了讓我們謹慎行事。"},
+        {person:"ellos/ellas/ustedes", form:"anden",   ex:"No creo que anden diciendo eso.",        zh:"我不認為他們到處這樣說。"}
+      ]
+    },
+    conj_impsubj:{
+      verb:"andar（過去未完成虛擬式）",
+      rows:[
+        {person:"yo",                  form:"anduviera",    ex:"Si anduviera por ahí...",            zh:"如果我在那附近到處走的話..."},
+        {person:"tú",                  form:"anduvieras",   ex:"Ojalá anduvieras más despacio.",     zh:"要是你走慢一點就好了。"},
+        {person:"él/ella/usted",       form:"anduviera",    ex:"Como si anduviera perdido.",         zh:"好像他迷路了似的。"},
+        {person:"nosotros",            form:"anduviéramos", ex:"Si anduviéramos juntos...",          zh:"如果我們一起走的話..."},
+        {person:"ellos/ellas/ustedes", form:"anduvieran",   ex:"Si anduvieran con cuidado...",       zh:"如果他們謹慎行事的話..."}
+      ]
+    },
+    conj_cond:{
+      verb:"andar（條件式）",
+      rows:[
+        {person:"yo",                  form:"andaría",    ex:"Yo andaría más despacio.",        zh:"我會走慢一點。"},
+        {person:"tú",                  form:"andarías",   ex:"¿Andarías por allí?",             zh:"你會在那附近到處走嗎？"},
+        {person:"él/ella/usted",       form:"andaría",    ex:"Andaría buscando soluciones.",    zh:"她會到處找解決方法。"},
+        {person:"nosotros",            form:"andaríamos", ex:"Andaríamos de aventura.",         zh:"我們會到處冒險。"},
+        {person:"ellos/ellas/ustedes", form:"andarían",   ex:"Andarían por el barrio.",         zh:"他們會在街區附近走動。"}
       ]
     }
   },

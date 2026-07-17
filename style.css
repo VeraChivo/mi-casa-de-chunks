@@ -124,6 +124,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gfresh-flower.fresh-1{filter:saturate(.75);transform:rotate(-6deg)}
 .gfresh-flower.fresh-2{filter:saturate(.5) brightness(.95);transform:rotate(-14deg)}
 .gfresh-flower.fresh-3{filter:saturate(.3) brightness(.85);transform:rotate(-22deg)}
+.gfresh-flower.fresh-4{filter:saturate(.15) sepia(.8) brightness(.7);transform:rotate(-30deg) scale(.9)}
 .gfresh-bug{font-size:16px;margin-left:-6px}
 .gfresh-empty{font-size:12px;color:var(--tlight);font-weight:600}
 .gfresh-btn{display:block;margin:0 auto;background:var(--misora);color:white;font-weight:800;font-size:13px;border:none;border-radius:999px;padding:8px 20px;cursor:pointer}
@@ -701,6 +702,30 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-lib-search-row{padding:8px 10px 0;background:white}
 .conj-lib-search-input{width:100%;box-sizing:border-box;border:1.5px solid var(--usumizu);border-radius:10px;padding:7px 11px;font-size:13px;font-family:'Nunito',sans-serif;color:var(--tdark);background:var(--bg2)}
 
+/* 精釀調酒配方：時態分頁 */
+.conj-tense-tabs{display:flex;flex-wrap:wrap;gap:4px;padding:6px 12px 2px}
+.conj-tense-tab{font-size:11px;font-weight:800;padding:4px 9px;border-radius:20px;border:1.5px solid var(--misora);color:var(--misora);background:white;cursor:pointer;display:flex;align-items:center;gap:3px;white-space:nowrap}
+.conj-tense-tab.active{background:var(--misora);color:white}
+.conj-tense-tab:active{opacity:.7}
+.conj-tense-hint{font-size:9px;font-weight:700;color:#c9a84c;background:rgba(201,168,76,.12);border-radius:8px;padding:1px 4px;margin-left:1px}
+.conj-tense-tab.active .conj-tense-hint{color:#ffd97a;background:rgba(255,217,122,.18)}
+.conj-tense-block{display:none}
+.conj-tense-block.active{display:block}
+
+/* 社交電量表 */
+.sb-card{background:white;border-radius:14px;border:1.5px solid var(--usumizu);padding:12px 16px;margin:0 0 10px}
+.sb-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sb-icon{font-size:22px}
+.sb-title{font-size:14px;font-weight:900;color:var(--konpeki);flex:1}
+.sb-pct{font-size:14px;font-weight:900;color:var(--tmid)}
+.sb-bar-track{height:10px;background:var(--bg2);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.sb-bar-fill{height:100%;border-radius:99px;transition:width .4s ease,background .4s ease;min-width:4px}
+.sb-status{font-size:12px;font-weight:700;color:var(--tmid);display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.sb-redirect{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px}
+.sb-redirect-msg{font-size:12px;font-weight:700;color:var(--err)}
+.sb-redirect-btn{font-size:11px;font-weight:800;padding:4px 10px;background:var(--misora);color:white;border:none;border-radius:20px;cursor:pointer}
+.sb-redirect-btn:active{opacity:.7}
+
 /* 陰陽字尾語塊卡 */
 .gp-card{background:white;border-bottom:1px solid var(--bg2);padding:9px 16px;text-align:center}
 .gp-card:last-child{border-bottom:none;border-radius:0 0 14px 14px}
@@ -1097,8 +1122,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .lf-filter-chip{font-size:11px;font-weight:800;padding:4px 10px;border-radius:14px;background:var(--bg2);color:var(--tmid);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .lf-filter-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
 .morning-brief-card{padding:2px 0 6px}
-.morning-brief-tag{display:inline-block;background:var(--mizu);color:white;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;letter-spacing:.5px}
-.morning-brief-day{font-size:11px;color:var(--tlight);margin:6px 0 12px}
+.morning-brief-banner{background:linear-gradient(135deg,var(--konpeki),#2a5f8a);border-radius:14px;padding:14px 16px 12px;margin-bottom:14px;text-align:center}
+.morning-brief-tag{display:block;font-size:18px;font-weight:900;color:white;letter-spacing:.3px;margin-bottom:5px}
+.morning-brief-day{font-size:12px;color:rgba(255,255,255,.8);margin:0;font-weight:600;text-transform:capitalize}
 .morning-brief-section{font-size:11px;font-weight:800;color:var(--misora);letter-spacing:.4px;margin-bottom:8px}
 .morning-brief-song{font-size:14px;font-weight:800;color:var(--konpeki);margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .morning-brief-lyric{font-size:15px;line-height:1.7;color:var(--tdark);margin-bottom:8px;padding:10px 12px;background:var(--bg2);border-radius:10px}
@@ -1124,3 +1150,79 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 :root[data-theme="dark"] .lf-grammar-note{background:#182028}
 :root[data-theme="dark"] .morning-brief-lyric{background:#1e2a32}
 :root[data-theme="dark"] .morning-brief-rule{background:#1e2a32}
+/* 里程碑勳章條 */
+.ms-strip{display:flex;align-items:center;gap:6px;padding:8px 16px 6px;flex-wrap:wrap;border-bottom:1px solid rgba(188,225,223,.4);background:var(--bg2)}
+.ms-badge{font-size:20px;line-height:1;cursor:default;transition:transform .15s}
+.ms-badge:hover{transform:scale(1.2)}
+.ms-dim{filter:grayscale(1);opacity:.35}
+.ms-next-hint{font-size:10px;font-weight:800;color:var(--tlight);margin-left:4px;white-space:nowrap}
+/* 里程碑慶祝（農間小報頂部）*/
+.ms-celeb{text-align:center;padding:16px 12px 12px;background:linear-gradient(135deg,rgba(159,208,222,.15),rgba(108,155,210,.1));border-radius:14px;margin-bottom:12px;border:1.5px solid rgba(159,208,222,.5)}
+.ms-celeb-badge{font-size:44px;line-height:1.1;margin-bottom:4px}
+.ms-celeb-title{font-size:11px;font-weight:800;color:var(--misora);letter-spacing:.6px;text-transform:uppercase;margin-bottom:2px}
+.ms-celeb-name{font-size:18px;font-weight:900;color:var(--konpeki);margin-bottom:6px}
+.ms-celeb-msg{font-size:12px;color:var(--tmid);line-height:1.5}
+.ms-celeb-song{margin-top:10px;padding:10px 12px;background:rgba(201,168,76,.1);border-radius:10px;border:1px solid rgba(201,168,76,.35)}
+.ms-celeb-chunk{font-size:13px;font-weight:800;color:#8a6b1a;font-style:italic;margin-bottom:3px}
+.ms-celeb-artist{font-size:11px;color:var(--tmid);margin-bottom:6px}
+.ms-celeb-yt{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:#c9a84c;padding:5px 14px;border-radius:20px;text-decoration:none}
+.ms-celeb-yt:hover{background:#a88930}
+.ms-celeb-tip{margin-top:10px;padding:10px 12px;background:rgba(61,184,122,.08);border-radius:10px;border:1px solid rgba(61,184,122,.3);text-align:left}
+.ms-celeb-tip-text{font-size:12px;color:var(--tmid);line-height:1.55;margin-bottom:6px}
+.ms-celeb-tip-cta{font-size:13px;font-weight:800;color:var(--ok);text-align:center}
+/* ── B2 時事傳送門 ── */
+.news-section-wrap{margin:12px 0;border-radius:14px;overflow:hidden;border:1px solid rgba(159,208,222,.45);background:var(--bg2)}
+.news-section-header{padding:14px 16px 10px;background:linear-gradient(135deg,var(--konpeki),#2a5f8a);cursor:pointer;user-select:none}
+.news-section-title-row{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.news-section-title{font-size:15px;font-weight:900;color:#fff}
+.news-section-badge{font-size:10px;font-weight:800;background:rgba(255,255,255,.25);color:#fff;padding:2px 7px;border-radius:20px;letter-spacing:.5px}
+.news-section-sub{font-size:11px;color:rgba(255,255,255,.8);margin-bottom:6px}
+.news-toggle-arrow{font-size:10px;font-weight:800;color:rgba(255,255,255,.9)}
+/* DW 文化小卡 */
+.news-dw-card{margin:14px 14px 0;padding:14px;background:rgba(159,208,222,.13);border-radius:12px;border:1px solid rgba(159,208,222,.4)}
+.news-dw-title{font-size:13px;font-weight:900;color:var(--konpeki);margin-bottom:10px}
+.news-dw-item{margin-bottom:10px;font-size:12px;line-height:1.6}
+.news-dw-item:last-child{margin-bottom:0}
+.news-dw-label{display:inline-block;font-weight:800;color:var(--misora);margin-bottom:2px;width:100%}
+.news-dw-text{color:var(--tmid)}
+/* 新聞卡片 */
+.news-items{padding:12px 14px 0}
+.news-item{background:#fff;border-radius:12px;padding:14px 14px 10px;margin-bottom:12px;border:1px solid rgba(188,225,223,.5);box-shadow:0 1px 4px rgba(0,91,152,.06)}
+.news-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.news-topic{font-size:10px;font-weight:800;color:var(--misora);background:rgba(108,155,210,.12);padding:2px 8px;border-radius:10px}
+.news-source{font-size:10px;color:var(--tlight);text-decoration:none;font-weight:600}
+.news-source:hover{color:var(--misora)}
+.news-headline{font-size:15px;font-weight:700;color:var(--tdark);line-height:1.55;margin-bottom:10px}
+/* 挖空輸入框（嵌入標題行） */
+.news-blank-input{display:inline-block;border:none;border-bottom:2px solid var(--misora);background:rgba(108,155,210,.08);padding:1px 8px;font-size:15px;font-weight:700;color:var(--konpeki);border-radius:4px 4px 0 0;min-width:120px;vertical-align:baseline;outline:none;font-family:inherit}
+.news-blank-input:focus{border-bottom-color:var(--konpeki);background:rgba(108,155,210,.15)}
+.news-blank-input:disabled{background:rgba(61,184,122,.12);border-bottom-color:var(--ok);color:var(--ok)}
+/* bug 錯字標記 */
+.news-bug-word{color:var(--err);text-decoration:underline wavy var(--err);font-weight:800;cursor:help}
+.news-bug-word.news-bug-fixed{color:var(--ok);text-decoration:line-through var(--err);background:rgba(61,184,122,.1);border-radius:3px;padding:0 2px}
+/* 操作列 */
+.news-controls{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.news-check-btn{padding:5px 14px;font-size:12px;font-weight:800;background:var(--misora);color:#fff;border:none;border-radius:20px;cursor:pointer}
+.news-check-btn:hover{background:var(--konpeki)}
+.news-hint-btn{padding:5px 14px;font-size:12px;font-weight:700;background:transparent;color:var(--misora);border:1.5px solid var(--misora);border-radius:20px;cursor:pointer}
+.news-hint-btn:hover{background:rgba(108,155,210,.1)}
+/* 提示 */
+.news-hint{font-size:11px;color:var(--tmid);background:rgba(188,225,223,.2);border-radius:8px;padding:7px 10px;margin-bottom:6px;line-height:1.5}
+.news-hint-zh{font-weight:800;color:var(--konpeki)}
+/* 回饋 */
+.news-feedback{min-height:16px;font-size:12px;font-weight:700;line-height:1.4;margin-top:4px}
+.news-fb-ok{color:var(--ok)}
+.news-fb-err{color:var(--err)}
+/* bug 題型的答案輸入框（放在 .news-controls 裡） */
+.news-controls .news-blank-input{min-width:100px;font-size:13px}
+/* 版權頁腳 */
+.news-footer{font-size:10px;color:var(--tlight);text-align:center;padding:8px 14px 14px;line-height:1.6}
+.news-footer a{color:var(--misora);text-decoration:none}
+/* dark mode */
+@media(prefers-color-scheme:dark){
+  .news-item{background:#1e2a32;border-color:#2a3840}
+  .news-blank-input{background:rgba(108,155,210,.15);color:#9fd0de}
+  .news-blank-input:focus{background:rgba(108,155,210,.25)}
+}
+:root[data-theme="dark"] .news-item{background:#1e2a32;border-color:#2a3840}
+:root[data-theme="dark"] .news-blank-input{background:rgba(108,155,210,.15);color:#9fd0de}

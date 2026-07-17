@@ -277,6 +277,48 @@ function renderStars(){
 
 /* AMMO data → ammo.js */
 
+// ── 里程碑系統 ──
+const CHUNK_MILESTONES = [
+  { n:4,   cefr:'A1', badge:'🌱', name:'護土嫩芽', msg:'種子破土了！你已跨出第一步。現在去聽慢歌，你會發現原本糊掉的單字開始發光。',
+    song:{ artist:'Julieta Venegas', title:'Limón y Sal', chunk:'Si por mí fuera', t:52, yt:'https://www.youtube.com/watch?v=bEvpImfYQqE&t=52s' } },
+  { n:15,  cefr:'A2', badge:'💧', name:'甘露初沁', msg:'甘露滋潤！你掌握了「願望」的配方。開始能看懂 IG 網紅簡單的個人心情分享了。',
+    song:{ artist:'Juanes', title:'A Dios Le Pido', chunk:'Que mis ojos se despierten', t:46, yt:'https://www.youtube.com/watch?v=kMIaYXxLnUA&t=46s' } },
+  { n:45,  cefr:'B1', badge:'🍯', name:'蜂蜜初採', msg:'花蜜入桶！你已能辨識網民的「主觀情緒」。聽歌時，耳朵能自動拆解出連音結構。',
+    song:{ artist:'Juan Luis Guerra', title:'Ojalá Que Llueva Café', chunk:'Ojalá que llueva café', t:30, yt:'https://www.youtube.com/watch?v=TiPRNqJnI_k&t=30s' } },
+  { n:90,  cefr:'B2', badge:'🎖️', name:'蜂王蜜釀', msg:'蜂王精釀！解鎖「假設世界」。你現在有能力看懂 Threads 上的諷刺留言與地獄梗。',
+    song:{ artist:'Beyoncé', title:'Si Yo Fuera Un Chico', chunk:'Si yo fuera un chico', t:20, yt:'https://www.youtube.com/watch?v=7iMNLqqHPac&t=20s' } },
+  { n:180, cefr:'C1', badge:'🏆', name:'莊園金牌', msg:'金牌傳奇！180 顆複利語塊達成。你能跟著 Reggaeton 饒舌，完全融入拉美社交圈。',
+    song:{ artist:'Rosalía', title:'Despechá', chunk:'Que Dios me libre', t:38, yt:'https://www.youtube.com/watch?v=Aloe79Wjq34&t=38s' } }
+];
+function _msGetSeen(){ try{ return JSON.parse(localStorage.getItem('peppa_milestones_v1')||'[]'); }catch(e){ return []; } }
+function _msSave(seen){ try{ localStorage.setItem('peppa_milestones_v1', JSON.stringify(seen)); }catch(e){} }
+function _checkNewMilestone(){
+  const count = (ammoUnlocked||[]).length;
+  const seen = _msGetSeen();
+  return CHUNK_MILESTONES.some(m => m.n <= count && !seen.includes(m.n));
+}
+function popNewMilestone(){
+  const count = (ammoUnlocked||[]).length;
+  const seen = _msGetSeen();
+  const m = CHUNK_MILESTONES.find(m => m.n <= count && !seen.includes(m.n));
+  if(m){ seen.push(m.n); _msSave(seen); }
+  return m || null;
+}
+function renderMilestoneBadgeStrip(){
+  const el = document.getElementById('milestoneBadgeStrip');
+  if(!el) return;
+  const count = (ammoUnlocked||[]).length;
+  const next = CHUNK_MILESTONES.find(m => m.n > count);
+  let html = '<div class="ms-strip">';
+  CHUNK_MILESTONES.forEach(m=>{
+    const earned = m.n <= count;
+    html += `<span class="ms-badge${earned?'':' ms-dim'}" title="${m.name}（${m.cefr}，${m.n}粒）">${m.badge}</span>`;
+  });
+  if(next) html += `<span class="ms-next-hint">再 ${next.n - count} 粒 → 下一階 ${next.badge}</span>`;
+  html += '</div>';
+  el.innerHTML = html;
+}
+
 // ── AMMO STATE ──
 let ammoUnlocked = []; // array of ammo_ids unlocked so far
 let ammoStars = {};    // {ammo_id: 0|1|2}
@@ -335,6 +377,12 @@ function unlockAmmo(globalIdx){
     if(!ammoUnlocked.includes(id)) ammoUnlocked.push(id);
   });
   renderAmmo();
+  renderMilestoneBadgeStrip();
+  if(_checkNewMilestone()){
+    let tourSeen = false;
+    try{ tourSeen = !!localStorage.getItem('peppa_welcome_tour_seen_v1'); }catch(e){}
+    if(tourSeen) showMorningBrief();
+  }
   if(typeof checkStorageQuota === 'function') checkStorageQuota();
 }
 
@@ -1933,7 +1981,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1'];
 
 function exportBackup(){
   const data = {};
@@ -2164,10 +2212,13 @@ function renderConjLibrary(){
   const verbs = GRAMMAR_DATA.filter(g=>g.conj && g.conj.rows && g.conj.rows.length);
   const gdb = getGardenDB();
   el.innerHTML = verbs.map(g=>{
-    const renderStdRow = r => {
+    const renderStdRow = (r, tense) => {
+      const isPresent = tense === 'present';
       const key = 'ge_'+r.form;
       const st = (gdb[key]||{stage:0}).stage;
-      const starHtml = `<span class="ge-chunk-star${st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度：點一下記錄熟練度">${GARDEN_STAGES[st]}</span>`;
+      const starHtml = isPresent
+        ? `<span class="ge-chunk-star${st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度：點一下記錄熟練度">${GARDEN_STAGES[st]}</span>`
+        : '';
       return `<div class="conj-row">
         <span class="conj-person">${r.person}</span>
         <span class="conj-form" onclick="speakConjForm('${g.id}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
@@ -2177,22 +2228,51 @@ function renderConjLibrary(){
         ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
       </div>`;
     };
-    const renderAllRows = rows => rows.map(r =>
-      renderStdRow(r) + renderDynamicConjugationExamples(r.form.toLowerCase())
+    const renderAllRows = (rows, tense) => rows.map(r =>
+      renderStdRow(r, tense) + (tense==='present' ? renderDynamicConjugationExamples(r.form.toLowerCase()) : '')
     ).join('');
-    const main3 = renderAllRows(g.conj.rows.slice(0,3));
-    const rest3 = g.conj.rows.slice(3);
-    const restHtml = rest3.length
-      ? `<details class="conj-expand"><summary class="conj-expand-summary">我們／你們／他們 ▾</summary>${renderAllRows(rest3)}</details>`
-      : '';
+    const buildTenseBlock = (conjData, tense, isActive) => {
+      if(!conjData || !conjData.rows || !conjData.rows.length) return '';
+      const m3 = renderAllRows(conjData.rows.slice(0,3), tense);
+      const r3 = conjData.rows.slice(3);
+      const rHtml = r3.length
+        ? `<details class="conj-expand"><summary class="conj-expand-summary">我們／你們／他們 ▾</summary>${renderAllRows(r3, tense)}</details>`
+        : '';
+      return `<div class="conj-tense-block${isActive?' active':''}" data-tense="${tense}">
+        <div class="conj-rows">${m3}${rHtml}</div>
+      </div>`;
+    };
+
+    const hasSubj    = !!(g.conj_subj    && g.conj_subj.rows);
+    const hasImpsubj = !!(g.conj_impsubj && g.conj_impsubj.rows);
+    const hasCond    = !!(g.conj_cond    && g.conj_cond.rows);
+    const hasTabs    = hasSubj || hasImpsubj || hasCond;
+
+    const tabsHtml = hasTabs ? `<div class="conj-tense-tabs">
+      <button class="conj-tense-tab active" data-tense="present" onclick="switchConjTense('conjlib-${g.id}','present')">現在式</button>
+      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="switchConjTense('conjlib-${g.id}','subj')">現在虛擬式<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
+      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="switchConjTense('conjlib-${g.id}','impsubj')">過去未完成虛擬式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="switchConjTense('conjlib-${g.id}','cond')">條件式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+    </div>` : '';
+
     const verbRoot = (g.conj.verb||'').split('（')[0].trim().toLowerCase();
     const familyCls = verbRoot.endsWith('ar') ? 'conj-lib-ar' : 'conj-lib-erir';
-    const searchText = [g.conj.verb, ...g.conj.rows.map(r=>`${r.person} ${r.form} ${r.ex} ${r.zh} ${r.note||''}`)]
-      .join(' ').toLowerCase();
+    const searchText = [
+      g.conj.verb,
+      ...g.conj.rows.map(r=>`${r.person} ${r.form} ${r.ex} ${r.zh} ${r.note||''}`),
+      ...(hasSubj    ? g.conj_subj.rows.map(r=>`${r.form} ${r.ex}`)    : []),
+      ...(hasImpsubj ? g.conj_impsubj.rows.map(r=>`${r.form} ${r.ex}`) : []),
+      ...(hasCond    ? g.conj_cond.rows.map(r=>`${r.form} ${r.ex}`)    : [])
+    ].join(' ').toLowerCase();
+
     return `<div class="conj-lib-card ${familyCls}" id="conjlib-${g.id}" data-search="${escAttr(searchText)}">
       <div class="conj-lib-header">${g.conj.verb}</div>
+      ${tabsHtml}
       <div class="conj-section">
-        <div class="conj-rows">${main3}${restHtml}</div>
+        ${buildTenseBlock(g.conj,        'present', true)}
+        ${buildTenseBlock(g.conj_subj,   'subj',    false)}
+        ${buildTenseBlock(g.conj_impsubj,'impsubj', false)}
+        ${buildTenseBlock(g.conj_cond,   'cond',    false)}
       </div>
     </div>`;
   }).join('');
@@ -2203,6 +2283,17 @@ function renderConjLibrary(){
     preview.textContent = roots.join('・') + '…';
   }
   bindLongPressCopyAll('.conj-ex', el);
+}
+
+function switchConjTense(cardId, tense){
+  const card = document.getElementById(cardId);
+  if(!card) return;
+  card.querySelectorAll('.conj-tense-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.tense === tense);
+  });
+  card.querySelectorAll('.conj-tense-block').forEach(block => {
+    block.classList.toggle('active', block.dataset.tense === tense);
+  });
 }
 
 function filterConjLibrary(query){
@@ -3271,7 +3362,8 @@ function renderGardenFreshness(){
     if(days <= 0){ msg = '🌻 今天飽水有朝氣，花兒很有元氣！'; moodCls = 'fresh-full'; }
     else if(days === 1){ msg = '🌿 有點想妳了，來澆個水吧'; moodCls = 'fresh-1'; }
     else if(days === 2){ msg = '🥀 花有點蔫了，快來看看'; moodCls = 'fresh-2'; }
-    else { msg = '🐛 糟糕，蟲跑來搗蛋了！'; moodCls = 'fresh-3'; }
+    else if(days < 7){ msg = '🐛 糟糕，蟲跑來搗蛋了！'; moodCls = 'fresh-3'; }
+    else { msg = '🍂 花園已沉睡，語塊在琥珀裡等妳喚醒'; moodCls = 'fresh-4'; }
   }
 
   const gdb = getGardenDB();
@@ -3279,7 +3371,8 @@ function renderGardenFreshness(){
   const flowersHtml = pool.map(chunk => {
     const st = (gdb[chunk]||{stage:0}).stage;
     const icon = GARDEN_STAGES[st] || GARDEN_STAGES[1];
-    const bug = moodCls === 'fresh-3' ? '<span class="gfresh-bug">🐛</span>' : '';
+    const bug = moodCls === 'fresh-3' ? '<span class="gfresh-bug">🐛</span>' :
+                moodCls === 'fresh-4' ? '<span class="gfresh-bug">🍂</span>' : '';
     return `<span class="gfresh-flower ${moodCls}">${icon}</span>${bug}`;
   }).join('');
 
@@ -3496,7 +3589,20 @@ function handleReminderDeepLink(){
 function getMorningBriefHTML(){
   const day = Math.floor(Date.now()/86400000);
   const count = (ammoUnlocked||[]).length;
-  const today = new Date().toLocaleDateString('zh-TW',{month:'long',day:'numeric',weekday:'short'});
+  const _td = new Date().toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
+  const today = _td.charAt(0).toUpperCase() + _td.slice(1);
+  // 里程碑慶祝（若有新達標未顯示，彈出後即標記已見）
+  const ms = popNewMilestone();
+  const celebHtml = ms ? `<div class="ms-celeb">
+    <div class="ms-celeb-badge">${ms.badge}</div>
+    <div class="ms-celeb-title">🎉 解鎖里程碑！</div>
+    <div class="ms-celeb-name">${ms.name}（${ms.cefr}）</div>
+    <div class="ms-celeb-msg">${ms.msg}</div>
+    <div class="ms-celeb-tip">
+      <div class="ms-celeb-tip-text">🌱 恭喜晉級！小莊園口說外掛大法已向您揭密：現在開始，挑戰句子時試著西語語音輸出這句話！如果能精準判別西語，代表你的口說能力已獲得官方大數據的 100% 認可！</div>
+      <div class="ms-celeb-tip-cta">🗣️ 快去找真人聊聊天！</div>
+    </div>
+  </div>` : '';
   let lf = null, gcard = null, sectionLabel = '', isLyric = true;
   if(count < 15){
     const pool = LYRICS_FILL_DATA.filter(x=>['a0','a1'].includes(x.level));
@@ -3514,9 +3620,8 @@ function getMorningBriefHTML(){
     isLyric = false;
   }
   if(isLyric && lf){
-    return `<div class="morning-brief-card">
-      <span class="morning-brief-tag">🌅 農間小報</span>
-      <div class="morning-brief-day">${today}</div>
+    return `${celebHtml}<div class="morning-brief-card">
+      <div class="morning-brief-banner"><div class="morning-brief-tag">🌅 農間小報</div><div class="morning-brief-day">${today}</div></div>
       <div class="morning-brief-section">${sectionLabel}</div>
       <div class="morning-brief-song"><span>${lf.artist}</span><span>《${lf.song}》</span><span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span></div>
       <div class="morning-brief-lyric">${lf.before} <span class="morning-brief-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${lf.after}</div>
@@ -3527,9 +3632,8 @@ function getMorningBriefHTML(){
   }
   if(!isLyric && gcard){
     const ex = gcard.examples && gcard.examples[0];
-    return `<div class="morning-brief-card">
-      <span class="morning-brief-tag">🌅 農間小報</span>
-      <div class="morning-brief-day">${today}</div>
+    return `${celebHtml}<div class="morning-brief-card">
+      <div class="morning-brief-banner"><div class="morning-brief-tag">🌅 農間小報</div><div class="morning-brief-day">${today}</div></div>
       <div class="morning-brief-section">${sectionLabel}</div>
       <div class="morning-brief-song">${gcard.title}</div>
       <div class="morning-brief-rule">${gcard.rule}</div>
@@ -3537,7 +3641,7 @@ function getMorningBriefHTML(){
       <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 去今日探索</button>
     </div>`;
   }
-  return `<div class="morning-brief-card"><span class="morning-brief-tag">🌅 農間小報</span><button class="morning-brief-close" onclick="closeMorningBrief()">✕ 關閉</button></div>`;
+  return `${celebHtml}<div class="morning-brief-card"><div class="morning-brief-banner"><div class="morning-brief-tag">🌅 農間小報</div><div class="morning-brief-day">${today}</div></div><button class="morning-brief-close" onclick="closeMorningBrief()">✕ 關閉</button></div>`;
 }
 function showMorningBrief(){
   const overlay = document.getElementById('welcomeTourOverlay');
@@ -3632,6 +3736,172 @@ function initReminders(){
   checkReminders();
 }
 
+// ── B2 時事傳送門 ──
+function renderNewsSection(){
+  const el = document.getElementById('newsSectionWrap');
+  if(!el || typeof NEWS_ITEMS==='undefined') return;
+
+  // DW 文化小卡
+  let dwHtml = `<div class="news-dw-card"><div class="news-dw-title">${DW_HISTORY.title}</div>`;
+  DW_HISTORY.body.forEach(p=>{
+    dwHtml += `<div class="news-dw-item"><span class="news-dw-label">${p.label}</span><span class="news-dw-text">${p.text}</span></div>`;
+  });
+  dwHtml += '</div>';
+
+  // 新聞卡片
+  let itemsHtml = '';
+  NEWS_ITEMS.forEach(item=>{
+    const isBlank = item.task.type==='blank';
+    let headlineHtml;
+    if(isBlank){
+      headlineHtml = item.headline.replace('[?]',
+        `<input type="text" class="news-blank-input" id="news-input-${item.id}"
+         placeholder="填入詞語" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+         onkeydown="if(event.key==='Enter')checkNewsBug('${item.id}')">`);
+    } else {
+      headlineHtml = item.headline.replace(item.task.wrong,
+        `<span class="news-bug-word" id="news-bug-${item.id}" title="這個字有錯誤">${item.task.wrong}</span>`);
+    }
+
+    itemsHtml += `<div class="news-item" id="news-item-${item.id}">
+      <div class="news-meta">
+        <span class="news-topic">${item.topic}</span>
+        <a class="news-source" href="${item.sourceUrl}" target="_blank" rel="noopener">${item.source} ↗</a>
+      </div>
+      <div class="news-headline">${headlineHtml}</div>`;
+
+    if(isBlank){
+      itemsHtml += `<div class="news-controls">
+        <button class="news-check-btn" onclick="checkNewsBug('${item.id}')">核對答案</button>
+        <button class="news-hint-btn" onclick="toggleNewsHint('${item.id}')">提示</button>
+      </div>`;
+    } else {
+      itemsHtml += `<div class="news-controls">
+        <input type="text" class="news-blank-input" id="news-input-${item.id}"
+         placeholder="輸入正確拼法" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+         onkeydown="if(event.key==='Enter')checkNewsBug('${item.id}')">
+        <button class="news-check-btn" onclick="checkNewsBug('${item.id}')">找錯字</button>
+        <button class="news-hint-btn" onclick="toggleNewsHint('${item.id}')">提示</button>
+      </div>`;
+    }
+
+    itemsHtml += `<div class="news-hint" id="news-hint-${item.id}" style="display:none">
+        <span class="news-hint-zh">${item.task.zh}</span> — ${item.task.hint}
+      </div>
+      <div class="news-feedback" id="news-fb-${item.id}"></div>
+    </div>`;
+  });
+
+  el.innerHTML = `<div class="news-section-wrap">
+    <div class="news-section-header" onclick="toggleNewsSection()">
+      <div class="news-section-title-row">
+        <span class="news-section-title">📰 B2 時事傳送門</span>
+        <span class="news-section-badge">B2</span>
+      </div>
+      <div class="news-section-sub">挖空填詞・錯字修正，讓語塊長進真實新聞</div>
+      <span id="newsSectionToggle">▼ 展開</span>
+    </div>
+    <div id="newsSectionBody" style="display:none">
+      ${dwHtml}
+      <div class="news-items">${itemsHtml}</div>
+      <div class="news-footer">題目來源：<a href="https://www.dw.com/es/" target="_blank" rel="noopener">DW Español</a> · <a href="https://news.un.org/es/" target="_blank" rel="noopener">Noticias ONU</a> · <a href="https://es.wikinews.org/" target="_blank" rel="noopener">Wikinews ES</a>（標題引用，僅供教育學習）</div>
+    </div>
+  </div>`;
+}
+
+function toggleNewsSection(){
+  const body = document.getElementById('newsSectionBody');
+  const arrow = document.getElementById('newsSectionToggle');
+  if(!body) return;
+  const open = body.style.display!=='none';
+  body.style.display = open ? 'none' : 'block';
+  if(arrow) arrow.textContent = open ? '▼ 展開' : '▲ 收起';
+}
+
+function toggleNewsHint(id){
+  const el = document.getElementById('news-hint-'+id);
+  if(el) el.style.display = el.style.display==='none' ? 'block' : 'none';
+}
+
+function checkNewsBug(id){
+  if(typeof NEWS_ITEMS==='undefined') return;
+  const item = NEWS_ITEMS.find(i=>i.id===id);
+  if(!item) return;
+  const fbEl = document.getElementById('news-fb-'+id);
+  const inputEl = document.getElementById('news-input-'+id);
+  const hintEl = document.getElementById('news-hint-'+id);
+  if(!fbEl || !inputEl) return;
+
+  const raw = inputEl.value.trim().toLowerCase();
+  if(!raw) return;
+
+  if(raw===item.task.answer.toLowerCase()){
+    fbEl.innerHTML = `<span class="news-fb-ok">✅ ¡Exacto! <strong>${item.task.answer}</strong>（${item.task.zh}）</span>`;
+    inputEl.disabled = true;
+    inputEl.style.borderBottom = '2px solid var(--ok)';
+    drainSocialBattery();
+    if(item.task.type==='bug'){
+      const bugEl = document.getElementById('news-bug-'+id);
+      if(bugEl) bugEl.classList.add('news-bug-fixed');
+    }
+    if(hintEl) hintEl.style.display = 'block';
+  } else {
+    fbEl.innerHTML = `<span class="news-fb-err">¡Ojo! 👀 — ${item.task.hint}</span>`;
+  }
+}
+
+// ─── 社交電量表 ────────────────────────────────────────────────
+const SOCIAL_BATTERY_KEY = 'peppa_social_battery_v1';
+
+function getSocialBattery(){
+  const s = localStorage.getItem(SOCIAL_BATTERY_KEY);
+  return s !== null ? parseInt(s, 10) : 100;
+}
+
+function setSocialBattery(val){
+  const v = Math.max(0, Math.min(100, val));
+  localStorage.setItem(SOCIAL_BATTERY_KEY, v);
+  renderSocialBattery();
+}
+
+function drainSocialBattery(){
+  setSocialBattery(getSocialBattery() - 50);
+}
+
+function rechargeSocialBattery(){
+  setSocialBattery(100);
+}
+
+function renderSocialBattery(){
+  const wrap = document.getElementById('socialBatteryWrap');
+  if(!wrap) return;
+  const pct = getSocialBattery();
+  const isEmpty = pct <= 0;
+  const barColor = pct > 60 ? 'var(--ok)' : pct > 30 ? 'var(--sora)' : 'var(--err)';
+  const icon = pct >= 100 ? '⚡' : pct >= 50 ? '🔋' : pct > 0 ? '🪫' : '💤';
+  const statusText = pct >= 100 ? '滿電狀態，大腦全速運轉！' :
+                     pct >= 50  ? '還有電，繼續加油！' :
+                     pct >  0   ? '快沒電了，去充個電吧！' :
+                                  '社交電量耗盡——';
+  const redirectHtml = isEmpty
+    ? `<div class="sb-redirect">
+        <span class="sb-redirect-msg">🛌 到床邊低語呢充充電吧～</span>
+        <button class="sb-redirect-btn" onclick="switchMainTab('mom');rechargeSocialBattery()">前往充電</button>
+       </div>`
+    : '';
+  wrap.innerHTML = `<div class="sb-card">
+    <div class="sb-header">
+      <span class="sb-icon">${icon}</span>
+      <span class="sb-title">社交電量表</span>
+      <span class="sb-pct">${pct}%</span>
+    </div>
+    <div class="sb-bar-track">
+      <div class="sb-bar-fill" style="width:${pct}%;background:${barColor}"></div>
+    </div>
+    <div class="sb-status">${statusText}${redirectHtml}</div>
+  </div>`;
+}
+
 (function init(){
   loadFromLS();
   answered=(answeredByEp[ep]||[]).slice();
@@ -3642,6 +3912,7 @@ function initReminders(){
   buildNav();
   render();
   renderAmmo();
+  renderMilestoneBadgeStrip();
   renderCogLibrary();
   renderConjLibrary();
   renderPronounLibrary();
@@ -3649,6 +3920,8 @@ function initReminders(){
   renderSerEstarStation();
   renderIndicSubjPairs();
   renderGrammarSupplement();
+  renderNewsSection();
+  renderSocialBattery();
   renderSelLine();
   renderVocab();
   renderGardenView();
