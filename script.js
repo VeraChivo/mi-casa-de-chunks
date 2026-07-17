@@ -500,8 +500,8 @@ function renderBeVerbNote(a){
 
 // 西語數字 1-10：基數/序數/emoji 三態並列
 const NUM_EMOJI=['','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'];
-const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez'];
-const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo'];
+const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis'];
+const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto'];
 
 function renderAmmo(){
   document.getElementById('ammoCount').textContent = ammoUnlocked.length;
@@ -2534,52 +2534,6 @@ function toggleGrammarSupplement(){
   t.textContent=open?'▲ 收起':'▼ 展開';
 }
 
-// ── 🧠 內心擬人線：小小自我蛻變攻略（只讀＋聽發音，跟溫馨線分開的獨立線）──
-function speakSelSentenceSmart(selEp, sentIdx, text){
-  const files = (typeof SEL_AUDIO_MANIFEST!=='undefined' && SEL_AUDIO_MANIFEST[selEp] && SEL_AUDIO_MANIFEST[selEp][sentIdx]) || [];
-  if(!files.length){ speakFull(text); return; }
-  _stopActiveAudio();
-  let i = 0;
-  const player = new Audio();
-  _activeAudio = player;
-  player.onended = () => { i++; setTimeout(playNext, 15); };
-  player.onerror = () => { speakFull(text); };
-  function playNext(){
-    if(i >= files.length || player !== _activeAudio) return;
-    player.src = files[i];
-    player.play().catch(()=>speakFull(text));
-  }
-  playNext();
-}
-function renderSelLine(){
-  const el = document.getElementById('selBody');
-  if(!el || typeof SEL_EPS==='undefined') return;
-  el.innerHTML = SEL_EPS.map((epi,i)=>`
-    <div class="gsup-row sel-ep-header" onclick="toggleSelEp(${i})" style="cursor:pointer">
-      <div class="gsup-title">📖 ${epi.titleZh}</div>
-      <div class="gsup-rule" id="selEpToggleLabel${i}">▼ 展開</div>
-    </div>
-    <div id="selEpBody${i}" style="display:none;padding:8px 12px 4px">
-      ${epi.sentences.map((s,j)=>`
-        <div class="grammar-ex-row" onclick="speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')" title="點這裡聽整句">
-          <div class="grammar-ex-chunks">${_grammarExChunks(s.es, `speakSelSentenceSmart(${i},${j},'${escAttr(s.es)}')`)}</div>
-          <div class="grammar-ex-zh">${s.zh}</div>
-        </div>`).join('')}
-    </div>`).join('');
-}
-function toggleSelEp(i){
-  const body = document.getElementById('selEpBody'+i);
-  const label = document.getElementById('selEpToggleLabel'+i);
-  const open = body.style.display !== 'none';
-  body.style.display = open ? 'none' : 'block';
-  label.textContent = open ? '▼ 展開' : '▲ 收起';
-}
-function toggleSelWrap(){
-  const body=document.getElementById('selBody');
-  const t=document.getElementById('selWrapToggle');
-  const open=body.classList.toggle('open');
-  t.textContent=open?'▲ 收起':'▼ 展開';
-}
 
 // ── 💎☁️ 是・在對照站（SER vs ESTAR 快覽） ──
 function renderSerEstarStation(){
@@ -3972,7 +3926,6 @@ function renderChangelog(){
   renderIndicSubjPairs();
   renderGrammarSupplement();
   renderNewsSection();
-  renderSelLine();
   renderChangelog();
   renderVocab();
   renderGardenView();

@@ -121,12 +121,9 @@ const AUDIO_MANIFEST={
     ["audio/e10/09a_S_Ella_omitido.mp3","audio/e10/09b_V_empieza_a_leer.mp3","audio/e10/09c_O_sobre_el_TDAH.mp3"],
     ["audio/e10/10a_S_Su_energia_y_la_regularidad.mp3","audio/e10/10b_V_son.mp3","audio/e10/10c_O_diferentes.mp3"],
   ],
-};
-
-// SEL 內心擬人線專用音檔清單:SEL_AUDIO_MANIFEST[selEpIndex][sentenceIdx]
-// 檔名只標文法角色沒有序號,順序是依句子結構人工比對排列,非字母排序
-const SEL_AUDIO_MANIFEST={
-  0:[
+  // 11-13 = 原 SEL 內心擬人線前3集真人音檔（小小自我改編進劇本區後沿用同一批檔案，只是 key 從
+  // selEpIndex(0/1/2) 改成新的全站集數 idx(11/12/13)；14/15（本心與閣樓／社交電量）尚無錄音，會 fallback 回瀏覽器TTS）
+  11:[
     ["audio/sel1/SEL1_01_S.mp3","audio/sel1/SEL1_01_V.mp3","audio/sel1/SEL1_01_O.mp3"],
     ["audio/sel1/SEL1_02_Conj.mp3","audio/sel1/SEL1_02_V.mp3"],
     ["audio/sel1/SEL1_03_V.mp3","audio/sel1/SEL1_03_Quote.mp3"],
@@ -138,7 +135,7 @@ const SEL_AUDIO_MANIFEST={
     ["audio/sel1/SEL1_09_Adv.mp3","audio/sel1/SEL1_09_V.mp3"],
     ["audio/sel1/SEL1_10_S.mp3","audio/sel1/SEL1_10_Quote.mp3"],
   ],
-  1:[
+  12:[
     ["audio/sel2/SEL2_01_Prep.mp3","audio/sel2/SEL2_01_V.mp3","audio/sel2/SEL2_01_S.mp3"],
     ["audio/sel2/SEL2_02_S_V.mp3","audio/sel2/SEL2_02_V_O.mp3"],
     ["audio/sel2/SEL2_03_S_V.mp3","audio/sel2/SEL2_03_Adv_V.mp3"],
@@ -150,7 +147,7 @@ const SEL_AUDIO_MANIFEST={
     ["audio/sel2/SEL2_09_S_V.mp3","audio/sel2/SEL2_09_V_O.mp3"],
     ["audio/sel2/SEL2_10_S_V.mp3","audio/sel2/SEL2_10_V_Adv.mp3"],
   ],
-  2:[
+  13:[
     ["audio/sel3/SEL3_01_S.mp3","audio/sel3/SEL3_01_V.mp3","audio/sel3/SEL3_01_O.mp3"],
     ["audio/sel3/SEL3_02_S.mp3","audio/sel3/SEL3_02_V.mp3","audio/sel3/SEL3_02_Prep.mp3"],
     ["audio/sel3/SEL3_03_Conj_S.mp3","audio/sel3/SEL3_03_V.mp3","audio/sel3/SEL3_03_Adv.mp3"],
