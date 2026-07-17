@@ -3902,6 +3902,73 @@ function renderSocialBattery(){
   </div>`;
 }
 
+// ── 蜂巢謝誌：更新記錄 ──
+const CHANGELOG_DATA=[
+  {date:"2026.07.17",tag:"今日更新",items:[
+    "🏅 里程碑勳章系統上線！累積語塊到達門檻時會跳出慶祝提示，還附上配對歌曲的 YouTube 時間點，點開就能聽到那句你學過的語塊在歌裡飛翔",
+    "📢 農間小報改版：banner 有大標題了，日期換成西語格式，配色不再撞色——終於看起來像個正經的每日簡報",
+    "🗣️ 晉級提醒換新：以前推薦一首歌，現在改成「快去找真人聊聊天！」的口說外掛提示，因為最好的練習就是真實的對話",
+    "⚡ 社交電量表西語版登場，記錄今天的社交耗電指數，0% 就去角落充電",
+    "🐝 蜂巢謝誌（也就是這裡）正式開張！電影謝幕感更新記錄 + 百花芳名錄準備迎接第一位護法"
+  ]},
+  {date:"2026.07.16",tag:"大補丁日",items:[
+    "💧 文法儲水槽擴充到 52 張卡：比較級、成語語塊、拉美文化小卡、B2詞彙清單，從 A1 一路補到 B2",
+    "🌱🍯 CEFR 等級篩選上線：按護土嫩芽 / 甘露超頻 / 蜂王蜜釀的等級過濾文法卡，找到自己現在該啃的程度",
+    "🪞 陳述式↔虛擬式對照表出爐：並排靜態顯示，hablar/tener/querer/poder/ser 五組動詞點就能聽發音",
+    "🔆 連接詞螢光筆上線：y 用方角緊靠，pero 有呼吸感留白，句子的邏輯節奏現在看得見",
+    "🐱 E1 換骨完成：「泥巴坑跳跳」→「妮妲的角落・雨中暴衝」，音檔全部在 Colab 重錄上傳",
+    "❓ 歡迎導覽彈窗上線，第一次來的人會看到莊園四大分區介紹，頭上那個 ❓ 按鈕可以隨時重看"
+  ]},
+  {date:"2026.07.15",tag:"B2 路線圖日",items:[
+    "📐 B2 升級五模組路線圖制定完成，過去虛擬式 / 被動語態 / 讓步子句全列入待辦",
+    "🎵 里程碑配對歌曲清單確定：A1 配 Julieta Venegas，A2 配 Juanes，B1 配 Juan Luis Guerra，B2 配 Beyoncé 西語版，C1 配 Rosalía",
+    "📊 莊園語塊股複利試算表出爐：每天 20 分鐘，第 7 天能在歌裡抓到 1-2 個剛學過的語塊；第 30 天 IG 旅遊文案不用查翻譯"
+  ]},
+  {date:"2026.07.14",tag:"六集大爆發",items:[
+    "☀️ E7「手忙腳亂的早晨」：tener sueño/hambre/frío/prisa/tiempo/miedo 一網打盡，hay 家族首次登場，薇薇安老師讓迪多從恍神中回來",
+    "🚗 E8「迪多和車車」：迪多用推車車 Chito 表達 Yes/No，媽媽深呼吸安靜陪伴，不強迫覆述",
+    "🧠 E9「我終於知道自己是誰」：卡妲媽媽讀 TDAH 資料，對號入座，然後慢慢學著接納自己",
+    "🌀 E10「我們不是故意對衝的」：媽媽的衝動排程 vs 迪多的超規律需求，最後理解「只是不同，不是誰錯了」",
+    "💀 E11「亡靈節・記憶之旅」：y / pero / porque 連接詞螢光筆在每句話裡閃爍，萬壽菊陪大家走那條記憶長路",
+    "🧠 SEL 線開站！小小自我蛻變攻略三集一起上：閣樓時期・小情緒自我介紹・本心與閣樓",
+    "🧠 SEL Ep4 連接詞進階：九個小情緒各自學會用 sin embargo / por eso / además / en realidad 說出更完整的自己"
+  ]},
+  {date:"2026.07.13",tag:"儲水槽初版",items:[
+    "💧 文法儲水槽誕生：IR 近未來式 / TENER 家族 / 形容詞後置三張卡打頭陣",
+    "💎☁️ SER・ESTAR 對照站上線：DOCTOR / PLACE 口訣 + 多語對接 + 調皮特例小蟲，一張卡搞定「是」與「在」",
+    "☯️ 太極變身鏡：上層陰陽字尾語塊卡（太極定裝鏡），下層超級變變變動詞變位庫，整合成雙層結構",
+    "🍄 假野莓 False Cognates 登場：embarazada / actualmente / soportar / éxito，長得像英文但意思整個歪掉的危險分子"
+  ]},
+  {date:"2026.07.07-12",tag:"奠基期",items:[
+    "🌻 語塊花園新鮮度視覺層 V1：一個全域時間戳記錄上次答對的時間，超過三天蟲就出來了",
+    "🔔 每日提醒通知：網站可安裝到主畫面，☀️ 早上 8:30 學習提醒，🌙 晚上 23:00 日記提醒",
+    "🐛 通知點下去直接抓蟲：點學習提醒直接跳進語塊花園抓蟲，ADHD 友善零摩擦設計",
+    "📤 資料保險箱上線：一鍵備份全站 localStorage（進度 + 花園 + 日記），下載成 JSON 帶著走",
+    "💬 心田深耕 Hablar de corazón：五大人生主題真心話句庫，28 句原創西語等你收藏",
+    "🏅 彈藥庫解鎖系統、語塊花園熟練度追蹤、造句核對引擎，基礎架構全部就定位"
+  ]}
+];
+
+function renderChangelog(){
+  const el=document.getElementById('changelogBody');
+  if(!el)return;
+  const html=CHANGELOG_DATA.map((entry,i)=>`
+    <div class="cl-entry">
+      <div class="cl-meta"><span class="cl-date">${entry.date}</span><span class="cl-tag">${entry.tag}</span></div>
+      <ul class="cl-items">${entry.items.map(it=>`<li>${it}</li>`).join('')}</ul>
+    </div>${i<CHANGELOG_DATA.length-1?'<div class="cl-divider"></div>':''}
+  `).join('');
+  el.innerHTML=html+html;
+}
+
+function toggleChangelog(){
+  const w=document.getElementById('changelogWrap');
+  if(!w)return;
+  const open=w.classList.toggle('cl-open');
+  const btn=document.getElementById('changelogToggleBtn');
+  if(btn)btn.textContent=open?'▲ 收起':'▼ 展開';
+}
+
 (function init(){
   loadFromLS();
   answered=(answeredByEp[ep]||[]).slice();
@@ -3923,6 +3990,7 @@ function renderSocialBattery(){
   renderNewsSection();
   renderSocialBattery();
   renderSelLine();
+  renderChangelog();
   renderVocab();
   renderGardenView();
   renderGardenFreshness();
