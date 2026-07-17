@@ -302,7 +302,8 @@ const CELEBRATION_NEN_YA = [ // A1/A2 護土嫩芽 ~ 甘露初沁
 const CELEBRATION_CHAO_PIN = [ // B1/B2/C1 蜂蜜初採 ~ 莊園金牌
   {es:"El interés compuesto es más paciente que el viento, pero hace crecer tu bosque.", zh:"複利比風更有耐心，但它能讓你的森林（資產）長大。"},
   {es:"Acumular tus tesoros de chunks es tan hermoso como ver florecer el panal.", zh:"累積你的「語塊寶藏」，跟看著蜂巢開花（繁榮）一樣美麗。"},
-  {es:"Una raíz profunda es menos frágil que una hoja suelta. ¡Sigue practicando!", zh:"一條深根，比一片飄落的葉子還不脆弱（更堅固）。繼續練習吧！"}
+  {es:"Una raíz profunda es menos frágil que una hoja suelta. ¡Sigue practicando!", zh:"一條深根，比一片飄落的葉子還不脆弱（更堅固）。繼續練習吧！"},
+  {es:"¡Excelente! 👑🐝", zh:"太強了！你累積的語塊資產已經驚動了莊園總部。據說當有人施展終極魔法【皇家特許令】、幫園主老大召喚保母神盾 3 小時，小蜜蜂工頭就會連夜趕工，把你最想要的新功能直接實裝上線喔！快去網頁底部的功德榜瞧瞧吧！"}
 ];
 function pickCelebrationMessage(cefr){
   const pool = (cefr==='A1' || cefr==='A2') ? CELEBRATION_NEN_YA : CELEBRATION_CHAO_PIN;
