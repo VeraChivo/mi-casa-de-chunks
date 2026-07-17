@@ -159,6 +159,31 @@ const AUDIO_MANIFEST={
     ["audio/sel3/SEL3_09_S_V.mp3","audio/sel3/SEL3_09_Rel.mp3","audio/sel3/SEL3_09_V_O.mp3"],
     ["audio/sel3/SEL3_10_Adv.mp3","audio/sel3/SEL3_10_S.mp3","audio/sel3/SEL3_10_V.mp3"],
   ],
+  // 14/15 = E15本心與閣樓／E16社交電量，尚待錄音（見待辦：Colab gTTS腳本已備好）
+  14:[
+    ["audio/e15/01a_S_El_Corazon_Verdadero.mp3","audio/e15/01b_V_es.mp3","audio/e15/01c_O_el_lugar_original_el_mas_profundo.mp3"],
+    ["audio/e15/02a_S_El_desvan.mp3","audio/e15/02b_V_vive.mp3","audio/e15/02c_O_dentro_del_Corazon_Verdadero.mp3"],
+    ["audio/e15/03a_Conj_Pero.mp3","audio/e15/03b_S_el_Corazon.mp3","audio/e15/03c_V_fue_herido.mp3","audio/e15/03d_O_el_primero.mp3"],
+    ["audio/e15/04a_Adv_En_esa_herida.mp3","audio/e15/04b_V_aparecio.mp3","audio/e15/04c_S_una_esquina_oscura.mp3"],
+    ["audio/e15/05a_Adv_Ahi.mp3","audio/e15/05b_V_se_escondio.mp3","audio/e15/05c_S_el_Yo_Pequenito.mp3","audio/e15/05d_O_junto_con_las_emociones_pequenas.mp3"],
+    ["audio/e15/06a_Adv_Muy_adentro_del_Corazon.mp3","audio/e15/06b_S_Guardian.mp3","audio/e15/06c_V_vigila.mp3","audio/e15/06d_O_la_puerta.mp3"],
+    ["audio/e15/07a_V_Fue.mp3","audio/e15/07b_S_Juicio.mp3","audio/e15/07c_O_quien_hirio_al_Corazon_desde_afuera.mp3"],
+    ["audio/e15/08a_Conj_Pero.mp3","audio/e15/08b_S_Esperanza.mp3","audio/e15/08c_V_fluye.mp3","audio/e15/08d_O_dentro_del_Corazon.mp3","audio/e15/08e_O_buscando_el_camino.mp3"],
+    ["audio/e15/09a_S_Ella.mp3","audio/e15/09b_V_es.mp3","audio/e15/09c_O_quien_empuja_al_Yo_Pequenito_a_salir_del_desvan.mp3"],
+    ["audio/e15/10a_Adv_Un_dia.mp3","audio/e15/10b_S_el_Corazon_Verdadero.mp3","audio/e15/10c_V_volvera_a_estar.mp3","audio/e15/10d_O_completo.mp3"],
+  ],
+  15:[
+    ["audio/e16/01a_Adv_Dentro_de_Cata.mp3","audio/e16/01b_V_vive.mp3","audio/e16/01c_S_una_bateria_social_invisible.mp3"],
+    ["audio/e16/02a_Conj_Cuando.mp3","audio/e16/02b_V_esta_llena.mp3","audio/e16/02c_S_ella.mp3","audio/e16/02d_V_puede_reir_escuchar_y_estar.mp3","audio/e16/02e_O_con_todos.mp3"],
+    ["audio/e16/03a_Conj_Pero.mp3","audio/e16/03b_S_hablar_escuchar_y_fingir.mp3","audio/e16/03c_Adv_tambien.mp3","audio/e16/03d_V_gastan.mp3","audio/e16/03e_O_bateria.mp3"],
+    ["audio/e16/04a_S_Cansancio.mp3","audio/e16/04b_V_es.mp3","audio/e16/04c_O_quien_primero_nota_cuando_la_bateria_baja.mp3"],
+    ["audio/e16/05a_Quote_Ya_no.mp3","audio/e16/05b_V_puedo_sonreir.mp3","audio/e16/05c_Quote_mas.mp3","audio/e16/05d_V_susurra.mp3","audio/e16/05e_S_Cansancio.mp3"],
+    ["audio/e16/06a_S_Nadie.mp3","audio/e16/06b_V_ve.mp3","audio/e16/06c_O_la_bateria.mp3","audio/e16/06d_Conj_por_eso.mp3","audio/e16/06e_Adv_a_veces.mp3","audio/e16/06f_S_la_gente.mp3","audio/e16/06g_V_no_entiende.mp3"],
+    ["audio/e16/07a_V_No_es_que.mp3","audio/e16/07b_S_Cata.mp3","audio/e16/07c_V_no_quiera_estar.mp3","audio/e16/07d_O_contigo.mp3","audio/e16/07e_V_es_que_necesita_recargar.mp3"],
+    ["audio/e16/08a_S_Recargar.mp3","audio/e16/08b_V_no_es.mp3","audio/e16/08c_O_egoismo.mp3","audio/e16/08d_V_es.mp3","audio/e16/08e_O_cuidar_el_Corazon_Verdadero.mp3"],
+    ["audio/e16/09a_Adv_Un_rincon_silencioso_un_poco_de_tiempo_a_solas.mp3","audio/e16/09b_S_eso.mp3","audio/e16/09c_V_basta.mp3"],
+    ["audio/e16/10a_Conj_Cuando.mp3","audio/e16/10b_S_la_bateria.mp3","audio/e16/10c_V_vuelve_a_subir.mp3","audio/e16/10d_S_Cata.mp3","audio/e16/10e_V_regresa.mp3","audio/e16/10f_O_mas_llena_y_mas_ella_misma.mp3"],
+  ],
 };
 
 // mom.js（🛡️情緒會說話／🎀馬麻有話講／👩🏻馬麻小情緒＆情緒這樣說）真人整句音檔
