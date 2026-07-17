@@ -303,7 +303,7 @@ const CELEBRATION_CHAO_PIN = [ // B1/B2/C1 蜂蜜初採 ~ 莊園金牌
   {es:"El interés compuesto es más paciente que el viento, pero hace crecer tu bosque.", zh:"複利比風更有耐心，但它能讓你的森林（資產）長大。"},
   {es:"Acumular tus tesoros de chunks es tan hermoso como ver florecer el panal.", zh:"累積你的「語塊寶藏」，跟看著蜂巢開花（繁榮）一樣美麗。"},
   {es:"Una raíz profunda es menos frágil que una hoja suelta. ¡Sigue practicando!", zh:"一條深根，比一片飄落的葉子還不脆弱（更堅固）。繼續練習吧！"},
-  {es:"¡Excelente! 👑🐝", zh:"太強了！你累積的語塊資產已經驚動了莊園總部。據說當有人施展終極魔法【皇家特許令】、幫園主老大召喚保母神盾 3 小時，小蜜蜂工頭就會連夜趕工，把你最想要的新功能直接實裝上線喔！快去網頁底部的功德榜瞧瞧吧！"}
+  {es:"¡Excelente! 👑🐝", zh:"語塊資產又更厚實了一層。聽說蜂巢深處流傳著一個關於【皇家特許令】的古老傳說——哪天你正好滑到網頁最底下的功德榜，不妨順道看看那個故事。"}
 ];
 function pickCelebrationMessage(cefr){
   const pool = (cefr==='A1' || cefr==='A2') ? CELEBRATION_NEN_YA : CELEBRATION_CHAO_PIN;
@@ -2608,8 +2608,9 @@ const INDIC_SUBJ_PAIRS = [
 function renderIndicSubjPairs(){
   const el = document.getElementById('indSubjBody');
   if(!el) return;
-  const col = (cls,side) => `
+  const col = (cls,label,side) => `
     <div class="is-pair-col ${cls}" onclick="event.stopPropagation();speakGramSmart('${escAttr(side.es)}')">
+      <div class="is-pair-label">${label}</div>
       <div class="is-pair-es">${_grammarExChunks(side.es, `speakGramSmart('${escAttr(side.es)}')`)}</div>
       <div class="is-pair-zh">${side.zh}</div>
     </div>`;
@@ -2617,8 +2618,8 @@ function renderIndicSubjPairs(){
     <div class="is-pair-row">
       <div class="is-pair-verb">${p.verb}</div>
       <div class="is-pair-cols">
-        ${col('is-indic',p.indic)}
-        ${col('is-subj',p.subj)}
+        ${col('is-indic','直述句',p.indic)}
+        ${col('is-subj','腦中劇場',p.subj)}
       </div>
     </div>`).join('');
 }
@@ -3588,10 +3589,11 @@ async function toggleReminders(){
 }
 
 // 點通知深連結：?action=quiz 直接跳穀倉大豐收開抓蟲、?action=diary 跳床邊低語呢
+// 回傳是否有消化到深連結——有的話 init() 不會再跳出農間小報，避免打斷使用者原本的意圖（尤其是靜心寫日記）
 function handleReminderDeepLink(){
   const params = new URLSearchParams(location.search);
   const action = params.get('action');
-  if(!action) return;
+  if(!action) return false;
   history.replaceState(null, '', location.pathname);
   if(action === 'quiz'){
     setTimeout(jumpToGardenQuizToday, 150);
@@ -3602,6 +3604,7 @@ function handleReminderDeepLink(){
       if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
     }, 150);
   }
+  return true;
 }
 
 // ── 🌅 農間小報（回訪者每日一次自動彈出，使用導覽區 modal 基礎架構）──
@@ -3978,6 +3981,6 @@ function renderChangelog(){
   initGroupButtons();
   restoreActiveTab();
   initReminders();
-  handleReminderDeepLink();
-  showWelcomeTour(false);
+  const _deepLinked = handleReminderDeepLink();
+  if(!_deepLinked) showWelcomeTour(false);
 })();

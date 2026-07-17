@@ -629,7 +629,8 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .sel-ep-header{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .sel-ep-header .gsup-title{margin-bottom:0;flex:1}
 .sel-ep-header .gsup-rule{-webkit-line-clamp:unset;white-space:nowrap;flex-shrink:0}
-.gsup-level-filter{display:flex;gap:6px;padding:8px 12px 2px;flex-wrap:wrap}
+.gsup-filter-label{font-size:10px;font-weight:800;color:var(--tlight);padding:6px 12px 0}
+.gsup-level-filter{display:flex;gap:6px;padding:4px 12px 2px;flex-wrap:wrap}
 .gsup-level-chip{font-size:11px;font-weight:800;padding:4px 10px;border-radius:14px;background:var(--bg2);color:var(--tmid);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .gsup-level-chip:active{opacity:.7}
 .gsup-level-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
@@ -1179,8 +1180,9 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .hv-tier-empty{font-size:11px;color:var(--tlight);text-align:center;margin:6px 0 0;font-style:italic}
 .hv-flora-note{font-size:10px;color:var(--tlight);text-align:center;margin:8px 0 0;font-style:italic}
 .hv-log-section{margin-top:4px}
-.hv-log-hd{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:6px 0 8px}
+.hv-log-hd{display:flex;justify-content:space-between;align-items:center;padding:6px 0 8px}
 .hv-log-label{font-size:12px;font-weight:800;color:var(--konpeki)}
+.hv-log-push-count{font-size:10px;font-weight:700;color:var(--tlight)}
 /* ── 蜂巢謝誌 changelog ── */
 .cl-section{background:var(--bg2);border-top:1px solid var(--usumizu);padding:10px 16px 14px}
 .cl-section-hd{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:2px 0 8px}
