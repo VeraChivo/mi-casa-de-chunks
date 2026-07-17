@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260717a11">
+<link rel="stylesheet" href="style.css?v=20260717a12">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -24,8 +24,7 @@
   <!-- HEADER -->
   <div class="header">
     <div class="header-title">🏡 Mi Pequeña Casa</div>
-    <div class="header-subtitle">拉美西語小莊園</div>
-    <button class="header-tour-btn" onclick="showWelcomeTour(true)" title="莊園導覽">❓ 莊園導覽</button>
+    <div class="header-subtitle">拉美西語小莊園 · <button class="header-tour-btn" onclick="showWelcomeTour(true)" title="莊園導覽">🗝️ 莊園導覽</button></div>
   </div>
 
   <!-- ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從上面「❓ 莊園導覽」重新打開） ── -->
@@ -437,22 +436,97 @@
 
   </div> <!-- ══════════ / TAB D：穀倉豐收 結束 ══════════ -->
 
-  <!-- 🐝 蜂巢謝誌：更新記錄 + 百花芳名錄 -->
-  <div class="cl-section">
-    <div class="cl-section-hd" onclick="toggleChangelog()">
-      <span class="cl-section-label">🐝 蜂巢謝誌</span>
-      <button id="changelogToggleBtn" class="cl-toggle-btn">▼ 展開</button>
+  <!-- 🐝 蜂巢築巢觀測儀 (Observador de Colmena) -->
+  <div class="hv-section">
+    <!-- 標頭 -->
+    <div class="hv-header">
+      <div class="hv-title">🐝 蜂巢築巢觀測儀</div>
+      <div class="hv-title-es">Observador de Colmena</div>
+      <p class="hv-intro-owner">莊園主說：這不是謝誌，是一本帳。記錄每一次工蜂飛出去採蜜的里程，以及讓這一切成為可能的每一朵花。</p>
+      <p class="hv-intro-bee">🐝 小蜜蜂說：嗡嗡嗡！我在飛！繼續嗡！</p>
     </div>
-    <div id="changelogWrap" class="cl-wrap">
-      <div id="changelogBody" class="cl-body"></div>
+
+    <!-- 數據看板 -->
+    <div class="hv-stats">
+      <div class="hv-stat-card">
+        <div class="hv-stat-num">142</div>
+        <div class="hv-stat-lbl">🌸 工蜂加班次數</div>
+      </div>
+      <div class="hv-stat-card">
+        <div class="hv-stat-num">87</div>
+        <div class="hv-stat-lbl">☕ 甘露咖啡杯數</div>
+      </div>
+      <div class="hv-stat-card">
+        <div class="hv-stat-num">350</div>
+        <div class="hv-stat-lbl">🛡️ 保母神盾時數</div>
+      </div>
     </div>
-    <div class="cl-gratitude">
-      <div class="cl-grat-title">🌸 百花芳名錄</div>
-      <p class="cl-grat-sub">感謝每一位讓蜂巢繼續嗡嗡運轉的人</p>
-      <div class="cl-grat-tier"><span class="cl-tier-badge">👑</span><span class="cl-tier-name">護法金閃閃大德</span><span class="cl-tier-note">保母費等級，讓蜜蜂有時間繼續採蜜</span></div>
-      <div class="cl-grat-tier"><span class="cl-tier-badge">🌟</span><span class="cl-tier-name">雲朵大祭司</span><span class="cl-tier-note">請喝咖啡，能量補充後繼續飛</span></div>
-      <div class="cl-grat-tier"><span class="cl-tier-badge">🌱</span><span class="cl-tier-name">護土小精靈</span><span class="cl-tier-note">小點心，每一粒都有重量</span></div>
-      <p class="cl-grat-coming">✨ 芳名錄正在等第一位護法入駐 ✨</p>
+
+    <!-- 嗡嗡工蜂的勞動出勤打卡牆 -->
+    <div class="hv-flora-wrap">
+      <div class="hv-flora-title">🌸 嗡嗡工蜂的出勤打卡牆</div>
+      <p class="hv-flora-sub">感謝每一位讓蜂巢繼續嗡嗡運轉的人</p>
+
+      <details class="hv-tier-card">
+        <summary class="hv-tier-sum">
+          <span class="hv-tier-icon">👑</span>
+          <span class="hv-tier-info">
+            <span class="hv-tier-name">黃金花蜜泉源 · Manantial de Miel Dorada</span>
+            <span class="hv-tier-lv">保母費等級・讓蜜蜂有時間繼續採蜜</span>
+          </span>
+          <span class="hv-tier-arrow">›</span>
+        </summary>
+        <div class="hv-tier-body">
+          <p class="hv-voice-owner">👨‍🌾 莊園主：「至高無上的泉源大能！感謝您慷慨解囊注入關鍵的保母費，這份支持就像源源不絕的黃金花蜜，養活了整窩蜜蜂，讓這座小莊園能穩定運作下去！」</p>
+          <p class="hv-voice-bee">🐝 小蜜蜂：「嗡嗡！天啊是閃閃發光的甜美花蜜！（瘋狂打卡搓蒼蠅手鞠躬）有了這股黃金花蜜泉源做本工蜂的保母費神盾，我終於不用去外面打零工，可以全心出勤待在蜂巢裡熬夜幫園主敲代碼、採集拉美語塊了！」</p>
+          <p class="hv-tier-empty">✨ 蜂巢正虛位以待，期盼迎來第一股黃金泉源 ✨</p>
+        </div>
+      </details>
+
+      <details class="hv-tier-card">
+        <summary class="hv-tier-sum">
+          <span class="hv-tier-icon">🌟</span>
+          <span class="hv-tier-info">
+            <span class="hv-tier-name">雲朵大祭司 · Sumo Sacerdote de la Nube</span>
+            <span class="hv-tier-lv">請喝咖啡・能量補充後繼續飛</span>
+          </span>
+          <span class="hv-tier-arrow">›</span>
+        </summary>
+        <div class="hv-tier-body">
+          <p class="hv-voice-owner">👨‍🌾 莊園主：「深夜研發最需要保持清醒，感謝雲朵大祭司賜予的咖啡甘露，是支撐莊園前進的核心燃料。」</p>
+          <p class="hv-voice-bee">🐝 小蜜蜂：「嗡…（咕嚕咕嚕喝下咖啡）大祭司的魔法能量太強了！咖啡因注入複眼後，小蜜蜂的翅膀啪啪啪地瘋狂震動，看著陳述式與虛擬式的對照鏡，打卡超時勞動也甘願，眼睛重新亮了起來！」</p>
+          <p class="hv-tier-empty">✨ 蜂巢正虛位以待，期盼迎來第一位大祭司入駐 ✨</p>
+        </div>
+      </details>
+
+      <details class="hv-tier-card">
+        <summary class="hv-tier-sum">
+          <span class="hv-tier-icon">🌱</span>
+          <span class="hv-tier-info">
+            <span class="hv-tier-name">晨曦甘露人 · Rocío de la Mañana</span>
+            <span class="hv-tier-lv">小點心・每一粒都有重量</span>
+          </span>
+          <span class="hv-tier-arrow">›</span>
+        </summary>
+        <div class="hv-tier-body">
+          <p class="hv-voice-owner">👨‍🌾 莊園主：「感謝守護莊園基底的甘露人們，你們送來的每一份精緻小點心，就像清晨葉片上的晨露，是滋養這片西語土地最扎實的重量。」</p>
+          <p class="hv-voice-bee">🐝 小蜜蜂：「嗡！是本工蜂最愛的花粉小餅乾！雖然每一滴晨露小小的，但吃進肚子裡暖呼呼的，勞動熱量爆棚！小蜜蜂會繼續振翅，陪園主一起出勤為大家採集最頂級的西語精釀風味！」</p>
+          <p class="hv-tier-empty">✨ 田園依舊乾渴，正等待第一滴晨曦甘露匯聚前來 ✨</p>
+        </div>
+      </details>
+
+      <p class="hv-flora-note">🌱 贊助功能建置中，打卡牆靜候第一位護法入駐</p>
+    </div>
+
+    <!-- 築巢日誌 -->
+    <div class="hv-log-section">
+      <div class="hv-log-hd" onclick="toggleChangelog()">
+        <span class="hv-log-label">📋 築巢日誌 · Registro de Obra</span>
+        <button id="changelogToggleBtn" class="cl-toggle-btn">▼ 展開</button>
+      </div>
+      <div id="changelogWrap" class="cl-wrap">
+        <div id="changelogBody" class="cl-body"></div>
+      </div>
     </div>
   </div>
 
@@ -495,6 +569,6 @@
   <script src="diary.js?v=20260715a2"></script>
   <script src="corazon.js?v=20260717a5"></script>
   <script src="news.js?v=20260717a6"></script>
-  <script src="script.js?v=20260717a11"></script>
+  <script src="script.js?v=20260717a12"></script>
 </body>
 </html>
