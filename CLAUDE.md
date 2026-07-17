@@ -182,6 +182,11 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     2. 🟡 **反諷/雙關語境**（例：被排擠的朋友酸言「¡Gracias por invitar!」，蟲＝要選出「這其實是諷刺/憤怒」而非字面感謝）——**不是排序題，是A/B判斷題**，跟巡田拾語的拖語塊機制不同種互動，需要一個小型二選一元件，不算完全零成本複用，工程量單獨算。
     3. 🟢 **吞音還原**（歌詞文本寫todo，歌手唱to'，考驗「口語吞音→標準語塊」的聽力對應）——同樣可套用巡田拾語排序機制，選項混入吞音寫法當干擾項。
   - **建議順序**：先做①③（純內容+複用巡田拾語，最便宜），②反諷判斷題等有空再加輕量新元件。
+  - **📋 反諷/雙關語境題庫草稿（2026-07-18 VERA帶回，尚未寫進程式碼，等②的A/B判斷小元件蓋好再套用）**：
+    1. 鍵盤股神黑粉型（考點：用未來式「va a hacer」做反諷假肯定）——酸民留言：「¡Wow, qué gran 'inversor'! Compraste la cripto ayer y hoy ya bajó un 80%. Seguro que tu 'interés compuesto' nos va a hacer millonarios a todos mañana. Sigue dándome consejos, por favor. 😂📉」中文語境：表面祝賀「你的複利明天一定讓我們都變富翁」，其實在酸「你超爛還敢給建議」。
+    2. 崩潰創作者生活型（考點：Ojalá que + 虛擬式的雙關黑色幽默）——酸民留言：「Ojalá que tu software sea tan ruidoso como tu bebé a las tres de la mañana. Al menos así el servidor nunca se quedaría dormido. 🍼🔥」中文語境：字面像詛咒「希望你的軟體像你家寶寶凌晨三點一樣吵」，實際雙關在酸伺服器穩定度。
+    兩則皆為原創虛構留言（非引用真人真事），查過文法正確，可直接用。
+  - **⚠️ 2026-07-18 教訓：「隔壁AI」給的具體歌詞引用一律要查證，不能照抄** —— VERA 帶回「隔壁AI」推薦的歌詞填空神曲清單（Camilo《Índigo》／Rosalía《DESPECHÁ》），查證後發現：①Camilo《Índigo》引用的歌詞「Aunque no lo creyeras」根本不存在於這首歌，真實歌詞開頭是「¿Cómo puede ser qué uno sueñe con alguien que ni siquiera ha conocido?」（這首歌實際主題是期待寶寶誕生），完全是編造的引用，不能用；②Rosalía《DESPECHÁ》歌是真的，但引用的「no me llames... olvidándome de tus males」是「隔壁AI」自己校正成標準文法的版本，真實演唱是安達魯西亞吞音腔「no me llame'... ocupá'... male'」，跟標準拼寫對不上，如果做成「聽了填空」練習，使用者聽到的發音跟被要求填的標準答案不一致，體驗會很差——這首更適合放進「莊園留言板抓蟲」的③吞音還原題型，不適合當虛擬式教學曲。**之後任何「隔壁AI」附上的具體歌詞引用，一律先查證原文再採用，不能因為附了YouTube連結/時間戳就當作已核實**（連結本身也需要 VERA 自己點開聽過確認時間戳對不對，AI 端沒有辦法真的逐秒核對音檔內容）。
 
   **🏅 語塊股：累積天數里程碑勳章＋迷你測驗（2026-07-15 提出，🟡中工程，大部分基礎已存在）**：VERA提出「語塊股」複利投資比喻——A2到B2約需400小時有效輸入、約600個核心語塊，每個語塊平均40分鐘精熟(含零碎重複見到的時間)。以「每天念20分鐘」推算的里程碑對照表：
   | 累積天數 | 總時數 | 語塊量 | 里程碑感受 |
