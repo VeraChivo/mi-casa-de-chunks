@@ -1235,7 +1235,7 @@ function checkMakeFree(){
     if(!makeAnswered.includes(idx)){makeAnswered.push(idx);makeScore++;}
     const gId=SENTENCE_GRAMMAR_MAP[currentGlobalIdx()];
     const saved=gId?saveToGrammarLib(gId,val):false;
-    res.textContent=`¡Eso es! 🌟 用了 ${verbsFound.join(' / ')}${saved?' — 已存進文法酷庫 💡':' — 就是這樣！'}`;
+    res.innerHTML=`¡Eso es! 🌟 用了 ${verbsFound.join(' / ')}${saved?' — 已存進文法酷庫 💡':' — 就是這樣！'}<span class="make-stt-hint">🎤 進階：用 Google 鍵盤語音輸入再唸一次，看能不能辨識出來</span><button class="make-notes-btn" onclick="switchTab('tabMom');setTimeout(()=>{const n=document.getElementById('mama-secret-notes');if(n)n.focus()},350)">📝 記到手札</button>`;
     res.style.display='block';
     speakFull(val);
     toast('🔊 念你的句子給你聽！');
@@ -2463,7 +2463,9 @@ const INDIC_SUBJ_PAIRS = [
   {verb:"tener",  indic:{es:"Tienes miedo.", zh:"你會怕。"}, subj:{es:"No creo que tengas miedo.", zh:"我不覺得你會怕。"}},
   {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我懷疑你想要冰淇淋。"}},
   {verb:"poder",  indic:{es:"Puedes venir.", zh:"你可以來。"}, subj:{es:"Espero que puedas venir.", zh:"希望你可以來。"}},
-  {verb:"ser",    indic:{es:"Eres feliz.", zh:"你很快樂。"}, subj:{es:"Espero que seas feliz.", zh:"希望你快樂。"}}
+  {verb:"ser",    indic:{es:"Eres feliz.", zh:"你很快樂。"}, subj:{es:"Espero que seas feliz.", zh:"希望你快樂。"}},
+  {verb:"🛫 旅行道別", indic:{es:"Mañana vuelas a casa.", zh:"明天你要飛回家了。"}, subj:{es:"¡Que tengas buen vuelo!", zh:"祝飛行順利！"}},
+  {verb:"💼 面試加油", indic:{es:"Tienes una entrevista hoy.", zh:"你今天有面試。"}, subj:{es:"¡Que te salga bien!", zh:"希望你順利！"}}
 ];
 function renderIndicSubjPairs(){
   const el = document.getElementById('indSubjBody');
@@ -2478,10 +2480,134 @@ function renderIndicSubjPairs(){
     <div class="is-pair-row">
       <div class="is-pair-verb">${p.verb}</div>
       <div class="is-pair-cols">
-        ${col('is-indic','陳述式',p.indic)}
-        ${col('is-subj','虛擬式',p.subj)}
+        ${col('is-indic','直述句（眼前呈現）',p.indic)}
+        ${col('is-subj','腦內劇場（祝福／期盼）',p.subj)}
       </div>
     </div>`).join('');
+}
+
+// ── 🎵 歌詞填空 · 聽歌學語法 ──
+const LYRICS_FILL_DATA = [
+  {
+    id:'lf01',
+    artist:'Juanes',
+    song:'A Dios Le Pido',
+    level:'b1',
+    levelLabel:'B1',
+    yt:'https://www.youtube.com/watch?v=yvnt2zMzmOc&t=46s',
+    ytLabel:'▶ 46秒處聽',
+    before:'A Dios le pido / que mis ojos se',
+    blank:'despierten',
+    after:'/ con tu cara cada día.',
+    hint:'pedir que → 後面接虛擬式',
+    grammar:'「A Dios le pido que...」我向上帝祈求⋯⋯。pedir que 後面的動詞必須變成現在虛擬式，因為是「希望發生」而非確定事實。despertar（喚醒）→ se despierten（第三人稱複數虛擬式，複數因為是 mis ojos）。'
+  },
+  {
+    id:'lf02',
+    artist:'Juan Luis Guerra',
+    song:'Ojalá Que Llueva Café',
+    level:'b1',
+    levelLabel:'B1',
+    yt:'https://www.youtube.com/watch?v=1PSUicmCNl4&t=30s',
+    ytLabel:'▶ 30秒處聽',
+    before:'Ojalá que',
+    blank:'llueva',
+    after:'café en el campo.',
+    hint:'Ojalá (que) 後面永遠接虛擬式',
+    grammar:'「Ojalá (que)...」字源自阿拉伯語，意為「願真主保佑」，是西語最道地的許願句型。後面無論加不加 que，都永遠接虛擬式。llover（下雨）→ llueva（現在虛擬式，不規則 o→ue）。'
+  },
+  {
+    id:'lf03',
+    artist:'Beyoncé ft. Alejandro Fernández',
+    song:'Si Yo Fuera Un Chico',
+    level:'b2',
+    levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=7iMNLqqHPac&t=20s',
+    ytLabel:'▶ 20秒處聽',
+    before:'Si yo',
+    blank:'fuera',
+    after:'un chico, creo que entendería...',
+    hint:'Si + 過去虛擬式 = 與現在事實相反的假設',
+    grammar:'【B2核心句型】「Si yo fuera...」如果我是⋯⋯（但現實我不是）。Si + Imperfecto de Subjuntivo（過去虛擬式）表達與現在事實相反的假設。ser → fuera（過去虛擬式，不規則）。對比：Si soy（有可能，陳述式）vs Si fuera（現在不是，虛擬式）。'
+  },
+  {
+    id:'lf04',
+    artist:'Julieta Venegas',
+    song:'Limón y Sal',
+    level:'b1',
+    levelLabel:'B1',
+    yt:'https://www.youtube.com/watch?v=7N4V2r8K0vA&t=52s',
+    ytLabel:'▶ 52秒處聽',
+    before:'Si vienes o si',
+    blank:'vas',
+    after:'— no importa, yo te quiero igual.',
+    hint:'Si + 陳述式現在式 = 真實可能的條件',
+    grammar:'「Si vienes o si vas」用的是陳述式直述式，不是虛擬式！Si + 現在陳述式表示「真實可能發生的條件」。跟 Beyoncé 那句對比：Si fuera（虛擬式）= 與現實相反；Si vas（陳述式）= 去或不去都有可能，是開放的真實情境。'
+  }
+];
+let _lyricsFillOpen = false;
+function toggleLyricsFill(){
+  _lyricsFillOpen = !_lyricsFillOpen;
+  const body = document.getElementById('lyricsFillBody');
+  const tog = document.getElementById('lyricsFillToggle');
+  if(!body) return;
+  body.classList.toggle('open', _lyricsFillOpen);
+  if(tog) tog.textContent = _lyricsFillOpen ? '▲ 收起' : '▼ 展開';
+  if(_lyricsFillOpen) renderLyricsFill();
+}
+function renderLyricsFill(){
+  const el = document.getElementById('lyricsFillBody');
+  if(!el) return;
+  el.innerHTML = LYRICS_FILL_DATA.map(lf => `
+    <div class="lf-card" id="lf-card-${lf.id}">
+      <div class="lf-header">
+        <div class="lf-artist-song">
+          <span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span>
+          <span class="lf-artist">${lf.artist}</span>
+          <span class="lf-song">《${lf.song}》</span>
+        </div>
+        <a class="lf-yt-btn" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
+      </div>
+      <div class="lf-lyric-line">
+        <span class="lf-before">${lf.before}</span>
+        <span class="lf-blank-wrap"><input class="lf-input" id="lfi-${lf.id}" type="text" placeholder="填動詞" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkLyric('${lf.id}')"></span>
+        <span class="lf-after">${lf.after}</span>
+      </div>
+      <div class="lf-hint">💡 ${lf.hint}</div>
+      <div class="lf-actions">
+        <button class="lf-check-btn" onclick="checkLyric('${lf.id}')">核對答案</button>
+        <button class="lf-hear-btn" onclick="speakGramSmart('${escAttr(lf.before+' '+lf.blank+' '+lf.after)}')">🔊 聽整句</button>
+      </div>
+      <div class="lf-feedback" id="lff-${lf.id}" style="display:none"></div>
+      <div class="lf-grammar-note" id="lfg-${lf.id}" style="display:none">${lf.grammar}</div>
+    </div>`).join('');
+}
+function checkLyric(id){
+  const lf = LYRICS_FILL_DATA.find(x=>x.id===id);
+  if(!lf) return;
+  const inp = document.getElementById('lfi-'+id);
+  const fb  = document.getElementById('lff-'+id);
+  const gn  = document.getElementById('lfg-'+id);
+  if(!inp||!fb||!gn) return;
+  const val = inp.value.trim().toLowerCase().replace(/[¡!¿?.,;]/g,'');
+  const correct = lf.blank.toLowerCase();
+  fb.style.display = 'block';
+  if(!val){
+    fb.className='lf-feedback';
+    fb.textContent='先填入動詞再核對';
+    return;
+  }
+  if(val === correct){
+    fb.className='lf-feedback lf-correct';
+    fb.textContent=`¡Eso es! ✅ 正確：${lf.blank}`;
+    inp.className='lf-input ok';
+    gn.style.display='block';
+    speakGramSmart(lf.before+' '+lf.blank+' '+lf.after);
+  } else {
+    fb.className='lf-feedback lf-wrong';
+    fb.textContent=`¡Ojo! 👀 再試一次——${lf.hint}`;
+    inp.className='lf-input err';
+  }
 }
 
 function openGrammarCard(gId){
@@ -3275,9 +3401,9 @@ function handleReminderDeepLink(){
 
 // ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從「❓ 莊園導覽」重新打開）──
 const WELCOME_TOUR_STEPS = [
-  {icon:"🌾", title:"田間播語塊", desc:"這是妳每天播種語言的田地。點開劇集，跟著莊園主家一句一句學西語，完成句子還能解鎖彈藥庫語塊。"},
-  {icon:"☀️", title:"日光育苗場", desc:"這裡收藏著文法儲水槽、動詞變位查詢、SEL情緒篇章、假同源詞警示……所有知識養分都在這裡，隨時回來翻閱。"},
-  {icon:"🛌", title:"床邊低語呢", desc:"媽媽的深夜角落——情緒語塊、心田深耕真心話、日記手札，都收在這裡。"},
+  {icon:"🌾", title:"田間播語塊", desc:"這裡是妳每日播種語言的田地。點開劇中精選片段，跟著莊園主人拆解句子；一詞一句學西語，完成句子還能解鎖彈藥庫語塊。"},
+  {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
+  {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
   {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"}
 ];
 let _welcomeTourStep = 0;

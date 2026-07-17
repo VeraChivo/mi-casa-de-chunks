@@ -1063,3 +1063,43 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .quiz-done-msg{text-align:center;padding:20px 16px}
 .quiz-done-icon{font-size:30px;margin-bottom:8px}
 .quiz-done-text{font-size:14px;font-weight:700;color:var(--konpeki);margin-bottom:12px}
+
+/* ── 🎵 歌詞填空 ── */
+.lf-card{background:var(--bg2);border:1.5px solid var(--usumizu);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.lf-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.lf-artist-song{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.lf-level{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.5px}
+.lf-level-b1{background:var(--usumizu);color:var(--konpeki)}
+.lf-level-b2{background:var(--benikake);color:white}
+.lf-artist{font-size:14px;font-weight:800;color:var(--konpeki)}
+.lf-song{font-size:13px;color:var(--tmid)}
+.lf-yt-btn{display:inline-block;padding:5px 12px;background:var(--misora);color:white;border-radius:999px;font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap}
+.lf-yt-btn:active{opacity:.8}
+.lf-lyric-line{font-size:18px;font-weight:700;color:var(--konpeki);line-height:1.7;margin-bottom:6px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.lf-blank-wrap{display:inline-flex}
+.lf-input{width:110px;font-size:16px;font-weight:700;font-family:'Nunito',sans-serif;border:2px dashed var(--nezumi);border-radius:8px;padding:2px 8px;background:white;color:var(--tdark);outline:none;transition:border-color .2s}
+.lf-input:focus{border-color:var(--misora)}
+.lf-input.ok{border-color:var(--ok);background:#f0fdf4}
+.lf-input.err{border-color:var(--err);background:#fff5f5}
+.lf-hint{font-size:12px;color:var(--tmid);margin-bottom:8px;font-style:italic}
+.lf-actions{display:flex;gap:8px;margin-bottom:8px}
+.lf-check-btn{flex:1;background:var(--misora);color:white;border:none;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif}
+.lf-check-btn:active{opacity:.85}
+.lf-hear-btn{background:transparent;border:1.5px solid var(--usumizu);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--tmid);cursor:pointer;font-family:'Nunito',sans-serif}
+.lf-hear-btn:active{opacity:.8}
+.lf-feedback{font-size:13px;font-weight:700;padding:8px 12px;border-radius:10px;margin-bottom:8px}
+.lf-correct{background:#f0fdf4;color:#2d6a4f;border:1px solid #b7e4c7}
+.lf-wrong{background:#fff5f5;color:var(--err);border:1px solid #fcc}
+.lf-grammar-note{font-size:13px;color:var(--tmid);background:var(--bg);border-left:3px solid var(--misora);padding:10px 12px;border-radius:0 10px 10px 0;margin-top:4px;line-height:1.6}
+/* 造句後跳轉提示 */
+.make-stt-hint{font-size:11px;font-weight:600;color:var(--tmid);display:block;margin-top:5px}
+.make-notes-btn{margin-top:6px;background:transparent;border:1.5px solid var(--misora);border-radius:999px;padding:4px 14px;font-size:12px;font-weight:700;color:var(--misora);cursor:pointer;font-family:'Nunito',sans-serif;display:inline-block}
+.make-notes-btn:active{background:var(--misora);color:white}
+@media(prefers-color-scheme:dark){
+  .lf-card{background:#1e2a32;border-color:#2a3840}
+  .lf-input{background:#253038;color:#dde6eb;border-color:#3a4d5a}
+  .lf-grammar-note{background:#182028}
+}
+:root[data-theme="dark"] .lf-card{background:#1e2a32;border-color:#2a3840}
+:root[data-theme="dark"] .lf-input{background:#253038;color:#dde6eb;border-color:#3a4d5a}
+:root[data-theme="dark"] .lf-grammar-note{background:#182028}
