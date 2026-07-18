@@ -1765,6 +1765,30 @@ function _chunkFamBranchStatus(fam){
     collected: keys.some(k => k.includes(b.match))
   }));
 }
+// ── 關聯圖：這個關鍵字在劇情/歌曲/新聞裡有沒有出現過（關鍵字模糊比對，不是手動標記的資料庫） ──
+function _chunkFamEpisodeMatch(keyword){
+  if(typeof EPS === 'undefined') return null;
+  for(let i=0;i<EPS.length;i++){
+    const found = (EPS[i].sentences||[]).some(s => (s.es||'').toLowerCase().includes(keyword));
+    if(found) return {epIdx:i, titleZh:EPS[i].titleZh};
+  }
+  return null;
+}
+function _chunkFamSongMatch(keyword){
+  if(typeof LYRICS_FILL_DATA === 'undefined') return null;
+  const hit = LYRICS_FILL_DATA.find(lf => ((lf.before||'')+' '+(lf.blank||'')+' '+(lf.after||'')).toLowerCase().includes(keyword));
+  return hit ? {id:hit.id, song:hit.song} : null;
+}
+function _chunkFamNewsMatch(keyword){
+  if(typeof NEWS_ITEMS === 'undefined') return null;
+  const hit = NEWS_ITEMS.find(n => (n.headline||'').toLowerCase().includes(keyword));
+  return hit ? {id:hit.id} : null;
+}
+function chunkFamJumpRef(kind, payload){
+  if(kind === 'episode'){ switchMainTab('play'); selectEp(payload); return; }
+  if(kind === 'song'){ dtaskJump('lyrics'); return; }
+  if(kind === 'news'){ dtaskJump('news'); return; }
+}
 function _chunkFamSeenCounts(){
   try { return JSON.parse(localStorage.getItem('peppa_chunk_fam_seen_v1') || '{}'); } catch(e){ return {}; }
 }
@@ -1797,7 +1821,17 @@ function renderChunkFamilies(){
       <div class="chunk-fam-head">${fam.icon} ${fam.title}<span class="chunk-fam-hint">（${fam.formHint}）</span></div>
       <div class="chunk-fam-maturity">家族成熟度：${maturity}（${collectedCount}/${branches.length}）</div>
       <div class="chunk-fam-branches">
-        ${branches.map(b => `<span class="chunk-fam-branch${b.collected?' is-collected':''}">${b.collected?'🌱':'⚪'} ${b.es}</span>`).join('')}
+        ${branches.map(b => {
+          const epM = _chunkFamEpisodeMatch(b.match);
+          const songM = _chunkFamSongMatch(b.match);
+          const newsM = _chunkFamNewsMatch(b.match);
+          const refs = [
+            epM ? `<span class="chunk-fam-ref" title="劇情裡出現過：${epM.titleZh}" onclick="event.stopPropagation();chunkFamJumpRef('episode',${epM.epIdx})">📺</span>` : '',
+            songM ? `<span class="chunk-fam-ref" title="歌曲裡出現過：${songM.song}" onclick="event.stopPropagation();chunkFamJumpRef('song')">🎵</span>` : '',
+            newsM ? `<span class="chunk-fam-ref" title="新聞裡出現過" onclick="event.stopPropagation();chunkFamJumpRef('news')">📰</span>` : ''
+          ].join('');
+          return `<span class="chunk-fam-branch${b.collected?' is-collected':''}">${b.collected?'🌱':'⚪'} ${b.es}${refs}</span>`;
+        }).join('')}
       </div>
       ${nextBranch ? `<div class="chunk-fam-next">下一枝：${nextBranch.es}（${nextBranch.zh}）</div>` : `<div class="chunk-fam-next">🎉 這個家族全部收集齊了！</div>`}
     </div>`;
