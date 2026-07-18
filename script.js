@@ -2640,8 +2640,8 @@ function renderSerEstarStation(){
 // ── 🪞 陳述式 ↔ 虛擬式：直接對照（靜態並排，不做切換鈕）──
 const INDIC_SUBJ_PAIRS = [
   {verb:"hablar", indic:{es:"Hablas español.", zh:"你說西語。"}, subj:{es:"Espero que hables español.", zh:"希望你會說西語。"}},
-  {verb:"tener",  indic:{es:"Tienes miedo.", zh:"你會怕。"}, subj:{es:"No creo que tengas miedo.", zh:"我不覺得你會怕。"}},
-  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我懷疑你想要冰淇淋。"}},
+  {verb:"tener",  indic:{es:"Tienes miedo.", zh:"你很害怕。"}, subj:{es:"No creo que tengas miedo.", zh:"我不覺得你會怕。"}},
+  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我不太相信你會想吃冰淇淋。（字面直譯：我懷疑你想要冰淇淋）"}},
   {verb:"poder",  indic:{es:"Puedes venir.", zh:"你可以來。"}, subj:{es:"Espero que puedas venir.", zh:"希望你可以來。"}},
   {verb:"ser",    indic:{es:"Eres feliz.", zh:"你很快樂。"}, subj:{es:"Espero que seas feliz.", zh:"希望你快樂。"}},
   {verb:"🛫 旅行道別", indic:{es:"Mañana vuelas a casa.", zh:"明天你要飛回家了。"}, subj:{es:"¡Que tengas buen vuelo!", zh:"祝飛行順利！"}},
@@ -3992,7 +3992,11 @@ function renderNewsSection(){
   // DW 文化小卡
   let dwHtml = `<div class="news-dw-card"><div class="news-dw-title">${DW_HISTORY.title}</div>`;
   DW_HISTORY.body.forEach(p=>{
-    dwHtml += `<div class="news-dw-item"><span class="news-dw-label">${p.label}</span><span class="news-dw-text">${p.text}</span></div>`;
+    dwHtml += `<div class="news-dw-item">
+      <span class="news-dw-label">${p.label}</span>
+      <div class="news-dw-es" onclick="speakFull('${escAttr(p.es)}')">🔊 ${p.es}</div>
+      <span class="news-dw-text">${p.text}</span>
+    </div>`;
   });
   dwHtml += '</div>';
 
@@ -4044,12 +4048,14 @@ function renderNewsSection(){
 
   el.innerHTML = `<div class="news-section-wrap">
     <div class="news-section-header" onclick="toggleNewsSection()">
-      <div class="news-section-title-row">
-        <span class="news-section-title">📰 B2 時事傳送門</span>
-        <span class="news-section-badge">B2</span>
+      <div class="news-section-header-main">
+        <div class="news-section-title-row">
+          <span class="news-section-title">📰 B2 時事傳送門</span>
+          <span class="news-section-badge">B2</span>
+        </div>
+        <div class="news-section-sub">挖空填詞・錯字修正，讓語塊長進真實新聞</div>
       </div>
-      <div class="news-section-sub">挖空填詞・錯字修正，讓語塊長進真實新聞</div>
-      <span id="newsSectionToggle">▼ 展開</span>
+      <span id="newsSectionToggle" class="news-section-toggle">▼ 展開</span>
     </div>
     <div id="newsSectionBody" style="display:none">
       ${dwHtml}

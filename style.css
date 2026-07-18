@@ -637,7 +637,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gsup-level-badge{font-size:13px;flex-shrink:0}
 .gsup-rule{font-size:11.5px;color:var(--tmid);font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .gsup-filter-label{font-size:10px;font-weight:800;color:var(--tlight);padding:6px 12px 0}
-.gsup-level-filter{display:flex;gap:6px;padding:4px 12px 2px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gsup-level-filter{display:flex;gap:6px;padding:4px 12px 2px;flex-wrap:wrap}
 .gsup-level-chip{font-size:11px;font-weight:800;padding:4px 10px;border-radius:14px;background:var(--bg2);color:var(--tmid);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .gsup-level-chip:active{opacity:.7}
 .gsup-level-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
@@ -1226,18 +1226,22 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .cl-grat-coming{font-size:12px;color:var(--tmid);text-align:center;margin:10px 0 0;font-style:italic}
 /* ── B2 時事傳送門 ── */
 .news-section-wrap{margin:12px 0;border-radius:14px;overflow:hidden;border:1px solid rgba(159,208,222,.45);background:var(--bg2)}
-.news-section-header{padding:14px 16px 10px;background:linear-gradient(135deg,var(--konpeki),#2a5f8a);cursor:pointer;user-select:none}
-.news-section-title-row{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.news-section-header{padding:14px 16px 10px;background:linear-gradient(135deg,var(--konpeki),#2a5f8a);cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.news-section-header-main{min-width:0}
+.news-section-title-row{display:flex;align-items:center;gap:8px;margin-bottom:3px;flex-wrap:wrap}
 .news-section-title{font-size:15px;font-weight:900;color:#fff}
 .news-section-badge{font-size:10px;font-weight:800;background:rgba(255,255,255,.25);color:#fff;padding:2px 7px;border-radius:20px;letter-spacing:.5px}
-.news-section-sub{font-size:11px;color:rgba(255,255,255,.8);margin-bottom:6px}
+.news-section-sub{font-size:11px;color:rgba(255,255,255,.8)}
+.news-section-toggle{flex-shrink:0;color:#fff;font-size:12px;font-weight:800;white-space:nowrap}
 .news-toggle-arrow{font-size:10px;font-weight:800;color:rgba(255,255,255,.9)}
 /* DW 文化小卡 */
 .news-dw-card{margin:14px 14px 0;padding:14px;background:rgba(159,208,222,.13);border-radius:12px;border:1px solid rgba(159,208,222,.4)}
 .news-dw-title{font-size:13px;font-weight:900;color:var(--konpeki);margin-bottom:10px}
 .news-dw-item{margin-bottom:10px;font-size:12px;line-height:1.6}
 .news-dw-item:last-child{margin-bottom:0}
-.news-dw-label{display:inline-block;font-weight:800;color:var(--misora);margin-bottom:2px;width:100%}
+.news-dw-label{display:inline-block;font-weight:800;color:var(--misora);margin-bottom:4px;width:100%}
+.news-dw-es{color:var(--konpeki);font-weight:700;margin-bottom:4px;cursor:pointer;line-height:1.5}
+.news-dw-es:active{opacity:.7}
 .news-dw-text{color:var(--tmid)}
 /* 新聞卡片 */
 .news-items{padding:12px 14px 0}

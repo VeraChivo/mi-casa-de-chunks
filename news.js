@@ -433,9 +433,17 @@ const NEWS_ITEMS = [
 const DW_HISTORY = {
   title: '📡 Deutsche Welle（DW）的由來',
   body: [
-    { label:'🕰️ 1953年，冷戰誕生', text:'二戰結束後，西德為了在全球重建「民主德國」的形象，對抗東德的共產宣傳，成立了國家級國際廣播電台。Deutsche Welle 字面意思是「德意志電波」。' },
-    { label:'🌍 現在用 30 種語言播出', text:'包含 DW Español、DW Arabic、DW Chinese，目標是向非德語世界傳播歐洲觀點，屬於非商業性公共媒體，部分內容授權較寬鬆。' },
-    { label:'🇩🇪 德國人為什麼特別愛學西語？', text:'①馬略卡島（Mallorca）是德國人的第二故鄉，每年數百萬人去西班牙度假置產；②西語發音所見即所讀，比法語親切；③德國車廠（福斯、賓士）在墨西哥/阿根廷有大型工廠，商務誘因強。' },
-    { label:'📚 為什麼 DW 要做語言教材？', text:'「推廣語言＝最好的軟實力外交」——DW 不只報新聞，還養了頂尖語言教育團隊，提供 A1–B2 的免費新聞教材。他們的 B2 字彙是歐洲跨國記者寫的，正式、精準，跟 DELE 考試字庫高度重疊。' }
+    { label:'🕰️ 1953年，冷戰誕生',
+      es:'Después de la Segunda Guerra Mundial, Alemania Occidental fundó una radiodifusora internacional para reconstruir la imagen de una "Alemania democrática" y contrarrestar la propaganda comunista de Alemania Oriental. Deutsche Welle significa literalmente "la onda alemana".',
+      text:'二戰結束後，西德為了在全球重建「民主德國」的形象，對抗東德的共產宣傳，成立了國家級國際廣播電台。Deutsche Welle 字面意思是「德意志電波」。' },
+    { label:'🌍 現在用 30 種語言播出',
+      es:'Hoy transmite en unos 30 idiomas, incluyendo DW Español, DW Arabic y DW Chinese, con el objetivo de difundir una perspectiva europea al mundo no germanohablante. Es un medio público sin fines comerciales, con licencias de contenido más flexibles.',
+      text:'包含 DW Español、DW Arabic、DW Chinese，目標是向非德語世界傳播歐洲觀點，屬於非商業性公共媒體，部分內容授權較寬鬆。' },
+    { label:'🇩🇪 德國人為什麼特別愛學西語？',
+      es:'① Mallorca es como un segundo hogar para los alemanes: millones viajan allí cada año. ② La pronunciación del español es clara y directa, más amigable que el francés. ③ Empresas alemanas como Volkswagen y Mercedes-Benz tienen grandes fábricas en México y Argentina, lo que genera fuertes incentivos comerciales.',
+      text:'①馬略卡島（Mallorca）是德國人的第二故鄉，每年數百萬人去西班牙度假置產；②西語發音所見即所讀，比法語親切；③德國車廠（福斯、賓士）在墨西哥/阿根廷有大型工廠，商務誘因強。' },
+    { label:'📚 為什麼 DW 要做語言教材？',
+      es:'"Promover un idioma es la mejor diplomacia de poder blando." DW no solo informa, también mantiene un equipo de primer nivel en educación de idiomas, ofreciendo materiales gratuitos de A1 a B2 basados en noticias reales. Su vocabulario de nivel B2 lo escriben periodistas internacionales europeos: formal, preciso, y con gran coincidencia con el vocabulario del examen DELE.',
+      text:'「推廣語言＝最好的軟實力外交」——DW 不只報新聞，還養了頂尖語言教育團隊，提供 A1–B2 的免費新聞教材。他們的 B2 字彙是歐洲跨國記者寫的，正式、精準，跟 DELE 考試字庫高度重疊。' }
   ]
 };
