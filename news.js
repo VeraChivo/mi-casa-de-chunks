@@ -194,6 +194,22 @@ const NEWS_ITEMS = [
     headline:'El [?] de los migrantes en la frontera Polonia-Bielorrusia.',
     task:{ type:'blank', answer:'drama', zh:'悲劇／慘況', hint:'sustantivo m. — una situación de sufrimiento intenso' },
     cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw25',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/los-grandes-retos-de-la-ia-en-la-educaci%C3%B3n-de-am%C3%A9rica-latina/a-75041367',
+    headline:'Los grandes [?] de la IA en la educación de América Latina.',
+    task:{ type:'blank', answer:'retos', zh:'挑戰', hint:'sustantivo m. pl. — dificultades u obstáculos que hay que superar' },
+    cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw26',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/el-extendido-uso-de-la-ia-preocupa-a-los-profesores/a-77758195',
+    headline:'El extendido uso de la IA [?] a los profesores.',
+    task:{ type:'blank', answer:'preocupa', zh:'讓⋯擔憂', hint:'verbo, 第三人稱單數 — causar inquietud o preocupación' },
+    cefr:'B2', topic:'educación 📚'
   }
 ];
 
