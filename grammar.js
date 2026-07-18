@@ -117,7 +117,10 @@ const GRAMMAR_CATS = [
   {key:"rhetoric",     label:"修辭"},
   {key:"history",      label:"歷史典故"},
   {key:"politics",     label:"政治語言"},
-  {key:"classical",    label:"古典西語"}
+  {key:"classical",    label:"古典西語"},
+  {key:"literature",   label:"文學"},
+  {key:"cinema",       label:"影視"},
+  {key:"pragmatics",   label:"真實西語"}
 ];
 
 
@@ -2077,6 +2080,56 @@ const GRAMMAR_DATA = [
       {es:"En un lugar de la Mancha, de cuyo nombre no quiero acordarme...", zh:"在拉曼查的某個地方，我不想記起它的名字……（《唐吉訶德》1605年開場白，全書最著名的一句，常被戲仿套用在各種語境的開場，1605年作品，公共領域）"}
     ],
     trap:"聽到「de cuyo nombre no quiero acordarme」這種句型被套用在完全不相關的語境（比如講一家難吃的餐廳），那就是在仿寫唐吉訶德的開場白開玩笑——這種「借用經典句型套在日常小事上」的幽默手法在西語圈很常見，認出出處就能get到笑點；此外，正式/宗教語域裡偶爾會出現古老的vosotros動詞變位（現代西班牙日常也還在用，但拉美已完全改用ustedes），聽到時知道是同一套系統的older register即可，不用另外去學。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g98", cat:"literature", level:"c2",
+    title:"文學：一句話認一位大師，不讀全文",
+    rule:"每位作家只引最短、最著名的一句（每句都已查證是真實原文），重點放在「這句話用了什麼技巧」跟「為什麼母語者一聽就知道是誰寫的」，不提供全文，也不做逐句賞析——認出這句話、懂它的手法跟份量，就是C2程度該有的文學素養。",
+    examples:[
+      {es:"Verde que te quiero verde.", zh:"綠啊，我多麼愛你這綠色。（Federico García Lorca《夢遊人謠》1928年，收錄於《吉普賽故事詩集》。修辭：anáfora重複疊詠，「verde」像咒語一樣反覆出現，貫穿全詩製造神秘/慾望的氛圍。文化背景：這句是西語圈最常被單獨引用的詩句之一，即使沒讀過全詩，母語者聽到「verde que te quiero verde」也會立刻認出是Lorca。）"},
+      {es:"El tiempo es la sustancia de que estoy hecho.", zh:"時間是構成我的材質。（Jorge Luis Borges《時間的新反駁》。修辭：隱喻，把抽象的「時間」直接說成具體的「材質/物質」。文化背景：這句出自Borges探討時間與自我認同的哲學隨筆，是他「用文學語言做哲學思考」風格的代表句，也曾被高達的電影《阿爾發城》引用。）"},
+      {es:"Puedo escribir los versos más tristes esta noche.", zh:"今夜我能寫出最悲傷的詩句。（Pablo Neruda《詩篇二十首》第20首開場白，1924年。修辭：直白的第一人稱陳述句，不用華麗辭藻卻極具情感重量，是Neruda早期風格的特色。文化背景：這是二十世紀被引用/翻譯最多次的西語情詩開頭之一，19歲的Neruda寫下這句時還未成名。）"}
+    ],
+    trap:"Gabriel García Márquez沒有收錄在這批引用裡——不是他不重要（《百年孤寂》幾乎是拉美文學的代名詞），而是他2014年才過世，作品版權保護期還很長，這裡改用談論他開創的「魔幻寫實主義」（realismo mágico：把超自然/奇幻元素用平鋪直敘的語氣描述，讓讀者分不清是真實還是幻想）這個文學技巧本身，不直接引用他的原文字句。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g99", cat:"cinema", level:"c2",
+    title:"影視：一句台詞認一部片，不做完整對話",
+    rule:"這兩句台詞都已查證是電影真實原文（多來源交叉確認），只收一句＋場景說明＋語氣解析，不重現完整對話——目標是「聽到這句話能聯想到哪部片、哪個場景、什麼語氣」，這是母語者看戲/聊電影時最自然會用到的文化默契。",
+    examples:[
+      {es:"La vida es como la espuma, por eso hay que darse como el mar.", zh:"人生就像泡沫，所以要像大海一樣付出自己。（《你媽媽也一樣》Y tu mamá también，2001年，Alfonso Cuarón導演。場景：公路旅行途中，樸實的漁夫角色Chuy對兩個滿腦子只顧自己戀愛煩惱的青少年主角說的話。語氣：平靜、帶著生活智慧，跟電影其他部分青春期的浮躁形成強烈對比，是全片情感的轉折點之一。）"},
+      {es:"No puedes entrar en el mismo río dos veces.", zh:"你不能兩次踏入同一條河。（《羊男的迷宮》El laberinto del fauno，2006年，Guillermo del Toro導演。場景：談論改變與無常時說出的一句話。語氣：哲學性、帶著淡淡的憂傷，呼應全片在西班牙內戰背景下「童年純真 vs 殘酷現實」的核心對比。）"}
+    ],
+    trap:"這句河流的台詞其實源自古希臘哲學家赫拉克利特（Heráclito）的名言，電影只是借用這個哲學典故放進台詞裡——聽到西語作品裡出現「el mismo río dos veces」這個意象，可以聯想到這是在引用一個更古老的西方哲學傳統，不是編劇原創的比喻，這種「借用經典典故」的手法跟文學卡片裡Lorca/Borges的引用邏輯是同一回事，都需要認出「這句話還在呼應誰」。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g100", cat:"pragmatics", level:"c2",
+    title:"真實西語：o sea／es que／pues 到底在幹嘛",
+    rule:"這批詞不是文法，是語用學（pragmática）——母語者天天說，但字典查到的翻譯完全幫不上忙，因為它們的功能不是「表達意思」而是「調節語氣、爭取思考時間、轉換話題、軟化衝突」。同一個詞在不同位置/語調下可以是完全不同的功能，這是B2文法課本幾乎不會教、但C2程度非懂不可的一塊。",
+    examples:[
+      {es:"O sea, lo que quiero decir es que no puedo ir.", zh:"我是說，我想表達的是我不能去。（o sea：換句話說/我是說，用來重新措辭、講得更清楚，不是「或者是」的字面意思）"},
+      {es:"No fui a la fiesta... es que tenía mucho trabajo.", zh:"我沒去派對……是因為我工作很多。（es que：開頭表示「找理由解釋/找藉口」，帶一點防衛/辯解的語氣，中文很難找到對應詞，功能上接近「其實是因為……」）"},
+      {es:"Pues no sé qué decirte.", zh:"呃，我不知道該說什麼。（pues：這裡是猶豫語氣詞，爭取思考時間，不是「所以/因此」的邏輯連接功能）"},
+      {es:"Bueno... vamos a ver qué pasa.", zh:"呃……我們看看會怎樣吧。（bueno在句首：不是「好的」，是猶豫/轉折/準備換話題的語氣詞）"}
+    ],
+    family:{
+      title:"🗣️ Bueno...到底是哪種「好」？",
+      intro:"同一個bueno，依語境可能是這幾種完全不同的功能，光看文字猜不出來，要聽語調/看上下文：",
+      items:[
+        {es:"Bueno, no sé si sea buena idea.", zh:"猶豫：對這件事不太確定"},
+        {es:"Bueno, pero yo creo que...", zh:"轉折：準備提出不同意見"},
+        {es:"Bueno, ¿y tú qué hiciste hoy?", zh:"換話題：結束目前這個話題"},
+        {es:"Bueno, tengo que colgar.", zh:"結束對話：準備收尾/掛電話"},
+        {es:"Bueno... si tú lo dices.", zh:"不完全同意：勉強接受，語氣帶保留"}
+      ]
+    },
+    trap:"vamos／anda／venga 這三個詞也是同樣邏輯——vamos常常不是「我們走」而是「我是說/也就是說」（Vamos, que no te gustó＝也就是說你不喜歡）；anda可以是「走吧」也可以是驚訝的「哎呀」；venga（多見於西班牙）除了「來吧」還常用來表示「好啦/講定了」或不耐煩的「拜託」。這批詞的共同心法是：先看整句的語氣/上下文，再決定它在扮演哪個功能，不要死背單一翻譯。",
     source:"文法補充"
   }
 
