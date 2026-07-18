@@ -1606,6 +1606,45 @@ const GRAMMAR_DATA = [
     ],
     trap:"這不代表拉美社會已經普遍脫離傳統性別角色分工——UNFPA報告本身強調這是「正在推動中」的轉型過程，需要政策與計畫持續推廣，不是已經實現的現狀。",
     source:"文法補充"
+  },
+
+  {
+    id:"g71", cat:"phrase", level:"b1",
+    title:"亡靈節的真實起源：一個常見迷思的破解",
+    rule:"亡靈節常被大眾誤以為是「前西班牙時期原住民信仰與天主教融合」的產物，但墨西哥國家人類學暨歷史局（INAH）研究員 Elsa Malvido 的研究指出：儀式的真正源頭其實是西班牙殖民地帶來的天主教傳統——11月1日諸聖節（Día de Todos los Santos）與11月2日追思已亡節（Día de los Fieles Difuntos）本來就是歐洲中世紀既有的節日，是修士傳教士教給原住民與混血族群的，並非純粹的前西班牙原住民信仰延續下來的。",
+    examples:[
+      {es:"Mucha gente cree que el Día de Muertos es de origen prehispánico.", zh:"很多人以為亡靈節是前西班牙時期起源的。"},
+      {es:"Según el INAH, el origen real es español, colonial y cristiano.", zh:"根據INAH的研究，真正的起源是西班牙殖民天主教傳統。"},
+      {es:"Los frailes enseñaron estas costumbres a los indígenas y mestizos.", zh:"修士們把這些習俗教給了原住民與混血族群。"}
+    ],
+    trap:"這不是要否定亡靈節作為墨西哥重要文化資產的地位——現在的亡靈節確實融入很多在地原住民元素，但最初的儀式框架來自歐洲天主教傳統，「起源」跟「後來演變成的獨特文化融合」是兩件不同的事，不要混為一談。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g72", cat:"phrase", level:"b1",
+    title:"拉美LGBTI權益：一場尚未完成的革命",
+    rule:"德國之聲（DW）2020年報導「Una revolución inacabada」形容西語世界的LGBTI權益進展是一場「尚未完成的革命」——阿根廷、烏拉圭、哥倫比亞等國已經實現婚姻平權，但同一個語言區內，某些國家仍缺乏反歧視法保護、甚至將同性戀行為刑事化，進步與倒退並存，不能用單一標準概括整個西語世界。",
+    examples:[
+      {es:"Argentina fue uno de los primeros países en aprobar el matrimonio igualitario.", zh:"阿根廷是最早通過婚姻平權的國家之一。"},
+      {es:"El progreso de los derechos LGBTI no es uniforme en todo el mundo hispanohablante.", zh:"LGBTI權益的進展在整個西語世界並不一致。"},
+      {es:"Todavía hay países donde la comunidad LGBTI enfrenta discriminación legal.", zh:"仍有些國家的LGBTI社群面臨法律上的歧視。"}
+    ],
+    trap:"不要假設「拉美」是單一整體——同樣說西語，各國LGBTI權益進展差異極大，阿根廷/烏拉圭這類進步案例不能代表整個地區的現狀。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g73", cat:"phrase", level:"b1",
+    title:"拉美原住民語言復興運動",
+    rule:"聯合國教科文組織（UNESCO）拉美與加勒比地區教育辦公室2019年發布報告「Conocimientos indígenas y políticas educativas en América Latina」，由智利教育部雙語跨文化教育計畫支持，彙整玻利維亞、智利、厄瓜多、瓜地馬拉、墨西哥、秘魯六國專家的研究，探討如何透過教育政策復興原住民語言（如克丘亞語 Quechua、納瓦特爾語 Náhuatl）與口述傳統、書寫系統。",
+    examples:[
+      {es:"La educación juega un papel clave en la revitalización de las lenguas indígenas.", zh:"教育在原住民語言復興中扮演關鍵角色。"},
+      {es:"El quechua y el náhuatl son algunas de las lenguas originarias más habladas.", zh:"克丘亞語和納瓦特爾語是使用人數較多的原住民語言之一。"},
+      {es:"Seis países latinoamericanos participaron en este informe de la UNESCO.", zh:"六個拉美國家參與了這份UNESCO報告。"}
+    ],
+    trap:"就算克丘亞語這類語言使用人數達數百萬，仍被列為瀕危語言——使用人數多不代表沒有滅絕風險，語言復興需要教育政策與制度層面的持續支持，不是自然就會延續下去。",
+    source:"文法補充"
   }
 
 ];
