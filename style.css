@@ -1173,6 +1173,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .ms-badge:hover{transform:scale(1.2)}
 .ms-dim{filter:grayscale(1);opacity:.35}
 .ms-next-hint{font-size:10px;font-weight:800;color:var(--tlight);margin-left:4px;white-space:nowrap}
+.ms-days-hint{font-size:10.5px;color:var(--tlight);font-weight:700;padding:2px 16px 6px;background:var(--bg2)}
 /* 里程碑慶祝（農間小報頂部）*/
 .ms-celeb{text-align:center;padding:16px 12px 12px;background:linear-gradient(135deg,rgba(159,208,222,.15),rgba(108,155,210,.1));border-radius:14px;margin-bottom:12px;border:1.5px solid rgba(159,208,222,.5)}
 .ms-celeb-badge{font-size:44px;line-height:1.1;margin-bottom:4px}

@@ -326,6 +326,25 @@ function popNewMilestone(){
   if(m){ seen.push(m.n); _msSave(seen); }
   return m || null;
 }
+// 記錄「第一次遇到語塊」的日期，用來算「妳已經耕耘第幾天」——只在還沒記錄過時寫入一次，之後不變
+function getFirstChunkDate(){
+  try { return localStorage.getItem('peppa_first_chunk_date_v1') || null; } catch(e){ return null; }
+}
+function _markFirstChunkDateIfNeeded(){
+  try {
+    if(!localStorage.getItem('peppa_first_chunk_date_v1')){
+      localStorage.setItem('peppa_first_chunk_date_v1', _dtaskTodayISO());
+    }
+  } catch(e){}
+}
+function daysSinceFirstChunk(){
+  const d = getFirstChunkDate();
+  if(!d) return 0;
+  const first = new Date(d + 'T00:00:00');
+  const diff = Math.floor((Date.now() - first.getTime()) / 86400000);
+  return Math.max(0, diff) + 1; // 第一天當天也算第1天
+}
+
 function renderMilestoneBadgeStrip(){
   const el = document.getElementById('milestoneBadgeStrip');
   if(!el) return;
@@ -338,6 +357,10 @@ function renderMilestoneBadgeStrip(){
   });
   if(next) html += `<span class="ms-next-hint">再 ${next.n - count} 粒 → 下一階 ${next.badge}</span>`;
   html += '</div>';
+  if(count > 0){
+    const days = daysSinceFirstChunk();
+    html += `<div class="ms-days-hint">🌱 妳已經耕耘第 ${days} 天，累積 ${count} 顆語塊</div>`;
+  }
   el.innerHTML = html;
 }
 
@@ -398,6 +421,7 @@ function unlockAmmo(globalIdx){
   ids.forEach(id=>{
     if(!ammoUnlocked.includes(id)) ammoUnlocked.push(id);
   });
+  if(ammoUnlocked.length > 0) _markFirstChunkDateIfNeeded();
   renderAmmo();
   renderMilestoneBadgeStrip();
   if(_checkNewMilestone()){
@@ -2081,7 +2105,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1'];
 
 function exportBackup(){
   const data = {};
