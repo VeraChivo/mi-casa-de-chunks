@@ -384,15 +384,15 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .chunk-fam-tree{padding:12px 14px;border-bottom:1px solid var(--usumizu);cursor:pointer}
 .chunk-fam-tree:last-child{border-bottom:none}
 .chunk-fam-tree:active{background:var(--bg2)}
-.chunk-fam-grow{font-size:12px;font-weight:800;color:var(--ok);background:rgba(61,184,122,.12);border-radius:8px;padding:6px 10px;margin-bottom:8px}
-.chunk-fam-head{font-size:14px;font-weight:900;color:var(--tdark)}
-.chunk-fam-hint{font-size:11px;font-weight:600;color:var(--tlight);margin-left:4px}
-.chunk-fam-maturity{font-size:12px;color:var(--tmid);font-weight:700;margin:4px 0 8px}
+.chunk-fam-grow{font-size:14px;font-weight:800;color:var(--ok);background:rgba(61,184,122,.12);border-radius:8px;padding:6px 10px;margin-bottom:8px}
+.chunk-fam-head{font-size:16px;font-weight:900;color:var(--tdark)}
+.chunk-fam-hint{font-size:13px;font-weight:600;color:var(--tlight);margin-left:4px}
+.chunk-fam-maturity{font-size:14px;color:var(--tmid);font-weight:700;margin:4px 0 8px}
 .chunk-fam-branches{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.chunk-fam-branch{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--bg2);color:var(--tlight)}
+.chunk-fam-branch{font-size:13px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--bg2);color:var(--tlight)}
 .chunk-fam-branch.is-collected{background:rgba(61,184,122,.12);color:var(--ok)}
 .chunk-fam-ref{margin-left:4px;cursor:pointer}
-.chunk-fam-next{font-size:11.5px;color:var(--tmid);font-style:italic}
+.chunk-fam-next{font-size:13.5px;color:var(--tmid);font-style:italic}
 .ammo-book-top{background:#4682B4;padding:10px 13px;display:flex;align-items:center;gap:8px;border-radius:14px 14px 0 0}
 .pb-count-num{font-size:inherit;font-weight:900;margin-left:2px}
 .pb-title-sep{margin:0 8px;opacity:.6;font-weight:400}
