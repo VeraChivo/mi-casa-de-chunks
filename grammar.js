@@ -1467,6 +1467,28 @@ const GRAMMAR_DATA = [
     },
     trap:"xq 的讀法是「por qué」或「porque」——看語境判斷。「¿xq no viniste?」是問「為什麼沒來」（疑問），「xq estaba ocupado」是答「因為我很忙」（原因）。jaja 裡的 j 唸作/x/（類似英語 h），所以網路上說 jaja 是真實發音，不是拼錯。",
     source:"文法補充"
+  },
+
+  {
+    id:"g61", cat:"vocab", level:"b2c1",
+    title:"各國評分／批改考卷的巧妙差異",
+    rule:"「打分數」在不同國家的邏輯不一樣，數字大小的方向、批改方式都可能完全相反——比較教育制度時不能只看數字表面。德國用 1（最好）到 6（最差）的等第制，Abitur（大學入學資格考）採計時另外換算成 15 到 0 分的量表，數字方向都跟台灣「分數越高越好」的直覺相反。此外，越來越多學校推行「評量量規」（rúbrica）取代單一總分，也開始嘗試用人工智慧輔助批改，減輕老師負擔。",
+    examples:[
+      {es:"En Alemania, el 1 es la mejor nota y el 6 es la peor.", zh:"在德國，1分是最好的成績，6分是最差的（方向跟台灣直覺相反）。"},
+      {es:"Cada vez más escuelas usan una rúbrica de evaluación en vez de solo poner una nota.", zh:"越來越多學校用評量量規，而不是只給一個總分。"},
+      {es:"La inteligencia artificial ya corrige exámenes en algunas escuelas.", zh:"有些學校已經開始用人工智慧批改考卷。"}
+    ],
+    family:{
+      title:"📊 評分制度小地圖",
+      intro:"這些只是認識文化差異的補充知識，不是要背誦每個國家的規則。",
+      items:[
+        {es:"Alemania", zh:"1(最好)–6(最差)等第；Abitur 另採計 15–0 分量表"},
+        {es:"Taiwán / muchos países de A. Latina", zh:"0–100分，數字越高越好"},
+        {es:"Finlandia", zh:"標準化考試少，更重視質性/形成性評量，不執著單一總分"}
+      ]
+    },
+    trap:"跨國比較成績時，先確認「這個數字是越大越好還是越小越好」，不能直接套用台灣的直覺去解讀別的國家的分數——德國的「1」是最頂尖的成績，不是不及格。",
+    source:"文法補充"
   }
 
 ];
