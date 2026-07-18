@@ -1736,6 +1736,82 @@ const GRAMMAR_DATA = [
     ],
     trap:"哈瓦那唐人街現在人口規模遠不如全盛時期——1959年革命後私營事業收歸國有，大批華人離開古巴，現在的唐人街主要靠1990年代啟動的文化保存計畫維持文化地標的功能，不是仍有大量華人居住的活絡社區，這點跟秘魯Chifa至今仍融入日常飲食文化的狀態不同。",
     source:"文法補充"
+  },
+
+  // ══ 🗣️ C1 俚語特區：母語者真的會用，但課本少教 ══
+  // 方向跟B2不同：B2懂新聞/文化/正式表達，C1懂母語者日常/影集/雙關/地域差異
+  // 不堆髒話/網路梗，重點是「聽得懂、看得懂」，不是要求主動使用
+
+  {
+    id:"g81", cat:"slang", level:"c1",
+    title:"日常反應：聽懂母語者的口頭禪",
+    rule:"這幾個是西語母語者聊天時幾乎每句話都會夾雜的「反應詞」，字面意思常常翻不出來，功能上更接近中文的「還好啦／沒事／隨便」這類填空語氣詞，聽懂比會用更重要。",
+    examples:[
+      {es:"¿Qué tal? Todo bien, gracias.", zh:"最近如何？都還好，謝謝。（¿Qué tal? 比課本教的「你好」更像是在問近況）"},
+      {es:"Se me cayó el café, pero no pasa nada.", zh:"我咖啡打翻了，不過沒關係啦。（No pasa nada：沒事、不用在意）"},
+      {es:"¿Vamos mañana? — Está bien.", zh:"我們明天去？——好啊。（Está bien：口頭答應/同意，比Sí更隨性）"},
+      {es:"Perdí el autobús otra vez... ni modo.", zh:"我又錯過公車了……唉，沒辦法。（Ni modo：墨西哥高頻口頭禪，「事已至此、只能這樣」的無奈聳肩感）"}
+    ],
+    trap:"這些詞的共同點是：字面翻譯常常誤導（No pasa nada字面是「什麼都沒發生」，實際是在說「別放在心上」），母語者說出口時往往帶著一個聳肩或攤手的肢體語氣，語調比字面意思更重要。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g82", cat:"slang", level:"c1",
+    title:"情緒表達：抱怨、無奈、受夠了怎麼說",
+    rule:"表達情緒疲勞/不耐煩時，母語者很少直接說「Estoy enojado」，更常用這類固定短語傳達「已經到極限了」的語氣，且有一個重要地區陷阱：¡Qué pena! 在多數拉美國家是「真可惜」，但在哥倫比亞及部分中美洲，pena 常常指「不好意思/尷尬」，等於是在道歉，不是在惋惜。",
+    examples:[
+      {es:"¡Qué barbaridad, otra vez llegó tarde!", zh:"太誇張了，他又遲到了！（¡Qué barbaridad!：對誇張的事表達驚訝/不滿）"},
+      {es:"Perdí tu regalo... ¡qué pena me da!", zh:"我把你的禮物弄丟了……我真不好意思！（哥倫比亞用法：pena＝尷尬/不好意思，不是「可惜」）"},
+      {es:"Puedes ir o no ir, a mí me da igual.", zh:"你去不去都行，我無所謂。（Me da igual：我不在乎）"},
+      {es:"Estoy harta de repetir lo mismo mil veces.", zh:"我受夠了重複講一樣的話一千次。（Estoy harto/a de + 名詞/動詞：受夠了……）"},
+      {es:"No aguanto más este calor.", zh:"我再也受不了這種熱了。（No aguanto más：我忍不下去了，比No puedo más語氣更強烈）"}
+    ],
+    trap:"¡Qué pena! 是這批裡最危險的地雷——同一句話，在秘魯/智利聽起來是「真可惜」（惋惜），在哥倫比亞聽起來卻是「不好意思」（道歉/尷尬），聽到這句要先看上下文再判斷情緒方向，不能套單一意思。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g83", cat:"slang", level:"c1",
+    title:"人際互動與年輕人口語：另外四國補給",
+    rule:"延續五國俚語地圖（見「拉美各地道地口語」卡），這裡補上四個高頻但功能不同的詞：echar la mano 是泛拉美通用的「幫忙」，dale 是最安全的泛拉美同意語，órale 是墨西哥語意最有彈性的一個詞（依語氣可以是驚訝/同意/催促），de una 是哥倫比亞的「立刻/當然」。",
+    examples:[
+      {es:"¿Me echas la mano con esto?", zh:"你可以幫我一下這個嗎？（echar la mano：泛拉美通用，幫忙）"},
+      {es:"¿Vamos al cine? — ¡Dale!", zh:"我們去看電影？——走吧！（dale：最泛拉美的「好啊」，阿根廷/委內瑞拉/加勒比海都高頻）"},
+      {es:"¡Órale, no sabía que hablabas español!", zh:"哇，我不知道你會說西語！（órale：墨西哥語氣詞，這裡是驚訝，換個語調可以是「好喔/快點」）"},
+      {es:"¿Nos vamos ya? — De una.", zh:"我們現在走嗎？——當然，走吧。（de una：哥倫比亞，立刻/毫不猶豫）"}
+    ],
+    trap:"órale 是這批裡最需要靠語調判斷意思的詞——同一個字，驚訝地說是「哇！」，平淡地說是「好喔」，急促地說是「快點！」，光看文字容易誤判，要連著語境/語氣一起理解。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g84", cat:"slang", level:"c1",
+    title:"影集常見句：母語者的口頭反應",
+    rule:"這幾句是西語影集/日常對話裡出現頻率極高的「反應句」，功能類似中文的「真的假的／不會吧／我發誓」，教科書很少教，但聽力材料裡幾乎每集都會出現。",
+    examples:[
+      {es:"¿En serio? No puedo creerlo.", zh:"真的嗎？我不敢相信。"},
+      {es:"No me digas que perdiste las llaves otra vez.", zh:"不會吧，你該不會又把鑰匙弄丟了。（No me digas：字面「別跟我說」，實際是「不會吧/真的假的」）"},
+      {es:"Vi el final de la serie... qué fuerte, ¿no?", zh:"我看了影集結局……太誇張了對吧？（Qué fuerte：多見於西班牙，表達震驚/衝擊，拉美也聽得懂）"},
+      {es:"Te lo juro, yo no fui.", zh:"我發誓，不是我做的。"},
+      {es:"¿Que yo pague todo? ¡Ni hablar!", zh:"要我付全部的錢？想都別想！（Ni hablar：斷然拒絕，比No更堅決）"}
+    ],
+    trap:"No me digas 字面是命令句「別跟我說」，但實際意思剛好相反——是「請繼續說，我很驚訝」，這種「字面否定、實際是鼓勵繼續講」的反差是初學者最容易誤解的地方。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g85", cat:"slang", level:"c1",
+    title:"雙關與幽默：字面翻不出來的成語",
+    rule:"這幾個成語如果只看字面會完全誤解意思——「花一隻眼睛」跟「貴」有什麼關係？「有壞奶」又是什麼意思？母語者說這些的時候完全不會意識到字面有多奇怪，因為對他們來說這就是固定搭配，跟中文「炒魷魚」不會被拆開理解是同一個道理。",
+    examples:[
+      {es:"Al principio no nos conocíamos, pero el chiste ayudó a romper el hielo.", zh:"一開始我們不認識，不過那個笑話幫忙打破了僵局。（romper el hielo：打開話題、化解尷尬）"},
+      {es:"Perdona, ¿qué dijiste? Estaba en las nubes.", zh:"抱歉，你說什麼？我剛剛在放空。（estar en las nubes：心不在焉、恍神）"},
+      {es:"Hoy tiene mala leche, mejor no le hables.", zh:"他今天心情很差，最好別跟他說話。（tener mala leche：多見於西班牙，心地不好/倒楣/心情差，依語境判斷）"},
+      {es:"Ese abrigo me costó un ojo de la cara.", zh:"那件外套花了我一大筆錢。（costar un ojo de la cara：非常貴，字面「花一隻眼睛的價錢」）"}
+    ],
+    trap:"這類成語的共同點是：拆開單字完全猜不出意思，一定要整組當一個「語塊」記，跟本站一貫的教學原則（禁止單字死背）完全一致——遇到新成語不要逐字翻譯，先當一個不可分割的整體記下來。",
+    source:"文法補充"
   }
 
 ];
@@ -1744,7 +1820,8 @@ const GRAMMAR_DATA = [
 const GRAMMAR_LEVEL_TIERS = [
   {key:"a1a2", icon:"🌱", label:"護土嫩芽"},
   {key:"b1",   icon:"💧", label:"甘露超頻"},
-  {key:"b2c1", icon:"🍯", label:"蜂王蜜釀"}
+  {key:"b2c1", icon:"🍯", label:"蜂王蜜釀"},
+  {key:"c1",   icon:"🗣️", label:"街頭母語"}
 ];
 
 /* 全局句子索引（ep*10 + sentenceIdx）→ grammar_id
