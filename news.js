@@ -90,6 +90,46 @@ const NEWS_ITEMS = [
     headline:'Inteligencia artificial: críticos y líderes [?] debatieron en el Bletchley Park.',
     task:{ type:'blank', answer:'tecnológicos', zh:'科技的（複數）', hint:'adjetivo m. pl. — relacionado con la tecnología' },
     cefr:'B2', topic:'tecnología 🤖'
+  },
+  {
+    id:'nw12',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/el-tdah-de-trastorno-a-ventaja-en-la-supervivencia-de-los-humanos/a-68387884',
+    headline:'El TDAH, una pieza [?] en la supervivencia de los humanos.',
+    task:{ type:'blank', answer:'clave', zh:'關鍵的', hint:'adjetivo — de importancia fundamental para algo' },
+    cefr:'B2', topic:'neurodiversidad 🧩'
+  },
+  {
+    id:'nw13',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/global-es-inclusi%C3%B3n-cuando-ser-diferente-es-normal/video-71122594',
+    headline:'Inclusión: cuando ser [?] es normal.',
+    task:{ type:'blank', answer:'diferente', zh:'不同的', hint:'adjetivo — que no es igual a los demás' },
+    cefr:'B2', topic:'neurodiversidad 🧩'
+  },
+  {
+    id:'nw14',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/c%C3%B3mo-el-racismo-marca-a-las-sociedades-latinoamericanas/a-68635668',
+    headline:'Cómo el racismo [?] a las sociedades latinoamericanas.',
+    task:{ type:'blank', answer:'marca', zh:'烙印／標記', hint:'verbo, 第三人稱單數 — dejar una huella o señal profunda' },
+    cefr:'B2', topic:'diversidad étnica 🌎'
+  },
+  {
+    id:'nw15',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/pueblos-ind%C3%ADgenas-en-m%C3%A9xico-reconocidos-pero-ignorados/a-77148663',
+    headline:'Pueblos indígenas en México: reconocidos, pero [?].',
+    task:{ type:'blank', answer:'ignorados', zh:'被忽視的', hint:'participio pasado de ignorar — no prestarle atención a algo' },
+    cefr:'B2', topic:'diversidad étnica 🌎'
+  },
+  {
+    id:'nw16',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/el-habla-no-es-inocente-lenguaje-y-racismo-en-latinoam%C3%A9rica/a-66343016',
+    headline:'El habla no es [?]: lenguaje y racismo en Latinoamérica.',
+    task:{ type:'blank', answer:'inocente', zh:'無辜的／清白的', hint:'adjetivo — que no tiene culpa o responsabilidad' },
+    cefr:'B2', topic:'diversidad étnica 🌎'
   }
 ];
 
