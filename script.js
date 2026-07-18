@@ -1812,8 +1812,9 @@ function renderChunkFamilies(){
     nextSeen[fam.key] = collectedCount;
     const prevCount = seen[fam.key] || 0;
     const grew = collectedCount > prevCount;
-    const pct = Math.round(collectedCount / branches.length * 100);
-    const maturity = pct >= 80 ? '🌻 成熟茂盛' : pct >= 40 ? '🌿 成長中' : collectedCount > 0 ? '🌱 剛發芽' : '⚪ 還沒開始';
+    // 沿用🌻語塊花園既有的萌芽系統，不另外發明一套成熟度用詞
+    const pct = collectedCount / branches.length;
+    const maturity = pct >= 1 ? '🌻 日頭花開' : pct >= 0.6 ? '🍀 幸運草' : pct >= 0.3 ? '🍃 猛漲期' : collectedCount > 0 ? '🌱 初萌芽' : '𑁍 還沒播種';
     const nextBranch = branches.find(b => !b.collected);
     return `
     <div class="chunk-fam-tree" onclick="openGrammarCard('${fam.grammarId}')">
