@@ -1658,6 +1658,84 @@ const GRAMMAR_DATA = [
     ],
     trap:"蒙特梭利常被誤認為只有私立貴族學校才用得起——但拉美這兩個組織的實際案例證明，透過在地化低成本教具與社區推廣，蒙特梭利完全可以深入弱勢社區跟鄉村學校，不是天生的「貴族教育」。",
     source:"文法補充"
+  },
+
+  {
+    id:"g75", cat:"subjunctive", level:"b2c1",
+    title:"過去虛擬式（Imperfecto de Subjuntivo）：與現在事實相反的假設",
+    rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。過去虛擬式的規則變化基準是「陳述式簡單過去式第三人稱複數」去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
+    examples:[
+      {es:"Si tuviera dinero, viajaría por toda Latinoamérica.", zh:"如果我有錢，我會環遊整個拉丁美洲。"},
+      {es:"Ojalá pudiera hablar español perfectamente.", zh:"真希望我能講一口完美的西語。"},
+      {es:"No creía que fuera tan difícil aprender los tiempos verbales.", zh:"我沒想到學動詞時態會這麼難。"}
+    ],
+    trap:"過去虛擬式的規則變化基準是「陳述式簡單過去式第三人稱複數」，不是從原形動詞直接推——例如 tener → tuvieron → tuviera（不是從tener直接變）。這也是為什麼不規則動詞的過去虛擬式反而更好推：只要記得該動詞的簡單過去式第三人稱複數，就能推出整組過去虛擬式變位。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g76", cat:"grammar", level:"b2c1",
+    title:"被動語態：voz pasiva 與更常用的 se pasivo",
+    rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（依主詞陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞第三人稱，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
+    examples:[
+      {es:"El puente fue construido por ingenieros franceses.", zh:"這座橋是由法國工程師建造的。"},
+      {es:"Se habla español en toda Latinoamérica.", zh:"整個拉丁美洲都講西語。"},
+      {es:"Aquí se vende fruta fresca todos los días.", zh:"這裡每天都賣新鮮水果。"}
+    ],
+    trap:"se pasivo看起來像反身動詞句型，但意思完全不同——「Se vende la casa」不是「房子賣自己」，是「房子被賣／房子出售中」。判斷關鍵是看主詞是不是真的能主動執行這個動作：房子不能主動賣自己，所以這裡一定是被動用法，不是反身用法。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g77", cat:"connector", level:"b2c1",
+    title:"讓步子句：Aunque 的雙重用法（陳述式 vs 虛擬式）",
+    rule:"Aunque（雖然/即使）後面接陳述式還是虛擬式，意思會不同：①Aunque + 陳述式＝敘述已知的事實，說話者確定這件事發生了，例如 Aunque llueve, voy a salir.（雖然在下雨〔真的在下雨〕，我還是要出門）。②Aunque + 虛擬式＝假設/不確定的情況，說話者不確定或不在乎這件事是否發生，例如 Aunque llueva, voy a salir.（就算下雨〔不確定會不會下雨，或不在乎〕，我還是要出門）。這是同一個連接詞，換個動詞語氣就能表達完全不同的態度，是B2讓步子句的核心考點。",
+    examples:[
+      {es:"Aunque llueve, iré a la fiesta.", zh:"雖然在下雨，我還是會去派對（真的在下雨）。"},
+      {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（不確定會不會下雨）。"},
+      {es:"Aunque no tengo mucho dinero, soy feliz.", zh:"雖然我沒有很多錢，但我很快樂（陳述事實）。"}
+    ],
+    trap:"同一句「Aunque + 動詞」，光換陳述式或虛擬式就能傳達說話者到底知不知道／在不在乎這件事是否為真——這個細微差異在中文翻譯上常常看不出來（兩句都可能翻成「雖然/就算下雨」），但西語母語者聽得出來態度不同，這是B2讓步子句最容易被忽略的地方。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g78", cat:"phrase", level:"b1",
+    title:"拉美家庭結構多樣性：不只有核心家庭",
+    rule:"拉美的家庭型態比「爸爸媽媽小孩」的核心家庭模式更多樣。大家庭同住（abuelos、tíos多代同堂）在許多國家仍是常態，不是例外；教父母制度（compadrazgo）讓沒有血緣關係的人（padrino/madrina）成為家庭核心的一份子，共同承擔養育責任；許多國家的事實婚姻／同居（unión libre）比例很高，不一定會走正式結婚登記；以媽媽/外婆為家庭核心的家庭型態（matrifocal）在加勒比海地區尤其常見，父親角色相對邊緣。聯合國拉美經濟委員會（CEPAL）長年追蹤這些家庭型態的演變趨勢。",
+    examples:[
+      {es:"En muchas familias latinoamericanas, varias generaciones viven bajo el mismo techo.", zh:"在許多拉美家庭裡，好幾代人住在同一個屋簷下。"},
+      {es:"El padrino y la madrina son parte importante de la familia, aunque no tengan lazos de sangre.", zh:"教父教母是家庭重要的一份子，即使沒有血緣關係。"},
+      {es:"En algunos países, la unión libre es tan común como el matrimonio formal.", zh:"在某些國家，事實婚姻跟正式結婚一樣普遍。"}
+    ],
+    trap:"不要預設「家庭」等於「爸爸媽媽小孩」的核心家庭模式——拉美很多地方大家庭同住、教父母參與育兒、不婚同居都是常態而非例外，用單一西方核心家庭的框架去理解拉美家庭會漏掉很多真實樣貌。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g79", cat:"phrase", level:"b1",
+    title:"Chifa：中秘融合美食的移民故事",
+    rule:"「Chifa」是秘魯的中華融合料理，源自1849年開始抵達秘魯的華人移民（當時被稱為「苦力」culí），多數來自廣東，最初是為了到甘蔗種植園工作。這些移民帶來的飲食傳統，跟當地食材/習慣融合，逐漸發展出秘魯獨有的中華料理。「Chifa」這個詞本身源自廣東話「食飯」（吃飯），1930年代開始在利馬被當地人用來稱呼這類餐館。1921年，利馬唐人街Capón開了第一家正式掛名的Chifa餐廳「Kuong Tong」（意為「廣東」），成功把中式菜餚介紹給利馬人，其中一道用鮑魚、中式菇類與雞肉做成的料理，後來被當地人另外取名為「taypá」，成為經典融合菜代表。",
+    examples:[
+      {es:"El chifa es la fusión de la cocina china y la peruana.", zh:"Chifa是中式與秘魯料理的融合。"},
+      {es:"La palabra 'chifa' viene del cantonés que significa 'comer arroz'.", zh:"「chifa」這個詞源自廣東話，意思是「吃飯」。"},
+      {es:"Los primeros inmigrantes chinos llegaron a Perú para trabajar en las plantaciones.", zh:"最早的華人移民抵達秘魯，是為了到種植園工作的。"}
+    ],
+    trap:"Chifa不是「中國菜在秘魯開分店」——是移民歷經數十年在地化、跟秘魯本土食材與烹飪習慣真正融合後長出來的獨立料理體系，秘魯人自己也把Chifa視為道地秘魯美食的一部分，不是外來料理。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g80", cat:"phrase", level:"b1",
+    title:"哈瓦那唐人街：加勒比海曾經最大的中華街",
+    rule:"古巴的華人移民史始於1847年6月3日，第一批「苦力」（culíes）搭乘Oquendo號抵達哈瓦那港，多數來自廣東。1847年到1874年間，約有15萬華人移民抵達古巴，多數以契約勞工身分填補非洲奴隸制度逐步廢除後的勞動力缺口，前往甘蔗種植園工作。19世紀末，華人移民聚集在Zanja街與Dragones街一帶，1874年起陸續開設商店、小吃店、洗衣店等，逐漸形成哈瓦那唐人街。20世紀初，約有一萬名華人住在唐人街十個街區裡，曾是僅次於舊金山的世界第二大唐人街。1959年古巴革命後私營事業被收歸國有，大批華人離開古巴，唐人街逐漸沒落，直到1990年代才啟動文化保存與復興計畫。",
+    examples:[
+      {es:"Los primeros inmigrantes chinos llegaron a Cuba en 1847.", zh:"最早的華人移民在1847年抵達古巴。"},
+      {es:"El Barrio Chino de La Habana fue uno de los más grandes del mundo.", zh:"哈瓦那唐人街曾是世界上最大的唐人街之一。"},
+      {es:"En la década de 1990 comenzó un programa para revivir la cultura china en Cuba.", zh:"1990年代開始了一項復興古巴華人文化的計畫。"}
+    ],
+    trap:"哈瓦那唐人街現在人口規模遠不如全盛時期——1959年革命後私營事業收歸國有，大批華人離開古巴，現在的唐人街主要靠1990年代啟動的文化保存計畫維持文化地標的功能，不是仍有大量華人居住的活絡社區，這點跟秘魯Chifa至今仍融入日常飲食文化的狀態不同。",
+    source:"文法補充"
   }
 
 ];
