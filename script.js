@@ -2593,6 +2593,39 @@ let _gsupTopicFilter = 'all';
 function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
+// ── 🧭 我是什麼程度？等級路標，導向文法儲水槽對應等級 ──
+const LEVEL_NAV_ITEMS = [
+  {icon:'🌱', label:'我是新手', sub:'從最基礎開始', level:'a1a2'},
+  {icon:'💧', label:'我會基礎，想加深', sub:'日常對話再進階', level:'b1'},
+  {icon:'🍯', label:'我要準備考試', sub:'DELE B2/C1程度', level:'b2c1'},
+  {icon:'🗣️', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
+];
+function renderLevelNav(){
+  const el = document.getElementById('levelNavBody');
+  if(!el) return;
+  el.innerHTML = `<div class="lvlnav-box">
+    <div class="lvlnav-title">🧭 我是什麼程度？</div>
+    <div class="lvlnav-grid">
+      ${LEVEL_NAV_ITEMS.map(it => `
+        <button class="lvlnav-btn" onclick="jumpToLevelFilter('${it.level}')">
+          <span class="lvlnav-icon">${it.icon}</span>
+          <span class="lvlnav-label">${it.label}</span>
+          <span class="lvlnav-sub">${it.sub}</span>
+        </button>`).join('')}
+    </div>
+  </div>`;
+}
+function jumpToLevelFilter(levelKey){
+  switchMainTab('know');
+  filterGrammarSupplementByLevel(levelKey);
+  const body = document.getElementById('grammarSupplementBody');
+  if(body && !body.classList.contains('open')) toggleGrammarSupplement();
+  setTimeout(()=>{
+    const s = document.getElementById('grammarSupplementSection');
+    if(s) s.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 60);
+}
+
 function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
   const filterEl = document.getElementById('grammarLevelFilter');
@@ -2665,7 +2698,7 @@ function renderSerEstarStation(){
 const INDIC_SUBJ_PAIRS = [
   {verb:"hablar", indic:{es:"Hablas español.", zh:"你說西語。"}, subj:{es:"Espero que hables español.", zh:"希望你會說西語。"}},
   {verb:"tener",  indic:{es:"Tienes miedo.", zh:"你很害怕。"}, subj:{es:"No creo que tengas miedo.", zh:"我不覺得你會怕。"}},
-  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。"}},
+  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。（es：dudar que + subjuntivo = 表達不確定）"}},
   {verb:"poder",  indic:{es:"Puedes venir.", zh:"你可以來。"}, subj:{es:"Espero que puedas venir.", zh:"希望你可以來。"}},
   {verb:"ser",    indic:{es:"Eres feliz.", zh:"你很快樂。"}, subj:{es:"Espero que seas feliz.", zh:"希望你快樂。"}},
   {verb:"🛫 旅行道別", indic:{es:"Mañana vuelas a casa.", zh:"明天你要飛回家了。"}, subj:{es:"¡Que tengas buen vuelo!", zh:"祝飛行順利！"}},
@@ -4324,6 +4357,7 @@ function renderChangelog(){
   renderGardenView();
   renderGardenFreshness();
   renderDailyTask();
+  renderLevelNav();
   initTTS();
   initGroupButtons();
   restoreActiveTab();

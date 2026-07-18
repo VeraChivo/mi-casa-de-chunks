@@ -403,7 +403,7 @@ const GRAMMAR_DATA = [
     title:"Me gusta vs Me encanta：喜歡的程度",
     rule:"中文腦：「我喜歡這首歌。」→ 西語腦：「這首歌讓我覺得喜歡。」→ Me gusta esta canción. 動詞跟著「被喜歡的事物」走，不是說話者！Me gusta（單數事物）/ Me gustan（複數事物）；Me encanta = 我超愛（比 gusta 強 10 倍）。",
     examples:[
-      {es:"Me gusta el chocolate.", zh:"我喜歡巧克力。（單數 → gusta）"},
+      {es:"Me gusta el chocolate.", zh:"我喜歡巧克力。（單數 → gusta）（es：me gusta = 它讓我喜歡，主詞邏輯跟中文「我喜歡」相反）"},
       {es:"Me encanta chapotear en los charcos.", zh:"我超愛在水坑裡玩水。"},
       {es:"Me gustan las galletas.", zh:"我喜歡餅乾。（複數 → gustan）"},
       {es:"No me gusta la lluvia.", zh:"我不喜歡下雨。（否定：前面加 no）"},
@@ -740,7 +740,7 @@ const GRAMMAR_DATA = [
         {es:"Tengo sueño.", zh:"我想睡了。"},
         {es:"Tengo frío.", zh:"我冷了。"},
         {es:"Tengo calor.", zh:"我熱了。"},
-        {es:"Tengo miedo.", zh:"我害怕。"},
+        {es:"Tengo miedo.", zh:"我害怕。（es：tener + 名詞 = 感到某種狀態）"},
         {es:"Tengo razón.", zh:"我是對的。"},
         {es:"Tengo prisa.", zh:"我在趕時間。"},
         {es:"Tengo tiempo.", zh:"我有空。"},
@@ -1399,7 +1399,7 @@ const GRAMMAR_DATA = [
     title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
     rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞數量要跟後面的名詞一致（單數→動詞單數，複數→複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用第三人稱單數",
     examples:[
-      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。（se pasivo，主詞 el Día 是單數）"},
+      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。（se pasivo，主詞 el Día 是單數）（es：se + 動詞 = 不指出動作者的表達方式）"},
       {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。（se pasivo，flores 複數 → venden 複數）"},
       {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（se impersonal，que 後面整句，動詞固定單數）"}
     ],
@@ -2125,7 +2125,7 @@ const GRAMMAR_DATA = [
       {es:"Pues no sé qué decirte.", zh:"呃，我不知道該說什麼。（pues：這裡是猶豫語氣詞，爭取思考時間，不是「所以/因此」的邏輯連接功能）"},
       {es:"Bueno... vamos a ver qué pasa.", zh:"呃……我們看看會怎樣吧。（bueno在句首：不是「好的」，是猶豫/轉折/準備換話題的語氣詞）"},
       {es:"Ya veo por qué no viniste.", zh:"我懂了，我知道你為什麼沒來了。（ya veo：不是字面「已經看見」，是「我懂了/我了解了」）"},
-      {es:"Ya veremos qué pasa.", zh:"到時候再看看情況吧。（ya veremos：不承諾任何事的緩兵之計，接近「再說吧」）"},
+      {es:"Ya veremos qué pasa.", zh:"到時候再看看情況吧。（ya veremos：不承諾任何事的緩兵之計，接近「再說吧」）（es：ya 不只表示「已經」，也可表示語氣轉折）"},
       {es:"¡Ya basta!", zh:"夠了！（ya basta：表達已經到極限、要求停止）"},
       {es:"¿Terminaste? — Ya está.", zh:"你弄完了嗎？——好了，就這樣。（ya está：完成了/就這樣定案，帶收尾語氣）"}
     ],
