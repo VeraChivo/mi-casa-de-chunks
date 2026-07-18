@@ -3602,23 +3602,67 @@ function openGardenQuizToday(){
 }
 
 // ── 🌱 今日耕耘任務：時間預算式任務引擎，一次只顯示一項，完成才顯示下一項 ──
+const DTASK_ENERGY_OPTIONS = [
+  {key:'low',    icon:'🔋', label:'低能量'},
+  {key:'normal', icon:'🔋🔋', label:'普通'},
+  {key:'high',   icon:'🔋🔋🔋', label:'高能量'}
+];
+// 時間(10/20/30分) × 能量(low/normal/high) 兩個維度交叉，決定今天實際要做幾件、哪幾件任務
+// 低能量：即使時間夠，也只給最低限度；高能量：時間夠的話多塞一項，不逼低能量的人硬做滿
 const DAILY_TASK_RECIPES = {
-  10: [
-    {icon:'🌾', label:'學 1 個語塊', target:'play'},
-    {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'},
-    {icon:'📰', label:'讀 1 篇短新聞', target:'news'}
-  ],
-  20: [
-    {icon:'🌾', label:'複習語塊（今日小份抓蟲）', target:'garden-quiz'},
-    {icon:'🎵', label:'做 1 題歌詞填空', target:'lyrics'},
-    {icon:'📰', label:'讀 1 篇 B1/B2 文章', target:'news'}
-  ],
-  30: [
-    {icon:'🌾', label:'語塊複習（今日小份抓蟲）', target:'garden-quiz'},
-    {icon:'🎵', label:'歌詞理解練習', target:'lyrics'},
-    {icon:'📰', label:'讀一篇 DW 新聞', target:'news'},
-    {icon:'✍️', label:'日記寫一句', target:'diary'}
-  ]
+  10: {
+    low: [
+      {icon:'🎵', label:'聽 1 段歌曲片段', target:'lyrics'},
+      {icon:'🌾', label:'複習 1 個語塊', target:'garden-quiz'}
+    ],
+    normal: [
+      {icon:'🌾', label:'學 1 個語塊', target:'play'},
+      {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'},
+      {icon:'📰', label:'讀 1 篇短新聞', target:'news'}
+    ],
+    high: [
+      {icon:'🌾', label:'學 1 個語塊', target:'play'},
+      {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'},
+      {icon:'📰', label:'讀 1 篇短新聞', target:'news'}
+    ]
+  },
+  20: {
+    low: [
+      {icon:'🌾', label:'複習 1 個語塊（今日小份抓蟲）', target:'garden-quiz'},
+      {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'}
+    ],
+    normal: [
+      {icon:'🌾', label:'複習語塊（今日小份抓蟲）', target:'garden-quiz'},
+      {icon:'🎵', label:'做 1 題歌詞填空', target:'lyrics'},
+      {icon:'✍️', label:'日記寫一句', target:'diary'}
+    ],
+    high: [
+      {icon:'🌾', label:'複習語塊（今日小份抓蟲）', target:'garden-quiz'},
+      {icon:'🎵', label:'做 1 題歌詞填空', target:'lyrics'},
+      {icon:'📰', label:'讀 1 篇 B1/B2 文章', target:'news'},
+      {icon:'✍️', label:'日記寫一句', target:'diary'}
+    ]
+  },
+  30: {
+    low: [
+      {icon:'🌾', label:'複習 1 個語塊', target:'garden-quiz'},
+      {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'},
+      {icon:'✍️', label:'日記寫一句', target:'diary'}
+    ],
+    normal: [
+      {icon:'🌾', label:'語塊複習（今日小份抓蟲）', target:'garden-quiz'},
+      {icon:'🎵', label:'歌詞理解練習', target:'lyrics'},
+      {icon:'📰', label:'讀一篇 DW 新聞', target:'news'},
+      {icon:'✍️', label:'日記寫一句', target:'diary'}
+    ],
+    high: [
+      {icon:'🌾', label:'語塊複習（今日小份抓蟲）', target:'garden-quiz'},
+      {icon:'🎵', label:'歌詞理解練習', target:'lyrics'},
+      {icon:'📰', label:'讀一篇 DW 新聞', target:'news'},
+      {icon:'📖', label:'外部閱讀入口任務', target:'reading'},
+      {icon:'✍️', label:'日記寫一句', target:'diary'}
+    ]
+  }
 };
 const DTASK_CELEBRATE_MSGS = [
   {es:'¡Felicidades, jardinero/jardinera! 🌱 ¡Hoy has cuidado tu jardín de español! ✨ Cada pequeño paso hace crecer tu mundo en español.', zh:'恭喜，西語小園丁！今天你照顧了你的西語花園！每一小步，都讓你的西語世界成長。'},
@@ -3633,7 +3677,7 @@ function _dtaskTodayISO(){
 function getDailyTaskState(){
   let st;
   try { st = JSON.parse(localStorage.getItem('peppa_daily_task_v1') || 'null'); } catch(e){ st = null; }
-  if(!st || st.date !== _dtaskTodayISO()) st = { date:_dtaskTodayISO(), tier:null, doneIdx:[] };
+  if(!st || st.date !== _dtaskTodayISO()) st = { date:_dtaskTodayISO(), tier:null, energy:null, doneIdx:[] };
   return st;
 }
 function saveDailyTaskState(st){
@@ -3642,6 +3686,14 @@ function saveDailyTaskState(st){
 function dtaskPickTier(tier){
   const st = getDailyTaskState();
   st.tier = tier;
+  st.energy = null;
+  st.doneIdx = [];
+  saveDailyTaskState(st);
+  renderDailyTask();
+}
+function dtaskPickEnergy(energy){
+  const st = getDailyTaskState();
+  st.energy = energy;
   st.doneIdx = [];
   saveDailyTaskState(st);
   renderDailyTask();
@@ -3673,6 +3725,10 @@ function dtaskJump(target){
     setTimeout(()=>{ const s=document.getElementById('talkMamaVoice'); if(s) s.scrollIntoView({behavior:'smooth',block:'center'}); }, 30);
     return;
   }
+  if(target==='reading'){
+    jumpToLevelFilter('c2');
+    return;
+  }
 }
 function renderDailyTask(){
   const el = document.getElementById('dailyTaskBody');
@@ -3689,7 +3745,20 @@ function renderDailyTask(){
     return;
   }
 
-  const recipe = DAILY_TASK_RECIPES[st.tier];
+  if(!st.energy){
+    const energyRow = DTASK_ENERGY_OPTIONS.map(e => `<span class="dtask-chip" onclick="dtaskPickEnergy('${e.key}')">${e.icon} ${e.label}</span>`).join('');
+    el.innerHTML = `<div class="dtask-box">
+      <div class="dtask-title-row">
+        <div class="dtask-title">🌱 今日耕耘任務</div>
+        <span class="dtask-chip-row">${chipRow}</span>
+      </div>
+      <div class="dtask-prompt">今天狀態如何？</div>
+      <div class="dtask-chip-row">${energyRow}</div>
+    </div>`;
+    return;
+  }
+
+  const recipe = DAILY_TASK_RECIPES[st.tier][st.energy];
   const doneCount = st.doneIdx.length;
   const allDone = doneCount >= recipe.length;
   let itemsHtml = '';
@@ -3709,6 +3778,7 @@ function renderDailyTask(){
       <div class="dtask-title">🌱 今日耕耘任務</div>
       <span class="dtask-chip-row">${chipRow}</span>
     </div>
+    <div class="dtask-energy-tag">${(DTASK_ENERGY_OPTIONS.find(e=>e.key===st.energy)||{}).icon||''} ${(DTASK_ENERGY_OPTIONS.find(e=>e.key===st.energy)||{}).label||''} <span class="dtask-energy-change" onclick="dtaskPickEnergy(null)">（換一個）</span></div>
     <div class="dtask-list">${itemsHtml}</div>
     ${allDone ? (()=>{ const m = DTASK_CELEBRATE_MSGS[Math.floor(Math.random()*DTASK_CELEBRATE_MSGS.length)]; return `<div class="dtask-celebrate">🎉 <span class="dtask-celebrate-es">${m.es}</span><br><span class="dtask-celebrate-zh">${m.zh}</span></div>`; })() : ''}
   </div>`;

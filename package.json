@@ -1,0 +1,9 @@
+{
+  "name": "mi-casa-de-chunks",
+  "private": true,
+  "version": "1.0.0",
+  "description": "西語學習網站 — 純Vanilla JS，零框架，零後端",
+  "scripts": {
+    "check": "node maintenance.js"
+  }
+}
