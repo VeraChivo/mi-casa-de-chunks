@@ -178,6 +178,22 @@ const NEWS_ITEMS = [
     headline:'Coca-Cola lanzará [?] con azúcar de caña en EU.',
     task:{ type:'blank', answer:'versión', zh:'版本', hint:'sustantivo f. — una variante o edición diferente de algo' },
     cefr:'B2', topic:'economía 💰'
+  },
+  {
+    id:'nw23',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/per%C3%BA-decreta-emergencia-y-militariza-frontera-con-chile/a-74948028',
+    headline:'Perú decreta emergencia y [?] la frontera con Chile.',
+    task:{ type:'blank', answer:'militariza', zh:'軍事化', hint:'verbo, 第三人稱單數 — poner bajo control o vigilancia militar' },
+    cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw24',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/el-drama-de-los-migrantes-en-la-frontera-polonia-bielorrusia/a-73162133',
+    headline:'El [?] de los migrantes en la frontera Polonia-Bielorrusia.',
+    task:{ type:'blank', answer:'drama', zh:'悲劇／慘況', hint:'sustantivo m. — una situación de sufrimiento intenso' },
+    cefr:'B2', topic:'migración 🧳'
   }
 ];
 
