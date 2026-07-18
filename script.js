@@ -2747,20 +2747,16 @@ function _grammarExChunks(es, playExpr){
 
 // ── 💧 文法儲水槽（沒有綁定特定劇情句子、從外面引進來的零散文法點） ──
 // 等級標籤只是導覽輔助，不是內容鎖：篩選只是隱藏/顯示，隨時可以切回「全部」看到所有卡片
-const GRAMMAR_TOPIC_IDS = {
-  culture: ['g24','g25','g26','g45','g46','g47','g48','g49'],
-  daily:   ['g14','g15','g16','g36','g37','g38','g39','g40','g43','g44']
-};
-const GRAMMAR_TOPIC_CHIPS = [
-  {key:'all',     icon:'📋', label:'全部'},
-  {key:'grammar', icon:'🔧', label:'文法骨架'},
-  {key:'culture', icon:'🌍', label:'文化地圖'},
-  {key:'daily',   icon:'💬', label:'日常開口'}
+// 27種cat值太多，不會全部露出——先分成4個大分群，選了等級之後才出現這一層「再細分」篩選（漸進式，不是三排常駐）
+const CAT_GROUPS = [
+  {key:'structure',  icon:'🧩', label:'結構類', cats:['ser-estar','tense','gustar','verb-pattern','word-order','subjunctive','connector','preposition','gender','vocab']},
+  {key:'trap',       icon:'⚠️', label:'陷阱類', cats:['confusable','falseeq']},
+  {key:'expression', icon:'💬', label:'表達類', cats:['phrase','slang','pragmatics','etiquette','socioling','inclusive','rhetoric']},
+  {key:'culture',    icon:'🌎', label:'文化類', cats:['history','politics','classical','literature','cinema','etymology','proverb','reading']}
 ];
-function _gsupTopicFor(id){
-  if(GRAMMAR_TOPIC_IDS.culture.includes(id)) return 'culture';
-  if(GRAMMAR_TOPIC_IDS.daily.includes(id)) return 'daily';
-  return 'grammar';
+function _catGroupFor(cat){
+  const g = CAT_GROUPS.find(grp => grp.cats.includes(cat));
+  return g ? g.key : 'structure';
 }
 let _gsupLevelFilter = 'all';
 let _gsupTopicFilter = 'all';
@@ -2790,18 +2786,22 @@ function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
   const filterEl = document.getElementById('grammarLevelFilter');
   const topicEl = document.getElementById('grammarTopicFilter');
+  const topicWrap = document.getElementById('grammarTopicFilterWrap');
   if(!el) return;
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充'));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
     filterEl.innerHTML = chip('all','📋','全部') + GRAMMAR_LEVEL_TIERS.map(t=>chip(t.key, t.icon, t.label)).join('');
   }
-  if(topicEl){
-    topicEl.innerHTML = GRAMMAR_TOPIC_CHIPS.map(t=>`<span class="gsup-level-chip${_gsupTopicFilter===t.key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByTopic('${t.key}')">${t.icon} ${t.label}</span>`).join('');
+  // 「再細分」只在選了具體等級（不是全部）之後才出現，不常駐三排
+  if(topicWrap) topicWrap.style.display = (_gsupLevelFilter==='all') ? 'none' : '';
+  if(topicEl && _gsupLevelFilter!=='all'){
+    const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupTopicFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByTopic('${key}')">${icon} ${label}</span>`;
+    topicEl.innerHTML = chip('all','📋','全部') + CAT_GROUPS.map(g=>chip(g.key, g.icon, g.label)).join('');
   }
   const shown = items.filter(g=>{
     const levelOk = _gsupLevelFilter==='all' || g.level===_gsupLevelFilter;
-    const topicOk = _gsupTopicFilter==='all' || _gsupTopicFor(g.id)===_gsupTopicFilter;
+    const topicOk = _gsupLevelFilter==='all' || _gsupTopicFilter==='all' || _catGroupFor(g.cat)===_gsupTopicFilter;
     return levelOk && topicOk;
   });
   el.innerHTML = shown.map(g=>{
@@ -2818,6 +2818,7 @@ function renderGrammarSupplement(){
 }
 function filterGrammarSupplementByLevel(key){
   _gsupLevelFilter = key;
+  _gsupTopicFilter = 'all';
   renderGrammarSupplement();
 }
 function filterGrammarSupplementByTopic(key){
