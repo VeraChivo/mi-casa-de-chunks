@@ -1593,6 +1593,19 @@ const GRAMMAR_DATA = [
     ],
     trap:"這個事件常被誤傳成「墨西哥男子」「高檔餐廳」——查證後主角其實是委內瑞拉人，餐廳也是女方主動選擇的地方，不是男方原本安排的高檔餐廳，轉述時要注意這些細節容易被以訛傳訛。",
     source:"文法補充"
+  },
+
+  {
+    id:"g70", cat:"phrase", level:"b1",
+    title:"拉美「新型積極父職」：從經濟供養者到情感陪伴者",
+    rule:"聯合國人口基金會（UNFPA）拉美與加勒比辦公室2021年在Spotlight Initiative計畫下發布報告「Paternidad activa」，分析拉美地區父職角色的轉型——傳統上父親被期待扮演「經濟供養者」（proveedor económico）的角色，但這份報告倡議推動「共同承擔育兒責任」（corresponsabilidad），鼓勵父親從幼兒早期（primera infancia）就投入情感陪伴，並推廣非暴力教養，逐漸擺脫傳統大男人主義（machismo）對父親角色的單一定義。",
+    examples:[
+      {es:"La paternidad activa promueve la corresponsabilidad en la crianza.", zh:"積極父職提倡育兒共同承擔責任。"},
+      {es:"Cada vez más padres se involucran emocionalmente desde la primera infancia.", zh:"越來越多父親從幼兒早期就開始情感投入。"},
+      {es:"El modelo tradicional del padre como único proveedor económico está cambiando.", zh:"父親作為唯一經濟供養者的傳統模式正在改變。"}
+    ],
+    trap:"這不代表拉美社會已經普遍脫離傳統性別角色分工——UNFPA報告本身強調這是「正在推動中」的轉型過程，需要政策與計畫持續推廣，不是已經實現的現狀。",
+    source:"文法補充"
   }
 
 ];
