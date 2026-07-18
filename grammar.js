@@ -1502,6 +1502,19 @@ const GRAMMAR_DATA = [
     ],
     trap:"這類「農耕隊／農技團」的外交合作只存在於台灣邦交國，巴拿馬已在2017年斷交，這類技術合作也隨之結束——邦交狀態會直接影響這類長期合作項目的存續。",
     source:"文法補充"
+  },
+
+  {
+    id:"g63", cat:"phrase", level:"b1",
+    title:"墨西哥可樂的兩個面向：好喝的秘密與貧窮的代價",
+    rule:"墨西哥可口可樂被很多人認為比其他國家好喝，關鍵在於用「蔗糖」（azúcar de caña）當甜味劑，美國自1980年起改用玉米糖漿，兩種甜味喝起來確實不同；經典玻璃瓶包裝也是原因之一。但同一款飲料在墨西哥恰帕斯州（Chiapas）卻是另一個故事：當地飲用水長期短缺（可口可樂集團FEMSA自1995年起持有大量水權開採許可），但可樂比瓶裝水便宜，導致聖克里斯托瓦爾德拉斯卡薩斯（San Cristóbal de las Casas）一帶可樂消費量是全國平均的8倍，聖胡安查穆拉（San Juan Chamula）糖尿病更是當地死因第三名，聯合國也曾公開譴責當地飲用水權受侵害的問題。",
+    examples:[
+      {es:"La Coca-Cola mexicana usa azúcar de caña, no jarabe de maíz.", zh:"墨西哥可樂用蔗糖，不是玉米糖漿。"},
+      {es:"En Chiapas, mucha gente bebe más Coca-Cola que agua.", zh:"在恰帕斯州，很多人喝的可樂比水還多。"},
+      {es:"La escasez de agua potable y el precio barato del refresco explican este fenómeno.", zh:"飲用水短缺加上汽水便宜的價格，解釋了這個現象。"}
+    ],
+    trap:"這不只是有趣的冷知識——恰帕斯州的可樂消費現象背後是真實的飲用水權與健康危機，聯合國都曾介入譴責，提到這個話題時記得它有輕鬆與沉重兩個面向，不是單純的「口味比較」。",
+    source:"文法補充"
   }
 
 ];
