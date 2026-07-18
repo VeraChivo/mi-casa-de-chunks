@@ -274,6 +274,14 @@ const NEWS_ITEMS = [
     headline:'La enseñanza Montessori, arma secreta contra la [?].',
     task:{ type:'blank', answer:'despoblación', zh:'人口流失', hint:'sustantivo f. — disminución de la población de una zona' },
     cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw35',
+    source:'El País',
+    sourceUrl:'https://elpais.com/cultura/2020/08/28/babelia/1598626090_900617.html',
+    headline:'Montessori, la [?] que cambió la educación moderna.',
+    task:{ type:'blank', answer:'pionera', zh:'先驅（女性）', hint:'sustantivo f. — la primera persona en abrir camino en algo' },
+    cefr:'B2', topic:'educación 📚'
   }
 ];
 
