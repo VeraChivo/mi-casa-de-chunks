@@ -2641,7 +2641,7 @@ function renderSerEstarStation(){
 const INDIC_SUBJ_PAIRS = [
   {verb:"hablar", indic:{es:"Hablas español.", zh:"你說西語。"}, subj:{es:"Espero que hables español.", zh:"希望你會說西語。"}},
   {verb:"tener",  indic:{es:"Tienes miedo.", zh:"你很害怕。"}, subj:{es:"No creo que tengas miedo.", zh:"我不覺得你會怕。"}},
-  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我不太相信你會想吃冰淇淋。（字面直譯：我懷疑你想要冰淇淋）"}},
+  {verb:"querer", indic:{es:"Quieres helado.", zh:"你想要冰淇淋。"}, subj:{es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。"}},
   {verb:"poder",  indic:{es:"Puedes venir.", zh:"你可以來。"}, subj:{es:"Espero que puedas venir.", zh:"希望你可以來。"}},
   {verb:"ser",    indic:{es:"Eres feliz.", zh:"你很快樂。"}, subj:{es:"Espero que seas feliz.", zh:"希望你快樂。"}},
   {verb:"🛫 旅行道別", indic:{es:"Mañana vuelas a casa.", zh:"明天你要飛回家了。"}, subj:{es:"¡Que tengas buen vuelo!", zh:"祝飛行順利！"}},
