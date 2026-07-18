@@ -267,12 +267,24 @@ function storyIndexJump(sceneIdx){
   if(scene.jump.type === 'grammar'){ openGrammarCard(scene.jump.id); return; }
   if(scene.jump.type === 'episode'){ switchMainTab('play'); selectEp(scene.jump.ep); }
 }
+function toggleStoryIndex(){
+  const body=document.getElementById('storyIndexScenes');
+  const t=document.getElementById('storyIndexToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
 function renderStoryIndex(){
   const el = document.getElementById('storyIndexBody');
   if(!el) return;
-  el.innerHTML = `<div class="story-idx-box">
-    <div class="story-idx-title">${STORY_INDEX.title}</div>
-    <div class="story-idx-scenes">
+  el.innerHTML = `<div class="story-idx-box card-container">
+    <div class="ammo-book-top" onclick="toggleStoryIndex()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--mizu),var(--misora))">
+      <div>
+        <div class="pb-book-title">${STORY_INDEX.title}</div>
+        <div class="pb-book-sub">把已學過的劇情/文法卡串成新手第一條路線</div>
+      </div>
+      <span id="storyIndexToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+    </div>
+    <div id="storyIndexScenes" class="ammo-body">
       ${STORY_INDEX.scenes.map((s, i) => `
         <div class="story-idx-scene">
           <div class="story-idx-scene-head">${s.icon} ${s.label}</div>
