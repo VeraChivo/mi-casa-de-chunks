@@ -1645,6 +1645,19 @@ const GRAMMAR_DATA = [
     ],
     trap:"就算克丘亞語這類語言使用人數達數百萬，仍被列為瀕危語言——使用人數多不代表沒有滅絕風險，語言復興需要教育政策與制度層面的持續支持，不是自然就會延續下去。",
     source:"文法補充"
+  },
+
+  {
+    id:"g74", cat:"phrase", level:"b1",
+    title:"蒙特梭利在拉美：從墨西哥到阿根廷的深耕",
+    rule:"蒙特梭利教育法不只存在於歐美——拉美有自己紮實的推廣網絡。墨西哥的「墨西哥蒙特梭利協會」（AMMAC）成立於1965年，是墨西哥最早正式推廣蒙特梭利教學法的機構之一，獲得墨西哥國立自治大學（UNAM）等校認證，還特別開發低成本教具、把蒙特梭利帶進偏鄉（維拉克魯茲、格雷羅、瓦哈卡）的鄉村學校。阿根廷的「阿根廷瑪麗亞蒙特梭利基金會」（FAMM）成立於2007年，透過「Montessori Solidario」（團結蒙特梭利）網絡，把蒙特梭利教育帶進弱勢社區——目前累積70個蒙特梭利計畫中，有38個設在弱勢地區，證明蒙特梭利教育不是只服務有錢人家的選項。",
+    examples:[
+      {es:"La Asociación Montessori de México lleva el método a escuelas rurales.", zh:"墨西哥蒙特梭利協會把這個教學法帶進鄉村學校。"},
+      {es:"La Fundación Argentina María Montessori trabaja en comunidades vulnerables.", zh:"阿根廷瑪麗亞蒙特梭利基金會在弱勢社區推動蒙特梭利。"},
+      {es:"El método Montessori no es solo para familias con dinero.", zh:"蒙特梭利教學法不是只給有錢人家的選項。"}
+    ],
+    trap:"蒙特梭利常被誤認為只有私立貴族學校才用得起——但拉美這兩個組織的實際案例證明，透過在地化低成本教具與社區推廣，蒙特梭利完全可以深入弱勢社區跟鄉村學校，不是天生的「貴族教育」。",
+    source:"文法補充"
   }
 
 ];
