@@ -130,6 +130,46 @@ const NEWS_ITEMS = [
     headline:'El habla no es [?]: lenguaje y racismo en Latinoamérica.',
     task:{ type:'blank', answer:'inocente', zh:'無辜的／清白的', hint:'adjetivo — que no tiene culpa o responsabilidad' },
     cefr:'B2', topic:'diversidad étnica 🌎'
+  },
+  {
+    id:'nw17',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/qu%C3%A9-pasa-cuando-los-padres-priorizan-el-celular/a-77617959',
+    headline:'Qué pasa cuando los padres [?] el celular.',
+    task:{ type:'blank', answer:'priorizan', zh:'把⋯放在優先', hint:'verbo, 第三人稱複數 — poner algo en primer lugar de importancia' },
+    cefr:'B2', topic:'crianza 🍼'
+  },
+  {
+    id:'nw18',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/la-baja-por-paternidad-reduce-el-riesgo-de-depresi%C3%B3n/a-77630867',
+    headline:'La baja por paternidad reduce el [?] de depresión.',
+    task:{ type:'blank', answer:'riesgo', zh:'風險', hint:'sustantivo m. — posibilidad de que ocurra algo malo' },
+    cefr:'B2', topic:'crianza 🍼'
+  },
+  {
+    id:'nw19',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/m%C3%A9xico-prefiero-que-mis-hijos-pierdan-un-ciclo-escolar-pero-que-sigan-vivos/a-58981668',
+    headline:'México: prefiero que mis hijos [?] un ciclo escolar, pero que sigan vivos.',
+    task:{ type:'blank', answer:'pierdan', zh:'失去／錯過（虛擬式）', hint:'preferir que + 虛擬式 — perder → pierdan（第三人稱複數現在虛擬式）' },
+    cefr:'B2', topic:'crianza 🍼'
+  },
+  {
+    id:'nw20',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/una-buena-relaci%C3%B3n-con-los-padres-mejora-la-salud-futura-de-los-j%C3%B3venes-nuevo-macroestudio-presenta-evidencia-m%C3%A1s-completa/a-65072483',
+    headline:'Una buena relación con los padres [?] la salud futura de los jóvenes.',
+    task:{ type:'blank', answer:'mejora', zh:'改善', hint:'verbo, 第三人稱單數 — hacer que algo sea mejor' },
+    cefr:'B2', topic:'crianza 🍼'
+  },
+  {
+    id:'nw21',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/cu%C3%A1nto-aprenden-o-no-los-estudiantes-en-am%C3%A9rica-latina/a-72936804',
+    headline:'¿Cuánto [?] (o no) los estudiantes en América Latina?',
+    task:{ type:'blank', answer:'aprenden', zh:'學到', hint:'verbo, 第三人稱複數 — adquirir conocimiento' },
+    cefr:'B2', topic:'educación 📚'
   }
 ];
 
