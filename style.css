@@ -1012,6 +1012,16 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .diary-entry-edit{background:none;border:none;color:var(--misora);font-size:11px;font-weight:700;cursor:pointer;padding:2px 4px}
 .diary-entry-del{background:none;border:none;color:var(--err);font-size:11px;font-weight:700;cursor:pointer;padding:2px 4px}
 
+.talk-growth-box{border:1.5px solid var(--usumizu);border-radius:12px;padding:12px 14px;background:white;margin-bottom:14px}
+.talk-growth-stat{font-size:13px;color:var(--tdark);font-weight:700;line-height:1.5}
+.talk-growth-new{margin-top:8px;font-size:12px}
+.talk-growth-new-label{color:var(--tmid);font-weight:700;margin-right:4px}
+.talk-growth-map{margin-top:10px}
+.talk-growth-map-label{font-size:11px;color:var(--tlight);font-weight:700;margin-bottom:6px}
+.talk-growth-chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--bg2);color:var(--tlight);margin:2px 4px 2px 0}
+.talk-growth-chip.is-used{background:rgba(61,184,122,.12);color:var(--ok)}
+.talk-growth-chip.is-new{background:rgba(61,184,122,.18);color:var(--ok);font-weight:800}
+
 .notes-entry{border:1.5px solid var(--usumizu);border-radius:12px;padding:10px 13px;background:white}
 .notes-entry-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .notes-entry-ts{font-size:11px;color:var(--tlight);font-weight:700}

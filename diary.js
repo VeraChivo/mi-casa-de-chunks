@@ -564,6 +564,7 @@ function talkDeleteEntry(id){
 }
 
 function renderTalkList(){
+  renderTalkGrowth();
   const el = document.getElementById('talkListArea');
   if(!el) return;
   const db = getTalkDB();
@@ -623,9 +624,86 @@ function renderTalkCardHtml(){
       </div>
     </div>
 
+    <div class="diary-list-title">🗺️ 我的西語成長軌跡</div>
+    <div id="talkGrowthArea"></div>
+
     <div class="diary-list-title">💬 心語紀錄</div>
     <div id="talkListArea" class="diary-list-area"></div>
   </div>`;
+}
+
+/* ── 🗺️ 語言回溯：本機比對「媽媽原音」的字數/語法標記成長，不需要後端 ── */
+
+const TALK_GROWTH_MARKERS = [
+  {es:'porque',        zh:'因為'},
+  {es:'aunque',        zh:'雖然／儘管'},
+  {es:'pero',          zh:'但是'},
+  {es:'sino',          zh:'而是'},
+  {es:'además',        zh:'此外'},
+  {es:'sin embargo',   zh:'然而'},
+  {es:'por eso',       zh:'因此'},
+  {es:'mientras',      zh:'當…的時候'},
+  {es:'cuando',        zh:'當…時'},
+  {es:'ojalá',         zh:'希望（後接虛擬式）'},
+  {es:'entonces',      zh:'那麼、於是'},
+  {es:'según',         zh:'根據'},
+  {es:'a pesar de',    zh:'儘管'}
+];
+
+function _talkCountWords(text){
+  return (text || '').trim().split(/\s+/).filter(w => /[a-záéíóúñü]/i.test(w)).length;
+}
+function _talkStripAccents(s){
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ñ/g,'n');
+}
+function _talkMarkersUsed(text){
+  const t = _talkStripAccents((text || '').toLowerCase());
+  return TALK_GROWTH_MARKERS.filter(m => new RegExp('(^|[^a-z])' + _talkStripAccents(m.es) + '([^a-z]|$)', 'i').test(t)).map(m => m.es);
+}
+
+function renderTalkGrowth(){
+  const el = document.getElementById('talkGrowthArea');
+  if(!el) return;
+  const db = getTalkDB().filter(t => (t.voice||'').trim()).slice().reverse(); // 轉成時間正序（舊→新）
+  if(db.length < 2){
+    el.innerHTML = `<div class="diary-empty-msg">多寫幾篇「媽媽原音」（至少2篇）之後，這裡會自動比對出妳的西語成長軌跡</div>`;
+    return;
+  }
+  const first = db[0], last = db[db.length-1];
+  const firstWords = _talkCountWords(first.voice);
+  const lastWords = _talkCountWords(last.voice);
+  const growthPct = firstWords > 0 ? Math.round((lastWords - firstWords) / firstWords * 100) : 0;
+
+  const everUsedBefore = new Set();
+  db.slice(0, -1).forEach(t => _talkMarkersUsed(t.voice).forEach(m => everUsedBefore.add(m)));
+  const usedInLast = _talkMarkersUsed(last.voice);
+  const newMarkers = usedInLast.filter(m => !everUsedBefore.has(m));
+
+  const everUsedAll = new Set();
+  db.forEach(t => _talkMarkersUsed(t.voice).forEach(m => everUsedAll.add(m)));
+
+  const growthLine = growthPct !== 0
+    ? `<div class="talk-growth-stat">你最新一篇的句子長度比第一篇${growthPct>0?'增加':'減少'}了 <b>${Math.abs(growthPct)}%</b>（${firstWords}字 → ${lastWords}字）</div>`
+    : `<div class="talk-growth-stat">字數跟第一篇差不多（${firstWords}字 → ${lastWords}字），繼續累積會更明顯</div>`;
+
+  const newMarkersHtml = newMarkers.length
+    ? `<div class="talk-growth-new"><span class="talk-growth-new-label">✨ 這篇新出現的語法標記：</span>${newMarkers.map(m=>`<span class="talk-growth-chip is-new">✓ ${m}</span>`).join('')}</div>`
+    : '';
+
+  const mapHtml = TALK_GROWTH_MARKERS.map(m => {
+    const used = everUsedAll.has(m.es);
+    return `<span class="talk-growth-chip${used?' is-used':''}">${used?'🟢':'⚪'} ${m.es}</span>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="talk-growth-box">
+      ${growthLine}
+      ${newMarkersHtml}
+      <div class="talk-growth-map">
+        <div class="talk-growth-map-label">🗺️ 語法標記地圖（在心語紀錄裡出現過就會亮起）</div>
+        ${mapHtml}
+      </div>
+    </div>`;
 }
 
 /* ── 📝 隨心一筆：不拘形式的雜記，跟媽媽碎語分開存 ── */
