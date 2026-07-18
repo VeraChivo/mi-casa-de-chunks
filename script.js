@@ -3782,9 +3782,9 @@ function openGardenQuizToday(){
 
 // ── 🌱 今日耕耘任務：時間預算式任務引擎，一次只顯示一項，完成才顯示下一項 ──
 const DTASK_ENERGY_OPTIONS = [
-  {key:'low',    icon:'🔋', label:'低能量'},
+  {key:'low',    icon:'🔋', label:'累累的'},
   {key:'normal', icon:'🔋🔋', label:'普通'},
-  {key:'high',   icon:'🔋🔋🔋', label:'高能量'}
+  {key:'high',   icon:'🔋🔋🔋', label:'嗨'}
 ];
 // 時間(10/20/30分) × 能量(low/normal/high) 兩個維度交叉，決定今天實際要做幾件、哪幾件任務
 // 低能量：即使時間夠，也只給最低限度；高能量：時間夠的話多塞一項，不逼低能量的人硬做滿
@@ -3918,7 +3918,7 @@ function renderDailyTask(){
   if(!st.tier){
     el.innerHTML = `<div class="dtask-box">
       <div class="dtask-title">🌱 今日耕耘任務</div>
-      <div class="dtask-prompt">今天想投入多少時間？</div>
+      <div class="dtask-prompt">今日耕種時長是？</div>
       <div class="dtask-chip-row">${chipRow}</div>
     </div>`;
     return;
