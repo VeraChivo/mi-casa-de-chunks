@@ -124,7 +124,9 @@ const GRAMMAR_CATS = [
   {key:"etiquette",    label:"文化禁忌與禮貌"},
   {key:"etymology",    label:"詞源"},
   {key:"falseeq",      label:"翻譯陷阱"},
-  {key:"socioling",    label:"社會語言學"}
+  {key:"socioling",    label:"社會語言學"},
+  {key:"inclusive",    label:"包容語言"},
+  {key:"reading",      label:"閱讀入口"}
 ];
 
 
@@ -2222,6 +2224,54 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"社會語言學教會我們的最重要一課是：沒有「唯一正確」的西語，只有「這個場合/這個地區/這個世代的人會怎麼說」——leísmo在馬德里是常態，在利馬卻幾乎聽不到；voseo在布宜諾斯艾利斯是新聞主播的標準腔，換個國家意義完全不同。理解這些差異背後的社會脈絡，比死記「哪個才是標準西語」更接近C2該有的語言深度。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g105", cat:"inclusive", level:"c2",
+    title:"包容語言：Todos/Todas/Todes 這場還在進行的辯論",
+    rule:"西語的陽性複數（如todos）傳統上同時代表「純陽性群體」跟「男女混合群體」，這個文法慣例近年在西語圈引發語言是否隱含性別偏見的公共辯論——這裡只中性描述各種說法實際存在、誰在用、官方立場是什麼，不代表任何立場，讀新聞/社群媒體時看到這些形式能認得、知道背景即可。",
+    examples:[
+      {es:"Todos los estudiantes deben entregar la tarea.", zh:"所有學生都要交作業。（傳統陽性複數todos，文法上同時涵蓋男女混合群體，是最普遍、教科書教的標準用法。）"},
+      {es:"Todos y todas son bienvenidos a la reunión.", zh:"歡迎所有男性和女性參加會議。（todos y todas：陽陰性並列的「雙形式」寫法，行政公文/演講裡常見，明確同時指名男女，比單用todos更清楚但也更冗長。）"},
+      {es:"Todes son bienvenides a la comunidad.", zh:"歡迎所有人加入這個社群（不分性別）。（todes：用-e取代-o/-a字尾，是近年在部分社運/LGBTI+/年輕世代圈子裡使用的性別中性形式，RAE〔西班牙皇家學院〕官方不承認這是標準文法，但在特定社群/語境裡是真實會遇到的用法。）"}
+    ],
+    trap:"RAE的官方立場是：西語的陽性複數本來就有「泛指/中性」功能，不需要另外造字，todes/-e字尾、todxs/@這類寫法不屬於規範文法；但反對意見認為語言會隨社會演變、官方規範不代表唯一現實。讀者遇到todes/elle（第三人稱中性代名詞，介於él/ella之間）這類形式時，只需要知道「這是特定圈子的性別中性表達方式，不是拼字錯誤」，這場辯論在西語圈仍在進行中，沒有單一定論。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g106", cat:"history", level:"c2",
+    title:"Al-Ándalus：伊斯蘭西班牙留下的不只是單字",
+    rule:"g102提過ojalá/algodón/azúcar這些阿拉伯語借詞，但阿拉伯文明在伊比利半島留下的痕跡遠不只語言——Al-Ándalus是穆斯林統治時期（711-1492年）西班牙的名稱，這段近800年的歷史留下建築、學術、文化共存的實體遺產，至今仍是西班牙國家認同/文化觀光/當代西班牙與阿拉伯世界關係的重要背景知識。",
+    examples:[
+      {es:"La Mezquita de Córdoba es uno de los monumentos más importantes de Al-Ándalus.", zh:"哥多華清真寺是Al-Ándalus最重要的古蹟之一。（756年開始興建，融合了伊斯蘭建築的馬蹄形拱門與後來天主教收復後加建的大教堂，同一棟建築裡疊著兩種信仰的痕跡，是「文明交會」最具體的實例。）"},
+      {es:"La Alhambra de Granada refleja el esplendor del arte islámico en España.", zh:"格拉納達的阿爾罕布拉宮反映了伊斯蘭藝術在西班牙的鼎盛時期。（Nasrid王朝的宮殿，1492年格拉納達陷落〔Reconquista的最後一步〕後才落入天主教君主手中，是穆斯林統治西班牙最後據點的具體象徵。）"},
+      {es:"Durante siglos, musulmanes, judíos y cristianos convivieron en la península ibérica.", zh:"好幾個世紀裡，穆斯林、猶太人與基督徒共同生活在伊比利半島上。（la convivencia：這段「共存」時期常被浪漫化描述成宗教和諧共處的黃金時代，但歷史學者也提醒實際情況更複雜，有合作也有衝突，不是單純的烏托邦敘事。）"}
+    ],
+    trap:"「1492年」是理解這段歷史的關鍵年份——同一年，天主教君主收復格拉納達（Reconquista正式終結）、哥倫布抵達美洲（Conquista的起點）、也是猶太人被驅逐出西班牙的年份，三件事同一年發生並非巧合，代表的是西班牙從「多元信仰共存的中世紀」轉向「單一天主教身分認同」的關鍵轉折點，新聞/歷史論述提到1492年時，背後常常在暗示這整組意義。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g107", cat:"reading", level:"c2",
+    title:"外部閱讀入口：C2真正的閱讀練習在網路上，不在這裡",
+    rule:"C2程度的閱讀能力不該被綁在幾篇固定文章上——真正的練習是自己去找一篇真實文章讀完、整理重點。這張卡不提供全文，只提供「主題→建議搜尋方向→閱讀任務」，找到文章後自己完成任務（可以寫進📔靈感孵化與開發者手札當練習記錄）。",
+    examples:[
+      {es:"Tema: memoria histórica — Buscar: site:elpais.com/es memoria histórica España", zh:"主題：歷史記憶（西班牙內戰/獨裁時期的集體記憶論戰）。任務：①用自己的話總結文章論點②指出作者的立場③找出兩個高階表達方式並解釋用法。"},
+      {es:"Tema: Al-Ándalus y el mundo árabe — Buscar: site:dw.com/es legado árabe España", zh:"主題：Al-Ándalus與阿拉伯世界遺產。任務：①總結文章提到哪些具體遺跡/文化痕跡②文章怎麼描述「convivencia」這個概念③找兩個跟g106卡片呼應的細節。"},
+      {es:"Tema: identidad latinoamericana — Buscar: site:dw.com/es identidad latinoamericana", zh:"主題：拉美認同論述。任務：①這篇文章討論的認同議題是什麼②作者引用了哪些歷史/文化背景③找出一個跟本站C1/C2已學過的文化卡片有關聯的段落。"}
+    ],
+    family:{
+      title:"🔍 更多可以試的搜尋方向",
+      intro:"用site:網域名 + 關鍵字的組合，可以鎖定特定媒體的西語文章，避開品質參差的搜尋結果：",
+      items:[
+        {es:"site:bbc.com/mundo + 關鍵字", zh:"BBC西語頻道，新聞角度多元"},
+        {es:"site:elpais.com/es + 關鍵字", zh:"西班牙大報，正式書面語域"},
+        {es:"site:dw.com/es + 關鍵字", zh:"德國之聲西語頻道，本站B2日報也用這個來源"}
+      ]
+    },
+    trap:"這個任務系統故意不提供答案——C2程度的真實考驗是「能不能自己在網路上找到一篇文章、看懂它在說什麼、抓出立場跟論證」，這件事沒有標準答案可以核對，練習的價值就在「自己動手找、自己動腦整理」這個過程本身，不是等著被餵一篇已經處理好的文章。",
     source:"文法補充"
   }
 
