@@ -2725,24 +2725,24 @@ const LYRICS_FILL_DATA = [
     grammar:'「Tienen hambre / tienen frío」用 TENER 表達生理狀態，不是說「它們是飢餓的」。TENER 家族：tener hambre（餓）/ tener frío（冷）/ tener sed（渴）/ tener sueño（睏）——這些都是搭配 tener 的固定搭配，不用 estar + 形容詞。tener 第三人稱複數 ellos/ellas → tienen。'
   },
   {
-    id:'lf06', artist:'Tradicional', song:'Arroz con Leche', level:'a0', levelLabel:'A0',
-    yt:'https://www.youtube.com/results?search_query=Arroz+con+Leche+canci%C3%B3n+infantil',
-    ytLabel:'▶ 搜尋這首',
+    id:'lf06', artist:'Toy Cantando', song:'Arroz con Leche', level:'a0', levelLabel:'A0',
+    yt:'https://youtu.be/pbeSNLPsFlQ?t=6',
+    ytLabel:'▶ 6秒處聽',
     before:'Arroz con leche, me',
     blank:'quiero',
-    after:'casar con una señorita de aquí.',
+    after:'casar, con una señorita de San Nicolás.',
     hint:'quiero = querer 第一人稱單數 (yo)',
     grammar:'「Quiero casar」第一人稱「我想要…」，querer 是不規則動詞（e→ie 詞幹變化）：quiero / quieres / quiere / queremos / quieren。後面接原形動詞（casar），注意：casarse 反身動詞「結婚」，歌詞傳統唱法省略了 me，可視為詩歌韻律省略。'
   },
   {
-    id:'lf07', artist:'Tradicional', song:'Estrellita ¿Dónde Estás?', level:'a0', levelLabel:'A0',
-    yt:'https://www.youtube.com/results?search_query=Estrellita+d%C3%B3nde+est%C3%A1s+canci%C3%B3n',
-    ytLabel:'▶ 搜尋這首',
-    before:'Estrellita, ¿dónde',
-    blank:'estás',
-    after:'? Me pregunto lo que eres.',
-    hint:'estás = estar 第二人稱單數 (tú)',
-    grammar:'「¿Dónde estás?」你在哪裡？ESTAR 用於位置（在哪裡），不用 SER。這是 ESTAR 最基礎的用法之一——問地點永遠用 estar，而不是 ser。五人稱：estoy / estás / está / estamos / están。這首歌是西語版的《Twinkle Twinkle Little Star》。'
+    id:'lf07', artist:'El Reino Infantil', song:'Estrellita ¿Dónde Estás?', level:'a0', levelLabel:'A0',
+    yt:'https://youtu.be/HHgfhQYvcVY?t=27',
+    ytLabel:'▶ 27秒處聽',
+    before:'Estrellita, ¿',
+    blank:'dónde',
+    after:'estás? Me pregunto ¿quién serás?',
+    hint:'dónde = 哪裡（疑問詞，問地點）',
+    grammar:'「¿Dónde estás?」你在哪裡？dónde 是問「地點」的疑問詞，前面一定加重音符號（跟不是疑問句的 donde 區分）。這首歌是西語版的《Twinkle Twinkle Little Star》，quién serás 用未來式表達「你會是誰」的好奇語氣。'
   },
   {
     id:'lf08', artist:'Tradicional', song:'La Araña Pequeñita', level:'a0', levelLabel:'A0',
