@@ -2437,6 +2437,19 @@ const GRAMMAR_DATA = [
     ],
     trap:"這四個詞幾乎都固定搭配現在完成式（he/has/ha + 過去分詞），是「講經驗」最自然的語感標記——聽到alguna vez/nunca/todavía/ya，大腦要立刻反應「後面應該接現在完成式」，這個組合感抓熟了，B1的經驗敘事就會流暢很多。",
     source:"文法補充"
+  },
+
+  {
+    id:"g117", cat:"verb-pattern", level:"a1a2",
+    title:"Llamarse：自我介紹的第一句話",
+    rule:"llamarse是反身動詞（字面「稱呼自己」），是西語自我介紹最基本的一句——這個網站到目前為止還沒有專屬例句，是A1程度最不該漏掉的一塊，補在這裡。",
+    examples:[
+      {es:"Me llamo Nita.", zh:"我叫妮妲。（字面：我稱呼自己為妮妲，反身代名詞me不能省略）"},
+      {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（問名字的標準問句）"},
+      {es:"Se llama Tito.", zh:"他叫迪多。（第三人稱，se不是me/te）"}
+    ],
+    trap:"Me llamo跟Soy都能用在自我介紹（Me llamo Nita. / Soy Nita.意思很接近），差別是llamarse更專注在「名字」這件事本身，soy則是更廣泛的身分描述（可以接名字，也可以接職業/國籍等）——初學者兩句都要會，混著用沒問題。",
+    source:"文法補充"
   }
 
 ];

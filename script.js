@@ -240,6 +240,49 @@ function buildNav(){
   });
 }
 
+// ── 🏡 A1-A2 劇情索引：不改episodes.js，只是把已有內容重新串成新手路線 ──
+// 盤點結果（E1-E11）：①「打招呼/認識自己」目前episodes.js完全沒有對應場景，改連到g117(llamarse)+g01(SER)文法卡；
+// 其餘三個場景都能直接連到已有劇情集數，不用新增內容
+const STORY_INDEX = {
+  title: '🏡 第一章：我的小世界',
+  scenes: [
+    {icon:'👋', label:'認識自己', chunks:[
+      {es:'Me llamo Nita.', zh:'我叫妮妲。'},
+      {es:'Yo soy Gatita Nita.', zh:'我是小貓妮妲。'}
+    ], jumpLabel:'▶ 看文法卡', jump:{type:'grammar', id:'g117'}},
+    {icon:'👨‍👩‍👧', label:'我的家人', chunks:[
+      {es:'Mamá Cata ha tenido un bebé.', zh:'貓媽媽生了一個寶寶。'}
+    ], jumpLabel:'▶ 看劇情 E4', jump:{type:'episode', ep:3}},
+    {icon:'💕', label:'我的喜好', chunks:[
+      {es:'A Nita le encanta el helado de chocolate.', zh:'妮妲超愛巧克力冰淇淋。'}
+    ], jumpLabel:'▶ 看劇情 E6', jump:{type:'episode', ep:5}},
+    {icon:'☀️', label:'我的日常', chunks:[
+      {es:'Nita tiene mucho sueño.', zh:'妮妲很想睡。'}
+    ], jumpLabel:'▶ 看劇情 E7', jump:{type:'episode', ep:6}}
+  ]
+};
+function storyIndexJump(sceneIdx){
+  const scene = STORY_INDEX.scenes[sceneIdx];
+  if(!scene) return;
+  if(scene.jump.type === 'grammar'){ openGrammarCard(scene.jump.id); return; }
+  if(scene.jump.type === 'episode'){ switchMainTab('play'); selectEp(scene.jump.ep); }
+}
+function renderStoryIndex(){
+  const el = document.getElementById('storyIndexBody');
+  if(!el) return;
+  el.innerHTML = `<div class="story-idx-box">
+    <div class="story-idx-title">${STORY_INDEX.title}</div>
+    <div class="story-idx-scenes">
+      ${STORY_INDEX.scenes.map((s, i) => `
+        <div class="story-idx-scene">
+          <div class="story-idx-scene-head">${s.icon} ${s.label}</div>
+          <div class="story-idx-chunks">${s.chunks.map(c => `<span class="story-idx-chunk" onclick="speakGramSmart('${escAttr(c.es)}')">${c.es}<span class="story-idx-chunk-zh">${c.zh}</span></span>`).join('')}</div>
+          <button class="story-idx-go" onclick="storyIndexJump(${i})">${s.jumpLabel}</button>
+        </div>`).join('')}
+    </div>
+  </div>`;
+}
+
 function selectEp(n){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
@@ -4424,6 +4467,7 @@ function renderChangelog(){
   renderGardenView();
   renderGardenFreshness();
   renderDailyTask();
+  renderStoryIndex();
   initTTS();
   initGroupButtons();
   restoreActiveTab();

@@ -56,6 +56,17 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .header-title span{color:var(--misora)}
 .header-subtitle{font-size:13px;font-weight:700;color:var(--tmid);margin-top:2px}
 
+.story-idx-box{width:100%;max-width:480px;margin:0 0 12px;box-sizing:border-box;background:linear-gradient(135deg,#FFE9C7,#FFF6E5);border-radius:16px;padding:12px 14px;border:1.5px solid rgba(224,168,74,.35)}
+.story-idx-title{font-size:14px;font-weight:900;color:#8A6B1E;margin-bottom:8px}
+.story-idx-scenes{display:flex;flex-direction:column;gap:8px}
+.story-idx-scene{background:rgba(255,255,255,.7);border-radius:10px;padding:8px 10px}
+.story-idx-scene-head{font-size:12.5px;font-weight:800;color:var(--tdark);margin-bottom:4px}
+.story-idx-chunks{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.story-idx-chunk{display:inline-flex;flex-direction:column;font-size:11.5px;font-weight:700;color:var(--konpeki);background:var(--bg2);border-radius:8px;padding:4px 8px;cursor:pointer}
+.story-idx-chunk-zh{font-size:10px;font-weight:600;color:var(--tlight)}
+.story-idx-go{background:#E0A84A;color:#fff;border:none;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer}
+.story-idx-go:active{opacity:.7}
+
 .season-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;width:100%;max-width:480px;box-sizing:border-box}
 .ep-chip{padding:8px 6px;border-radius:12px;border:1.5px solid var(--usumizu);font-size:11px;font-weight:800;color:var(--misora);background:white;cursor:pointer;transition:all .18s;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center}
 .ep-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
