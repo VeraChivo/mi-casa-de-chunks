@@ -1231,9 +1231,10 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 /* 新聞卡片 */
 .news-items{padding:12px 14px 0}
 .news-item{background:#fff;border-radius:12px;padding:14px 14px 10px;margin-bottom:12px;border:1px solid rgba(188,225,223,.5);box-shadow:0 1px 4px rgba(0,91,152,.06)}
-.news-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.news-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
 .news-topic{font-size:10px;font-weight:800;color:var(--misora);background:rgba(108,155,210,.12);padding:2px 8px;border-radius:10px}
-.news-source{font-size:10px;color:var(--tlight);text-decoration:none;font-weight:600}
+.news-speak-btn{background:none;border:none;font-size:13px;cursor:pointer;padding:0 2px;margin-right:auto;line-height:1}
+.news-source{font-size:10px;color:var(--tlight);text-decoration:none;font-weight:600;flex-shrink:0}
 .news-source:hover{color:var(--misora)}
 .news-headline{font-size:15px;font-weight:700;color:var(--tdark);line-height:1.55;margin-bottom:10px}
 /* 挖空輸入框（嵌入標題行） */

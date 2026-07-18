@@ -370,6 +370,14 @@ const NEWS_ITEMS = [
     headline:'Autismo: ¿condición médica o [?] de personalidad?',
     task:{ type:'blank', answer:'rasgo', zh:'特徵／特質', hint:'sustantivo m. — una característica distintiva de algo o alguien' },
     cefr:'B2', topic:'neurodiversidad 🧩'
+  },
+  {
+    id:'nw47',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/el-reto-de-integrarse-en-alemania-sin-cursos-de-integraci%C3%B3n/a-76049412',
+    headline:'El reto de integrarse en Alemania sin cursos de [?].',
+    task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'sustantivo f. — el proceso de formar parte de un grupo o sociedad' },
+    cefr:'B2', topic:'migración 🧳'
   }
 ];
 

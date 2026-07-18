@@ -3924,9 +3924,11 @@ function renderNewsSection(){
         `<span class="news-bug-word" id="news-bug-${item.id}" title="這個字有錯誤">${item.task.wrong}</span>`);
     }
 
+    const fullSentence = isBlank ? item.headline.replace('[?]', item.task.answer) : item.headline;
     itemsHtml += `<div class="news-item" id="news-item-${item.id}">
       <div class="news-meta">
         <span class="news-topic">${item.topic}</span>
+        <button class="news-speak-btn" onclick="speakFull('${escAttr(fullSentence)}')" title="聽發音">🔊</button>
         <a class="news-source" href="${item.sourceUrl}" target="_blank" rel="noopener">${item.source} ↗</a>
       </div>
       <div class="news-headline">${headlineHtml}</div>`;
