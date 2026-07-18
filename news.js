@@ -1,55 +1,95 @@
 // ── B2 日報・時事語塊採集站 ──
-// 格式：source/sourceUrl/headline/task{type,answer,wrong,zh,hint}/cefr/topic
-// type:'blank' = 挖空填答；type:'bug' = 故意錯字讓使用者修正
-
+// 格式：source/sourceUrl/headline/task{type,answer,zh,hint}/cefr/topic
+// 2026-07-18 全面換血：舊版是佔位假資料（sourceUrl只給首頁），已改用逐篇查證過的真實DW文章
+// 查證方法：WebSearch逐字搜尋標題 + 第三方轉載站（teletica.com/t13.cl/eju.tv等常轉載DW原文）交叉核對
 const NEWS_ITEMS = [
   {
     id:'nw01',
     source:'DW Español',
-    sourceUrl:'https://www.dw.com/es/',
-    headline:'El cambio climático genera una gran [?] para los productores de café.',
-    task:{ type:'blank', answer:'incertidumbre', zh:'不確定性', hint:'sustantivo f. — lo que no se sabe con certeza' },
-    cefr:'B2', topic:'medio ambiente 🌱'
+    sourceUrl:'https://www.dw.com/es/caf%C3%A9-cada-vez-m%C3%A1s-caro-qui%C3%A9nes-ganan-y-qui%C3%A9nes-pierden/a-72543510',
+    headline:'¿Qué hay detrás de la [?] alza del precio del café?',
+    task:{ type:'blank', answer:'explosiva', zh:'爆發性的', hint:'adjetivo f. — algo que sube de golpe, muy rápido y fuerte' },
+    cefr:'B2', topic:'economía 💰'
   },
   {
     id:'nw02',
-    source:'Noticias ONU',
-    sourceUrl:'https://news.un.org/es/',
-    headline:'El informe señala que la [?] socioeconómica persiste en la región.',
-    task:{ type:'blank', answer:'desigualdad', zh:'不平等', hint:'sustantivo f. — diferencia injusta entre personas' },
-    cefr:'B2', topic:'sociedad 🏘️'
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/se-intensifica-la-disputa-por-el-abandono-de-los-combustibles-f%C3%B3siles/a-77618596',
+    headline:'Se [?] la disputa por el abandono de los combustibles fósiles.',
+    task:{ type:'blank', answer:'intensifica', zh:'白熱化／加劇', hint:'verbo reflexivo, 第三人稱單數 — intensificarse = volverse más fuerte' },
+    cefr:'B2', topic:'medio ambiente 🌍'
   },
   {
     id:'nw03',
     source:'DW Español',
-    sourceUrl:'https://www.dw.com/es/',
-    headline:'La crisis hídrica aumenta la [?] de las comunidades rurales.',
-    task:{ type:'blank', answer:'vulnerabilidad', zh:'脆弱性／易受影響程度', hint:'sustantivo f. — ser vulnerable = estar expuesto al riesgo' },
-    cefr:'B2', topic:'medio ambiente 🌱'
+    sourceUrl:'https://www.dw.com/es/resuelven-en-colombia-el-primer-caso-jur%C3%ADdico-con-la-ayuda-de-robot-chatgpt/a-64597510',
+    headline:'Resuelven en Colombia el primer caso [?] con la ayuda de robot ChatGPT.',
+    task:{ type:'blank', answer:'jurídico', zh:'法律的／司法的', hint:'adjetivo m. — relacionado con las leyes y los tribunales' },
+    cefr:'B2', topic:'tecnología 🤖'
   },
   {
     id:'nw04',
-    source:'Wikinews ES',
-    sourceUrl:'https://es.wikinews.org/',
-    headline:'Los expertos advierten sobre el deterióro del ecosistema marino.',
-    task:{ type:'bug', wrong:'deterióro', answer:'deterioro', zh:'惡化／退化', hint:'注意重音：deteriÓro 沒有重音符號，是 dete-rio-ro 三個 o，重音在第二個 o' },
-    cefr:'B2', topic:'medio ambiente 🌱'
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/estudio-propone-restringir-el-acceso-al-m%C3%B3vil-antes-de-los-13-a%C3%B1os/a-73350517',
+    headline:'Estudio propone [?] el acceso al móvil antes de los 13 años.',
+    task:{ type:'blank', answer:'restringir', zh:'限制', hint:'verbo infinitivo — poner límites al uso o acceso de algo' },
+    cefr:'B2', topic:'salud mental 🧠'
   },
   {
     id:'nw05',
     source:'DW Español',
-    sourceUrl:'https://www.dw.com/es/',
-    headline:'La migración masiva requiere políticas [?] a largo plazo.',
-    task:{ type:'blank', answer:'sostenibles', zh:'可持續的', hint:'adjetivo pl. — sostenible = que puede mantenerse sin agotar recursos' },
-    cefr:'B2', topic:'sociedad 🏘️'
+    sourceUrl:'https://www.dw.com/es/terapia-en-las-redes-sociales-es-%C3%BAtil/a-66706453',
+    headline:'Terapia en las redes sociales: ¿es [?]?',
+    task:{ type:'blank', answer:'útil', zh:'有用的', hint:'adjetivo — que sirve para algo, que tiene utilidad' },
+    cefr:'B2', topic:'salud mental 🧠'
   },
   {
     id:'nw06',
-    source:'Noticias ONU',
-    sourceUrl:'https://news.un.org/es/',
-    headline:'El acceso al agua potable sigue siendo un derecho [?] para millones.',
-    task:{ type:'blank', answer:'vulnerado', zh:'被侵害的', hint:'participio pasado de vulnerar — vulnerar un derecho = violar un derecho' },
-    cefr:'B2', topic:'derechos humanos ⚖️'
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/qu%C3%A9-dice-la-ciencia-sobre-el-impacto-de-las-pantallas-en-la-salud-mental-y-las-relaciones/a-76306784',
+    headline:'Qué dice la ciencia sobre el [?] de las pantallas en la salud mental y las relaciones.',
+    task:{ type:'blank', answer:'impacto', zh:'衝擊／影響', hint:'sustantivo m. — efecto fuerte que algo produce sobre otra cosa' },
+    cefr:'B2', topic:'salud mental 🧠'
+  },
+  {
+    id:'nw07',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/transformar-la-econom%C3%ADa-c%C3%B3mo-el-cambio-clim%C3%A1tico-amenaza-la-industria-vin%C3%ADcola-de-chile/video-76747626',
+    headline:'Transformar la economía: cómo el cambio climático [?] la industria vinícola de Chile.',
+    task:{ type:'blank', answer:'amenaza', zh:'威脅', hint:'verbo, 第三人稱單數 — poner en peligro algo' },
+    cefr:'B2', topic:'economía 💰'
+  },
+  {
+    id:'nw08',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/nobel-al-an%C3%A1lisis-de-los-efectos-del-cambio-clim%C3%A1tico-y-la-tecnolog%C3%ADa-en-la-econom%C3%ADa/a-45796492',
+    headline:'Nobel al análisis de los [?] del cambio climático y la tecnología en la economía.',
+    task:{ type:'blank', answer:'efectos', zh:'影響／效應', hint:'sustantivo m. pl. — consecuencias que algo produce' },
+    cefr:'B2', topic:'economía 💰'
+  },
+  {
+    id:'nw09',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/australia-eleva-su-meta-clim%C3%A1tica-para-2035/a-74037020',
+    headline:'Australia [?] su meta climática para 2035.',
+    task:{ type:'blank', answer:'eleva', zh:'提高', hint:'verbo, 第三人稱單數 — subir o aumentar un objetivo' },
+    cefr:'B2', topic:'medio ambiente 🌍'
+  },
+  {
+    id:'nw10',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/inteligencia-artificial-davos-debate-sobre-riesgos-y-oportunidades/a-68025090',
+    headline:'Inteligencia artificial: Davos debate sobre riesgos y [?].',
+    task:{ type:'blank', answer:'oportunidades', zh:'機遇／機會', hint:'sustantivo f. pl. — momentos favorables para conseguir algo' },
+    cefr:'B2', topic:'tecnología 🤖'
+  },
+  {
+    id:'nw11',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/inteligencia-artificial-cr%C3%ADticos-y-l%C3%ADderes-tecnol%C3%B3gicos-debatieron-en-el-bletchley-park/a-67301708',
+    headline:'Inteligencia artificial: críticos y líderes [?] debatieron en el Bletchley Park.',
+    task:{ type:'blank', answer:'tecnológicos', zh:'科技的（複數）', hint:'adjetivo m. pl. — relacionado con la tecnología' },
+    cefr:'B2', topic:'tecnología 🤖'
   }
 ];
 

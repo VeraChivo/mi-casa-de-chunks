@@ -3942,7 +3942,7 @@ function renderNewsSection(){
     <div id="newsSectionBody" style="display:none">
       ${dwHtml}
       <div class="news-items">${itemsHtml}</div>
-      <div class="news-footer">題目來源：<a href="https://www.dw.com/es/" target="_blank" rel="noopener">DW Español</a> · <a href="https://news.un.org/es/" target="_blank" rel="noopener">Noticias ONU</a> · <a href="https://es.wikinews.org/" target="_blank" rel="noopener">Wikinews ES</a>（標題引用，僅供教育學習）</div>
+      <div class="news-footer">題目來源：<a href="https://www.dw.com/es/" target="_blank" rel="noopener">DW Español</a>（每題點「↗」可直接跳去該篇真實文章，標題引用僅供教育學習）</div>
     </div>
   </div>`;
 }
