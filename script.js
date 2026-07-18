@@ -255,8 +255,11 @@ function selectEp(n){
 function renderStars(){
   const n=total();
   const row=document.getElementById('starRow');
+  const isDiaDeMuertos=(ep===10);
+  const progressIcon=isDiaDeMuertos?'🕯️':'🌼';
+  const doneIcon=isDiaDeMuertos?'🦋':'🌻';
   const existing=row.querySelectorAll('.s-star');
-  if(existing.length===n+1){
+  if(existing.length===n+1 && existing[0] && existing[0].textContent===progressIcon){
     for(let i=0;i<n;i++) existing[i].classList.toggle('lit',answered.includes(i));
     existing[n].classList.toggle('lit',answered.length===n);
   } else {
@@ -264,12 +267,12 @@ function renderStars(){
     for(let i=0;i<n;i++){
       const s=document.createElement('span');
       s.className='s-star'+(answered.includes(i)?' lit':'');
-      s.textContent='🌼';
+      s.textContent=progressIcon;
       row.appendChild(s);
     }
     const epS=document.createElement('span');
     epS.className='s-star ep-star'+(answered.length===n?' lit':'');
-    epS.textContent='🌻';
+    epS.textContent=doneIcon;
     row.appendChild(epS);
   }
   document.getElementById('starLabel').textContent='';
