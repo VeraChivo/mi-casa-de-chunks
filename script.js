@@ -2783,6 +2783,26 @@ const LYRICS_FILL_DATA = [
     after:'sobre la tela de una araña.',
     hint:'balanceaba = balancearse 過去未完成式第三人稱單數',
     grammar:'「Se balanceaba」正在搖晃著——過去未完成式（Imperfecto）字尾 -aba，描述持續進行的動作，跟簡單過去式（一次性完成的動作）不同。balancearse 是反身動詞：me balanceaba / te balanceabas / se balanceaba。這首數數歌謠最早19世紀中期就出現在法國印刷品裡，查無單一作者，是公共領域民謠。'
+  },
+  {
+    id:'lf12', artist:'Tradicional', song:'Cucú Cantaba la Rana', level:'a1', levelLabel:'A1',
+    yt:'https://youtu.be/iiHsqJUJ97M?t=70',
+    ytLabel:'▶ 70秒處聽',
+    before:'Cucú, cucú, cantaba la',
+    blank:'rana',
+    after:'Cucú, cucú, debajo del agua.',
+    hint:'rana = 青蛙（陰性名詞）',
+    grammar:'這首是西語系國家流傳數百年的經典童謠，作者不詳、世代口耳相傳。後續歌詞唱一位紳士、一位女士、一位水手經過，水手跟青蛙要一束迷迭香，青蛙不肯給還哭了——是很典型「重複疊句+人物依序登場」的傳統童謠結構。'
+  },
+  {
+    id:'lf13', artist:'Tradicional', song:'Que Llueva, Que Llueva', level:'a1', levelLabel:'A1',
+    yt:'https://youtu.be/pbeSNLPsFlQ?t=220',
+    ytLabel:'▶ 220秒處聽',
+    before:'Que llueva, que llueva, la vieja está en la',
+    blank:'cueva',
+    after:'los pajaritos cantan, las nubes se levantan.',
+    hint:'está en = estar 表達位置（在哪裡）',
+    grammar:'「La vieja está en la cueva」老奶奶在洞穴裡——estar en 表達位置所在。這句歌詞在不同地區有變體：西班牙原版是「la Virgen de la Cueva」（源自1726年一場祈雨傳說），阿根廷等拉美地區常唱世俗版「la vieja está en la cueva」，這裡採用拉美常見版本。皆為查無單一作者的公共領域童謠。'
   }
 ];
 let _lfFilter = 'all';
