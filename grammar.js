@@ -1494,13 +1494,13 @@ const GRAMMAR_DATA = [
   {
     id:"g62", cat:"phrase", level:"b1",
     title:"台灣的農業外交：與巴拉圭的真實合作史",
-    rule:"台灣與巴拉圭自1957年建交，是台灣目前在南美洲唯一的邦交國。1960、70年代台灣派農業專家赴巴拉圭，把土地改革與稻米種植的經驗帶過去；1973年起協助發展花卉產業，到2003年當地農民已種出超過40個玫瑰品種；近年還協助巴拉圭建立淡水魚（pacu）人工繁殖技術。巴拿馬過去也有類似的農技合作計畫，但已在2017年與台灣斷交。這段歷史剛好是「台灣人用西語做跨國合作」的真實案例。",
+    rule:"台灣與巴拉圭自1957年建交，是台灣目前在南美洲唯一的邦交國。1960、70年代台灣派農業專家赴巴拉圭，把土地改革與稻米種植的經驗帶過去；1973年起協助發展花卉產業，到2003年當地農民已種出超過40個玫瑰品種；近年還協助巴拉圭建立淡水魚（pacu）人工繁殖技術，農技團也曾協助培訓59位業者發展蘇魯比魚（surubí）養殖，並與巴拉圭工商部合作改善瑪黛茶（yerba mate，巴拉圭重要文化作物）的生產鏈。巴拿馬過去也有類似的農技合作計畫，但已在2017年與台灣斷交。這段歷史剛好是「台灣人用西語做跨國合作」的真實案例。（1985年前，此類任務在非洲稱「農耕隊」，在拉美則稱「農業技術團／農技團」，用詞不同，不要混用。）",
     examples:[
       {es:"Taiwán y Paraguay mantienen relaciones diplomáticas desde 1957.", zh:"台灣與巴拉圭自1957年起維持邦交關係。"},
-      {es:"Expertos agrícolas taiwaneses ayudaron a mejorar el cultivo de arroz en Paraguay.", zh:"台灣農業專家曾協助巴拉圭改善稻米種植。"},
-      {es:"Hoy en día, agricultores paraguayos cultivan más de 40 variedades de rosas gracias a esta cooperación.", zh:"如今巴拉圭農民靠著這項合作種出超過40種玫瑰。"}
+      {es:"La Misión Técnica de Taiwán capacitó a productores de surubí en Paraguay.", zh:"台灣技術團曾培訓巴拉圭的蘇魯比魚養殖業者。"},
+      {es:"Taiwán también coopera con Paraguay para mejorar la cadena productiva de la yerba mate.", zh:"台灣也跟巴拉圭合作改善瑪黛茶的生產鏈。"}
     ],
-    trap:"這類「農耕隊／農技團」的外交合作只存在於台灣邦交國，巴拿馬已在2017年斷交，這類技術合作也隨之結束——邦交狀態會直接影響這類長期合作項目的存續。",
+    trap:"這類「農業技術團（農技團）」的外交合作只存在於台灣邦交國，巴拿馬已在2017年斷交，這類技術合作也隨之結束——邦交狀態會直接影響這類長期合作項目的存續。",
     source:"文法補充"
   },
 
@@ -1514,6 +1514,32 @@ const GRAMMAR_DATA = [
       {es:"La escasez de agua potable y el precio barato del refresco explican este fenómeno.", zh:"飲用水短缺加上汽水便宜的價格，解釋了這個現象。"}
     ],
     trap:"這不只是有趣的冷知識——恰帕斯州的可樂消費現象背後是真實的飲用水權與健康危機，聯合國都曾介入譴責，提到這個話題時記得它有輕鬆與沉重兩個面向，不是單純的「口味比較」。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g64", cat:"phrase", level:"b1",
+    title:"瑪雅曆法：兩套曆法並行的智慧",
+    rule:"馬雅人同時使用兩套曆法：卓爾金曆（Tzolk'in）是260天的宗教祭祀曆（13個數字×20個日名），用來安排祭典、預測雨季/漁獵時機；哈布曆（Haab'）是365天的太陽曆（18個月×20天，加上5天被視為不祥的Wayeb'）。兩套曆法組合起來，要滿52年（18,980天）才會完整重複一次，稱為「曆法輪」（Rueda Calendárica）。除此之外還有「長紀曆」（Cuenta Larga）用線性方式累計天數——2012年12月21日只是長紀曆第13個b'ak'tun週期的結束，被西方媒體誤傳成「世界末日」，其實馬雅文化裡週期結束代表的是更新/重生，不是毀滅。",
+    examples:[
+      {es:"El Tzolkin es un calendario sagrado de 260 días.", zh:"卓爾金曆是一套260天的神聖曆法。"},
+      {es:"El Haab tiene 18 meses de 20 días, más 5 días de mal agüero.", zh:"哈布曆有18個月、每月20天，再加上5天不祥日。"},
+      {es:"El 21 de diciembre de 2012 no fue el fin del mundo, sino el fin de un ciclo.", zh:"2012年12月21日不是世界末日，而是一個週期的結束。"}
+    ],
+    trap:"「2012世界末日」是西方媒體對馬雅長紀曆的誤讀——馬雅人自己的觀念裡，週期結束＝更新重生，不是毀滅預言，這點常被大眾文化誤傳。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g65", cat:"phrase", level:"b1",
+    title:"安地斯高原（Altiplano）：極端環境孕育的智慧",
+    rule:"安地斯高原（altiplano）橫跨秘魯與玻利維亞交界，平均海拔約3,750公尺，的的喀喀湖（lago Titicaca）就座落於此，是世界上最高的可通航湖泊。馬鈴薯正是在的的喀喀湖附近被馴化的——距今超過7,000年前，如今秘魯保有超過3,500種馬鈴薯品種。當地人也發展出「秋紐」（chuño）保存法：利用高原晝夜溫差極端的特性（夜晚可降到零下20度、白天日照強烈），把馬鈴薯反覆冷凍、日曬、赤腳踩壓脫水，做成可以存放數年的凍乾馬鈴薯——這不是單純曬乾，是適應惡劣高原環境發展出的精密技術。駱馬（llama）與羊駝（alpaca）也是原生於這片高原、適應高海拔的馴化動物。",
+    examples:[
+      {es:"El lago Titicaca es el lago navegable más alto del mundo.", zh:"的的喀喀湖是世界上最高的可通航湖泊。"},
+      {es:"La papa fue domesticada cerca del lago Titicaca hace más de 7000 años.", zh:"馬鈴薯是在的的喀喀湖附近，超過7000年前被馴化的。"},
+      {es:"El chuño se hace congelando la papa de noche y secándola al sol de día.", zh:"秋紐是靠夜間冷凍、白天曬乾製成的。"}
+    ],
+    trap:"秋紐不是「隨便曬乾馬鈴薯」——是精準利用高原日夜溫差極端（夜晚結凍、白天曝曬）的傳統技術，體現的是適應惡劣環境的智慧，不是簡單的食物保存法。",
     source:"文法補充"
   }
 
