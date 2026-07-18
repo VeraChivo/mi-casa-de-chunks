@@ -2846,6 +2846,36 @@ const LYRICS_FILL_DATA = [
     after:'señores.',
     hint:'關係子句 que + 陳述式，因為先行詞（esos）是確定存在的對象',
     grammar:'「De esos que llaman señores」關係子句用陳述式 llaman，因為先行詞 esos（那些人）是說話者心中確定、具體存在的對象。對比：如果先行詞是不確定/假設的對象，關係子句要改用虛擬式，例如「Busco a alguien que sea mayor」（我在找一個〔還不確定是誰的〕比較成熟的人）。'
+  },
+  {
+    id:'lf18', artist:'Calle 13', song:'Latinoamérica', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=DkFJE8ZdeG8',
+    ytLabel:'▶ 點開聽這首',
+    before:'Soy lo que dejaron, soy toda la',
+    blank:'sobra',
+    after:'de lo que se robaron.',
+    hint:'sobra = 剩餘物、殘渣（B2抽象詞彙，隱喻殖民掠奪後留下的）',
+    grammar:'「Soy lo que dejaron」用 ser 宣告身分認同（我是⋯），lo que 是不特定先行詞的關係子句「⋯的東西」。se robaron 是反身被動用法，強調「被拿走」而不點名是誰拿走的，呼應歌曲對拉美被殖民掠奪歷史的隱喻控訴。'
+  },
+  {
+    id:'lf19', artist:'Calle 13', song:'Latinoamérica', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=DkFJE8ZdeG8',
+    ytLabel:'▶ 點開聽這首',
+    before:'Tú no puedes',
+    blank:'comprar',
+    after:'el viento, tú no puedes comprar el sol.',
+    hint:'poder + 原形動詞（不能⋯），隱喻手法：用具體事物象徵無法用金錢衡量的價值',
+    grammar:'「Tú no puedes comprar + 名詞」重複句式是這首歌的核心隱喻手法——用風、太陽這些自然界的具體事物，象徵拉丁美洲的尊嚴與文化認同無法被殖民者/資本用金錢買走，是B2程度需要掌握的「具體物象徵抽象價值」修辭技巧。'
+  },
+  {
+    id:'lf20', artist:'Calle 13', song:'Latinoamérica', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=DkFJE8ZdeG8',
+    ytLabel:'▶ 點開聽這首',
+    before:'Soy la sangre dentro de tus venas, soy un pedazo de tierra que',
+    blank:'vale',
+    after:'la pena.',
+    hint:'valer la pena = 值得（成語，B2高頻慣用語）',
+    grammar:'「Un pedazo de tierra que vale la pena」關係子句 que 修飾 tierra（土地），valer la pena 是「值得」的固定成語搭配，不能拆開直譯。整句延續前面「Soy la sangre...」的隱喻——歌者把自己等同於拉丁美洲這片土地本身，是身分認同主題的高潮句。'
   }
 ];
 let _lfFilter = 'all';
