@@ -1196,7 +1196,7 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .cl-section-label{font-size:13px;font-weight:800;color:var(--konpeki)}
 .cl-latest{padding:2px 0 4px}
 .cl-latest .cl-entry{padding-top:0}
-.cl-wrap{max-height:220px;overflow-y:auto;border-top:1px dashed var(--usumizu);margin-top:4px}
+.cl-wrap{max-height:480px;overflow-y:auto;-webkit-overflow-scrolling:touch;border-top:1px dashed var(--usumizu);margin-top:4px}
 .cl-entry{padding:10px 0 6px}
 .cl-meta{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .cl-date{font-size:11px;font-weight:800;color:var(--misora)}
