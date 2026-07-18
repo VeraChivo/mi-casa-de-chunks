@@ -1065,6 +1065,7 @@ function vocabLongPressCancel(){
 }
 
 function renderVocab(){
+  if(typeof renderChunkFamilies==='function') renderChunkFamilies();
   const countEl=document.getElementById('vocabCount');
   if(countEl) countEl.textContent=vocabList.length;
   const el=document.getElementById('vocabEntries');
@@ -1721,6 +1722,89 @@ function saveFamiliarity(){
 function getFamState(word){ return chunkFamiliarity[word] || 0; }
 
 // ── 💎 馧釀私語窖：語塊花園狀態（localStorage key: peppa_garden_v1） ──
+// ── 🌳 語塊家族：不是新的庫存數量，是把既有 vocab/花園資料按「語塊家族」重新分組，看關聯與成長 ──
+// 資料來源沿用 g20(TENER)/g109(HACER) 的family欄位當「樹的品種」定義，用關鍵字模糊比對使用者
+// 已收集的語塊（vocabList／花園DB），不是新增一套獨立的計數系統
+const CHUNK_FAMILIES = [
+  { key:'tener', icon:'🌳', title:'TENER 家族', grammarId:'g20', formHint:'tengo/tienes/tiene',
+    branches:[
+      {match:'hambre', es:'tener hambre', zh:'感到餓'},
+      {match:'sed', es:'tener sed', zh:'感到渴'},
+      {match:'sueño', es:'tener sueño', zh:'想睡'},
+      {match:'frío', es:'tener frío', zh:'覺得冷'},
+      {match:'calor', es:'tener calor', zh:'覺得熱'},
+      {match:'miedo', es:'tener miedo', zh:'感到害怕'},
+      {match:'razón', es:'tener razón', zh:'是對的'},
+      {match:'prisa', es:'tener prisa', zh:'趕時間'},
+      {match:'suerte', es:'tener suerte', zh:'幸運'},
+      {match:'ganas', es:'tener ganas de', zh:'想做某事'}
+    ]
+  },
+  { key:'hacer', icon:'🌳', title:'HACER 家族', grammarId:'g109', formHint:'hago/haces/hace',
+    branches:[
+      {match:'ejercicio', es:'hacer ejercicio', zh:'做運動'},
+      {match:'pregunta', es:'hacer una pregunta', zh:'問問題'},
+      {match:'tarea', es:'hacer la tarea', zh:'做功課'},
+      {match:'viaje', es:'hacer un viaje', zh:'去旅行'},
+      {match:'caso', es:'hacer caso', zh:'聽從、理會'},
+      {match:'frío', es:'hacer frío', zh:'天氣冷'},
+      {match:'calor', es:'hacer calor', zh:'天氣熱'}
+    ]
+  }
+];
+function _chunkFamCollectedKeys(){
+  const gdb = getGardenDB();
+  const keys = Object.keys(gdb).map(k => k.toLowerCase());
+  (vocabList||[]).forEach(v => { if(v && v.text) keys.push(v.text.toLowerCase()); });
+  return keys;
+}
+function _chunkFamBranchStatus(fam){
+  const keys = _chunkFamCollectedKeys();
+  return fam.branches.map(b => ({
+    ...b,
+    collected: keys.some(k => k.includes(b.match))
+  }));
+}
+function _chunkFamSeenCounts(){
+  try { return JSON.parse(localStorage.getItem('peppa_chunk_fam_seen_v1') || '{}'); } catch(e){ return {}; }
+}
+function _chunkFamSaveSeenCounts(obj){
+  try { localStorage.setItem('peppa_chunk_fam_seen_v1', JSON.stringify(obj)); } catch(e){}
+}
+function toggleChunkFamilies(){
+  const body=document.getElementById('chunkFamBody');
+  const t=document.getElementById('chunkFamToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+function renderChunkFamilies(){
+  const el = document.getElementById('chunkFamBody');
+  if(!el) return;
+  const seen = _chunkFamSeenCounts();
+  const nextSeen = {};
+  el.innerHTML = CHUNK_FAMILIES.map(fam => {
+    const branches = _chunkFamBranchStatus(fam);
+    const collectedCount = branches.filter(b => b.collected).length;
+    nextSeen[fam.key] = collectedCount;
+    const prevCount = seen[fam.key] || 0;
+    const grew = collectedCount > prevCount;
+    const pct = Math.round(collectedCount / branches.length * 100);
+    const maturity = pct >= 80 ? '🌻 成熟茂盛' : pct >= 40 ? '🌿 成長中' : collectedCount > 0 ? '🌱 剛發芽' : '⚪ 還沒開始';
+    const nextBranch = branches.find(b => !b.collected);
+    return `
+    <div class="chunk-fam-tree" onclick="openGrammarCard('${fam.grammarId}')">
+      ${grew ? `<div class="chunk-fam-grow">🌱 你的${fam.title.replace(' 家族','')}樹有新變化！</div>` : ''}
+      <div class="chunk-fam-head">${fam.icon} ${fam.title}<span class="chunk-fam-hint">（${fam.formHint}）</span></div>
+      <div class="chunk-fam-maturity">家族成熟度：${maturity}（${collectedCount}/${branches.length}）</div>
+      <div class="chunk-fam-branches">
+        ${branches.map(b => `<span class="chunk-fam-branch${b.collected?' is-collected':''}">${b.collected?'🌱':'⚪'} ${b.es}</span>`).join('')}
+      </div>
+      ${nextBranch ? `<div class="chunk-fam-next">下一枝：${nextBranch.es}（${nextBranch.zh}）</div>` : `<div class="chunk-fam-next">🎉 這個家族全部收集齊了！</div>`}
+    </div>`;
+  }).join('');
+  _chunkFamSaveSeenCounts(nextSeen);
+}
+
 function getGardenDB() {
   try { return JSON.parse(localStorage.getItem('peppa_garden_v1') || '{}'); } catch(e) { return {}; }
 }
@@ -2160,7 +2244,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1','peppa_chunk_fam_seen_v1'];
 
 function exportBackup(){
   const data = {};
@@ -4480,6 +4564,7 @@ function renderChangelog(){
   renderGardenFreshness();
   renderDailyTask();
   renderStoryIndex();
+  renderChunkFamilies();
   initTTS();
   initGroupButtons();
   restoreActiveTab();
