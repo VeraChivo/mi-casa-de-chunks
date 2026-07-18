@@ -266,6 +266,14 @@ const NEWS_ITEMS = [
     headline:'Montessori: la metodología donde el niño es [?].',
     task:{ type:'blank', answer:'protagonista', zh:'主角', hint:'sustantivo m./f. — quien tiene el papel principal en algo' },
     cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw34',
+    source:'El País',
+    sourceUrl:'https://elpais.com/educacion/2022-03-22/la-ensenanza-montessori-arma-secreta-contra-la-despoblacion.html',
+    headline:'La enseñanza Montessori, arma secreta contra la [?].',
+    task:{ type:'blank', answer:'despoblación', zh:'人口流失', hint:'sustantivo f. — disminución de la población de una zona' },
+    cefr:'B2', topic:'educación 📚'
   }
 ];
 
