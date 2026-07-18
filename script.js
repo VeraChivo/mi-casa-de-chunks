@@ -2763,6 +2763,26 @@ const LYRICS_FILL_DATA = [
     after:'los campos en la primavera.',
     hint:'se visten = vestirse 反身動詞第三人稱複數',
     grammar:'「Se visten los campos」田野披上（色彩）——反身動詞 vestirse（穿衣/披上）搭配複數主詞 los campos 用 se visten。反身動詞五人稱：me visto / te vistes / se viste / nos vestimos / se visten。這首歌是拉美農民/工人運動的著名民謠，1960年代由 César Chávez 採用為抗爭歌曲。'
+  },
+  {
+    id:'lf10', artist:'Tradicional', song:'A la Víbora de la Mar', level:'a0', levelLabel:'A0',
+    yt:'https://www.youtube.com/results?search_query=A+la+v%C3%ADbora+de+la+mar+canci%C3%B3n',
+    ytLabel:'▶ 搜尋這首',
+    before:'Los de adelante',
+    blank:'corren',
+    after:'mucho y los de atrás se quedarán.',
+    hint:'corren = correr 第三人稱複數 (ellos)',
+    grammar:'「Los de adelante corren mucho」前面的人跑得很快——correr 是規則 -er 動詞：corro / corres / corre / corremos / corren。這首是源自西班牙中世紀的傳統遊戲歌謠，跟著童謠玩「過城門」遊戲時唱，公共領域民謠，查無單一作者。'
+  },
+  {
+    id:'lf11', artist:'Tradicional', song:'Un Elefante se Balanceaba', level:'a1', levelLabel:'A1',
+    yt:'https://www.youtube.com/results?search_query=Un+elefante+se+balanceaba+canci%C3%B3n',
+    ytLabel:'▶ 搜尋這首',
+    before:'Un elefante se',
+    blank:'balanceaba',
+    after:'sobre la tela de una araña.',
+    hint:'balanceaba = balancearse 過去未完成式第三人稱單數',
+    grammar:'「Se balanceaba」正在搖晃著——過去未完成式（Imperfecto）字尾 -aba，描述持續進行的動作，跟簡單過去式（一次性完成的動作）不同。balancearse 是反身動詞：me balanceaba / te balanceabas / se balanceaba。這首數數歌謠最早19世紀中期就出現在法國印刷品裡，查無單一作者，是公共領域民謠。'
   }
 ];
 let _lfFilter = 'all';
