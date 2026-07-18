@@ -106,15 +106,19 @@ try {
 // script.js 是完整網站邏輯（含DOM操作），與其把整個瀏覽器環境 stub 出來跑一遍風險很高、
 // 也很難維護，這裡改用「直接抓出 const LYRICS_FILL_DATA = [...] 這段原始碼片段單獨執行」的做法，
 // 只依賴大括號配對抓範圍，不執行檔案其他部分，跟資料本身的邏輯無關、更穩定
+// 通用版：抓 const VAR = [...] 或 const VAR = {...}，只靠括號配對抓範圍，不執行檔案其他部分
 function extractConstArray(file, varName) {
   const code = fs.readFileSync(path.join(__dirname, file), 'utf8');
-  const startMarker = `const ${varName} = [`;
+  const startMarker = `const ${varName} = `;
   const start = code.indexOf(startMarker);
-  if (start === -1) throw new Error(`找不到 const ${varName} = [ 的定義`);
-  let depth = 0, i = start + startMarker.length - 1; // 從第一個 [ 開始數
+  if (start === -1) throw new Error(`找不到 const ${varName} = 的定義`);
+  const openChar = code[start + startMarker.length];
+  const closeChar = openChar === '[' ? ']' : openChar === '{' ? '}' : null;
+  if (!closeChar) throw new Error(`${varName} 開頭不是 [ 或 {，無法用括號配對抓取`);
+  let depth = 0, i = start + startMarker.length;
   for (; i < code.length; i++) {
-    if (code[i] === '[') depth++;
-    else if (code[i] === ']') { depth--; if (depth === 0) { i++; break; } }
+    if (code[i] === openChar) depth++;
+    else if (code[i] === closeChar) { depth--; if (depth === 0) { i++; break; } }
   }
   const snippet = code.slice(start, i) + ';\n' + `global.__MAINT_${varName} = ${varName};`;
   // eslint-disable-next-line no-eval
@@ -187,6 +191,31 @@ try {
   }
 } catch (e) {
   fail('翻譯品質提醒檢查失敗：' + e.message);
+}
+
+// ── 內容孤兒檢查：有沒有卡片完全沒被任何路線/關聯圖引用，只能靠瀏覽全部清單才找得到 ──
+// 「孤兒」定義：不在 SENTENCE_GRAMMAR_MAP（劇情句子對應）、不在 STORY_INDEX（劇情索引入口）、
+// 不是 CHUNK_FAMILIES 的 grammarId（家族關聯圖入口）——三個路徑都沒連到，才算孤兒。
+// 這不代表卡片沒用（💧文法儲水槽本身就是瀏覽全部清單的地方），只是提醒：這張卡目前只能靠瀏覽找到，
+// 沒有從任何「旅程」被連過去。
+section('內容孤兒檢查（沒有被任何路線/關聯圖引用，僅供參考）');
+try {
+  const { GRAMMAR_DATA, SENTENCE_GRAMMAR_MAP } = loadArray('grammar.js', ['GRAMMAR_DATA', 'SENTENCE_GRAMMAR_MAP']);
+  const STORY_INDEX = extractConstArray('script.js', 'STORY_INDEX');
+  const CHUNK_FAMILIES = extractConstArray('script.js', 'CHUNK_FAMILIES');
+
+  const referenced = new Set();
+  Object.values(SENTENCE_GRAMMAR_MAP || {}).forEach(gId => { if (gId) referenced.add(gId); });
+  (STORY_INDEX.scenes || []).forEach(s => { if (s.jump && s.jump.type === 'grammar') referenced.add(s.jump.id); });
+  (CHUNK_FAMILIES || []).forEach(fam => { if (fam.grammarId) referenced.add(fam.grammarId); });
+
+  const orphans = GRAMMAR_DATA.filter(g => !referenced.has(g.id));
+  console.log(`   總計 ${GRAMMAR_DATA.length} 張卡，${referenced.size} 張已被路線/關聯圖引用，${orphans.length} 張目前只能靠瀏覽💧文法儲水槽找到`);
+  if (orphans.length) {
+    warn(`孤兒卡片（僅供參考，不是錯誤——多數是靠瀏覽💧儲水槽找到的B2/C1/C2文化深度內容，本來就不一定要掛進劇情/家族路線）：${orphans.map(g => g.id).join(', ')}`);
+  }
+} catch (e) {
+  fail('內容孤兒檢查失敗：' + e.message);
 }
 
 // ── 總結 ──
