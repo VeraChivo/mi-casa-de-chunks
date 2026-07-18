@@ -156,6 +156,39 @@ try {
   fail('cognates.js（FALSE_COGNATES）讀取/檢查失敗：' + e.message);
 }
 
+// ── 翻譯品質提醒：不是判斷對錯，只是抓出「值得人工檢查」的可疑模式 ──
+// 這幾個 pattern 是從 g53/g54/g57 那次審查實際抓到的問題歸納出來的，之後每次新增卡片都跑一次，
+// 提早攔到類似的西語結構直譯痕跡，不用等到累積很多張卡才發現
+section('翻譯品質提醒（僅供人工複查，不代表一定錯）');
+try {
+  const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
+  const SUSPECT_PATTERNS = [
+    { re: /被.{1,6}著/, label: '疑似「被…著」西語se被動/ser+分詞的逐字直譯' },
+    { re: /我有(餓|渴|睏|累|怕)/, label: '疑似「tener+名詞」被直譯成「有+情緒」的破碎中文（應該是「我餓了/我很害怕」這類自然說法）' },
+    { re: /不相信/, label: '疑似把no creer/dudar翻得太重——中文「不相信」語氣接近質疑/偵查，通常應該是「不覺得/沒想到」這類較輕的說法' }
+  ];
+  const hits = [];
+  GRAMMAR_DATA.forEach(g => {
+    const texts = [];
+    (g.examples || []).forEach(ex => texts.push(ex.zh));
+    if (g.family && g.family.items) g.family.items.forEach(it => texts.push(it.zh));
+    if (g.trap) texts.push(g.trap);
+    texts.forEach(t => {
+      if (typeof t !== 'string') return;
+      SUSPECT_PATTERNS.forEach(p => {
+        if (p.re.test(t)) hits.push({ id: g.id, text: t, label: p.label });
+      });
+    });
+  });
+  if (hits.length) {
+    hits.forEach(h => warn(`${h.id}：${h.label}\n      「${h.text}」`));
+  } else {
+    ok('沒有偵測到已知的可疑翻譯模式');
+  }
+} catch (e) {
+  fail('翻譯品質提醒檢查失敗：' + e.message);
+}
+
 // ── 總結 ──
 console.log('\n' + '='.repeat(40));
 if (failCount === 0 && warnCount === 0) {

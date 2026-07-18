@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-19（晚間）
+
+**新增**
+- B1橋接第二批：g114敘事排序(primero/luego/después/al final)、g115因果連接詞(por eso/así que/por lo tanto)、g116經驗時態前導詞(alguna vez/nunca/todavía/ya)
+- `maintenance.js` 新增「翻譯品質提醒」：偵測「被…著」西語式被動直譯、「有+情緒」破碎中文、「不相信」語氣過重三種可疑模式，僅供人工複查
+
 ## 2026-07-19（下午）
 
 **新增**

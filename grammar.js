@@ -2395,6 +2395,48 @@ const GRAMMAR_DATA = [
     ],
     trap:"這些句型是B2抽象論述的必要零件——B2例句「Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.」裡的「considero que」（我認為，比creo que更書面的同義詞）就是從這批意見表達句型再往上升一級，先把en mi opinión/estoy de acuerdo/depende de這幾個練順，才有辦法接住B2那種「先讓步、再表達立場」的複雜論述句。",
     source:"文法補充"
+  },
+
+  // ══ 🌉 B1 橋接第二批：敘事排序／因果／經驗時態前導 ══
+
+  {
+    id:"g114", cat:"connector", level:"b1",
+    title:"敘事排序詞：primero/luego/después/al final",
+    rule:"g112教過用porque/cuando/mientras把事件「串起因果」，這批詞負責另一件事——把好幾個步驟按「順序」排列清楚，是講故事、寫食譜、交代流程時的骨架詞，B1程度需要能流暢講出「第一步...然後...後來...最後...」這種多步驟敘事。",
+    examples:[
+      {es:"Primero, me desperté. Luego, desayuné. Después, fui a la escuela.", zh:"首先，我起床了。然後，我吃了早餐。接著，我去了學校。（primero/luego/después：標記步驟先後，是最基本的敘事排序組合）"},
+      {es:"Al final, todo salió bien.", zh:"最後，一切都很順利。（al final：收尾用語，總結整段敘事的結果）"},
+      {es:"Primero terminé la tarea, y al final pude descansar.", zh:"我先做完功課，最後才能休息。（primero...al final...：頭尾呼應的完整敘事框架）"}
+    ],
+    trap:"luego跟después常常可以互換（都是「然後/接著」），差別很細微：luego語氣更口語隨性，después稍微正式一點，日常對話兩個都通用，不用太糾結該選哪個。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g115", cat:"connector", level:"b1",
+    title:"因果連接詞：por eso/así que/por lo tanto",
+    rule:"g30教過porque（因為，先講原因），這批詞是反過來——先講原因、再講結果，用「所以/因此」把兩件事接起來。三個詞正式程度不同：por eso最口語，así que也偏口語但稍微強調結論，por lo tanto最正式書面，適合寫作/論述場合。",
+    examples:[
+      {es:"Llovía mucho, por eso no salimos.", zh:"雨下得很大，所以我們沒出門。（por eso：最口語的「所以」，日常對話最常用）"},
+      {es:"No tenía dinero, así que no compré nada.", zh:"我沒有錢，所以什麼都沒買。（así que：口語，帶一點「於是就」的順勢感）"},
+      {es:"Los datos son insuficientes; por lo tanto, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por lo tanto：正式書面用語，跟g88教過的一樣，適合寫作/論述）"}
+    ],
+    trap:"這三個詞的因果方向都一樣（原因在前，結果在後），差別純粹是語域（register）——朋友聊天用por eso/así que，寫報告/正式討論用por lo tanto，選錯不會造成誤解，但會顯得語氣不搭場合。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g116", cat:"tense", level:"b1",
+    title:"經驗時態前導詞：alguna vez/nunca/todavía/ya",
+    rule:"這批詞是B1→現在完成式（he hecho...）最常見的搭配副詞，用來問/答「有沒有經驗過」——alguna vez（曾經/有沒有過）通常用在疑問句，nunca（從未）用在否定回答，todavía（還/仍然，常配no todavía＝還沒）用在事情還沒發生，ya（已經）用在事情已經發生。",
+    examples:[
+      {es:"¿Alguna vez has comido chapulines?", zh:"你有吃過蚱蜢嗎？（¿Alguna vez has + 過去分詞...?：問對方有沒有過這個經驗）"},
+      {es:"Nunca he viajado a Argentina.", zh:"我從來沒去過阿根廷。（nunca + he + 過去分詞：從未做過某事）"},
+      {es:"Todavía no he terminado la tarea.", zh:"我還沒做完功課。（todavía no + he + 過去分詞：事情還沒發生）"},
+      {es:"Ya he comido, gracias.", zh:"我已經吃過了，謝謝。（ya + he + 過去分詞：事情已經發生）"}
+    ],
+    trap:"這四個詞幾乎都固定搭配現在完成式（he/has/ha + 過去分詞），是「講經驗」最自然的語感標記——聽到alguna vez/nunca/todavía/ya，大腦要立刻反應「後面應該接現在完成式」，這個組合感抓熟了，B1的經驗敘事就會流暢很多。",
+    source:"文法補充"
   }
 
 ];
