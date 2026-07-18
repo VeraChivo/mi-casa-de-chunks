@@ -2876,6 +2876,56 @@ const LYRICS_FILL_DATA = [
     after:'la pena.',
     hint:'valer la pena = 值得（成語，B2高頻慣用語）',
     grammar:'「Un pedazo de tierra que vale la pena」關係子句 que 修飾 tierra（土地），valer la pena 是「值得」的固定成語搭配，不能拆開直譯。整句延續前面「Soy la sangre...」的隱喻——歌者把自己等同於拉丁美洲這片土地本身，是身分認同主題的高潮句。'
+  },
+  {
+    id:'lf21', artist:'Violeta Parra', song:'Gracias a la Vida', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=SIS1y0_pQRY',
+    ytLabel:'▶ 點開聽這首',
+    before:'Gracias a la vida que me ha',
+    blank:'dado',
+    after:'tanto.',
+    hint:'dar → dado（過去分詞），haber+過去分詞＝現在完成式',
+    grammar:'「Me ha dado tanto」用現在完成式（haber+過去分詞）表達「人生迄今給了我這麼多」——強調從過去累積到現在的整體感受，這首智利民謠是拉美「新歌運動」（Nueva Canción）代表作，Violeta Parra 用感恩的口吻細數人生給予的一切（眼睛、聲音、雙腳等），是B2程度學習現在完成式最有情感深度的真實範例。'
+  },
+  {
+    id:'lf22', artist:'Julio Numhauser / Mercedes Sosa', song:'Todo Cambia', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=6BP4nhKkiKE',
+    ytLabel:'▶ 點開聽這首',
+    before:'Cambia lo superficial, cambia también lo',
+    blank:'profundo',
+    after:'.',
+    hint:'profundo = 深層的（跟superficial表面的相對）',
+    grammar:'「Cambia lo + 形容詞」用中性冠詞 lo 把形容詞名詞化（lo superficial＝表面的事物，lo profundo＝深層的事物），是西語常見的抽象化技巧。這首歌由智利作曲家 Julio Numhauser 於1982年流亡瑞典時所寫，經 Mercedes Sosa 傳唱成為拉美經典，主題呼應移民/離散經驗——外在一切都會改變，但對故土的愛不變。',
+  },
+  {
+    id:'lf23', artist:'Julio Numhauser / Mercedes Sosa', song:'Todo Cambia', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=6BP4nhKkiKE',
+    ytLabel:'▶ 點開聽這首',
+    before:'Cambia el modo de pensar, cambia todo en este',
+    blank:'mundo',
+    after:'.',
+    hint:'el modo de pensar = 思考的方式',
+    grammar:'「El modo de pensar」＝思考方式，modo de + 原形動詞是「⋯的方式」的固定搭配（也可以說 modo de vivir 生活方式、modo de hablar 說話方式）。這句延續上一句「一切都在變」的主題，呼應智利軍事政變後海外流亡者的集體心境。'
+  },
+  {
+    id:'lf24', artist:'Silvio Rodríguez', song:'Ojalá', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=zsg3Fdy7Kh0',
+    ytLabel:'▶ 點開聽這首',
+    before:'Ojalá que las hojas no te',
+    blank:'toquen',
+    after:'el cuerpo cuando caigan.',
+    hint:'tocar → toquen（現在虛擬式第三人稱複數），Ojalá (que) 後面永遠接虛擬式',
+    grammar:'整首歌用「Ojalá que + 虛擬式」句型反覆吟詠，是學習虛擬式最經典的古巴歌謠範例。這句字面「希望落葉不要碰到你的身體」，其實是想徹底忘卻一段感情、希望連自然現象都不要再勾起回憶的詩意表達，虛擬式在這裡承載的是「打從心底期盼卻無法控制」的無力感。'
+  },
+  {
+    id:'lf25', artist:'Silvio Rodríguez', song:'Ojalá', level:'b2', levelLabel:'B2',
+    yt:'https://www.youtube.com/watch?v=zsg3Fdy7Kh0',
+    ytLabel:'▶ 點開聽這首',
+    before:'Ojalá que la lluvia',
+    blank:'deje',
+    after:'de ser milagro que baja por tu cuerpo.',
+    hint:'dejar → deje（現在虛擬式），dejar de + 原形動詞＝停止做某事',
+    grammar:'「Dejar de ser milagro」＝不再是奇蹟，dejar de + 原形動詞是「停止⋯」的固定句型。這句延續 Ojalá que + 虛擬式的結構，把雨水淋在對方身上的畫面詩化成「奇蹟」，希望這種近乎神聖的感覺也能消失——虛擬式在整首歌裡都在表達「明知不可能、卻還是忍不住許願」的心理狀態。'
   }
 ];
 let _lfFilter = 'all';
