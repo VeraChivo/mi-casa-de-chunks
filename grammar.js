@@ -1507,9 +1507,10 @@ const GRAMMAR_DATA = [
   {
     id:"g63", cat:"phrase", level:"b1",
     title:"墨西哥可樂的兩個面向：好喝的秘密與貧窮的代價",
-    rule:"墨西哥可口可樂被很多人認為比其他國家好喝，關鍵在於用「蔗糖」（azúcar de caña）當甜味劑，美國自1980年起改用玉米糖漿，兩種甜味喝起來確實不同；經典玻璃瓶包裝也是原因之一。但同一款飲料在墨西哥恰帕斯州（Chiapas）卻是另一個故事：當地飲用水長期短缺（可口可樂集團FEMSA自1995年起持有大量水權開採許可），但可樂比瓶裝水便宜，根據2019年CIMSUR研究，恰帕斯當地平均每人每年喝掉821公升可樂——是全國平均160公升的5倍、全球平均的32倍；聖胡安查穆拉（San Juan Chamula）糖尿病更是當地死因第三名，聯合國也曾公開譴責當地飲用水權受侵害的問題。",
+    rule:"墨西哥可口可樂被很多人認為比其他國家好喝，關鍵在於用「蔗糖」（azúcar de caña）當甜味劑，美國自1980年代起因玉米種植補貼改用更便宜的玉米糖漿，兩種甜味喝起來確實不同；經典玻璃瓶包裝也是原因之一。這股風潮甚至讓 Arca 公司自2005年起透過「懷舊計畫」（Proyecto Nostalgia）把墨西哥版可樂正式外銷到美國，許多美國消費者願意多付一倍價錢購買；2025年時任美國總統川普公開施壓，可口可樂宣布將在美國推出蔗糖版本因應需求（原版玉米糖漿配方仍保留）。但同一款飲料在墨西哥恰帕斯州（Chiapas）卻是另一個故事：當地飲用水長期短缺（可口可樂集團FEMSA自1995年起持有大量水權開採許可），但可樂比瓶裝水便宜，根據2019年CIMSUR研究，恰帕斯當地平均每人每年喝掉821公升可樂——是全國平均160公升的5倍、全球平均的32倍；聖胡安查穆拉（San Juan Chamula）糖尿病更是當地死因第三名，聯合國也曾公開譴責當地飲用水權受侵害的問題。",
     examples:[
       {es:"La Coca-Cola mexicana usa azúcar de caña, no jarabe de maíz.", zh:"墨西哥可樂用蔗糖，不是玉米糖漿。"},
+      {es:"En 2025, Coca-Cola anunció que lanzará una versión con azúcar de caña en Estados Unidos.", zh:"2025年，可口可樂宣布將在美國推出蔗糖版本。"},
       {es:"En Chiapas, cada persona bebe en promedio 821 litros de Coca-Cola al año.", zh:"在恰帕斯州，每人平均每年喝掉821公升可樂。"},
       {es:"La escasez de agua potable y el precio barato del refresco explican este fenómeno.", zh:"飲用水短缺加上汽水便宜的價格，解釋了這個現象。"}
     ],
