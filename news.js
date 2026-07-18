@@ -255,7 +255,7 @@ const NEWS_ITEMS = [
     id:'nw32',
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/estudio-im%C3%A1genes-en-internet-y-la-ia-refuerzan-estereotipos-de-g%C3%A9nero/a-74293648',
-    headline:'Imágenes en internet y la IA [?] la brecha de género.',
+    headline:'Imágenes en internet y la IA [?] brecha de género.',
     task:{ type:'blank', answer:'refuerzan', zh:'強化', hint:'verbo, 第三人稱複數 — hacer más fuerte algo' },
     cefr:'B2', topic:'género 🚻'
   }
