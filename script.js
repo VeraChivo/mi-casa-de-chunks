@@ -2726,8 +2726,8 @@ const LYRICS_FILL_DATA = [
   },
   {
     id:'lf06', artist:'Toy Cantando', song:'Arroz con Leche', level:'a0', levelLabel:'A0',
-    yt:'https://youtu.be/pbeSNLPsFlQ?t=6',
-    ytLabel:'▶ 6秒處聽',
+    yt:'https://www.youtube.com/watch?v=Ep2oKzXBjp8',
+    ytLabel:'▶ 點開聽這首',
     before:'Arroz con leche, me',
     blank:'quiero',
     after:'casar, con una señorita de San Nicolás.',
@@ -2795,9 +2795,9 @@ const LYRICS_FILL_DATA = [
     grammar:'這首是西語系國家流傳數百年的經典童謠，作者不詳、世代口耳相傳。後續歌詞唱一位紳士、一位女士、一位水手經過，水手跟青蛙要一束迷迭香，青蛙不肯給還哭了——是很典型「重複疊句+人物依序登場」的傳統童謠結構。'
   },
   {
-    id:'lf13', artist:'Tradicional', song:'Que Llueva, Que Llueva', level:'a1', levelLabel:'A1',
-    yt:'https://youtu.be/pbeSNLPsFlQ?t=220',
-    ytLabel:'▶ 220秒處聽',
+    id:'lf13', artist:'Toy Cantando', song:'Que Llueva, Que Llueva', level:'a1', levelLabel:'A1',
+    yt:'https://www.youtube.com/watch?v=8qzzWzI6ZlQ',
+    ytLabel:'▶ 點開聽這首',
     before:'Que llueva, que llueva, la vieja está en la',
     blank:'cueva',
     after:'los pajaritos cantan, las nubes se levantan.',
@@ -2805,9 +2805,9 @@ const LYRICS_FILL_DATA = [
     grammar:'「La vieja está en la cueva」老奶奶在洞穴裡——estar en 表達位置所在。這句歌詞在不同地區有變體：西班牙原版是「la Virgen de la Cueva」（源自1726年一場祈雨傳說），阿根廷等拉美地區常唱世俗版「la vieja está en la cueva」，這裡採用拉美常見版本。皆為查無單一作者的公共領域童謠。'
   },
   {
-    id:'lf14', artist:'Tradicional', song:'Las Ruedas del Autobús', level:'a0', levelLabel:'A0',
-    yt:'https://youtu.be/pbeSNLPsFlQ?t=15',
-    ytLabel:'▶ 15秒處聽（連結待VERA自行核對）',
+    id:'lf14', artist:'El Reino Infantil', song:'Las Ruedas del Autobús', level:'a0', levelLabel:'A0',
+    yt:'https://www.youtube.com/watch?v=m5jd3UyO_aY',
+    ytLabel:'▶ 點開聽這首',
     before:'Las',
     blank:'ruedas',
     after:'del autobús van rodando van, rodando van, rodando van.',
@@ -2815,9 +2815,9 @@ const LYRICS_FILL_DATA = [
     grammar:'這首是20世紀初美英傳入拉美地區的翻譯版童謠，查證為公共領域、查無單一作者。van rodando = 正在轉動（ir + 現在分詞，表達持續進行的動作）。'
   },
   {
-    id:'lf15', artist:'Tradicional', song:'El Viejo MacDonald Tenía una Granja', level:'a1', levelLabel:'A1',
-    yt:'https://youtu.be/pbeSNLPsFlQ?t=550',
-    ytLabel:'▶ 550秒處聽（連結待VERA自行核對）',
+    id:'lf15', artist:'El Reino Infantil', song:'El Viejo MacDonald Tenía una Granja', level:'a1', levelLabel:'A1',
+    yt:'https://www.youtube.com/watch?v=PDyR5xMnMGM',
+    ytLabel:'▶ 點開聽這首',
     before:'El viejo MacDonald tenía una',
     blank:'granja',
     after:'ia-ia-o. Y en esa granja tenía una vaca...',
