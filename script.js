@@ -2863,6 +2863,12 @@ const INDIC_SUBJ_PAIRS = [
   {verb:"🛫 旅行道別", indic:{es:"Mañana vuelas a casa.", zh:"明天你要飛回家了。"}, subj:{es:"¡Que tengas buen vuelo!", zh:"祝飛行順利！"}},
   {verb:"💼 面試加油", indic:{es:"Tienes una entrevista hoy.", zh:"你今天有面試。"}, subj:{es:"¡Que te salga bien!", zh:"希望你順利！"}}
 ];
+function toggleIndicSubj(){
+  const body=document.getElementById('indSubjBody');
+  const t=document.getElementById('indSubjToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
 function renderIndicSubjPairs(){
   const el = document.getElementById('indSubjBody');
   if(!el) return;
@@ -4394,7 +4400,65 @@ function initReminders(){
   checkReminders();
 }
 
-// ── B2 時事傳送門 ──
+// ── 📰 B2 時事傳送門：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
+let _newsTopicFilter = 'all';
+let _newsExpandedId = null;
+function newsFilterByTopic(topic){
+  _newsTopicFilter = topic;
+  _newsExpandedId = null;
+  renderNewsSection();
+}
+function newsToggleExpand(id){
+  _newsExpandedId = (_newsExpandedId === id) ? null : id;
+  renderNewsSection();
+  if(_newsExpandedId === id){
+    setTimeout(()=>{ const s=document.getElementById('news-item-'+id); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+  }
+}
+function _newsBuildExpandedHtml(item){
+  const isBlank = item.task.type==='blank';
+  let headlineHtml;
+  if(isBlank){
+    headlineHtml = item.headline.replace('[?]',
+      `<input type="text" class="news-blank-input" id="news-input-${item.id}"
+       placeholder="填入詞語" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+       onkeydown="if(event.key==='Enter')checkNewsBug('${item.id}')">`);
+  } else {
+    headlineHtml = item.headline.replace(item.task.wrong,
+      `<span class="news-bug-word" id="news-bug-${item.id}" title="這個字有錯誤">${item.task.wrong}</span>`);
+  }
+  const fullSentence = isBlank ? item.headline.replace('[?]', item.task.answer) : item.headline;
+  let html = `<div class="news-item is-expanded" id="news-item-${item.id}">
+    <div class="news-meta">
+      <span class="news-topic">${item.topic}</span>
+      <button class="news-speak-btn" onclick="speakFull('${escAttr(fullSentence)}')" title="聽發音">🔊</button>
+      <a class="news-source" href="${item.sourceUrl}" target="_blank" rel="noopener">${item.source} ↗</a>
+    </div>
+    <div class="news-headline">${headlineHtml}</div>`;
+
+  if(isBlank){
+    html += `<div class="news-controls">
+      <button class="news-check-btn" onclick="checkNewsBug('${item.id}')">核對答案</button>
+      <button class="news-hint-btn" onclick="toggleNewsHint('${item.id}')">提示</button>
+    </div>`;
+  } else {
+    html += `<div class="news-controls">
+      <input type="text" class="news-blank-input" id="news-input-${item.id}"
+       placeholder="輸入正確拼法" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+       onkeydown="if(event.key==='Enter')checkNewsBug('${item.id}')">
+      <button class="news-check-btn" onclick="checkNewsBug('${item.id}')">找錯字</button>
+      <button class="news-hint-btn" onclick="toggleNewsHint('${item.id}')">提示</button>
+    </div>`;
+  }
+
+  html += `<div class="news-hint" id="news-hint-${item.id}" style="display:none">
+      <span class="news-hint-zh">${item.task.zh}</span> — ${item.task.hint}
+    </div>
+    <div class="news-feedback" id="news-fb-${item.id}"></div>
+    <button class="news-collapse-btn" onclick="event.stopPropagation();newsToggleExpand('${item.id}')">▲ 收起，換一篇</button>
+  </div>`;
+  return html;
+}
 function renderNewsSection(){
   const el = document.getElementById('newsSectionWrap');
   if(!el || typeof NEWS_ITEMS==='undefined') return;
@@ -4410,51 +4474,24 @@ function renderNewsSection(){
   });
   dwHtml += '</div>';
 
-  // 新聞卡片
-  let itemsHtml = '';
-  NEWS_ITEMS.forEach(item=>{
-    const isBlank = item.task.type==='blank';
-    let headlineHtml;
-    if(isBlank){
-      headlineHtml = item.headline.replace('[?]',
-        `<input type="text" class="news-blank-input" id="news-input-${item.id}"
-         placeholder="填入詞語" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-         onkeydown="if(event.key==='Enter')checkNewsBug('${item.id}')">`);
-    } else {
-      headlineHtml = item.headline.replace(item.task.wrong,
-        `<span class="news-bug-word" id="news-bug-${item.id}" title="這個字有錯誤">${item.task.wrong}</span>`);
-    }
+  // 主題篩選chip（含「全部」跟各主題數量）
+  const topics = [...new Set(NEWS_ITEMS.map(n=>n.topic))];
+  const topicChips = ['all', ...topics].map(t=>{
+    const label = t==='all' ? '📋 全部' : t;
+    const count = t==='all' ? NEWS_ITEMS.length : NEWS_ITEMS.filter(n=>n.topic===t).length;
+    return `<span class="news-topic-chip${_newsTopicFilter===t?' active':''}" onclick="event.stopPropagation();newsFilterByTopic('${escAttr(t)}')">${label} (${count})</span>`;
+  }).join('');
 
-    const fullSentence = isBlank ? item.headline.replace('[?]', item.task.answer) : item.headline;
-    itemsHtml += `<div class="news-item" id="news-item-${item.id}">
-      <div class="news-meta">
-        <span class="news-topic">${item.topic}</span>
-        <button class="news-speak-btn" onclick="speakFull('${escAttr(fullSentence)}')" title="聽發音">🔊</button>
-        <a class="news-source" href="${item.sourceUrl}" target="_blank" rel="noopener">${item.source} ↗</a>
-      </div>
-      <div class="news-headline">${headlineHtml}</div>`;
-
-    if(isBlank){
-      itemsHtml += `<div class="news-controls">
-        <button class="news-check-btn" onclick="checkNewsBug('${item.id}')">核對答案</button>
-        <button class="news-hint-btn" onclick="toggleNewsHint('${item.id}')">提示</button>
-      </div>`;
-    } else {
-      itemsHtml += `<div class="news-controls">
-        <input type="text" class="news-blank-input" id="news-input-${item.id}"
-         placeholder="輸入正確拼法" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-         onkeydown="if(event.key==='Enter')checkNewsBug('${item.id}')">
-        <button class="news-check-btn" onclick="checkNewsBug('${item.id}')">找錯字</button>
-        <button class="news-hint-btn" onclick="toggleNewsHint('${item.id}')">提示</button>
-      </div>`;
-    }
-
-    itemsHtml += `<div class="news-hint" id="news-hint-${item.id}" style="display:none">
-        <span class="news-hint-zh">${item.task.zh}</span> — ${item.task.hint}
-      </div>
-      <div class="news-feedback" id="news-fb-${item.id}"></div>
+  const shown = _newsTopicFilter==='all' ? NEWS_ITEMS : NEWS_ITEMS.filter(n=>n.topic===_newsTopicFilter);
+  const itemsHtml = shown.map(item=>{
+    if(_newsExpandedId === item.id) return _newsBuildExpandedHtml(item);
+    const preview = item.headline.replace('[?]','﹍﹍').replace(/<[^>]+>/g,'');
+    return `<div class="news-row-collapsed" onclick="newsToggleExpand('${item.id}')">
+      <span class="news-row-topic">${item.topic}</span>
+      <span class="news-row-headline">${preview}</span>
+      <span class="news-row-arrow">▶</span>
     </div>`;
-  });
+  }).join('');
 
   el.innerHTML = `<div class="news-section-wrap">
     <div class="news-section-header" onclick="toggleNewsSection()">
@@ -4469,6 +4506,7 @@ function renderNewsSection(){
     </div>
     <div id="newsSectionBody" style="display:none">
       ${dwHtml}
+      <div class="news-topic-filter">${topicChips}</div>
       <div class="news-items">${itemsHtml}</div>
       <div class="news-footer">題目來源：<a href="https://www.dw.com/es/" target="_blank" rel="noopener">DW Español</a>（每題點「↗」可直接跳去該篇真實文章，標題引用僅供教育學習）</div>
     </div>
