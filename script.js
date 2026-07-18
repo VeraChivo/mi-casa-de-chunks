@@ -3577,6 +3577,12 @@ const DAILY_TASK_RECIPES = {
     {icon:'✍️', label:'日記寫一句', target:'diary'}
   ]
 };
+const DTASK_CELEBRATE_MSGS = [
+  {es:'¡Felicidades, jardinero/jardinera! 🌱 ¡Hoy has cuidado tu jardín de español! ✨ Cada pequeño paso hace crecer tu mundo en español.', zh:'恭喜，西語小園丁！今天你照顧了你的西語花園！每一小步，都讓你的西語世界成長。'},
+  {es:'¡Lo lograste! 💧 Regaste tus chunks de hoy. 🐝 Las abejitas están felices contigo.', zh:'你做到了！今天的語塊都澆過水了。小蜜蜂們都替你開心。'},
+  {es:'¡Otro día de cosecha completado! 🌾 Tu español sigue creciendo, poquito a poquito.', zh:'又完成了豐收的一天！你的西語持續在成長，一點一點地。'},
+  {es:'¡Bien hecho! 🌱 El jardín de hoy ya está regado. 🌤️ Mañana seguimos sembrando juntas.', zh:'做得好！今天的花園已經澆好水了。明天我們繼續一起播種。'}
+];
 function _dtaskTodayISO(){
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -3661,7 +3667,7 @@ function renderDailyTask(){
       <span class="dtask-chip-row">${chipRow}</span>
     </div>
     <div class="dtask-list">${itemsHtml}</div>
-    ${allDone ? `<div class="dtask-celebrate">🎉 今天的耕耘任務完成了！</div>` : ''}
+    ${allDone ? (()=>{ const m = DTASK_CELEBRATE_MSGS[Math.floor(Math.random()*DTASK_CELEBRATE_MSGS.length)]; return `<div class="dtask-celebrate">🎉 <span class="dtask-celebrate-es">${m.es}</span><br><span class="dtask-celebrate-zh">${m.zh}</span></div>`; })() : ''}
   </div>`;
 }
 

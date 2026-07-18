@@ -132,7 +132,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .dtask-label{font-size:13px;color:var(--tdark);font-weight:700;flex:1}
 .dtask-go{background:#E0A84A;color:#fff;border:none;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;flex-shrink:0}
 .dtask-go:active{opacity:.7}
-.dtask-celebrate{margin-top:10px;font-size:13px;font-weight:800;color:var(--ok);text-align:center}
+.dtask-celebrate{margin-top:10px;text-align:center;line-height:1.5}
+.dtask-celebrate-es{font-size:12px;font-weight:800;color:var(--ok)}
+.dtask-celebrate-zh{font-size:12px;color:var(--tmid)}
 
 .gfresh-wrap{width:100%;max-width:480px;margin:0 0 12px;background:linear-gradient(135deg,#EAF6E9,#F5FAF0);border-radius:16px;padding:14px 16px;border:1.5px solid rgba(123,158,135,.35);box-sizing:border-box}
 .gfresh-msg{font-size:14px;font-weight:800;color:var(--tdark);margin-bottom:10px;text-align:center}
