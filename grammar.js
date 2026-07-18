@@ -1541,6 +1541,19 @@ const GRAMMAR_DATA = [
     ],
     trap:"秋紐不是「隨便曬乾馬鈴薯」——是精準利用高原日夜溫差極端（夜晚結凍、白天曝曬）的傳統技術，體現的是適應惡劣環境的智慧，不是簡單的食物保存法。",
     source:"文法補充"
+  },
+
+  {
+    id:"g66", cat:"phrase", level:"b1",
+    title:"個人空間泡泡：拉美各國距離感大不同",
+    rule:"語言學習平台 Preply 曾彙整全球56國的「個人空間泡泡」研究，發現距離感需求差異很大：奧地利需求距離最短（72公分），哥倫比亞跟阿根廷也偏短、接受距離較近；墨西哥則是拉美國家中最需要個人空間的（99公分），比巴西、哥倫比亞、阿根廷、秘魯都還要遠。這打破「拉美人都很熱情、沒有距離感」的刻板印象——同樣是拉美，墨西哥跟哥倫比亞/阿根廷的距離感其實明顯不同。研究也發現疫情之後，全球多數國家的社交距離需求都顯著增加。",
+    examples:[
+      {es:"En Colombia y Argentina, la burbuja personal es más pequeña que en México.", zh:"在哥倫比亞跟阿根廷，個人空間泡泡比墨西哥小。"},
+      {es:"México es el país latinoamericano que más valora su espacio personal.", zh:"墨西哥是拉美國家中最重視個人空間的。"},
+      {es:"Después de la pandemia, la distancia social aumentó en casi todo el mundo.", zh:"疫情之後，全球社交距離幾乎都增加了。"}
+    ],
+    trap:"不要以為「拉美＝熱情沒距離感」是通用規則——同樣在拉美，墨西哥對個人空間的需求其實比哥倫比亞、阿根廷都高，國與國之間差異很大，不能一概而論。",
+    source:"文法補充"
   }
 
 ];
