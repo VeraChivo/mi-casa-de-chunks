@@ -3744,9 +3744,9 @@ function getMorningBriefHTML(){
       <div class="morning-brief-hint">💡 ${lf.hint}</div>
       <div class="morning-brief-links">
         <a class="morning-brief-yt" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
-        <button class="morning-brief-answer-btn" onclick="jumpToLyricAnswer('${lf.id}')">🔎 去核對答案</button>
+        <button class="morning-brief-answer-btn" onclick="jumpToLyricAnswer('${lf.id}')">🌾 去田裡核對</button>
       </div>
-      <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 去今日探索</button>
+      <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 放下小報，出發</button>
     </div>`;
   }
   if(!isLyric && gcard){
@@ -3757,7 +3757,7 @@ function getMorningBriefHTML(){
       <div class="morning-brief-song">${gcard.title}</div>
       <div class="morning-brief-rule">${gcard.rule}</div>
       ${ex?`<div class="morning-brief-lyric" onclick="speakGramSmart('${escAttr(ex.es)}')" style="cursor:pointer">${ex.es}<div style="font-size:11px;color:var(--tmid);margin-top:4px">${ex.zh}</div></div>`:''}
-      <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 去今日探索</button>
+      <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 放下小報，出發</button>
     </div>`;
   }
   return `${celebHtml}<div class="morning-brief-card"><div class="morning-brief-banner"><div class="morning-brief-tag">🌅 農間小報</div><div class="morning-brief-day">${today}</div></div><button class="morning-brief-close" onclick="closeMorningBrief()">✕ 關閉</button></div>`;
