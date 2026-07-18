@@ -242,6 +242,22 @@ const NEWS_ITEMS = [
     headline:'Pueblos indígenas en Latinoamérica: de la lucha por la [?] a la justicia social.',
     task:{ type:'blank', answer:'tierra', zh:'土地', hint:'sustantivo f. — el suelo, el territorio' },
     cefr:'B2', topic:'pueblos indígenas 🌾'
+  },
+  {
+    id:'nw31',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/qu%C3%A9-hace-hombre-al-hombre-repensar-la-masculinidad/a-57125567',
+    headline:'¿Qué hace hombre al hombre? Repensar la [?].',
+    task:{ type:'blank', answer:'masculinidad', zh:'男性氣質', hint:'sustantivo f. — el conjunto de características asociadas a ser hombre' },
+    cefr:'B2', topic:'género 🚻'
+  },
+  {
+    id:'nw32',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/estudio-im%C3%A1genes-en-internet-y-la-ia-refuerzan-estereotipos-de-g%C3%A9nero/a-74293648',
+    headline:'Imágenes en internet y la IA [?] la brecha de género.',
+    task:{ type:'blank', answer:'refuerzan', zh:'強化', hint:'verbo, 第三人稱複數 — hacer más fuerte algo' },
+    cefr:'B2', topic:'género 🚻'
   }
 ];
 
