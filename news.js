@@ -354,6 +354,22 @@ const NEWS_ITEMS = [
     headline:'Cacao y café de Colombia en Europa, con sabor a [?].',
     task:{ type:'blank', answer:'paz', zh:'和平', hint:'sustantivo f. — ausencia de conflicto' },
     cefr:'B2', topic:'gastronomía 🍽️'
+  },
+  {
+    id:'nw45',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/gigantes-en-peligro-como-los-grandes-%C3%A1rboles-protegen-el-clima/video-68751873',
+    headline:'Cómo los grandes árboles [?] el clima.',
+    task:{ type:'blank', answer:'protegen', zh:'保護', hint:'verbo, 第三人稱複數 — cuidar o defender algo' },
+    cefr:'B2', topic:'medio ambiente 🌍'
+  },
+  {
+    id:'nw46',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/autismo-condici%C3%B3n-m%C3%A9dica-o-rasgo-de-personalidad/a-17720996',
+    headline:'Autismo: ¿condición médica o [?] de personalidad?',
+    task:{ type:'blank', answer:'rasgo', zh:'特徵／特質', hint:'sustantivo m. — una característica distintiva de algo o alguien' },
+    cefr:'B2', topic:'neurodiversidad 🧩'
   }
 ];
 
