@@ -282,6 +282,78 @@ const NEWS_ITEMS = [
     headline:'Montessori, la [?] que cambió la educación moderna.',
     task:{ type:'blank', answer:'pionera', zh:'先驅（女性）', hint:'sustantivo f. — la primera persona en abrir camino en algo' },
     cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw36',
+    source:'El País',
+    sourceUrl:'https://elpais.com/elpais/2018/12/20/mamas-papas/1545307069_904715.html',
+    headline:'Método Montessori: "[?]" la escuela pública.',
+    task:{ type:'blank', answer:'Montessorizar', zh:'讓⋯蒙特梭利化', hint:'verbo（新造詞）— aplicar los principios Montessori a algo' },
+    cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw37',
+    source:'El País',
+    sourceUrl:'https://elpais.com/mamas-papas/2021-07-02/metodo-montessori-que-es-y-que-deben-saber-los-padres-a-la-hora-de-elegirlo-para-sus-hijos.html',
+    headline:'Método Montessori: qué es y qué deben saber los [?] a la hora de elegirlo para sus hijos.',
+    task:{ type:'blank', answer:'padres', zh:'父母', hint:'sustantivo m. pl. — el padre y la madre' },
+    cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw38',
+    source:'Educación 3.0',
+    sourceUrl:'https://www.educaciontrespuntocero.com/recursos/actividades-metodo-montessori/',
+    headline:'¡Descárgate actividades del método Montessori [?]!',
+    task:{ type:'blank', answer:'gratuitamente', zh:'免費地', hint:'adverbio — sin tener que pagar' },
+    cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw39',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/cocina-peruana-gan%C3%A1ndose-un-lugar-en-el-paladar-berlin%C3%A9s/a-69943786',
+    headline:'Cocina peruana, ganándose un lugar en el [?] berlinés.',
+    task:{ type:'blank', answer:'paladar', zh:'味蕾／味覺', hint:'sustantivo m. — el sentido del gusto' },
+    cefr:'B2', topic:'gastronomía 🍽️'
+  },
+  {
+    id:'nw40',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/taste-atlas-nombra-a-la-lechona-colombiana-como-el-mejor-plato-del-mundo/a-71051445',
+    headline:'Lechona colombiana se lleva título al mejor [?] del mundo.',
+    task:{ type:'blank', answer:'plato', zh:'菜餚', hint:'sustantivo m. — una comida preparada' },
+    cefr:'B2', topic:'gastronomía 🍽️'
+  },
+  {
+    id:'nw41',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/entre-tradici%C3%B3n-y-ecolog%C3%ADa-el-arte-culinario-de-franco-yahir/video-74788368',
+    headline:'Entre tradición y ecología: el arte [?] de Franco Yahir.',
+    task:{ type:'blank', answer:'culinario', zh:'烹飪的', hint:'adjetivo m. — relacionado con la cocina' },
+    cefr:'B2', topic:'gastronomía 🍽️'
+  },
+  {
+    id:'nw42',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/la-producci%C3%B3n-de-vino-en-latinoam%C3%A9rica-en-jaque-por-el-cambio-clim%C3%A1tico/a-65876116',
+    headline:'El cambio climático pone en [?] el vino en Latinoamérica.',
+    task:{ type:'blank', answer:'jaque', zh:'受威脅／陷入困境', hint:'expresión "poner en jaque" — poner en una situación de peligro o dificultad' },
+    cefr:'B2', topic:'gastronomía 🍽️'
+  },
+  {
+    id:'nw43',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/c%C3%B3mo-el-cambio-clim%C3%A1tico-amenaza-la-industria-vin%C3%ADcola-de-chile/a-76053388',
+    headline:'El vino frente al desafío [?].',
+    task:{ type:'blank', answer:'climático', zh:'氣候的', hint:'adjetivo m. — relacionado con el clima' },
+    cefr:'B2', topic:'gastronomía 🍽️'
+  },
+  {
+    id:'nw44',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/cacao-y-caf%C3%A9-de-colombia-en-europa-con-sabor-a-paz/a-76801411',
+    headline:'Cacao y café de Colombia en Europa, con sabor a [?].',
+    task:{ type:'blank', answer:'paz', zh:'和平', hint:'sustantivo f. — ausencia de conflicto' },
+    cefr:'B2', topic:'gastronomía 🍽️'
   }
 ];
 
