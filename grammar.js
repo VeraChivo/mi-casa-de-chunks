@@ -2362,6 +2362,39 @@ const GRAMMAR_DATA = [
     ],
     trap:"三句由左到右語氣逐漸篤定：Dudo que（隨口猜測，最委婉）→No creo que（不太相信，中等）→Creo que no（我判斷你不想，最直接）。文法上的分界線很清楚——creer/pensar只有在「否定」的時候才觸發虛擬式（no creo que），一旦creer本身是肯定的、只是後面內容帶no（creo que no），就變回陳述式，這是初學者最容易搞混虛擬式觸發規則的地方之一。翻譯這三句給中文使用者看時，千萬不要把dudar que直接套「我懷疑」，語感會整個跑掉。",
     source:"文法補充"
+  },
+
+  // ══ 🌉 B1 橋接：A2單句 → B2抽象論述之間缺的那座橋 ══
+  // 核心缺口：敘事能力(串起事件)＋意見表達(不只會Creo que)，這兩塊補上B2的抽象/虛擬式才接得起來
+
+  {
+    id:"g112", cat:"connector", level:"b1",
+    title:"敘事橋接：把單句串成一段小故事",
+    rule:"A2程度通常只會講孤立的單句（Fui al parque.），B1的關鍵突破是「用時間/因果連接詞把好幾個單句串成一段有邏輯的敘事」——cuando/mientras負責時間順序，porque/antes de/después de負責因果跟先後，這幾個詞組合起來，就能把「流水帳」升級成「有頭有尾的故事」。",
+    examples:[
+      {es:"Fui al parque.", zh:"我去了公園。（A2：孤立單句，只有事實，沒有脈絡）"},
+      {es:"Fui al parque porque hacía buen tiempo.", zh:"我去了公園，因為天氣很好。（B1：加porque，開始交代原因，敘事有了第一層邏輯）"},
+      {es:"Antes de ir al parque, terminé mi tarea.", zh:"去公園之前，我先做完了功課。（antes de + 原形動詞：交代事件的先後順序）"},
+      {es:"Mientras estaba en el parque, empezó a llover.", zh:"我在公園的時候，開始下雨了。（mientras + 過去進行式：兩件事同時發生，一件是背景、一件是插入的新事件）"},
+      {es:"Cuando llegué a casa, ya estaba oscuro.", zh:"當我到家的時候，天已經黑了。（cuando + 過去式：標記一個時間點，後面接當下的狀態）"}
+    ],
+    trap:"這是A2升B2最關鍵的中間橋——B2需要講出像「Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.」（雖然我認為綠地空間很重要，但很多城市投資不足）這種抽象論述句，中間差的正是「先學會串連具體事件」這一步：A2只會單句「Fui al parque」，B1學會用porque/cuando/mientras/antes de/después de把好幾件事串成一段敘事，才有能力再往上疊加B2的虛擬式/讓步子句/抽象詞彙——跳過B1敘事直接學B2論述句型，會學得很痛苦，因為連接詞的基本功還沒打穩。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g113", cat:"verb-pattern", level:"b1",
+    title:"意見表達：Creo que之外還能怎麼說",
+    rule:"g13教過的Creo que是意見表達最基本的入門款，B1程度需要更多變化——en mi opinión/desde mi punto de vista這類開場白讓意見表達更正式有條理，estoy de acuerdo/no estoy de acuerdo讓你能回應別人的意見（同意或反對），depende de讓你能給出不那麼絕對的答案，這些是B1→B2「討論抽象話題」不可或缺的句型骨架。",
+    examples:[
+      {es:"En mi opinión, los espacios verdes son muy importantes.", zh:"依我看，綠地空間非常重要。（en mi opinión：比creo que更正式的意見開場白，常用在討論/寫作語境）"},
+      {es:"Desde mi punto de vista, esta ciudad necesita más parques.", zh:"從我的角度來看，這座城市需要更多公園。（desde mi punto de vista：強調「這是我個人的視角」，語氣比creo que更慎重）"},
+      {es:"Estoy de acuerdo contigo.", zh:"我同意你的看法。（estoy de acuerdo con + 人：表達同意）"},
+      {es:"No estoy de acuerdo con esa idea.", zh:"我不同意那個想法。（no estoy de acuerdo con + 事物：表達不同意）"},
+      {es:"Depende de la situación.", zh:"要看情況而定。（depende de：給出保留、不絕對的答案，日常對話跟正式討論都很常用）"}
+    ],
+    trap:"這些句型是B2抽象論述的必要零件——B2例句「Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.」裡的「considero que」（我認為，比creo que更書面的同義詞）就是從這批意見表達句型再往上升一級，先把en mi opinión/estoy de acuerdo/depende de這幾個練順，才有辦法接住B2那種「先讓步、再表達立場」的複雜論述句。",
+    source:"文法補充"
   }
 
 ];
