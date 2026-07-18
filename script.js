@@ -2823,6 +2823,26 @@ const LYRICS_FILL_DATA = [
     after:'ia-ia-o. Y en esa granja tenía una vaca...',
     hint:'tenía = tener 過去未完成式第三人稱單數',
     grammar:'這首溯源自1706年英國民謠（原名 Old Macdougal），世代口傳演變成今天的版本，拉美地區有多種翻譯版本（En la granja de Pepito等），查無單一譯者版權。tenía = 過去未完成式，描述過去持續/反覆的狀態（曾經有⋯），跟簡單過去式的一次性動作不同。'
+  },
+  {
+    id:'lf16', artist:'Jarabe de Palo', song:'Agua', level:'b1', levelLabel:'B1',
+    yt:'https://www.youtube.com/watch?v=2GhF2mPKnDg',
+    ytLabel:'▶ 點開聽這首',
+    before:'Cuando uno tiene',
+    blank:'sed',
+    after:'pero el agua no está cerca.',
+    hint:'tener sed = 感到口渴',
+    grammar:'「Cuando uno tiene sed」用 cuando + 陳述式現在式，描述一般性/習慣性的真實情況（口渴的時候⋯），這跟「cuando + 虛擬式」描述未來還沒發生的事件不同（例如 Cuando llegues, avísame = 你到的時候〔還沒發生〕跟我說一聲）。'
+  },
+  {
+    id:'lf17', artist:'Becky G ft. Bad Bunny', song:'Mayores', level:'b1', levelLabel:'B1',
+    yt:'https://www.youtube.com/watch?v=GMFewiplIbw',
+    ytLabel:'▶ 點開聽這首',
+    before:'A mí me gustan mayores, de esos que',
+    blank:'llaman',
+    after:'señores.',
+    hint:'關係子句 que + 陳述式，因為先行詞（esos）是確定存在的對象',
+    grammar:'「De esos que llaman señores」關係子句用陳述式 llaman，因為先行詞 esos（那些人）是說話者心中確定、具體存在的對象。對比：如果先行詞是不確定/假設的對象，關係子句要改用虛擬式，例如「Busco a alguien que sea mayor」（我在找一個〔還不確定是誰的〕比較成熟的人）。'
   }
 ];
 let _lfFilter = 'all';
