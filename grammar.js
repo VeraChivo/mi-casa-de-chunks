@@ -1689,7 +1689,7 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g76", cat:"grammar", level:"b2c1",
+    id:"g76", cat:"verb-pattern", level:"b2c1",
     title:"被動語態：voz pasiva 與更常用的 se pasivo",
     rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（依主詞陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞第三人稱，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
     examples:[
