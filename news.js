@@ -378,6 +378,54 @@ const NEWS_ITEMS = [
     headline:'El reto de integrarse en Alemania sin cursos de [?].',
     task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'sustantivo f. — el proceso de formar parte de un grupo o sociedad' },
     cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw48',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/latinoamericanos-en-alemania-el-arte-de-convertir-la-nostalgia-en-belleza/a-69102953',
+    headline:'Latinoamericanos en Alemania: el arte de convertir la nostalgia en [?].',
+    task:{ type:'blank', answer:'belleza', zh:'美／美麗', hint:'sustantivo f. — cualidad de lo bello, lo estético' },
+    cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw49',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/el-debate-sobre-la-integraci%C3%B3n-mantiene-a-alemania-expectante/a-6357787',
+    headline:'El debate sobre la [?] mantiene a Alemania expectante.',
+    task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'sustantivo f. — el proceso de formar parte de un grupo o sociedad' },
+    cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw50',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/latinoamericanos-en-alemania-no-tantos-pero-bien-integrados/a-66689637',
+    headline:'Latinoamericanos en Alemania: pocos, pero bien [?].',
+    task:{ type:'blank', answer:'integrados', zh:'融入的（過去分詞，陽性複數）', hint:'participio pasado de "integrar", concuerda en género y número' },
+    cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw51',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/artistas-latinoamericanas-en-alemania-migraci%C3%B3n-e-identidad/a-67356286',
+    headline:'Artistas latinoamericanas en Alemania: migración e [?].',
+    task:{ type:'blank', answer:'identidad', zh:'身分認同', hint:'sustantivo f. — quiénes somos, nuestra cultura y raíces' },
+    cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw52',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/alemania-la-diversidad-es-clave-para-el-%C3%A9xito-empresarial/a-56762764',
+    headline:'Alemania: la diversidad es clave para el éxito [?].',
+    task:{ type:'blank', answer:'empresarial', zh:'企業的／商業的', hint:'adjetivo — relacionado con las empresas y los negocios' },
+    cefr:'B2', topic:'migración 🧳'
+  },
+  {
+    id:'nw53',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/alemania-una-historia-de-migraciones/a-18723301',
+    headline:'Alemania, una historia de [?].',
+    task:{ type:'blank', answer:'migraciones', zh:'移民（複數，人口遷移）', hint:'sustantivo f. pl. — movimientos de personas de un país a otro' },
+    cefr:'B2', topic:'migración 🧳'
   }
 ];
 
