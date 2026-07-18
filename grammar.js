@@ -112,7 +112,8 @@ const GRAMMAR_CATS = [
   {key:"connector",    label:"連接詞"},
   {key:"confusable",   label:"易混淆詞組"},
   {key:"vocab",        label:"B2詞彙"},
-  {key:"slang",        label:"拉美俚語"}
+  {key:"slang",        label:"拉美俚語"},
+  {key:"proverb",      label:"諺語"}
 ];
 
 
@@ -1811,6 +1812,172 @@ const GRAMMAR_DATA = [
       {es:"Ese abrigo me costó un ojo de la cara.", zh:"那件外套花了我一大筆錢。（costar un ojo de la cara：非常貴，字面「花一隻眼睛的價錢」）"}
     ],
     trap:"這類成語的共同點是：拆開單字完全猜不出意思，一定要整組當一個「語塊」記，跟本站一貫的教學原則（禁止單字死背）完全一致——遇到新成語不要逐字翻譯，先當一個不可分割的整體記下來。",
+    source:"文法補充"
+  },
+
+  // ══ 🗣️ C1 專區第二批：拆成模組，貼近 DELE C1 與真實語境 ══
+
+  {
+    id:"g86", cat:"phrase", level:"c1",
+    title:"C1慣用語：一針見血、進退兩難這類固定搭配",
+    rule:"這批慣用語（locuciones）是C1程度的核心——比A2-B1的單字片語更抽象，常常用具體畫面比喻抽象處境（劍與牆之間、握著平底鍋的柄），全西語圈通用度高，新聞跟日常對話都會出現。",
+    examples:[
+      {es:"Con esa pregunta, diste en el clavo.", zh:"你這個問題問得一針見血。（dar en el clavo：字面「打中釘子」，精準說中重點）"},
+      {es:"Deja de rodear el tema y ve al grano.", zh:"別再拐彎抹角了，直接講重點。（ir al grano：直奔主題）"},
+      {es:"Metí la pata al mencionar su ex en la fiesta.", zh:"我在派對上提到他前任，搞砸了。（meter la pata：說錯話、搞砸）"},
+      {es:"No le digas eso, solo vas a echar leña al fuego.", zh:"別跟他說那個，你只會火上加油。"},
+      {es:"Cuando vio el resultado, se quedó de piedra.", zh:"他看到結果的時候整個人愣住了。（quedarse de piedra：字面「變成石頭」，嚇呆/愣住）"},
+      {es:"El jefe tiene la sartén por el mango en esta negociación.", zh:"老闆在這場談判裡握有主導權。（字面「握著平底鍋的柄」，比喻掌控全局）"}
+    ],
+    family:{
+      title:"📌 C1慣用語補給包",
+      intro:"這幾個也很高頻，先認得，語感抓到了再找機會用。",
+      items:[
+        {es:"estar entre la espada y la pared", zh:"進退兩難（字面「在劍與牆之間」）"},
+        {es:"poner los pies en la tierra", zh:"腳踏實地、實際一點"},
+        {es:"tirar la toalla", zh:"放棄（源自拳擊丟毛巾認輸的動作）"}
+      ]
+    },
+    trap:"這類慣用語幾乎都源自具體的畫面/動作（丟毛巾認輸、握住鍋柄、變成石頭），記的時候不要只背中文翻譯，想像那個畫面反而更好記，也更貼近母語者聽到這句話時腦中浮現的感覺。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g87", cat:"vocab", level:"c1",
+    title:"新聞常用抽象動詞：DW／El País天天出現的10個字",
+    rule:"讀西語新聞時，這批抽象動詞的出現頻率極高，但課本很少專門教——它們大多用來描述「某人/某方做了什麼動作來回應或推動一件事」，是B2時事傳送門文章裡常見卻沒被特別標註過的高頻字，適合搭配📰B2日報一起讀。",
+    examples:[
+      {es:"El informe plantea varias preguntas sobre el sistema educativo.", zh:"這份報告提出了幾個關於教育體制的問題。（plantear：提出）"},
+      {es:"El artículo aborda el tema de la salud mental en jóvenes.", zh:"這篇文章探討了年輕人心理健康的議題。（abordar：處理、探討）"},
+      {es:"El gobierno busca impulsar la economía digital.", zh:"政府正試圖推動數位經濟。（impulsar：推動）"},
+      {es:"La ONG trabaja para fomentar la igualdad de género.", zh:"這個非政府組織致力於促進性別平等。（fomentar：促進）"},
+      {es:"Los datos evidencian un aumento en el desempleo.", zh:"這些數據顯示失業率上升。（evidenciar：顯示、證明）"}
+    ],
+    family:{
+      title:"📰 新聞抽象動詞速查",
+      intro:"這10個動詞在西語新聞裡幾乎天天出現，認得意思就能大幅提升讀新聞的流暢度。",
+      items:[
+        {es:"consolidar", zh:"鞏固"},
+        {es:"cuestionar", zh:"質疑"},
+        {es:"destacar",  zh:"強調、突顯"},
+        {es:"asumir",    zh:"承擔、擔任"},
+        {es:"reivindicar", zh:"爭取、主張（自己的權利）"}
+      ]
+    },
+    trap:"這些動詞多半用在「正式/書面」語境——日常聊天很少會說「voy a fomentar mi amistad contigo」，這類字最適合拿來讀新聞、寫正式文章，跟日常口語的語域（register）不同，讀懂就好，不用急著在對話裡使用。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g88", cat:"connector", level:"c1",
+    title:"正式連接詞：讓論述聽起來更有邏輯層次",
+    rule:"這批連接詞是C1程度的「論述骨架」——比B1教過的porque/pero/y更正式，常出現在新聞評論、學術寫作、正式演講，能把一長串句子串成有轉折/因果/補充層次的論述，是B2升C1最重要的語感差異之一。",
+    examples:[
+      {es:"El plan es ambicioso; no obstante, falta financiamiento.", zh:"這個計畫很有野心；然而，資金不足。（no obstante：然而，比pero更正式）"},
+      {es:"No hay suficientes datos; por consiguiente, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por consiguiente：因此）"},
+      {es:"Él prefiere quedarse en casa; ella, en cambio, sale todos los fines de semana.", zh:"他喜歡待在家；她則相反，每個週末都出門。（en cambio：相反、反之）"},
+      {es:"Cabe destacar que este fenómeno no es nuevo.", zh:"值得注意的是，這個現象並不是新的。（cabe destacar que：值得注意的是）"},
+      {es:"En cuanto a los resultados, todavía es pronto para saberlo.", zh:"關於結果，現在下定論還太早。（en cuanto a：關於……方面）"}
+    ],
+    family:{
+      title:"🧩 正式連接詞速查",
+      intro:"這些字寫作/正式演講很好用，日常口語裡母語者也會用其中幾個顯得比較有條理。",
+      items:[
+        {es:"a pesar de ello", zh:"儘管如此"},
+        {es:"de hecho", zh:"事實上"},
+        {es:"en definitiva", zh:"總而言之"},
+        {es:"por otra parte", zh:"另一方面"},
+        {es:"asimismo", zh:"此外、同樣地"}
+      ]
+    },
+    trap:"這批字的功能其實跟g30-g32教過的porque/pero/sino一樣（連接子句），差別只在「語域」（register）更正式——寫作文/準備正式簡報時優先用這批，朋友聊天用porque/pero就好，硬要在日常對話塞no obstante反而顯得生硬。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g89", cat:"slang", level:"c1",
+    title:"拉美高頻口語第二批：墨西哥/阿根廷再補幾個",
+    rule:"延續「五國俚語地圖」（g59）跟「人際互動與年輕人口語」（g83），這裡補上墨西哥跟阿根廷還沒收錄過的高頻詞——尤其阿根廷的 re + 形容詞是一個很能舉一反三的造詞模式，前面隨便接形容詞都能用。",
+    examples:[
+      {es:"¿En serio perdiste el vuelo? ¡No manches!", zh:"你真的錯過班機了？不會吧！（no manches：墨西哥，比no mames溫和的「不會吧/真假」）"},
+      {es:"Fuimos a la playa, qué padre estuvo.", zh:"我們去了海邊，超棒的。（qué padre：墨西哥，很棒/很讚）"},
+      {es:"Hay que aguantar vara hasta que termine el proyecto.", zh:"要撐住熬到這個專案結束。（aguantar vara：墨西哥，忍耐撐過艱難時期，字面「扛著棍子」）"},
+      {es:"No banco que me hablen así.", zh:"我受不了別人這樣跟我說話。（bancar：阿根廷，忍受/支持，No lo banco＝我受不了他）"},
+      {es:"Esa película está re buena.", zh:"那部電影超好看的。（re + 形容詞：阿根廷，非常……，re可以隨意接在大部分形容詞前面加強語氣）"}
+    ],
+    trap:"re + 形容詞 是這批裡最好用的造詞模式——阿根廷人幾乎任何形容詞前面都能加re來加強語氣（re lindo/re difícil/re tarde），聽到「re」開頭先反應成「非常」就對了，不用逐字翻譯。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g90", cat:"confusable", level:"c1",
+    title:"容易誤解的表達：字面翻不出真正意思",
+    rule:"這批片語如果照字面翻譯會完全誤解——「留在空白」是什麼意思？「被做成灰塵」又是什麼？這些都是固定搭配，字面意思幫不了你，一定要整組記下來。",
+    examples:[
+      {es:"Me preguntaron algo tan difícil que me quedé en blanco.", zh:"他們問了一個很難的問題，我腦袋一片空白。（quedarse en blanco：腦袋空白、想不起來）"},
+      {es:"Después de la mudanza, estoy hecho polvo.", zh:"搬完家之後我累壞了。（estar hecho polvo：字面「被做成灰塵」，累到極限）"},
+      {es:"Se puso rojo cuando le dijeron que le gustaba.", zh:"當他們說喜歡他的時候，他臉紅了。（ponerse rojo：臉紅）"},
+      {es:"Nita y Tito se llevan muy bien.", zh:"妮妲和迪多相處得很融洽。（llevarse bien：相處融洽，跟caer bien不同——llevarse是描述兩人之間的關係，caer bien是描述某人給人的第一印象）"},
+      {es:"Este examen es pan comido.", zh:"這場考試易如反掌。（ser pan comido：字面「被吃掉的麵包」，輕而易舉）"}
+    ],
+    family:{
+      title:"🔍 補充兩個",
+      intro:"",
+      items:[
+        {es:"tener pinta de", zh:"看起來像……（Tiene pinta de estar cansado.＝他看起來很累）"},
+        {es:"estar de mala leche", zh:"心情很差、脾氣不好（多見於西班牙，跟g85的tener mala leche同源）"}
+      ]
+    },
+    trap:"llevarse bien（相處融洽，描述關係）容易跟g39教過的caer bien（討人喜歡，描述第一印象）搞混——判斷方法：llevarse一定要有「兩個人」在句子裡（Nos llevamos bien），caer bien只需要一個人被評價（Me cae bien）。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g91", cat:"slang", level:"c1",
+    title:"母語者感嘆句第二批：影集/日常反應句",
+    rule:"延續g84「影集常見句」，這裡再補7句更強烈的反應句——這批有幾句明顯偏西班牙用法（¡Anda ya!／¡Venga ya!／¡Qué pasada!），拉美也聽得懂但不是當地最高頻的講法，聽到時知道意思就好，不用當作拉美日常台詞的預設選項。",
+    examples:[
+      {es:"¡No me lo puedo creer, ganamos!", zh:"我不敢相信，我們贏了！"},
+      {es:"¿Que te comiste todo el pastel? ¡Anda ya!", zh:"你把整個蛋糕吃光了？不是吧！（¡Anda ya!：多見於西班牙，表達不可置信/懷疑）"},
+      {es:"¿Otra vez llegas tarde? ¡Venga ya!", zh:"你又遲到了？拜託喔！（¡Venga ya!：多見於西班牙，不耐煩的抱怨）"},
+      {es:"¡No fastidies! ¿En serio te despidieron?", zh:"別鬧了！你真的被解僱了？（¡No fastidies!：別鬧了/開玩笑吧，語氣較溫和）"},
+      {es:"¡Madre mía, qué susto me diste!", zh:"我的天啊，你嚇死我了！（¡Madre mía!：泛西語圈通用，驚訝/震驚）"}
+    ],
+    family:{
+      title:"😲 再補兩句",
+      intro:"",
+      items:[
+        {es:"¡Qué pasada!", zh:"太厲害了！（多見於西班牙，對厲害的事物讚嘆）"},
+        {es:"¡Menudo lío!", zh:"真是一團亂！（形容混亂的場面）"}
+      ]
+    },
+    trap:"¡Madre mía! 是這批裡唯一泛西語圈都通用、沒有地區限制的一句，其餘幾句（¡Anda ya!/¡Venga ya!/¡Qué pasada!）偏西班牙腔，如果只想學拉美最常用的反應句，優先記g84已經教過的¡Qué fuerte!／¡Ni hablar!／¡En serio?就夠用。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g92", cat:"proverb", level:"c1",
+    title:"西語諺語：跟中文很多異曲同工的智慧",
+    rule:"諺語（refranes）是C1程度很重要的文化資產——很多西語諺語剛好能對應到一句意思相近的中文成語/俗語，記的時候直接配對中文版本，比死記西語字面意思容易得多。",
+    examples:[
+      {es:"No todo lo que brilla es oro.", zh:"並非閃閃發光的都是金子。（對應中文「金玉其外，敗絮其中」的反向提醒）"},
+      {es:"Más vale tarde que nunca.", zh:"遲做總比不做好。"},
+      {es:"A caballo regalado no le mires el diente.", zh:"別人送的馬別去看牠的牙齒。（對應中文「禮物別挑剔」）"},
+      {es:"Quien mucho abarca, poco aprieta.", zh:"貪多嚼不爛。"},
+      {es:"Dime con quién andas y te diré quién eres.", zh:"告訴我你跟誰在一起，我就告訴你你是什麼樣的人。（對應中文「近朱者赤，近墨者黑」）"},
+      {es:"No hay mal que por bien no venga.", zh:"塞翁失馬，焉知非福。"}
+    ],
+    family:{
+      title:"📚 再補四句",
+      intro:"",
+      items:[
+        {es:"El hábito no hace al monje.", zh:"人不可貌相（字面「習慣不能造就修士」，別以外表判斷人）"},
+        {es:"En boca cerrada no entran moscas.", zh:"禍從口出（字面「閉著的嘴蒼蠅飛不進去」，話少惹禍少）"},
+        {es:"Más vale prevenir que curar.", zh:"預防勝於治療。"},
+        {es:"El tiempo pone todo en su lugar.", zh:"時間會證明一切。"}
+      ]
+    },
+    trap:"諺語適合「認得就好」，日常對話裡母語者確實會引用（尤其長輩），但初學者硬要在對話中主動使用諺語容易顯得刻意或用錯場合，優先目標是聽到/讀到時能理解，之後聽多了自然知道什麼場合適合接一句。",
     source:"文法補充"
   }
 
