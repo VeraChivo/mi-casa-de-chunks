@@ -126,7 +126,8 @@ const GRAMMAR_CATS = [
   {key:"falseeq",      label:"翻譯陷阱"},
   {key:"socioling",    label:"社會語言學"},
   {key:"inclusive",    label:"包容語言"},
-  {key:"reading",      label:"閱讀入口"}
+  {key:"reading",      label:"閱讀入口"},
+  {key:"preposition",  label:"介系詞場景"}
 ];
 
 
@@ -2272,6 +2273,52 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"這個任務系統故意不提供答案——C2程度的真實考驗是「能不能自己在網路上找到一篇文章、看懂它在說什麼、抓出立場跟論證」，這件事沒有標準答案可以核對，練習的價值就在「自己動手找、自己動腦整理」這個過程本身，不是等著被餵一篇已經處理好的文章。",
+    source:"文法補充"
+  },
+
+  // ══ 🌱 A1-A2 骨架補完：介系詞場景／IR・HACER動詞家族 ══
+  // 高階內容(C1/C2)正在補，A1-A2真正缺的不是資料量，是「核心句型網」——
+  // 這批不是單字卡，是把en/a/de/con/por/para跟IR/HACER放進真實場景裡
+
+  {
+    id:"g108", cat:"preposition", level:"a1a2",
+    title:"介系詞場景：en/a/de/con/por/para不是單字，是畫面",
+    rule:"這六個介系詞是A1之後每一句話都會用到的地基，但死背「en=在、a=去」這種單一翻譯完全沒用——要記的是「畫面」：en是待在一個空間裡面，a是朝向一個目的地，de是從某個起點來，con是兩樣東西綁在一起，para是朝著一個對象/目的，por是穿過/透過某個路徑或原因。",
+    examples:[
+      {es:"Estoy en casa.", zh:"我在家。（en：人待在一個空間「裡面」，画面是「被包在裡面」）"},
+      {es:"Voy a la escuela.", zh:"我要去學校。（a：朝著一個目的地移動，畫面是「箭頭指向那裡」）"},
+      {es:"Vengo de México.", zh:"我從墨西哥來。（de：起點/來源，畫面是「從那裡出發」）"},
+      {es:"Quiero un café con leche.", zh:"我要一杯咖啡加牛奶。（con：兩樣東西綁在一起，畫面是「兩個東西黏在一起」）"},
+      {es:"Este regalo es para ti.", zh:"這個禮物是給你的。（para：朝著一個對象/目的，畫面是「送到你手上」）"},
+      {es:"Pasamos por el parque.", zh:"我們經過公園。（por：穿過一個路徑，畫面是「穿過去/路過」）"}
+    ],
+    trap:"por跟para是這批裡最容易混的一組（見g33完整對照），但先不用急著鑽研細節——這張卡的重點是先把每個介系詞配一個「畫面」記住，之後遇到por/para的細節分岔，會比死背規則更容易理解，因為你已經知道por的核心畫面是「穿過/經過」，para的核心畫面是「朝向一個終點」。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g109", cat:"verb-pattern", level:"a1a2",
+    title:"IR和HACER動詞家族：核心動詞怎麼長出一整串句子",
+    rule:"IR（去）和HACER（做）是西語使用頻率最高的兩個動詞之一，但課本常常只教變位表（voy/vas/va），沒有教「這個動詞可以接什麼、長成哪些句子」——像g19已經教過IR+a+原形動詞（近未來式），這裡把IR/HACER其他常見搭配整理成一個家族，一次看到這個動詞能延伸出多少實用句子。",
+    examples:[
+      {es:"Voy a la tienda.", zh:"我要去商店。（ir a + 地點：單純的「去某個地方」）"},
+      {es:"Voy a comer.", zh:"我要去吃飯。（ir a + 原形動詞：近未來式，見g19）"},
+      {es:"Voy por pan.", zh:"我去買麵包（順道去拿）。（ir por + 名詞：去拿/去取某樣東西）"},
+      {es:"Hago la comida.", zh:"我在做飯。（hacer + 名詞：最基本的「做某件事」）"},
+      {es:"Hago ejercicio todos los días.", zh:"我每天做運動。（hacer ejercicio：固定搭配，運動要用hacer不是practicar）"},
+      {es:"Hace frío hoy.", zh:"今天很冷。（hacer + 天氣：西語講天氣現象固定用hacer，不是estar，這是初學者常見的誤用點）"}
+    ],
+    family:{
+      title:"🔨 HACER再補幾個常見搭配",
+      intro:"",
+      items:[
+        {es:"hacer una pregunta", zh:"問一個問題（不是preguntar una pregunta，這是常見的中式直譯錯誤）"},
+        {es:"hacer la tarea", zh:"做功課"},
+        {es:"hacer un viaje", zh:"去旅行"},
+        {es:"hacer caso", zh:"聽從、理會（No me hace caso＝他不理我）"}
+      ]
+    },
+    trap:"hacer frío（天氣冷）是初學者最常犯錯的地方——中文「天氣冷」直覺會想用「是/estar」，但西語的天氣現象（frío/calor/sol/viento）固定搭配hacer，這個不是邏輯規則，是約定俗成的固定搭配，直接背下來比推導原因更有效率。",
     source:"文法補充"
   }
 
