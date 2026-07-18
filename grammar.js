@@ -1489,6 +1489,19 @@ const GRAMMAR_DATA = [
     },
     trap:"跨國比較成績時，先確認「這個數字是越大越好還是越小越好」，不能直接套用台灣的直覺去解讀別的國家的分數——德國的「1」是最頂尖的成績，不是不及格。",
     source:"文法補充"
+  },
+
+  {
+    id:"g62", cat:"phrase", level:"b1",
+    title:"台灣的農業外交：與巴拉圭的真實合作史",
+    rule:"台灣與巴拉圭自1957年建交，是台灣目前在南美洲唯一的邦交國。1960、70年代台灣派農業專家赴巴拉圭，把土地改革與稻米種植的經驗帶過去；1973年起協助發展花卉產業，到2003年當地農民已種出超過40個玫瑰品種；近年還協助巴拉圭建立淡水魚（pacu）人工繁殖技術。巴拿馬過去也有類似的農技合作計畫，但已在2017年與台灣斷交。這段歷史剛好是「台灣人用西語做跨國合作」的真實案例。",
+    examples:[
+      {es:"Taiwán y Paraguay mantienen relaciones diplomáticas desde 1957.", zh:"台灣與巴拉圭自1957年起維持邦交關係。"},
+      {es:"Expertos agrícolas taiwaneses ayudaron a mejorar el cultivo de arroz en Paraguay.", zh:"台灣農業專家曾協助巴拉圭改善稻米種植。"},
+      {es:"Hoy en día, agricultores paraguayos cultivan más de 40 variedades de rosas gracias a esta cooperación.", zh:"如今巴拉圭農民靠著這項合作種出超過40種玫瑰。"}
+    ],
+    trap:"這類「農耕隊／農技團」的外交合作只存在於台灣邦交國，巴拿馬已在2017年斷交，這類技術合作也隨之結束——邦交狀態會直接影響這類長期合作項目的存續。",
+    source:"文法補充"
   }
 
 ];
