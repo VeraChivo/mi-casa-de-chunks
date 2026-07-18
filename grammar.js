@@ -1568,6 +1568,31 @@ const GRAMMAR_DATA = [
     ],
     trap:"不要把「拉美＝到處都不準時」當成鐵律——就算同樣在拉美，智利（83%認為社交遲到可接受）跟阿根廷（只有43%）差異也很大，準時觀念要看國家、也要看場合（社交 vs 職場常常不同標準）。",
     source:"文法補充"
+  },
+
+  {
+    id:"g68", cat:"phrase", level:"b1",
+    title:"美國本土的西語變體：新墨西哥州 vs 德州",
+    rule:"西語不只在拉美有地域差異，在美國本土也發展出獨特的地方變體。新墨西哥州的「Nuevomexicano」是美國最古老的西語變體之一——16、17世紀西班牙殖民者帶來的西語，跟母國西語隔絕數百年後，保留了許多現代西語已經消失的古語形態，同時又混入納瓦荷語、普韋布洛語等當地原住民語言的詞彙，形成獨一無二的混合體。德州的「Tejano」西語則走另一個方向——深度融合英語，是「Spanglish」（西英混合語）最具代表性的變體，反映的是邊境地區長期雙語生活的日常。兩者都不是「不標準的西語」，而是各自環境下自然演化出的真實語言變體。",
+    examples:[
+      {es:"El español de Nuevo México conserva formas antiguas que ya no se usan en otros países.", zh:"新墨西哥州的西語保留了其他國家已經不再使用的古語形態。"},
+      {es:"El español tejano mezcla mucho el inglés, es el Spanglish por excelencia.", zh:"德州西語深度融合英語，是最具代表性的Spanglish。"}
+    ],
+    trap:"這兩種變體不是「講得不標準」——語言學上它們是各自歷史環境（隔絕演化 vs 邊境雙語生活）自然發展出的真實變體，跟拉美各國的地方腔調是同一種性質，不該被貼上「錯誤」的標籤。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g69", cat:"phrase", level:"b1",
+    title:"「三層漢堡事件」：拉美網路爆紅的約會話題",
+    rule:"2026年7月，委內瑞拉網紅Luis Miguel Castillo（@castillaneando）在TikTok分享一段親身經歷：他邀約一位女性第一次約會，途中女方拒絕去他原本提議的餐廳，改去她想去的地方，並點了一份「三層漢堡」（hamburguesa triple）。他事後表示這讓他留下不好的第一印象，並拒絕再見面，影片瞬間爆紅，累積數百萬次觀看。當事女性Kerstin Guenther後來公開回應，反駁自己是因為經濟動機而點餐，並留下爆紅金句：「你希望我點一杯水嗎？」（¿Qué querías que pidiera, un vaso de agua?）。這個事件在西語網路圈掀起「約會該不該AA制（pagar a medias）」「傳統性別角色期待」的大辯論，跟台灣網路上類似的約會金錢觀爭論異曲同工。",
+    examples:[
+      {es:"El video de la hamburguesa triple se hizo viral en cuestión de días.", zh:"三層漢堡事件的影片幾天內就爆紅了。"},
+      {es:"El debate sobre pagar a medias en la primera cita sigue siendo polémico.", zh:"第一次約會該不該AA制的辯論依然很有爭議。"},
+      {es:"¿Qué querías que pidiera, un vaso de agua?", zh:"你希望我點一杯水嗎？（爆紅金句）"}
+    ],
+    trap:"這個事件常被誤傳成「墨西哥男子」「高檔餐廳」——查證後主角其實是委內瑞拉人，餐廳也是女方主動選擇的地方，不是男方原本安排的高檔餐廳，轉述時要注意這些細節容易被以訛傳訛。",
+    source:"文法補充"
   }
 
 ];

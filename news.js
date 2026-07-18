@@ -170,6 +170,14 @@ const NEWS_ITEMS = [
     headline:'¿Cuánto [?] (o no) los estudiantes en América Latina?',
     task:{ type:'blank', answer:'aprenden', zh:'學到', hint:'verbo, 第三人稱複數 — adquirir conocimiento' },
     cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw22',
+    source:'Forbes México',
+    sourceUrl:'https://forbes.com.mx/coca-cola-lanzara-version-con-azucar-de-cana-en-eu-bebidas-sin-calorias-y-precios-mas-altos-impulsan-el-ritmo/',
+    headline:'Coca-Cola lanzará [?] con azúcar de caña en EU.',
+    task:{ type:'blank', answer:'versión', zh:'版本', hint:'sustantivo f. — una variante o edición diferente de algo' },
+    cefr:'B2', topic:'economía 💰'
   }
 ];
 
