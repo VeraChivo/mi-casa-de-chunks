@@ -1165,6 +1165,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .hv-title-es{font-size:11px;color:#9A7C54;margin:2px 0 8px;font-style:italic}
 .hv-intro-owner{font-size:11px;color:#8A6B45;margin:4px 0 2px;line-height:1.5;font-style:italic}
 .hv-intro-bee{font-size:11px;color:#9A7C54;margin:0 0 2px;font-weight:700}
+.hv-toggle-arrow{font-size:11px;color:#6B4A2B;font-weight:800;margin-top:6px}
 .hv-stats{display:flex;gap:8px;margin:10px 0 14px}
 .hv-stat-card{flex:1;background:rgba(255,255,255,.5);border:1px solid rgba(139,110,60,.25);border-radius:10px;text-align:center;padding:8px 4px}
 .hv-stat-num{font-size:20px;font-weight:900;color:#6B4A2B;line-height:1.1}

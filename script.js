@@ -2608,6 +2608,13 @@ function filterGrammarSupplementByTopic(key){
   renderGrammarSupplement();
 }
 
+function toggleHvSection(){
+  const body=document.getElementById('hvBody');
+  const t=document.getElementById('hvToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+
 function toggleGrammarSupplement(){
   const body=document.getElementById('grammarSupplementBody');
   const t=document.getElementById('grammarSupplementToggle');

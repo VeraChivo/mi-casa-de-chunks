@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260718a11">
+<link rel="stylesheet" href="style.css?v=20260718a12">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -431,14 +431,16 @@
 
   <!-- 🐝 蜂巢築巢觀測儀 (Observador de Colmena) —— 只在穀倉大豐收分頁顯示，不再是全站頁尾 -->
   <div class="hv-section">
-    <!-- 標頭 -->
-    <div class="hv-header">
+    <!-- 標頭（點擊收合/展開） -->
+    <div class="hv-header" onclick="toggleHvSection()" style="cursor:pointer">
       <div class="hv-title">🐝 蜂巢築巢觀測儀</div>
       <div class="hv-title-es">Observador de Colmena</div>
       <p class="hv-intro-owner">莊園主說：這不是謝誌，是一本帳。記錄每一次工蜂飛出去採蜜的里程，以及讓這一切成為可能的每一朵花。</p>
       <p class="hv-intro-bee">🐝 小蜜蜂說：嗡嗡嗡！我在飛！繼續嗡！</p>
+      <div id="hvToggle" class="hv-toggle-arrow">▼ 展開</div>
     </div>
 
+    <div id="hvBody" class="ammo-body">
     <!-- 數據看板 -->
     <div class="hv-stats">
       <div class="hv-stat-card">
@@ -519,6 +521,7 @@
         <div id="changelogBody" class="cl-body"></div>
       </div>
     </div>
+    </div> <!-- /hvBody -->
   </div>
 
   </div> <!-- ══════════ / TAB D：穀倉豐收 結束 ══════════ -->
@@ -561,6 +564,6 @@
   <script src="diary.js?v=20260715a2"></script>
   <script src="corazon.js?v=20260717a5"></script>
   <script src="news.js?v=20260718a16"></script>
-  <script src="script.js?v=20260718a15"></script>
+  <script src="script.js?v=20260718a16"></script>
 </body>
 </html>
