@@ -3558,6 +3558,113 @@ function openGardenQuizToday(){
   openGardenQuiz(3);
 }
 
+// ── 🌱 今日耕耘任務：時間預算式任務引擎，一次只顯示一項，完成才顯示下一項 ──
+const DAILY_TASK_RECIPES = {
+  10: [
+    {icon:'🌾', label:'學 1 個語塊', target:'play'},
+    {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'},
+    {icon:'📰', label:'讀 1 篇短新聞', target:'news'}
+  ],
+  20: [
+    {icon:'🌾', label:'複習語塊（今日小份抓蟲）', target:'garden-quiz'},
+    {icon:'🎵', label:'做 1 題歌詞填空', target:'lyrics'},
+    {icon:'📰', label:'讀 1 篇 B1/B2 文章', target:'news'}
+  ],
+  30: [
+    {icon:'🌾', label:'語塊複習（今日小份抓蟲）', target:'garden-quiz'},
+    {icon:'🎵', label:'歌詞理解練習', target:'lyrics'},
+    {icon:'📰', label:'讀一篇 DW 新聞', target:'news'},
+    {icon:'✍️', label:'日記寫一句', target:'diary'}
+  ]
+};
+function _dtaskTodayISO(){
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function getDailyTaskState(){
+  let st;
+  try { st = JSON.parse(localStorage.getItem('peppa_daily_task_v1') || 'null'); } catch(e){ st = null; }
+  if(!st || st.date !== _dtaskTodayISO()) st = { date:_dtaskTodayISO(), tier:null, doneIdx:[] };
+  return st;
+}
+function saveDailyTaskState(st){
+  try { localStorage.setItem('peppa_daily_task_v1', JSON.stringify(st)); } catch(e){}
+}
+function dtaskPickTier(tier){
+  const st = getDailyTaskState();
+  st.tier = tier;
+  st.doneIdx = [];
+  saveDailyTaskState(st);
+  renderDailyTask();
+}
+function dtaskComplete(idx){
+  const st = getDailyTaskState();
+  if(!st.doneIdx.includes(idx)) st.doneIdx.push(idx);
+  saveDailyTaskState(st);
+  renderDailyTask();
+  if(typeof toast==='function') toast('🌱 完成一項，土壤又鬆了一點！');
+}
+function dtaskJump(target){
+  if(target==='play'){ switchMainTab('play'); return; }
+  if(target==='garden-quiz'){ jumpToGardenQuizToday(); return; }
+  if(target==='lyrics'){
+    switchMainTab('know');
+    if(!_lyricsFillOpen) toggleLyricsFill();
+    setTimeout(()=>{ const s=document.getElementById('lyricsFillSection'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    return;
+  }
+  if(target==='news'){
+    switchMainTab('know');
+    const body=document.getElementById('newsSectionBody');
+    if(body && body.style.display==='none') toggleNewsSection();
+    setTimeout(()=>{ const s=document.getElementById('newsSectionWrap'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    return;
+  }
+  if(target==='diary'){
+    setTimeout(()=>{ const s=document.getElementById('talkMamaVoice'); if(s) s.scrollIntoView({behavior:'smooth',block:'center'}); }, 30);
+    return;
+  }
+}
+function renderDailyTask(){
+  const el = document.getElementById('dailyTaskBody');
+  if(!el) return;
+  const st = getDailyTaskState();
+  const chipRow = [10,20,30].map(t => `<span class="dtask-chip${st.tier===t?' active':''}" onclick="dtaskPickTier(${t})">${t}分</span>`).join('');
+
+  if(!st.tier){
+    el.innerHTML = `<div class="dtask-box">
+      <div class="dtask-title">🌱 今日耕耘任務</div>
+      <div class="dtask-prompt">今天想投入多少時間？</div>
+      <div class="dtask-chip-row">${chipRow}</div>
+    </div>`;
+    return;
+  }
+
+  const recipe = DAILY_TASK_RECIPES[st.tier];
+  const doneCount = st.doneIdx.length;
+  const allDone = doneCount >= recipe.length;
+  let itemsHtml = '';
+  for(let i=0; i<recipe.length; i++){
+    if(i > doneCount) break; // 只顯示已完成的 + 下一項未完成的，其餘先不出現
+    const task = recipe[i];
+    const isDone = st.doneIdx.includes(i);
+    itemsHtml += `<div class="dtask-item${isDone?' is-done':''}">
+      <span class="dtask-check" onclick="${isDone?'':'dtaskComplete('+i+')'}">${isDone?'☑':'☐'}</span>
+      <span class="dtask-label">${task.icon} ${task.label}</span>
+      ${isDone?'' : `<button class="dtask-go" onclick="dtaskJump('${task.target}')">▶ 去做</button>`}
+    </div>`;
+  }
+
+  el.innerHTML = `<div class="dtask-box">
+    <div class="dtask-title-row">
+      <div class="dtask-title">🌱 今日耕耘任務</div>
+      <span class="dtask-chip-row">${chipRow}</span>
+    </div>
+    <div class="dtask-list">${itemsHtml}</div>
+    ${allDone ? `<div class="dtask-celebrate">🎉 今天的耕耘任務完成了！</div>` : ''}
+  </div>`;
+}
+
 // 切到穀倉大豐收分頁、展開語塊花園、開今日小份抓蟲——通知深連結跟花園橫幅按鈕共用
 function jumpToGardenQuizToday(){
   switchMainTab('private');
@@ -4186,6 +4293,7 @@ function renderChangelog(){
   renderVocab();
   renderGardenView();
   renderGardenFreshness();
+  renderDailyTask();
   initTTS();
   initGroupButtons();
   restoreActiveTab();
