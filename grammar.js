@@ -2235,9 +2235,20 @@ const GRAMMAR_DATA = [
     examples:[
       {es:"Todos los estudiantes deben entregar la tarea.", zh:"所有學生都要交作業。（傳統陽性複數todos，文法上同時涵蓋男女混合群體，是最普遍、教科書教的標準用法。）"},
       {es:"Todos y todas son bienvenidos a la reunión.", zh:"歡迎所有男性和女性參加會議。（todos y todas：陽陰性並列的「雙形式」寫法，行政公文/演講裡常見，明確同時指名男女，比單用todos更清楚但也更冗長。）"},
-      {es:"Todes son bienvenides a la comunidad.", zh:"歡迎所有人加入這個社群（不分性別）。（todes：用-e取代-o/-a字尾，是近年在部分社運/LGBTI+/年輕世代圈子裡使用的性別中性形式，RAE〔西班牙皇家學院〕官方不承認這是標準文法，但在特定社群/語境裡是真實會遇到的用法。）"}
+      {es:"Todes son bienvenides a la comunidad.", zh:"歡迎所有人加入這個社群（不分性別）。（todes：用-e取代-o/-a字尾，是近年在部分社運/LGBTI+/年輕世代圈子裡使用的性別中性形式，RAE〔西班牙皇家學院〕官方不承認這是標準文法，但在特定社群/語境裡是真實會遇到的用法。）"},
+      {es:"El alumnado debe entregar la tarea antes del viernes.", zh:"全體學生要在週五前交作業。（alumnado：用集合抽象名詞取代「los alumnos」，一次涵蓋所有性別，這個策略連RAE都認可，是行政/教育文件裡最常見、爭議最小的中性表達方式，比造新字尾更保守安全。）"}
     ],
-    trap:"RAE的官方立場是：西語的陽性複數本來就有「泛指/中性」功能，不需要另外造字，todes/-e字尾、todxs/@這類寫法不屬於規範文法；但反對意見認為語言會隨社會演變、官方規範不代表唯一現實。讀者遇到todes/elle（第三人稱中性代名詞，介於él/ella之間）這類形式時，只需要知道「這是特定圈子的性別中性表達方式，不是拼字錯誤」，這場辯論在西語圈仍在進行中，沒有單一定論。",
+    family:{
+      title:"📋 集合名詞策略：連RAE都認可的中性表達",
+      intro:"用「集合抽象名詞」取代「陽性複數＋todos」，是爭議最小的中性化策略——不造新字，只是換一個本來就存在的字：",
+      items:[
+        {es:"los alumnos → el alumnado / el estudiantado", zh:"學生們 → 全體學生（集合名詞）"},
+        {es:"los profesores → el profesorado", zh:"老師們 → 全體教師"},
+        {es:"los ciudadanos → la ciudadanía", zh:"公民們 → 公民（集合概念）"},
+        {es:"los niños → la infancia", zh:"孩子們 → 兒童（集合概念，較正式/書面）"}
+      ]
+    },
+    trap:"RAE的官方立場是：西語的陽性複數本來就有「泛指/中性」功能，不需要另外造字，todes/-e字尾、todxs/@這類寫法不屬於規範文法；但反對意見認為語言會隨社會演變、官方規範不代表唯一現實。集合名詞策略（alumnado/profesorado/ciudadanía）是三種方案裡爭議最小的一種，因為它不發明新文法，只是換一個本來就存在、大家都能接受的字。讀者遇到todes/elle（第三人稱中性代名詞，介於él/ella之間）這類形式時，只需要知道「這是特定圈子的性別中性表達方式，不是拼字錯誤」，這場辯論在西語圈仍在進行中，沒有單一定論。",
     source:"文法補充"
   },
 
@@ -2319,6 +2330,24 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"hacer frío（天氣冷）是初學者最常犯錯的地方——中文「天氣冷」直覺會想用「是/estar」，但西語的天氣現象（frío/calor/sol/viento）固定搭配hacer，這個不是邏輯規則，是約定俗成的固定搭配，直接背下來比推導原因更有效率。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g110", cat:"pragmatics", level:"c2",
+    title:"真實西語第二層：pues／hombre／venga／claro",
+    rule:"延續g100的語用學系列——這批比幽默/雙關更快讓人「聽起來像母語者」，因為它們是母語者無意識間、每分鐘都在用的語氣調節詞。這裡把pues的完整功能範圍展開，並補上hombre/venga/claro這三個常被字典誤導成單一翻譯的詞。",
+    examples:[
+      {es:"Pues... no sé qué decirte.", zh:"呃……我不知道該說什麼。（猶豫填詞，爭取思考時間）"},
+      {es:"¿Vienes a la fiesta? — Pues claro.", zh:"你要來派對嗎？——那當然。（pues+claro組合：強化肯定語氣，接近「廢話當然」的輕鬆感）"},
+      {es:"Pues yo no lo haría así.", zh:"呃，換作是我不會這樣做。（pues在這裡帶轉折/委婉不同意的語氣，接近「不過/可是」，比直接說pero更委婉）"},
+      {es:"¡Hombre! ¡Qué sorpresa verte aquí!", zh:"哎呀！在這裡看到你真是太驚訝了！（hombre當感嘆詞，跟字面「男人」無關，對男性女性都能說，純粹表達驚訝/情緒強調）"},
+      {es:"Hombre, no exageres tanto.", zh:"欸，別誇張成這樣。（hombre：帶點輕微的不以為然/勸阻語氣）"},
+      {es:"Venga, vamos a comer algo.", zh:"來吧，我們去吃點東西。（venga：多見於西班牙，鼓勵/催促對方行動）"},
+      {es:"Venga, quedamos a las cinco.", zh:"好，那我們約五點。（venga：這裡是「講定了/一言為定」，收尾確認的語氣）"},
+      {es:"¡Ah, claro! Ahora entiendo.", zh:"啊，原來如此！我現在懂了。（claro單獨使用：表達「我懂了/恍然大悟」，不是字面「清楚」）"}
+    ],
+    trap:"這批詞的共同心法：hombre不分性別對象都能用（對女性說¡hombre!完全正常，這個字在這裡已經跟「男人」的字面意思脫鉤，變成純粹的語氣詞）；venga多見於西班牙，拉美不常這樣用；pues的功能範圍最廣，可以是猶豫、轉折、強調同意，甚至單獨一個「Pues...」就能表達「呃，這有點難回答」的整段語氣，聽的時候一定要靠語調判斷，不能只看文字。",
     source:"文法補充"
   }
 
