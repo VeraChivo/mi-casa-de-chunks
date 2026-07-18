@@ -2593,29 +2593,15 @@ let _gsupTopicFilter = 'all';
 function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
-// ── 🧭 我是什麼程度？等級路標，導向文法儲水槽對應等級 ──
+// ── 🧭 我是什麼程度？等級路標——不是獨立新區塊，掛在莊園導覽最後一步裡 ──
 const LEVEL_NAV_ITEMS = [
   {icon:'🌱', label:'我是新手', sub:'從最基礎開始', level:'a1a2'},
   {icon:'💧', label:'我會基礎，想加深', sub:'日常對話再進階', level:'b1'},
   {icon:'🍯', label:'我要準備考試', sub:'DELE B2/C1程度', level:'b2c1'},
   {icon:'🗣️', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
 ];
-function renderLevelNav(){
-  const el = document.getElementById('levelNavBody');
-  if(!el) return;
-  el.innerHTML = `<div class="lvlnav-box">
-    <div class="lvlnav-title">🧭 我是什麼程度？</div>
-    <div class="lvlnav-grid">
-      ${LEVEL_NAV_ITEMS.map(it => `
-        <button class="lvlnav-btn" onclick="jumpToLevelFilter('${it.level}')">
-          <span class="lvlnav-icon">${it.icon}</span>
-          <span class="lvlnav-label">${it.label}</span>
-          <span class="lvlnav-sub">${it.sub}</span>
-        </button>`).join('')}
-    </div>
-  </div>`;
-}
 function jumpToLevelFilter(levelKey){
+  closeWelcomeTour();
   switchMainTab('know');
   filterGrammarSupplementByLevel(levelKey);
   const body = document.getElementById('grammarSupplementBody');
@@ -4086,7 +4072,8 @@ const WELCOME_TOUR_STEPS = [
   {icon:"🌾", title:"田間播語塊", desc:"這裡是妳每日播種語言的田地。點開劇中精選片段，跟著莊園主人拆解句子；一詞一句學西語，完成句子還能解鎖彈藥庫語塊。"},
   {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
   {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
-  {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"}
+  {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"},
+  {icon:"🧭", title:"新手第一條路線", desc:"完全零基礎的話，建議先走這條路：<br>🌱 A1小路：Soy／Me llamo → Tengo → Me gusta → 基礎兒歌<br>💧 A2花園：開始過去式、日常劇情<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true}
 ];
 let _welcomeTourStep = 0;
 function showWelcomeTour(force){
@@ -4118,10 +4105,20 @@ function showWelcomeTour(force){
 }
 function renderWelcomeTourStep(){
   const s = WELCOME_TOUR_STEPS[_welcomeTourStep];
+  const btnsHtml = s.levelButtons ? `
+    <div class="lvlnav-grid">
+      ${LEVEL_NAV_ITEMS.map(it => `
+        <button class="lvlnav-btn" onclick="jumpToLevelFilter('${it.level}')">
+          <span class="lvlnav-icon">${it.icon}</span>
+          <span class="lvlnav-label">${it.label}</span>
+          <span class="lvlnav-sub">${it.sub}</span>
+        </button>`).join('')}
+    </div>` : '';
   document.getElementById('welcomeTourBody').innerHTML = `
     <div class="welcome-tour-icon">${s.icon}</div>
     <div class="welcome-tour-title">${s.title}</div>
-    <div class="welcome-tour-desc">${s.desc}</div>`;
+    <div class="welcome-tour-desc">${s.desc}</div>
+    ${btnsHtml}`;
   document.getElementById('welcomeTourDots').innerHTML = WELCOME_TOUR_STEPS
     .map((_,i)=>`<span class="welcome-tour-dot${i===_welcomeTourStep?' active':''}"></span>`).join('');
   const prevBtn = document.getElementById('welcomeTourPrevBtn');
@@ -4357,7 +4354,6 @@ function renderChangelog(){
   renderGardenView();
   renderGardenFreshness();
   renderDailyTask();
-  renderLevelNav();
   initTTS();
   initGroupButtons();
   restoreActiveTab();
