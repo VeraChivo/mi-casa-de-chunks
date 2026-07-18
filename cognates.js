@@ -397,7 +397,23 @@ const FALSE_COGNATES = [
   {es:'éxito', art:'el', looksLike:'exit', wrongZh:'出口', realZh:'成功、成就',
     trap:'真正的「出口」是 salida，éxito 是成功、成就的意思。',
     wrongEx:{es:'¿Dónde está el éxito de este edificio?', zh:'🤔 字面問：「這棟大樓的『成功』在哪？」（其實是問出口）'},
-    rightEx:{es:'¿Dónde está la salida de este edificio?', zh:'✅ 真的想問出口：「這棟大樓的出口在哪裡？」'}}
+    rightEx:{es:'¿Dónde está la salida de este edificio?', zh:'✅ 真的想問出口：「這棟大樓的出口在哪裡？」'}},
+  {es:'constipado', art:'', looksLike:'constipated', wrongZh:'便秘', realZh:'感冒、鼻塞',
+    trap:'西班牙人說 Estoy constipado 是在說「我感冒了」，不是便秘！便秘要說 estar estreñido/a。這是西語教學裡最經典的假朋友之一，鬧過無數笑話。',
+    wrongEx:{es:'Estoy muy constipado, no puedo respirar bien.', zh:'😅 字面聽起來像在講便秘，其實是「我感冒很嚴重，呼吸不太順」'},
+    rightEx:{es:'Llevo tres días estreñido, necesito comer más fibra.', zh:'✅ 真的想講便秘：「我便秘三天了，需要多吃點纖維」'}},
+  {es:'realizar', art:'', looksLike:'realize', wrongZh:'意識到、發覺', realZh:'完成、執行、實現',
+    trap:'英文realize（意識到）的西語是darse cuenta de，realizar是「完成/執行一件事」，兩者意思完全不同方向。',
+    wrongEx:{es:'Realicé que había cometido un error.', zh:'❌ 這句話文法上怪怪的，母語者不會這樣講「意識到」'},
+    rightEx:{es:'Me di cuenta de que había cometido un error. / Realicé mi sueño de viajar a España.', zh:'✅ 意識到用darse cuenta de；realizar留給「實現夢想/完成計畫」：「我實現了去西班牙旅行的夢想」'}},
+  {es:'carpeta', art:'la', looksLike:'carpet', wrongZh:'地毯', realZh:'資料夾',
+    trap:'carpeta是放文件的資料夾（紙本或電腦裡的都算），地毯要說alfombra，兩個字長得像但完全不是同一樣東西。',
+    wrongEx:{es:'Compré una carpeta nueva para la sala.', zh:'🤔 字面聽起來像「我買了一張新地毯放客廳」，但母語者會理解成買了個資料夾放客廳，很奇怪'},
+    rightEx:{es:'Compré una alfombra nueva para la sala.', zh:'✅ 真的想講地毯：「我買了一張新地毯放客廳」'}},
+  {es:'asistir', art:'', looksLike:'assist', wrongZh:'協助、幫忙', realZh:'參加、出席',
+    trap:'asistir a算是「出席/參加」（asistir a una reunión＝參加會議），協助/幫忙要說ayudar，兩者方向不同——一個是「人在場」，一個是「動手幫忙」。',
+    wrongEx:{es:'Voy a asistir a mi hermano con la tarea.', zh:'❌ 母語者聽了會困惑，asistir a不是這樣用來表達「幫忙」的'},
+    rightEx:{es:'Voy a ayudar a mi hermano con la tarea. / Voy a asistir a la reunión mañana.', zh:'✅ 協助用ayudar；asistir留給「出席」：「我明天要參加會議」'}}
 ];
 
 // ── 詞綴規律資料（-tion→-ción 等三組） ──

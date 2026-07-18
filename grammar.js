@@ -2120,7 +2120,11 @@ const GRAMMAR_DATA = [
       {es:"O sea, lo que quiero decir es que no puedo ir.", zh:"我是說，我想表達的是我不能去。（o sea：換句話說/我是說，用來重新措辭、講得更清楚，不是「或者是」的字面意思）"},
       {es:"No fui a la fiesta... es que tenía mucho trabajo.", zh:"我沒去派對……是因為我工作很多。（es que：開頭表示「找理由解釋/找藉口」，帶一點防衛/辯解的語氣，中文很難找到對應詞，功能上接近「其實是因為……」）"},
       {es:"Pues no sé qué decirte.", zh:"呃，我不知道該說什麼。（pues：這裡是猶豫語氣詞，爭取思考時間，不是「所以/因此」的邏輯連接功能）"},
-      {es:"Bueno... vamos a ver qué pasa.", zh:"呃……我們看看會怎樣吧。（bueno在句首：不是「好的」，是猶豫/轉折/準備換話題的語氣詞）"}
+      {es:"Bueno... vamos a ver qué pasa.", zh:"呃……我們看看會怎樣吧。（bueno在句首：不是「好的」，是猶豫/轉折/準備換話題的語氣詞）"},
+      {es:"Ya veo por qué no viniste.", zh:"我懂了，我知道你為什麼沒來了。（ya veo：不是字面「已經看見」，是「我懂了/我了解了」）"},
+      {es:"Ya veremos qué pasa.", zh:"到時候再看看情況吧。（ya veremos：不承諾任何事的緩兵之計，接近「再說吧」）"},
+      {es:"¡Ya basta!", zh:"夠了！（ya basta：表達已經到極限、要求停止）"},
+      {es:"¿Terminaste? — Ya está.", zh:"你弄完了嗎？——好了，就這樣。（ya está：完成了/就這樣定案，帶收尾語氣）"}
     ],
     family:{
       title:"🗣️ Bueno...到底是哪種「好」？",
@@ -2208,6 +2212,15 @@ const GRAMMAR_DATA = [
       {es:"Vos tenés razón.", zh:"你說得對（阿根廷/烏拉圭voseo）。（voseo在阿根廷/烏拉圭是全國通用、電視新聞都用的標準正式用法，帶著文化自信；但在部分其他國家（如某些安地斯地區），voseo歷史上曾被視為「鄉下/沒受教育」的說法——同樣的文法形式，在不同國家的社會地位天差地遠。）"},
       {es:"Buenas, ¿cómo está usted?", zh:"您好，您好嗎（正式用usted）。（年長世代/傳統場合較常見；許多國家的年輕世代在非正式場合傾向更快跳過usted直接用tú，這種「usted使用頻率隨世代下降」的趨勢本身就是一種可觀察的語言變化。）"}
     ],
+    family:{
+      title:"🇦🇷 voseo實際變位長什麼樣",
+      intro:"vos不是tú的錯誤講法，是一整套獨立的動詞變位——重音位置跟tú版本不同（動詞字尾重音），這不是選擇題，是阿根廷/烏拉圭的標準文法：",
+      items:[
+        {es:"tú tienes → vos tenés", zh:"你有（tú版本 vs voseo版本，注意tenés的重音在最後一個音節）"},
+        {es:"tú quieres → vos querés", zh:"你想要"},
+        {es:"tú eres → vos sos", zh:"你是（這組差異最大，sos完全不是eres的變形，是獨立詞源）"}
+      ]
+    },
     trap:"社會語言學教會我們的最重要一課是：沒有「唯一正確」的西語，只有「這個場合/這個地區/這個世代的人會怎麼說」——leísmo在馬德里是常態，在利馬卻幾乎聽不到；voseo在布宜諾斯艾利斯是新聞主播的標準腔，換個國家意義完全不同。理解這些差異背後的社會脈絡，比死記「哪個才是標準西語」更接近C2該有的語言深度。",
     source:"文法補充"
   }
