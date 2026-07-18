@@ -1554,6 +1554,19 @@ const GRAMMAR_DATA = [
     ],
     trap:"不要以為「拉美＝熱情沒距離感」是通用規則——同樣在拉美，墨西哥對個人空間的需求其實比哥倫比亞、阿根廷都高，國與國之間差異很大，不能一概而論。",
     source:"文法補充"
+  },
+
+  {
+    id:"g67", cat:"phrase", level:"b1",
+    title:"「準時」的定義因國而異：拉美 vs 東亞",
+    rule:"「準時」在不同文化裡的容忍度差異很大。墨西哥跟哥倫比亞的社交場合，遲到30到60分鐘都被視為正常，甚至是預期中的——哥倫比亞更有專屬說法「hora colombiana」（哥倫比亞時間）來形容這種彈性；秘魯的情況類似，甚至有「hora cabana」的說法。相對地，日本的準時觀念近乎神聖，遲到一分鐘就已經算是嚴重失禮；德國職場文化也把準時視為專業與尊重的表現。就算同樣在拉美，國與國之間也有明顯差異——調查發現83%的智利人認為社交場合遲到可以接受，阿根廷人這麼認為的只有43%。",
+    examples:[
+      {es:"En México, llegar una hora tarde a una fiesta no es ningún problema.", zh:"在墨西哥，參加派對遲到一小時完全沒問題。"},
+      {es:"En Colombia existe la expresión 'hora colombiana' para describir esta flexibilidad.", zh:"哥倫比亞有個說法叫「哥倫比亞時間」，用來形容這種彈性。"},
+      {es:"En Japón, un minuto de retraso ya se considera una falta grave.", zh:"在日本，遲到一分鐘就已經算是嚴重的失禮。"}
+    ],
+    trap:"不要把「拉美＝到處都不準時」當成鐵律——就算同樣在拉美，智利（83%認為社交遲到可接受）跟阿根廷（只有43%）差異也很大，準時觀念要看國家、也要看場合（社交 vs 職場常常不同標準）。",
+    source:"文法補充"
   }
 
 ];
