@@ -2803,6 +2803,26 @@ const LYRICS_FILL_DATA = [
     after:'los pajaritos cantan, las nubes se levantan.',
     hint:'está en = estar 表達位置（在哪裡）',
     grammar:'「La vieja está en la cueva」老奶奶在洞穴裡——estar en 表達位置所在。這句歌詞在不同地區有變體：西班牙原版是「la Virgen de la Cueva」（源自1726年一場祈雨傳說），阿根廷等拉美地區常唱世俗版「la vieja está en la cueva」，這裡採用拉美常見版本。皆為查無單一作者的公共領域童謠。'
+  },
+  {
+    id:'lf14', artist:'Tradicional', song:'Las Ruedas del Autobús', level:'a0', levelLabel:'A0',
+    yt:'https://youtu.be/pbeSNLPsFlQ?t=15',
+    ytLabel:'▶ 15秒處聽（連結待VERA自行核對）',
+    before:'Las',
+    blank:'ruedas',
+    after:'del autobús van rodando van, rodando van, rodando van.',
+    hint:'ruedas = 輪子（陰性複數名詞）',
+    grammar:'這首是20世紀初美英傳入拉美地區的翻譯版童謠，查證為公共領域、查無單一作者。van rodando = 正在轉動（ir + 現在分詞，表達持續進行的動作）。'
+  },
+  {
+    id:'lf15', artist:'Tradicional', song:'El Viejo MacDonald Tenía una Granja', level:'a1', levelLabel:'A1',
+    yt:'https://youtu.be/pbeSNLPsFlQ?t=550',
+    ytLabel:'▶ 550秒處聽（連結待VERA自行核對）',
+    before:'El viejo MacDonald tenía una',
+    blank:'granja',
+    after:'ia-ia-o. Y en esa granja tenía una vaca...',
+    hint:'tenía = tener 過去未完成式第三人稱單數',
+    grammar:'這首溯源自1706年英國民謠（原名 Old Macdougal），世代口傳演變成今天的版本，拉美地區有多種翻譯版本（En la granja de Pepito等），查無單一譯者版權。tenía = 過去未完成式，描述過去持續/反覆的狀態（曾經有⋯），跟簡單過去式的一次性動作不同。'
   }
 ];
 let _lfFilter = 'all';
