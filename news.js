@@ -258,6 +258,14 @@ const NEWS_ITEMS = [
     headline:'Imágenes en internet y la IA [?] brecha de género.',
     task:{ type:'blank', answer:'refuerzan', zh:'強化', hint:'verbo, 第三人稱複數 — hacer más fuerte algo' },
     cefr:'B2', topic:'género 🚻'
+  },
+  {
+    id:'nw33',
+    source:'Educación 3.0',
+    sourceUrl:'https://www.educaciontrespuntocero.com/noticias/montessori-institute/',
+    headline:'Montessori: la metodología donde el niño es [?].',
+    task:{ type:'blank', answer:'protagonista', zh:'主角', hint:'sustantivo m./f. — quien tiene el papel principal en algo' },
+    cefr:'B2', topic:'educación 📚'
   }
 ];
 
