@@ -1979,6 +1979,35 @@ const GRAMMAR_DATA = [
     },
     trap:"諺語適合「認得就好」，日常對話裡母語者確實會引用（尤其長輩），但初學者硬要在對話中主動使用諺語容易顯得刻意或用錯場合，優先目標是聽到/讀到時能理解，之後聽多了自然知道什麼場合適合接一句。",
     source:"文法補充"
+  },
+
+  {
+    id:"g93", cat:"slang", level:"c1",
+    title:"日常名詞地圖：同一個東西，各國真的不同字",
+    rule:"西語是「多中心語言」——約20個官方語言國家各自有自己的媒體/教育系統，沒有單一權威去統一詞彙，這點跟中文（普通話/國語推行力量較集中）不太一樣，日常最基本的名詞（爆米花、手機、電腦、公車）常常各國各自一套字，不是口音差異，是完全不同的單字。",
+    examples:[
+      {es:"En España y México se dice 'palomitas', pero en Argentina es 'pochoclo'.", zh:"西班牙跟墨西哥說 palomitas（爆米花），但阿根廷說 pochoclo。（palomitas其實是最泛用的預設字，不是西班牙專屬）"},
+      {es:"En la mayoría de Latinoamérica dicen 'celular', pero en España dicen 'móvil'.", zh:"拉美多數地方說 celular（手機），西班牙說 móvil。"},
+      {es:"En Latinoamérica es 'computadora', en España es 'ordenador'.", zh:"拉美說 computadora（電腦），西班牙說 ordenador。"},
+      {es:"¿Tomamos un colectivo? — En Argentina sí, pero en México dirían 'camión' y en Chile 'micro'.", zh:"我們搭公車吧？——阿根廷會說colectivo，墨西哥會說camión，智利會說micro，全部都是「公車」。"}
+    ],
+    family:{
+      title:"🌎 爆米花地圖＋補充幾個",
+      intro:"同一個東西，光是「爆米花」跟「公車」這兩樣就能收集到五六種完全不同的單字。",
+      items:[
+        {es:"🌍 palomitas", zh:"爆米花（西班牙+墨西哥+多數中美洲，最泛用）"},
+        {es:"🇦🇷 pochoclo", zh:"爆米花（阿根廷）"},
+        {es:"🇨🇴 crispetas", zh:"爆米花（哥倫比亞）"},
+        {es:"🇨🇱 cabritas", zh:"爆米花（智利，字面「小山羊」）"},
+        {es:"🇻🇪 cotufas", zh:"爆米花（委內瑞拉）"},
+        {es:"🇵🇪 canchita", zh:"爆米花（秘魯）"},
+        {es:"🇲🇽 popote", zh:"吸管（墨西哥）"},
+        {es:"🇪🇸 pajita", zh:"吸管（西班牙）"},
+        {es:"🇨🇴 pitillo", zh:"吸管（哥倫比亞，注意：也可指「香菸」，看語境）"}
+      ]
+    },
+    trap:"最經典的地雷是「guagua」——在古巴/波多黎各是「公車」，但在智利/秘魯（受蓋丘亞語影響）卻是「嬰兒/小寶寶」，同一個字兩個意思天差地遠，聽到這個字一定要先確認是在跟哪國人說話，不然會鬧笑話。中文其實也有類似現象（台灣講計程車，中國講出租車，新加坡講德士，香港粵語講的士），只是普通話/國語的推廣力道較強，分散程度沒有西語這麼極端。",
+    source:"文法補充"
   }
 
 ];
