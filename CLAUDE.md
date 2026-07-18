@@ -187,7 +187,8 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
     2. 崩潰創作者生活型（考點：Ojalá que + 虛擬式的雙關黑色幽默）——酸民留言：「Ojalá que tu software sea tan ruidoso como tu bebé a las tres de la mañana. Al menos así el servidor nunca se quedaría dormido. 🍼🔥」中文語境：字面像詛咒「希望你的軟體像你家寶寶凌晨三點一樣吵」，實際雙關在酸伺服器穩定度。
     兩則皆為原創虛構留言（非引用真人真事），查過文法正確，可直接用。
   - **⚠️ 2026-07-18 教訓：「隔壁AI」給的具體歌詞引用一律要查證，不能照抄** —— VERA 帶回「隔壁AI」推薦的歌詞填空神曲清單（Camilo《Índigo》／Rosalía《DESPECHÁ》），查證後發現：①Camilo《Índigo》引用的歌詞「Aunque no lo creyeras」根本不存在於這首歌，真實歌詞開頭是「¿Cómo puede ser qué uno sueñe con alguien que ni siquiera ha conocido?」（這首歌實際主題是期待寶寶誕生），完全是編造的引用，不能用；②Rosalía《DESPECHÁ》歌是真的，但引用的「no me llames... olvidándome de tus males」是「隔壁AI」自己校正成標準文法的版本，真實演唱是安達魯西亞吞音腔「no me llame'... ocupá'... male'」，跟標準拼寫對不上，如果做成「聽了填空」練習，使用者聽到的發音跟被要求填的標準答案不一致，體驗會很差——這首更適合放進「莊園留言板抓蟲」的③吞音還原題型，不適合當虛擬式教學曲。**之後任何「隔壁AI」附上的具體歌詞引用，一律先查證原文再採用，不能因為附了YouTube連結/時間戳就當作已核實**（連結本身也需要 VERA 自己點開聽過確認時間戳對不對，AI 端沒有辦法真的逐秒核對音檔內容）。
-  - **✅ 2026-07-18 VERA 否決：Camilo《Índigo》／Rosalía《DESPECHÁ》／真善美用真的Do-Re-Mi原曲，這三個提案全部不採用**（「234否決」）。歌詞填空模組如果之後要做，這三首從候選名單移除，需要重新挑經VERA自己聽過確認的歌曲。小星星（Estrellita，公共領域）沒有被否決，唯一還活著的候選。
+  - **✅ 2026-07-18 VERA 否決：Camilo《Índigo》／Rosalía《DESPECHÁ》／真善美用真的Do-Re-Mi原曲，這三個提案全部不採用**（「234否決」）。歌詞填空模組如果之後要做，這三首從候選名單移除，需要重新挑經VERA自己聽過確認的歌曲。
+  - **✅ 小星星 Estrellita ¿Dónde Estás? 查證通過，可用（2026-07-18）**：VERA 提供 El Reino Infantil 頻道版本歌詞「Estrellita, ¿dónde estás? Quiero verte a ti brillar. Esta noche ahí estarás, cual diamante brillarás.」，查證屬實且完全準確。**跟 Do-Re-Mi 不是同一種版權狀況**：查到 Gallina Pintadita、Grupo Encanto、El Reino Infantil、Jaci Velásquez 等多個互不相關頻道/歌手各自翻唱同一首歌詞——這是傳統公共領域歌曲的特徵（真善美 Do-Re-Mi 是 1965 年 Rodgers & Hammerstein 仍在版權期內的作品，只有單一授權原版，兩者不能類比）。歌詞本身跟 CLAUDE.md 原本西語兒歌區清單裡的 Estrellita 候選一致，可以直接用真實歌詞＋連結做歌詞填空/兒歌教材，沒有版權疑慮。
 
   **🏅 語塊股：累積天數里程碑勳章＋迷你測驗（2026-07-15 提出，🟡中工程，大部分基礎已存在）**：VERA提出「語塊股」複利投資比喻——A2到B2約需400小時有效輸入、約600個核心語塊，每個語塊平均40分鐘精熟(含零碎重複見到的時間)。以「每天念20分鐘」推算的里程碑對照表：
   | 累積天數 | 總時數 | 語塊量 | 里程碑感受 |
