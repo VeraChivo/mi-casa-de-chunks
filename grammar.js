@@ -120,7 +120,9 @@ const GRAMMAR_CATS = [
   {key:"classical",    label:"古典西語"},
   {key:"literature",   label:"文學"},
   {key:"cinema",       label:"影視"},
-  {key:"pragmatics",   label:"真實西語"}
+  {key:"pragmatics",   label:"真實西語"},
+  {key:"etiquette",    label:"文化禁忌與禮貌"},
+  {key:"etymology",    label:"詞源"}
 ];
 
 
@@ -2130,6 +2132,54 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"vamos／anda／venga 這三個詞也是同樣邏輯——vamos常常不是「我們走」而是「我是說/也就是說」（Vamos, que no te gustó＝也就是說你不喜歡）；anda可以是「走吧」也可以是驚訝的「哎呀」；venga（多見於西班牙）除了「來吧」還常用來表示「好啦/講定了」或不耐煩的「拜託」。這批詞的共同心法是：先看整句的語氣/上下文，再決定它在扮演哪個功能，不要死背單一翻譯。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g101", cat:"etiquette", level:"c2",
+    title:"文化禁忌與禮貌：tú/usted、家庭稱呼、地區敏感話題",
+    rule:"這批是母語者從小自然學會、但課本很少系統整理的社交默契——什麼時候該用usted而不是tú，光靠「熟不熟」這條規則在有些國家完全不適用；哪些話題開玩笑OK、哪些容易踩雷，也因國家而異，不是放諸四海皆準。",
+    examples:[
+      {es:"En Costa Rica, muchas familias usan 'usted' incluso entre padres e hijos.", zh:"在哥斯大黎加，許多家庭連父母跟子女之間都用usted。（這個現象叫「ustedeo」：多數西語地區tú/usted的分界是「熟悉度」，但哥斯大黎加/哥倫比亞部分地區把usted當成親密關係裡表達溫暖尊重的預設用法，不是疏遠/正式的訊號，套用「熟人才用tú」的直覺在這些地方會誤判。）"},
+      {es:"En Colombia, el 'usted' también se usa entre parejas y amigos cercanos.", zh:"在哥倫比亞，usted也用在情侶跟熟朋友之間。（同樣是ustedeo現象，跟西班牙/墨西哥「usted＝疏遠正式」的直覺不同。）"},
+      {es:"Le puedes decir 'tío' o 'tía' a un amigo cercano de tus padres, aunque no sea tu pariente real.", zh:"你可以叫爸媽的熟朋友「tío/tía」（叔叔/阿姨），即使他們沒有血緣關係。（虛擬親屬稱謂，跟g78提過的compadrazgo同一個文化邏輯——用家族稱謂表達親密感，不是字面上真的有親戚關係。）"},
+      {es:"'Mijo' o 'mija' se usa como forma cariñosa, no solo para hijos biológicos.", zh:"「mijo/mija」（我兒子/我女兒的縮寫）常當親暱稱呼，不是只對親生子女才能用——年長者對晚輩、甚至朋友之間都可能這樣稱呼，表達疼愛而非字面血緣關係。"}
+    ],
+    family:{
+      title:"⚠️ 地區敏感話題（一般性提醒，非涵蓋全部）",
+      intro:"以下是幾個「初次見面/不熟的人之間」建議謹慎的話題方向，實際尺度仍要看對象跟情境判斷：",
+      items:[
+        {es:"política reciente / dictaduras", zh:"近代政治／獨裁歷史（如智利/阿根廷的軍政府時期）——對當地人可能是很沉重的家族記憶，不熟的人之間不適合當玩笑話題"},
+        {es:"comparar países (\"tu país es más pobre/atrasado\")", zh:"國家之間比較優劣——容易被解讀成帶著殖民/優越感的評價，即使是無心的比較也可能冒犯"},
+        {es:"coger", zh:"這個字在西班牙是中性的「拿、抓」，但在墨西哥/多數拉美地區是粗俗的性暗示詞——同一個字，換個國家意思完全不同，不確定對方國籍時優先用agarrar/tomar更保險"}
+      ]
+    },
+    trap:"tú/usted的選擇不是單純的「文法規則」，是活生生的地區文化默契——同一句話在墨西哥用usted可能顯得客氣得體，在阿根廷朋友之間用usted反而顯得刻意疏遠。不確定時，觀察對方怎麼稱呼你、跟著對方的選擇走，會比死記一套規則更安全。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g102", cat:"etymology", level:"c2",
+    title:"西語裡的阿拉伯語遺產：800年伊斯蘭西班牙留下的字",
+    rule:"西語詞彙裡藏著大量阿拉伯語借詞——這是伊斯蘭勢力統治伊比利半島（711-1492年，長達近800年）留下的語言遺產，估計現代西語詞彙裡有數千個字源自阿拉伯語。最好認的線索是「al-」開頭——這其實是阿拉伯語的定冠詞「al」黏進了字裡，跟阿拉伯語原文一起被借進西語，變成單字固定的一部分（不像英語borrow時通常會把冠詞拿掉）。",
+    examples:[
+      {es:"Ojalá tengas un buen viaje.", zh:"希望你旅途順利。（ojalá源自阿拉伯語「law šā' allāh／in šā' allāh」，字面「若真主願意」——這正是為什麼ojalá後面固定接虛擬式（見g29）：它骨子裡本來就是「祈求上天允許」的語氣，不是普通的「希望」，虛擬式的不確定/祈願語感其實就藏在這個詞的阿拉伯語源頭裡。）"},
+      {es:"Esta camisa es de algodón.", zh:"這件襯衫是棉做的。（algodón源自阿拉伯語al-qutn，「al-」定冠詞直接黏進西語字裡。）"},
+      {es:"¿Me pasas el azúcar?", zh:"可以幫我拿糖嗎？（azúcar源自阿拉伯語as-sukkar，這個字本身還可以再往上追溯到梵語/波斯語，是一條橫跨歐亞的糖業貿易路線留下的語言痕跡。）"}
+    ],
+    family:{
+      title:"🕌 再認得幾個「al-」開頭的字",
+      intro:"下次看到西語單字開頭是al-，有很高機率是阿拉伯語借詞：",
+      items:[
+        {es:"aceite", zh:"油（源自az-zait）"},
+        {es:"alcohol", zh:"酒精（源自al-kuhl）"},
+        {es:"almohada", zh:"枕頭（源自al-mihadda）"},
+        {es:"alfombra", zh:"地毯（源自al-khumra）"},
+        {es:"alcalde", zh:"市長（源自al-qadi，原意是「法官」）"},
+        {es:"hasta", zh:"直到（介系詞，源自阿拉伯語hatta，沒有al-開頭但一樣是常被引用的例子）"}
+      ]
+    },
+    trap:"這批詞彙的重點不是要背語源學考古細節，而是理解「西語不是一個單純的拉丁語後代」——它是拉丁語骨架上疊了近800年阿拉伯語影響的混血語言，這也是為什麼西語跟同樣源自拉丁語的義大利語/法語相比，詞彙庫明顯多出一整層阿拉伯語血統，這條語源脈絡也能解釋一些「規則例外」（例如ojalá為什麼固定觸發虛擬式）背後真正的歷史原因。",
     source:"文法補充"
   }
 
