@@ -113,7 +113,11 @@ const GRAMMAR_CATS = [
   {key:"confusable",   label:"易混淆詞組"},
   {key:"vocab",        label:"B2詞彙"},
   {key:"slang",        label:"拉美俚語"},
-  {key:"proverb",      label:"諺語"}
+  {key:"proverb",      label:"諺語"},
+  {key:"rhetoric",     label:"修辭"},
+  {key:"history",      label:"歷史典故"},
+  {key:"politics",     label:"政治語言"},
+  {key:"classical",    label:"古典西語"}
 ];
 
 
@@ -2008,6 +2012,72 @@ const GRAMMAR_DATA = [
     },
     trap:"最經典的地雷是「guagua」——在古巴/波多黎各是「公車」，但在智利/秘魯（受蓋丘亞語影響）卻是「嬰兒/小寶寶」，同一個字兩個意思天差地遠，聽到這個字一定要先確認是在跟哪國人說話，不然會鬧笑話。中文其實也有類似現象（台灣講計程車，中國講出租車，新加坡講德士，香港粵語講的士），只是普通話/國語的推廣力道較強，分散程度沒有西語這麼極端。",
     source:"文法補充"
+  },
+
+  // ══ 🎭 C2 Lengua y Cultura：不是更難的文法，是文化理解、語感、修辭 ══
+  // C1=Fluidez（流利度）／C2=Profundidad（深度）
+  // 目前只收錄安全、不涉及版權/杜撰風險的4個模組：修辭／歷史典故／政治語言／古典西語
+  // 文學引用／影視台詞／幽默迷因／雙關語 這幾塊需要更謹慎的版權尺度或真實查證，暫緩
+
+  {
+    id:"g94", cat:"rhetoric", level:"c2",
+    title:"修辭手法：新聞和演講都在用的5種技巧",
+    rule:"B2之後文法幾乎都學完了，真正的差距在於認得出「這句話用了什麼修辭技巧」——新聞標題、政治演講、廣告文案幾乎都建立在這幾種修辭手法上，認得出來，讀西語文本的理解深度會完全不同。",
+    examples:[
+      {es:"El tiempo es oro.", zh:"時間就是金錢。（metáfora隱喻：直接把兩個不同的東西劃上等號，不用「像」）"},
+      {es:"¡Qué puntual! — dicho a alguien que llegó una hora tarde.", zh:"「你真準時！」——對一個遲到一小時的人這樣說。（ironía反諷：說出來的話跟真正意思相反）"},
+      {es:"Te lo he dicho un millón de veces.", zh:"我跟你說了一百萬次了。（hipérbole誇飾：刻意誇大來強調語氣，不是字面數字）"},
+      {es:"Cuanto más aprendo, más me doy cuenta de lo poco que sé.", zh:"我學得越多，就越發現自己知道得多麼少。（paradoja悖論：表面矛盾卻蘊含道理的說法）"},
+      {es:"El viento susurraba entre los árboles.", zh:"風在樹間低語。（personificación擬人：把非人的事物賦予人的動作/情感）"}
+    ],
+    trap:"這幾種修辭手法中文裡也都有對應（隱喻/反諷/誇飾/悖論/擬人），差別只在西語的觸發詞不太一樣——metáfora不會出現「como」（那是明喻símil，「El tiempo vuela como una flecha」才是明喻），一看到直接劃等號、沒有「像/如同」就是隱喻。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g95", cat:"history", level:"c2",
+    title:"為什麼新聞常提到這幾個歷史詞：西語圈的共同記憶",
+    rule:"這幾個歷史詞彙不是要背年代細節，而是要認得「新聞/政治人物引用這個詞時，在暗示什麼共同記憶」——它們是西語圈（尤其西班牙與拉美）公共討論裡的共用符碼，不知道背景會漏掉言外之意。",
+    examples:[
+      {es:"La Reconquista duró casi ocho siglos, de 711 a 1492.", zh:"收復失地運動持續了將近八個世紀，從711年到1492年。（西班牙從伊斯蘭統治下逐步收復領土的漫長過程，至今仍是西班牙民族認同論述的常見引用點）"},
+      {es:"El Siglo de Oro español fue una época de gran esplendor literario y artístico.", zh:"西班牙黃金世紀是文學藝術大放異彩的時代。（約16-17世紀，Cervantes、Lope de Vega都活躍於這個時期，「黃金世紀」這個詞本身就常被拿來比喻任何領域的巔峰期）"},
+      {es:"La Guerra Civil española dividió al país entre 1936 y 1939.", zh:"西班牙內戰在1936到1939年間讓這個國家分裂。（至今西班牙政治語言裡「兩個西班牙」的分裂意象仍常被引用，是理解當代西班牙政治的重要背景）"},
+      {es:"La Conquista de América cambió el curso de la historia de dos continentes.", zh:"美洲的征服改變了兩塊大陸的歷史軌跡。（西班牙殖民美洲的起點，拉美的身分認同論述經常需要回應/重新詮釋這段歷史）"}
+    ],
+    family:{
+      title:"📜 再補一個",
+      intro:"",
+      items:[
+        {es:"Virreinato", zh:"總督轄區（殖民時期的行政體制名稱，例如秘魯的Virreinato del Perú）"}
+      ]
+    },
+    trap:"這些詞彙的重點是「知道背景即可」，不是要能複述完整歷史——聽到政治人物或新聞引用「Reconquista」或「la Guerra Civil」的意象時，能聯想到大概是在講「收復/對抗外來勢力」或「國家分裂的傷痕」這類弦外之音，就已經達到C2程度該有的文化理解深度。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g96", cat:"politics", level:"c2",
+    title:"政治語言：izquierda/derecha的真正意思，不是字典意思",
+    rule:"這幾個詞字典翻譯很簡單（izquierda=左，derecha=右），但新聞裡的實際意思是政治光譜的位置，這個左右分類的說法源自法國大革命時期國民議會的座位安排（支持革命的坐左邊、保王派坐右邊），之後才演變成全球通用的政治光譜詞彙。",
+    examples:[
+      {es:"Los partidos de izquierda suelen apoyar más intervención del Estado en la economía.", zh:"左派政黨通常支持國家更多介入經濟。（一般傾向：izquierda關聯社會平等/政府介入，非絕對規則）"},
+      {es:"La derecha tradicional defiende el libre mercado y la propiedad privada.", zh:"傳統右派主張自由市場與私有財產。（一般傾向：derecha關聯自由市場/傳統秩序，非絕對規則）"},
+      {es:"Un político progresista busca cambios sociales rápidos.", zh:"進步派政治人物追求快速的社會變革。（progresista：傾向改革/加速社會變化的立場）"},
+      {es:"Los conservadores prefieren mantener las tradiciones e instituciones existentes.", zh:"保守派傾向維持既有的傳統與體制。（conservador：傾向維持現狀/漸進變化的立場）"}
+    ],
+    trap:"這批詞的用法在不同國家意義可能有落差——同一個政黨在一國被稱為izquierda，換到另一國的政治光譜位置可能不完全對應，讀新聞時不要把「左/右」當成放諸四海皆準的固定分類，要看該國實際的政治脈絡；這裡只提供中性的字面/歷史定義，不涉及對任何立場的評價。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g97", cat:"classical", level:"c2",
+    title:"古典西語：不用學古文，但要認得出處",
+    rule:"C2程度不需要真的讀懂古西語文獻，但要能「認出」這是引用自哪個經典源頭——《唐吉訶德》的開頭是全西語圈最常被引用/仿寫的一句話，即使沒讀過原著，母語者也幾乎都認得這句開場白。",
+    examples:[
+      {es:"En un lugar de la Mancha, de cuyo nombre no quiero acordarme...", zh:"在拉曼查的某個地方，我不想記起它的名字……（《唐吉訶德》1605年開場白，全書最著名的一句，常被戲仿套用在各種語境的開場，1605年作品，公共領域）"}
+    ],
+    trap:"聽到「de cuyo nombre no quiero acordarme」這種句型被套用在完全不相關的語境（比如講一家難吃的餐廳），那就是在仿寫唐吉訶德的開場白開玩笑——這種「借用經典句型套在日常小事上」的幽默手法在西語圈很常見，認出出處就能get到笑點；此外，正式/宗教語域裡偶爾會出現古老的vosotros動詞變位（現代西班牙日常也還在用，但拉美已完全改用ustedes），聽到時知道是同一套系統的older register即可，不用另外去學。",
+    source:"文法補充"
   }
 
 ];
@@ -2017,7 +2087,8 @@ const GRAMMAR_LEVEL_TIERS = [
   {key:"a1a2", icon:"🌱", label:"護土嫩芽"},
   {key:"b1",   icon:"💧", label:"甘露超頻"},
   {key:"b2c1", icon:"🍯", label:"蜂王蜜釀"},
-  {key:"c1",   icon:"🗣️", label:"街頭母語"}
+  {key:"c1",   icon:"🗣️", label:"街頭母語"},
+  {key:"c2",   icon:"🎭", label:"文化深度"}
 ];
 
 /* 全局句子索引（ep*10 + sentenceIdx）→ grammar_id
