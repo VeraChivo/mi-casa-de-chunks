@@ -210,6 +210,38 @@ const NEWS_ITEMS = [
     headline:'El extendido uso de la IA [?] a los profesores.',
     task:{ type:'blank', answer:'preocupa', zh:'讓⋯擔憂', hint:'verbo, 第三人稱單數 — causar inquietud o preocupación' },
     cefr:'B2', topic:'educación 📚'
+  },
+  {
+    id:'nw27',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/m%C3%A9xico-pierde-40-de-hablantes-de-lenguas-ind%C3%ADgenas/a-71734660',
+    headline:'México pierde 40 % de [?] de lenguas indígenas.',
+    task:{ type:'blank', answer:'hablantes', zh:'使用者／說話者', hint:'sustantivo m. pl. — personas que hablan un idioma' },
+    cefr:'B2', topic:'pueblos indígenas 🌾'
+  },
+  {
+    id:'nw28',
+    source:'DW Español',
+    sourceUrl:'https://www.dw.com/es/pueblos-ind%C3%ADgenas-en-peligro-de-extinci%C3%B3n-debido-al-covid-19/a-59661054',
+    headline:'Pueblos indígenas en peligro de [?] debido al COVID-19.',
+    task:{ type:'blank', answer:'extinción', zh:'滅絕', hint:'sustantivo f. — desaparición total de una especie o cultura' },
+    cefr:'B2', topic:'pueblos indígenas 🌾'
+  },
+  {
+    id:'nw29',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/internet-y-pueblos-ind%C3%ADgenas-muro-y-oportunidad/a-56476976',
+    headline:'Internet y pueblos indígenas: muro y [?].',
+    task:{ type:'blank', answer:'oportunidad', zh:'機會', hint:'sustantivo f. — ocasión favorable para conseguir algo' },
+    cefr:'B2', topic:'pueblos indígenas 🌾'
+  },
+  {
+    id:'nw30',
+    source:'DW Español',
+    sourceUrl:'https://amp.dw.com/es/pueblos-ind%C3%ADgenas-en-latinoam%C3%A9rica-de-la-lucha-por-la-tierra-a-la-justicia-social/a-56114670',
+    headline:'Pueblos indígenas en Latinoamérica: de la lucha por la [?] a la justicia social.',
+    task:{ type:'blank', answer:'tierra', zh:'土地', hint:'sustantivo f. — el suelo, el territorio' },
+    cefr:'B2', topic:'pueblos indígenas 🌾'
   }
 ];
 
