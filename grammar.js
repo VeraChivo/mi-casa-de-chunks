@@ -1350,7 +1350,7 @@ const GRAMMAR_DATA = [
         {person:"tú",                    form:"hablaras", ex:"Quería que hablaras conmigo.",zh:"我希望你跟我說話。"},
         {person:"él/ella/usted",         form:"hablara",  ex:"Era importante que hablara.",zh:"重要的是他開口說話。"},
         {person:"nosotros",              form:"habláramos",ex:"Pidió que habláramos despacio.",zh:"她要求我們說話慢一點。"},
-        {person:"ellos/ellas/ustedes",   form:"hablaran", ex:"No creía que hablaran español.",zh:"我不相信他們會說西語。"}
+        {person:"ellos/ellas/ustedes",   form:"hablaran", ex:"No creía que hablaran español.",zh:"我沒想到他們會說西語。"}
       ]
     }
   },
@@ -1360,7 +1360,7 @@ const GRAMMAR_DATA = [
     title:"現在完成虛擬式：haya + 過去分詞",
     rule:"當 WEIRDO 主句的動詞是**現在時態**，但後面子句說的是一件「可能已經發生」的事，que 後面就用「現在完成虛擬式」：**haya / hayas / haya / hayamos / hayan + 過去分詞（-ado/-ido）**。<br><br>白話判斷法：說的是「現在懷疑/希望/擔心——某件過去的事有沒有發生」→ haya + 過去分詞。",
     examples:[
-      {es:"No creo que Nita haya terminado de comer.", zh:"我不相信妮妲已經吃完了。（現在不信 → 對已發生的事）"},
+      {es:"No creo que Nita haya terminado de comer.", zh:"我不覺得妮妲已經吃完了。（現在不信 → 對已發生的事）"},
       {es:"Espero que Tito haya dormido bien anoche.", zh:"希望迪多昨晚睡得好。（現在希望 → 對已發生的事）"},
       {es:"Es una lástima que no hayas venido.", zh:"你沒來真是太可惜了。（現在惋惜 → 對已不來的事實）"}
     ],
@@ -1399,7 +1399,7 @@ const GRAMMAR_DATA = [
     title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
     rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞數量要跟後面的名詞一致（單數→動詞單數，複數→複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用第三人稱單數",
     examples:[
-      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節被（大家）慶祝著。（se pasivo，主詞 el Día 是單數）"},
+      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。（se pasivo，主詞 el Día 是單數）"},
       {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。（se pasivo，flores 複數 → venden 複數）"},
       {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（se impersonal，que 後面整句，動詞固定單數）"}
     ],
