@@ -2400,9 +2400,9 @@ const GRAMMAR_DATA = [
     title:"Dudo que vs No creo que vs Creo que no：三種「不覺得」的中文語感差異",
     rule:"這三種句型字典都會翻成類似「我不覺得/不認為」，但西語文法上分成「否定觸發虛擬式」跟「肯定句＋內部否定」兩條不同路線，中文翻譯如果照字面直譯（尤其Dudo que常被翻成「我懷疑」），會讓中文使用者誤以為語氣很強硬/帶偵查意味，其實日常語氣是溫和委婉的猜測，不是質疑指控。",
     examples:[
-      {es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。（Dudar que + 虛擬式：語氣最委婉的猜測，「dudo」字面是「懷疑」，但中文自然翻譯應該是「不太覺得」而不是「我懷疑」——中文的「懷疑」帶有偵查/不相信證據的味道，比西語原本的隨口猜測重很多）"},
-      {es:"No creo que quieras helado.", zh:"我不認為你想吃冰淇淋。（No creer que + 虛擬式：否定「相信」這個動作本身，觸發虛擬式，語氣比dudar que再篤定一點點，是「不相信/不認為」）"},
-      {es:"Creo que no quieres helado.", zh:"我覺得你不想吃冰淇淋。（Creer que + 陳述式的否定句：注意這句是肯定的creo que接一個本身帶no的陳述句，不觸發虛擬式，語感是「我正面判斷、而我判斷出來的內容是否定的」，語氣最直接篤定）"}
+      {es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。<br><br>💡 這是最委婉的猜測——中文不要翻成「我懷疑」，那個字帶偵查/不相信證據的味道，比西語原本隨口猜測的語氣重很多。"},
+      {es:"No creo que quieras helado.", zh:"我不認為你想吃冰淇淋。<br><br>💡 比上一句再篤定一點點的「不相信/不認為」。"},
+      {es:"Creo que no quieres helado.", zh:"我覺得你不想吃冰淇淋。<br><br>💡 三句裡最直接篤定的判斷——先正面判斷，只是判斷出來的內容是否定的。"}
     ],
     trap:"三句由左到右語氣逐漸篤定：Dudo que（隨口猜測，最委婉）→No creo que（不太相信，中等）→Creo que no（我判斷你不想，最直接）。文法上的分界線很清楚——creer/pensar只有在「否定」的時候才觸發虛擬式（no creo que），一旦creer本身是肯定的、只是後面內容帶no（creo que no），就變回陳述式，這是初學者最容易搞混虛擬式觸發規則的地方之一。翻譯這三句給中文使用者看時，千萬不要把dudar que直接套「我懷疑」，語感會整個跑掉。",
     source:"文法補充"
