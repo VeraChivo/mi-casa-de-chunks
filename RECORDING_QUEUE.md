@@ -89,7 +89,9 @@
 
 - **第1批 `grammar_batch1_of2.txt`**：文法儲水槽缺口 前83句 ✅ **已完成（2026-07-19）**——
   83個mp3全部驗證通過，接進`GRAM_AUDIO_MAP`（839→922筆），存在`audio/gram/gram_missing_a_001~083.mp3`
-- **第2批 `grammar_batch2_of2.txt`**：文法儲水槽缺口 後83句
+- **第2批 `grammar_batch2_of2.txt`**：文法儲水槽缺口 後83句 ✅ **已完成（2026-07-19）**——
+  83個mp3全部驗證通過，接進`GRAM_AUDIO_MAP`（922→1005筆），存在`audio/gram/gram_missing_b_001~083.mp3`。
+  至此grammar.js全部467句不重複例句都有真人錄音，文法儲水槽這條線完成
 - **第3批 `songs_and_news.txt`**：歌曲填空25句＋新聞填空53句，合計78句
 - **第4批 `e11_and_mom.txt` → 已更新為 `script_D2.txt`（59句）**：原本以為E11要「先錄整句、
   事後切割分段」（CLAUDE.md那條規則是給真人錄音設計的——真人怕漏字才要求先錄一次完整版）。
