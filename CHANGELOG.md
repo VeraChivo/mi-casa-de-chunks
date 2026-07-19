@@ -68,6 +68,19 @@
 - 🌳語塊家族：不是新的庫存數量系統，是把既有vocab/花園資料按語塊家族（TENER/HACER）重新分組，顯示關聯與成長（哪些枝已收集/下一枝是什麼/家族成熟度），偵測到新枝時顯示「你的XX樹有新變化」
 - 劇情索引改成收合式+水色系配色，修正視覺斷層問題
 
+## 2026-07-19（深夜，📰B2時事傳送門：點分類篩選會把整個區塊收起來的bug）
+
+VERA截圖回報「按下分類就直接收起來」。查證：`newsFilterByTopic()`點分類chip後會呼叫
+`renderNewsSection()`整個重繪`#newsSectionWrap`，但render template把`#newsSectionBody`
+寫死`style="display:none"`、`newsSectionToggle`寫死「▼展開」文字——區塊的開合狀態原本只存在
+DOM的inline style上，不是獨立變數，所以只要重繪就會被蓋回「收起」，不管使用者剛剛是不是已經
+展開著。跟同一個函式裡「DW的由來」小卡（`_dwHistoryOpen`早就是獨立變數，沒有這個bug）對照，
+抓出這是唯一沒套用同樣模式的地方。
+
+**修正**：新增`_newsSectionOpen`持久變數，`toggleNewsSection()`改寫這個變數而非直接讀DOM，
+`renderNewsSection()`重繪時讀這個變數決定初始開合狀態跟箭頭文字。已用Playwright驗證：展開
+區塊→點分類篩選→區塊維持展開、箭頭正確顯示「▲收起」。
+
 ## 2026-07-19（深夜，導覽「三種紀錄」結尾改成情境觸發版）
 
 上一輪寫的結尾是「意圖→系統」（我想留下→私語窖），VERA提出更具體的「情境觸發→動作」版本

@@ -4576,6 +4576,9 @@ function initReminders(){
 // ── 📰 B2 時事傳送門：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
 let _newsTopicFilter = 'all';
 let _newsExpandedId = null;
+let _newsSectionOpen = false; // 2026-07-19修正：原本開合狀態只存在DOM的inline style裡，
+// 點分類篩選會觸發renderNewsSection()整個重繪，template又寫死display:none，等於每次選分類
+// 就把剛打開的區塊蓋回收起狀態——改成獨立變數記住開合狀態，重繪時讀這個變數，不會再被蓋掉
 let _dwHistoryOpen = false;
 function toggleDwHistory(){
   _dwHistoryOpen = !_dwHistoryOpen;
@@ -4688,9 +4691,9 @@ function renderNewsSection(){
         </div>
         <div class="news-section-sub">挖空填詞・錯字修正，讓語塊長進真實新聞</div>
       </div>
-      <span id="newsSectionToggle" class="news-section-toggle">▼ 展開</span>
+      <span id="newsSectionToggle" class="news-section-toggle">${_newsSectionOpen?'▲ 收起':'▼ 展開'}</span>
     </div>
-    <div id="newsSectionBody" style="display:none">
+    <div id="newsSectionBody" style="display:${_newsSectionOpen?'block':'none'}">
       ${dwHtml}
       <div class="news-topic-filter">${topicChips}</div>
       <div class="news-items">${itemsHtml}</div>
@@ -4703,9 +4706,9 @@ function toggleNewsSection(){
   const body = document.getElementById('newsSectionBody');
   const arrow = document.getElementById('newsSectionToggle');
   if(!body) return;
-  const open = body.style.display!=='none';
-  body.style.display = open ? 'none' : 'block';
-  if(arrow) arrow.textContent = open ? '▼ 展開' : '▲ 收起';
+  _newsSectionOpen = !_newsSectionOpen;
+  body.style.display = _newsSectionOpen ? 'block' : 'none';
+  if(arrow) arrow.textContent = _newsSectionOpen ? '▲ 收起' : '▼ 展開';
 }
 
 function toggleNewsHint(id){
