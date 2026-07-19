@@ -172,7 +172,7 @@ const AUDIO_MANIFEST={
     ["audio/sel3/SEL3_09_S_V.mp3","audio/sel3/SEL3_09_Rel.mp3","audio/sel3/SEL3_09_V_O.mp3"],
     ["audio/sel3/SEL3_10_Adv.mp3","audio/sel3/SEL3_10_S.mp3","audio/sel3/SEL3_10_V.mp3"],
   ],
-  // 14/15 = E15本心與閣樓／E16社交電量，尚待錄音（見待辦：Colab gTTS腳本已備好）
+  // 14/15 = E15本心與閣樓／E16社交電量，已錄音完成
   14:[
     ["audio/e15/01a_S_El_Corazon_Verdadero.mp3","audio/e15/01b_V_es.mp3","audio/e15/01c_O_el_lugar_original_el_mas_profundo.mp3"],
     ["audio/e15/02a_S_El_desvan.mp3","audio/e15/02b_V_vive.mp3","audio/e15/02c_O_dentro_del_Corazon_Verdadero.mp3"],
