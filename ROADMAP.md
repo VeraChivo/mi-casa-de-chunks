@@ -1049,6 +1049,47 @@
     能力）**仍未開始**，等VERA確認Llamarse這張是否成功連到「我的西語小日子」
     世界觀後再排下一步。
 
+    ---
+
+    ## ✅ Sprint B-4 已完成：g13（Creo que）能力卡改版（2026-07-19，commit `98bbca1`）
+
+    VERA確認Llamarse成功接上世界觀，並給出四張能力卡的生活弧線：
+    `🏡我的西語小日子：①Llamarse(我是誰)→②Tener(我擁有什麼狀態)→③Hacer(我正在
+    做什麼)→④Ir(我要往哪裡走)`，同時對Creo que給出明確的重新定位要求：**不要做成
+    「Creo que=我認為」的意見文法卡，要做成「我如何加入對話」**——核心不是字典釋義，
+    是「我想讓別人知道我腦中怎麼理解這件事」，呼應前面已做的🌍眼前現實↔🌙心裡想像
+    框架，測試的是「內心層」的入口。
+
+    **實際目標鎖定g13（Creo que + 子句：我認為…，A1-A2基礎卡）**，不是b1的g111
+    （Dudo/No creo/Creo que no細膩差異）或g113（意見表達延伸：en mi opinión/
+    estoy de acuerdo），因為g13是三張裡最基礎的入口卡，且**原本的title「Creo que
+    + 子句：我認為…」正好是VERA明確警告不要做的那種「字典翻譯標籤」寫法**，是這批
+    Sprint B卡片裡最典型的反面案例。查證真實語料後只找到2個真實分支（不是3個）：
+
+    ```
+    🩺猜測判斷　Creo que tienes fiebre.（E3扮醫生場景真實例句）
+      → 我想讓對方知道我對他狀態的猜測
+
+    💭自我信念　Creo que todo es mi error.（SEL線譴譴真實台詞）
+      → 我想讓對方知道我腦中對自己的想法，即使不一定正確
+    ```
+    「No creo que」「Estoy de acuerdo」「depende de」查證後全站沒有真實例句
+    （depende雖然出現在SEL台詞裡，但是「depende de mí」不是「depende de la
+    situación」這種獨立慣用語，不算真正對應），這兩張延伸卡（g111/g113）維持
+    現狀不動，符合「只改一張卡」的範圍限定。
+
+    **實際異動**：title改成「讓別人知道我腦中怎麼理解這件事」；rule改需求優先
+    語氣；examples/family改用2個真實語意角色分支（不強求湊到3個，2個真實的比
+    3個裡有1個湊數的更誠實）；trap保留既有內容；source更新為系統化清單；新增
+    storyRoles。**刻意不加crossLang**——英文"I think that..."跟creo que概念上
+    接近（都是信念動詞+完整子句），但台語/客語是否有一致慣用說法尚未查證，寧可
+    留白不做未經確認的宣稱。`node --check`與`maintenance.js`皆通過。
+
+    **狀態**：Sprint B-4（Creo que）完成並上線main。四張能力卡（IR/TENER/HACER/
+    Llamarse/Creo que，實際上是5張，因為Llamarse跟Creo que都不在VERA原本4張
+    的編號裡但都已完成）皆已上線。Sprint B-5（敘事橋接，VERA原定的最後一張，
+    「讓使用者開始組故事」）**仍未開始**。
+
 - **🗺️莊園地圖（2026-07-19 VERA提出，取代現有🗺️莊園導覽按鈕，不是新增第四個入口）**：VERA盤點現有「🗺️莊園導覽」（`showWorldTour()`，一步一步走的WELCOME_TOUR_STEPS）跟「☀️今日耕耘」（`entryMatrixJump()`，ENTRY_MATRIX_ITEMS 6個「想做什麼」選項）後認為兩者定位不同、但都不是她要的「莊園地圖」：**導覽＝一步一步帶你走；地圖＝我知道我要去哪，直接點就到**。VERA明確定調首頁最終要收斂成三個入口：🌱點播初芽（第一次來）／☀️今日耕耘（今天想學什麼）／🗺️莊園地圖（我知道要去哪，取代現有莊園導覽按鈕，同一個位置換內容不換位置）。地圖內容是靜態一次呈現的分區跳轉格，VERA給的草圖：
   ```
   🏡首頁
