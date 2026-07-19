@@ -1080,6 +1080,21 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .talk-growth-chip.is-used{background:rgba(61,184,122,.12);color:var(--ok)}
 .talk-growth-chip.is-new{background:rgba(61,184,122,.18);color:var(--ok);font-weight:800}
 
+.diary-entry-grow{background:none;border:none;color:var(--ok);font-size:11px;font-weight:700;cursor:pointer;padding:2px 4px;margin-right:auto}
+.talk-grow-chain{margin-top:8px;padding:8px 10px;border-left:2px dashed rgba(61,184,122,.4);background:rgba(61,184,122,.05);border-radius:0 8px 8px 0}
+.talk-grow-chain-label{font-size:11px;color:var(--ok);font-weight:700;margin-bottom:6px}
+.talk-grow-item{margin-bottom:6px}
+.talk-grow-item:last-child{margin-bottom:0}
+.talk-grow-item-day{font-size:10.5px;color:var(--tlight);font-weight:700}
+.talk-grow-item-text{font-size:13px;color:var(--tdark);line-height:1.5;margin-top:2px}
+.talk-grow-form{margin-top:10px;padding:10px 12px;border:1.5px dashed var(--ok);border-radius:10px;background:rgba(61,184,122,.06)}
+.talk-grow-seed-label{font-size:11px;color:var(--tlight);font-weight:700;margin-bottom:3px}
+.talk-grow-seed-text{font-size:13px;color:var(--tmid);font-style:italic;line-height:1.5;margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed var(--usumizu)}
+.talk-grow-hint-label{font-size:11.5px;color:var(--tmid);font-weight:700;margin-bottom:5px}
+.talk-grow-hints{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.talk-grow-hint-chip{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--ok);background:white;color:var(--ok);cursor:pointer}
+.talk-grow-hint-chip:active{background:rgba(61,184,122,.15)}
+
 .notes-entry{border:1.5px solid var(--usumizu);border-radius:12px;padding:10px 13px;background:white}
 .notes-entry-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .notes-entry-ts{font-size:11px;color:var(--tlight);font-weight:700}

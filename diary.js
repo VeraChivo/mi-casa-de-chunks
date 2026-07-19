@@ -557,10 +557,55 @@ function talkSave(){
 }
 
 function talkDeleteEntry(id){
-  const db = getTalkDB().filter(t => t.id !== id);
+  const db = getTalkDB().filter(t => t.id !== id && t.parentId !== id);
   saveTalkDB(db);
   renderTalkList();
   if(typeof toast === 'function') toast('🗑️ 已刪除這則');
+}
+
+/* ── 🌿 幫小苗長大：陪昨天的自己多說一句（不是修改舊日記，是長出新的一片葉子）
+   growth entry 直接存進同一份 peppa_talk_diary_v1（單一資料來源），
+   用 parentId 指回原句，渲染時巢狀掛在原句卡片底下，不另開清單 ── */
+
+let _talkGrowingId = null;
+const TALK_GROW_HINTS = ['porque', 'mucho', 'muy', 'pero', 'además', 'cuando'];
+
+function _talkDaysAgoLabel(ts){
+  const days = Math.floor((Date.now() - ts) / 86400000);
+  if(days <= 0) return '今天';
+  if(days === 1) return '1天前';
+  if(days < 7) return days + '天前';
+  const weeks = Math.floor(days / 7);
+  if(weeks < 5) return weeks + '週前';
+  return Math.floor(days / 30) + '個月前';
+}
+
+function talkToggleGrow(id){
+  _talkGrowingId = (_talkGrowingId === id) ? null : id;
+  renderTalkList();
+  if(_talkGrowingId === id){
+    setTimeout(() => { const ta = document.getElementById('talkGrowInput_' + id); if(ta) ta.focus(); }, 30);
+  }
+}
+
+function talkInsertGrowHint(rootId, word){
+  const ta = document.getElementById('talkGrowInput_' + rootId);
+  if(!ta) return;
+  ta.value = ta.value ? (ta.value.replace(/\s+$/, '') + ' ' + word + ' ') : (word + ' ');
+  ta.focus();
+}
+
+function talkSaveGrowth(rootId){
+  const ta = document.getElementById('talkGrowInput_' + rootId);
+  const text = ((ta && ta.value) || '').trim();
+  if(!text){ if(typeof toast === 'function') toast('先幫它多說一句再存吧'); return; }
+  const db = getTalkDB();
+  db.unshift({ id: 'talk_' + Date.now(), parentId: rootId, voice: text, createdAt: Date.now() });
+  saveTalkDB(db);
+  _talkGrowingId = null;
+  renderTalkList();
+  if(typeof toast === 'function') toast('🌿 這句話又多長了一片葉子');
+  if(typeof checkStorageQuota === 'function') checkStorageQuota();
 }
 
 function renderTalkList(){
@@ -568,16 +613,51 @@ function renderTalkList(){
   const el = document.getElementById('talkListArea');
   if(!el) return;
   const db = getTalkDB();
-  if(!db.length){
+  const roots = db.filter(t => !t.parentId);
+  if(!roots.length){
     el.innerHTML = `<div class="diary-empty-msg">還沒有任何心語紀錄，選一句片語開始吧</div>`;
     return;
   }
-  el.innerHTML = db.map(t => {
+  const growthsByRoot = {};
+  db.filter(t => t.parentId).forEach(t => {
+    (growthsByRoot[t.parentId] = growthsByRoot[t.parentId] || []).push(t);
+  });
+  Object.values(growthsByRoot).forEach(list => list.sort((a,b) => a.createdAt - b.createdAt));
+
+  el.innerHTML = roots.map(t => {
     const sentences = t.sentences || (t.es ? [{ es: t.es, zh: t.zh }] : []); // 相容舊版單句資料
     const sentHtml = sentences.map(s => `
       <div class="card-spanish-body">${(typeof renderScriptLine === 'function') ? renderScriptLine(s.es, `speakGramSmart('${(typeof escAttr==='function'?escAttr(s.es):s.es)}')`) : _diaryEsc(s.es)}</div>
       <div class="card-chinese-translation">${_diaryEsc(s.zh)}</div>
     `).join('<hr style="border:none;border-top:1px dashed var(--usumizu);margin:6px 0">');
+
+    const chain = growthsByRoot[t.id] || [];
+    const chainHtml = chain.length ? `
+      <div class="talk-grow-chain">
+        <div class="talk-grow-chain-label">🌿 這句話長大的軌跡</div>
+        ${chain.map(g => `
+          <div class="talk-grow-item">
+            <span class="talk-grow-item-day">🌿 ${_talkDaysAgoLabel(g.createdAt)}</span>
+            <div class="talk-grow-item-text">${(typeof renderScriptLine === 'function') ? renderScriptLine(g.voice, `speakGramSmart('${(typeof escAttr==='function'?escAttr(g.voice):g.voice)}')`) : _diaryEsc(g.voice)}</div>
+          </div>
+        `).join('')}
+      </div>` : '';
+
+    const seedText = t.voice || sentences.map(s=>s.es).join(' ');
+    const growFormHtml = _talkGrowingId === t.id ? `
+      <div class="talk-grow-form">
+        <div class="talk-grow-seed-label">🌱 以前種的小苗</div>
+        <div class="talk-grow-seed-text">${_diaryEsc(seedText)}</div>
+        <div class="talk-grow-hint-label">可以試試加：</div>
+        <div class="talk-grow-hints">
+          ${TALK_GROW_HINTS.map(h => `<button class="talk-grow-hint-chip" onclick="talkInsertGrowHint('${t.id}','${h}')">${h}</button>`).join('')}
+        </div>
+        <textarea id="talkGrowInput_${t.id}" class="handwritten-style" rows="3" placeholder="幫昨天的自己多說一句…"></textarea>
+        <div class="diary-draft-actions">
+          <button class="diary-btn-save" onclick="talkSaveGrowth('${t.id}')">🌿 存下這片新葉子</button>
+        </div>
+      </div>` : '';
+
     return `
     <div class="notes-entry">
       <div class="notes-entry-head">
@@ -585,9 +665,12 @@ function renderTalkList(){
       </div>
       ${sentHtml}
       ${t.voice ? `<div class="notes-entry-text">${_diaryEsc(t.voice).replace(/\n/g,'<br>')}</div>` : ''}
+      ${chainHtml}
       <div class="diary-entry-actions">
+        <button class="diary-entry-grow" onclick="talkToggleGrow('${t.id}')">🌿 幫它長大</button>
         <button class="diary-entry-del" onclick="talkDeleteEntry('${t.id}')">🗑️ 刪除</button>
       </div>
+      ${growFormHtml}
     </div>`;
   }).join('');
 }
