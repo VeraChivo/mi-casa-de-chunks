@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260719a14">
+<link rel="stylesheet" href="style.css?v=20260719a15">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -462,8 +462,8 @@
     </div>
 
     <div id="hvBody" class="ammo-body">
-    <!-- 築巢成果統計 -->
-    <div class="hv-stats-title">🏡 蜂巢目前成果</div>
+    <!-- ① 莊園近況：先建立信任——這座莊園現在長成什麼樣 -->
+    <div class="hv-stats-title">🌸 莊園近況<span class="hv-sec-tagline">這座莊園現在長成什麼樣</span></div>
     <div class="hv-stats">
       <div class="hv-stat-card">
         <div class="hv-stat-lbl">🌸 工蜂嗡嗡出動</div>
@@ -479,10 +479,19 @@
       </div>
     </div>
 
-    <!-- 嗡嗡工蜂的勞動出勤打卡牆 -->
+    <!-- ② 築巢日誌：再展示努力——最近做了哪些事 -->
+    <div class="hv-log-section">
+      <div class="hv-log-hd">
+        <span class="hv-log-label">📋 築巢日誌<span class="hv-sec-tagline">最近做了哪些事</span></span>
+        <span class="hv-log-push-count">已推送 250+ 次</span>
+      </div>
+      <div id="changelogLatest" class="cl-latest"></div>
+      <div id="changelogBody" class="cl-body"></div>
+    </div>
+
+    <!-- ③ 工蜂出勤牆：再表達感謝——感謝一起築巢的人 -->
     <div class="hv-flora-wrap">
-      <div class="hv-flora-title">🌸 嗡嗡工蜂的出勤打卡牆</div>
-      <p class="hv-flora-sub">記錄每一次讓蜂巢持續運轉的助力。</p>
+      <div class="hv-flora-title">🐝 工蜂出勤牆<span class="hv-sec-tagline">感謝一起築巢的人</span></div>
 
       <details class="hv-tier-card">
         <summary class="hv-tier-sum">
@@ -531,22 +540,12 @@
 
     </div>
 
-    <!-- 支援蜂巢：獨立出來，不跟出勤牆混在一起 -->
+    <!-- ④ 支援蜂巢：最後提供支持方式——如果喜歡，也歡迎一起讓花園繼續長大 -->
     <div class="hv-support-wrap">
-      <div class="hv-support-title">🍯 支援蜂巢</div>
+      <div class="hv-support-title">🍯 支援蜂巢<span class="hv-sec-tagline">如果喜歡，也歡迎一起讓花園繼續長大</span></div>
       <p class="hv-support-desc">想提供花蜜補給？</p>
       <button class="hv-support-btn" disabled title="功能建置中">成為蜜源</button>
       <p class="hv-flora-note">🌱 贊助功能建置中，靜候第一股花蜜補給</p>
-    </div>
-
-    <!-- 築巢日誌 -->
-    <div class="hv-log-section">
-      <div class="hv-log-hd">
-        <span class="hv-log-label">📋 築巢日誌 · Registro de Obra</span>
-        <span class="hv-log-push-count">已推送 250+ 次</span>
-      </div>
-      <div id="changelogLatest" class="cl-latest"></div>
-      <div id="changelogBody" class="cl-body"></div>
     </div>
     </div> <!-- /hvBody -->
   </div>
