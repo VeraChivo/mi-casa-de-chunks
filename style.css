@@ -72,6 +72,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .story-idx-go:active{opacity:.7}
 .story-idx-more{color:rgba(255,255,255,.55);font-size:10px;font-weight:600;margin-top:2px}
 
+.season-nav-label{font-size:11px;font-weight:800;color:var(--tmid);margin:14px 0 6px;padding-top:10px;border-top:1px dashed var(--usumizu);width:100%;max-width:480px;box-sizing:border-box}
 .season-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;width:100%;max-width:480px;box-sizing:border-box}
 .ep-chip{padding:8px 6px;border-radius:12px;border:1.5px solid var(--usumizu);font-size:11px;font-weight:800;color:var(--misora);background:white;cursor:pointer;transition:all .18s;text-align:center;line-height:1.3;display:flex;align-items:center;justify-content:center}
 .ep-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
