@@ -318,29 +318,36 @@ const SENTENCE_COGNATES = {
 const COGNATE_LIBRARY = [
   // E1 · 泥巴坑
   {en:'germane',   es:'hermano',   art:'el',  zh:'相關的、切題的（germane）／兄弟（hermano）', ep:'E1 · 泥巴坑',
-    cognateSourceChain:{
-      root:'germanus', meaning:'同父母的、親生的（用於兄弟姊妹）',
-      branches:[
-        {language:'English', path:'germanus → germane', meaningShift:'親兄弟 → （比喻）密切相關的、切題的'},
-        {language:'Spanish', path:'germanus → hermano', meaningShift:'親兄弟（伊比利羅曼語系直接保留這個字表示兄弟，跟法語/義大利語用frater家族的字不同）'}
-      ]
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'germanus（同父母的、親生的，用於兄弟姊妹）',
+      originChain:{
+        branches:[
+          {language:'English', path:'germanus → germane', meaningShift:'親兄弟 → （比喻）密切相關的、切題的'},
+          {language:'Spanish', path:'germanus → hermano', meaningShift:'親兄弟（伊比利羅曼語系直接保留這個字表示兄弟，跟法語/義大利語用frater家族的字不同）'}
+        ]
+      },
+      source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
   {en:'potent',    es:'poder',     art:'',    zh:'能夠／有力的', ep:'E1 · 泥巴坑'},
   {en:'juggle',    es:'jugar',     art:'',    zh:'玩',         ep:'E1 · 泥巴坑'},
   {en:'boots',     es:'botas',     art:'las', zh:'靴子',       ep:'E1 · 泥巴坑'},
   {en:'duty',      es:'deber',     art:'',    zh:'必須／義務',  ep:'E1 · 泥巴坑'},
   {en:'charcoal',  es:'charco',    art:'el',  zh:'水坑',       ep:'E1 · 泥巴坑',
-    notActualCognate:{
-      reason:'charcoal源自古英語charren(轉變)+cole(煤炭)，是純日耳曼語構詞；charco是西班牙前羅馬時期的伊比利語底層詞，兩者詞源完全不相干，只是拼字剛好相似',
-      betterFit:'純屬巧合的拼字相似，不放🌐語感橋樑也不放🍓同源庫，只當作「長得像但沒關係」的提醒'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'charcoal源自古英語charren(轉變)+cole(煤炭)，純日耳曼語構詞；charco是西班牙前羅馬時期的伊比利語底層詞，兩者詞源完全不相干，只是拼字剛好相似，純屬巧合，連🌐語感橋樑都不適合放',
+      source:'etymonline.com，2026-07-19查證'
     }},
   {en:'enchant',   es:'encantar',  art:'',    zh:'使著迷／超愛', ep:'E1 · 泥巴坑'},
   {en:'counter',   es:'contra',    art:'',    zh:'相對／遇見',  ep:'E1 · 泥巴坑'},
   {en:'encounter', es:'encontrar', art:'',    zh:'找到／遭遇',  ep:'E1 · 泥巴坑'},
   {en:'grand',     es:'grande',    art:'',    zh:'宏大／大的',  ep:'E1 · 泥巴坑'},
   {en:'barren',    es:'barro',     art:'el',  zh:'泥巴',       ep:'E1 · 泥巴坑',
-    uncertainCognate:{
-      reason:'兩者詞源都指向可能的凱爾特語根，但查證後是不同的凱爾特詞根（barro←*barr-「泥土」；barren←bar-/baraigne「休耕地/裸露」），現有學術文獻對兩者是否真的同源持懷疑態度，不是確定的同源詞'
+    cognateInfo:{
+      relationType:'uncertain', confidence:'low',
+      note:'兩者詞源都指向可能的凱爾特語根，但查證後是不同的凱爾特詞根（barro←*barr-「泥土」；barren←bar-/baraigne「休耕地/裸露」），現有學術文獻對兩者是否真的同源持懷疑態度',
+      source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
   {en:'pass',      es:'pasar',     art:'',    zh:'通過／發生',  ep:'E1 · 泥巴坑'},
   {en:'total',     es:'todos',     art:'',    zh:'全部／所有人', ep:'E1 · 泥巴坑'},
@@ -352,78 +359,101 @@ const COGNATE_LIBRARY = [
   {en:'detective',  es:'detective', art:'el',  zh:'偵探',       ep:'E2 · 骷髏先生不見了'},
   {en:'person',     es:'persona',   art:'la',  zh:'人',         ep:'E2 · 骷髏先生不見了'},
   {en:'bath',       es:'bañera',    art:'la',  zh:'浴缸',       ep:'E2 · 骷髏先生不見了',
-    notActualCognate:{
-      reason:'bath源自古英語bæþ（日耳曼語族，原意「使溫暖」），bañera源自bañar←拉丁語balneum（源自希臘語balaneion）——日耳曼語跟拉丁/希臘語兩條不同的語源線，只是概念都跟洗澡有關',
-      betterFit:'🌐語感橋樑候選，不算🍓同源庫'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'bath源自古英語bæþ（日耳曼語族，原意「使溫暖」），bañera源自bañar←拉丁語balneum（源自希臘語balaneion）——日耳曼語跟拉丁/希臘語兩條不同的語源線，只是概念都跟洗澡有關，適合當🌐語感橋樑候選',
+      source:'etymonline.com，2026-07-19查證'
     }},
   {en:'where',      es:'dónde',     art:'',    zh:'哪裡',       ep:'E2 · 骷髏先生不見了',
-    notActualCognate:{
-      reason:'where源自原始日耳曼語*hwar，dónde源自拉丁語de+unde（從哪裡）——兩個疑問詞各自獨立演變，只是剛好都翻成「哪裡」，是翻譯對應誤放進同源庫，不是真的同源詞',
-      betterFit:'單純的翻譯對照，不放🌐語感橋樑也不放🍓同源庫'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'where源自原始日耳曼語*hwar，dónde源自拉丁語de+unde（從哪裡）——兩個疑問詞各自獨立演變，只是剛好都翻成「哪裡」，是翻譯對應誤放進同源庫，不是真的同源詞，連🌐語感橋樑都不需要（單純翻譯對照）',
+      source:'etymonline.com，2026-07-19查證'
     }},
   {en:'chamber',    es:'cama',      art:'la',  zh:'床／房間',    ep:'E2 · 骷髏先生不見了',
-    uncertainCognate:{
-      reason:'chamber確定源自拉丁語camera（源自希臘語kamara，拱頂房間）；但cama的詞源本身在學界有爭議——一說源自希臘語khamai（在地上）演變成晚期拉丁語cama，一說是前羅馬時期伊比利凱爾特語借詞，兩種說法都跟chamber的camera/kamara不是同一個希臘詞根，不能確定是同源詞'
+    cognateInfo:{
+      relationType:'uncertain', confidence:'low',
+      note:'chamber確定源自拉丁語camera（源自希臘語kamara，拱頂房間）；但cama的詞源本身在學界有爭議——一說源自希臘語khamai（在地上）演變成晚期拉丁語cama，一說是前羅馬時期伊比利凱爾特語借詞，兩種說法都跟chamber的camera/kamara不是同一個希臘詞根',
+      source:'spanishetymology.com、Wiktionary，2026-07-19查證'
     }},
   {en:'dad',        es:'papá',      art:'el',  zh:'爸爸',       ep:'E2 · 骷髏先生不見了',
-    notActualCognate:{
-      reason:'語言學上稱為「保姆詞/兒語詞」現象——dad跟papá都是嬰兒牙牙學語階段最早發出的雙唇音+開口母音（m/p/b+a），全世界互不相關的語言都獨立長出類似的稱呼父母的字，不是因為同一個語言祖先傳下來的，是人類發聲器官發展的共同生理現象',
-      betterFit:'跨語言巧合現象（不只英西，幾乎全世界語言都有這個規律），適合當文化小知識介紹，不算同源詞'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'語言學上稱為「保姆詞/兒語詞」現象——dad跟papá都是嬰兒牙牙學語階段最早發出的雙唇音+開口母音（m/p/b+a），全世界互不相關的語言都獨立長出類似的稱呼父母的字，不是因為同一個語言祖先傳下來的，是人類發聲器官發展的共同生理現象，適合當文化小知識介紹',
+      source:'Psychology Today、The Conversation語言學文章，2026-07-19查證'
     }},
   // E3 · 最好的朋友
   {en:'expect',    es:'esperar',   art:'',    zh:'期待／等待',      ep:'E3 · 最好的朋友',
-    notActualCognate:{
-      reason:'expect源自拉丁語exspectare（ex+spectare「看」，字根*spek-「觀察」），esperar源自拉丁語sperare（「希望」，字根*speh₁-）——是兩個不同的拉丁動詞，只是拼字都有「esp-/exp-」開頭造成視覺相似',
-      betterFit:'🌐語感橋樑候選，不算🍓同源庫'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'expect源自拉丁語exspectare（ex+spectare「看」，字根*spek-「觀察」），esperar源自拉丁語sperare（「希望」，字根*speh₁-）——是兩個不同的拉丁動詞，只是拼字都有「esp-/exp-」開頭造成視覺相似，適合當🌐語感橋樑候選',
+      source:'etymonline.com，2026-07-19查證'
     }},
   {en:'major',     es:'mejor',     art:'',    zh:'較好的／最好的',   ep:'E3 · 最好的朋友',
-    notActualCognate:{
-      reason:'major源自拉丁語maior（magnus「大」的比較級），mejor源自拉丁語melior（bonus「好」的比較級）——兩個形容詞各自的比較級，字根不同（magnus vs melior的另一個字根），只是「-jor/-jor」字尾長得像',
-      betterFit:'🌐語感橋樑候選，不算🍓同源庫'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'major源自拉丁語maior（magnus「大」的比較級），mejor源自拉丁語melior（bonus「好」的比較級）——兩個形容詞各自的比較級，字根不同，只是「-jor/-jor」字尾長得像，適合當🌐語感橋樑候選',
+      source:'Wiktionary，2026-07-19查證'
     }},
   {en:'much',      es:'mucho',     art:'',    zh:'很多',            ep:'E3 · 最好的朋友',
-    notActualCognate:{
-      reason:'much源自原始日耳曼語*mikilaz（大/多），mucho源自拉丁語multus（多）——查證確認兩者的相似純屬巧合，不是同源詞',
-      betterFit:'🌐語感橋樑候選，不算🍓同源庫'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'much源自原始日耳曼語*mikilaz（大/多），mucho源自拉丁語multus（多）——查證確認兩者的相似純屬巧合，適合當🌐語感橋樑候選',
+      source:'Wiktionary，2026-07-19查證'
     }},
   {en:'query',     es:'querer',    art:'',    zh:'查詢、詢問（query）／想要、喜歡、愛（querer）',      ep:'E3 · 最好的朋友',
-    cognateSourceChain:{
-      root:'quaerere', meaning:'尋求、詢問',
-      branches:[
-        {language:'English', path:'querre → query', meaningShift:'尋求 → 詢問、查詢'},
-        {language:'Spanish', path:'querer', meaningShift:'尋求 → 想要、追求 → 愛（12世紀才發展出「愛」的語意）'}
-      ]
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'quaerere（尋求、詢問）',
+      originChain:{
+        branches:[
+          {language:'English', path:'querre → query', meaningShift:'尋求 → 詢問、查詢'},
+          {language:'Spanish', path:'querer', meaningShift:'尋求 → 想要、追求 → 愛（12世紀才發展出「愛」的語意）'}
+        ]
+      },
+      source:'etymonline.com、buenospanish.com，2026-07-19查證'
     }},
   {en:'game',      es:'juego',     art:'el',  zh:'遊戲',            ep:'E3 · 最好的朋友',
-    notActualCognate:{
-      reason:'game源自古英語gamen（日耳曼語族*gamaną），juego源自拉丁語iocus（笑話、娛樂）——兩者詞源不同，只是概念相近（都表示玩樂/遊戲），不是同源詞',
-      betterFit:'🌐語感橋樑候選（兩種語言用不同的詞表達同一個生活概念），不算🍓同源庫'
+    cognateInfo:{
+      relationType:'falseFriend', confidence:'high',
+      note:'game源自古英語gamen（日耳曼語族*gamaną），juego源自拉丁語iocus（笑話、娛樂）——兩者詞源不同，只是概念相近（都表示玩樂/遊戲），適合當🌐語感橋樑候選（兩種語言用不同的詞表達同一個生活概念）',
+      source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
   {en:'princess',  es:'princesa',  art:'la',  zh:'公主',            ep:'E3 · 最好的朋友'},
   {en:'account',   es:'cuento',    art:'el',  zh:'帳戶、帳目、說明、敘述（account）／故事（cuento）', ep:'E3 · 最好的朋友',
-    cognateSourceChain:{
-      root:'computare', meaning:'計算、清點',
-      branches:[
-        {language:'English', path:'conter → account', meaningShift:'帳目 → 敘述'},
-        {language:'Spanish', path:'contar → cuento', meaningShift:'計算 → 講述 → 故事'}
-      ]
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'computare（計算、清點）',
+      originChain:{
+        branches:[
+          {language:'English', path:'conter → account', meaningShift:'帳目 → 敘述'},
+          {language:'Spanish', path:'contar → cuento', meaningShift:'計算 → 講述 → 故事'}
+        ]
+      },
+      source:'etymonline.com、elcastellano.org，2026-07-19查證'
     }},
   {en:'gusto',     es:'gustar',    art:'',    zh:'品味／享受／喜歡', ep:'E3 · 最好的朋友'},
   {en:'doctor',    es:'doctora',   art:'la',  zh:'醫生',            ep:'E3 · 最好的朋友'},
   {en:'infirmary', es:'enfermera', art:'la',  zh:'醫務室／護士',    ep:'E3 · 最好的朋友'},
   {en:'respire',   es:'respirar',  art:'',    zh:'呼吸',            ep:'E3 · 最好的朋友'},
   {en:'profound',  es:'hondo',     art:'',    zh:'深刻的（profound）／深的（hondo）', ep:'E3 · 最好的朋友',
-    cognateSourceChain:{
-      root:'fundus', meaning:'底部、基底',
-      branches:[
-        {language:'English', path:'pro+fundus → profundus → profound', meaningShift:'底部 → 深的 → （比喻）深刻的'},
-        {language:'Spanish', path:'fundus → hondo（f→h音變，西語常見規律，如filius→hijo）', meaningShift:'底部 → 深的'}
-      ]
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'fundus（底部、基底）',
+      originChain:{
+        branches:[
+          {language:'English', path:'pro+fundus → profundus → profound', meaningShift:'底部 → 深的 → （比喻）深刻的'},
+          {language:'Spanish', path:'fundus → hondo（f→h音變，西語常見規律，如filius→hijo）', meaningShift:'底部 → 深的'}
+        ]
+      },
+      source:'spanishetymology.com，2026-07-19查證'
     }},
   {en:'credible',  es:'creer',     art:'',    zh:'相信',            ep:'E3 · 最好的朋友'},
   {en:'core',      es:'corazón',   art:'el',  zh:'核心／心臟',      ep:'E3 · 最好的朋友',
-    uncertainCognate:{
-      reason:'corazón確定源自拉丁語cor（心，PIE字根*kerd-）；但英文core的詞源本身不確定——字典多標「obscure and uncertain origin」，可能來自古法語cuer/coeur（源自拉丁cor，若成立則兩者同源），也可能來自古法語cors（源自拉丁corpus「身體」，不同字根），或甚至是英語本土獨立詞——三種可能性並存，不能確定是同源詞'
+    cognateInfo:{
+      relationType:'uncertain', confidence:'low',
+      note:'corazón確定源自拉丁語cor（心，PIE字根*kerd-）；但英文core的詞源本身不確定——字典多標「obscure and uncertain origin」，可能來自古法語cuer/coeur（源自拉丁cor，若成立則兩者同源），也可能來自古法語cors（源自拉丁corpus「身體」，不同字根），或甚至是英語本土獨立詞——三種可能性並存',
+      source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
   {en:'cure',      es:'curar',     art:'',    zh:'治療／康復',      ep:'E3 · 最好的朋友'},
 ];
