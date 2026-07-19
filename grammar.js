@@ -550,7 +550,7 @@ const GRAMMAR_DATA = [
   {
     id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que：讓別人知道我腦中怎麼理解這件事",
-    rule:"Creo que不只是字典翻譯的「我認為」，它是加入對話最基本的方式之一——不是宣告一個確定的事實，而是「我想讓你知道，我腦中對這件事的判斷/猜測是這樣」。同一個骨架，可以用來猜測別人的狀態，也可以用來講出自己內心對某件事的想法。",
+    rule:"醫生摸摸額頭說Creo que tienes fiebre.（我覺得你發燒了）——這句話是「我想讓你知道，我腦中對這件事的判斷是這樣」，不是在宣告一個確定的事實。同一個骨架，可以用來猜測別人的狀態，也可以用來講出自己內心對某件事的想法，像是Creo que todo es mi error.（我以為都是我的錯）。",
     examples:[
       {es:"Creo que tienes fiebre.", zh:"我覺得你發燒了。（劇情原句，E3扮醫生場景）"},
       {es:"Creo que todo es mi error.", zh:"我以為都是我的錯。（劇情原句，SEL線）"},
@@ -722,7 +722,7 @@ const GRAMMAR_DATA = [
   {
     id:"g19", cat:"tense", level:"a1a2",
     title:"IR + a + 動詞：從「去」長出行動路線",
-    rule:"很多人學到IR，只記得「ir的變位+a+原形動詞＝近未來式」的公式，但這其實是西語人每天用來說「我接下來要做什麼」最常見的方式——比死背未來式變位更早學、更常用，任何人稱都能用，不是只有「我們一起來」的意思。voy不只是「我去」，很多時候代表「我現在決定要往那個方向走」，是一個行動開關，不一定人已經在動。",
+    rule:"準備出門前，西語人常常先說一句「我要去做什麼」——ir的變位加上a和原形動詞，就是這句話的公式：Voy a comer.（我要吃飯了）、¿Vas a salir?（你要出去嗎）、Vamos a empezar.（我們要開始了），任何人稱都能用。voy不只是腳在移動，很多時候是「我現在決定要往那個方向走」的一個開關，人可能根本還沒動。",
     examples:[
       {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
       {es:"Mamá siempre te va a cuidar.", zh:"媽媽會一直守護你喔。（🛌床邊低語呢原句）"},
@@ -750,7 +750,7 @@ const GRAMMAR_DATA = [
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：從「有」長出我的生活狀態",
-    rule:"很多人學tener只記得「擁有」，但西語日常有大量身體感受、心情、時間狀態，中英文會用「是/be」處理的地方，西語統一用tener（有）表達——這是最貼近生活、能一次講出「我現在怎麼樣」的萬用句型。tener hambre不是「擁有飢餓」這種怪翻譯，是「我現在的狀態是餓的」，年紀（tener ___ años）也是同一套邏輯延伸出來的。",
+    rule:"中文會說「我餓了」，英文會說「I am hungry」；西語常用tener hambre，像是在說「我有一種餓的狀態」。同樣的講法延伸到很多身體感受、心情、時間狀態：tener sueño（想睡）、tener miedo（害怕）、tener prisa（趕時間），連年紀（tener ___ años）也是這樣講。",
     examples:[
       {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
       {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
@@ -759,7 +759,7 @@ const GRAMMAR_DATA = [
     trap:"英文用 be（I am hungry / I am 6 years old），西語卻用 tener（有）——這是中英文母語者最容易直覺講錯的地方！",
     family:{
       title:"🌳 Tengo + 名詞 家族",
-      intro:"別只背「tener」這個動詞，把整串「Tengo + 名詞」的固定搭配當一個家族背起來——中英文用 be 處理的感覺/狀態，西語統一用 tener（有）帶出來。",
+      intro:"別只背「tener」這個動詞，把整串「Tengo + 名詞」的固定搭配當一個家族背起來——中文說「我很餓/我好睏」，西語會說Tengo hambre/Tengo sueño，是同一組講法。",
       items:[
         {es:"Tengo hambre.", zh:"我餓了。"},
         {es:"Tengo sed.", zh:"我渴了。"},
@@ -2342,7 +2342,7 @@ const GRAMMAR_DATA = [
   {
     id:"g109", cat:"verb-pattern", level:"a1a2",
     title:"HACER：從「做」長出的生活變化",
-    rule:"很多人學HACER只記得「做」，但它真正的核心是「讓某件事發生/產生一個結果」——不只是做事情，還能講天氣、講時間距離，這幾種用法乍看不同，但核心都是「因為hacer，世界多了/變了一件事」。IR的部分已經在g19教過了，這裡專注在HACER自己的生活路線。",
+    rule:"貓媽媽排計畫用hace un plan，講天氣冷用hace frío，講很久以前的事用hace mucho tiempo——這幾種用法乍看不同，但都是同一個hacer在讓某件事發生，或標出一段距離。IR的部分已經在g19教過了，這裡專注在HACER自己的生活路線。",
     examples:[
       {es:"Mamá Cata hace un plan para el día.", zh:"貓媽媽排好了今天的行程。（劇情原句，E10）"},
       {es:"Hace frío hoy.", zh:"今天很冷。（hacer + 天氣，西語固定用hacer不是estar）"},
