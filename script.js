@@ -2810,7 +2810,10 @@ function openLevelNavDirect(){
     if(nav) nav.style.display = '';
     overlay.style.display = 'flex';
   }
-  _welcomeTourStep = WELCOME_TOUR_STEPS.length - 1;
+  // 找「程度路標」那一步的實際索引，不要假設它是最後一步——
+  // 之後加新的導覽步驟（例如入口盤查）會讓「最後一步」變成別的東西
+  const idx = WELCOME_TOUR_STEPS.findIndex(s => s.levelButtons);
+  _welcomeTourStep = idx >= 0 ? idx : WELCOME_TOUR_STEPS.length - 1;
   renderWelcomeTourStep();
 }
 function jumpToLevelFilter(levelKey){
