@@ -737,12 +737,12 @@ const GRAMMAR_DATA = [
 
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
-    title:"TENER：擁有、年紀、生理感覺",
-    rule:"tener 字面是「擁有」，但西語常用 tener 描述「年紀」或「生理感覺」，中英文會用 to be 處理的地方，西語卻用 to have！例如：tener hambre（有飢餓＝肚子餓了）、tener ___ años（有 ___ 歲＝ ___ 歲）。",
+    title:"TENER：從「有」長出我的生活狀態",
+    rule:"很多人學tener只記得「擁有」，但西語日常有大量身體感受、心情、時間狀態，中英文會用「是/be」處理的地方，西語統一用tener（有）表達——這是最貼近生活、能一次講出「我現在怎麼樣」的萬用句型。tener hambre不是「擁有飢餓」這種怪翻譯，是「我現在的狀態是餓的」，年紀（tener ___ años）也是同一套邏輯延伸出來的。",
     examples:[
-      {es:"Nita y Tito tienen una hermana nueva.", zh:"妮妲和迪多有了一個新妹妹。（劇情原句，擁有用法）"},
-      {es:"Tienes una hermana mayor.", zh:"你有一個大姊姊。（劇情原句，擁有用法，同時示範 hermana mayor＝形容詞放名詞後面）"},
-      {es:"Tito tiene seis años.", zh:"迪多六歲。（新編例句，目前劇情裡還沒有「年紀」這個用法，直譯：迪多有六年）"}
+      {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
+      {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
+      {es:"Tito tiene seis años.", zh:"迪多六歲。（新編例句，目前劇情裡還沒有「年紀」這個用法）"}
     ],
     trap:"英文用 be（I am hungry / I am 6 years old），西語卻用 tener（有）——這是中英文母語者最容易直覺講錯的地方！",
     family:{
@@ -762,7 +762,13 @@ const GRAMMAR_DATA = [
         {es:"Tengo ganas de bailar.", zh:"我想跳舞。（tener ganas de + 原形動詞＝想做某事）"}
       ]
     },
-    source:"彈藥庫 e4_03（前兩句）／文法補充（年紀用法為新編）",
+    source:"劇情E4（擁有）／劇情E7（身體感受/情緒/時間管理，整集示範）／彈藥庫e4_03／🛌床邊低語呢（TENER家族）／文法補充（年紀用法為新編）",
+    storyRoles:[
+      {es:"Nita y Tito tienen una hermana nueva.", semanticRole:"possession", communicationGoal:"我想讓對方知道我擁有/多了什麼", scene:"E4劇情（真實例句）"},
+      {es:"Nita tiene mucho sueño.", semanticRole:"physical-state", communicationGoal:"我想讓對方知道我身體上的感受", scene:"E7劇情（真實例句）"},
+      {es:"Mamá Cata tiene prisa.", semanticRole:"time-state", communicationGoal:"我想讓對方知道我現在的時間處境", scene:"E7劇情（真實例句）"},
+      {es:"Kito tiene miedo de llegar tarde.", semanticRole:"emotional-state", communicationGoal:"我想讓對方知道我的心裡感受", scene:"E7劇情（真實例句）"}
+    ],
     conj:{
       verb:"tener（有）",
       rows:[
