@@ -1785,10 +1785,31 @@ function _chunkFamNewsMatch(keyword){
   const hit = NEWS_ITEMS.find(n => (n.headline||'').toLowerCase().includes(keyword));
   return hit ? {id:hit.id} : null;
 }
+// 心語（corazon.js/mom.js）複用同一套比對邏輯，不另開新資料
+function _chunkFamDiaryMatch(keyword){
+  if(typeof CORAZON_DATA !== 'undefined'){
+    for(const cat of CORAZON_DATA){
+      const hit = (cat.items||[]).find(it => (it.es||'').toLowerCase().includes(keyword));
+      if(hit) return {source:'corazon', title:cat.title};
+    }
+  }
+  if(typeof MOM_ATM_DATA !== 'undefined'){
+    for(const key in MOM_ATM_DATA){
+      const hit = (MOM_ATM_DATA[key].items||[]).find(it => (it.es||'').toLowerCase().includes(keyword));
+      if(hit) return {source:'mom', title:MOM_ATM_DATA[key].title};
+    }
+  }
+  return null;
+}
 function chunkFamJumpRef(kind, payload){
   if(kind === 'episode'){ switchMainTab('play'); selectEp(payload); return; }
   if(kind === 'song'){ dtaskJump('lyrics'); return; }
   if(kind === 'news'){ dtaskJump('news'); return; }
+  if(kind === 'diary'){
+    switchMainTab('mom');
+    setTimeout(()=>{ const s=document.getElementById('talkMamaVoice'); if(s) s.scrollIntoView({behavior:'smooth',block:'center'}); }, 60);
+    return;
+  }
 }
 function _chunkFamSeenCounts(){
   try { return JSON.parse(localStorage.getItem('peppa_chunk_fam_seen_v1') || '{}'); } catch(e){ return {}; }
@@ -1807,7 +1828,7 @@ function renderChunkFamilies(){
   if(!el) return;
   const seen = _chunkFamSeenCounts();
   const nextSeen = {};
-  const legendHtml = `<div class="chunk-fam-legend">📺 劇情／🎵 歌曲／📰 新聞裡出現過這個語塊，點了直接跳過去看</div>`;
+  const legendHtml = `<div class="chunk-fam-legend">📺 劇情／🎵 歌曲／📰 新聞／📔 心語裡出現過這個語塊，點了直接跳過去看</div>`;
   el.innerHTML = legendHtml + CHUNK_FAMILIES.map(fam => {
     const branches = _chunkFamBranchStatus(fam);
     const collectedCount = branches.filter(b => b.collected).length;
@@ -1828,10 +1849,12 @@ function renderChunkFamilies(){
           const epM = _chunkFamEpisodeMatch(b.match);
           const songM = _chunkFamSongMatch(b.match);
           const newsM = _chunkFamNewsMatch(b.match);
+          const diaryM = _chunkFamDiaryMatch(b.match);
           const refs = [
             epM ? `<span class="chunk-fam-ref" title="劇情裡出現過：${epM.titleZh}" onclick="event.stopPropagation();chunkFamJumpRef('episode',${epM.epIdx})">📺</span>` : '',
             songM ? `<span class="chunk-fam-ref" title="歌曲裡出現過：${songM.song}" onclick="event.stopPropagation();chunkFamJumpRef('song')">🎵</span>` : '',
-            newsM ? `<span class="chunk-fam-ref" title="新聞裡出現過" onclick="event.stopPropagation();chunkFamJumpRef('news')">📰</span>` : ''
+            newsM ? `<span class="chunk-fam-ref" title="新聞裡出現過" onclick="event.stopPropagation();chunkFamJumpRef('news')">📰</span>` : '',
+            diaryM ? `<span class="chunk-fam-ref" title="心語裡出現過：${diaryM.title}" onclick="event.stopPropagation();chunkFamJumpRef('diary')">📔</span>` : ''
           ].join('');
           return `<span class="chunk-fam-branch${b.collected?' is-collected':''}">${b.collected?'🌱':'⚪'} ${b.es}${refs}</span>`;
         }).join('')}
