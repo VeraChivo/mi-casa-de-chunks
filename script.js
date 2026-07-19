@@ -401,6 +401,29 @@ function daysSinceFirstChunk(){
   return Math.max(0, diff) + 1; // 第一天當天也算第1天
 }
 
+// header最左邊的動態入口：還沒種下第一顆語塊 → 🌱點播初芽（入園儀式）；已經種過 → 🌿我的成長（成長紀錄）
+// 判斷依據直接沿用 getFirstChunkDate()，不另開一個「是否為新手」的flag（單一資料來源）
+function renderHeaderStartSlot(){
+  const el = document.getElementById('headerStartSlot');
+  if(!el) return;
+  const firstDate = getFirstChunkDate();
+  if(!firstDate){
+    el.innerHTML = `<button class="header-start-btn" onclick="openLevelNavDirect()" title="選擇你的起點，開始第一株西語小苗">🌱 點播初芽</button>`;
+  } else {
+    const days = daysSinceFirstChunk();
+    el.innerHTML = `<button class="header-start-btn header-growth-btn" onclick="jumpToGardenGrowth()" title="${firstDate} 種下第一株西語小苗，今天是第${days}天">🌿 我的成長</button>`;
+  }
+}
+function jumpToGardenGrowth(){
+  switchMainTab('private');
+  setTimeout(()=>{
+    const body = document.getElementById('gardenViewBody');
+    if(body && !body.classList.contains('open')) toggleGardenView();
+    const wrap = document.querySelector('.garden-wrap');
+    if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 60);
+}
+
 function renderMilestoneBadgeStrip(){
   const el = document.getElementById('milestoneBadgeStrip');
   if(!el) return;
@@ -480,6 +503,7 @@ function unlockAmmo(globalIdx){
   if(ammoUnlocked.length > 0) _markFirstChunkDateIfNeeded();
   renderAmmo();
   renderMilestoneBadgeStrip();
+  renderHeaderStartSlot();
   if(_checkNewMilestone()){
     let tourSeen = false;
     try{ tourSeen = !!localStorage.getItem('peppa_welcome_tour_seen_v1'); }catch(e){}
@@ -3957,6 +3981,17 @@ function dtaskJump(target){
     return;
   }
 }
+// 入口盤查矩陣併進今日耕耘卡片常駐顯示（2026-07-19莊園巡園週：不用點過導覽6步才看得到）
+// 排除daily本身，因為使用者已經在這張卡片裡了，不需要一個指回自己的按鈕
+function _dtaskAltPathHtml(){
+  const items = ENTRY_MATRIX_ITEMS.filter(it => it.target !== 'daily');
+  return `<div class="dtask-altpath">
+    <div class="dtask-altpath-label">或者，選一條自己的路：</div>
+    <div class="dtask-altpath-row">
+      ${items.map(it => `<button class="dtask-altpath-btn${it.disabled?' is-disabled':''}" ${it.disabled?'disabled':`onclick="entryMatrixJump('${it.target}')"`}>${it.icon} ${it.label}</button>`).join('')}
+    </div>
+  </div>`;
+}
 function renderDailyTask(){
   const el = document.getElementById('dailyTaskBody');
   if(!el) return;
@@ -3968,6 +4003,7 @@ function renderDailyTask(){
       <div class="dtask-title">🌱 今日耕耘任務</div>
       <div class="dtask-prompt">參與耕種時間</div>
       <div class="dtask-chip-row">${chipRow}</div>
+      ${_dtaskAltPathHtml()}
     </div>`;
     return;
   }
@@ -3983,6 +4019,7 @@ function renderDailyTask(){
       </div>
       <div class="dtask-prompt">今天的你都好嗎？<span class="dtask-prompt-es" onclick="speakFull('${escAttr(energyEs)}')">${energyEs}</span></div>
       <div class="dtask-chip-row">${energyRow}</div>
+      ${_dtaskAltPathHtml()}
     </div>`;
     return;
   }
@@ -4010,6 +4047,7 @@ function renderDailyTask(){
     <div class="dtask-energy-tag">${(DTASK_ENERGY_OPTIONS.find(e=>e.key===st.energy)||{}).icon||''} ${(DTASK_ENERGY_OPTIONS.find(e=>e.key===st.energy)||{}).label||''} <span class="dtask-energy-change" onclick="dtaskPickEnergy(null)">（換一個）</span></div>
     <div class="dtask-list">${itemsHtml}</div>
     ${allDone ? (()=>{ const m = DTASK_CELEBRATE_MSGS[Math.floor(Math.random()*DTASK_CELEBRATE_MSGS.length)]; return `<div class="dtask-celebrate">🎉 <span class="dtask-celebrate-es">${m.es}</span><br><span class="dtask-celebrate-zh">${m.zh}</span></div>`; })() : ''}
+    ${_dtaskAltPathHtml()}
   </div>`;
 }
 
@@ -4372,10 +4410,9 @@ const WELCOME_TOUR_STEPS = [
   {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
   {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
   {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"},
-  {icon:"🧭", title:"新手第一條路線", desc:"開始點播，你的初芽；播下夢想，西語萌芽。<br><br>完全零基礎的話，建議先走這條路：<br>🌱 A1小路：Soy／Me llamo → Tengo → Me gusta → 基礎兒歌<br>💧 A2花園：開始過去式、日常劇情<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true},
-  {icon:"🧭", title:"想做什麼？先看這裡", desc:"不用記住莊園有哪些角落，只要知道妳現在想做什麼，路標會帶妳過去：", entryButtons:true}
+  {icon:"🧭", title:"新手第一條路線", desc:"開始點播，你的初芽；播下夢想，西語萌芽。<br><br>完全零基礎的話，建議先走這條路：<br>🌱 A1小路：Soy／Me llamo → Tengo → Me gusta → 基礎兒歌<br>💧 A2花園：開始過去式、日常劇情<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true}
 ];
-// 「入口盤查」矩陣：不是新功能，是把既有分區標清楚路標（2026-07-19 VERA提出）
+// 「入口盤查」矩陣：不再是導覽裡要點過6步才看得到的一頁，2026-07-19莊園巡園週併進☀️今日耕耘卡片常駐顯示
 const ENTRY_MATRIX_ITEMS = [
   {icon:'🌱', label:'今天只有10分鐘', sub:'今日耕耘任務', target:'daily'},
   {icon:'🌾', label:'想系統學文法', sub:'文法儲水槽', target:'grammar'},
@@ -4435,20 +4472,25 @@ function showWelcomeTour(force){
   // Show 農間小報 (forced via ❓ button, or first auto-load of the day)
   showMorningBrief();
 }
+// 🗺️莊園導覽：header按鈕專用，一律從頭顯示導覽內容，不受「今天看過小報了嗎」狀態影響
+// （showWelcomeTour(true) 對老用戶其實是開農間小報，兩個功能名字撞在一起會誤導，故分開）
+function showWorldTour(){
+  const overlay = document.getElementById('welcomeTourOverlay');
+  if(!overlay) return;
+  const nav = overlay.querySelector('.welcome-tour-nav');
+  if(nav) nav.style.display = '';
+  const dots = document.getElementById('welcomeTourDots');
+  if(dots) dots.style.display = '';
+  _welcomeTourStep = 0;
+  renderWelcomeTourStep();
+  overlay.style.display = 'flex';
+}
 function renderWelcomeTourStep(){
   const s = WELCOME_TOUR_STEPS[_welcomeTourStep];
   const btnsHtml = s.levelButtons ? `
     <div class="lvlnav-grid">
       ${LEVEL_NAV_ITEMS.map(it => `
         <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : `jumpToLevelFilter('${it.level}')`}">
-          <span class="lvlnav-icon">${it.icon}</span>
-          <span class="lvlnav-label">${it.label}</span>
-          <span class="lvlnav-sub">${it.sub}</span>
-        </button>`).join('')}
-    </div>` : s.entryButtons ? `
-    <div class="lvlnav-grid">
-      ${ENTRY_MATRIX_ITEMS.map(it => `
-        <button class="lvlnav-btn${it.disabled?' is-disabled':''}" ${it.disabled?'disabled':`onclick="entryMatrixJump('${it.target}')"`}>
           <span class="lvlnav-icon">${it.icon}</span>
           <span class="lvlnav-label">${it.label}</span>
           <span class="lvlnav-sub">${it.sub}</span>
@@ -4744,6 +4786,7 @@ function renderChangelog(){
   render();
   renderAmmo();
   renderMilestoneBadgeStrip();
+  renderHeaderStartSlot();
   renderCogLibrary();
   renderConjLibrary();
   renderPronounLibrary();

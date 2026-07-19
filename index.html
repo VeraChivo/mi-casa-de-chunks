@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260719a22">
+<link rel="stylesheet" href="style.css?v=20260719a23">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -24,8 +24,12 @@
   <!-- HEADER -->
   <div class="header">
     <div class="header-title">🏡 Mi Pequeña Casa</div>
-    <div class="header-subtitle">拉美西語小莊園 · <button class="header-tour-btn" onclick="showWelcomeTour(true)" title="莊園導覽">🗝️ 莊園導覽</button></div>
-    <button class="header-start-btn" onclick="openLevelNavDirect()" title="開始點播，你的初芽">🌱 我的初芽</button>
+    <div class="header-subtitle">拉美西語小莊園</div>
+    <div class="header-entry-row">
+      <span id="headerStartSlot"></span>
+      <button class="header-entry-btn" onclick="entryMatrixJump('daily')" title="今天做什麼？">☀️ 今日耕耘</button>
+      <button class="header-entry-btn" onclick="showWorldTour()" title="了解整座莊園">🗺️ 莊園導覽</button>
+    </div>
   </div>
 
   <!-- ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從上面「❓ 莊園導覽」重新打開） ── -->
@@ -591,6 +595,6 @@
   <script src="diary.js?v=20260719a5"></script>
   <script src="corazon.js?v=20260719a1"></script>
   <script src="news.js?v=20260719a2"></script>
-  <script src="script.js?v=20260719a27"></script>
+  <script src="script.js?v=20260719a28"></script>
 </body>
 </html>
