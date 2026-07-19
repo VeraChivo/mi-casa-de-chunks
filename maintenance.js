@@ -218,10 +218,14 @@ try {
   fail('內容孤兒檢查失敗：' + e.message);
 }
 
-// ── 🌳 Chunk 關聯盤查：每個語塊家族分支，在劇情/歌曲/新聞/心語裡有沒有出現過 ──
-// 不用全部都要有，只是列出缺口讓VERA知道還可以往哪個方向擴充內容（2026-07-19 VERA提出）
-// 比對邏輯完全沿用 script.js 的 _chunkFamEpisodeMatch/_chunkFamSongMatch/_chunkFamNewsMatch
-section('Chunk 關聯盤查（不用全部都有，僅供參考缺口在哪）');
+// ── 🌳 Chunk 家族健康檢查：每個語塊家族分支，在劇情/歌曲/新聞/心語裡有沒有出現過 ──
+// 2026-07-19 VERA重要指正：這不是「缺口」，是兩種性質不同的東西，混在一起報會誤導未來的自己：
+//   ①「可補」——維護者自己就能直接寫（例：心語/日記，corazon.js/mom.js可以直接加新句子）
+//   ②「成長中」——受規則限制、現在寫了也沒用：
+//      📺劇情受「每集固定10句」架構限制，不能塞新句子進舊集數，只能等新集數
+//      🎵歌曲／📰新聞受「必須VERA親自查證才能收錄」規則限制，不能自己編
+// 不是CHUNK_FAMILIES沒做完，是這幾類本來就該用不同速度成長。不為了填滿數字硬補品質。
+section('🌳 Chunk 家族健康檢查（分「可補」vs「成長中」，不是單純缺口清單）');
 try {
   const CHUNK_FAMILIES = extractConstArray('script.js', 'CHUNK_FAMILIES');
   const LYRICS_FILL_DATA = extractConstArray('script.js', 'LYRICS_FILL_DATA');
@@ -245,31 +249,28 @@ try {
     return Object.values(MOM_ATM_DATA || {}).some(cat => (cat.items || []).some(it => (it.es || '').toLowerCase().includes(keyword)));
   }
 
-  let totalBranches = 0;
-  const gapsBySource = { episode: [], song: [], news: [], diary: [] };
   (CHUNK_FAMILIES || []).forEach(fam => {
-    (fam.branches || []).forEach(b => {
-      totalBranches++;
+    const branches = fam.branches || [];
+    const n = branches.length;
+    let epOk = 0, songOk = 0, newsOk = 0, diaryOk = 0;
+    branches.forEach(b => {
       const kw = (b.match || '').toLowerCase();
-      const label = `${fam.title}／${b.es}`;
-      if (!hasEpisode(kw)) gapsBySource.episode.push(label);
-      if (!hasSong(kw)) gapsBySource.song.push(label);
-      if (!hasNews(kw)) gapsBySource.news.push(label);
-      if (!hasDiary(kw)) gapsBySource.diary.push(label);
+      if (hasEpisode(kw)) epOk++;
+      if (hasSong(kw)) songOk++;
+      if (hasNews(kw)) newsOk++;
+      if (hasDiary(kw)) diaryOk++;
     });
+    console.log(`\n   ${fam.title}（${n}個分支）`);
+    console.log(`   已連結：📺劇情 ${epOk}/${n}　🎵歌曲 ${songOk}/${n}　📰新聞 ${newsOk}/${n}　📔心語 ${diaryOk}/${n}`);
+    if (diaryOk < n) {
+      warn(`${fam.title}：📔心語還有 ${n - diaryOk} 個分支沒掛——這類「可補」，維護者可以直接在corazon.js/mom.js加新句子`);
+    }
+    if (epOk < n) console.log(`   ⏳ 成長中：📺劇情 ${n - epOk} 個分支待未來新集數擴充（受10句/集架構限制，現在補不了）`);
+    if (songOk < n) console.log(`   ⏳ 成長中：🎵歌曲 ${n - songOk} 個分支待VERA查證新歌曲`);
+    if (newsOk < n) console.log(`   ⏳ 成長中：📰新聞 ${n - newsOk} 個分支待VERA查證新新聞`);
   });
-
-  console.log(`   共 ${CHUNK_FAMILIES.length} 個語塊家族、${totalBranches} 個分支`);
-  console.log(`   📺 沒有劇情對應：${gapsBySource.episode.length}/${totalBranches}`);
-  if (gapsBySource.episode.length) console.log(`      ${gapsBySource.episode.join('、')}`);
-  console.log(`   🎵 沒有歌曲對應：${gapsBySource.song.length}/${totalBranches}`);
-  if (gapsBySource.song.length) console.log(`      ${gapsBySource.song.join('、')}`);
-  console.log(`   📰 沒有新聞對應：${gapsBySource.news.length}/${totalBranches}`);
-  if (gapsBySource.news.length) console.log(`      ${gapsBySource.news.join('、')}`);
-  console.log(`   📔 沒有心語/日記對應：${gapsBySource.diary.length}/${totalBranches}`);
-  if (gapsBySource.diary.length) console.log(`      ${gapsBySource.diary.join('、')}`);
 } catch (e) {
-  fail('Chunk 關聯盤查失敗：' + e.message);
+  fail('Chunk 家族健康檢查失敗：' + e.message);
 }
 
 // ── 總結 ──
