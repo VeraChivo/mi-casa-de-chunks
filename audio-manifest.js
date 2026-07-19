@@ -1519,6 +1519,14 @@ Object.assign(GRAM_AUDIO_MAP, {
   "Yo apoyo mucho a mi hijo.": "audio/falsecog/falsecog_3_right.mp3",
   "¿Dónde está el éxito de este edificio?": "audio/falsecog/falsecog_4_wrong.mp3",
   "¿Dónde está la salida de este edificio?": "audio/falsecog/falsecog_4_right.mp3",
+  "Estoy muy constipado, no puedo respirar bien.": "audio/falsecog/falsecog_5_wrong.mp3",
+  "Llevo tres días estreñido, necesito comer más fibra.": "audio/falsecog/falsecog_5_right.mp3",
+  "Realicé que había cometido un error.": "audio/falsecog/falsecog_6_wrong.mp3",
+  "Me di cuenta de que había cometido un error. / Realicé mi sueño de viajar a España.": "audio/falsecog/falsecog_6_right.mp3",
+  "Compré una carpeta nueva para la sala.": "audio/falsecog/falsecog_7_wrong.mp3",
+  "Compré una alfombra nueva para la sala.": "audio/falsecog/falsecog_7_right.mp3",
+  "Voy a asistir a mi hermano con la tarea.": "audio/falsecog/falsecog_8_wrong.mp3",
+  "Voy a ayudar a mi hermano con la tarea. / Voy a asistir a la reunión mañana.": "audio/falsecog/falsecog_8_right.mp3",
 });
 
 // 🏺封存醞釀(Stage2 Tu/Yo對照)真人音檔

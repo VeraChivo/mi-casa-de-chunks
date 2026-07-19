@@ -3360,9 +3360,9 @@ function openGrammarCard(gId){
     <div class="grammar-examples">${exHtml}</div>
     ${buildConjTable(g.conj, g.id)}
     ${familyHtml}
-    ${g.trap?`<p class="grammar-trap">${g.trap}</p>`:''}
+    ${g.trap?`<div class="grammar-tag-box tag-trap"><div class="grammar-tag-badge">⚠️ 常見陷阱</div><div class="grammar-tag-body">${g.trap}</div></div>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
-    ${g.quirk?`<div class="grammar-quirk">${g.quirk}</div>`:''}
+    ${g.quirk?`<div class="grammar-tag-box tag-quirk"><div class="grammar-tag-badge">🐛 調皮特例</div><div class="grammar-tag-body">${g.quirk}</div></div>`:''}
     ${userExHtml}
     <div class="grammar-source">📍 ${g.source}</div>
   `);
@@ -3885,16 +3885,16 @@ const DAILY_TASK_RECIPES = {
   },
   20: {
     low: [
-      {icon:'🌾', label:'複習 1 個語塊（除點小草）', target:'garden-quiz'},
+      {icon:'🌾', label:'複習 1 個語塊（抓蟲）', target:'garden-quiz'},
       {icon:'🎵', label:'聽 1 段歌曲', target:'lyrics'}
     ],
     normal: [
-      {icon:'🌾', label:'複習語塊（除點小草）', target:'garden-quiz'},
+      {icon:'🌾', label:'複習語塊（抓蟲）', target:'garden-quiz'},
       {icon:'🎵', label:'做 1 題歌詞填空', target:'lyrics'},
       {icon:'✍️', label:'日記寫一句', target:'diary'}
     ],
     high: [
-      {icon:'🌾', label:'複習語塊（除點小草）', target:'garden-quiz'},
+      {icon:'🌾', label:'複習語塊（抓蟲）', target:'garden-quiz'},
       {icon:'🎵', label:'做 1 題歌詞填空', target:'lyrics'},
       {icon:'📰', label:'讀 1 篇 B1/B2 文章', target:'news'},
       {icon:'✍️', label:'日記寫一句', target:'diary'}
@@ -3907,13 +3907,13 @@ const DAILY_TASK_RECIPES = {
       {icon:'✍️', label:'日記寫一句', target:'diary'}
     ],
     normal: [
-      {icon:'🌾', label:'語塊複習（除點小草）', target:'garden-quiz'},
+      {icon:'🌾', label:'語塊複習（抓蟲）', target:'garden-quiz'},
       {icon:'🎵', label:'歌詞理解練習', target:'lyrics'},
       {icon:'📰', label:'讀一篇 DW 新聞', target:'news'},
       {icon:'✍️', label:'日記寫一句', target:'diary'}
     ],
     high: [
-      {icon:'🌾', label:'語塊複習（除點小草）', target:'garden-quiz'},
+      {icon:'🌾', label:'語塊複習（抓蟲）', target:'garden-quiz'},
       {icon:'🎵', label:'歌詞理解練習', target:'lyrics'},
       {icon:'📰', label:'讀一篇 DW 新聞', target:'news'},
       {icon:'📖', label:'外部閱讀入口任務', target:'reading'},

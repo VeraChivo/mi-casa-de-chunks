@@ -233,7 +233,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .echo-btn{flex:1;padding:10px 6px;border-radius:20px;border:none;font-size:12.5px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;color:white;transition:all .15s;box-shadow:0 2px 6px rgba(0,0,0,.12)}
 .echo-btn-ref{background:linear-gradient(135deg,#f5c344,#e8a93a);color:#5c3d00}
 .echo-btn-ref:active{filter:brightness(.93)}
-.echo-btn-rec{background:linear-gradient(135deg,#ff8fa3,#e85d75)}
+.echo-btn-rec{background:linear-gradient(135deg,#8AC4DE,#6C9BD2)}
 .echo-btn-rec:active{filter:brightness(.93)}
 .echo-btn-rec.echo-recording{background:#e04848;animation:echo-pulse 1.2s ease-in-out infinite}
 @keyframes echo-pulse{0%,100%{opacity:1}50%{opacity:.6}}
@@ -630,9 +630,18 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .ge-chunk-unit{display:inline-flex;align-items:center;white-space:nowrap}
 .grammar-ex-zh{font-size:13px;color:var(--tmid);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
 .ex-zh-play{font-size:11px;font-weight:800;color:var(--misora);white-space:nowrap}
-.grammar-trap{font-size:12px;font-weight:700;color:var(--err);margin:6px 0 4px;line-height:1.4;padding:0}
 .grammar-crosslang{font-size:12px;font-weight:700;color:var(--tmid);margin:8px 0 4px;line-height:1.5;padding:8px 10px;background:rgba(61,184,122,.08);border-radius:8px;border-left:3px solid var(--ok)}
-.grammar-quirk{font-size:12px;font-weight:700;color:var(--tmid);margin:8px 0 4px;line-height:1.5;padding:8px 10px;background:rgba(132,145,195,.1);border-radius:8px;border-left:3px solid var(--benikake)}
+
+/* 🏷️ 全站共用的文法卡提示標籤系統（2026-07-19定案，之後新增提示不要自己發明樣式）：
+   ⚠️常見陷阱(容易錯，紅) ／ 🐛調皮特例(反直覺，紫，比常見陷阱更醒目——因為打破直覺比單純易錯更容易養成錯誤語感)
+   身份靠badge不靠顏色深淺，之後如果要加🌱核心規則/🔗對比橋，比照這個結構加一組.tag-*即可 */
+.grammar-tag-box{margin:10px 0 6px;padding:10px 12px;border-radius:10px}
+.grammar-tag-badge{font-size:11px;font-weight:900;letter-spacing:.3px;margin-bottom:5px;display:inline-block;padding:2px 9px;border-radius:999px}
+.grammar-tag-body{font-size:13.5px;font-weight:700;color:var(--tdark);line-height:1.6}
+.tag-trap{background:rgba(224,92,92,.08);border-left:3px solid var(--err)}
+.tag-trap .grammar-tag-badge{background:var(--err);color:#fff}
+.tag-quirk{background:rgba(132,145,195,.14);border:1.5px dashed var(--benikake)}
+.tag-quirk .grammar-tag-badge{background:var(--benikake);color:#fff}
 
 /* 🌳 Chunk 家族清單 */
 .grammar-family{margin:10px 0}

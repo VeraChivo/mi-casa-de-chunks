@@ -158,7 +158,7 @@ const GRAMMAR_DATA = [
       ]
     },
     crossLang:"快速對接：SER＝「是」——華語「是」、台語「是（sī）」、客語「係（he）」，四種語言在『本質認同』這個字上都對得起來，比死背 DOCTOR 口訣更直覺！",
-    quirk:"🐛 調皮特例：La boda es en la iglesia.（婚禮在教堂舉行）——明明是一次性的活動，卻用 SER，因為 SER 專門描述「事件發生的地點」（跟 tener lugar「舉行」同義）；只有實體東西本身的所在位置才輪到 ESTAR（比較：La iglesia está en el centro. 教堂在市中心）。",
+    quirk:"📍 事件發生地點 → SER；物體本身的位置 → ESTAR。<br>❌ 直覺：婚禮在哪裡？= 地點 = ESTAR？<br>✅ 其實是：什麼事情在哪裡發生？= SER<br>La boda es en la iglesia.（婚禮在教堂舉行——事件發生地點，用SER，跟tener lugar「舉行」同義）<br>≠ La iglesia está en el centro.（教堂位於市中心——這是教堂這個「東西」本身的位置，才輪到ESTAR）",
     source:"E1·S1 / E1·S2 / E3·S3",
     conj:{
       verb:"ser（是）",
@@ -224,7 +224,7 @@ const GRAMMAR_DATA = [
       ]
     },
     crossLang:"快速對接：ESTAR＝「在」——華語「在」、台語「在、佇（tī）」、客語「在」，四種語言在『位置／暫時狀態』這個字上也對得起來。記法：SER 是本質的『是』，ESTAR 是暫時的『在』。",
-    quirk:"🐛 調皮特例：Está muerto.（他死了）——明明死亡看起來很永久，卻用 ESTAR，因為西語把死亡當成一種「外力造成、改變後的狀態」，跟 está roto（壞掉了）、está cansado（累了）是同一掛邏輯，不是在描述這個人的本質身分。",
+    quirk:"❌ 直覺：死亡很永久，應該是本質身分 = SER？<br>✅ 其實是：西語把死亡當成「外力造成、改變後的狀態」= ESTAR<br>Está muerto.（他死了——跟está roto壞掉了、está cansado累了是同一掛邏輯，不是在描述這個人的本質身分）",
     source:"E2·S8 / E3·S1",
     conj:{
       verb:"estar（在／處於狀態）",
@@ -2330,6 +2330,7 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"hacer frío（天氣冷）是初學者最常犯錯的地方——中文「天氣冷」直覺會想用「是/estar」，但西語的天氣現象（frío/calor/sol/viento）固定搭配hacer，這個不是邏輯規則，是約定俗成的固定搭配，直接背下來比推導原因更有效率。",
+    quirk:"❌ 直覺：「天氣是冷的」= ser/estar？<br>✅ 其實是：西語把天氣現象當成「正在發生的事」= hacer<br>❌ Está frío. → ✅ Hace frío.（今天很冷）<br>同樣邏輯套用在calor（熱）/sol（出太陽）/viento（起風），全部固定用hacer，不是ser/estar，直接背下來比推導原因更有效率。",
     source:"文法補充"
   },
 
