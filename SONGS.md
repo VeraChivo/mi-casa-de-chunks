@@ -84,4 +84,10 @@
 
 | 歌手 | 歌曲 | 等級（推測） | 主題 | 狀態 | 備註 |
 |---|---|---|---|---|---|
-| （尚無候選） | | | | | |
+| Los Payasos de la Tele | Hola Don Pepito, Hola Don José | A1-A2 | 問候/usted禮貌用法 | ❌不採用 | 查證：Los Payasos de la Tele（Miliki/Gaby/Fofó）原創曲目，非centuries-old傳統歌謠，屬現代版權作品，比照Bartolito/Pin Pón規則不做成填空卡（歌詞不能轉貼），若真想收只能純連結嵌播放器 |
+| Toy Cantando / El Reino Infantil | La vaca Lola | A1 | 動物/身體部位 | ❌不採用 | 查證：明確是2000年後Toy Cantando製作的現代作品，作曲人有具體姓名（Gunther Manuel Salinger Ehrenfried等，各方說法不一但都指向現代版權），非公共財 |
+| Los Payasos de la Tele | Susanita tiene un ratón | A2 | tener/動物/家庭 | ❌不採用 | 查證：同樣是1970年代Los Payasos de la Tele原創曲目，跟Hola Don Pepito同一批，非傳統公共財歌謠 |
+| Los Payasos de la Tele | Había una vez un circo | A2 | 過去式/敘事 | ❌不採用 | 查證：明確查到「written by Miliki」，有名有姓的現代作曲人，非傳統歌謠 |
+| Enrique y Ana | La Gallina Turuleca | A2 | 動物/數字 | ❌不採用 | 查證：查到明確版權登記（Copyright El-Momento-Musical Editorial，作曲人Genaro Monreal Lacosta/Alfonso Jofre de Villegas Cernuda），版權狀態最明確，肯定不能收 |
+
+**⚠️ 2026-07-19 查證結論**：這批「隔壁AI」推薦的5首全部是 Los Payasos de la Tele／Toy Cantando 這類現代兒童娛樂產業作品（1970s-2000s），不是像 Arroz con Leche／Estrellita／Los Pollitos Dicen 那樣真正查無版權人的傳統歌謠——同一批推薦裡有4首都指向同一個西班牙1970s兒童節目團體，模式很像之前抓到的 Bartolito/Pin Pón 案例（隔壁AI常把「很多人小時候聽過、感覺很像傳統兒歌」跟「真的是公共財」搞混）。這5首都不採用，若真想用只能走「純連結嵌YouTube播放器、不轉貼歌詞」的安全版本，不能做成本站的填空卡格式。
