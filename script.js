@@ -861,70 +861,19 @@ function toggleCogLibrary(){
   t.textContent=open?'▲ 收起':'▼ 展開';
 }
 
-// ── 🎧 同源詞英西對照雙語朗讀（42組，每組唸兩語言配對，組間留時間讓妳跟讀）──
-// 有獨立的⏸暫停/▶繼續按鈕，妳可以自己控制節奏，不用相信我猜的間隔秒數
-let _cogDualPlayer = null;
-let _cogPaused = false;
-let _cogState = null;
-let _cogGen = 0; // 每次重新啟動就+1，讓上一輪殘留的onended/setTimeout失效，避免切換方向時字被重播
-function playCognateDual(dir){
-  if(_cogDualPlayer){ _cogDualPlayer.onended = null; _cogDualPlayer.onerror = null; _cogDualPlayer.pause(); }
+// ── 🔊 英文單字TTS：cog-en 點了就唸英文（跟旁邊西語字點了唸西語對稱），
+// 取代原本42軌固定循環播放器（2026-07-19 撤掉：跟依規律/搜尋篩選後的畫面對不上，點了聽不到眼前這行）──
+function speakEnglishWord(text){
+  if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音'); return; }
+  const clean = String(text).replace(/[¡!¿?,.:;\s]/g,'').trim();
+  if(!clean) return;
   _stopActiveAudio();
-  _cogPaused = false;
-  _cogGen++;
-  const myGen = _cogGen;
-  const pauseBtn = document.getElementById('cogDualPauseBtn');
-  if(pauseBtn){ pauseBtn.textContent='⏸ 暫停'; pauseBtn.style.display=''; }
-  const seekEl = document.getElementById('cogDualSeek');
-  if(seekEl){ seekEl.style.display=''; seekEl.value=1; }
-  _cogState = {
-    i: 1, step: 0, total: 42,
-    firstFolder:  dir==='sp' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en',
-    firstPrefix:  dir==='sp' ? 'sp-sp-eng' : 'eng-sp-eng',
-    secondFolder: dir==='sp' ? 'audio/vocab/cognates_en' : 'audio/vocab/cognates_sp',
-    secondPrefix: dir==='sp' ? 'eng-sp-eng' : 'sp-sp-eng',
-  };
-  const player = new Audio();
-  _cogDualPlayer = player;
-  _activeAudio = player;
-  player.onended = () => _cogAdvance(myGen);
-  player.onerror = () => { if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } };
-  _cogPlayCurrent(myGen);
-}
-function _cogPlayCurrent(myGen){
-  if(myGen!==_cogGen || _cogDualPlayer!==_activeAudio) return;
-  const st = _cogState;
-  if(!st || st.i > st.total || !_cogDualPlayer) return;
-  toast(`🎧 ${st.i}/${st.total}`);
-  const seekEl = document.getElementById('cogDualSeek');
-  if(seekEl && document.activeElement!==seekEl) seekEl.value = st.i;
-  const folder = st.step===0 ? st.firstFolder : st.secondFolder;
-  const prefix = st.step===0 ? st.firstPrefix : st.secondPrefix;
-  _cogDualPlayer.src = `${folder}/${prefix}_${String(st.i).padStart(2,'0')}.mp3`;
-  _cogDualPlayer.play().catch(()=>{ if(myGen===_cogGen){ toast('⚠️ 音檔播放失敗，已停止'); _cogState=null; } });
-}
-// 拖拉進度條直接跳到第i組，不用從頭開始
-function seekCognateDual(i){
-  if(!_cogState || !_cogDualPlayer) return;
-  _cogState.i = parseInt(i,10);
-  _cogState.step = 0;
-  _cogPaused = false;
-  const pauseBtn = document.getElementById('cogDualPauseBtn');
-  if(pauseBtn) pauseBtn.textContent = '⏸ 暫停';
-  _cogPlayCurrent(_cogGen);
-}
-function _cogAdvance(myGen){
-  if(myGen!==_cogGen || !_cogState || _cogDualPlayer!==_activeAudio) return;
-  if(_cogState.step===0){ _cogState.step=1; } else { _cogState.step=0; _cogState.i++; }
-  if(_cogPaused) return; // 暫停中，等使用者按繼續才會播下一步
-  const gap = _cogState.step===0 ? 1800 : 500; // 換組長間隔，組內兩語言間短間隔
-  setTimeout(()=>{ if(myGen===_cogGen && !_cogPaused) _cogPlayCurrent(myGen); }, gap);
-}
-function toggleCognateDualPause(btn){
-  if(!_cogState || !_cogDualPlayer) return;
-  _cogPaused = !_cogPaused;
-  if(_cogPaused){ _cogDualPlayer.pause(); btn.textContent='▶ 繼續'; }
-  else { btn.textContent='⏸ 暫停'; _cogPlayCurrent(_cogGen); }
+  try{ speechSynthesis.cancel(); }catch(e){}
+  const utt = new SpeechSynthesisUtterance(clean);
+  utt.lang = 'en-US';
+  utt.rate = 0.85;
+  utt.volume = 1;
+  setTimeout(() => { try{ speechSynthesis.speak(utt); }catch(e){} }, 150);
 }
 
 let _cogViewMode = 'ep'; // 'ep'=依集數（預設）｜'pattern'=依規律分組
@@ -964,7 +913,7 @@ function renderCogLibrary(filter){
         return `
         <div class="suffix-word-card">
           <div class="suffix-word-row">
-            <span class="cog-en">${w.en}</span>
+            <span class="cog-en" onclick="event.stopPropagation();speakEnglishWord('${escAttr(w.en)}')">${w.en}</span>
             <span class="cog-arrow">→</span>
             ${_cogWordSpan(w.es, w.art)}
             <span class="cog-zh">${w.zh}</span>
@@ -1004,19 +953,13 @@ function renderCogLibrary(filter){
 
   if(!q){
     html+=`<div class="cog-dual-row">
-      <button class="cog-dual-btn" onclick="playCognateDual('sp')">🎧 西 → 英 對照</button>
-      <button class="cog-dual-btn" onclick="playCognateDual('en')">🎧 英 → 西 對照</button>
-      <button class="cog-dual-btn cog-dual-pause" id="cogDualPauseBtn" style="display:none" onclick="toggleCognateDualPause(this)">⏸ 暫停</button>
-    </div>
-    <input type="range" class="cog-dual-seek" id="cogDualSeek" min="1" max="42" value="1" step="1" style="display:none" oninput="seekCognateDual(this.value)">
-    <div class="cog-dual-row">
       <button class="cog-dual-btn" onclick="toggleCogViewMode()">${_cogViewMode==='pattern'?'📖 改看依集數':'🧩 改看依規律'}</button>
     </div>`;
   }
 
   const _rowHtml = c => `
         <div class="cog-row">
-          <span class="cog-en">${c.en}</span>
+          <span class="cog-en" onclick="event.stopPropagation();speakEnglishWord('${escAttr(c.en)}')">${c.en}</span>
           <span class="cog-arrow">→</span>
           ${_cogWordSpan(c.es, c.art)}
           <span class="cog-zh">${c.zh}</span>

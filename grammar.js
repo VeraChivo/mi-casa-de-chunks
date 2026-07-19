@@ -76,7 +76,7 @@ const PRONOUN_COMBO_RULES = [
     title:'🏃 正在忙碌中',
     titleSub:'站前面或抱屁股，兩種都可以',
     hint:'農夫正在做某件事（-ando/-iendo）時，角色可以選擇站在動詞前面，也可以選擇黏到動詞屁股後面，兩種說法都對',
-    example:{es:'Le estoy escribiendo. ＝ Estoy escribiéndole.', speakEs:'Le estoy escribiendo. Estoy escribiéndole.', zh:'我正在寫信給她。（兩種說法都可以）'}
+    example:{es:'Le estoy escribiendo.<br>＝ Estoy escribiéndole.', speakEs:'Le estoy escribiendo. Estoy escribiéndole.', zh:'我正在寫信給她。（兩種說法都可以）'}
   }
 ];
 
