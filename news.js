@@ -8,7 +8,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/caf%C3%A9-cada-vez-m%C3%A1s-caro-qui%C3%A9nes-ganan-y-qui%C3%A9nes-pierden/a-72543510',
     headline:'¿Qué hay detrás de la [?] alza del precio del café?',
-    task:{ type:'blank', answer:'explosiva', zh:'爆發性的', hint:'adjetivo f. — algo que sube de golpe, muy rápido y fuerte' },
+    task:{ type:'blank', answer:'explosiva', zh:'爆發性的', hint:'algo que sube de golpe, muy rápido y fuerte' },
     cefr:'B2', topic:'economía 💰'
   },
   {
@@ -16,7 +16,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/se-intensifica-la-disputa-por-el-abandono-de-los-combustibles-f%C3%B3siles/a-77618596',
     headline:'Se [?] la disputa por el abandono de los combustibles fósiles.',
-    task:{ type:'blank', answer:'intensifica', zh:'白熱化／加劇', hint:'verbo reflexivo, 第三人稱單數 — intensificarse = volverse más fuerte' },
+    task:{ type:'blank', answer:'intensifica', zh:'白熱化／加劇', hint:'來自 intensificarse：volverse más fuerte' },
     cefr:'B2', topic:'medio ambiente 🌍'
   },
   {
@@ -24,7 +24,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/resuelven-en-colombia-el-primer-caso-jur%C3%ADdico-con-la-ayuda-de-robot-chatgpt/a-64597510',
     headline:'Resuelven en Colombia el primer caso [?] con la ayuda de robot ChatGPT.',
-    task:{ type:'blank', answer:'jurídico', zh:'法律的／司法的', hint:'adjetivo m. — relacionado con las leyes y los tribunales' },
+    task:{ type:'blank', answer:'jurídico', zh:'法律的／司法的', hint:'relacionado con las leyes y los tribunales' },
     cefr:'B2', topic:'tecnología 🤖'
   },
   {
@@ -32,7 +32,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/estudio-propone-restringir-el-acceso-al-m%C3%B3vil-antes-de-los-13-a%C3%B1os/a-73350517',
     headline:'Estudio propone [?] el acceso al móvil antes de los 13 años.',
-    task:{ type:'blank', answer:'restringir', zh:'限制', hint:'verbo infinitivo — poner límites al uso o acceso de algo' },
+    task:{ type:'blank', answer:'restringir', zh:'限制', hint:'poner límites al uso o acceso de algo' },
     cefr:'B2', topic:'salud mental 🧠'
   },
   {
@@ -40,7 +40,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/terapia-en-las-redes-sociales-es-%C3%BAtil/a-66706453',
     headline:'Terapia en las redes sociales: ¿es [?]?',
-    task:{ type:'blank', answer:'útil', zh:'有用的', hint:'adjetivo — que sirve para algo, que tiene utilidad' },
+    task:{ type:'blank', answer:'útil', zh:'有用的', hint:'que sirve para algo, que tiene utilidad' },
     cefr:'B2', topic:'salud mental 🧠'
   },
   {
@@ -48,7 +48,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/qu%C3%A9-dice-la-ciencia-sobre-el-impacto-de-las-pantallas-en-la-salud-mental-y-las-relaciones/a-76306784',
     headline:'Qué dice la ciencia sobre el [?] de las pantallas en la salud mental y las relaciones.',
-    task:{ type:'blank', answer:'impacto', zh:'衝擊／影響', hint:'sustantivo m. — efecto fuerte que algo produce sobre otra cosa' },
+    task:{ type:'blank', answer:'impacto', zh:'衝擊／影響', hint:'efecto fuerte que algo produce sobre otra cosa' },
     cefr:'B2', topic:'salud mental 🧠'
   },
   {
@@ -56,7 +56,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/transformar-la-econom%C3%ADa-c%C3%B3mo-el-cambio-clim%C3%A1tico-amenaza-la-industria-vin%C3%ADcola-de-chile/video-76747626',
     headline:'Transformar la economía: cómo el cambio climático [?] la industria vinícola de Chile.',
-    task:{ type:'blank', answer:'amenaza', zh:'威脅', hint:'verbo, 第三人稱單數 — poner en peligro algo' },
+    task:{ type:'blank', answer:'amenaza', zh:'威脅', hint:'來自 amenazar：poner en peligro algo' },
     cefr:'B2', topic:'economía 💰'
   },
   {
@@ -64,7 +64,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/nobel-al-an%C3%A1lisis-de-los-efectos-del-cambio-clim%C3%A1tico-y-la-tecnolog%C3%ADa-en-la-econom%C3%ADa/a-45796492',
     headline:'Nobel al análisis de los [?] del cambio climático y la tecnología en la economía.',
-    task:{ type:'blank', answer:'efectos', zh:'影響／效應', hint:'sustantivo m. pl. — consecuencias que algo produce' },
+    task:{ type:'blank', answer:'efectos', zh:'影響／效應', hint:'consecuencias que algo produce' },
     cefr:'B2', topic:'economía 💰'
   },
   {
@@ -72,7 +72,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/australia-eleva-su-meta-clim%C3%A1tica-para-2035/a-74037020',
     headline:'Australia [?] su meta climática para 2035.',
-    task:{ type:'blank', answer:'eleva', zh:'提高', hint:'verbo, 第三人稱單數 — subir o aumentar un objetivo' },
+    task:{ type:'blank', answer:'eleva', zh:'提高', hint:'來自 elevar：subir o aumentar un objetivo' },
     cefr:'B2', topic:'medio ambiente 🌍'
   },
   {
@@ -80,7 +80,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/inteligencia-artificial-davos-debate-sobre-riesgos-y-oportunidades/a-68025090',
     headline:'Inteligencia artificial: Davos debate sobre riesgos y [?].',
-    task:{ type:'blank', answer:'oportunidades', zh:'機遇／機會', hint:'sustantivo f. pl. — momentos favorables para conseguir algo' },
+    task:{ type:'blank', answer:'oportunidades', zh:'機遇／機會', hint:'momentos favorables para conseguir algo' },
     cefr:'B2', topic:'tecnología 🤖'
   },
   {
@@ -88,7 +88,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/inteligencia-artificial-cr%C3%ADticos-y-l%C3%ADderes-tecnol%C3%B3gicos-debatieron-en-el-bletchley-park/a-67301708',
     headline:'Inteligencia artificial: críticos y líderes [?] debatieron en el Bletchley Park.',
-    task:{ type:'blank', answer:'tecnológicos', zh:'科技的（複數）', hint:'adjetivo m. pl. — relacionado con la tecnología' },
+    task:{ type:'blank', answer:'tecnológicos', zh:'科技的（複數）', hint:'relacionado con la tecnología' },
     cefr:'B2', topic:'tecnología 🤖'
   },
   {
@@ -96,7 +96,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/el-tdah-de-trastorno-a-ventaja-en-la-supervivencia-de-los-humanos/a-68387884',
     headline:'El TDAH, una pieza [?] en la supervivencia de los humanos.',
-    task:{ type:'blank', answer:'clave', zh:'關鍵的', hint:'adjetivo — de importancia fundamental para algo' },
+    task:{ type:'blank', answer:'clave', zh:'關鍵的', hint:'de importancia fundamental para algo' },
     cefr:'B2', topic:'neurodiversidad 🧩'
   },
   {
@@ -104,7 +104,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/global-es-inclusi%C3%B3n-cuando-ser-diferente-es-normal/video-71122594',
     headline:'Inclusión: cuando ser [?] es normal.',
-    task:{ type:'blank', answer:'diferente', zh:'不同的', hint:'adjetivo — que no es igual a los demás' },
+    task:{ type:'blank', answer:'diferente', zh:'不同的', hint:'que no es igual a los demás' },
     cefr:'B2', topic:'neurodiversidad 🧩'
   },
   {
@@ -112,7 +112,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/c%C3%B3mo-el-racismo-marca-a-las-sociedades-latinoamericanas/a-68635668',
     headline:'Cómo el racismo [?] a las sociedades latinoamericanas.',
-    task:{ type:'blank', answer:'marca', zh:'烙印／標記', hint:'verbo, 第三人稱單數 — dejar una huella o señal profunda' },
+    task:{ type:'blank', answer:'marca', zh:'烙印／標記', hint:'來自 marcar：dejar una huella o señal profunda' },
     cefr:'B2', topic:'diversidad étnica 🌎'
   },
   {
@@ -120,7 +120,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/pueblos-ind%C3%ADgenas-en-m%C3%A9xico-reconocidos-pero-ignorados/a-77148663',
     headline:'Pueblos indígenas en México: reconocidos, pero [?].',
-    task:{ type:'blank', answer:'ignorados', zh:'被忽視的', hint:'participio pasado de ignorar — no prestarle atención a algo' },
+    task:{ type:'blank', answer:'ignorados', zh:'被忽視的', hint:'來自 ignorar：no prestarle atención a algo' },
     cefr:'B2', topic:'diversidad étnica 🌎'
   },
   {
@@ -128,7 +128,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/el-habla-no-es-inocente-lenguaje-y-racismo-en-latinoam%C3%A9rica/a-66343016',
     headline:'El habla no es [?]: lenguaje y racismo en Latinoamérica.',
-    task:{ type:'blank', answer:'inocente', zh:'無辜的／清白的', hint:'adjetivo — que no tiene culpa o responsabilidad' },
+    task:{ type:'blank', answer:'inocente', zh:'無辜的／清白的', hint:'que no tiene culpa o responsabilidad' },
     cefr:'B2', topic:'diversidad étnica 🌎'
   },
   {
@@ -136,7 +136,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/qu%C3%A9-pasa-cuando-los-padres-priorizan-el-celular/a-77617959',
     headline:'Qué pasa cuando los padres [?] el celular.',
-    task:{ type:'blank', answer:'priorizan', zh:'把⋯放在優先', hint:'verbo, 第三人稱複數 — poner algo en primer lugar de importancia' },
+    task:{ type:'blank', answer:'priorizan', zh:'把⋯放在優先', hint:'來自 priorizar：poner algo en primer lugar de importancia' },
     cefr:'B2', topic:'crianza 👪'
   },
   {
@@ -144,7 +144,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/la-baja-por-paternidad-reduce-el-riesgo-de-depresi%C3%B3n/a-77630867',
     headline:'La baja por paternidad reduce el [?] de depresión.',
-    task:{ type:'blank', answer:'riesgo', zh:'風險', hint:'sustantivo m. — posibilidad de que ocurra algo malo' },
+    task:{ type:'blank', answer:'riesgo', zh:'風險', hint:'posibilidad de que ocurra algo malo' },
     cefr:'B2', topic:'crianza 👪'
   },
   {
@@ -152,7 +152,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/m%C3%A9xico-prefiero-que-mis-hijos-pierdan-un-ciclo-escolar-pero-que-sigan-vivos/a-58981668',
     headline:'México: prefiero que mis hijos [?] un ciclo escolar, pero que sigan vivos.',
-    task:{ type:'blank', answer:'pierdan', zh:'失去／錯過（虛擬式）', hint:'preferir que + 虛擬式 — perder → pierdan（第三人稱複數現在虛擬式）' },
+    task:{ type:'blank', answer:'pierdan', zh:'失去／錯過（虛擬式）', hint:'來自 perder：preferir que 後面接虛擬式，perder → pierdan' },
     cefr:'B2', topic:'crianza 👪'
   },
   {
@@ -160,7 +160,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/una-buena-relaci%C3%B3n-con-los-padres-mejora-la-salud-futura-de-los-j%C3%B3venes-nuevo-macroestudio-presenta-evidencia-m%C3%A1s-completa/a-65072483',
     headline:'Una buena relación con los padres [?] la salud futura de los jóvenes.',
-    task:{ type:'blank', answer:'mejora', zh:'改善', hint:'verbo, 第三人稱單數 — hacer que algo sea mejor' },
+    task:{ type:'blank', answer:'mejora', zh:'改善', hint:'來自 mejorar：hacer que algo sea mejor' },
     cefr:'B2', topic:'crianza 👪'
   },
   {
@@ -168,7 +168,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/cu%C3%A1nto-aprenden-o-no-los-estudiantes-en-am%C3%A9rica-latina/a-72936804',
     headline:'¿Cuánto [?] (o no) los estudiantes en América Latina?',
-    task:{ type:'blank', answer:'aprenden', zh:'學到', hint:'verbo, 第三人稱複數 — adquirir conocimiento' },
+    task:{ type:'blank', answer:'aprenden', zh:'學到', hint:'來自 aprender：adquirir conocimiento' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -176,7 +176,7 @@ const NEWS_ITEMS = [
     source:'Forbes México',
     sourceUrl:'https://forbes.com.mx/coca-cola-lanzara-version-con-azucar-de-cana-en-eu-bebidas-sin-calorias-y-precios-mas-altos-impulsan-el-ritmo/',
     headline:'Coca-Cola lanzará [?] con azúcar de caña en EU.',
-    task:{ type:'blank', answer:'versión', zh:'版本', hint:'sustantivo f. — una variante o edición diferente de algo' },
+    task:{ type:'blank', answer:'versión', zh:'版本', hint:'una variante o edición diferente de algo' },
     cefr:'B2', topic:'economía 💰'
   },
   {
@@ -184,7 +184,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/per%C3%BA-decreta-emergencia-y-militariza-frontera-con-chile/a-74948028',
     headline:'Perú decreta emergencia y [?] la frontera con Chile.',
-    task:{ type:'blank', answer:'militariza', zh:'軍事化', hint:'verbo, 第三人稱單數 — poner bajo control o vigilancia militar' },
+    task:{ type:'blank', answer:'militariza', zh:'軍事化', hint:'來自 militarizar：poner bajo control o vigilancia militar' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -192,7 +192,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/el-drama-de-los-migrantes-en-la-frontera-polonia-bielorrusia/a-73162133',
     headline:'El [?] de los migrantes en la frontera Polonia-Bielorrusia.',
-    task:{ type:'blank', answer:'drama', zh:'悲劇／慘況', hint:'sustantivo m. — una situación de sufrimiento intenso' },
+    task:{ type:'blank', answer:'drama', zh:'悲劇／慘況', hint:'una situación de sufrimiento intenso' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -200,7 +200,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/los-grandes-retos-de-la-ia-en-la-educaci%C3%B3n-de-am%C3%A9rica-latina/a-75041367',
     headline:'Los grandes [?] de la IA en la educación de América Latina.',
-    task:{ type:'blank', answer:'retos', zh:'挑戰', hint:'sustantivo m. pl. — dificultades u obstáculos que hay que superar' },
+    task:{ type:'blank', answer:'retos', zh:'挑戰', hint:'dificultades u obstáculos que hay que superar' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -208,7 +208,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/el-extendido-uso-de-la-ia-preocupa-a-los-profesores/a-77758195',
     headline:'El extendido uso de la IA [?] a los profesores.',
-    task:{ type:'blank', answer:'preocupa', zh:'讓⋯擔憂', hint:'verbo, 第三人稱單數 — causar inquietud o preocupación' },
+    task:{ type:'blank', answer:'preocupa', zh:'讓⋯擔憂', hint:'來自 preocupar：causar inquietud o preocupación' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -216,7 +216,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/m%C3%A9xico-pierde-40-de-hablantes-de-lenguas-ind%C3%ADgenas/a-71734660',
     headline:'México pierde 40 % de [?] de lenguas indígenas.',
-    task:{ type:'blank', answer:'hablantes', zh:'使用者／說話者', hint:'sustantivo m. pl. — personas que hablan un idioma' },
+    task:{ type:'blank', answer:'hablantes', zh:'使用者／說話者', hint:'personas que hablan un idioma' },
     cefr:'B2', topic:'pueblos indígenas 🌾'
   },
   {
@@ -224,7 +224,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/pueblos-ind%C3%ADgenas-en-peligro-de-extinci%C3%B3n-debido-al-covid-19/a-59661054',
     headline:'Pueblos indígenas en peligro de [?] debido al COVID-19.',
-    task:{ type:'blank', answer:'extinción', zh:'滅絕', hint:'sustantivo f. — desaparición total de una especie o cultura' },
+    task:{ type:'blank', answer:'extinción', zh:'滅絕', hint:'desaparición total de una especie o cultura' },
     cefr:'B2', topic:'pueblos indígenas 🌾'
   },
   {
@@ -232,7 +232,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/internet-y-pueblos-ind%C3%ADgenas-muro-y-oportunidad/a-56476976',
     headline:'Internet y pueblos indígenas: muro y [?].',
-    task:{ type:'blank', answer:'oportunidad', zh:'機會', hint:'sustantivo f. — ocasión favorable para conseguir algo' },
+    task:{ type:'blank', answer:'oportunidad', zh:'機會', hint:'ocasión favorable para conseguir algo' },
     cefr:'B2', topic:'pueblos indígenas 🌾'
   },
   {
@@ -240,7 +240,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/pueblos-ind%C3%ADgenas-en-latinoam%C3%A9rica-de-la-lucha-por-la-tierra-a-la-justicia-social/a-56114670',
     headline:'Pueblos indígenas en Latinoamérica: de la lucha por la [?] a la justicia social.',
-    task:{ type:'blank', answer:'tierra', zh:'土地', hint:'sustantivo f. — el suelo, el territorio' },
+    task:{ type:'blank', answer:'tierra', zh:'土地', hint:'el suelo, el territorio' },
     cefr:'B2', topic:'pueblos indígenas 🌾'
   },
   {
@@ -248,7 +248,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/qu%C3%A9-hace-hombre-al-hombre-repensar-la-masculinidad/a-57125567',
     headline:'¿Qué hace hombre al hombre? Repensar la [?].',
-    task:{ type:'blank', answer:'masculinidad', zh:'男性氣質', hint:'sustantivo f. — el conjunto de características asociadas a ser hombre' },
+    task:{ type:'blank', answer:'masculinidad', zh:'男性氣質', hint:'el conjunto de características asociadas a ser hombre' },
     cefr:'B2', topic:'género 🚻'
   },
   {
@@ -256,7 +256,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/estudio-im%C3%A1genes-en-internet-y-la-ia-refuerzan-estereotipos-de-g%C3%A9nero/a-74293648',
     headline:'Imágenes en internet y la IA [?] brecha de género.',
-    task:{ type:'blank', answer:'refuerzan', zh:'強化', hint:'verbo, 第三人稱複數 — hacer más fuerte algo' },
+    task:{ type:'blank', answer:'refuerzan', zh:'強化', hint:'來自 reforzar：hacer más fuerte algo' },
     cefr:'B2', topic:'género 🚻'
   },
   {
@@ -264,7 +264,7 @@ const NEWS_ITEMS = [
     source:'Educación 3.0',
     sourceUrl:'https://www.educaciontrespuntocero.com/noticias/montessori-institute/',
     headline:'Montessori: la metodología donde el niño es [?].',
-    task:{ type:'blank', answer:'protagonista', zh:'主角', hint:'sustantivo m./f. — quien tiene el papel principal en algo' },
+    task:{ type:'blank', answer:'protagonista', zh:'主角', hint:'quien tiene el papel principal en algo' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -272,7 +272,7 @@ const NEWS_ITEMS = [
     source:'El País',
     sourceUrl:'https://elpais.com/educacion/2022-03-22/la-ensenanza-montessori-arma-secreta-contra-la-despoblacion.html',
     headline:'La enseñanza Montessori, arma secreta contra la [?].',
-    task:{ type:'blank', answer:'despoblación', zh:'人口流失', hint:'sustantivo f. — disminución de la población de una zona' },
+    task:{ type:'blank', answer:'despoblación', zh:'人口流失', hint:'disminución de la población de una zona' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -280,7 +280,7 @@ const NEWS_ITEMS = [
     source:'El País',
     sourceUrl:'https://elpais.com/cultura/2020/08/28/babelia/1598626090_900617.html',
     headline:'Montessori, la [?] que cambió la educación moderna.',
-    task:{ type:'blank', answer:'pionera', zh:'先驅（女性）', hint:'sustantivo f. — la primera persona en abrir camino en algo' },
+    task:{ type:'blank', answer:'pionera', zh:'先驅（女性）', hint:'la primera persona en abrir camino en algo' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -296,7 +296,7 @@ const NEWS_ITEMS = [
     source:'El País',
     sourceUrl:'https://elpais.com/mamas-papas/2021-07-02/metodo-montessori-que-es-y-que-deben-saber-los-padres-a-la-hora-de-elegirlo-para-sus-hijos.html',
     headline:'Método Montessori: qué es y qué deben saber los [?] a la hora de elegirlo para sus hijos.',
-    task:{ type:'blank', answer:'padres', zh:'父母', hint:'sustantivo m. pl. — el padre y la madre' },
+    task:{ type:'blank', answer:'padres', zh:'父母', hint:'el padre y la madre' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -304,7 +304,7 @@ const NEWS_ITEMS = [
     source:'Educación 3.0',
     sourceUrl:'https://www.educaciontrespuntocero.com/recursos/actividades-metodo-montessori/',
     headline:'¡Descárgate actividades del método Montessori [?]!',
-    task:{ type:'blank', answer:'gratuitamente', zh:'免費地', hint:'adverbio — sin tener que pagar' },
+    task:{ type:'blank', answer:'gratuitamente', zh:'免費地', hint:'sin tener que pagar' },
     cefr:'B2', topic:'educación 📚'
   },
   {
@@ -312,7 +312,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/cocina-peruana-gan%C3%A1ndose-un-lugar-en-el-paladar-berlin%C3%A9s/a-69943786',
     headline:'Cocina peruana, ganándose un lugar en el [?] berlinés.',
-    task:{ type:'blank', answer:'paladar', zh:'味蕾／味覺', hint:'sustantivo m. — el sentido del gusto' },
+    task:{ type:'blank', answer:'paladar', zh:'味蕾／味覺', hint:'el sentido del gusto' },
     cefr:'B2', topic:'gastronomía 🍽️'
   },
   {
@@ -320,7 +320,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/taste-atlas-nombra-a-la-lechona-colombiana-como-el-mejor-plato-del-mundo/a-71051445',
     headline:'Lechona colombiana se lleva título al mejor [?] del mundo.',
-    task:{ type:'blank', answer:'plato', zh:'菜餚', hint:'sustantivo m. — una comida preparada' },
+    task:{ type:'blank', answer:'plato', zh:'菜餚', hint:'una comida preparada' },
     cefr:'B2', topic:'gastronomía 🍽️'
   },
   {
@@ -328,7 +328,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/entre-tradici%C3%B3n-y-ecolog%C3%ADa-el-arte-culinario-de-franco-yahir/video-74788368',
     headline:'Entre tradición y ecología: el arte [?] de Franco Yahir.',
-    task:{ type:'blank', answer:'culinario', zh:'烹飪的', hint:'adjetivo m. — relacionado con la cocina' },
+    task:{ type:'blank', answer:'culinario', zh:'烹飪的', hint:'relacionado con la cocina' },
     cefr:'B2', topic:'gastronomía 🍽️'
   },
   {
@@ -344,7 +344,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/c%C3%B3mo-el-cambio-clim%C3%A1tico-amenaza-la-industria-vin%C3%ADcola-de-chile/a-76053388',
     headline:'El vino frente al desafío [?].',
-    task:{ type:'blank', answer:'climático', zh:'氣候的', hint:'adjetivo m. — relacionado con el clima' },
+    task:{ type:'blank', answer:'climático', zh:'氣候的', hint:'relacionado con el clima' },
     cefr:'B2', topic:'gastronomía 🍽️'
   },
   {
@@ -352,7 +352,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/cacao-y-caf%C3%A9-de-colombia-en-europa-con-sabor-a-paz/a-76801411',
     headline:'Cacao y café de Colombia en Europa, con sabor a [?].',
-    task:{ type:'blank', answer:'paz', zh:'和平', hint:'sustantivo f. — ausencia de conflicto' },
+    task:{ type:'blank', answer:'paz', zh:'和平', hint:'ausencia de conflicto' },
     cefr:'B2', topic:'gastronomía 🍽️'
   },
   {
@@ -360,7 +360,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/gigantes-en-peligro-como-los-grandes-%C3%A1rboles-protegen-el-clima/video-68751873',
     headline:'Cómo los grandes árboles [?] el clima.',
-    task:{ type:'blank', answer:'protegen', zh:'保護', hint:'verbo, 第三人稱複數 — cuidar o defender algo' },
+    task:{ type:'blank', answer:'protegen', zh:'保護', hint:'來自 proteger：cuidar o defender algo' },
     cefr:'B2', topic:'medio ambiente 🌍'
   },
   {
@@ -368,7 +368,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/autismo-condici%C3%B3n-m%C3%A9dica-o-rasgo-de-personalidad/a-17720996',
     headline:'Autismo: ¿condición médica o [?] de personalidad?',
-    task:{ type:'blank', answer:'rasgo', zh:'特徵／特質', hint:'sustantivo m. — una característica distintiva de algo o alguien' },
+    task:{ type:'blank', answer:'rasgo', zh:'特徵／特質', hint:'una característica distintiva de algo o alguien' },
     cefr:'B2', topic:'neurodiversidad 🧩'
   },
   {
@@ -376,7 +376,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/el-reto-de-integrarse-en-alemania-sin-cursos-de-integraci%C3%B3n/a-76049412',
     headline:'El reto de integrarse en Alemania sin cursos de [?].',
-    task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'sustantivo f. — el proceso de formar parte de un grupo o sociedad' },
+    task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'el proceso de formar parte de un grupo o sociedad' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -384,7 +384,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/latinoamericanos-en-alemania-el-arte-de-convertir-la-nostalgia-en-belleza/a-69102953',
     headline:'Latinoamericanos en Alemania: el arte de convertir la nostalgia en [?].',
-    task:{ type:'blank', answer:'belleza', zh:'美／美麗', hint:'sustantivo f. — cualidad de lo bello, lo estético' },
+    task:{ type:'blank', answer:'belleza', zh:'美／美麗', hint:'cualidad de lo bello, lo estético' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -392,7 +392,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/el-debate-sobre-la-integraci%C3%B3n-mantiene-a-alemania-expectante/a-6357787',
     headline:'El debate sobre la [?] mantiene a Alemania expectante.',
-    task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'sustantivo f. — el proceso de formar parte de un grupo o sociedad' },
+    task:{ type:'blank', answer:'integración', zh:'融合／融入', hint:'el proceso de formar parte de un grupo o sociedad' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -400,7 +400,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/latinoamericanos-en-alemania-no-tantos-pero-bien-integrados/a-66689637',
     headline:'Latinoamericanos en Alemania: pocos, pero bien [?].',
-    task:{ type:'blank', answer:'integrados', zh:'融入的（過去分詞，陽性複數）', hint:'participio pasado de "integrar", concuerda en género y número' },
+    task:{ type:'blank', answer:'integrados', zh:'融入的（過去分詞，陽性複數）', hint:'來自 integrar：過去分詞要跟主詞的性別數一致' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -408,7 +408,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/artistas-latinoamericanas-en-alemania-migraci%C3%B3n-e-identidad/a-67356286',
     headline:'Artistas latinoamericanas en Alemania: migración e [?].',
-    task:{ type:'blank', answer:'identidad', zh:'身分認同', hint:'sustantivo f. — quiénes somos, nuestra cultura y raíces' },
+    task:{ type:'blank', answer:'identidad', zh:'身分認同', hint:'quiénes somos, nuestra cultura y raíces' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -416,7 +416,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://www.dw.com/es/alemania-la-diversidad-es-clave-para-el-%C3%A9xito-empresarial/a-56762764',
     headline:'Alemania: la diversidad es clave para el éxito [?].',
-    task:{ type:'blank', answer:'empresarial', zh:'企業的／商業的', hint:'adjetivo — relacionado con las empresas y los negocios' },
+    task:{ type:'blank', answer:'empresarial', zh:'企業的／商業的', hint:'relacionado con las empresas y los negocios' },
     cefr:'B2', topic:'migración 🧳'
   },
   {
@@ -424,7 +424,7 @@ const NEWS_ITEMS = [
     source:'DW Español',
     sourceUrl:'https://amp.dw.com/es/alemania-una-historia-de-migraciones/a-18723301',
     headline:'Alemania, una historia de [?].',
-    task:{ type:'blank', answer:'migraciones', zh:'移民（複數，人口遷移）', hint:'sustantivo f. pl. — movimientos de personas de un país a otro' },
+    task:{ type:'blank', answer:'migraciones', zh:'移民（複數，人口遷移）', hint:'movimientos de personas de un país a otro' },
     cefr:'B2', topic:'migración 🧳'
   }
 ];
