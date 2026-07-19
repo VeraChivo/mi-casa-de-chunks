@@ -697,6 +697,79 @@
     一層：連拿來測試模型的例句本身，都要先查證是不是真實莊園內容，否則會做出「看起來
     合理但其實憑空想像」的資料。grammar.js完全沒有異動。
 
+    ---
+
+    ## ✅ Step 2.5 執行結果：真實語料壓力測試（2026-07-19，實查episodes/ammo/mom.js，未改grammar.js）
+
+    VERA建議測「va a la escuela／Vamos al parque／va a salir／va a cuidar」四個真實
+    chunk，但**先去查證這四句是不是真的存在**，結果**其中一句VERA記錯了，其餘三句查證
+    後跟原本假設的用法不完全一樣**——這本身就是這一步的價值所在：
+
+    ```
+    ① ❌ VERA假設「va a la escuela」是真實語料，查證後全站查無此句
+       真正存在的是「(Tito) se va a la cama」（episodes.js E2＋ammo.js e2_02，
+       fire_daily還有「Yo me voy a la cama a las nueve.」「Cuando mamá se va a
+       la cama, apaga la luz.」）——注意這是反身動詞irse（自己對自己做的動詞），
+       不是單純的ir，语意角色/家族分類上要區分「irse a+地點」跟「ir a+地點」是
+       不同分支，不能混在一起算同一個IR家族成員
+
+       語意角色 → movement（但帶反身/日常作息語感，不是單純地理移動）
+       溝通功能 → 我想讓對方知道某人睡前的固定習慣
+       使用場景 → ✅ 真實可連：E2劇情／語塊花園fire_daily（換主詞練習：yo/mamá）
+
+    ② ⚠️ 「Vamos al parque」確實存在，但只是mom.js裡「¡Vamos!」這個語塊底下的
+       示範例句（tag:生活指令），不是獨立的教學chunk本身——來源關係要註明
+       「附屬例句」不能宣稱這是一張獨立語塊卡
+
+       語意角色 → movement + plan（VERA原本猜的重疊真的出現了：這句同時是
+       「去哪裡」也是「提議一起行動」，不能只標movement）
+       溝通功動 → 我想讓對方知道「我提議我們一起去某個地方」
+       使用場景 → ✅ 真實可連：🛌床邊低語呢／馬麻有話講（生活指令類）
+
+    ③ ⚠️ VERA假設「va a salir」是「即將發生的行動」，查證後真實例句是慣用語
+       「No te preocupes, todo va a salir bien.」（ammo.js e2_04 fire_daily，
+       安慰別人的固定講法）——語意角色**不是plan**，是「對結果的預測/安慰」，
+       比較接近VERA原本設定給weather的prediction角色，只是對象是抽象結果不是天氣。
+       **這代表IR家族目前規劃的三個角色（movement/plan/prediction）不夠用，
+       這句需要第四種「reassurance安慰／outcome結果預測」角色，或者把prediction
+       角色定義拓寬到「非天氣的抽象結果」**
+
+       語意角色 → reassurance/outcome-prediction（新角色，原三分類不夠用）
+       溝通功能 → 我想讓對方知道「事情最後會沒事的」
+       使用場景 → ✅ 真實可連：E2劇情／語塊花園fire_daily
+
+    ④ ✅ 「Mamá siempre te va a cuidar.」查證屬實（mom.js第37行，
+       tag:核心安全感，**scene欄位本身就寫著"bedtime"**）——這是目前四句裡
+       usageScene連結最扎實的一句，因為資料裡已經有現成的scene欄位可以直接對應，
+       不用另外猜
+
+       語意角色 → plan/promise（承諾式的持續意圖，不是單次計畫）
+       溝通功能 → 我想讓對方知道「我會一直陪著你」
+       使用場景 → ✅ 真實可連：🛌床邊低語呢核心安全感類，且資料本身已有
+       scene:"bedtime"欄位可直接沿用，是四句裡示範價值最高的一句
+    ```
+
+    **同一句多標籤測試結果**：✅ 通過，而且是真實語料自然長出來的，不是硬湊——
+    「Vamos al parque」自然需要movement+plan兩個語意角色同時存在，「Mamá siempre
+    te va a cuidar」的溝通功能（承諾/安全感）跟語意角色（plan）本來就是兩個獨立維度，
+    印證了VERA「不能強迫只標一個」的判斷。
+
+    **house style修正結果**：這輪全部4句的communicationGoal都統一改寫成「我想讓對方
+    知道......」開頭，讀起來一致，不再像①③輪之前那種抽象名詞描述（表達目的地／描述
+    即將發生的事情），這條規則本身站得住腳，之後任何新卡片的溝通功能欄位都要照這個
+    句式寫。
+
+    **意外發現（比原本預期的測試目的更重要）**：VERA原本假設的3個語意角色
+    （movement/plan/prediction）在真實語料面前**不夠用**——「todo va a salir bien」
+    這種安慰/結果預測的用法需要第4種角色，而且「irse a+地點」（反身）跟「ir a+地點」
+    （非反身）在家族分類上也需要分開，不能因為都含"va a"就算同一種。這代表語意角色
+    清單本身不是一次定案就夠，需要「先看真實語料再定分類」而不是「先定分類再套語料」——
+    跟Step 2發現的「不能拿假想句測試」是同一種教訓的延伸。
+
+    **狀態**：Step 2.5已完成，**仍未進入Step 3**——VERA下一步要看的是要不要先擴充
+    語意角色清單（加入reassurance/outcome-prediction）再進Step 3，還是先用現有3類
+    進Step 3、之後再擴充。grammar.js完全沒有異動。
+
 - **🗺️莊園地圖（2026-07-19 VERA提出，取代現有🗺️莊園導覽按鈕，不是新增第四個入口）**：VERA盤點現有「🗺️莊園導覽」（`showWorldTour()`，一步一步走的WELCOME_TOUR_STEPS）跟「☀️今日耕耘」（`entryMatrixJump()`，ENTRY_MATRIX_ITEMS 6個「想做什麼」選項）後認為兩者定位不同、但都不是她要的「莊園地圖」：**導覽＝一步一步帶你走；地圖＝我知道我要去哪，直接點就到**。VERA明確定調首頁最終要收斂成三個入口：🌱點播初芽（第一次來）／☀️今日耕耘（今天想學什麼）／🗺️莊園地圖（我知道要去哪，取代現有莊園導覽按鈕，同一個位置換內容不換位置）。地圖內容是靜態一次呈現的分區跳轉格，VERA給的草圖：
   ```
   🏡首頁
