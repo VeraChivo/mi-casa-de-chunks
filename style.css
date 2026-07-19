@@ -715,12 +715,16 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-title{font-size:11px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--misora);background:rgba(159,208,222,.12);padding:6px 12px}
 .conj-verb-label{font-size:14px;color:var(--tlight);font-weight:700;padding:2px 12px 6px}
 .conj-rows{padding:0 0 4px}
-.conj-row{display:grid;grid-template-columns:76px 52px 1fr auto;align-items:center;gap:4px;padding:5px 12px;border-top:1px solid rgba(184,200,209,.2)}
+/* 2026-07-19修正：person/form欄位原本是固定76px/52px，"él/ella/usted"、"hubieras"這類較長的
+   人稱/變位字會被body的overflow-wrap:break-word從中間硬切（hubiera+s、él/ella/uste+d）。
+   改用max-content讓欄位依實際內容自動撐開，並加white-space:nowrap確保這兩個短標籤本身永遠不斷行，
+   換行機會留給第3欄的例句/翻譯 */
+.conj-row{display:grid;grid-template-columns:max-content max-content 1fr auto;align-items:center;gap:4px 8px;padding:5px 12px;border-top:1px solid rgba(184,200,209,.2)}
 .conj-row:first-child{border-top:none}
 .conj-row-mama{background:var(--conj-erir);border-left:3px solid var(--mama-deep)}
 .conj-person-mama{background:transparent;color:var(--mama-deep);font-weight:700;font-style:italic;font-size:11px;opacity:.8}
-.conj-person{font-size:14px;color:var(--tlight);font-weight:700}
-.conj-form{font-size:13px;font-weight:900;color:var(--konpeki);cursor:pointer}
+.conj-person{font-size:14px;color:var(--tlight);font-weight:700;white-space:nowrap}
+.conj-form{font-size:13px;font-weight:900;color:var(--konpeki);cursor:pointer;white-space:nowrap}
 .conj-form:active{opacity:.6}
 .conj-ex{font-size:15px;color:var(--tmid);font-style:italic;cursor:pointer;grid-column:3}
 .conj-ex:active{opacity:.6}

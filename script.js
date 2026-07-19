@@ -2704,8 +2704,13 @@ function _grammarExChunks(es, playExpr){
   // 單獨落在行尾變孤兒——關鍵是要「往後」黏住下一個字（往前黏沒用，因為斷點在
   // 短字的後面），連續遇到好幾個短字就一路往後黏成一組，直到遇到一個長字收尾；
   // 安全上限(累積字元數)避免整段短字連環黏成一長串撐爆手機螢幕
+  // ⚠️ 2026-07-19發現：只靠字元數上限不夠——如果整句話剛好每個字都很短（例如
+  // 「Espero que hables español.」四個字全部≤7字），字元數還沒到20就整句被黏成一個
+  // 不斷行區塊，在窄欄位（如🪞陳述式↔虛擬式對照的兩欄卡片）會整句被切邊。
+  // 加一個「字數上限」雙重防呆：最多黏3個字就收尾，確保長句子中間一定留得下斷行機會。
   const GLUE_MAX_LEN = 7;
   const GLUE_RUN_CAP = 20;
+  const GLUE_WORD_CAP = 3;
   let html = '';
   let quoteOpen = false;
   let segBuf = null;
@@ -2781,8 +2786,8 @@ function _grammarExChunks(es, playExpr){
 
     if(runBuf!==null){
       pushRun(rendered, clean.length);
-      if(isShort && runBuf.len < GLUE_RUN_CAP) return; // 還是短字，繼續往後累積
-      const r = flushRun(); routeOutput(r.piece, r.startWasOpen, quoteOpen, r.count); // 遇到長字（或超過安全上限）收尾
+      if(isShort && runBuf.len < GLUE_RUN_CAP && runBuf.count < GLUE_WORD_CAP) return; // 還是短字，繼續往後累積
+      const r = flushRun(); routeOutput(r.piece, r.startWasOpen, quoteOpen, r.count); // 遇到長字、或超過字數/字元上限，收尾
       return;
     }
 

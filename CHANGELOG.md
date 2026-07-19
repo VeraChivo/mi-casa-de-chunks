@@ -68,6 +68,17 @@
 - 🌳語塊家族：不是新的庫存數量系統，是把既有vocab/花園資料按語塊家族（TENER/HACER）重新分組，顯示關聯與成長（哪些枝已收集/下一枝是什麼/家族成熟度），偵測到新枝時顯示「你的XX樹有新變化」
 - 劇情索引改成收合式+水色系配色，修正視覺斷層問題
 
+## 2026-07-19（凌晨，🏰莊園人物冊進階篇 錄音從沒真正播放過的bug）
+
+**修正**
+- `renderPronounComboRules()`（grammar.js）：程式碼寫`r.speakEs`，但`speakEs`欄位其實是放在`r.example.speakEs`底下，`r.speakEs`永遠是`undefined`。結果：①點擊卡片播放時，`speakGramSmart()`收到的一律是畫面上完整顯示的文字（含`(✗)`/`(✓)`/`→`這些符號），跟`audio-manifest.js`裡已經錄好的4個乾淨音檔（`audio/pron/pron_combo_1~4.mp3`，key是`example.speakEs`那個乾淨版本）完全對不上，永遠fallback成瀏覽器TTS去唸這些符號；②「🔊實際播放：...」逐字稿那行因為判斷式也是`r.speakEs`，永遠不會顯示。改成`r.example.speakEs`後，4個已經錄好的音檔終於能被正確觸發，逐字稿也正確顯示。VERA截圖問「確認是TTS還是錄音」，答案是：錄音檔案一直都存在且有效，只是程式碼指錯欄位路徑，從沒被真正播放過。
+
+## 2026-07-19（凌晨，兩個真實斷行/切邊bug修正，VERA截圖回報）
+
+**修正**
+- 🪞陳述式↔虛擬式對照卡（兩欄窄版面）文字被切邊：查出`_grammarExChunks()`的「短字黏字防孤兒」機制只用累積字元數（`GLUE_RUN_CAP=20`）當安全上限，如果整句話剛好每個字都短（例：`Espero que hables español.`四個字全部≤7字），字元數還沒到20整句就被黏成一個不斷行區塊，在窄欄位直接被切邊。新增`GLUE_WORD_CAP=3`雙重防呆，最多黏3個字就強制收尾，確保長句中間一定留得下斷行機會。已用Playwright實際渲染驗證：修正前「Espero que hables español.」整句黏成一塊，修正後拆成「Espero que hables」＋「español.」兩段，換行機會恢復正常。
+- 🔄超級變變變（動詞變位庫）人稱/變位欄位被硬切成兩半（如`hubieras`斷成`hubiera`+`s`、`él/ella/usted`斷成`él/ella/uste`+`d`）：`.conj-row`的person/form欄位原本是固定76px/52px寬度，遇到較長的人稱標籤或變位形式，配合body的`overflow-wrap:break-word`全站預設，會被從字元中間硬切。改成`max-content`讓欄位依實際內容自動撐開＋`white-space:nowrap`確保這兩個短標籤永遠不斷行，換行機會留給例句/翻譯欄位。已用Playwright驗證`él/ella/usted`／`ellos/ellas/ustedes`兩種最長人稱標籤在390px手機寬度下皆完整顯示不換行。
+
 ## 2026-07-19（凌晨，莊園巡園週第二輪：首頁三橫標）
 
 VERA提出首頁應該是三個對等橫標（🌱點播初芽/☀️今日耕耘/🗺️莊園導覽），且第一個要動態——
