@@ -1240,6 +1240,49 @@
   ```
   點每一塊直接跳過去，不用像現有導覽一步步翻頁。**技術面**：可重用`ENTRY_MATRIX_ITEMS`的跳轉邏輯（`entryMatrixJump`已經有grammar/lyrics/news/mom等target），只是要擴充涵蓋更多分區（語塊花園/私語窖/抓蟲複習/劇情），並改成一次性靜態網格而非現有一步步展開的`WELCOME_TOUR_STEPS`流程。**VERA裁示（2026-07-19，同一則訊息稍後）**：她隨即把工作模式收斂成「巡園→記錄→累積→一次收斂」，明確表示之後不會再主動要求大規模盤查/新功能，這個提案先存在這裡當候選，不是這次順手做的東西，等她之後排進某個Sprint再實作。
 
+- **✅ 🍓同源庫全面盤查第一輪已完成（2026-07-19，範圍：COGNATE_LIBRARY，
+  E1-E3已完成劇情共30條，commit `6027d93`）**：VERA從個別詞條的討論
+  （account/cuento、query/querer、game/juego）發現多種典型錯誤同時存在
+  ——同義誤放同源（juego/game）、翻譯誤放同源（dónde/where）、真同源但
+  資料呈現不足（account/cuento、query/querer）——判斷「現在只有3集內容，
+  適合當第一輪清理，等累積到十幾集才盤，錯誤格式會大量複製」，於是要求
+  不要叫「新增同源詞」，正式定調為**「🍓同源庫全面盤查」**，並訂出5項
+  檢查標準：①現有標記是否真的同源（詞源關係／意思相近／英文翻譯對照
+  三選一）②補充來源鏈（同字／不同詞形但同源／演變路線三型）③補完整
+  資料（原文/語言/詞性/冠詞/陰陽性/發音錄音/中文義/詞源說明）④保留
+  🍓同源庫/🌐語感橋樑/🪞假朋友三種關係分離⑤不修改UI，先只整理資料層。
+  額外驗收原則：**不能因為「英文=中文=西語意思相同」就判定同源，必須
+  找到共同詞源**。
+
+  **實際執行（用WebSearch逐條查證，不是憑印象判斷）**：30條裡優先查了
+  10條最可疑的，結果：
+  ```
+  ❌確認非同源，已標notActualCognate（6條）：
+  charcoal/charco、bath/bañera、where/dónde（VERA已指出）、dad/papá
+  （跨語言保姆詞現象）、expect/esperar、major/mejor、much/mucho
+
+  ⚠️確認有學術爭議，已標uncertainCognate（3條）：
+  barren/barro、chamber/cama、core/corazón
+
+  ✅確認為真實同源，已補cognateSourceChain（連同先前的account/cuento、
+  query/querer，共4條）：germane/hermano、profound/hondo
+  ```
+  其餘約20條（potent/poder、juggle/jugar、boots/botas、duty/deber、
+  enchant/encantar、counter/contra、encounter/encontrar、grand/grande、
+  pass/pasar、total/todos、favorite/favorito、lateral/lado、perdition/
+  perdido、preoccupy/preocupar、detective/detective、person/persona、
+  princess/princesa、gusto/gustar、doctor/doctora、infirmary/enfermera、
+  respire/respirar、credible/creer、cure/curar）**尚未逐一WebSearch查證**，
+  是根據常見規律性同源模式（如debere→deber、contra→contra這類清楚的
+  拉丁詞源）判斷風險較低，暫時維持原樣，留給下一輪盤查時逐條確認，
+  不宣稱已經全部查完。
+
+  **狀態**：第一輪聚焦「找出最可疑的10條」已完成並上線，是資料層修正
+  （新增`notActualCognate`/`uncertainCognate`/`cognateSourceChain`欄位，
+  沒有動UI渲染，現有renderer安全地忽略這些新欄位）。**第二輪**（剩餘
+  ~20條逐一查證＋詞性/冠詞/陰陽性/錄音資料補完＋UI呈現方式決定）尚未
+  開始，等之後累積更多episode內容或VERA指示再繼續。
+
 - **🎵歌曲花園：從「文法闖關」改成「成長排序」的完整重整提案（2026-07-19，
   延伸自A2缺口，範圍更大，純規格記錄，未實作）**：VERA提出歌曲區現在的分法
   （🎵兒歌A0-A1／🎓文法闖關B1-B2兩個filter chip）不符合使用者真正的需求——
