@@ -348,7 +348,14 @@ const COGNATE_LIBRARY = [
   {en:'query',     es:'querer',    art:'',    zh:'尋求／喜歡',      ep:'E3 · 最好的朋友'},
   {en:'game',      es:'juego',     art:'el',  zh:'遊戲',            ep:'E3 · 最好的朋友'},
   {en:'princess',  es:'princesa',  art:'la',  zh:'公主',            ep:'E3 · 最好的朋友'},
-  {en:'account',   es:'cuento',    art:'el',  zh:'故事',            ep:'E3 · 最好的朋友'},
+  {en:'account',   es:'cuento',    art:'el',  zh:'故事',            ep:'E3 · 最好的朋友',
+    cognateSourceChain:{
+      root:'computare', meaning:'計算、清點',
+      branches:[
+        {language:'English', path:'conter → account', meaningShift:'帳目 → 敘述'},
+        {language:'Spanish', path:'contar → cuento', meaningShift:'計算 → 講述 → 故事'}
+      ]
+    }},
   {en:'gusto',     es:'gustar',    art:'',    zh:'品味／享受／喜歡', ep:'E3 · 最好的朋友'},
   {en:'doctor',    es:'doctora',   art:'la',  zh:'醫生',            ep:'E3 · 最好的朋友'},
   {en:'infirmary', es:'enfermera', art:'la',  zh:'醫務室／護士',    ep:'E3 · 最好的朋友'},

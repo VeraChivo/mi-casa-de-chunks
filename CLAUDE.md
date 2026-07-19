@@ -730,6 +730,39 @@ curl -s -X PUT \
       ```
       三個獨立欄位，不共用同一個欄位存放，因為三者的維護判斷邏輯不同，混在一起會難以分辨當初是依哪種標準收錄的。
     - **✅ 四層資料棧確認**：`🌳能力樹 → 🧩語塊（怎麼用）→ 🌐語感橋樑（怎麼理解）→ 🍓同源/🍄假朋友（詞的歷史與陷阱）`。**狀態**：純規格，目前只存不開工——Llamarse（Sprint B-3）之後會測試「自我介紹能力」跟「來源關係」怎麼連到「我的西語小日子」，不會是現在就急著做同源庫渲染。
+    - **✅ 示範案例：account / cuento（2026-07-19，防止未來AI把同源庫做成「英西翻譯表」）**：
+      cognates.js的SUFFIX_PATTERNS曾出現`{en:'account', es:'cuento', zh:'故事'}`這種
+      寫法，容易讓人誤讀成「account＝cuento＝故事」的翻譯對應，**這是錯的**——
+      account在英文裡從來不等於「故事」，中文若要對應account本身，應該是「帳戶／
+      帳目／說明／敘述」依語境而定。真正的關係不是翻譯，而是：
+      ```
+      account／cuento 不是：英文account = 西語cuento
+      而是：兩者共同追溯到拉丁語computare（計算、清點），
+      經不同語言演變後形成不同現代詞：
+
+      拉丁語 computare「計算、清點」
+            ↓
+      古法語 conter「計算 → 敘述」
+            ↓
+      英文 account「帳目 → 敘述、報告」
+
+      西語 contar → cuento「計算 → 講述 → 故事」
+      ```
+      查證屬實（computare經古法語conter/aconter進入英文account；同一computare
+      在西語演變成contar，衍生名詞cuento）。**已示範資料欄位寫法**（見cognates.js
+      的account條目）：
+      ```js
+      cognateSourceChain:{
+        root:'computare', meaning:'計算、清點',
+        branches:[
+          {language:'English', path:'conter → account', meaningShift:'帳目 → 敘述'},
+          {language:'Spanish', path:'contar → cuento', meaningShift:'計算 → 講述 → 故事'}
+        ]
+      }
+      ```
+      **目前只加了這個資料欄位，沒有做UI渲染**（現有renderer不讀取這個欄位，
+      安全地被忽略）——優先順序是①同源判定正確✅②資料結構能保存來源鏈✅
+      ③未來再決定怎麼呈現⏳，不要現在又開一條「同源庫UI工程」。
 23. **能力卡「AI語氣清理」標準指令（2026-07-19 VERA定案，之後任何工程AI要調整能力卡文字時，直接貼這段指令，避免重寫內容/改掉教學邏輯）**：
     ```
     請針對能力卡內文做「AI語氣清理」，不要改變原本知識內容、例句、邏輯順序。
