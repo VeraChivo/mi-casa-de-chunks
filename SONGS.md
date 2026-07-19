@@ -98,15 +98,22 @@
 
 **核心原則轉變**：判斷收不收一首歌，不是「好不好聽」，而是「這首歌能不能讓某個 Chunk 家族長出一根枝」——見 `maintenance.js` 的「🌳 Chunk 家族健康檢查」，這份候選池就是專門針對 TENER/HACER 家族目前缺🎵歌曲對應的分支去搜的。
 
-**⚠️ 狀態說明**：以下全部是 WebSearch 列出的真實搜尋結果（標題/歌詞摘錄都直接取自搜尋結果，不是自己編的），但**還沒有VERA親自聽過確認**，一律是「🌱待查證」，不能直接當「已收錄」使用。VERA要的話繼續搜，搜完先留在候選池，不要急著收錄。
+**⚠️ 狀態說明**：以下全部是 WebSearch 列出的真實搜尋結果（標題/歌詞摘錄都直接取自搜尋結果，不是自己編的），但**還沒有VERA親自聽過確認**，一律是「🌱待查證」，不能直接當「已收錄」使用。
 
-| 語塊分支 | 候選歌曲 | 歌手/來源 | 摘錄歌詞 | 文法／語用價值 | 難度 | 狀態 |
-|---|---|---|---|---|---|---|
-| tener miedo | Hoy Tengo Miedo | Fobia（墨西哥搖滾） | "Hoy tengo miedo de salir otra vez" | tener miedo de + 原形動詞；副歌重複"tengo miedo"多次 | A2-B1 | 🌱待查證 |
-| tener miedo | Tengo Miedo | Los Brios | "Tengo miedo, que como un pájaro te me vueles de la mano" | ⚠️後半句是虛擬式(vueles)，對A2太難，只能取開頭"Tengo miedo"單獨用 | B1+ | 🌱待查證 |
-| tener ganas de | Hoy Tengo Ganas de Ti | Alejandro Fernández ft. Christina Aguilera | "Hoy tengo ganas de ti" | ⚠️這裡"de ti"接代名詞不是原形動詞，跟分支定義(tener ganas de+動詞)不完全對得上 | A2-B1 | 🌱待查證 |
-| hacer ejercicio | El Rap de los Deportes | Juan "D" y Beatriz（兒童教育饒舌） | "HAZ DEPORTE, HAZ EJERCICIO, MUEVE EL CUERPO" | ⚠️"HAZ"是命令式不是陳述式，跟HACER家族卡片標的hago/haces/hace變位形態不同 | A1-A2 | 🌱待查證 |
-| tener prisa | Tengo Prisa | Dragón y Caballero | "Tengo prisa para hacer de ti la mujer más feliz de este mundo" | tener prisa para + 原形動詞；同句還示範hacer de alguien algo(把...變成...)慣用法，但句子偏長 | B1 | 🌱待查證 |
+**⚠️ 2026-07-19 VERA定調：暫停繼續搜歌，候選池先停在這裡**——歌曲是最難控制的素材（受版權/查證限制），現階段更重要的是盤點「已有內容但沒掛上連結」，不是無限搜更多候選歌。維持現有候選池狀態即可，不繼續加。
+
+| 優先級 | 語塊分支 | 候選歌曲 | 歌手/來源 | 文法／語用價值 | 難度 | 狀態 | 替代入口（歌曲卡住時的備案） |
+|---|---|---|---|---|---|---|---|
+| ⭐⭐⭐ | tener miedo | Hoy Tengo Miedo | Fobia（墨西哥搖滾） | tener miedo de + 原形動詞；高頻情緒Chunk，初中級都需要 | A2-B1 | 🌱待查證 | 📔心語（已有）／🌾例句（已有） |
+| ⭐ | tener miedo | Tengo Miedo | Los Brios | ⚠️後半句是虛擬式(vueles)，對A2太難，只能取開頭"Tengo miedo"單獨用 | B1+ | 🌱待查證 | 同上 |
+| ⭐⭐⭐ | tener ganas de | Hoy Tengo Ganas de Ti | Alejandro Fernández ft. Christina Aguilera | ⚠️"de ti"接代名詞不是原形動詞，跟分支定義不完全對得上，但仍是A2重要「想要」表達 | A2-B1 | 🌱待查證 | 📔心語（已有）／🌾例句（已有） |
+| ⭐⭐ | hacer ejercicio | El Rap de los Deportes | Juan "D" y Beatriz（兒童教育饒舌） | ⚠️"HAZ"是命令式不是陳述式，跟HACER家族的hago/haces/hace變位不同，是HACER整組家族的入口 | A1-A2 | 🌱待查證 | 📔心語（已有）／🌾例句（已有） |
+| ⭐⭐ | tener prisa | Tengo Prisa | Dragón y Caballero | tener prisa para + 原形動詞；同句還示範hacer de alguien algo慣用法，但句子偏長 | B1 | 🌱待查證 | 📔心語（已有）／🌾例句（已有） |
+| ⭐⭐ | tener razón | Tú Tienes Razón | Gusi y Mike Bahia | tener razón＋no tener razón正反對比，高頻片語 | A2 | 🌱待查證 | 📔心語（已有）／🌾例句（已有） |
+| ⭐⭐ | tener suerte | ¡Qué Suerte! | Ángela Aguilar | 感嘆句型¡Qué suerte que tengo!，生活化非戀愛主題 | A2 | 🌱待查證 | 📔心語（已有）／🌾例句（已有） |
+| ⭐ | tener calor | Tengo Calor | Teo Lucadamo/BRAVA 或 Bukano | 只查到歌名沒查到歌詞，證據不足 | 未知 | 🌱待查證（證據不足） | 📔心語（已有）／🌾例句（已有） |
+
+**✅ 2026-07-19 更新：「替代入口」欄目前全部有解**——`maintenance.js`的Chunk家族健康檢查確認，TENER/HACER全部17個分支的📔心語跟🌾grammar例句本來就是100%覆蓋（心語在Sprint 1補完、grammar例句本來就是這些分支的原始出處），所以「歌曲卡住」從來不會讓任何一個分支變成完全沒有聲音入口——只是暫時少了🎵這一種入口，不是沒有入口。這也回應VERA的疑慮：「找不到歌，Chunk會不會沒有聲音入口」——不會，因為心語跟例句本身就能點擊發音，是隨時都在的基本盤。
 | tener razón | Tú Tienes Razón | Gusi y Mike Bahia | "Y tu tienes razón, aun cuando no la tengas / Siempre tienes la razón" | tener razón（陳述）＋no tener razón（否定），同一句對比正反用法，高頻片語 | A2 | 🌱待查證 |
 | tener suerte | ¡Qué Suerte! | Ángela Aguilar（另有1964年Violeta Rivas同詞版本） | "Qué suerte que tengo / Una madre tan buena" | tener suerte的感嘆句型(¡Qué suerte que tengo!)，生活化、非戀愛主題，適合A2 | A2 | 🌱待查證 |
 | tener calor | Tengo Calor | Teo Lucadamo/BRAVA（2024）或 Bukano（2022） | 只查到歌名，**沒查到實際歌詞摘錄** | 無法評估——目前只是標題命中，不算真正查證，需要VERA自己聽 | 未知 | 🌱待查證（證據不足） |
