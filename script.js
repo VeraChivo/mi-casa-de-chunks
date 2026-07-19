@@ -3320,7 +3320,7 @@ function renderLyricsFill(){
       </div>
       <div class="lf-feedback" id="lff-${lf.id}" style="display:none"></div>
       <div class="lf-hint" id="lfh-${lf.id}" style="display:none"><div class="lf-hint-label">💡 文法小芽</div>${lf.sprout||lf.hint}</div>
-      <div class="lf-grammar-note" id="lfg-${lf.id}" style="display:none">${lf.grammar}</div>
+      <div class="lf-grammar-note" id="lfg-${lf.id}" style="display:none"><div class="lf-hint-label">🔎 想深入</div>${lf.grammar}</div>
     </div>`).join('')}`;
 }
 function checkLyric(id){

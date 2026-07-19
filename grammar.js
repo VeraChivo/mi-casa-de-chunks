@@ -2467,7 +2467,7 @@ const GRAMMAR_DATA = [
     examples:[
       {es:"Me llamo Nita.", zh:"我叫妮妲。（字面：我稱呼自己為妮妲，反身代名詞me不能省略）"},
       {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（問名字的標準問句）"},
-      {es:"Se llama Tito.", zh:"他叫迪多。（第三人稱，se不是me/te）"}
+      {es:"Se llama Tito.", zh:"他叫迪多。（在說「他」的名字，主角不是自己，所以用se不是me）"}
     ],
     trap:"Me llamo跟Soy都能用在自我介紹（Me llamo Nita. / Soy Nita.意思很接近），差別是llamarse更專注在「名字」這件事本身，soy則是更廣泛的身分描述（可以接名字，也可以接職業/國籍等）——初學者兩句都要會，混著用沒問題。",
     source:"文法補充"
