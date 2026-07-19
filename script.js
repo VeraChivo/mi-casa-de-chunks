@@ -419,7 +419,7 @@ function renderHeaderStartSlot(){
     el.innerHTML = `<button class="header-start-btn" onclick="openLevelNavDirect()" title="選擇你的起點，開始第一株西語小苗">🌱 點播初芽</button>`;
   } else {
     const days = daysSinceFirstChunk();
-    el.innerHTML = `<button class="header-start-btn header-growth-btn" onclick="jumpToGardenGrowth()" title="${firstDate} 種下第一株西語小苗，今天是第${days}天">🌿 我的成長</button>`;
+    el.innerHTML = `<button class="header-start-btn header-growth-btn" onclick="jumpToGardenGrowth()" title="${firstDate} 種下第一株西語小苗，今天是第${days}天">🌿 園區印記</button>`;
   }
 }
 function jumpToGardenGrowth(){
@@ -4469,7 +4469,7 @@ const WELCOME_TOUR_STEPS = [
   {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
   {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
   {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"},
-  {icon:"💎🌻🐛", title:"莊園裡的三種紀錄", desc:"穀倉大豐收裡有三個東西長得有點像，但各自負責不同的事：<br><br>💎 醞釀私語窖——收藏妳想留意的語塊，代表「我想留意它」，不是「我已經會了」<br><br>🌻 語塊花園——記錄語塊真正長大的地方，接觸/練習會讓熟練度慢慢往前（🌱初萌芽→🍃猛漲期→🍀幸運草→🌻日頭花開），代表「我的西語能力正在累積」<br><br>🐛 抓蟲複習——花園挑出「最近還不夠穩，需要再照顧」的語塊，不是收藏清單<br><br>記住這條路徑：<br>看到好句 → 💎收藏（我想留下）<br>反覆練習 → 🌻花園（能力成長）<br>不穩定 → 🐛抓蟲（回來照顧）"},
+  {icon:"💎🌻🐛", title:"莊園裡的三種紀錄", desc:"💎 醞釀私語窖<br>喜歡的句子，先收藏。讓時間發酵，留心上。<br><br>🌻 語塊花園<br>遇見練習，就生長。日日澆灌，成日常。<br><br>🐛 抓蟲複習<br>忘記卡住，就回訪。重新照顧，再發光。"},
   {icon:"🌱", title:"開始我的西語小日子", desc:"從第一句西語開始。<br><br>第一次來學西語？先從生活裡最常用的第一句開始：<br>🌱 初學入口（A1）：從「我是誰」開始<br>🌿 生活拓展（A2）：開始描述昨天、今天和自己的故事<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true}
 ];
 // 「入口盤查」矩陣：不再是導覽裡要點過6步才看得到的一頁，2026-07-19莊園巡園週併進☀️今日耕耘卡片常駐顯示
