@@ -218,6 +218,60 @@ try {
   fail('內容孤兒檢查失敗：' + e.message);
 }
 
+// ── 🌳 Chunk 關聯盤查：每個語塊家族分支，在劇情/歌曲/新聞/心語裡有沒有出現過 ──
+// 不用全部都要有，只是列出缺口讓VERA知道還可以往哪個方向擴充內容（2026-07-19 VERA提出）
+// 比對邏輯完全沿用 script.js 的 _chunkFamEpisodeMatch/_chunkFamSongMatch/_chunkFamNewsMatch
+section('Chunk 關聯盤查（不用全部都有，僅供參考缺口在哪）');
+try {
+  const CHUNK_FAMILIES = extractConstArray('script.js', 'CHUNK_FAMILIES');
+  const LYRICS_FILL_DATA = extractConstArray('script.js', 'LYRICS_FILL_DATA');
+  const { EPS } = loadArray('episodes.js', ['EPS']);
+  const { NEWS_ITEMS } = loadArray('news.js', ['NEWS_ITEMS']);
+  const CORAZON_DATA = extractConstArray('corazon.js', 'CORAZON_DATA');
+  const MOM_ATM_DATA = extractConstArray('mom.js', 'MOM_ATM_DATA');
+
+  function hasEpisode(keyword) {
+    return (EPS || []).some(ep => (ep.sentences || []).some(s => (s.es || '').toLowerCase().includes(keyword)));
+  }
+  function hasSong(keyword) {
+    return (LYRICS_FILL_DATA || []).some(lf => ((lf.before || '') + ' ' + (lf.blank || '') + ' ' + (lf.after || '')).toLowerCase().includes(keyword));
+  }
+  function hasNews(keyword) {
+    return (NEWS_ITEMS || []).some(n => (n.headline || '').toLowerCase().includes(keyword));
+  }
+  function hasDiary(keyword) {
+    const inCorazon = (CORAZON_DATA || []).some(cat => (cat.items || []).some(it => (it.es || '').toLowerCase().includes(keyword)));
+    if (inCorazon) return true;
+    return Object.values(MOM_ATM_DATA || {}).some(cat => (cat.items || []).some(it => (it.es || '').toLowerCase().includes(keyword)));
+  }
+
+  let totalBranches = 0;
+  const gapsBySource = { episode: [], song: [], news: [], diary: [] };
+  (CHUNK_FAMILIES || []).forEach(fam => {
+    (fam.branches || []).forEach(b => {
+      totalBranches++;
+      const kw = (b.match || '').toLowerCase();
+      const label = `${fam.title}／${b.es}`;
+      if (!hasEpisode(kw)) gapsBySource.episode.push(label);
+      if (!hasSong(kw)) gapsBySource.song.push(label);
+      if (!hasNews(kw)) gapsBySource.news.push(label);
+      if (!hasDiary(kw)) gapsBySource.diary.push(label);
+    });
+  });
+
+  console.log(`   共 ${CHUNK_FAMILIES.length} 個語塊家族、${totalBranches} 個分支`);
+  console.log(`   📺 沒有劇情對應：${gapsBySource.episode.length}/${totalBranches}`);
+  if (gapsBySource.episode.length) console.log(`      ${gapsBySource.episode.join('、')}`);
+  console.log(`   🎵 沒有歌曲對應：${gapsBySource.song.length}/${totalBranches}`);
+  if (gapsBySource.song.length) console.log(`      ${gapsBySource.song.join('、')}`);
+  console.log(`   📰 沒有新聞對應：${gapsBySource.news.length}/${totalBranches}`);
+  if (gapsBySource.news.length) console.log(`      ${gapsBySource.news.join('、')}`);
+  console.log(`   📔 沒有心語/日記對應：${gapsBySource.diary.length}/${totalBranches}`);
+  if (gapsBySource.diary.length) console.log(`      ${gapsBySource.diary.join('、')}`);
+} catch (e) {
+  fail('Chunk 關聯盤查失敗：' + e.message);
+}
+
 // ── 總結 ──
 console.log('\n' + '='.repeat(40));
 if (failCount === 0 && warnCount === 0) {
