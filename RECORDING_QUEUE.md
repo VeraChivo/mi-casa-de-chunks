@@ -90,10 +90,13 @@
 - **第1批 `grammar_batch1_of2.txt`**：文法儲水槽缺口 前83句
 - **第2批 `grammar_batch2_of2.txt`**：文法儲水槽缺口 後83句
 - **第3批 `songs_and_news.txt`**：歌曲填空25句＋新聞填空53句，合計78句
-- **第4批 `e11_and_mom.txt`**：E11整集10句＋mom.js 15句，合計25句。
-  ⚠️ **E11這10句錄完不能直接用**——episodes.js的E11每句都拆成多個語塊（S/V/C/連接詞等），
-  要照CLAUDE.md「先錄整句一次，事後再切割分段」的既定做法，錄完整句後還要再切一次段落，
-  不是錄完直接搬進AUDIO_MANIFEST；mom.js那15句則是單句直接對應一個檔案，錄完就能直接用。
+- **第4批 `e11_and_mom.txt` → 已更新為 `script_D2.txt`（59句）**：原本以為E11要「先錄整句、
+  事後切割分段」（CLAUDE.md那條規則是給真人錄音設計的——真人怕漏字才要求先錄一次完整版）。
+  VERA提醒這批是TTS不是真人錄音，語塊+整句可以直接分開各自產生，不用先錄再切。已重新盤查
+  E11每句的實際語塊（S/V/C/連接詞），跟CHUNK_AUDIO_MAP既有詞彙比對後，扣掉11個已經錄過的
+  重複詞（Hoy/es/y/pero/Tito/está/Nita/Mamá Cata/Papá Tato/Mimi/no entiende），只剩34個真的
+  沒錄過的語塊，加上10句整句、15句mom.js，合計59句一次生成。
 
 四個都是可以直接複製貼進Colab執行的.txt腳本（gTTS，lang='es' tld='com.mx'，含重試機制跟隨機停頓，
-跑完自動打包zip觸發下載）。錄完把zip丟回來，我負責接上audio-manifest.js跟（E11部分）切割分段。
+跑完自動打包zip觸發下載）。錄完把zip丟回來，我負責接上audio-manifest.js（CHUNK_AUDIO_MAP／
+AUDIO_MANIFEST／MOM_AUDIO_MAP三個對照表都會用到）。
