@@ -3798,8 +3798,12 @@ function renderGardenView() {
       const annotHtml = annot ? `<span class="garden-chip-note">${annot}</span>` : '';
       const disp = _gardenChunkDisplay(chunk);
       const clickAttr = disp.speakable ? ` onclick="speakGardenChunk('${escAttr(disp.text)}')" title="點擊聽發音"` : '';
+      // 熟練度(花園)跟收藏(私語窖)是兩件獨立的事，練不好的不等於不喜歡——這裡只是讓花園也能
+      // 看到「這個我有收藏」，不代表要花園項目都得進私語窖，也不影響熟練度本身
+      const isCollected = (typeof vocabList !== 'undefined') && vocabList.some(v => v.text === disp.text);
+      const collectedBadge = isCollected ? `<span class="garden-chip-collected" title="已收藏在💎私語窖">💎</span>` : '';
       return `<button class="garden-chip"${clickAttr}>
-        <span class="garden-chip-es">${disp.text}</span>${annotHtml}${qBadge}
+        <span class="garden-chip-es">${disp.text}</span>${annotHtml}${qBadge}${collectedBadge}
       </button>`;
     }).join('');
     return `<div class="garden-stage-group">

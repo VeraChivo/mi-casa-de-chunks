@@ -1159,6 +1159,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .garden-chip-es{display:block}
 .garden-chip-note{display:block;margin-top:2px;font-size:10.5px;font-weight:600;color:var(--tlight);white-space:normal}
 .garden-chip-qc{position:absolute;top:-5px;right:-5px;background:var(--ok);color:white;font-size:9px;font-weight:900;border-radius:999px;padding:1px 4px;line-height:1.3}
+.garden-chip-collected{position:absolute;top:-5px;left:-5px;font-size:12px;line-height:1}
 
 .garden-empty-msg{padding:20px 16px;text-align:center;color:var(--tlight);font-size:13px}
 
