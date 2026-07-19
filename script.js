@@ -2997,8 +2997,8 @@ function renderIndicSubjPairs(){
     <div class="is-pair-row">
       <div class="is-pair-verb">${p.verb}</div>
       <div class="is-pair-cols">
-        ${col('is-indic','直述句',p.indic)}
-        ${col('is-subj','腦中劇場',p.subj)}
+        ${col('is-indic','🌍 眼前現實',p.indic)}
+        ${col('is-subj','🌙 心裡想像',p.subj)}
       </div>
     </div>`).join('');
 }
