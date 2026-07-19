@@ -3314,12 +3314,12 @@ function renderLyricsFill(){
         <span class="lf-blank-wrap"><input class="lf-input" id="lfi-${lf.id}" type="text" placeholder="填動詞" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkLyric('${lf.id}')"></span>
         <span class="lf-after">${lf.after}</span>
       </div>
-      <div class="lf-hint">💡 ${lf.hint}</div>
       <div class="lf-actions">
         <button class="lf-check-btn" onclick="checkLyric('${lf.id}')">核對答案</button>
         <button class="lf-hear-btn" onclick="speakGramSmart('${escAttr(lf.before+' '+lf.blank+' '+lf.after)}')">🔊 聽整句</button>
       </div>
       <div class="lf-feedback" id="lff-${lf.id}" style="display:none"></div>
+      <div class="lf-hint" id="lfh-${lf.id}" style="display:none">💡 文法小芽：${lf.hint}</div>
       <div class="lf-grammar-note" id="lfg-${lf.id}" style="display:none">${lf.grammar}</div>
     </div>`).join('')}`;
 }
@@ -3328,6 +3328,7 @@ function checkLyric(id){
   if(!lf) return;
   const inp = document.getElementById('lfi-'+id);
   const fb  = document.getElementById('lff-'+id);
+  const hn  = document.getElementById('lfh-'+id);
   const gn  = document.getElementById('lfg-'+id);
   if(!inp||!fb||!gn) return;
   const val = inp.value.trim().toLowerCase().replace(/[¡!¿?.,;]/g,'');
@@ -3342,6 +3343,7 @@ function checkLyric(id){
     fb.className='lf-feedback lf-correct';
     fb.textContent=`¡Eso es! ✅ 正確：${lf.blank}`;
     inp.className='lf-input ok';
+    if(hn) hn.style.display='block';
     gn.style.display='block';
     speakGramSmart(lf.before+' '+lf.blank+' '+lf.after);
   } else {
