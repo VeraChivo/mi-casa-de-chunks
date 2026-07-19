@@ -249,25 +249,40 @@ try {
     return Object.values(MOM_ATM_DATA || {}).some(cat => (cat.items || []).some(it => (it.es || '').toLowerCase().includes(keyword)));
   }
 
+  // 沿用🌻語塊花園既有的萌芽階段詞彙，不另外發明一套百分比等級（單一資料來源原則，連「詞彙」也算）
+  function maturitySymbol(pct) {
+    if (pct >= 1) return '🌻 日頭花開';
+    if (pct >= 0.6) return '🍀 幸運草';
+    if (pct >= 0.3) return '🍃 猛漲期';
+    if (pct > 0) return '🌱 初萌芽';
+    return '𑁍 還沒播種';
+  }
   (CHUNK_FAMILIES || []).forEach(fam => {
     const branches = fam.branches || [];
     const n = branches.length;
-    let epOk = 0, songOk = 0, newsOk = 0, diaryOk = 0;
+    let epOk = 0, songOk = 0, newsOk = 0, diaryOk = 0, atLeastOne = 0;
     branches.forEach(b => {
       const kw = (b.match || '').toLowerCase();
-      if (hasEpisode(kw)) epOk++;
-      if (hasSong(kw)) songOk++;
-      if (hasNews(kw)) newsOk++;
-      if (hasDiary(kw)) diaryOk++;
+      const ep = hasEpisode(kw), song = hasSong(kw), news = hasNews(kw), diary = hasDiary(kw);
+      if (ep) epOk++;
+      if (song) songOk++;
+      if (news) newsOk++;
+      if (diary) diaryOk++;
+      if (ep || song || news || diary) atLeastOne++; // 🌾grammar本身必定為真（分支就是從grammar卡的family列出來的），不用另外算
     });
-    console.log(`\n   ${fam.title}（${n}個分支）`);
-    console.log(`   已連結：📺劇情 ${epOk}/${n}　🎵歌曲 ${songOk}/${n}　📰新聞 ${newsOk}/${n}　📔心語 ${diaryOk}/${n}`);
+    console.log(`\n   ${fam.title}（${n}個分支）健康度`);
+    console.log(`   🌾 Grammar ✅（分支本身就是從grammar卡列出來的，恆為真）`);
+    console.log(`   📔 心語 ${maturitySymbol(diaryOk / n)}`);
+    console.log(`   📺 劇情 ${maturitySymbol(epOk / n)}`);
+    console.log(`   🎵 歌曲 ${maturitySymbol(songOk / n)}`);
+    console.log(`   📰 新聞 ${maturitySymbol(newsOk / n)}`);
+    console.log(`   👉 至少有一個入口的分支：${atLeastOne}/${n}（這才是真正的健康指標，不是每種入口都要有）`);
     if (diaryOk < n) {
       warn(`${fam.title}：📔心語還有 ${n - diaryOk} 個分支沒掛——這類「可補」，維護者可以直接在corazon.js/mom.js加新句子`);
     }
-    if (epOk < n) console.log(`   ⏳ 成長中：📺劇情 ${n - epOk} 個分支待未來新集數擴充（受10句/集架構限制，現在補不了）`);
-    if (songOk < n) console.log(`   ⏳ 成長中：🎵歌曲 ${n - songOk} 個分支待VERA查證新歌曲`);
-    if (newsOk < n) console.log(`   ⏳ 成長中：📰新聞 ${n - newsOk} 個分支待VERA查證新新聞`);
+    if (atLeastOne < n) {
+      fail(`${fam.title}：有 ${n - atLeastOne} 個分支完全沒有任何入口（連grammar以外都沒有），這才是真缺口，需要處理`);
+    }
   });
 } catch (e) {
   fail('Chunk 家族健康檢查失敗：' + e.message);

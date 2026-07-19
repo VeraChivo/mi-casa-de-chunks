@@ -4362,8 +4362,37 @@ const WELCOME_TOUR_STEPS = [
   {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
   {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
   {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"},
-  {icon:"🧭", title:"新手第一條路線", desc:"完全零基礎的話，建議先走這條路：<br>🌱 A1小路：Soy／Me llamo → Tengo → Me gusta → 基礎兒歌<br>💧 A2花園：開始過去式、日常劇情<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true}
+  {icon:"🧭", title:"新手第一條路線", desc:"完全零基礎的話，建議先走這條路：<br>🌱 A1小路：Soy／Me llamo → Tengo → Me gusta → 基礎兒歌<br>💧 A2花園：開始過去式、日常劇情<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true},
+  {icon:"🧭", title:"想做什麼？先看這裡", desc:"不用記住莊園有哪些角落，只要知道妳現在想做什麼，路標會帶妳過去：", entryButtons:true}
 ];
+// 「入口盤查」矩陣：不是新功能，是把既有分區標清楚路標（2026-07-19 VERA提出）
+const ENTRY_MATRIX_ITEMS = [
+  {icon:'🌱', label:'今天只有10分鐘', sub:'今日耕耘任務', target:'daily'},
+  {icon:'🌾', label:'想系統學文法', sub:'文法儲水槽', target:'grammar'},
+  {icon:'🎵', label:'想聽歌學西語', sub:'聽歌填空', target:'lyrics'},
+  {icon:'📰', label:'想看世界時事', sub:'B2時事傳送門', target:'news'},
+  {icon:'📔', label:'想放鬆說說話', sub:'床邊低語呢', target:'mom'},
+  {icon:'🎲', label:'不知道學什麼', sub:'驚喜包（建置中）', target:'surprise', disabled:true}
+];
+function entryMatrixJump(target){
+  closeWelcomeTour();
+  if(target==='daily'){
+    switchMainTab('private');
+    setTimeout(()=>{ const s=document.getElementById('dailyTaskBody'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    return;
+  }
+  if(target==='grammar'){
+    switchMainTab('know');
+    const body = document.getElementById('grammarSupplementBody');
+    if(body && !body.classList.contains('open')) toggleGrammarSupplement();
+    setTimeout(()=>{ const s=document.getElementById('grammarSupplementSection'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    return;
+  }
+  if(target==='lyrics'){ dtaskJump('lyrics'); return; }
+  if(target==='news'){ dtaskJump('news'); return; }
+  if(target==='mom'){ switchMainTab('mom'); return; }
+  // surprise：建置中，不跳轉
+}
 let _welcomeTourStep = 0;
 function showWelcomeTour(force){
   let seen = false;
@@ -4398,6 +4427,14 @@ function renderWelcomeTourStep(){
     <div class="lvlnav-grid">
       ${LEVEL_NAV_ITEMS.map(it => `
         <button class="lvlnav-btn" onclick="jumpToLevelFilter('${it.level}')">
+          <span class="lvlnav-icon">${it.icon}</span>
+          <span class="lvlnav-label">${it.label}</span>
+          <span class="lvlnav-sub">${it.sub}</span>
+        </button>`).join('')}
+    </div>` : s.entryButtons ? `
+    <div class="lvlnav-grid">
+      ${ENTRY_MATRIX_ITEMS.map(it => `
+        <button class="lvlnav-btn${it.disabled?' is-disabled':''}" ${it.disabled?'disabled':`onclick="entryMatrixJump('${it.target}')"`}>
           <span class="lvlnav-icon">${it.icon}</span>
           <span class="lvlnav-label">${it.label}</span>
           <span class="lvlnav-sub">${it.sub}</span>
