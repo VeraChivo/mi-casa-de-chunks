@@ -4455,7 +4455,7 @@ function _newsBuildExpandedHtml(item){
   let html = `<div class="news-item is-expanded" id="news-item-${item.id}">
     <div class="news-meta">
       <span class="news-topic">${item.topic}</span>
-      <button class="news-speak-btn" onclick="speakFull('${escAttr(fullSentence)}')" title="聽發音">🔊</button>
+      <button class="news-speak-btn" onclick="speakGramSmart('${escAttr(fullSentence)}')" title="聽發音">🔊</button>
       <a class="news-source" href="${item.sourceUrl}" target="_blank" rel="noopener">${item.source} ↗</a>
     </div>
     <div class="news-headline">${headlineHtml}</div>`;
@@ -4497,7 +4497,7 @@ function renderNewsSection(){
   DW_HISTORY.body.forEach(p=>{
     dwHtml += `<div class="news-dw-item">
       <span class="news-dw-label">${p.label}</span>
-      <div class="news-dw-es" onclick="speakFull('${escAttr(p.es)}')">🔊 ${p.es}</div>
+      <div class="news-dw-es" onclick="speakGramSmart('${escAttr(p.es)}')">🔊 ${p.es}</div>
       <span class="news-dw-text">${p.text}</span>
     </div>`;
   });
