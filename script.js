@@ -252,7 +252,7 @@ function buildNav(){
 // 盤點結果（E1-E11）：①「打招呼/認識自己」目前episodes.js完全沒有對應場景，改連到g117(llamarse)+g01(SER)文法卡；
 // 其餘三個場景都能直接連到已有劇情集數，不用新增內容
 const STORY_INDEX = {
-  title: '🏡 第一章：我的小世界',
+  title: '🏡 第一章：我的西語小世界',
   scenes: [
     {icon:'👋', label:'認識自己', chunks:[
       {es:'Me llamo Nita.', zh:'我叫妮妲。'},
@@ -288,7 +288,7 @@ function renderStoryIndex(){
     <div class="ammo-book-top" onclick="toggleStoryIndex()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--mizu),var(--misora))">
       <div>
         <div class="pb-book-title">${STORY_INDEX.title}</div>
-        <div class="pb-book-sub">把已學過的劇情/文法卡串成新手第一條路線</div>
+        <div class="pb-book-sub">把劇情與能力串成新手第一條成長路線</div>
         <div class="story-idx-more">📖 更多章節製作中…</div>
       </div>
       <span id="storyIndexToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
