@@ -580,6 +580,13 @@ function _talkDaysAgoLabel(ts){
   return Math.floor(days / 30) + '個月前';
 }
 
+function _talkGrowIntroHtml(){
+  const KEY = 'peppa_talk_grow_intro_seen_v1';
+  if (localStorage.getItem(KEY)) return '';
+  localStorage.setItem(KEY, '1');
+  return `<div class="talk-grow-intro">🌿 小苗不是要寫得完美，只要今天比昨天，多長一句就好。</div>`;
+}
+
 function talkToggleGrow(id){
   _talkGrowingId = (_talkGrowingId === id) ? null : id;
   renderTalkList();
@@ -646,6 +653,7 @@ function renderTalkList(){
     const seedText = t.voice || sentences.map(s=>s.es).join(' ');
     const growFormHtml = _talkGrowingId === t.id ? `
       <div class="talk-grow-form">
+        ${_talkGrowIntroHtml()}
         <div class="talk-grow-seed-label">🌱 以前種的小苗</div>
         <div class="talk-grow-seed-text">${_diaryEsc(seedText)}</div>
         <div class="talk-grow-hint-label">可以試試加：</div>
