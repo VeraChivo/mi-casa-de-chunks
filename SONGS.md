@@ -91,3 +91,42 @@
 | Enrique y Ana | La Gallina Turuleca | A2 | 動物/數字 | ❌不採用 | 查證：查到明確版權登記（Copyright El-Momento-Musical Editorial，作曲人Genaro Monreal Lacosta/Alfonso Jofre de Villegas Cernuda），版權狀態最明確，肯定不能收 |
 
 **⚠️ 2026-07-19 查證結論**：這批「隔壁AI」推薦的5首全部是 Los Payasos de la Tele／Toy Cantando 這類現代兒童娛樂產業作品（1970s-2000s），不是像 Arroz con Leche／Estrellita／Los Pollitos Dicen 那樣真正查無版權人的傳統歌謠——同一批推薦裡有4首都指向同一個西班牙1970s兒童節目團體，模式很像之前抓到的 Bartolito/Pin Pón 案例（隔壁AI常把「很多人小時候聽過、感覺很像傳統兒歌」跟「真的是公共財」搞混）。這5首都不採用，若真想用只能走「純連結嵌YouTube播放器、不轉貼歌詞」的安全版本，不能做成本站的填空卡格式。
+
+---
+
+## 🌳 Chunk 驅動候選池（2026-07-19，VERA提出的新邏輯）
+
+**核心原則轉變**：判斷收不收一首歌，不是「好不好聽」，而是「這首歌能不能讓某個 Chunk 家族長出一根枝」——見 `maintenance.js` 的「🌳 Chunk 家族健康檢查」，這份候選池就是專門針對 TENER/HACER 家族目前缺🎵歌曲對應的分支去搜的。
+
+**⚠️ 狀態說明**：以下全部是 WebSearch 列出的真實搜尋結果（標題/歌詞摘錄都直接取自搜尋結果，不是自己編的），但**還沒有VERA親自聽過確認**，一律是「🌱待查證」，不能直接當「已收錄」使用。VERA要的話繼續搜，搜完先留在候選池，不要急著收錄。
+
+| 語塊分支 | 候選歌曲 | 歌手/來源 | 摘錄歌詞 | 文法／語用價值 | 難度 | 狀態 |
+|---|---|---|---|---|---|---|
+| tener miedo | Hoy Tengo Miedo | Fobia（墨西哥搖滾） | "Hoy tengo miedo de salir otra vez" | tener miedo de + 原形動詞；副歌重複"tengo miedo"多次 | A2-B1 | 🌱待查證 |
+| tener miedo | Tengo Miedo | Los Brios | "Tengo miedo, que como un pájaro te me vueles de la mano" | ⚠️後半句是虛擬式(vueles)，對A2太難，只能取開頭"Tengo miedo"單獨用 | B1+ | 🌱待查證 |
+| tener ganas de | Hoy Tengo Ganas de Ti | Alejandro Fernández ft. Christina Aguilera | "Hoy tengo ganas de ti" | ⚠️這裡"de ti"接代名詞不是原形動詞，跟分支定義(tener ganas de+動詞)不完全對得上 | A2-B1 | 🌱待查證 |
+| hacer ejercicio | El Rap de los Deportes | Juan "D" y Beatriz（兒童教育饒舌） | "HAZ DEPORTE, HAZ EJERCICIO, MUEVE EL CUERPO" | ⚠️"HAZ"是命令式不是陳述式，跟HACER家族卡片標的hago/haces/hace變位形態不同 | A1-A2 | 🌱待查證 |
+| tener prisa | Tengo Prisa | Dragón y Caballero | "Tengo prisa para hacer de ti la mujer más feliz de este mundo" | tener prisa para + 原形動詞；同句還示範hacer de alguien algo(把...變成...)慣用法，但句子偏長 | B1 | 🌱待查證 |
+| tener razón | Tú Tienes Razón | Gusi y Mike Bahia | "Y tu tienes razón, aun cuando no la tengas / Siempre tienes la razón" | tener razón（陳述）＋no tener razón（否定），同一句對比正反用法，高頻片語 | A2 | 🌱待查證 |
+| tener suerte | ¡Qué Suerte! | Ángela Aguilar（另有1964年Violeta Rivas同詞版本） | "Qué suerte que tengo / Una madre tan buena" | tener suerte的感嘆句型(¡Qué suerte que tengo!)，生活化、非戀愛主題，適合A2 | A2 | 🌱待查證 |
+| tener calor | Tengo Calor | Teo Lucadamo/BRAVA（2024）或 Bukano（2022） | 只查到歌名，**沒查到實際歌詞摘錄** | 無法評估——目前只是標題命中，不算真正查證，需要VERA自己聽 | 未知 | 🌱待查證（證據不足） |
+| hacer la tarea | （無合適候選） | — | 只搜到TikTok片段/播放清單，沒有具體歌曲 | — | — | 未找到 |
+| hacer un viaje | （無合適候選） | — | 搜尋結果明確說沒有查到含這句歌詞的具體歌曲 | — | — | 未找到 |
+| hacer caso | （無合適候選） | — | 搜尋結果都是「情歌主題類似」，沒有實際歌詞命中 | — | — | 未找到 |
+
+### 🔗 可連結內容（歌曲之後若收錄，可以回連到哪裡）
+
+| 候選歌曲 | 可連結 |
+|---|---|
+| Hoy Tengo Miedo | 🌳TENER樹／💬心語（面對陌生環境、嘗試新事物的情緒） |
+| Tú Tienes Razón | 🌳TENER樹／🪞腦中劇場（tienes razón陳述 vs 想像語氣對比） |
+| ¡Qué Suerte! | 🌳TENER樹／💬心語（感恩、日常小確幸） |
+| El Rap de los Deportes | 🌳HACER樹／👤莊園人物冊（命令式對照，如果決定收） |
+
+### 🌱 為什麼「tener miedo」「tener ganas de」「hacer ejercicio」這幾個分支值得優先收
+
+- **tener miedo**：tener+情緒名詞是高頻Chunk，可以順勢擴充成一組漸進句型——Tengo miedo. → Tengo miedo de... → No tengo miedo.——串起來剛好可以配腦中劇場的「面對陌生環境/嘗試新事物」情境。
+- **tener ganas de**：A2很重要的「想要」表達，比quiero更自然、更貼近日常口語（比較：Quiero comer helado. vs Tengo ganas de comer helado.，語感上後者更像「很想要」而非單純「要」），適合配腦中劇場做語感對比。
+- **hacer ejercicio**：hacer+活動本身是一整個家族的入口（hacer ejercicio／hacer la tarea／hacer un viaje／hacer una pregunta／hacer caso），歌曲可以當成這整組的敲門磚，不只是單一分支的填空。
+
+**下一步搜尋優先序（VERA指定）**：1. tener razón（已搜，見上表）2. hacer la tarea（已搜，未找到）3. tener calor（已搜，證據不足）4. hacer un viaje（已搜，未找到）5. tener suerte（已搜，見上表）6. hacer caso（已搜，未找到）——這6個都已經搜過一輪，3個有候選(razón/suerte/calor證據不足)、3個沒找到合適歌曲(tarea/viaje/caso)，維持候選池狀態，不採取進一步行動，等VERA決定要不要深入搜或換方向。
