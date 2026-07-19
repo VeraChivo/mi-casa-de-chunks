@@ -4419,7 +4419,7 @@ const ENTRY_MATRIX_ITEMS = [
   {icon:'🎵', label:'想聽歌學西語', sub:'聽歌填空', target:'lyrics'},
   {icon:'📰', label:'想看世界時事', sub:'B2時事傳送門', target:'news'},
   {icon:'📔', label:'想放鬆說說話', sub:'床邊低語呢', target:'mom'},
-  {icon:'🎲', label:'不知道學什麼', sub:'驚喜包（建置中）', target:'surprise', disabled:true}
+  {icon:'🎲', label:'小蜜蜂選給你', sub:'驚喜包（建置中）', target:'surprise', disabled:true}
 ];
 function entryMatrixJump(target){
   closeWelcomeTour();
