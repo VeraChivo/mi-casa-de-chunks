@@ -2790,11 +2790,18 @@ function _gsupLevelInfo(levelKey){
 }
 // ── 🧭 我是什麼程度？等級路標——不是獨立新區塊，掛在莊園導覽最後一步裡 ──
 const LEVEL_NAV_ITEMS = [
-  {icon:'🌱', label:'我是新手', sub:'從最基礎開始', level:'a1a2'},
+  {icon:'🌱', label:'我是新手', sub:'從第一句劇情開始', action:'start'},
   {icon:'💧', label:'我會基礎，想加深', sub:'日常對話再進階', level:'b1'},
   {icon:'🍯', label:'我要準備考試', sub:'DELE B2/C1程度', level:'b2c1'},
   {icon:'🗣️', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
 ];
+// 真正的新手要的不是文法卡列表，是直接開始跟著劇情學（2026-07-19 VERA指正）
+function jumpToStoryStart(){
+  closeWelcomeTour();
+  switchMainTab('play');
+  selectEp(0);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
 // 給「不是第一次來」的人直接跳進等級路標，不用重播整輪導覽（🗝️莊園導覽對回訪者會改跳農間小報，這個是專門的捷徑）
 function openLevelNavDirect(){
   const overlay = document.getElementById('welcomeTourOverlay');
@@ -4426,7 +4433,7 @@ function renderWelcomeTourStep(){
   const btnsHtml = s.levelButtons ? `
     <div class="lvlnav-grid">
       ${LEVEL_NAV_ITEMS.map(it => `
-        <button class="lvlnav-btn" onclick="jumpToLevelFilter('${it.level}')">
+        <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : `jumpToLevelFilter('${it.level}')`}">
           <span class="lvlnav-icon">${it.icon}</span>
           <span class="lvlnav-label">${it.label}</span>
           <span class="lvlnav-sub">${it.sub}</span>
