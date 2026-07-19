@@ -49,7 +49,22 @@ const MOM_ATM_DATA = {
       { es: "¡Esqueleto!",                      zh: "骷髏！\n例：A Tito le gusta su esqueleto. 迪多喜歡他的骷髏。",                          tag: "迪多專區" },
       { es: "¡Mira, Tito!",                    zh: "迪多你看！\n例：¡Mira, Tito, un globo! 迪多你看，一個氣球！",                           tag: "吸引注意" },
       { es: "¡Logrado!",                         zh: "搞定了！/ 挑戰成功！\n例：¡Logrado! Terminamos la tarea. 搞定了！我們完成任務了。",        tag: "大成功提示" },
-      { es: "¡Ve a pegarlo!",                    zh: "去貼上吧！/ 把它貼上去！\n例：¡Ve a pegarlo en tu cuaderno! 去把它貼在筆記本上吧！",      tag: "輸出發射" }
+      { es: "¡Ve a pegarlo!",                    zh: "去貼上吧！/ 把它貼上去！\n例：¡Ve a pegarlo en tu cuaderno! 去把它貼在筆記本上吧！",      tag: "輸出發射" },
+      { es: "Tengo hambre.",                     zh: "我肚子餓了。\n例：Tengo hambre, ¿qué hay de comer? 我肚子餓了，有什麼可以吃的？",           tag: "TENER家族" },
+      { es: "Tengo sed.",                        zh: "我口渴了。\n例：Tengo sed, quiero agua. 我口渴了，我要喝水。",                             tag: "TENER家族" },
+      { es: "Tengo frío.",                       zh: "我覺得好冷。\n例：Tengo frío, ¿me das un abrazo? 我好冷，可以抱抱我嗎？",                 tag: "TENER家族" },
+      { es: "Tengo calor.",                      zh: "我覺得好熱。\n例：Tengo calor, quiero quitarme el suéter. 我好熱，想把毛衣脫掉。",         tag: "TENER家族" },
+      { es: "Tengo miedo.",                      zh: "我會怕。\n例：Tengo miedo de la oscuridad. 我怕黑。",                                     tag: "TENER家族" },
+      { es: "Tienes razón.",                     zh: "你說得對。\n例：Tienes razón, mi amor. 寶貝你說得對。",                                   tag: "TENER家族" },
+      { es: "¡Qué suerte tienes!",               zh: "你好幸運喔！\n例：¡Qué suerte tienes hoy! 你今天真幸運！",                                 tag: "TENER家族" },
+      { es: "Tengo ganas de abrazarte.",         zh: "我好想抱抱你。\n例：Tengo ganas de jugar contigo. 我好想跟你一起玩。",                    tag: "TENER家族" },
+      { es: "Vamos a hacer ejercicio.",          zh: "我們來運動吧。\n例：Vamos a hacer ejercicio juntos. 我們一起來運動吧。",                   tag: "HACER家族" },
+      { es: "¿Puedo hacerte una pregunta?",      zh: "我可以問你一個問題嗎？\n例：¿Puedo hacerte una pregunta, mi amor? 寶貝我可以問你一個問題嗎？", tag: "HACER家族" },
+      { es: "Hay que hacer la tarea.",           zh: "該做功課囉。\n例：Primero la tarea, después jugamos. 先做功課，之後再玩。",               tag: "HACER家族" },
+      { es: "Vamos a hacer un viaje.",           zh: "我們要去旅行囉。\n例：Este verano vamos a hacer un viaje. 這個夏天我們要去旅行。",         tag: "HACER家族" },
+      { es: "Tienes que hacerle caso a mamá.",   zh: "要聽媽媽的話喔。\n例：Hazle caso a tu hermana. 要聽姐姐的話。",                            tag: "HACER家族" },
+      { es: "Hace frío hoy.",                    zh: "今天天氣好冷。\n例：Hace frío, ponte el abrigo. 天氣好冷，穿上外套吧。",                   tag: "HACER家族" },
+      { es: "Hace calor hoy.",                   zh: "今天天氣好熱。\n例：Hace calor, vamos a tomar agua. 天氣好熱，我們去喝水吧。",             tag: "HACER家族" }
     ]
   }
 };
