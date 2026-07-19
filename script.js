@@ -1045,7 +1045,7 @@ function vocabLongPressCancel(){
   clearTimeout(_vocabCopyTimer);
 }
 
-function renderVocab(){
+function renderVocab(filter){
   if(typeof renderChunkFamilies==='function') renderChunkFamilies();
   const countEl=document.getElementById('vocabCount');
   if(countEl) countEl.textContent=vocabList.length;
@@ -1055,10 +1055,19 @@ function renderVocab(){
     el.innerHTML='<div class="passbook-empty">空空如也，高手在這邊💎</div>';
     return;
   }
+  const q=(filter||'').toLowerCase().trim();
+  const searchHtml=`<input type="text" class="cog-search" id="vocabSearchInput" placeholder="🔍 搜尋已收藏的語塊…" value="${(filter||'').replace(/"/g,'&quot;')}">`;
+  const visibleList = q ? vocabList.filter(v=>v.text.toLowerCase().includes(q)||(v.zh||'').includes(q)) : vocabList;
+  if(q && !visibleList.length){
+    el.innerHTML = searchHtml + `<div class="passbook-empty">💎 存釀裡還沒有這個字，換個關鍵字找找看</div>`;
+    const input=document.getElementById('vocabSearchInput');
+    if(input){ input.oninput=()=>renderVocab(input.value); input.focus(); const len=input.value.length; input.setSelectionRange(len,len); }
+    return;
+  }
   const gdb=getGardenDB();
   const stageOf=v=>(gdb[v.text]||{stage:0}).stage;
-  const active=vocabList.filter(v=>stageOf(v)<4);
-  const done=vocabList.filter(v=>stageOf(v)>=4);
+  const active=visibleList.filter(v=>stageOf(v)<4);
+  const done=visibleList.filter(v=>stageOf(v)>=4);
   const renderCard=(v)=>{
     const stage=stageOf(v);
     const ex=findChunkExamples(v.text)[0];
@@ -1078,12 +1087,17 @@ function renderVocab(){
       </div>
     </div>`;
   };
-  let html=active.map(renderCard).join('');
+  let html=searchHtml + active.map(renderCard).join('');
   if(done.length){
     html+=`<div class="vocab-done-header">✓ 已熟悉（${done.length}）</div>`;
     html+=done.map(renderCard).join('');
   }
   el.innerHTML=html;
+  const input=document.getElementById('vocabSearchInput');
+  if(input){
+    input.oninput=()=>renderVocab(input.value);
+    if(filter!==undefined){ input.focus(); const len=input.value.length; input.setSelectionRange(len,len); }
+  }
 }
 
 function toggleVocabBox(){
