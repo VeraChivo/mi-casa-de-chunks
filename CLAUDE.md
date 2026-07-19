@@ -792,6 +792,26 @@ curl -s -X PUT \
       當成同源詞補上假的`cognateSourceChain`。**這個案例驗證了規則22的核心
       判準：同義不等於同源，同源庫要拒絕「看起來應該是一家人」但其實只是
       概念相近的詞**。
+    - **✅ 統一資料schema定案（2026-07-19，取代前一輪各自為政的
+      `notActualCognate`/`uncertainCognate`/`cognateSourceChain`三個獨立欄位）**：
+      每筆cognate資料統一用一個`cognateInfo`物件承載，欄位固定：
+      ```js
+      cognateInfo:{
+        relationType: 'confirmed' | 'uncertain' | 'falseFriend',
+        originRoot: '...',       // 共同詞根（confirmed/uncertain才有）
+        originChain: {...},     // 分支演變（confirmed/uncertain才有，同原本cognateSourceChain結構）
+        confidence: 'high' | 'medium' | 'low',
+        note: '...',            // falseFriend的原因，或uncertain的爭議點說明
+        source: '...'           // 查證依據，例如"etymonline.com/DeChile辭源辭典，2026-07-19查證"
+      }
+      ```
+      **不逼AI二選一，`uncertain`是正式狀態，不是待補的空缺**——像barren/barro、
+      chamber/cama、core/corazón這類學界本身有爭議的案例，`relationType:'uncertain'`
+      比硬判「同源」或「不同源」更誠實安全。
+      **「保姆詞/兒語詞」現象（如dad/papá）要分類進`falseFriend`，不要用獨立的
+      特殊理由欄位**——因為本質上跟其他假朋友一樣「表面像親戚，其實不是」，
+      只是成因不同（嬰幼兒發聲生理的跨語言巧合，不是詞源傳承），仍歸類在
+      `falseFriend`底下，`note`欄位解釋這個特殊成因即可，不需要另開分類。
 23. **能力卡「AI語氣清理」標準指令（2026-07-19 VERA定案，之後任何工程AI要調整能力卡文字時，直接貼這段指令，避免重寫內容/改掉教學邏輯）**：
     ```
     請針對能力卡內文做「AI語氣清理」，不要改變原本知識內容、例句、邏輯順序。
