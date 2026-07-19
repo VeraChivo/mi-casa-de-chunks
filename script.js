@@ -120,8 +120,14 @@ function initTTS(){
   speechSynthesis.addEventListener('voiceschanged', pickVoice);
 }
 
+// ── 語音朗讀的瀏覽器支援檢查：統一從這裡跳提示，不要各自複製一份措辭微妙不一致的錯誤訊息 ──
+function _ttsUnsupported(){
+  if(window.speechSynthesis) return false;
+  toast('⚠️ 這個瀏覽器聽不懂西語，換Chrome之類的瀏覽器再試試看');
+  return true;
+}
 function speakWord(text, el){
-  if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音'); return; }
+  if(_ttsUnsupported()) return;
   const clean = text.replace(/[¡!¿?,.:;\s]/g,'').trim();
   if(!clean) return;
   _stopActiveAudio();
@@ -202,7 +208,7 @@ function speakMapSmart(map, catKey, idx, text){
 }
 
 function testTTS(){
-  if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音朗讀'); return; }
+  if(_ttsUnsupported()) return;
   // Force init voices on first user tap
   if(!ttsReady){ initTTS(); }
   speakWord('Hola amigos', document.querySelector('.tts-badge'));
@@ -864,7 +870,7 @@ function toggleCogLibrary(){
 // ── 🔊 英文單字TTS：cog-en 點了就唸英文（跟旁邊西語字點了唸西語對稱），
 // 取代原本42軌固定循環播放器（2026-07-19 撤掉：跟依規律/搜尋篩選後的畫面對不上，點了聽不到眼前這行）──
 function speakEnglishWord(text){
-  if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音'); return; }
+  if(_ttsUnsupported()) return;
   const clean = String(text).replace(/[¡!¿?,.:;\s]/g,'').trim();
   if(!clean) return;
   _stopActiveAudio();
@@ -894,8 +900,9 @@ function renderCogLibrary(filter){
     SUFFIX_PATTERNS.forEach(p=>{
       html+=`<details class="suffix-group"><summary class="suffix-summary"><span class="suffix-rule">${p.rule}</span><span class="suffix-hint">${p.hint}</span></summary><div class="suffix-body">`;
       html+=p.words.map(w=>{
+        const _sgCell = (art, form) => `<span class="sg-cell gender-${art==='el'?'ms':art==='la'?'fs':art==='los'?'mp':'fp'}" onclick="event.stopPropagation();speakWord('${escAttr(form)}',this)">${art} ${form}</span>`;
         const genderHtml = w.gendered
-          ? `<div class="suffix-gender-row"><span class="sg-cell gender-ms">el ${w.gendered.ms}</span><span class="sg-cell gender-fs">la ${w.gendered.fs}</span><span class="sg-cell gender-mp">los ${w.gendered.mp}</span><span class="sg-cell gender-fp">las ${w.gendered.fp}</span></div>`
+          ? `<div class="suffix-gender-row">${_sgCell('el',w.gendered.ms)}${_sgCell('la',w.gendered.fs)}${_sgCell('los',w.gendered.mp)}${_sgCell('las',w.gendered.fp)}</div>`
           : '';
         const addBtnHtml = isVocabWorthy(w.es) ? `<span class="vocab-add-btn" onclick="addToVocab('${escAttr(w.es)}','${escAttr(w.zh)}','詞綴規律')">＋</span>` : '';
         const exPlayExpr = w.ex ? `speakGramSmart('${escAttr(w.ex.es)}')` : '';
@@ -968,7 +975,7 @@ function renderCogLibrary(filter){
 
   const filtered = COGNATE_LIBRARY.filter(c => !q || c.en.toLowerCase().includes(q)||c.es.toLowerCase().includes(q)||c.zh.includes(q));
   if(!filtered.length && q){
-    html+=`<div class="passbook-empty">找不到符合的詞彙</div>`;
+    html+=`<div class="passbook-empty">🫐 這片野莓叢裡還沒長出這個字，換個關鍵字找找看</div>`;
   } else if(!q && _cogViewMode==='pattern'){
     // 依規律分組（同一份資料換個角度看，不影響原始 ep 分類）
     const patOrder=['suffix','double','sound','core','other'];
@@ -3425,7 +3432,7 @@ function ammoChunkTap(el, word, hideYg, note){
 }
 
 function speakSentence(text){
-  if(!window.speechSynthesis){ toast('⚠️ 此瀏覽器不支援語音'); return; }
+  if(_ttsUnsupported()) return;
   _stopActiveAudio();
   try{ speechSynthesis.cancel(); }catch(e){}
   const utt = new SpeechSynthesisUtterance(text);

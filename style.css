@@ -831,7 +831,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 
 /* ── 性別四形式 ── */
 .suffix-gender-row{display:flex;gap:4px;flex-wrap:wrap;margin:3px 0 5px}
-.sg-cell{font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px}
+.sg-cell{font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;cursor:pointer}
 .sg-cell.gender-ms{background:rgba(108,155,210,.18);color:var(--misora)}
 .sg-cell.gender-fs{background:rgba(252,209,220,.6);color:#c05080}
 .sg-cell.gender-mp{background:rgba(108,155,210,.08);color:var(--konpeki)}

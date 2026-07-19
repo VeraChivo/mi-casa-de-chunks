@@ -450,7 +450,7 @@ function _talkRenderPicker(){
   if(!el) return;
   const groups = _talkGetPhrasePool();
   if(!groups.length){
-    el.innerHTML = `<div class="diary-empty-msg">找不到可挑選的片語</div>`;
+    el.innerHTML = `<div class="diary-empty-msg">💬 這裡暫時還沒有片語可以挑，晚點再回來看看</div>`;
     return;
   }
   el.innerHTML = `<div class="diary-tag-row">` + groups.map(g => {
