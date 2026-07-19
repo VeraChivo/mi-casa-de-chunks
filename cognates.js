@@ -329,10 +329,46 @@ const COGNATE_LIBRARY = [
       },
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'potent',    es:'poder',     art:'',    zh:'能夠／有力的', ep:'E1 · 泥巴坑'},
-  {en:'juggle',    es:'jugar',     art:'',    zh:'玩',         ep:'E1 · 泥巴坑'},
-  {en:'boots',     es:'botas',     art:'las', zh:'靴子',       ep:'E1 · 泥巴坑'},
-  {en:'duty',      es:'deber',     art:'',    zh:'必須／義務',  ep:'E1 · 泥巴坑'},
+  {en:'potent',    es:'poder',     art:'',    zh:'能夠／有力的', ep:'E1 · 泥巴坑',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'potis/posse（能夠、有力量）',
+      originChain:{branches:[
+        {language:'English', path:'potis → potens → potent', meaningShift:'能夠 → 有力的'},
+        {language:'Spanish', path:'potis → posse → potere → poder', meaningShift:'能夠 → 能夠（動詞）/權力（名詞）'}
+      ]},
+      source:'etymonline.com、buenospanish.com，2026-07-19查證'
+    }},
+  {en:'juggle',    es:'jugar',     art:'',    zh:'玩',         ep:'E1 · 泥巴坑',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'iocus/iocari（笑話、玩笑、開玩笑）',
+      originChain:{branches:[
+        {language:'English', path:'iocari → ioculari → jogler(古法語) → juggle', meaningShift:'開玩笑 → 表演雜耍'},
+        {language:'Spanish', path:'iocari → jugar', meaningShift:'開玩笑 → 玩'}
+      ]},
+      source:'etymonline.com、spanishetymology.com，2026-07-19查證（英文joke也是同一家族）'
+    }},
+  {en:'boots',     es:'botas',     art:'las', zh:'靴子',       ep:'E1 · 泥巴坑',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'medium',
+      originRoot:'古法語bote/botte（源頭不明，可能來自法蘭克語*butt「切短、鈍」）',
+      originChain:{branches:[
+        {language:'English', path:'古法語bote → boot(s)', meaningShift:'鞋靴'},
+        {language:'Spanish', path:'古法語botte → bota(s)', meaningShift:'鞋靴（13世紀借入）'}
+      ]},
+      source:'etymonline.com、Wiktionary，2026-07-19查證（英西各自從古法語借入，不是直接互相衍生，但共同源頭確認）'
+    }},
+  {en:'duty',      es:'deber',     art:'',    zh:'必須／義務',  ep:'E1 · 泥巴坑',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'debere（虧欠、應該）',
+      originChain:{branches:[
+        {language:'English', path:'debere → debitus → 古法語deu → duty', meaningShift:'虧欠 → 應盡的義務'},
+        {language:'Spanish', path:'debere → deber', meaningShift:'虧欠 → 必須、義務'}
+      ]},
+      source:'etymonline.com、buenospanish.com，2026-07-19查證'
+    }},
   {en:'charcoal',  es:'charco',    art:'el',  zh:'水坑',       ep:'E1 · 泥巴坑',
     cognateInfo:{
       relationType:'falseFriend', confidence:'high',
@@ -349,14 +385,41 @@ const COGNATE_LIBRARY = [
       note:'兩者詞源都指向可能的凱爾特語根，但查證後是不同的凱爾特詞根（barro←*barr-「泥土」；barren←bar-/baraigne「休耕地/裸露」），現有學術文獻對兩者是否真的同源持懷疑態度',
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'pass',      es:'pasar',     art:'',    zh:'通過／發生',  ep:'E1 · 泥巴坑'},
-  {en:'total',     es:'todos',     art:'',    zh:'全部／所有人', ep:'E1 · 泥巴坑'},
+  {en:'pass',      es:'pasar',     art:'',    zh:'通過／發生',  ep:'E1 · 泥巴坑',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'passus（腳步）',
+      originChain:{branches:[
+        {language:'English', path:'passus → 通俗拉丁語passare → 古法語passer → pass', meaningShift:'腳步 → 通過'},
+        {language:'Spanish', path:'passus → 通俗拉丁語passare → pasar', meaningShift:'腳步 → 通過、發生'}
+      ]},
+      source:'etymonline.com、Wiktionary，2026-07-19查證'
+    }},
+  {en:'total',     es:'todos',     art:'',    zh:'全部／所有人', ep:'E1 · 泥巴坑',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'totus（全部、整個）',
+      originChain:{branches:[
+        {language:'English', path:'totus → 中世紀拉丁語totalis → total', meaningShift:'全部 → 總計的'},
+        {language:'Spanish', path:'totus → todo(s)', meaningShift:'全部 → 全部、所有人'}
+      ]},
+      source:'etymonline.com、spanishetymology.com，2026-07-19查證'
+    }},
   // E2 · 骷髏先生不見了
   {en:'favorite',   es:'favorito',  art:'',    zh:'最喜歡的',   ep:'E2 · 骷髏先生不見了'},
   {en:'lateral',    es:'lado',      art:'el',  zh:'側面',       ep:'E2 · 骷髏先生不見了'},
   {en:'perdition',  es:'perdido',   art:'',    zh:'失落／弄丟了', ep:'E2 · 骷髏先生不見了'},
   {en:'preoccupy',  es:'preocupar', art:'',    zh:'擔心',       ep:'E2 · 骷髏先生不見了'},
-  {en:'detective',  es:'detective', art:'el',  zh:'偵探',       ep:'E2 · 骷髏先生不見了'},
+  {en:'detective',  es:'detective', art:'el',  zh:'偵探',       ep:'E2 · 骷髏先生不見了',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'detegere（揭開、發現，de+tegere「蓋」）',
+      originChain:{branches:[
+        {language:'English', path:'detegere → detectus → detective（17世紀英文自行用拉丁詞根+ive字尾造字）', meaningShift:'揭開 → 偵探'},
+        {language:'Spanish', path:'直接借用英文detective這個字（不是各自從拉丁文獨立造字，是西語借了英文已經造好的詞）', meaningShift:'偵探（詞形借用，但終極詞根相同）'}
+      ]},
+      source:'etymonline.com，2026-07-19查證（西語是借詞不是平行演變，但共同追溯到拉丁detegere仍成立）'
+    }},
   {en:'person',     es:'persona',   art:'la',  zh:'人',         ep:'E2 · 骷髏先生不見了'},
   {en:'bath',       es:'bañera',    art:'la',  zh:'浴缸',       ep:'E2 · 骷髏先生不見了',
     cognateInfo:{
