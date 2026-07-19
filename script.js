@@ -3798,6 +3798,8 @@ const DTASK_ENERGY_OPTIONS = [
   {key:'normal', icon:'🔋🔋', label:'普通'},
   {key:'high',   icon:'🔋🔋🔋', label:'嗨'}
 ];
+// 能量提示的西語問候，依日期輪替，避免每天看到同一句
+const DTASK_ENERGY_PROMPT_ES = ['¿Cómo estás hoy?', '¿Qué tal te va el día de hoy?'];
 // 時間(10/20/30分) × 能量(low/normal/high) 兩個維度交叉，決定今天實際要做幾件、哪幾件任務
 // 低能量：即使時間夠，也只給最低限度；高能量：時間夠的話多塞一項，不逼低能量的人硬做滿
 const DAILY_TASK_RECIPES = {
@@ -3930,7 +3932,7 @@ function renderDailyTask(){
   if(!st.tier){
     el.innerHTML = `<div class="dtask-box">
       <div class="dtask-title">🌱 今日耕耘任務</div>
-      <div class="dtask-prompt">今日耕種時長是？</div>
+      <div class="dtask-prompt">參與耕種時間</div>
       <div class="dtask-chip-row">${chipRow}</div>
     </div>`;
     return;
@@ -3938,12 +3940,14 @@ function renderDailyTask(){
 
   if(!st.energy){
     const energyRow = DTASK_ENERGY_OPTIONS.map(e => `<span class="dtask-chip" onclick="dtaskPickEnergy('${e.key}')">${e.icon} ${e.label}</span>`).join('');
+    const dayIdx = Math.floor(Date.now()/86400000);
+    const energyEs = DTASK_ENERGY_PROMPT_ES[dayIdx % DTASK_ENERGY_PROMPT_ES.length];
     el.innerHTML = `<div class="dtask-box">
       <div class="dtask-title-row">
         <div class="dtask-title">🌱 今日耕耘任務</div>
         <span class="dtask-chip-row">${chipRow}</span>
       </div>
-      <div class="dtask-prompt">今天狀態如何？</div>
+      <div class="dtask-prompt">今天的你都好嗎？<span class="dtask-prompt-es" onclick="speakFull('${escAttr(energyEs)}')">${energyEs}</span></div>
       <div class="dtask-chip-row">${energyRow}</div>
     </div>`;
     return;
