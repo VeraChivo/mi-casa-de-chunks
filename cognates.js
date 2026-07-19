@@ -576,6 +576,3 @@ function buildCogDetails(data){
   </details>`;
 }
 
-// ── YouGlish Panel ──
-function openYGPanel(keyword){ window.open('https://youglish.com/pronounce/'+encodeURIComponent(keyword)+'/spanish','_blank','noopener'); }
-function closeYG(){}

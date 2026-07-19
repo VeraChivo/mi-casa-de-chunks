@@ -68,6 +68,22 @@
 - 🌳語塊家族：不是新的庫存數量系統，是把既有vocab/花園資料按語塊家族（TENER/HACER）重新分組，顯示關聯與成長（哪些枝已收集/下一枝是什麼/家族成熟度），偵測到新枝時顯示「你的XX樹有新變化」
 - 劇情索引改成收合式+水色系配色，修正視覺斷層問題
 
+## 2026-07-19（凌晨，同源詞/詞綴/假野莓單字：查字典降級成次要動作）
+
+VERA反饋「WordReference.com讓我很卡」——查證後發現🔤前後綴歡心／🍄假野莓／🫐同源詞庫三處的
+單字（`.cog-es`）點下去是**直接跳轉WordReference新分頁**，完全沒有先聽發音的機會，跟核心
+「理解→使用→內化」的莊園世界觀不符（外部字典搶走了主要流程）。
+
+**修正**
+- 三處單字改成：點一下＝🔊聽發音（`speakWord`，留在莊園裡）；長按＝📋複製（沿用既有`bindLongPressCopy`，
+  這個其實早就做了，只是查字典的預設動作蓋過了它）；新增一顆小的🔎按鈕，需要才查WordReference字典，
+  不再是預設動作。新增`_cogWordSpan()`共用函數，三處呼叫同一份邏輯，不重複三次
+- 順手清掉一個潛在混淆源：`script.js`跟`cognates.js`各自定義了一份`openYGPanel()`，內容完全不同
+  （一個開WordReference、一個開YouGlish），因為載入順序關係，`cognates.js`那份其實從來沒被執行過
+  （被後載入的`script.js`版本覆蓋），是YouGlish方向被放棄後留下的死程式碼（跟`closeYG(){}`一起，
+  零呼叫者）。這次順手移除，`openYGPanel`這個名字現在整站都不存在了，改直接呼叫`speakWord`/`openWordReference`
+- 已用Playwright驗證：點單字本身不會再跳轉、`.cog-dict-btn`才會觸發`window.open`到wordreference.com
+
 ## 2026-07-19（凌晨，🏰莊園人物冊進階篇 錄音從沒真正播放過的bug）
 
 **修正**

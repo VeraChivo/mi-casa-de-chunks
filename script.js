@@ -55,15 +55,16 @@ function openYG(word, lang){
   window.open(url, '_blank', 'noopener');
 }
 
-// ── WORDREFERENCE 直接跳轉（給單字：同源詞庫、詞綴單字卡）──
-function openYGPanel(word){
-  openWordReference(String(word).replace(/[¡¿.,!?;:（）]/g,'').trim());
-}
-
 function openWordReference(word){
   if(!word) return;
   window.open('https://www.wordreference.com/es/translation.asp?spen='+encodeURIComponent(word),'_blank','noopener');
   showPronBackup(word);
+}
+
+// ── 同源詞庫／詞綴單字卡／假野莓的單字列共用：點一下＝🔊聽發音（主要）、長按＝📋複製（既有bindLongPressCopy）、
+// 🔎小按鈕＝查WordReference（次要，需要才點，不是預設動作）2026-07-19依VERA反饋「查字典很卡」修正 ──
+function _cogWordSpan(word, art){
+  return `<span class="cog-es" onclick="if(this.dataset.lpcFired){this.dataset.lpcFired='';return;}speakWord('${escAttr(word)}',this)">${art?`<span class="cog-art">${art}</span> `:''}${word}</span><button class="cog-dict-btn" onclick="event.stopPropagation();openWordReference('${escAttr(word)}')" title="查 WordReference 字典">🔎</button>`;
 }
 
 // ── 陌生詞彙收藏點擊：依內容判斷單字或語塊 ──
@@ -960,7 +961,7 @@ function renderCogLibrary(filter){
           <div class="suffix-word-row">
             <span class="cog-en">${w.en}</span>
             <span class="cog-arrow">→</span>
-            <span class="cog-es" onclick="openYGPanel('${escAttr(w.es)}')">${w.art?`<span class="cog-art">${w.art}</span> `:''}${w.es}</span>
+            ${_cogWordSpan(w.es, w.art)}
             <span class="cog-zh">${w.zh}</span>
             ${addBtnHtml}
           </div>
@@ -980,7 +981,7 @@ function renderCogLibrary(filter){
     html+=FALSE_COGNATES.map(f=>`
       <div class="falsecog-card">
         <div class="falsecog-row">
-          <span class="cog-es" onclick="openYGPanel('${escAttr(f.es)}')">${f.art?`<span class="cog-art">${f.art}</span> `:''}${f.es}</span>
+          ${_cogWordSpan(f.es, f.art)}
           <span class="falsecog-notlike"><span class="falsecog-icon">🚫</span> 不是「${f.looksLike}」（${f.wrongZh}）</span>
         </div>
         <div class="falsecog-real">✅ 真正意思：${f.realZh}</div>
@@ -1012,7 +1013,7 @@ function renderCogLibrary(filter){
         <div class="cog-row">
           <span class="cog-en">${c.en}</span>
           <span class="cog-arrow">→</span>
-          <span class="cog-es" onclick="openYGPanel('${escAttr(c.es)}')">${c.art?`<span class="cog-art">${c.art}</span> `:''}${c.es}</span>
+          ${_cogWordSpan(c.es, c.art)}
           <span class="cog-zh">${c.zh}</span>
           <span class="vocab-add-btn" onclick="addToVocab('${escAttr(c.es)}','${escAttr(c.zh)}','同源詞庫')">＋</span>
         </div>`;
