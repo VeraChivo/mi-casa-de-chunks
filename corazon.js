@@ -94,9 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if(!container) return;
   let html = '';
   CORAZON_DATA.forEach(cat => {
-    html += `<div class="mom-category card-container">
-      <div class="mom-cat-title">${cat.title}</div>
-      <div class="mom-cat-desc">${cat.desc}</div>
+    html += `<details class="mom-category card-container">
+      <summary class="mom-cat-summary">
+        <div class="mom-cat-title">${cat.title}</div>
+        <div class="mom-cat-desc">${cat.desc}</div>
+      </summary>
       <div class="mom-cards-col">`;
     cat.items.forEach((item, itemIdx) => {
       const lineHtml = (typeof renderScriptLine === 'function') ? renderScriptLine(item.es, `speakGramSmart('${escAttr(item.es)}')`) : item.es;
@@ -107,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="card-chinese-translation">${item.zh}</div>
       </div>`;
     });
-    html += `</div></div>`;
+    html += `</div></details>`;
   });
   container.innerHTML = html;
 });

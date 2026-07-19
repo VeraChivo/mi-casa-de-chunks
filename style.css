@@ -1010,6 +1010,13 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .mom-cat-title{font-size:14px;font-weight:800;color:var(--konpeki);margin-bottom:3px}
 .mom-cat-desc{font-size:11px;color:var(--tmid);margin-bottom:10px}
 .mom-cards-col{display:flex;flex-direction:column;gap:7px}
+/* 💬心田深耕：每個小主題各自收合（2026-07-19），summary去掉預設三角形/list樣式 */
+.mom-cat-summary{cursor:pointer;list-style:none;display:block}
+.mom-cat-summary::-webkit-details-marker{display:none}
+.mom-cat-summary::marker{content:''}
+.mom-cat-summary .mom-cat-title::before{content:'▶ ';color:var(--tlight);font-size:11px}
+details.mom-category[open] > .mom-cat-summary .mom-cat-title::before{content:'▼ ';}
+details.mom-category .mom-cards-col{margin-top:8px}
 .mom-atm-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:12px;border:1.5px solid var(--usumizu);border-radius:10px;background:white;cursor:pointer}
 .gestalt-tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px}
 .gestalt-tag.type-c{background:rgba(46,196,182,.1);border:1px solid #2ec4b6;color:#0f9f90}
