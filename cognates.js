@@ -375,10 +375,18 @@ const COGNATE_LIBRARY = [
       note:'charcoal源自古英語charren(轉變)+cole(煤炭)，純日耳曼語構詞；charco是西班牙前羅馬時期的伊比利語底層詞，兩者詞源完全不相干，只是拼字剛好相似，純屬巧合，連🌐語感橋樑都不適合放',
       source:'etymonline.com，2026-07-19查證'
     }},
-  {en:'enchant',   es:'encantar',  art:'',    zh:'使著迷／超愛', ep:'E1 · 泥巴坑'},
-  {en:'counter',   es:'contra',    art:'',    zh:'相對／遇見',  ep:'E1 · 泥巴坑'},
-  {en:'encounter', es:'encontrar', art:'',    zh:'找到／遭遇',  ep:'E1 · 泥巴坑'},
-  {en:'grand',     es:'grande',    art:'',    zh:'宏大／大的',  ep:'E1 · 泥巴坑'},
+  {en:'enchant',   es:'encantar',  art:'',    zh:'使著迷／超愛', ep:'E1 · 泥巴坑',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'incantare（唱咒語）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'counter',   es:'contra',    art:'',    zh:'相對／遇見',  ep:'E1 · 泥巴坑',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'contra（相對、反對）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'encounter', es:'encontrar', art:'',    zh:'找到／遭遇',  ep:'E1 · 泥巴坑',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'in+contra（通俗拉丁incontrare，與counter/contra同一詞根）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'grand',     es:'grande',    art:'',    zh:'宏大／大的',  ep:'E1 · 泥巴坑',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'grandis（大的）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
   {en:'barren',    es:'barro',     art:'el',  zh:'泥巴',       ep:'E1 · 泥巴坑',
     cognateInfo:{
       relationType:'uncertain', confidence:'low',
@@ -406,10 +414,18 @@ const COGNATE_LIBRARY = [
       source:'etymonline.com、spanishetymology.com，2026-07-19查證'
     }},
   // E2 · 骷髏先生不見了
-  {en:'favorite',   es:'favorito',  art:'',    zh:'最喜歡的',   ep:'E2 · 骷髏先生不見了'},
-  {en:'lateral',    es:'lado',      art:'el',  zh:'側面',       ep:'E2 · 骷髏先生不見了'},
-  {en:'perdition',  es:'perdido',   art:'',    zh:'失落／弄丟了', ep:'E2 · 骷髏先生不見了'},
-  {en:'preoccupy',  es:'preocupar', art:'',    zh:'擔心',       ep:'E2 · 骷髏先生不見了'},
+  {en:'favorite',   es:'favorito',  art:'',    zh:'最喜歡的',   ep:'E2 · 骷髏先生不見了',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'favor（拉丁語favor，經義大利語favorito）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'lateral',    es:'lado',      art:'el',  zh:'側面',       ep:'E2 · 骷髏先生不見了',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'latus/lateris（側面）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'perdition',  es:'perdido',   art:'',    zh:'失落／弄丟了', ep:'E2 · 骷髏先生不見了',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'perdere（失去、毀滅）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'preoccupy',  es:'preocupar', art:'',    zh:'擔心',       ep:'E2 · 骷髏先生不見了',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'praeoccupare（預先佔據）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
   {en:'detective',  es:'detective', art:'el',  zh:'偵探',       ep:'E2 · 骷髏先生不見了',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
@@ -420,7 +436,9 @@ const COGNATE_LIBRARY = [
       ]},
       source:'etymonline.com，2026-07-19查證（西語是借詞不是平行演變，但共同追溯到拉丁detegere仍成立）'
     }},
-  {en:'person',     es:'persona',   art:'la',  zh:'人',         ep:'E2 · 骷髏先生不見了'},
+  {en:'person',     es:'persona',   art:'la',  zh:'人',         ep:'E2 · 骷髏先生不見了',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'persona（拉丁語，面具、戲劇角色，後引申為人）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
   {en:'bath',       es:'bañera',    art:'la',  zh:'浴缸',       ep:'E2 · 骷髏先生不見了',
     cognateInfo:{
       relationType:'falseFriend', confidence:'high',
@@ -482,7 +500,9 @@ const COGNATE_LIBRARY = [
       note:'game源自古英語gamen（日耳曼語族*gamaną），juego源自拉丁語iocus（笑話、娛樂）——兩者詞源不同，只是概念相近（都表示玩樂/遊戲），適合當🌐語感橋樑候選（兩種語言用不同的詞表達同一個生活概念）',
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'princess',  es:'princesa',  art:'la',  zh:'公主',            ep:'E3 · 最好的朋友'},
+  {en:'princess',  es:'princesa',  art:'la',  zh:'公主',            ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'princeps（拉丁語，第一位、統治者）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
   {en:'account',   es:'cuento',    art:'el',  zh:'帳戶、帳目、說明、敘述（account）／故事（cuento）', ep:'E3 · 最好的朋友',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
@@ -495,10 +515,18 @@ const COGNATE_LIBRARY = [
       },
       source:'etymonline.com、elcastellano.org，2026-07-19查證'
     }},
-  {en:'gusto',     es:'gustar',    art:'',    zh:'品味／享受／喜歡', ep:'E3 · 最好的朋友'},
-  {en:'doctor',    es:'doctora',   art:'la',  zh:'醫生',            ep:'E3 · 最好的朋友'},
-  {en:'infirmary', es:'enfermera', art:'la',  zh:'醫務室／護士',    ep:'E3 · 最好的朋友'},
-  {en:'respire',   es:'respirar',  art:'',    zh:'呼吸',            ep:'E3 · 最好的朋友'},
+  {en:'gusto',     es:'gustar',    art:'',    zh:'品味／享受／喜歡', ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'gustus/gustare（拉丁語，品嚐）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'doctor',    es:'doctora',   art:'la',  zh:'醫生',            ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'docere（拉丁語，教導）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'infirmary', es:'enfermera', art:'la',  zh:'醫務室／護士',    ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'infirmus（拉丁語，虛弱、生病的）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'respire',   es:'respirar',  art:'',    zh:'呼吸',            ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'respirare（拉丁語，呼吸）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
   {en:'profound',  es:'hondo',     art:'',    zh:'深刻的（profound）／深的（hondo）', ep:'E3 · 最好的朋友',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
@@ -511,14 +539,18 @@ const COGNATE_LIBRARY = [
       },
       source:'spanishetymology.com，2026-07-19查證'
     }},
-  {en:'credible',  es:'creer',     art:'',    zh:'相信',            ep:'E3 · 最好的朋友'},
+  {en:'credible',  es:'creer',     art:'',    zh:'相信',            ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'credere（拉丁語，相信）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
   {en:'core',      es:'corazón',   art:'el',  zh:'核心／心臟',      ep:'E3 · 最好的朋友',
     cognateInfo:{
       relationType:'uncertain', confidence:'low',
       note:'corazón確定源自拉丁語cor（心，PIE字根*kerd-）；但英文core的詞源本身不確定——字典多標「obscure and uncertain origin」，可能來自古法語cuer/coeur（源自拉丁cor，若成立則兩者同源），也可能來自古法語cors（源自拉丁corpus「身體」，不同字根），或甚至是英語本土獨立詞——三種可能性並存',
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'cure',      es:'curar',     art:'',    zh:'治療／康復',      ep:'E3 · 最好的朋友'},
+  {en:'cure',      es:'curar',     art:'',    zh:'治療／康復',      ep:'E3 · 最好的朋友',
+    cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'curare（拉丁語，照顧、治療）',
+      source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
 ];
 
 // ── 同源詞「依規律」分類標籤（key=en，純瀏覽用的覆蓋分類，不影響上面依集數的原始資料）──
