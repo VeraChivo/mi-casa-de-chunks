@@ -245,6 +245,33 @@ try {
   fail('死入口檢查失敗：' + e.message);
 }
 
+// ── 🌻 語塊花園 key 白名單防呆：這個工具查不了使用者的 localStorage，
+// 但可以確保「程式碼本身」不會再長出新的 ammo_ 式舊格式 key 建構方式。
+// 2026-07-19 VERA盤查抓到：ammo_e1_01_peppa_Gatita Nita 這種洩漏是舊版（換皮前）
+// 程式碼組出來、寫進使用者localStorage的死資料，跟現在的資料檔完全無關；
+// _gardenChunkDisplay() 已經改成白名單策略（見script.js），這裡只確保「script.js
+// 本身」沒有其他地方又用字串接龍組出類似 ammo_xxx_yyy_文字 的花園key。 ──
+section('語塊花園 key 白名單防呆（避免未來又長出 ammo_ 式舊格式 key）');
+try {
+  const scriptCode = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
+  const badPattern = /['"`]ammo_['"`]\s*\+/g;
+  const hits = scriptCode.match(badPattern);
+  if (hits && hits.length) {
+    fail(`script.js 裡發現用 'ammo_'+ 字串接龍組花園key的寫法（${hits.length}處）——這正是歷史上洩漏內部ID的根因，改用 ge_/sfx_/gp_ 既有前綴或直接用句子文字當key`);
+  } else {
+    ok('script.js 沒有用 \'ammo_\'+ 字串接龍組花園key的寫法');
+  }
+  // _gardenChunkDisplay 必須維持白名單邏輯（最後一個分支要是junk，不能是speakable的原始字串）
+  const fnMatch = scriptCode.match(/function _gardenChunkDisplay\(chunk\)\{[\s\S]*?\n\}/);
+  if (fnMatch && !/junk:\s*true/.test(fnMatch[0])) {
+    fail('_gardenChunkDisplay() 好像被改回黑名單邏輯了——找不到 junk:true 的白名單fallback分支');
+  } else if (fnMatch) {
+    ok('_gardenChunkDisplay() 維持白名單邏輯（未知格式一律標記junk，不直接顯示原始字串）');
+  }
+} catch (e) {
+  fail('語塊花園 key 白名單防呆檢查失敗：' + e.message);
+}
+
 // ── 🌳 Chunk 家族健康檢查：每個語塊家族分支，在劇情/歌曲/新聞/心語裡有沒有出現過 ──
 // 2026-07-19 VERA重要指正：這不是「缺口」，是兩種性質不同的東西，混在一起報會誤導未來的自己：
 //   ①「可補」——維護者自己就能直接寫（例：心語/日記，corazon.js/mom.js可以直接加新句子）

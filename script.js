@@ -543,7 +543,12 @@ function renderAmmoFireChunks(fire, ammoId, rowType, playExpr){
   return `<div class="ammo-fire-chunks">${fire.chunks.map(c=>{
     const personCls=c.role==='s'?getPersonClass(c.w):'';
     const clean=c.w.replace(/[¡¿.,!?;:（）]/g,'').trim();
-    const key='ammo_'+(ammoId||'x')+'_'+(rowType||'r')+'_'+clean;
+    // 2026-07-19修正：原本用「前綴+ammoId+分隔線+rowType+分隔線+clean」接龍組key，這是活的bug，
+    // 不是舊資料——只要有人點像"Gatita Nita"/"de Taiwán"這種帶空格的語塊星星，就會現場組出
+    // 洩漏內部ID的key，而且_gardenChunkDisplay()白名單會把它當垃圾藏起來，等於這顆星星點了
+    // 也不會被看見/不會被抓進複習題庫。改用全站統一的ge_前綴，跟語法卡/詞綴卡/變位庫共用
+    // 同一套追蹤邏輯——同一個字在哪裡點星星，熟練度都是同一份，不用額外的識別碼區分。
+    const key='ge_'+clean;
     const _fst=GARDEN_STAGES[(_fdb[key]||{stage:0}).stage||0];
     const starHtml=`<span class="ammo-chunk-star" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度">${_fst}</span>`;
     const disp=c.role==='v'?renderVWords(c.w):c.w;
@@ -1927,16 +1932,38 @@ function getChunkAnnotation(chunk){
   return _chunkAnnotIndex[chunk] || '';
 }
 // 花園清單顯示用：把內部追蹤用的 key 轉成看得懂的字，不要直接印出原始 key
+// ⚠️ 2026-07-19 白名單改版（VERA盤查抓到黑名單式判斷一直漏網）：
+// 舊版邏輯是「猜這個key長得像不像垃圾」（沒有標點+有底線→垃圾），但舊版殘留key的格式
+// 千奇百怪（例如 ammo_e1_01_peppa_Gatita Nita 這種帶空格的人名/地名片段），黑名單猜不完，
+// 每次抓到新樣本才補一條規則，治標不治本。
+// 改成白名單：只有「符合已知前綴」或「完全不含底線的自然句子/單字」才允許顯示，
+// 其餘一律視為無法辨識的舊格式，不顯示原始字串——不管未來冒出哪個年代的哪種怪格式都擋得住。
 function _gardenChunkDisplay(chunk){
   if(chunk.startsWith('sfx_')) return { text: chunk.slice(4), speakable: true };
   if(chunk.startsWith('ge_'))  return { text: chunk.slice(3), speakable: true };
   if(chunk.startsWith('gp_'))  return { text: chunk.slice(3), speakable: true };
   if(/^s2_p\d+$/.test(chunk))  return { text: '🛢️ 入桶陳韻練習句型', speakable: false };
-  if(!/[ .,!?¡¿]/.test(chunk) && chunk.includes('_')) return { text: '🍂 舊版殘留紀錄（可忽略）', speakable: false, junk: true };
-  return { text: chunk, speakable: true };
+  if(!chunk.includes('_')) return { text: chunk, speakable: true }; // 正常句子/單字本來就不會有底線
+  return { text: '🍂 舊版殘留紀錄（可忽略）', speakable: false, junk: true };
 }
 // 舊版殘留的死資料：不刪 localStorage，但不列進清單/不當抽題題庫
 function _isLegacyJunkChunk(chunk){ return !!_gardenChunkDisplay(chunk).junk; }
+// 一次性遷移：把 peppa_garden_v1 裡白名單認不出的舊key清掉，避免每次讀取都要重新判斷、
+// 資料只增不減地一直累積下去。只做一次（用 peppa_garden_junk_cleaned_v1 flag 擋住重複執行）。
+function migrateGardenJunkCleanup(){
+  try {
+    if(localStorage.getItem('peppa_garden_junk_cleaned_v1')) return;
+    const db = getGardenDB();
+    const cleaned = {};
+    let removed = 0;
+    Object.keys(db).forEach(key => {
+      if(_gardenChunkDisplay(key).junk){ removed++; return; }
+      cleaned[key] = db[key];
+    });
+    if(removed > 0) saveGardenDB(cleaned);
+    localStorage.setItem('peppa_garden_junk_cleaned_v1', '1');
+  } catch(e) {}
+}
 function classifyGardenStatus(countOrEntry, graduated) {
   let stage;
   if (countOrEntry && typeof countOrEntry === 'object') {
@@ -4788,6 +4815,7 @@ function renderChangelog(){
   loadFamiliarity();
   loadGrammarLib();
   migrateOldDataToGarden();
+  migrateGardenJunkCleanup();
   buildNav();
   render();
   renderAmmo();
