@@ -720,16 +720,16 @@ const GRAMMAR_DATA = [
       title:"🌿 IR + a + 動詞：不只一種畫面",
       intro:"同一個「就要...了」骨架，因為想讓對方知道的事不同，會長出不同分支——不是同義句堆疊，每句背後的溝通目的都不一樣。",
       items:[
-        {es:"Voy al parque.", zh:"🚶移動：單純講我要去哪裡（後面接地點，不接動詞）"},
+        {es:"¡Vamos al parque!", zh:"🚶移動：單純講去哪裡，不接動詞（🛌床邊低語呢生活指令原句）"},
         {es:"Mamá siempre te va a cuidar.", zh:"🤝行動安排：持續性的承諾，不是一次性計畫（🛌床邊低語呢原句）"},
         {es:"Todo va a salir bien.", zh:"🔮結果預測：對還沒發生的結果表達安心（彈藥庫e2_04原句）"}
       ]
     },
     trap:"跟「Vamos a + 動詞」（見另一張卡）不要搞混：那張是限定「我們一起來」，這裡任何人稱都能用。ir 也能單獨表示「去某地點」：Voy al parque.（我要去公園）——後面接地點、不接動詞。六人稱完整變位可到🌀超級變變變查 ir。",
     crossLang:"快速對接：IR + a + 動詞＝英文 be going to——台語「欲（beh）」：我欲食（Guá beh tsia̍h）＝我要吃了；客語「愛（oi）」：𠊎愛食（Ngài oi sṳt）＝我要吃了。四種語言都在講『即將要做的事』，一秒對上！",
-    source:"劇情E2／彈藥庫e2_04／🛌床邊低語呢（core安全感）／文法補充",
+    source:"🛌床邊低語呢（生活指令）／🛌床邊低語呢（core安全感）／彈藥庫e2_04／文法補充",
     storyRoles:[
-      {es:"Voy al parque.", semanticRole:"movement", communicationGoal:"我想讓對方知道我要去哪裡", scene:"對話／生活指令（mom.js真實tag）"},
+      {es:"¡Vamos al parque!", semanticRole:"movement", communicationGoal:"我想讓對方知道我要去哪裡", scene:"🛌床邊低語呢／生活指令（mom.js真實tag，真實例句）"},
       {es:"Todo va a salir bien.", semanticRole:"prediction", communicationGoal:"我想讓對方放心、感到安慰", scene:"情緒支持／安慰對話（彈藥庫e2_04真實語境）"},
       {es:"Mamá siempre te va a cuidar.", semanticRole:"action-plan", communicationGoal:"我想讓對方知道我會一直守護你", scene:"bedtime（mom.js真實scene欄位）"}
     ]
