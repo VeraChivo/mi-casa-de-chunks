@@ -2329,29 +2329,40 @@ const GRAMMAR_DATA = [
 
   {
     id:"g109", cat:"verb-pattern", level:"a1a2",
-    title:"IR和HACER動詞家族：核心動詞怎麼長出一整串句子",
-    rule:"IR（去）和HACER（做）是西語使用頻率最高的兩個動詞之一，但課本常常只教變位表（voy/vas/va），沒有教「這個動詞可以接什麼、長成哪些句子」——像g19已經教過IR+a+原形動詞（近未來式），這裡把IR/HACER其他常見搭配整理成一個家族，一次看到這個動詞能延伸出多少實用句子。",
+    title:"HACER：從「做」長出的生活變化",
+    rule:"很多人學HACER只記得「做」，但它真正的核心是「讓某件事發生/產生一個結果」——不只是做事情，還能講天氣、講時間距離，這幾種用法乍看不同，但核心都是「因為hacer，世界多了/變了一件事」。IR的部分已經在g19教過了，這裡專注在HACER自己的生活路線。",
     examples:[
-      {es:"Voy a la tienda.", zh:"我要去商店。（ir a + 地點：單純的「去某個地方」）"},
-      {es:"Voy a comer.", zh:"我要去吃飯。（ir a + 原形動詞：近未來式，見g19）"},
-      {es:"Voy por pan.", zh:"我去買麵包（順道去拿）。（ir por + 名詞：去拿/去取某樣東西）"},
-      {es:"Hago la comida.", zh:"我在做飯。（hacer + 名詞：最基本的「做某件事」）"},
-      {es:"Hago ejercicio todos los días.", zh:"我每天做運動。（hacer ejercicio：固定搭配，運動要用hacer不是practicar）"},
-      {es:"Hace frío hoy.", zh:"今天很冷。（hacer + 天氣：西語講天氣現象固定用hacer，不是estar，這是初學者常見的誤用點）"}
+      {es:"Mamá Cata hace un plan para el día.", zh:"貓媽媽排好了今天的行程。（劇情原句，E10）"},
+      {es:"Hace frío hoy.", zh:"今天很冷。（hacer + 天氣，西語固定用hacer不是estar）"},
+      {es:"Pero el Corazón fue herido hace mucho tiempo.", zh:"但本心很久以前就受了傷。（劇情原句，E15換詞組合）"}
     ],
     family:{
-      title:"🔨 HACER再補幾個常見搭配",
-      intro:"",
+      title:"🌿 HACER：不只一種畫面",
+      intro:"同一個「做/發生」骨架，因為想讓對方知道的事不同，會長出不同分支——不是同義句堆疊，每句背後的溝通目的都不一樣。",
+      items:[
+        {es:"Mamá Cata hace un plan para el día.", zh:"🛠️行動與創造：我做出/完成/安排了某件事（劇情原句，E10）"},
+        {es:"Hace frío hoy.", zh:"🌤️環境與身體感受：描述現在的環境/天氣感受（固定搭配，全站慣用）"},
+        {es:"Pero el Corazón fue herido hace mucho tiempo.", zh:"⏳時間距離：某件事距今多久（劇情原句，E15換詞組合）"}
+      ]
+    },
+    trap:"hacer frío（天氣冷）是初學者最常犯錯的地方——中文「天氣冷」直覺會想用「是/estar」，但西語的天氣現象（frío/calor/sol/viento）固定搭配hacer，這個不是邏輯規則，是約定俗成的固定搭配，直接背下來比推導原因更有效率。",
+    quirk:"❌ 直覺：「天氣是冷的」= ser/estar？<br>✅ 其實是：西語把天氣現象當成「正在發生的事」= hacer<br>❌ Está frío. → ✅ Hace frío.（今天很冷）<br>同樣邏輯套用在calor（熱）/sol（出太陽）/viento（起風），全部固定用hacer，不是ser/estar，直接背下來比推導原因更有效率。",
+    source:"劇情E10／劇情E15（換詞組合）／文法補充（🌿常用搭配庫另見下方）",
+    storyRoles:[
+      {es:"Mamá Cata hace un plan para el día.", semanticRole:"creation-action", communicationGoal:"我想讓對方知道我正在安排或完成什麼", scene:"E10劇情（真實例句）"},
+      {es:"Hace frío hoy.", semanticRole:"environmental-state", communicationGoal:"我想讓對方知道現在的環境感受", scene:"日常對話（固定搭配，全站慣用）"},
+      {es:"Pero el Corazón fue herido hace mucho tiempo.", semanticRole:"time-distance", communicationGoal:"我想讓對方知道某件事距今多久", scene:"E15劇情（真實換詞組合）"}
+    ],
+    extraFamily:{
+      title:"🔨 常用搭配庫（固定搭配，不是獨立語意分支）",
+      intro:"這些是hacer的高頻固定搭配——每句意思彼此不相通（背了hacer caso不代表能類推hacer別的名詞），是各自獨立的詞組，收在這裡當語塊參考，不升級成能力分支。",
       items:[
         {es:"hacer una pregunta", zh:"問一個問題（不是preguntar una pregunta，這是常見的中式直譯錯誤）"},
         {es:"hacer la tarea", zh:"做功課"},
         {es:"hacer un viaje", zh:"去旅行"},
         {es:"hacer caso", zh:"聽從、理會（No me hace caso＝他不理我）"}
       ]
-    },
-    trap:"hacer frío（天氣冷）是初學者最常犯錯的地方——中文「天氣冷」直覺會想用「是/estar」，但西語的天氣現象（frío/calor/sol/viento）固定搭配hacer，這個不是邏輯規則，是約定俗成的固定搭配，直接背下來比推導原因更有效率。",
-    quirk:"❌ 直覺：「天氣是冷的」= ser/estar？<br>✅ 其實是：西語把天氣現象當成「正在發生的事」= hacer<br>❌ Está frío. → ✅ Hace frío.（今天很冷）<br>同樣邏輯套用在calor（熱）/sol（出太陽）/viento（起風），全部固定用hacer，不是ser/estar，直接背下來比推導原因更有效率。",
-    source:"文法補充"
+    }
   },
 
   {

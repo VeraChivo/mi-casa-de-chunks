@@ -3384,6 +3384,16 @@ function openGrammarCard(gId){
           <span class="family-zh">${it.zh}</span>
         </div>`).join('')}</div>
     </div>` : '';
+  const extraFamilyHtml = g.extraFamily ? `
+    <div class="grammar-family">
+      <div class="family-title">${g.extraFamily.title}</div>
+      <div class="family-intro">${g.extraFamily.intro}</div>
+      <div class="family-items">${g.extraFamily.items.map(it=>`
+        <div class="family-item" onclick="speakGramSmart('${escAttr(it.es)}')">
+          <span class="family-es">${it.es}</span>
+          <span class="family-zh">${it.zh}</span>
+        </div>`).join('')}</div>
+    </div>` : '';
   const userExs = (grammarUserExamples[gId]||{}).user_examples||[];
   const userExHtml = userExs.length
     ? `<div class="grammar-user-examples">
@@ -3399,6 +3409,7 @@ function openGrammarCard(gId){
     <div class="grammar-examples">${exHtml}</div>
     ${buildConjTable(g.conj, g.id)}
     ${familyHtml}
+    ${extraFamilyHtml}
     ${g.trap?`<div class="grammar-tag-box tag-trap"><div class="grammar-tag-badge">⚠️ 常見陷阱</div><div class="grammar-tag-body">${g.trap}</div></div>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
     ${g.quirk?`<div class="grammar-tag-box tag-quirk"><div class="grammar-tag-badge">🐛 調皮特例</div><div class="grammar-tag-body">${g.quirk}</div></div>`:''}
