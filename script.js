@@ -63,8 +63,9 @@ function openWordReference(word){
 
 // ── 同源詞庫／詞綴單字卡／假野莓的單字列共用：點一下＝🔊聽發音（主要）、長按＝📋複製（既有bindLongPressCopy）、
 // 🔎小按鈕＝查WordReference（次要，需要才點，不是預設動作）2026-07-19依VERA反饋「查字典很卡」修正 ──
-function _cogWordSpan(word, art){
-  return `<span class="cog-es" onclick="if(this.dataset.lpcFired){this.dataset.lpcFired='';return;}speakWord('${escAttr(word)}',this)">${art?`<span class="cog-art">${art}</span> `:''}${word}</span><button class="cog-dict-btn" onclick="event.stopPropagation();openWordReference('${escAttr(word)}')" title="查 WordReference 字典">🔎</button>`;
+function _cogWordSpan(word, art, recIdx){
+  const clickExpr = recIdx ? `speakSuffixCognate('es',${recIdx},'${escAttr(word)}')` : `speakWord('${escAttr(word)}',this)`;
+  return `<span class="cog-es" onclick="if(this.dataset.lpcFired){this.dataset.lpcFired='';return;}${clickExpr}">${art?`<span class="cog-art">${art}</span> `:''}${word}</span><button class="cog-dict-btn" onclick="event.stopPropagation();openWordReference('${escAttr(word)}')" title="查 WordReference 字典">🔎</button>`;
 }
 
 // ── 陌生詞彙收藏點擊：依內容判斷單字或語塊 ──
@@ -882,6 +883,32 @@ function speakEnglishWord(text){
   setTimeout(() => { try{ speechSynthesis.speak(utt); }catch(e){} }, 150);
 }
 
+// ── 🎧 前後綴歡心區前42個字有VERA真人錄音（audio/vocab/cognates_sp／cognates_en），2026-07-19復原對照 ──
+// 錄音當時（0714）SUFFIX_PATTERNS前42個字剛好對應track 1-42，新字都是後來加在第44個字之後，
+// 這42個順序至今沒變過；之後若在這42個字「前面」插入新分類/新字，這個對照表就會全部錯位要重建
+let _suffixCognateAudioMap = null;
+function _suffixCognateAudioIdx(en){
+  if(!_suffixCognateAudioMap){
+    _suffixCognateAudioMap = {};
+    let i = 0;
+    SUFFIX_PATTERNS.forEach(p => p.words.forEach(w => {
+      i++;
+      if(i<=42) _suffixCognateAudioMap[w.en] = i;
+    }));
+  }
+  return _suffixCognateAudioMap[en] || null;
+}
+function speakSuffixCognate(lang, idx, fallbackWord){
+  const folder = lang==='es' ? 'audio/vocab/cognates_sp' : 'audio/vocab/cognates_en';
+  const prefix = lang==='es' ? 'sp-sp-eng' : 'eng-sp-eng';
+  _stopActiveAudio();
+  const player = new Audio(`${folder}/${prefix}_${String(idx).padStart(2,'0')}.mp3`);
+  _activeAudio = player;
+  const fallback = () => lang==='es' ? speakWord(fallbackWord) : speakEnglishWord(fallbackWord);
+  player.onerror = fallback;
+  player.play().catch(fallback);
+}
+
 let _cogViewMode = 'ep'; // 'ep'=依集數（預設）｜'pattern'=依規律分組
 function toggleCogViewMode(){
   _cogViewMode = _cogViewMode==='pattern' ? 'ep' : 'pattern';
@@ -917,12 +944,14 @@ function renderCogLibrary(filter){
           const connCls=ck.role==='c'?connFlowClass(ck.w):'';
           return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+(connCls?' '+connCls:'')+'" data-copy-text="'+escAttr(clean)+'" onclick="event.stopPropagation();'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
         }).join('');
+        const _recIdx = _suffixCognateAudioIdx(w.en);
+        const enClickExpr = _recIdx ? `speakSuffixCognate('en',${_recIdx},'${escAttr(w.en)}')` : `speakEnglishWord('${escAttr(w.en)}')`;
         return `
         <div class="suffix-word-card">
           <div class="suffix-word-row">
-            <span class="cog-en" onclick="event.stopPropagation();speakEnglishWord('${escAttr(w.en)}')">${w.en}</span>
+            <span class="cog-en" onclick="event.stopPropagation();${enClickExpr}">${w.en}</span>
             <span class="cog-arrow">→</span>
-            ${_cogWordSpan(w.es, w.art)}
+            ${_cogWordSpan(w.es, w.art, _recIdx)}
             <span class="cog-zh">${w.zh}</span>
             ${addBtnHtml}
           </div>
