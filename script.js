@@ -4271,7 +4271,7 @@ function getMorningBriefHTML(){
       <div class="morning-brief-hint">💡 ${lf.hint}</div>
       <div class="morning-brief-links">
         <a class="morning-brief-yt" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
-        <button class="morning-brief-answer-btn" onclick="jumpToLyricAnswer('${lf.id}')">🌾 去田裡核對</button>
+        <button class="morning-brief-answer-btn" onclick="jumpToLyricAnswer('${lf.id}')">🌾 前往田裡作答</button>
       </div>
       <button class="morning-brief-close" onclick="closeMorningBrief()">✕ 放下小報，出發</button>
     </div>`;
