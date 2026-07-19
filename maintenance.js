@@ -218,6 +218,33 @@ try {
   fail('內容孤兒檢查失敗：' + e.message);
 }
 
+// ── 死入口檢查：STORY_INDEX / CHUNK_FAMILIES 裡的按鈕，有沒有指向根本不存在的內容 ──
+// 跟上面「孤兒」正好相反：孤兒是「有卡片沒人連過去」，死入口是「有連結但連過去的東西不存在」，
+// 使用者點了按鈕卻什麼都看不到，比孤兒更嚴重（2026-07-19 VERA提出：莊園巡園週維護線第一項）。
+section('死入口檢查（按鈕/連結指向不存在的內容）');
+try {
+  const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
+  const STORY_INDEX = extractConstArray('script.js', 'STORY_INDEX');
+  const CHUNK_FAMILIES = extractConstArray('script.js', 'CHUNK_FAMILIES');
+  const { EPS } = loadArray('episodes.js', ['EPS']);
+  const gIds = new Set(GRAMMAR_DATA.map(g => g.id));
+
+  const deadLinks = [];
+  (STORY_INDEX.scenes || []).forEach(s => {
+    if (!s.jump) return;
+    if (s.jump.type === 'grammar' && !gIds.has(s.jump.id)) deadLinks.push(`STORY_INDEX「${s.label}」→ grammar ${s.jump.id}（不存在）`);
+    if (s.jump.type === 'episode' && (s.jump.ep < 0 || s.jump.ep >= EPS.length)) deadLinks.push(`STORY_INDEX「${s.label}」→ episode ${s.jump.ep}（超出範圍，EPS只有${EPS.length}集）`);
+  });
+  (CHUNK_FAMILIES || []).forEach(fam => {
+    if (fam.grammarId && !gIds.has(fam.grammarId)) deadLinks.push(`CHUNK_FAMILIES「${fam.title}」→ grammar ${fam.grammarId}（不存在）`);
+  });
+
+  if (deadLinks.length) fail(`發現死入口：\n      ${deadLinks.join('\n      ')}`);
+  else ok(`死入口檢查：STORY_INDEX（${(STORY_INDEX.scenes || []).length}個場景）／CHUNK_FAMILIES（${(CHUNK_FAMILIES || []).length}個家族）指向的連結都存在`);
+} catch (e) {
+  fail('死入口檢查失敗：' + e.message);
+}
+
 // ── 🌳 Chunk 家族健康檢查：每個語塊家族分支，在劇情/歌曲/新聞/心語裡有沒有出現過 ──
 // 2026-07-19 VERA重要指正：這不是「缺口」，是兩種性質不同的東西，混在一起報會誤導未來的自己：
 //   ①「可補」——維護者自己就能直接寫（例：心語/日記，corazon.js/mom.js可以直接加新句子）

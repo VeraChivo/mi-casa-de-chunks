@@ -4400,7 +4400,11 @@ function entryMatrixJump(target){
   }
   if(target==='lyrics'){ dtaskJump('lyrics'); return; }
   if(target==='news'){ dtaskJump('news'); return; }
-  if(target==='mom'){ switchMainTab('mom'); return; }
+  if(target==='mom'){
+    switchMainTab('mom');
+    setTimeout(()=>{ const s=document.getElementById('talkCardTop'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
+    return;
+  }
   // surprise：建置中，不跳轉
 }
 let _welcomeTourStep = 0;

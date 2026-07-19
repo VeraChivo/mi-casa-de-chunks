@@ -693,7 +693,7 @@ function renderDiaryConnectorHtml(){
 
 function renderTalkCardHtml(){
   return `<div class="diary-card diary-paper card-container">
-    <div class="diary-paper-title">💬 聊療吾心語</div>
+    <div class="diary-paper-title" id="talkCardTop">💬 聊療吾心語</div>
     <div class="diary-card-sub">① 挑片語（可複選、依序接續）→ ② 自動對照中文 → ③ 擴寫成媽媽原音</div>
 
     <div id="talkPickerPool"></div>
