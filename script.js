@@ -914,6 +914,11 @@ function toggleCogViewMode(){
   _cogViewMode = _cogViewMode==='pattern' ? 'ep' : 'pattern';
   renderCogLibrary();
 }
+// 🔤前後綴歡心／🍄假野莓 各自整區收合（2026-07-19 VERA反饋「下面太長」），預設收起
+let _suffixSectionOpen = false;
+let _falsecogSectionOpen = false;
+function toggleSuffixSection(){ _suffixSectionOpen = !_suffixSectionOpen; renderCogLibrary(document.getElementById('cogSearchInput')?.value); }
+function toggleFalsecogSection(){ _falsecogSectionOpen = !_falsecogSectionOpen; renderCogLibrary(document.getElementById('cogSearchInput')?.value); }
 function renderCogLibrary(filter){
   const body=document.getElementById('cogLibraryBody');
   if(!body) return;
@@ -922,7 +927,12 @@ function renderCogLibrary(filter){
 
   // 詞綴規律區（無搜尋時顯示）
   if(!q){
-    html+=`<div class="suffix-section"><div class="suffix-title">🔤 前後綴歡心－英西鞏固一籮筐雙重解鎖</div>`;
+    html+=`<div class="suffix-section">
+      <div class="cog-collapse-header" onclick="toggleSuffixSection()">
+        <span class="suffix-title">🔤 前後綴歡心－英西鞏固一籮筐雙重解鎖</span>
+        <span class="cog-collapse-arrow">${_suffixSectionOpen?'▲ 收起':'▼ 展開'}</span>
+      </div>
+      <div class="cog-collapse-body" style="display:${_suffixSectionOpen?'block':'none'}">`;
     const _sfxDb = getGardenDB();
     SUFFIX_PATTERNS.forEach(p=>{
       html+=`<details class="suffix-group"><summary class="suffix-summary"><span class="suffix-rule">${p.rule}</span><span class="suffix-hint">${p.hint}</span></summary><div class="suffix-body">`;
@@ -964,9 +974,14 @@ function renderCogLibrary(filter){
       }).join('');
       html+=`</div></details>`;
     });
-    html+=`</div>`;
+    html+=`</div></div>`;
 
-    html+=`<div class="falsecog-section"><div class="falsecog-title">🍄 小心這顆有毒：假野莓 False Cognates</div>
+    html+=`<div class="falsecog-section">
+      <div class="cog-collapse-header" onclick="toggleFalsecogSection()">
+        <span class="falsecog-title">🍄 小心這顆有毒：假野莓 False Cognates</span>
+        <span class="cog-collapse-arrow">${_falsecogSectionOpen?'▲ 收起':'▼ 展開'}</span>
+      </div>
+      <div class="cog-collapse-body" style="display:${_falsecogSectionOpen?'block':'none'}">
       <div class="falsecog-sub">長得跟英文超像，意思卻整個歪掉，吃錯了會鬧笑話</div>`;
     html+=FALSE_COGNATES.map(f=>`
       <div class="falsecog-card">
@@ -984,7 +999,7 @@ function renderCogLibrary(filter){
           <div class="falsecog-ex-zh">${f.rightEx.zh}</div>
         </div>` : ''}
       </div>`).join('');
-    html+=`</div>`;
+    html+=`</div></div>`;
   }
 
   if(!q){
