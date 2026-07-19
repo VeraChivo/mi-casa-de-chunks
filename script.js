@@ -1121,7 +1121,9 @@ function renderVocab(){
         <div class="vocab-source">${v.source}</div>
       </div>
       <div class="vocab-right">
-        <div class="vocab-star${stage===0?' garden-empty':''}" onclick="handleGardenProgress('${escAttr(v.text)}',this)" title="${_G_LABELS[stage]}">${GARDEN_STAGES[stage]}</div>
+        <div class="vocab-star${stage===0?' garden-empty':''}" onclick="handleGardenProgress('${escAttr(v.text)}',this)" title="${_G_LABELS[stage]}">
+          <span class="vocab-star-icon">${GARDEN_STAGES[stage]}</span><span class="vocab-star-label">${stage===0?'尚未開始':_G_LABELS[stage]}</span>
+        </div>
         <div class="vocab-remove" onclick="removeFromVocab(${v.id})">✕</div>
       </div>
     </div>`;
@@ -4447,6 +4449,7 @@ const WELCOME_TOUR_STEPS = [
   {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
   {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
   {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"},
+  {icon:"💎🌻🐛", title:"莊園裡的三種紀錄", desc:"穀倉大豐收裡有三個東西長得有點像，但各自負責不同的事：<br><br>💎 醞釀私語窖——收藏妳想留意的語塊，代表「我想留意它」，不是「我已經會了」<br><br>🌻 語塊花園——記錄語塊真正長大的地方，接觸/練習會讓熟練度慢慢往前（🌱初萌芽→🍃猛漲期→🍀幸運草→🌻日頭花開），代表「我的西語能力正在累積」<br><br>🐛 抓蟲複習——花園挑出「最近還不夠穩，需要再照顧」的語塊，不是收藏清單<br><br>一句話記住：💎我想留下→私語窖／🌻我正在成長→語塊花園／🐛我需要照顧→抓蟲複習"},
   {icon:"🧭", title:"新手第一條路線", desc:"開始點播，你的初芽；播下夢想，西語萌芽。<br><br>完全零基礎的話，建議先走這條路：<br>🌱 A1小路：Soy／Me llamo → Tengo → Me gusta → 基礎兒歌<br>💧 A2花園：開始過去式、日常劇情<br><br>點下面選一個最符合妳現在程度的起點，會直接帶妳去對應的文法區：", levelButtons:true}
 ];
 // 「入口盤查」矩陣：不再是導覽裡要點過6步才看得到的一頁，2026-07-19莊園巡園週併進☀️今日耕耘卡片常駐顯示

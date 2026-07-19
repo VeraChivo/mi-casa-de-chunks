@@ -530,8 +530,12 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .vocab-example-zh{display:block;font-size:11px;color:var(--tmid);margin-top:1px}
 .vocab-source{font-size:9px;color:var(--nezumi);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
 .vocab-right{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}
-.vocab-star{font-size:13px;cursor:pointer;user-select:none;min-width:28px;text-align:center;transition:transform .1s}
-.vocab-star:active{transform:scale(1.3)}
+/* 2026-07-19：icon+文字並列，避免⭐被誤讀成「收藏狀態」——私語窖本身就是收藏區，
+   這裡顯示的其實是🌻花園熟練度，不是收藏本身 */
+.vocab-star{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:15px;cursor:pointer;user-select:none;min-width:44px;text-align:center;transition:transform .1s}
+.vocab-star:active{transform:scale(1.1)}
+.vocab-star-icon{font-size:15px;line-height:1}
+.vocab-star-label{font-size:9px;font-weight:700;color:var(--tlight);line-height:1.2;white-space:nowrap}
 .vocab-remove{font-size:14px;color:var(--err);cursor:pointer;padding:2px 4px}
 .vocab-remove:active{transform:scale(1.3)}
 
