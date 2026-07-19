@@ -27,6 +27,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 
 .header{text-align:center;margin-bottom:16px;width:100%;max-width:480px}
 .header-tour-btn{background:none;color:var(--tlight);border:none;font-size:11px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;padding:2px 4px;letter-spacing:.3px}
+/* 🚩 我的起點：想要大富翁GO格的感覺——醒目、獨立、像個明確的出發點，不是純文字連結 */
+.header-start-btn{display:inline-block;margin-top:6px;background:var(--ok);color:#fff;border:none;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;letter-spacing:.3px;box-shadow:0 2px 6px rgba(61,184,122,.35)}
+.header-start-btn:active{opacity:.8}
 .header-tour-btn:active{opacity:.7}
 
 /* ── 🗺️ 歡迎導覽彈窗 ── */
