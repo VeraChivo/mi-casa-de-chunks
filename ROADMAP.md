@@ -981,6 +981,74 @@
     「多義動詞驗證」，語意會比TENER更雜）**仍未開始**，等VERA確認TENER這張沒問題
     再排下一步。
 
+    ---
+
+    ## ✅ Sprint B-2 已完成：g109（HACER）能力卡改版（2026-07-19，commit `6af7d2a`）
+
+    VERA先要求做「HACER預審」（不是正式改卡）：拿真實語料查證HACER實際語意分佈，
+    回答①哪些是真正生活核心②哪些只是字典義③哪些應該拆到語塊不是能力卡。查證結果
+    （用episodes.js/ammo.js/mom.js grep，不是憑印象）：
+    ```
+    做事情/製作　hace un plan／hago un plan／hace galletas → ✅生活核心
+    天氣　Hace frío hoy. → ✅生活核心
+    時間經過　"fue herido hace mucho tiempo"（E15真實SEL台詞）→ ✅生活核心但
+             g109原本完全沒有，是真實存在的缺口
+    固定搭配　hacer la tarea／hacer caso／hacer ejercicio → ⚠️只是字典義層級的
+             成語，彼此意義不相通，不算獨立語意分支
+    "hacía"過去習慣式範例（真實E5劇情）→ ❌不算HACER的語意分支，真正在教的是
+             過去未完成式，hacer只是剛好被拿來當示範動詞，跟hacer本身語意無關
+    ```
+    VERA確認這個拆骨方向後定案**「🪜動詞能力卡邊界」判準**（已寫入CLAUDE.md規則21）：
+    能力卡收「這個詞本身改變世界觀時的用法」，不收「這個詞剛好出現在某個文法裡」。
+
+    **實際異動（範圍限定g109單一卡片）**：retitle為純HACER卡（IR部分已有g19，
+    移除重複內容）；rule改需求優先語氣；`family`改用3個真實語意角色分支（🛠️行動
+    創造/🌤️環境感受/⏳時間距離，全部取自E10/E15真實劇情語料）；既有固定搭配清單
+    （hacer caso等）**保留但移到新增的`extraFamily`欄位**，明確標「不是獨立語意
+    分支」；新增`storyRoles`三層資料；刻意不加crossLang（hacer在天氣用法沒有天然
+    跨語言橋樑，強加會誤導成"make cold"）。**因為`extraFamily`是全新欄位，同步在
+    script.js的`openGrammarCard()`加了對應的最小渲染邏輯**（複製既有family渲染
+    模式），這是我在寫的當下自己抓到的坑——如果沒補這段渲染，常用搭配庫內容會被
+    無聲丟棄，使用者完全看不到。`CHUNK_FAMILIES`的HACER家族追蹤（`maintenance.js`
+    顯示的「7個分支」）是獨立硬編碼分支清單，不讀取grammar.js的family欄位，
+    不受這次改動影響。`node --check`與`maintenance.js`皆通過（0錯誤4警告）。
+
+    **VERA後續補充定案（同一輪）**：①🌐語感橋樑檢查3問清單＋「允許留白是優點」
+    原則（CLAUDE.md規則20補充）②🍓同源庫模板定義，跟🌐語感橋樑/🍄假朋友三方
+    邊界表（CLAUDE.md規則22，純規格，尚未實作／未決定grammar.js欄位歸屬）。
+
+    **狀態**：Sprint B-2（HACER）完成並上線main。三張能力卡（IR/TENER/HACER）
+    已形成穩定模式：`能力分支（理解世界）→ extraFamily（高頻固定用法）→ 語塊
+    （實際收藏使用）`。
+
+    ---
+
+    ## ✅ Sprint B-3 已完成：g117（Llamarse）能力卡改版（2026-07-19，commit `ae41270`）
+
+    VERA指出這張的價值不同於前三張——IR/TENER/HACER都在描述「世界」（我要去哪/
+    我有什麼狀態/我做什麼事），Llamarse是第一個「我是誰」，測試的是「能力樹是否
+    真的連到我的西語小日子」這個更大的世界觀架構。明確指示範圍：①只做Llamarse
+    母版套用②不新增UI③不開日記組裝器④只確認能力分支是否自然/storyRoles是否
+    適合人物身份/source是否能連回小世界。
+
+    **查證發現舊卡內容過時**：g117原本的rule文字寫「這個網站到目前為止還沒有
+    專屬例句」，實查episodes.js/ammo.js後發現這個說法已經不成立——E4真實劇情有
+    「Se llama Mimi.」（ammo_id e4_02）、彈藥庫fire_daily也有「Me llamo Vera.」
+    真實變體，之前寫這張卡時沒有查證清楚就下了這個結論。
+
+    **實際異動**：rule改需求優先語氣（打開自己在西語世界裡第一個身分入口的鑰匙）；
+    `family`／`storyRoles`改用3個真實語意角色分支：👋自我介紹（Me llamo Vera.，
+    彈藥庫e4_02真實例句）／❓問名字（¿Cómo te llamas?，誠實標註仍是新編、劇情裡
+    還沒出現）／🤝認識別人（Se llama Mimi.，E4真實劇情）；trap保留既有內容不動；
+    source更新為系統化清單。**刻意不加crossLang**——中文「叫」在概念上可能跟西語
+    llamarse的「稱呼」邏輯接近（兩者都不是用「是/be」處理姓名），但台語/客語是否
+    有一致對應用法尚未查證確認，寧可留白等之後驗證，不做未經確認的跨語言宣稱。
+    `node --check`與`maintenance.js`皆通過。
+
+    **狀態**：Sprint B-3（Llamarse）完成並上線main。Sprint B-4（Creo que，交流
+    能力）**仍未開始**，等VERA確認Llamarse這張是否成功連到「我的西語小日子」
+    世界觀後再排下一步。
+
 - **🗺️莊園地圖（2026-07-19 VERA提出，取代現有🗺️莊園導覽按鈕，不是新增第四個入口）**：VERA盤點現有「🗺️莊園導覽」（`showWorldTour()`，一步一步走的WELCOME_TOUR_STEPS）跟「☀️今日耕耘」（`entryMatrixJump()`，ENTRY_MATRIX_ITEMS 6個「想做什麼」選項）後認為兩者定位不同、但都不是她要的「莊園地圖」：**導覽＝一步一步帶你走；地圖＝我知道我要去哪，直接點就到**。VERA明確定調首頁最終要收斂成三個入口：🌱點播初芽（第一次來）／☀️今日耕耘（今天想學什麼）／🗺️莊園地圖（我知道要去哪，取代現有莊園導覽按鈕，同一個位置換內容不換位置）。地圖內容是靜態一次呈現的分區跳轉格，VERA給的草圖：
   ```
   🏡首頁
