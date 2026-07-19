@@ -387,6 +387,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .chunk-fam-tree:last-child{border-bottom:none}
 .chunk-fam-tree:active{background:var(--bg2)}
 .chunk-fam-grow{font-size:14px;font-weight:800;color:var(--ok);background:rgba(61,184,122,.12);border-radius:8px;padding:6px 10px;margin-bottom:8px}
+.chunk-fam-legend{font-size:11px;color:var(--tlight);text-align:center;margin-bottom:8px;padding-bottom:6px;border-bottom:1px dashed var(--usumizu)}
 .chunk-fam-head{font-size:16px;font-weight:900;color:var(--tdark)}
 .chunk-fam-hint{font-size:13px;font-weight:600;color:var(--tlight);margin-left:4px}
 .chunk-fam-maturity{font-size:14px;color:var(--tmid);font-weight:700;margin:4px 0 8px}

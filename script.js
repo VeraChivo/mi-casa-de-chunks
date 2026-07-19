@@ -1807,7 +1807,8 @@ function renderChunkFamilies(){
   if(!el) return;
   const seen = _chunkFamSeenCounts();
   const nextSeen = {};
-  el.innerHTML = CHUNK_FAMILIES.map(fam => {
+  const legendHtml = `<div class="chunk-fam-legend">📺 劇情／🎵 歌曲／📰 新聞裡出現過這個語塊，點了直接跳過去看</div>`;
+  el.innerHTML = legendHtml + CHUNK_FAMILIES.map(fam => {
     const branches = _chunkFamBranchStatus(fam);
     const collectedCount = branches.filter(b => b.collected).length;
     nextSeen[fam.key] = collectedCount;

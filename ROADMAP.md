@@ -42,3 +42,5 @@
 - 幽默/雙關內容用AI自己編（風險太高，必須等VERA提供真實案例）
 - 兒歌轉貼完整歌詞（僅嵌連結，除非公共領域）
 - Voseo 改為角色台詞預設用法（維持 tú/ustedes 標準拉美用法）
+- 5首「隔壁AI」推薦的A1-A2候選歌（Hola Don Pepito/La vaca Lola/Susanita tiene un ratón/Había una vez un circo/La Gallina Turuleca）——全部查證是Los Payasos de la Tele/Toy Cantando現代版權作品，不是公共財，詳見`SONGS.md`
+- 🎵歌曲↔🌳語塊家族回連（誤以為是缺口，查證後發現🌳語塊茁壯的📺🎵📰徽章已經做了這件事，不用重做——待辦是提高這個功能的能見度，不是建立新連結）
