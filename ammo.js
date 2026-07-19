@@ -242,7 +242,7 @@ const AMMO_DATA = [
     core_ammo:"Nita y Papá Tato están jugando a las damas.", core_zh:"妮妲和貓爸爸正在下西洋棋。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando = 正在做，正在做某事",
     pattern:"[人] están jugando a [遊戲].", pattern_zh:"___ 正在玩 ___。",
-    pattern_note:"están jugando = 正在做複數", slots:["人","遊戲"],
+    pattern_note:"están jugando = 正在玩，主角是「妮妲和爸爸」這一群才用están", slots:["人","遊戲"],
     fire_peppa:{es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸正在下西洋棋。", ts:null,
       chunks:[{w:"Nita y Papá Tato",role:"s"},{w:"están jugando",role:"v",note:"jugar ➔ jugando + estar ➔ están ➔ 意思：正在玩（複數進行式，estar + -ing形態）"},{w:"a las damas.",role:"o"}]},
     fire_daily:[

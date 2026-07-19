@@ -3258,7 +3258,7 @@ const LYRICS_FILL_DATA = [
     before:'Ojalá que las hojas no te',
     blank:'toquen',
     after:'el cuerpo cuando caigan.',
-    hint:'tocar → toquen（現在虛擬式第三人稱複數），Ojalá (que) 後面永遠接虛擬式', sprout:'tocar → toquen<br>Ojalá（但願）後面永遠接虛擬式，這裡是希望連落葉都不要碰觸、不要再想起<br>（這是虛擬式）',
+    hint:'tocar → toquen（Ojalá 後面永遠接虛擬式）', sprout:'tocar → toquen<br>Ojalá（但願）後面永遠接虛擬式，這裡是希望連落葉都不要碰觸、不要再想起<br>（這是虛擬式）',
     grammar:'整首歌用「Ojalá que + 虛擬式」句型反覆吟詠，是學習虛擬式最經典的古巴歌謠範例。這句字面「希望落葉不要碰到你的身體」，其實是想徹底忘卻一段感情、希望連自然現象都不要再勾起回憶的詩意表達，虛擬式在這裡承載的是「打從心底期盼卻無法控制」的無力感。'
   },
   {
