@@ -99,6 +99,10 @@
   E11每句的實際語塊（S/V/C/連接詞），跟CHUNK_AUDIO_MAP既有詞彙比對後，扣掉11個已經錄過的
   重複詞（Hoy/es/y/pero/Tito/está/Nita/Mamá Cata/Papá Tato/Mimi/no entiende），只剩34個真的
   沒錄過的語塊，加上10句整句、15句mom.js，合計59句一次生成。
+  ✅ **已完成（2026-07-19）**——59個mp3全部驗證通過：34個語塊接進`CHUNK_AUDIO_MAP`（含兩個
+  帶引號的特殊語塊「"Los recordamos」/「los queremos."」，已確認跟episodes.js原文逐字元對齊）、
+  10句整句接進`AUDIO_MANIFEST[10]`（E11從掛零補到完整，16集劇情全數覆蓋）、15句接進
+  `MOM_AUDIO_MAP.chunks`（24→39筆，peppa_chunks分類全數覆蓋）
 
 四個都是可以直接複製貼進Colab執行的.txt腳本（gTTS，lang='es' tld='com.mx'，含重試機制跟隨機停頓，
 跑完自動打包zip觸發下載）。錄完把zip丟回來，我負責接上audio-manifest.js（CHUNK_AUDIO_MAP／
