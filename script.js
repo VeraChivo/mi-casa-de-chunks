@@ -3016,7 +3016,7 @@ const LYRICS_FILL_DATA = [
     before:'A Dios le pido / que mis ojos se',
     blank:'despierten',
     after:'/ con tu cara cada día.',
-    hint:'pedir que → 後面接虛擬式',
+    hint:'pedir que → 後面接虛擬式', sprout:'despertar → despierten<br>pedir que（拜託、祈求）後面接的動詞要換成虛擬式——因為還沒發生，只是「盼望」<br>（這是虛擬式）',
     grammar:'「A Dios le pido que...」我向上帝祈求⋯⋯。pedir que 後面的動詞必須變成現在虛擬式，因為是「希望發生」而非確定事實。despertar（喚醒）→ se despierten（第三人稱複數虛擬式，複數因為是 mis ojos）。'
   },
   {
@@ -3030,7 +3030,7 @@ const LYRICS_FILL_DATA = [
     before:'Ojalá que',
     blank:'llueva',
     after:'café en el campo.',
-    hint:'Ojalá (que) 後面永遠接虛擬式',
+    hint:'Ojalá (que) 後面永遠接虛擬式', sprout:'llover → llueva<br>Ojalá（但願）後面永遠接虛擬式，因為這是「衷心盼望、但不確定會不會發生」的心情<br>（這是虛擬式）',
     grammar:'「Ojalá (que)...」字源自阿拉伯語，意為「願真主保佑」，是西語最道地的許願句型。後面無論加不加 que，都永遠接虛擬式。llover（下雨）→ llueva（現在虛擬式，不規則 o→ue）。'
   },
   {
@@ -3044,7 +3044,7 @@ const LYRICS_FILL_DATA = [
     before:'Si yo',
     blank:'fuera',
     after:'un chico, creo que entendería...',
-    hint:'Si + 過去虛擬式 = 與現在事實相反的假設',
+    hint:'Si + 過去虛擬式 = 與現在事實相反的假設', sprout:'ser → fuera<br>「如果我是⋯」這種明知不是事實的假設，動詞要換成過去虛擬式，不是普通過去式<br>（Si + 過去虛擬式＝跟現實相反的假設）',
     grammar:'【B2核心句型】「Si yo fuera...」如果我是⋯⋯（但現實我不是）。Si + Imperfecto de Subjuntivo（過去虛擬式）表達與現在事實相反的假設。ser → fuera（過去虛擬式，不規則）。對比：Si soy（有可能，陳述式）vs Si fuera（現在不是，虛擬式）。'
   },
   {
@@ -3058,7 +3058,7 @@ const LYRICS_FILL_DATA = [
     before:'Si vienes o si',
     blank:'vas',
     after:'— no importa, yo te quiero igual.',
-    hint:'Si + 陳述式現在式 = 真實可能的條件',
+    hint:'Si + 陳述式現在式 = 真實可能的條件', sprout:'ir → vas<br>「如果你去⋯」這種真的有可能發生的條件，動詞維持一般現在式就好<br>（跟上一句的「假設語氣」不同：這裡是真實可能，不是不可能的假設）',
     grammar:'「Si vienes o si vas」用的是陳述式直述式，不是虛擬式！Si + 現在陳述式表示「真實可能發生的條件」。跟 Beyoncé 那句對比：Si fuera（虛擬式）= 與現實相反；Si vas（陳述式）= 去或不去都有可能，是開放的真實情境。'
   },
   {
@@ -3068,7 +3068,7 @@ const LYRICS_FILL_DATA = [
     before:'Los pollitos dicen pío pío pío / cuando',
     blank:'tienen',
     after:'hambre cuando tienen frío.',
-    hint:'tienen = tener 第三人稱複數 (ellos)',
+    hint:'tener → tienen（主角是一群小雞）', sprout:'tener → tienen<br>小雞餓的時候、冷的時候，中文說「牠們餓了」，西語卻是「牠們有了餓」——tener + 名詞＝表達身體感覺',
     grammar:'「Tienen hambre / tienen frío」用 TENER 表達生理狀態，不是說「它們是飢餓的」。TENER 家族：tener hambre（餓）/ tener frío（冷）/ tener sed（渴）/ tener sueño（睏）——這些都是搭配 tener 的固定搭配，不用 estar + 形容詞。tener 第三人稱複數 ellos/ellas → tienen。'
   },
   {
@@ -3078,7 +3078,7 @@ const LYRICS_FILL_DATA = [
     before:'Arroz con leche, me',
     blank:'quiero',
     after:'casar, con una señorita de San Nicolás.',
-    hint:'quiero = querer 第一人稱單數 (yo)',
+    hint:'querer → quiero（說話的人是「我」）', sprout:'querer → quiero<br>當說話的人是「我」，querer會變成quiero，後面直接接原形動詞（casar）就是「我想要⋯」',
     grammar:'「Quiero casar」第一人稱「我想要…」，querer 是不規則動詞（e→ie 詞幹變化）：quiero / quieres / quiere / queremos / quieren。後面接原形動詞（casar），注意：casarse 反身動詞「結婚」，歌詞傳統唱法省略了 me，可視為詩歌韻律省略。'
   },
   {
@@ -3088,7 +3088,7 @@ const LYRICS_FILL_DATA = [
     before:'Estrellita, ¿',
     blank:'dónde',
     after:'estás? Me pregunto ¿quién serás?',
-    hint:'dónde = 哪裡（疑問詞，問地點）',
+    hint:'dónde = 哪裡（疑問詞，問地點）', sprout:'dónde＝哪裡，問地點時放在句首的疑問詞，前面一定要加重音符號',
     grammar:'「¿Dónde estás?」你在哪裡？dónde 是問「地點」的疑問詞，前面一定加重音符號（跟不是疑問句的 donde 區分）。這首歌是西語版的《Twinkle Twinkle Little Star》，quién serás 用未來式表達「你會是誰」的好奇語氣。'
   },
   {
@@ -3098,7 +3098,7 @@ const LYRICS_FILL_DATA = [
     before:'La araña pequeñita',
     blank:'subió',
     after:'/ subió / subió, subió.',
-    hint:'subió = subir 第三人稱單數簡單過去式',
+    hint:'subir → subió（這個動作已經做完了）', sprout:'subir → subió<br>蜘蛛爬上去這個動作已經發生過、講完了，所以用簡單過去式subió，不是還在爬的sube',
     grammar:'「Subió」爬上去了——簡單過去式（Pretérito Indefinido），表示一個已完成的動作。subir 是規則 -ir 動詞的過去式變化：yo subí / tú subiste / él subió / nosotros subimos / ellos subieron。對比現在式 sube（正在爬）vs 過去式 subió（爬上去了，完成了）。'
   },
   {
@@ -3108,7 +3108,7 @@ const LYRICS_FILL_DATA = [
     before:'De colores, de colores',
     blank:'se visten',
     after:'los campos en la primavera.',
-    hint:'se visten = vestirse 反身動詞第三人稱複數',
+    hint:'vestirse → se visten（主角是「田野們」）', sprout:'vestirse → se visten<br>「田野們幫自己披上顏色」，反身代名詞se跟著「他們」這個主角一起變',
     grammar:'「Se visten los campos」田野披上（色彩）——反身動詞 vestirse（穿衣/披上）搭配複數主詞 los campos 用 se visten。反身動詞五人稱：me visto / te vistes / se viste / nos vestimos / se visten。這首歌是拉美農民/工人運動的著名民謠，1960年代由 César Chávez 採用為抗爭歌曲。'
   },
   {
@@ -3118,7 +3118,7 @@ const LYRICS_FILL_DATA = [
     before:'Los de adelante',
     blank:'corren',
     after:'mucho y los de atrás se quedarán.',
-    hint:'corren = correr 第三人稱複數 (ellos)',
+    hint:'correr → corren（主角是「前面那群人」）', sprout:'correr → corren<br>前面的人這一群一起跑，動詞長成corren',
     grammar:'「Los de adelante corren mucho」前面的人跑得很快——correr 是規則 -er 動詞：corro / corres / corre / corremos / corren。這首是源自西班牙中世紀的傳統遊戲歌謠，跟著童謠玩「過城門」遊戲時唱，公共領域民謠，查無單一作者。'
   },
   {
@@ -3128,7 +3128,7 @@ const LYRICS_FILL_DATA = [
     before:'Un elefante se',
     blank:'balanceaba',
     after:'sobre la tela de una araña.',
-    hint:'balanceaba = balancearse 過去未完成式第三人稱單數',
+    hint:'balancearse → balanceaba（畫面是持續搖晃，不是搖一下就停）', sprout:'balancearse → balanceaba<br>大象盪來盪去是持續、重複的畫面，用過去未完成式，不是講一次性的動作',
     grammar:'「Se balanceaba」正在搖晃著——過去未完成式（Imperfecto）字尾 -aba，描述持續進行的動作，跟簡單過去式（一次性完成的動作）不同。balancearse 是反身動詞：me balanceaba / te balanceabas / se balanceaba。這首數數歌謠最早19世紀中期就出現在法國印刷品裡，查無單一作者，是公共領域民謠。'
   },
   {
@@ -3138,7 +3138,7 @@ const LYRICS_FILL_DATA = [
     before:'Cucú, cucú, cantaba la',
     blank:'rana',
     after:'Cucú, cucú, debajo del agua.',
-    hint:'rana = 青蛙（陰性名詞）',
+    hint:'rana = 青蛙（陰性名詞）', sprout:'rana＝青蛙，是陰性名詞，前面固定搭配la',
     grammar:'這首是西語系國家流傳數百年的經典童謠，作者不詳、世代口耳相傳。後續歌詞唱一位紳士、一位女士、一位水手經過，水手跟青蛙要一束迷迭香，青蛙不肯給還哭了——是很典型「重複疊句+人物依序登場」的傳統童謠結構。'
   },
   {
@@ -3148,7 +3148,7 @@ const LYRICS_FILL_DATA = [
     before:'Que llueva, que llueva, la vieja está en la',
     blank:'cueva',
     after:'los pajaritos cantan, las nubes se levantan.',
-    hint:'está en = estar 表達位置（在哪裡）',
+    hint:'está en = estar 表達位置（在哪裡）', sprout:'estar en＝在（某個地方），問「在哪裡」時常用的句型',
     grammar:'「La vieja está en la cueva」老奶奶在洞穴裡——estar en 表達位置所在。這句歌詞在不同地區有變體：西班牙原版是「la Virgen de la Cueva」（源自1726年一場祈雨傳說），阿根廷等拉美地區常唱世俗版「la vieja está en la cueva」，這裡採用拉美常見版本。皆為查無單一作者的公共領域童謠。'
   },
   {
@@ -3158,7 +3158,7 @@ const LYRICS_FILL_DATA = [
     before:'Las',
     blank:'ruedas',
     after:'del autobús van rodando van, rodando van, rodando van.',
-    hint:'ruedas = 輪子（陰性複數名詞）',
+    hint:'ruedas = 輪子（陰性複數名詞）', sprout:'ruedas＝輪子，複數陰性名詞，前面固定搭配las',
     grammar:'這首是20世紀初美英傳入拉美地區的翻譯版童謠，查證為公共領域、查無單一作者。van rodando = 正在轉動（ir + 現在分詞，表達持續進行的動作）。'
   },
   {
@@ -3168,7 +3168,7 @@ const LYRICS_FILL_DATA = [
     before:'El viejo MacDonald tenía una',
     blank:'granja',
     after:'ia-ia-o. Y en esa granja tenía una vaca...',
-    hint:'tenía = tener 過去未完成式第三人稱單數',
+    hint:'tener → tenía（在講「以前一直是這樣」的背景）', sprout:'tener → tenía<br>MacDonald有一座農場，是在描述背景、以前一直是這樣，用過去未完成式tenía，不是講單一次事件',
     grammar:'這首溯源自1706年英國民謠（原名 Old Macdougal），世代口傳演變成今天的版本，拉美地區有多種翻譯版本（En la granja de Pepito等），查無單一譯者版權。tenía = 過去未完成式，描述過去持續/反覆的狀態（曾經有⋯），跟簡單過去式的一次性動作不同。'
   },
   {
@@ -3178,7 +3178,7 @@ const LYRICS_FILL_DATA = [
     before:'Cuando uno tiene',
     blank:'sed',
     after:'pero el agua no está cerca.',
-    hint:'tener sed = 感到口渴',
+    hint:'tener sed = 感到口渴', sprout:'tener sed＝感到口渴，跟中文「有渴」邏輯不同，西語用tener（有）+ 感覺名詞來表達',
     grammar:'「Cuando uno tiene sed」用 cuando + 陳述式現在式，描述一般性/習慣性的真實情況（口渴的時候⋯），這跟「cuando + 虛擬式」描述未來還沒發生的事件不同（例如 Cuando llegues, avísame = 你到的時候〔還沒發生〕跟我說一聲）。'
   },
   {
@@ -3188,7 +3188,7 @@ const LYRICS_FILL_DATA = [
     before:'A mí me gustan mayores, de esos que',
     blank:'llaman',
     after:'señores.',
-    hint:'關係子句 que + 陳述式，因為先行詞（esos）是確定存在的對象',
+    hint:'關係子句 que + 陳述式，因為先行詞（esos）是確定存在的對象', sprout:'que + 陳述式<br>先行詞esos（那些人）是說話者心裡確定、真實存在的對象，所以後面接的關係子句用陳述式，不用虛擬式',
     grammar:'「De esos que llaman señores」關係子句用陳述式 llaman，因為先行詞 esos（那些人）是說話者心中確定、具體存在的對象。對比：如果先行詞是不確定/假設的對象，關係子句要改用虛擬式，例如「Busco a alguien que sea mayor」（我在找一個〔還不確定是誰的〕比較成熟的人）。'
   },
   {
@@ -3198,7 +3198,7 @@ const LYRICS_FILL_DATA = [
     before:'Soy lo que dejaron, soy toda la',
     blank:'sobra',
     after:'de lo que se robaron.',
-    hint:'sobra = 剩餘物、殘渣（B2抽象詞彙，隱喻殖民掠奪後留下的）',
+    hint:'sobra = 剩餘物、殘渣（B2抽象詞彙，隱喻殖民掠奪後留下的）', sprout:'sobra＝剩下的東西、殘渣，這裡隱喻殖民掠奪後留下來的',
     grammar:'「Soy lo que dejaron」用 ser 宣告身分認同（我是⋯），lo que 是不特定先行詞的關係子句「⋯的東西」。se robaron 是反身被動用法，強調「被拿走」而不點名是誰拿走的，呼應歌曲對拉美被殖民掠奪歷史的隱喻控訴。'
   },
   {
@@ -3208,7 +3208,7 @@ const LYRICS_FILL_DATA = [
     before:'Tú no puedes',
     blank:'comprar',
     after:'el viento, tú no puedes comprar el sol.',
-    hint:'poder + 原形動詞（不能⋯），隱喻手法：用具體事物象徵無法用金錢衡量的價值',
+    hint:'poder + 原形動詞（不能⋯），隱喻手法：用具體事物象徵無法用金錢衡量的價值', sprout:'poder + 原形動詞＝不能⋯⋯，這句用具體的東西（買不到的風、買不到的太陽）象徵抽象的價值',
     grammar:'「Tú no puedes comprar + 名詞」重複句式是這首歌的核心隱喻手法——用風、太陽這些自然界的具體事物，象徵拉丁美洲的尊嚴與文化認同無法被殖民者/資本用金錢買走，是B2程度需要掌握的「具體物象徵抽象價值」修辭技巧。'
   },
   {
@@ -3218,7 +3218,7 @@ const LYRICS_FILL_DATA = [
     before:'Soy la sangre dentro de tus venas, soy un pedazo de tierra que',
     blank:'vale',
     after:'la pena.',
-    hint:'valer la pena = 值得（成語，B2高頻慣用語）',
+    hint:'valer la pena = 值得（成語，B2高頻慣用語）', sprout:'valer la pena＝值得，這是固定成語，不能拆開直翻',
     grammar:'「Un pedazo de tierra que vale la pena」關係子句 que 修飾 tierra（土地），valer la pena 是「值得」的固定成語搭配，不能拆開直譯。整句延續前面「Soy la sangre...」的隱喻——歌者把自己等同於拉丁美洲這片土地本身，是身分認同主題的高潮句。'
   },
   {
@@ -3228,7 +3228,7 @@ const LYRICS_FILL_DATA = [
     before:'Gracias a la vida que me ha',
     blank:'dado',
     after:'tanto.',
-    hint:'dar → dado（過去分詞），haber+過去分詞＝現在完成式',
+    hint:'dar → dado（過去分詞），haber+過去分詞＝現在完成式', sprout:'dar → dado<br>haber + 過去分詞＝現在完成式，講「到目前為止已經給了些什麼」',
     grammar:'「Me ha dado tanto」用現在完成式（haber+過去分詞）表達「人生迄今給了我這麼多」——強調從過去累積到現在的整體感受，這首智利民謠是拉美「新歌運動」（Nueva Canción）代表作，Violeta Parra 用感恩的口吻細數人生給予的一切（眼睛、聲音、雙腳等），是B2程度學習現在完成式最有情感深度的真實範例。'
   },
   {
@@ -3238,7 +3238,7 @@ const LYRICS_FILL_DATA = [
     before:'Cambia lo superficial, cambia también lo',
     blank:'profundo',
     after:'.',
-    hint:'profundo = 深層的（跟superficial表面的相對）',
+    hint:'profundo = 深層的（跟superficial表面的相對）', sprout:'profundo＝深層的，跟superficial（表面的）相對',
     grammar:'「Cambia lo + 形容詞」用中性冠詞 lo 把形容詞名詞化（lo superficial＝表面的事物，lo profundo＝深層的事物），是西語常見的抽象化技巧。這首歌由智利作曲家 Julio Numhauser 於1982年流亡瑞典時所寫，經 Mercedes Sosa 傳唱成為拉美經典，主題呼應移民/離散經驗——外在一切都會改變，但對故土的愛不變。',
   },
   {
@@ -3248,7 +3248,7 @@ const LYRICS_FILL_DATA = [
     before:'Cambia el modo de pensar, cambia todo en este',
     blank:'mundo',
     after:'.',
-    hint:'el modo de pensar = 思考的方式',
+    hint:'el modo de pensar = 思考的方式', sprout:'el modo de pensar＝思考的方式',
     grammar:'「El modo de pensar」＝思考方式，modo de + 原形動詞是「⋯的方式」的固定搭配（也可以說 modo de vivir 生活方式、modo de hablar 說話方式）。這句延續上一句「一切都在變」的主題，呼應智利軍事政變後海外流亡者的集體心境。'
   },
   {
@@ -3258,7 +3258,7 @@ const LYRICS_FILL_DATA = [
     before:'Ojalá que las hojas no te',
     blank:'toquen',
     after:'el cuerpo cuando caigan.',
-    hint:'tocar → toquen（現在虛擬式第三人稱複數），Ojalá (que) 後面永遠接虛擬式',
+    hint:'tocar → toquen（現在虛擬式第三人稱複數），Ojalá (que) 後面永遠接虛擬式', sprout:'tocar → toquen<br>Ojalá（但願）後面永遠接虛擬式，這裡是希望連落葉都不要碰觸、不要再想起<br>（這是虛擬式）',
     grammar:'整首歌用「Ojalá que + 虛擬式」句型反覆吟詠，是學習虛擬式最經典的古巴歌謠範例。這句字面「希望落葉不要碰到你的身體」，其實是想徹底忘卻一段感情、希望連自然現象都不要再勾起回憶的詩意表達，虛擬式在這裡承載的是「打從心底期盼卻無法控制」的無力感。'
   },
   {
@@ -3268,7 +3268,7 @@ const LYRICS_FILL_DATA = [
     before:'Ojalá que la lluvia',
     blank:'deje',
     after:'de ser milagro que baja por tu cuerpo.',
-    hint:'dejar → deje（現在虛擬式），dejar de + 原形動詞＝停止做某事',
+    hint:'dejar → deje（現在虛擬式），dejar de + 原形動詞＝停止做某事', sprout:'dejar → deje<br>dejar de + 原形動詞＝停止做某事，這裡希望雨水「不再」是奇蹟——明知不可能卻還是許願的心情<br>（這是虛擬式）',
     grammar:'「Dejar de ser milagro」＝不再是奇蹟，dejar de + 原形動詞是「停止⋯」的固定句型。這句延續 Ojalá que + 虛擬式的結構，把雨水淋在對方身上的畫面詩化成「奇蹟」，希望這種近乎神聖的感覺也能消失——虛擬式在整首歌裡都在表達「明知不可能、卻還是忍不住許願」的心理狀態。'
   }
 ];
@@ -3319,7 +3319,7 @@ function renderLyricsFill(){
         <button class="lf-hear-btn" onclick="speakGramSmart('${escAttr(lf.before+' '+lf.blank+' '+lf.after)}')">🔊 聽整句</button>
       </div>
       <div class="lf-feedback" id="lff-${lf.id}" style="display:none"></div>
-      <div class="lf-hint" id="lfh-${lf.id}" style="display:none">💡 文法小芽：${lf.hint}</div>
+      <div class="lf-hint" id="lfh-${lf.id}" style="display:none"><div class="lf-hint-label">💡 文法小芽</div>${lf.sprout||lf.hint}</div>
       <div class="lf-grammar-note" id="lfg-${lf.id}" style="display:none">${lf.grammar}</div>
     </div>`).join('')}`;
 }
@@ -4393,7 +4393,6 @@ function getMorningBriefHTML(){
       <div class="morning-brief-section">${sectionLabel}</div>
       <div class="morning-brief-song"><span>${lf.artist}</span><span>《${lf.song}》</span><span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span></div>
       <div class="morning-brief-lyric">${lf.before} <span class="morning-brief-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${lf.after}</div>
-      <div class="morning-brief-hint">💡 ${lf.hint}</div>
       <div class="morning-brief-links">
         <a class="morning-brief-yt" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
         <button class="morning-brief-answer-btn" onclick="jumpToLyricAnswer('${lf.id}')">🌾 前往田裡作答</button>
