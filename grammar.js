@@ -2473,15 +2473,29 @@ const GRAMMAR_DATA = [
 
   {
     id:"g117", cat:"verb-pattern", level:"a1a2",
-    title:"Llamarse：自我介紹的第一句話",
-    rule:"llamarse是反身動詞（字面「稱呼自己」），是西語自我介紹最基本的一句——這個網站到目前為止還沒有專屬例句，是A1程度最不該漏掉的一塊，補在這裡。",
+    title:"Llamarse：從名字開始建立自己的位置",
+    rule:"llamarse字面是「稱呼自己」（反身動詞），是打開自己在西語世界裡第一個身分入口的鑰匙——「我是誰」「你是誰」「他是誰」，最先都是靠這句話回答的。",
     examples:[
-      {es:"Me llamo Nita.", zh:"我叫妮妲。（字面：我稱呼自己為妮妲，反身代名詞me不能省略）"},
-      {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（問名字的標準問句）"},
-      {es:"Se llama Tito.", zh:"他叫迪多。（在說「他」的名字，主角不是自己，所以用se不是me）"}
+      {es:"Me llamo Vera.", zh:"我叫Vera。（彈藥庫e4_02原句，反身代名詞me不能省略）"},
+      {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（新編例句，A1核心問句，目前劇情裡還沒出現）"},
+      {es:"Se llama Mimi.", zh:"她叫做咪咪。（劇情原句，E4）"}
     ],
+    family:{
+      title:"🌿 Llamarse：不只一種畫面",
+      intro:"同一個「稱呼」骨架，因為想讓對方知道的事不同，會長出不同分支——不是同義句堆疊，每句背後的溝通目的都不一樣。",
+      items:[
+        {es:"Me llamo Vera.", zh:"👋自我介紹：我想讓對方知道我的名字（彈藥庫e4_02原句）"},
+        {es:"¿Cómo te llamas?", zh:"❓問名字：我想知道對方的名字（新編，A1核心問句）"},
+        {es:"Se llama Mimi.", zh:"🤝認識別人：我想讓對方知道另一個人的名字（劇情原句，E4）"}
+      ]
+    },
     trap:"Me llamo跟Soy都能用在自我介紹（Me llamo Nita. / Soy Nita.意思很接近），差別是llamarse更專注在「名字」這件事本身，soy則是更廣泛的身分描述（可以接名字，也可以接職業/國籍等）——初學者兩句都要會，混著用沒問題。",
-    source:"文法補充"
+    source:"劇情E4／彈藥庫e4_02／文法補充（問句為新編）",
+    storyRoles:[
+      {es:"Me llamo Vera.", semanticRole:"self-identity", communicationGoal:"我想讓對方知道我的名字", scene:"彈藥庫e4_02（真實例句）"},
+      {es:"¿Cómo te llamas?", semanticRole:"inquiry", communicationGoal:"我想知道對方的名字", scene:"新編（A1核心問句，目前劇情裡還沒出現）"},
+      {es:"Se llama Mimi.", semanticRole:"introducing-others", communicationGoal:"我想讓對方知道另一個人的名字", scene:"E4劇情（真實例句）"}
+    ]
   }
 
 ];
