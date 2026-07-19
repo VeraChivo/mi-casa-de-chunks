@@ -30,7 +30,7 @@ const CORAZON_DATA = [
   },
   {
     id: "crianza",
-    title: "🍼 Crianza y familia · 育兒心裡話",
+    title: "👪 Crianza y familia · 育兒心裡話",
     desc: "當媽媽的真心話——美好與疲憊可以同時存在",
     items: [
       { es: "Ser mamá es hermoso y agotador a la vez.",    zh: "當媽媽既美好、又累人。",         tag: "媽媽真心話" },

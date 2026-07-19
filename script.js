@@ -281,6 +281,7 @@ function renderStoryIndex(){
       <div>
         <div class="pb-book-title">${STORY_INDEX.title}</div>
         <div class="pb-book-sub">把已學過的劇情/文法卡串成新手第一條路線</div>
+        <div class="story-idx-more">📖 更多章節製作中…</div>
       </div>
       <span id="storyIndexToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
@@ -2770,6 +2771,17 @@ const LEVEL_NAV_ITEMS = [
   {icon:'🍯', label:'我要準備考試', sub:'DELE B2/C1程度', level:'b2c1'},
   {icon:'🗣️', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
 ];
+// 給「不是第一次來」的人直接跳進等級路標，不用重播整輪導覽（🗝️莊園導覽對回訪者會改跳農間小報，這個是專門的捷徑）
+function openLevelNavDirect(){
+  const overlay = document.getElementById('welcomeTourOverlay');
+  if(overlay){
+    const nav = overlay.querySelector('.welcome-tour-nav');
+    if(nav) nav.style.display = '';
+    overlay.style.display = 'flex';
+  }
+  _welcomeTourStep = WELCOME_TOUR_STEPS.length - 1;
+  renderWelcomeTourStep();
+}
 function jumpToLevelFilter(levelKey){
   closeWelcomeTour();
   switchMainTab('know');
@@ -3191,12 +3203,10 @@ function renderLyricsFill(){
     ${filtered.map(lf => `
     <div class="lf-card" id="lf-card-${lf.id}">
       <div class="lf-header">
-        <div class="lf-artist-song">
-          <span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span>
-          <span class="lf-artist">${lf.artist}</span>
-          <span class="lf-song">《${lf.song}》</span>
-        </div>
+        <span class="lf-level lf-level-${lf.level}">${lf.levelLabel}</span>
         <a class="lf-yt-btn" href="${lf.yt}" target="_blank" rel="noopener">${lf.ytLabel}</a>
+        <span class="lf-artist">${lf.artist}</span>
+        <span class="lf-song">《${lf.song}》</span>
       </div>
       <div class="lf-lyric-line">
         <span class="lf-before">${lf.before}</span>
@@ -4405,6 +4415,14 @@ function initReminders(){
 // ── 📰 B2 時事傳送門：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
 let _newsTopicFilter = 'all';
 let _newsExpandedId = null;
+let _dwHistoryOpen = false;
+function toggleDwHistory(){
+  _dwHistoryOpen = !_dwHistoryOpen;
+  const body = document.getElementById('newsDwBody');
+  const tog = document.getElementById('newsDwToggle');
+  if(body) body.classList.toggle('open', _dwHistoryOpen);
+  if(tog) tog.textContent = _dwHistoryOpen ? '▲ 收起' : '▼ 展開';
+}
 function newsFilterByTopic(topic){
   _newsTopicFilter = topic;
   _newsExpandedId = null;
@@ -4465,8 +4483,13 @@ function renderNewsSection(){
   const el = document.getElementById('newsSectionWrap');
   if(!el || typeof NEWS_ITEMS==='undefined') return;
 
-  // DW 文化小卡
-  let dwHtml = `<div class="news-dw-card"><div class="news-dw-title">${DW_HISTORY.title}</div>`;
+  // DW 文化小卡（獨立收合，不佔版面）
+  let dwHtml = `<div class="news-dw-card">
+    <div class="news-dw-head" onclick="toggleDwHistory()">
+      <div class="news-dw-title">${DW_HISTORY.title}</div>
+      <span id="newsDwToggle" class="news-dw-toggle">${_dwHistoryOpen?'▲ 收起':'▼ 展開'}</span>
+    </div>
+    <div id="newsDwBody" class="news-dw-body${_dwHistoryOpen?' open':''}">`;
   DW_HISTORY.body.forEach(p=>{
     dwHtml += `<div class="news-dw-item">
       <span class="news-dw-label">${p.label}</span>
@@ -4474,7 +4497,7 @@ function renderNewsSection(){
       <span class="news-dw-text">${p.text}</span>
     </div>`;
   });
-  dwHtml += '</div>';
+  dwHtml += '</div></div>';
 
   // 主題篩選chip（含「全部」跟各主題數量）
   const topics = [...new Set(NEWS_ITEMS.map(n=>n.topic))];
@@ -4606,11 +4629,29 @@ function _clEntryHtml(entry){
     <ul class="cl-items">${entry.items.map(it=>`<li>${it}</li>`).join('')}</ul>
   </div>`;
 }
+function _clCompactRow(entry){
+  return `<div class="cl-compact-row"><span class="cl-date">${entry.date}</span><span class="cl-tag">${entry.tag}</span></div>`;
+}
+let _changelogExpanded = false;
+function toggleChangelogFull(){
+  _changelogExpanded = !_changelogExpanded;
+  renderChangelog();
+}
 function renderChangelog(){
   const latestEl=document.getElementById('changelogLatest');
   const bodyEl=document.getElementById('changelogBody');
   if(latestEl) latestEl.innerHTML=_clEntryHtml(CHANGELOG_DATA[0]);
-  if(bodyEl) bodyEl.innerHTML=CHANGELOG_DATA.slice(1).map(_clEntryHtml).join('<div class="cl-divider"></div>');
+  if(!bodyEl) return;
+  const rest = CHANGELOG_DATA.slice(1);
+  if(_changelogExpanded){
+    bodyEl.innerHTML = `<div class="cl-wrap">${rest.map(_clEntryHtml).join('<div class="cl-divider"></div>')}</div>
+      <button class="cl-toggle-btn" onclick="toggleChangelogFull()">▲ 收起</button>`;
+  } else {
+    const recent = rest.slice(0,3);
+    bodyEl.innerHTML = `<div class="cl-recent-label">📋 最近築巢紀錄</div>
+      ${recent.map(_clCompactRow).join('')}
+      <button class="cl-toggle-btn" onclick="toggleChangelogFull()">查看全部築巢歷程 ▾</button>`;
+  }
 }
 
 (function init(){

@@ -1427,11 +1427,11 @@ const GRAMMAR_DATA = [
     title:"拉美各地道地口語：五國俚語地圖",
     rule:"同一件事，不同國家的拉美人說法完全不一樣——這些俚語聽起來很道地，但要注意地區差異，最安全的辦法是先認識、聽懂，在對話裡自然帶出再說。角色台詞仍用泛拉美中性詞（Dale/Listo/Genial），這些俚語是「聽得懂」補充，不是取代中性詞。",
     examples:[
-      {es:"¡Qué onda, wey! — 🇲🇽 墨西哥打招呼（「什麼情況啊，哥們！」）", zh:"¡Qué onda! 字面是「什麼波浪/什麼感覺」，等同於「哇塞！」「怎麼啦？」，wey（guey 諧音版）是朋友間的稱呼（哥們/老兄）。"},
-      {es:"¡Eso está muy chido! — 🇲🇽 墨西哥（「超讚的！」）", zh:"chido/chida 是墨西哥年輕人說「很酷、很棒」的詞，類似英語 cool，在墨西哥以外不常聽到。"},
-      {es:"¡Qué bacano! — 🇨🇴 哥倫比亞（「太讚了！太棒了！」）", zh:"bacano 是哥倫比亞和部分加勒比海地區的「很棒」，類似 chido，同樣具地區性。"},
-      {es:"¡Qué quilombo! — 🇦🇷 阿根廷（「一團亂/超麻煩！」）", zh:"quilombo 字面源自「妓院」但現在日常泛指「混亂、麻煩事」，形容場面一團糟時阿根廷人常用。"},
-      {es:"¿Cachai o no? — 🇨🇱 智利（「你懂嗎？聽懂了沒？」）", zh:"cachai 是智利人幾乎每句話都會帶的口頭禪，字面近似「你抓到了嗎」，功能類似英語的 you know?"}
+      {es:"¡Qué onda, wey!", zh:"🇲🇽 墨西哥打招呼，什麼情況啊，哥們！（¡Qué onda! 字面是「什麼波浪/什麼感覺」，等同於「哇塞！」「怎麼啦？」，wey（guey 諧音版）是朋友間的稱呼（哥們/老兄）。）"},
+      {es:"¡Eso está muy chido!", zh:"🇲🇽 墨西哥，超讚的！（chido/chida 是墨西哥年輕人說「很酷、很棒」的詞，類似英語 cool，在墨西哥以外不常聽到。）"},
+      {es:"¡Qué bacano!", zh:"🇨🇴 哥倫比亞，太讚了！太棒了！（bacano 是哥倫比亞和部分加勒比海地區的「很棒」，類似 chido，同樣具地區性。）"},
+      {es:"¡Qué quilombo!", zh:"🇦🇷 阿根廷，一團亂/超麻煩！（quilombo 字面源自「妓院」但現在日常泛指「混亂、麻煩事」，形容場面一團糟時阿根廷人常用。）"},
+      {es:"¿Cachai o no?", zh:"🇨🇱 智利，你懂嗎？聽懂了沒？（cachai 是智利人幾乎每句話都會帶的口頭禪，字面近似「你抓到了嗎」，功能類似英語的 you know?）"}
     ],
     family:{
       title:"🗺️ 五國俚語速查",
@@ -1463,9 +1463,9 @@ const GRAMMAR_DATA = [
     title:"西語網路縮寫：IG/Twitter 拉美網民語言",
     rule:"拉美社群媒體有一套自己的縮寫系統，混合了西語縮寫和通用拉丁字母縮寫，要讀懂拉美 IG 留言或 Twitter 回文，這幾個必須認識。",
     examples:[
-      {es:"xq no fuiste? — 為什麼你沒來？", zh:"xq = porque（因為／為什麼），是 por qué 的縮寫，口語常見。注意：正式書寫絕對不用 xq，這是純網路用語。"},
-      {es:"gpi a todas! — 感謝所有人！", zh:"gpi = gracias por invitar（謝謝邀請），常見於社群貼文感謝標籤、回覆留言。"},
-      {es:"tkm, no tengo palabras ❤️ — 我愛你，我無言以對❤️", zh:"tkm = te quiero mucho（非常愛你/非常喜歡你），跟 tqm 是同一組，是親友間最常用的網路結尾語。"}
+      {es:"¿Xq no fuiste?", zh:"為什麼你沒來？（xq = porque（因為／為什麼），是 por qué 的縮寫，口語常見。注意：正式書寫絕對不用 xq，這是純網路用語。）"},
+      {es:"¡Gpi a todas!", zh:"感謝所有人！（gpi = gracias por invitar（謝謝邀請），常見於社群貼文感謝標籤、回覆留言。）"},
+      {es:"Tkm, no tengo palabras.", zh:"我愛你，我無言以對。（tkm = te quiero mucho（非常愛你/非常喜歡你），跟 tqm 是同一組，是親友間最常用的網路結尾語。）"}
     ],
     family:{
       title:"📱 拉美網路縮寫速查",

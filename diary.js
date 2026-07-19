@@ -666,7 +666,7 @@ function renderTalkGrowth(){
   if(!el) return;
   const db = getTalkDB().filter(t => (t.voice||'').trim()).slice().reverse(); // 轉成時間正序（舊→新）
   if(db.length < 2){
-    el.innerHTML = `<div class="diary-empty-msg">多寫幾篇「媽媽原音」（至少2篇）之後，這裡會自動比對出妳的西語成長軌跡</div>`;
+    el.innerHTML = `<div class="diary-empty-msg">擁有兩篇以上「個人日記」後，這裡就會秀出妳的西語成長軌跡</div>`;
     return;
   }
   const first = db[0], last = db[db.length-1];

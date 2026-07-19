@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260719a13">
+<link rel="stylesheet" href="style.css?v=20260719a14">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -24,7 +24,7 @@
   <!-- HEADER -->
   <div class="header">
     <div class="header-title">🏡 Mi Pequeña Casa</div>
-    <div class="header-subtitle">拉美西語小莊園 · <button class="header-tour-btn" onclick="showWelcomeTour(true)" title="莊園導覽">🗝️ 莊園導覽</button></div>
+    <div class="header-subtitle">拉美西語小莊園 · <button class="header-tour-btn" onclick="showWelcomeTour(true)" title="莊園導覽">🗝️ 莊園導覽</button> · <button class="header-tour-btn" onclick="openLevelNavDirect()" title="依程度找內容">🧭 找程度</button></div>
   </div>
 
   <!-- ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從上面「❓ 莊園導覽」重新打開） ── -->
@@ -329,7 +329,7 @@
     <div class="ammo-book-top" onclick="toggleLyricsFill()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C6FAF)">
       <div>
         <div class="pb-book-title">🎵 聽歌填空 · 語法闖關</div>
-        <div class="pb-book-sub">B1-B2 拉美名曲歌詞填空，點連結去聽那個片段，回來填動詞</div>
+        <div class="pb-book-sub">從A0兒歌到B2拉美名曲，點連結去聽那個片段，回來填動詞</div>
       </div>
       <span id="lyricsFillToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
@@ -462,26 +462,27 @@
     </div>
 
     <div id="hvBody" class="ammo-body">
-    <!-- 數據看板 -->
+    <!-- 築巢成果統計 -->
+    <div class="hv-stats-title">🏡 蜂巢目前成果</div>
     <div class="hv-stats">
       <div class="hv-stat-card">
-        <div class="hv-stat-num">0</div>
-        <div class="hv-stat-lbl">🌸 工蜂加班次數</div>
+        <div class="hv-stat-lbl">🌸 工蜂嗡嗡出動</div>
+        <div class="hv-stat-num">0 次</div>
       </div>
       <div class="hv-stat-card">
-        <div class="hv-stat-num">0</div>
-        <div class="hv-stat-lbl">☕ 甘露咖啡杯數</div>
+        <div class="hv-stat-lbl">☕ 甘露燃料加速</div>
+        <div class="hv-stat-num">0 杯</div>
       </div>
       <div class="hv-stat-card">
-        <div class="hv-stat-num">0</div>
-        <div class="hv-stat-lbl">🛡️ 保母神盾時數</div>
+        <div class="hv-stat-lbl">🛡️ 保母神盾沙盒</div>
+        <div class="hv-stat-num">0 小時</div>
       </div>
     </div>
 
     <!-- 嗡嗡工蜂的勞動出勤打卡牆 -->
     <div class="hv-flora-wrap">
       <div class="hv-flora-title">🌸 嗡嗡工蜂的出勤打卡牆</div>
-      <p class="hv-flora-sub">感謝每一位讓蜂巢繼續嗡嗡運轉的人</p>
+      <p class="hv-flora-sub">記錄每一次讓蜂巢持續運轉的助力。</p>
 
       <details class="hv-tier-card">
         <summary class="hv-tier-sum">
@@ -528,7 +529,14 @@
         </div>
       </details>
 
-      <p class="hv-flora-note">🌱 贊助功能建置中，打卡牆靜候第一位護法入駐</p>
+    </div>
+
+    <!-- 支援蜂巢：獨立出來，不跟出勤牆混在一起 -->
+    <div class="hv-support-wrap">
+      <div class="hv-support-title">🍯 支援蜂巢</div>
+      <p class="hv-support-desc">想提供花蜜補給？</p>
+      <button class="hv-support-btn" disabled title="功能建置中">成為蜜源</button>
+      <p class="hv-flora-note">🌱 贊助功能建置中，靜候第一股花蜜補給</p>
     </div>
 
     <!-- 築巢日誌 -->
@@ -538,9 +546,7 @@
         <span class="hv-log-push-count">已推送 250+ 次</span>
       </div>
       <div id="changelogLatest" class="cl-latest"></div>
-      <div id="changelogWrap" class="cl-wrap">
-        <div id="changelogBody" class="cl-body"></div>
-      </div>
+      <div id="changelogBody" class="cl-body"></div>
     </div>
     </div> <!-- /hvBody -->
   </div>
@@ -579,12 +585,12 @@
   <script src="audio-manifest.js?v=20260717a5"></script>
   <script src="ammo.js?v=20260716a1"></script>
   <script src="cognates.js?v=20260718a1"></script>
-  <script src="grammar.js?v=20260719a8"></script>
+  <script src="grammar.js?v=20260719a9"></script>
   <script src="stages.js?v=20260716a1"></script>
   <script src="mom.js?v=20260716a1"></script>
-  <script src="diary.js?v=20260719a1"></script>
-  <script src="corazon.js?v=20260717a5"></script>
-  <script src="news.js?v=20260719a1"></script>
-  <script src="script.js?v=20260719a16"></script>
+  <script src="diary.js?v=20260719a2"></script>
+  <script src="corazon.js?v=20260719a1"></script>
+  <script src="news.js?v=20260719a2"></script>
+  <script src="script.js?v=20260719a17"></script>
 </body>
 </html>

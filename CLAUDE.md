@@ -647,6 +647,7 @@ curl -s -X PUT \
     - **虛擬式**：如`dudar que + subjuntivo = 表達不確定`（Dudo que quieras helado.）
     - **語氣詞多重功能**：如`ya 不只表示「已經」，也可表示語氣轉折`（Ya veremos.）
     - **不需要加**：單純單字（Hola.）、中西文完全對等、初級生活基礎句——這些加了反而是雜訊。
+16. **圖示挑選避免嬰兒用品類直接意象（2026-07-19 VERA明確要求）**：VERA 不喜歡用奶瓶🍼這類「嬰兒用品」直接當圖示（即使主題真的是育兒/crianza），之後遇到育兒/家庭相關內容，優先選家庭/溫馨類圖示（如👪），不要用奶瓶/尿布這類過於寫實的嬰兒用品 emoji。已修正：corazon.js「Crianza y familia」卡片標題、news.js「crianza」主題chip，皆從🍼改成👪。
 
 ---
 
