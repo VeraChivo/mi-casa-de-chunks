@@ -709,16 +709,30 @@ const GRAMMAR_DATA = [
 
   {
     id:"g19", cat:"tense", level:"a1a2",
-    title:"IR + a + 動詞：即將要做的未來式",
-    rule:"ir（去）的變位 + a + 原型動詞（字典查到的形式）= 就要去做某事，跟英文 be going to 幾乎一模一樣！這是任何人稱都能用的萬用近未來式，不是只有「我們一起來」的意思。",
+    title:"IR + a + 動詞：從「去」長出行動路線",
+    rule:"很多人學到IR，只記得「ir的變位+a+原形動詞＝近未來式」的公式，但這其實是西語人每天用來說「我接下來要做什麼」最常見的方式——比死背未來式變位更早學、更常用，任何人稱都能用，不是只有「我們一起來」的意思。voy不只是「我去」，很多時候代表「我現在決定要往那個方向走」，是一個行動開關，不一定人已經在動。",
     examples:[
       {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
-      {es:"Voy a comer.", zh:"我要去吃飯了。（新編例句，目前劇情裡還沒有這句）"},
+      {es:"Mamá siempre te va a cuidar.", zh:"媽媽會一直守護你喔。（🛌床邊低語呢原句）"},
       {es:"¿Vas a dormir?", zh:"你要去睡了嗎？（新編例句，目前劇情裡還沒有這句）"}
     ],
+    family:{
+      title:"🌿 IR + a + 動詞：不只一種畫面",
+      intro:"同一個「就要...了」骨架，因為想讓對方知道的事不同，會長出不同分支——不是同義句堆疊，每句背後的溝通目的都不一樣。",
+      items:[
+        {es:"Voy al parque.", zh:"🚶移動：單純講我要去哪裡（後面接地點，不接動詞）"},
+        {es:"Mamá siempre te va a cuidar.", zh:"🤝行動安排：持續性的承諾，不是一次性計畫（🛌床邊低語呢原句）"},
+        {es:"Todo va a salir bien.", zh:"🔮結果預測：對還沒發生的結果表達安心（彈藥庫e2_04原句）"}
+      ]
+    },
     trap:"跟「Vamos a + 動詞」（見另一張卡）不要搞混：那張是限定「我們一起來」，這裡任何人稱都能用。ir 也能單獨表示「去某地點」：Voy al parque.（我要去公園）——後面接地點、不接動詞。六人稱完整變位可到🌀超級變變變查 ir。",
     crossLang:"快速對接：IR + a + 動詞＝英文 be going to——台語「欲（beh）」：我欲食（Guá beh tsia̍h）＝我要吃了；客語「愛（oi）」：𠊎愛食（Ngài oi sṳt）＝我要吃了。四種語言都在講『即將要做的事』，一秒對上！",
-    source:"彈藥庫 e2_04（第一句）／文法補充（其餘為新編）"
+    source:"劇情E2／彈藥庫e2_04／🛌床邊低語呢（core安全感）／文法補充",
+    storyRoles:[
+      {es:"Voy al parque.", semanticRole:"movement", communicationGoal:"我想讓對方知道我要去哪裡", scene:"對話／生活指令（mom.js真實tag）"},
+      {es:"Todo va a salir bien.", semanticRole:"prediction", communicationGoal:"我想讓對方放心、感到安慰", scene:"情緒支持／安慰對話（彈藥庫e2_04真實語境）"},
+      {es:"Mamá siempre te va a cuidar.", semanticRole:"action-plan", communicationGoal:"我想讓對方知道我會一直守護你", scene:"bedtime（mom.js真實scene欄位）"}
+    ]
   },
 
   {
