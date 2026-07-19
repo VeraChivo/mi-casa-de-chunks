@@ -2815,8 +2815,8 @@ function _gsupLevelInfo(levelKey){
 const LEVEL_NAV_ITEMS = [
   {icon:'🌱', label:'我是新手', sub:'從第一句劇情開始', action:'start'},
   {icon:'💧', label:'我會基礎，想加深', sub:'日常對話再進階', level:'b1'},
-  {icon:'🍯', label:'我要準備考試', sub:'DELE B2/C1程度', level:'b2c1'},
-  {icon:'🗣️', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
+  {icon:'🎖️', label:'我要準備考試', sub:'DELE B2/C1程度', level:'b2c1'},
+  {icon:'🏆', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
 ];
 // 真正的新手要的不是文法卡列表，是直接開始跟著劇情學（2026-07-19 VERA指正）
 function jumpToStoryStart(){
