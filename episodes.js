@@ -1425,3 +1425,19 @@ const EPS=[
   expand:{note:"Cata regresa, ___. = 換變得怎樣",template:[{t:"Cuando la batería vuelve a subir, Cata regresa,"},{g:"how"}],groups:[{label:"變得怎樣",key:"how",options:[{es:"más llena y más ella misma.",zh:"更飽滿、更像她自己"},{es:"con más paciencia.",zh:"更有耐心"},{es:"lista para volver a dar.",zh:"準備好再次付出"}]}]}}
 ]}
 ];
+
+// ── D-1 劇情生命週期分類（2026-07-20 盤查，純標記，不影響任何既有渲染/入口邏輯）──
+// 目的：劇情跟能力卡一樣，不是每一集都該長成同一種東西。分類依據不是「有沒有掛文法卡」，
+// 是每集實際在做的事（判斷方式：對照SENTENCE_GRAMMAR_MAP/SENTENCE_AMMO_MAP2連結狀況＋
+// CLAUDE.md已記錄的各集創作意圖）。
+// 🌾 abilityBuilding 能力培養劇情：整集圍繞一個具體文法/句型系統性教學，長能力
+// 🧺 chunkInput     語塊輸入劇情：日常敘事、產出好用語塊，不綁單一文法能力，長語感
+// 🌍 cultureImmersion 文化沉浸劇情：特輯型，補文化背景知識，長背景
+// 💞 emotionalNarrative 情緒敘事劇情：核心目的是情緒/身份/關係的理解與陪伴，長連結
+const EPISODE_LIFECYCLE = {
+  abilityBuilding:   [0,1,2,6],           // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）
+  chunkInput:        [3,4,5,13],          // E4 E5 E6 E14（日常敘事/連接詞複習，重點在產出語塊不在教單一能力，E14即使包裝成情緒角色，設計初衷是連接詞練習）
+  cultureImmersion:  [10],                // E11（亡靈節特輯，明確以文化背景為主，porque/pero教學是附帶收穫）
+  emotionalNarrative:[7,8,9,11,12,14,15]  // E8 E9 E10 E12 E13 E15 E16（迪多溝通方式/媽媽自我覺察/媽媽與迪多排程衝突/小小自我系列/社交電量，核心是情緒理解與陪伴）
+};
+
