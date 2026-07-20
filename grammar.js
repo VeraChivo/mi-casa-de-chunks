@@ -302,7 +302,7 @@ const GRAMMAR_DATA = [
       {es:"Soy aburrida. vs Estoy aburrida.", zh:"我是無聊的人（SER）vs 我現在很無聊（ESTAR）"}
     ],
     trap:"問自己：這是「天生/本質」的特質，還是「當下/暫時」的狀態？",
-    source:"E1~E3 綜合"
+    source:"文法補充（跨句歸納能力，非單一劇情句，走💧文法儲水槽入口）"
   },
 
   // ══ 時態 ══
@@ -584,7 +584,7 @@ const GRAMMAR_DATA = [
       {es:"Lo siento. No pasa nada.", zh:"對不起。——沒關係。"}
     ],
     trap:"超萬用！道歉回應、安慰他人、自我寬解都能用，記起來終身受益！",
-    source:"E1·S9"
+    source:"舊版E1泥巴坑劇情（已移除，現行16集無對應句子，暫無現行劇情入口，待重建）"
   },
 
   {
