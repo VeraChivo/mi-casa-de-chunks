@@ -1647,7 +1647,7 @@ function revealAnswer(){
     const fb=document.getElementById('transFeedback');
     if(ok){
       score++;document.getElementById('userInput').classList.add('correct');
-      const _fb=getRandomFeedback('correct');toastLong(_fb.emoji+' '+_fb.text);
+      const _fb=getRandomFeedback('correct');toast(_fb.emoji+' '+_fb.text);
       if(fb){fb.className='make-result ok';fb.textContent=`${_fb.emoji} ${_fb.text}`;fb.style.display='block';}
     }
     else if(val.length>1){
