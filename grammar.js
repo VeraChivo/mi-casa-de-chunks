@@ -2557,6 +2557,8 @@ const SENTENCE_GRAMMAR_MAP = {
   27:'g16',  // respira hondo / tose → 下指令
   28:'g13',  // Creo que tienes → Creo que
   29:'g12',  // para curarse → para + 動詞
+  // E6 好吃的東西（僅補這一句，讓g08有入口）
+  50:'g08',  // A Nita le encanta el helado → gusta vs encanta 程度對比
   // E7 手忙腳亂的早晨
   60:'g20',  // tiene mucho sueño → TENER 家族
   61: null,  // Mamá Cata despierta a Nita（尚無 despertar 專屬卡）
