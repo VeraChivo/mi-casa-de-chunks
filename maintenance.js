@@ -194,19 +194,20 @@ try {
 }
 
 // ── 內容孤兒檢查：有沒有卡片完全沒被任何路線/關聯圖引用，只能靠瀏覽全部清單才找得到 ──
-// 「孤兒」定義：不在 SENTENCE_GRAMMAR_MAP（劇情句子對應）、不在 STORY_INDEX（劇情索引入口）、
+// 「孤兒」定義：不在 SENTENCE_GRAMMAR_MAP（劇情句子對應）、不在 NEWCOMER_ROADMAP（劇情索引入口）、
 // 不是 CHUNK_FAMILIES 的 grammarId（家族關聯圖入口）——三個路徑都沒連到，才算孤兒。
 // 這不代表卡片沒用（💧文法儲水槽本身就是瀏覽全部清單的地方），只是提醒：這張卡目前只能靠瀏覽找到，
 // 沒有從任何「旅程」被連過去。
 section('內容孤兒檢查（沒有被任何路線/關聯圖引用，僅供參考）');
 try {
   const { GRAMMAR_DATA, SENTENCE_GRAMMAR_MAP } = loadArray('grammar.js', ['GRAMMAR_DATA', 'SENTENCE_GRAMMAR_MAP']);
-  const STORY_INDEX = extractConstArray('script.js', 'STORY_INDEX');
+  const NEWCOMER_ROADMAP = extractConstArray('script.js', 'NEWCOMER_ROADMAP');
   const CHUNK_FAMILIES = extractConstArray('script.js', 'CHUNK_FAMILIES');
+  const roadmapScenes = (NEWCOMER_ROADMAP.chapters || []).flatMap(ch => ch.scenes || []);
 
   const referenced = new Set();
   Object.values(SENTENCE_GRAMMAR_MAP || {}).forEach(gId => { if (gId) referenced.add(gId); });
-  (STORY_INDEX.scenes || []).forEach(s => { if (s.jump && s.jump.type === 'grammar') referenced.add(s.jump.id); });
+  roadmapScenes.forEach(s => { if (s.jump && s.jump.type === 'grammar') referenced.add(s.jump.id); });
   (CHUNK_FAMILIES || []).forEach(fam => { if (fam.grammarId) referenced.add(fam.grammarId); });
 
   const orphans = GRAMMAR_DATA.filter(g => !referenced.has(g.id));
@@ -218,29 +219,30 @@ try {
   fail('內容孤兒檢查失敗：' + e.message);
 }
 
-// ── 死入口檢查：STORY_INDEX / CHUNK_FAMILIES 裡的按鈕，有沒有指向根本不存在的內容 ──
+// ── 死入口檢查：NEWCOMER_ROADMAP / CHUNK_FAMILIES 裡的按鈕，有沒有指向根本不存在的內容 ──
 // 跟上面「孤兒」正好相反：孤兒是「有卡片沒人連過去」，死入口是「有連結但連過去的東西不存在」，
 // 使用者點了按鈕卻什麼都看不到，比孤兒更嚴重（2026-07-19 VERA提出：莊園巡園週維護線第一項）。
 section('死入口檢查（按鈕/連結指向不存在的內容）');
 try {
   const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
-  const STORY_INDEX = extractConstArray('script.js', 'STORY_INDEX');
+  const NEWCOMER_ROADMAP = extractConstArray('script.js', 'NEWCOMER_ROADMAP');
   const CHUNK_FAMILIES = extractConstArray('script.js', 'CHUNK_FAMILIES');
   const { EPS } = loadArray('episodes.js', ['EPS']);
   const gIds = new Set(GRAMMAR_DATA.map(g => g.id));
+  const roadmapScenes = (NEWCOMER_ROADMAP.chapters || []).flatMap(ch => ch.scenes || []);
 
   const deadLinks = [];
-  (STORY_INDEX.scenes || []).forEach(s => {
+  roadmapScenes.forEach(s => {
     if (!s.jump) return;
-    if (s.jump.type === 'grammar' && !gIds.has(s.jump.id)) deadLinks.push(`STORY_INDEX「${s.label}」→ grammar ${s.jump.id}（不存在）`);
-    if (s.jump.type === 'episode' && (s.jump.ep < 0 || s.jump.ep >= EPS.length)) deadLinks.push(`STORY_INDEX「${s.label}」→ episode ${s.jump.ep}（超出範圍，EPS只有${EPS.length}集）`);
+    if (s.jump.type === 'grammar' && !gIds.has(s.jump.id)) deadLinks.push(`NEWCOMER_ROADMAP「${s.label}」→ grammar ${s.jump.id}（不存在）`);
+    if (s.jump.type === 'episode' && (s.jump.ep < 0 || s.jump.ep >= EPS.length)) deadLinks.push(`NEWCOMER_ROADMAP「${s.label}」→ episode ${s.jump.ep}（超出範圍，EPS只有${EPS.length}集）`);
   });
   (CHUNK_FAMILIES || []).forEach(fam => {
     if (fam.grammarId && !gIds.has(fam.grammarId)) deadLinks.push(`CHUNK_FAMILIES「${fam.title}」→ grammar ${fam.grammarId}（不存在）`);
   });
 
   if (deadLinks.length) fail(`發現死入口：\n      ${deadLinks.join('\n      ')}`);
-  else ok(`死入口檢查：STORY_INDEX（${(STORY_INDEX.scenes || []).length}個場景）／CHUNK_FAMILIES（${(CHUNK_FAMILIES || []).length}個家族）指向的連結都存在`);
+  else ok(`死入口檢查：NEWCOMER_ROADMAP（${roadmapScenes.length}個場景）／CHUNK_FAMILIES（${(CHUNK_FAMILIES || []).length}個家族）指向的連結都存在`);
 } catch (e) {
   fail('死入口檢查失敗：' + e.message);
 }

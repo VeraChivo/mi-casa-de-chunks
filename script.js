@@ -254,30 +254,43 @@ function buildNav(){
 // 2026-07-20 VERA指示重鋪：第一章改成新使用者依序認識自己/家人/日常狀態/喜好，
 // 之後自然接回原本的「妮妲的角落」（現E1，idx0）——四張新卡對應到新增的4集（idx16-19），
 // 最後一張直接指向E1讓故事線接續，不是文法卡跳轉。
-const STORY_INDEX = {
-  title: '🏡 第一章：我的西語小世界',
-  scenes: [
-    {icon:'👋', label:'認識自己', chunks:[
-      {es:'Me llamo Nita.', zh:'我叫妮妲。'},
-      {es:'Soy una gatita pequeña.', zh:'我是一隻小小的貓咪。'}
-    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
-    {icon:'🏡', label:'我的家人', chunks:[
-      {es:'Yo soy Mamá Cata.', zh:'我是卡妲媽媽。'},
-      {es:'Soy la mamá de Nita.', zh:'我是妮妲的媽媽。'}
-    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
-    {icon:'☀️', label:'我的日常', chunks:[
-      {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
-    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:18}},
-    {icon:'💛', label:'我的喜歡', chunks:[
-      {es:'A Nita le gusta el helado.', zh:'妮妲喜歡冰淇淋。'}
-    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:19}},
-    {icon:'🐱', label:'妮妲的角落', chunks:[
-      {es:'A Nita le gusta estar en los rincones.', zh:'妮妲喜歡待在角落裡。'}
-    ], jumpLabel:'▶ 看劇情 E1', jump:{type:'episode', ep:0}}
+// 2026-07-20 第二次調整：從扁平的STORY_INDEX改成有chapters[]的NEWCOMER_ROADMAP，
+// 不是純文字外包裝——這是章節系統的第一個資料形狀，之後第二章/第三章直接在chapters
+// 陣列裡加一個物件即可，不用重寫渲染邏輯。scenes內容/jump target完全不動，只是
+// 巢狀進chapters[0].scenes，Episode編號/資料結構零改動。
+const NEWCOMER_ROADMAP = {
+  title: '🌱 新人路線圖',
+  subtitle: '從第一句西語開始',
+  chapters: [
+    {
+      title: '第一章：我的西語小世界',
+      description: '跟著妮妲認識自己的小世界',
+      scenes: [
+        {icon:'👋', label:'認識自己', chunks:[
+          {es:'Me llamo Nita.', zh:'我叫妮妲。'},
+          {es:'Soy una gatita pequeña.', zh:'我是一隻小小的貓咪。'}
+        ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
+        {icon:'🏡', label:'我的家人', chunks:[
+          {es:'Yo soy Mamá Cata.', zh:'我是卡妲媽媽。'},
+          {es:'Soy la mamá de Nita.', zh:'我是妮妲的媽媽。'}
+        ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
+        {icon:'☀️', label:'我的日常', chunks:[
+          {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
+        ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:18}},
+        {icon:'💛', label:'我的喜歡', chunks:[
+          {es:'A Nita le gusta el helado.', zh:'妮妲喜歡冰淇淋。'}
+        ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:19}},
+        {icon:'🐱', label:'妮妲的角落', chunks:[
+          {es:'A Nita le gusta estar en los rincones.', zh:'妮妲喜歡待在角落裡。'}
+        ], jumpLabel:'▶ 看劇情 E1', jump:{type:'episode', ep:0}}
+      ]
+    }
+    // 之後第二章/第三章：{title,description,scenes:[...]} 直接加進這個陣列
   ]
 };
-function storyIndexJump(sceneIdx){
-  const scene = STORY_INDEX.scenes[sceneIdx];
+function storyIndexJump(chapterIdx, sceneIdx){
+  const chapter = NEWCOMER_ROADMAP.chapters[chapterIdx];
+  const scene = chapter && chapter.scenes[sceneIdx];
   if(!scene) return;
   if(scene.jump.type === 'grammar'){ openGrammarCard(scene.jump.id); return; }
   if(scene.jump.type === 'episode'){ switchMainTab('play'); selectEp(scene.jump.ep); }
@@ -294,19 +307,24 @@ function renderStoryIndex(){
   el.innerHTML = `<div class="story-idx-box card-container">
     <div class="ammo-book-top" onclick="toggleStoryIndex()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--mizu),var(--misora))">
       <div>
-        <div class="pb-book-title">${STORY_INDEX.title}</div>
-        <div class="pb-book-sub">把劇情與能力串成新手第一條成長路線</div>
-        <div class="story-idx-more">📖 更多章節製作中…</div>
+        <div class="pb-book-title">${NEWCOMER_ROADMAP.title}</div>
+        <div class="pb-book-sub">${NEWCOMER_ROADMAP.subtitle}</div>
       </div>
       <span id="storyIndexToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
     <div id="storyIndexScenes" class="ammo-body">
-      ${STORY_INDEX.scenes.map((s, i) => `
-        <div class="story-idx-scene">
-          <div class="story-idx-scene-head">${s.icon} ${s.label}</div>
-          <div class="story-idx-chunks">${s.chunks.map(c => `<span class="story-idx-chunk" onclick="speakGramSmart('${escAttr(c.es)}')">${c.es}<span class="story-idx-chunk-zh">${c.zh}</span></span>`).join('')}</div>
-          <button class="story-idx-go" onclick="storyIndexJump(${i})">${s.jumpLabel}</button>
+      ${NEWCOMER_ROADMAP.chapters.map((chapter, ci) => `
+        <div class="story-idx-chapter">
+          <div class="story-idx-chapter-head">${chapter.title}</div>
+          <div class="story-idx-chapter-desc">${chapter.description}</div>
+          ${chapter.scenes.map((s, si) => `
+            <div class="story-idx-scene">
+              <div class="story-idx-scene-head">${s.icon} ${s.label}</div>
+              <div class="story-idx-chunks">${s.chunks.map(c => `<span class="story-idx-chunk" onclick="speakGramSmart('${escAttr(c.es)}')">${c.es}<span class="story-idx-chunk-zh">${c.zh}</span></span>`).join('')}</div>
+              <button class="story-idx-go" onclick="storyIndexJump(${ci},${si})">${s.jumpLabel}</button>
+            </div>`).join('')}
         </div>`).join('')}
+      <div class="story-idx-more">📖 下一章製作中…</div>
     </div>
   </div>`;
 }
@@ -2874,7 +2892,7 @@ const LEVEL_NAV_ITEMS = [
 ];
 // 真正的新手要的不是文法卡列表，是直接開始跟著劇情學（2026-07-19 VERA指正）
 // 2026-07-20：改指向新增的第一章重鋪起點（idx16「認識自己」），不再是舊E1「妮妲的角落」——
-// 讓新手先依序認識自己/家人/日常狀態/喜好，最後才自然接回E1，見STORY_INDEX。
+// 讓新手先依序認識自己/家人/日常狀態/喜好，最後才自然接回E1，見NEWCOMER_ROADMAP。
 function jumpToStoryStart(){
   closeWelcomeTour();
   switchMainTab('play');

@@ -62,6 +62,9 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .header-subtitle{font-size:13px;font-weight:700;color:var(--tmid);margin-top:2px}
 
 .story-idx-box{width:100%;max-width:480px;margin:0 0 12px;box-sizing:border-box}
+.story-idx-chapter{margin-bottom:10px}
+.story-idx-chapter-head{font-size:14px;font-weight:900;color:var(--konpeki);margin-bottom:2px}
+.story-idx-chapter-desc{font-size:11px;font-weight:600;color:var(--tmid);margin-bottom:8px}
 .story-idx-scene{background:var(--bg2);border-radius:10px;padding:8px 10px;margin-bottom:8px}
 .story-idx-scene:last-child{margin-bottom:0}
 .story-idx-scene-head{font-size:12.5px;font-weight:800;color:var(--tdark);margin-bottom:4px}
@@ -70,7 +73,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .story-idx-chunk-zh{font-size:10px;font-weight:600;color:var(--tlight)}
 .story-idx-go{background:var(--misora);color:#fff;border:none;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer}
 .story-idx-go:active{opacity:.7}
-.story-idx-more{color:rgba(255,255,255,.55);font-size:10px;font-weight:600;margin-top:2px}
+.story-idx-more{color:var(--tlight);font-size:11px;font-weight:600;margin-top:4px;text-align:center}
 
 .season-nav-label{font-size:11px;font-weight:800;color:var(--tmid);margin:14px 0 6px;padding-top:10px;border-top:1px dashed var(--usumizu);width:100%;max-width:480px;box-sizing:border-box}
 .season-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;width:100%;max-width:480px;box-sizing:border-box}
