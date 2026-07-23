@@ -1525,7 +1525,10 @@ function echoStopRecording(){
 }
 function echoPlayRecording(){
   if(!_echoBlobUrl) return;
-  new Audio(_echoBlobUrl).play().catch(()=>toast('播放失敗，再試一次看看'));
+  _stopActiveAudio();
+  const player = new Audio(_echoBlobUrl);
+  _activeAudio = player;
+  player.play().catch(()=>toast('播放失敗，再試一次看看'));
 }
 
 // ── RENDER CARD ──
