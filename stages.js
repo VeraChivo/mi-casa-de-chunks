@@ -497,12 +497,15 @@ function toggleStages(){
   }
 }
 
+// 2026-07-20 VERA回報：這裡原本呼叫switchMainTab('private')是錯的——
+// .stages-wrap本來就在跟這顆按鈕同一個tab(tabPlay)裡，不是在穀倉大豐收(tabPrivate)，
+// 切過去反而讓.stages-wrap被隱藏、scrollIntoView失效，使用者實際看到的是tabPrivate
+// 頂端的💎醞釀私語窖，感覺像「跳到花園收藏」。已移除tab切換，只在原地展開+捲動。
 function jumpToStages(){
   const body = document.getElementById('stagesBody');
   const tog = document.getElementById('stagesToggle');
   const wrap = document.querySelector('.stages-wrap');
   if(!body) return;
-  switchMainTab('private');
   body.classList.add('open');
   tog.textContent = '▲ 收起';
   renderStage2();

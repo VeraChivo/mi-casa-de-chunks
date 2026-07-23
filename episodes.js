@@ -1430,14 +1430,14 @@ const EPS=[
 {title:"Me Llamo Nita",titleZh:"認識自己",dur:150,sentences:[
   {es:"Me llamo Nita.",chunks:[{w:"Me llamo",role:"v"},{w:"Nita.",role:"o"}],zh:"我叫妮妲。",en:"My name is Nita.",noteZh:"me llamo = 我叫（llamarse：自己說出自己的名字）",noteEn:"'me llamo' = my name is (llamarse: saying your own name)",
   expand:{note:"Me llamo ___. = 換名字",template:[{t:"Me llamo"},{g:"name"},{t:"."}],groups:[{label:"名字",key:"name",options:[{es:"Kito",zh:"奇托"},{es:"Tito",zh:"迪多"},{es:"Mimi",zh:"咪咪"}]}]}},
-  {es:"Soy una gatita pequeña.",chunks:[{w:"Soy",role:"v"},{w:"una gatita pequeña.",role:"o"}],zh:"我是一隻小小的貓咪。",en:"I am a little cat.",noteZh:"soy = 我是（SER：說明身分本質）",noteEn:"'soy' = I am (SER: describing identity)"},
+  {es:"Soy Nita.",chunks:[{w:"Soy",role:"v"},{w:"Nita.",role:"o"}],zh:"我是妮妲。",en:"I am Nita.",noteZh:"soy = 我是（跟me llamo說的是同一件事，只是用SER再說一次）",noteEn:"'soy' = I am (same information as 'me llamo', just said again with SER)"},
   {es:"Soy la hija mayor de mi familia.",chunks:[{w:"Soy",role:"v"},{w:"la hija mayor de mi familia.",role:"o"}],zh:"我是家裡最大的孩子。",en:"I am the oldest child in my family."},
   {es:"Tengo una familia muy especial.",chunks:[{w:"Tengo",role:"v"},{w:"una familia muy especial.",role:"o"}],zh:"我有一個很特別的家庭。",en:"I have a very special family."},
+  {es:"Soy una gatita pequeña.",chunks:[{w:"Soy",role:"v"},{w:"una gatita pequeña.",role:"o"}],zh:"我是一隻小小的貓咪。",en:"I am a little cat.",noteZh:"soy = 我是（SER：說明身分本質）",noteEn:"'soy' = I am (SER: describing identity)"},
   {es:"Soy tranquila, pero también curiosa.",chunks:[{w:"Soy",role:"v"},{w:"tranquila,",role:"o"},{w:"pero",role:"c"},{w:"también curiosa.",role:"o"}],zh:"我很安靜，但也很好奇。",en:"I'm quiet, but also curious."},
   {es:"A veces soy un poco tímida.",chunks:[{w:"A veces"},{w:"soy",role:"v"},{w:"un poco tímida.",role:"o"}],zh:"有時候我會有點害羞。",en:"Sometimes I'm a little shy."},
   {es:"Necesito momentos de silencio para pensar.",chunks:[{w:"Necesito",role:"v"},{w:"momentos de silencio",role:"o"},{w:"para pensar.",role:"o"}],zh:"我需要一些安靜的時刻來思考。",en:"I need quiet moments to think."},
   {es:"Pero también soy feliz jugando con mi familia.",chunks:[{w:"Pero",role:"c"},{w:"también"},{w:"soy",role:"v"},{w:"feliz jugando con mi familia.",role:"o"}],zh:"但跟家人一起玩的時候，我也很開心。",en:"But I'm also happy playing with my family."},
-  {es:"Este es un poco quién soy.",chunks:[{w:"Este es",role:"v"},{w:"un poco quién soy.",role:"o"}],zh:"這大概就是我的樣子。",en:"This is a bit of who I am."},
   {es:"Este es mi pequeño mundo.",chunks:[{w:"Este es",role:"v"},{w:"mi pequeño mundo.",role:"o"}],zh:"這就是我的小世界。",en:"This is my little world."}
 ]},
 {title:"Mi Familia",titleZh:"我的家人",dur:150,sentences:[
@@ -1455,7 +1455,7 @@ const EPS=[
   {es:"Soy la hermanita bebé de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la hermanita bebé de Nita.",role:"o"}],zh:"我是妮妲最小的妹妹。",en:"I am Nita's baby sister."}
 ]},
 {title:"Mi Día a Día",titleZh:"我的日常／我的狀態",dur:150,sentences:[
-  {es:"Nita tiene sueño por la mañana.",chunks:[{w:"Nita",role:"s"},{w:"tiene sueño",role:"v"},{w:"por la mañana.",role:"o"}],zh:"妮妲早上很想睡。",en:"Nita is sleepy in the morning.",noteZh:"tener sueño = 想睡（TENER+名詞 = 表達身體/生理感覺）",noteEn:"'tener sueño' = to be sleepy (TENER+noun expresses a physical feeling)",
+  {es:"Nita tiene sueño.",chunks:[{w:"Nita",role:"s"},{w:"tiene sueño.",role:"v"}],zh:"妮妲想睡。",en:"Nita is sleepy.",noteZh:"tener sueño = 想睡（TENER+名詞 = 表達身體/生理感覺）；要加時間可以說 por la mañana(早上)",noteEn:"'tener sueño' = to be sleepy (TENER+noun expresses a physical feeling); add 'por la mañana' (in the morning) later if you want to say when",
   expand:{note:"___ tiene sueño. = 換誰想睡",template:[{g:"who"},{t:"tiene sueño."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Tito",zh:"迪多"},{es:"Mimi",zh:"咪咪"}]}]}},
   {es:"Mamá Cata está ocupada en la cocina.",chunks:[{w:"Mamá Cata",role:"s"},{w:"está",role:"v"},{w:"ocupada",role:"o"},{w:"en la cocina.",role:"o"}],zh:"卡妲媽媽在廚房裡忙著。",en:"Mamá Cata is busy in the kitchen.",noteZh:"está ocupada = 正忙著（ESTAR+狀態，形容當下）",noteEn:"'está ocupada' = is busy (ESTAR+state, describes the present moment)"},
   {es:"Papá Tato está trabajando en el jardín.",chunks:[{w:"Papá Tato",role:"s"},{w:"está trabajando",role:"v"},{w:"en el jardín.",role:"o"}],zh:"達多爸爸在花園裡工作。",en:"Papá Tato is working in the garden."},
@@ -1468,8 +1468,8 @@ const EPS=[
   {es:"Es un día tranquilo en la Casa Gato.",chunks:[{w:"Es",role:"v"},{w:"un día tranquilo",role:"o"},{w:"en la Casa Gato.",role:"o"}],zh:"這是貓咪家平靜的一天。",en:"It's a calm day at the Cat House."}
 ]},
 {title:"Lo Que Nos Gusta",titleZh:"我的喜歡",dur:150,sentences:[
-  {es:"A Nita le gusta el silencio.",chunks:[{w:"A Nita le",role:"s"},{w:"gusta",role:"v"},{w:"el silencio.",role:"o"}],zh:"妮妲喜歡安靜。",en:"Nita likes silence.",noteZh:"A + 人 + le gusta = 某人喜歡（gustar句型正式登場：喜歡的東西才是主詞）",noteEn:"'A + person + le gusta' = someone likes... (the thing liked is the real subject)",
-  expand:{note:"A ___ le gusta el silencio. = 換誰喜歡安靜",template:[{t:"A"},{g:"who"},{t:"le gusta el silencio."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Vera",zh:"薇拉"},{es:"Tato",zh:"達多"}]}]}},
+  {es:"A Nita le gusta el helado.",chunks:[{w:"A Nita le",role:"s"},{w:"gusta",role:"v"},{w:"el helado.",role:"o"}],zh:"妮妲喜歡冰淇淋。",en:"Nita likes ice cream.",noteZh:"A + 人 + le gusta = 某人喜歡（gustar句型正式登場：喜歡的東西才是主詞）",noteEn:"'A + person + le gusta' = someone likes... (the thing liked is the real subject)",
+  expand:{note:"A ___ le gusta el helado. = 換誰喜歡冰淇淋",template:[{t:"A"},{g:"who"},{t:"le gusta el helado."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Vera",zh:"薇拉"},{es:"Tato",zh:"達多"}]}]}},
   {es:"A Tito le encanta su carrito rojo.",chunks:[{w:"A Tito le",role:"s"},{w:"encanta",role:"v"},{w:"su carrito rojo.",role:"o"}],zh:"迪多超愛他的紅色小車車。",en:"Tito loves his little red car."},
   {es:"A Papá Tato le encanta cocinar para su familia.",chunks:[{w:"A Papá Tato le",role:"s"},{w:"encanta",role:"v"},{w:"cocinar para su familia.",role:"o"}],zh:"達多爸爸超愛為家人下廚。",en:"Papá Tato loves cooking for his family."},
   {es:"A Mamá Cata le gusta tomar café por la mañana.",chunks:[{w:"A Mamá Cata le",role:"s"},{w:"gusta",role:"v"},{w:"tomar café por la mañana.",role:"o"}],zh:"卡妲媽媽喜歡早上喝杯咖啡。",en:"Mamá Cata likes having coffee in the morning."},

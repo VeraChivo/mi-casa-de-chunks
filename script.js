@@ -266,10 +266,10 @@ const STORY_INDEX = {
       {es:'Soy la mamá de Nita.', zh:'我是妮妲的媽媽。'}
     ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
     {icon:'☀️', label:'我的日常', chunks:[
-      {es:'Nita tiene sueño por la mañana.', zh:'妮妲早上很想睡。'}
+      {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
     ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:18}},
     {icon:'💛', label:'我的喜歡', chunks:[
-      {es:'A Nita le gusta el silencio.', zh:'妮妲喜歡安靜。'}
+      {es:'A Nita le gusta el helado.', zh:'妮妲喜歡冰淇淋。'}
     ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:19}},
     {icon:'🐱', label:'妮妲的角落', chunks:[
       {es:'A Nita le gusta estar en los rincones.', zh:'妮妲喜歡待在角落裡。'}
