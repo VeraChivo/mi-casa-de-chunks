@@ -1423,6 +1423,62 @@ const EPS=[
   expand:{note:"Un rincón silencioso, ___: eso basta. = 換還需要什麼",template:[{t:"Un rincón silencioso,"},{g:"what"},{t:": eso basta."}],groups:[{label:"還需要什麼",key:"what",options:[{es:"un poco de tiempo a solas",zh:"一點獨處的時間"},{es:"un vaso de agua",zh:"一杯水"},{es:"cinco minutos de silencio",zh:"五分鐘的安靜"}]}]}},
   {es:"Cuando la batería vuelve a subir, Cata regresa, más llena y más ella misma.",chunks:[{w:"Cuando",role:"c"},{w:"la batería",role:"s"},{w:"vuelve a subir,",role:"v"},{w:"Cata",role:"s"},{w:"regresa,",role:"v"},{w:"más llena y más ella misma.",role:"o"}],zh:"電量回升之後，卡妲會回來，更飽滿、更像她自己。",en:"When the battery rises again, Cata comes back, fuller and more herself.",noteZh:"vuelve a subir = 再次回升（volver a + 原形動詞）；ella misma = 她自己（強調代名詞）",noteEn:"'vuelve a subir' = rises again (volver a + infinitive); 'ella misma' = herself (emphatic pronoun)",
   expand:{note:"Cata regresa, ___. = 換變得怎樣",template:[{t:"Cuando la batería vuelve a subir, Cata regresa,"},{g:"how"}],groups:[{label:"變得怎樣",key:"how",options:[{es:"más llena y más ella misma.",zh:"更飽滿、更像她自己"},{es:"con más paciencia.",zh:"更有耐心"},{es:"lista para volver a dar.",zh:"準備好再次付出"}]}]}}
+]},
+// ── 第一章重鋪：2026-07-20 VERA指示新增，前四集帶新使用者依序認識自己/家人/日常狀態/喜好，
+// 之後自然接回原本的「妮妲的角落」（現E1）。附加在陣列最後，不更動E1-E16既有索引，
+// 不影響SENTENCE_GRAMMAR_MAP/SENTENCE_AMMO_MAP2/AUDIO_MANIFEST/AMMO_LIFECYCLE等既有資料。──
+{title:"Me Llamo Nita",titleZh:"認識自己",dur:150,sentences:[
+  {es:"Me llamo Nita.",chunks:[{w:"Me llamo",role:"v"},{w:"Nita.",role:"o"}],zh:"我叫妮妲。",en:"My name is Nita.",noteZh:"me llamo = 我叫（llamarse：自己說出自己的名字）",noteEn:"'me llamo' = my name is (llamarse: saying your own name)",
+  expand:{note:"Me llamo ___. = 換名字",template:[{t:"Me llamo"},{g:"name"},{t:"."}],groups:[{label:"名字",key:"name",options:[{es:"Kito",zh:"奇托"},{es:"Tito",zh:"迪多"},{es:"Mimi",zh:"咪咪"}]}]}},
+  {es:"Soy una gatita pequeña.",chunks:[{w:"Soy",role:"v"},{w:"una gatita pequeña.",role:"o"}],zh:"我是一隻小小的貓咪。",en:"I am a little cat.",noteZh:"soy = 我是（SER：說明身分本質）",noteEn:"'soy' = I am (SER: describing identity)"},
+  {es:"Soy la hija mayor de mi familia.",chunks:[{w:"Soy",role:"v"},{w:"la hija mayor de mi familia.",role:"o"}],zh:"我是家裡最大的孩子。",en:"I am the oldest child in my family."},
+  {es:"Tengo una familia muy especial.",chunks:[{w:"Tengo",role:"v"},{w:"una familia muy especial.",role:"o"}],zh:"我有一個很特別的家庭。",en:"I have a very special family."},
+  {es:"Soy tranquila, pero también curiosa.",chunks:[{w:"Soy",role:"v"},{w:"tranquila,",role:"o"},{w:"pero",role:"c"},{w:"también curiosa.",role:"o"}],zh:"我很安靜，但也很好奇。",en:"I'm quiet, but also curious."},
+  {es:"A veces soy un poco tímida.",chunks:[{w:"A veces"},{w:"soy",role:"v"},{w:"un poco tímida.",role:"o"}],zh:"有時候我會有點害羞。",en:"Sometimes I'm a little shy."},
+  {es:"Necesito momentos de silencio para pensar.",chunks:[{w:"Necesito",role:"v"},{w:"momentos de silencio",role:"o"},{w:"para pensar.",role:"o"}],zh:"我需要一些安靜的時刻來思考。",en:"I need quiet moments to think."},
+  {es:"Pero también soy feliz jugando con mi familia.",chunks:[{w:"Pero",role:"c"},{w:"también"},{w:"soy",role:"v"},{w:"feliz jugando con mi familia.",role:"o"}],zh:"但跟家人一起玩的時候，我也很開心。",en:"But I'm also happy playing with my family."},
+  {es:"Este es un poco quién soy.",chunks:[{w:"Este es",role:"v"},{w:"un poco quién soy.",role:"o"}],zh:"這大概就是我的樣子。",en:"This is a bit of who I am."},
+  {es:"Este es mi pequeño mundo.",chunks:[{w:"Este es",role:"v"},{w:"mi pequeño mundo.",role:"o"}],zh:"這就是我的小世界。",en:"This is my little world."}
+]},
+{title:"Mi Familia",titleZh:"我的家人",dur:150,sentences:[
+  {es:"Yo soy Mamá Cata.",chunks:[{w:"Yo soy",role:"v"},{w:"Mamá Cata.",role:"o"}],zh:"我是卡妲媽媽。",en:"I am Mamá Cata.",noteZh:"Yo soy + 名字 = 自我介紹的第一句",noteEn:"'Yo soy + name' = the first line of introducing yourself",
+  expand:{note:"Yo soy ___. = 換角色自我介紹",template:[{t:"Yo soy"},{g:"who"},{t:"."}],groups:[{label:"是誰",key:"who",options:[{es:"Mamá Cata",zh:"卡妲媽媽"},{es:"Papá Tato",zh:"達多爸爸"},{es:"Vera",zh:"薇拉"}]}]}},
+  {es:"Soy la mamá de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la mamá de Nita.",role:"o"}],zh:"我是妮妲的媽媽。",en:"I am Nita's mom.",noteZh:"Soy el/la ___ de Nita = 說明跟妮妲的關係",noteEn:"'Soy el/la ___ de Nita' = describing your relationship to Nita",
+  expand:{note:"Soy ___ de Nita. = 換跟妮妲的關係",template:[{t:"Soy"},{g:"relation"},{t:"de Nita."}],groups:[{label:"關係",key:"relation",options:[{es:"la mamá",zh:"媽媽"},{es:"el papá",zh:"爸爸"},{es:"la mejor amiga",zh:"最好的朋友"}]}]}},
+  {es:"Yo soy Papá Tato.",chunks:[{w:"Yo soy",role:"v"},{w:"Papá Tato.",role:"o"}],zh:"我是達多爸爸。",en:"I am Papá Tato."},
+  {es:"Soy el papá de Nita.",chunks:[{w:"Soy",role:"v"},{w:"el papá de Nita.",role:"o"}],zh:"我是妮妲的爸爸。",en:"I am Nita's dad."},
+  {es:"Yo soy Vera.",chunks:[{w:"Yo soy",role:"v"},{w:"Vera.",role:"o"}],zh:"我是薇拉。",en:"I am Vera."},
+  {es:"Soy la mejor amiga de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la mejor amiga de Nita.",role:"o"}],zh:"我是妮妲最好的朋友。",en:"I am Nita's best friend."},
+  {es:"Yo soy Tito.",chunks:[{w:"Yo soy",role:"v"},{w:"Tito.",role:"o"}],zh:"我是迪多。",en:"I am Tito."},
+  {es:"Soy el hermano de Nita.",chunks:[{w:"Soy",role:"v"},{w:"el hermano de Nita.",role:"o"}],zh:"我是妮妲的弟弟。",en:"I am Nita's little brother."},
+  {es:"Yo soy Mimi.",chunks:[{w:"Yo soy",role:"v"},{w:"Mimi.",role:"o"}],zh:"我是咪咪。",en:"I am Mimi."},
+  {es:"Soy la hermanita bebé de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la hermanita bebé de Nita.",role:"o"}],zh:"我是妮妲最小的妹妹。",en:"I am Nita's baby sister."}
+]},
+{title:"Mi Día a Día",titleZh:"我的日常／我的狀態",dur:150,sentences:[
+  {es:"Nita tiene sueño por la mañana.",chunks:[{w:"Nita",role:"s"},{w:"tiene sueño",role:"v"},{w:"por la mañana.",role:"o"}],zh:"妮妲早上很想睡。",en:"Nita is sleepy in the morning.",noteZh:"tener sueño = 想睡（TENER+名詞 = 表達身體/生理感覺）",noteEn:"'tener sueño' = to be sleepy (TENER+noun expresses a physical feeling)",
+  expand:{note:"___ tiene sueño. = 換誰想睡",template:[{g:"who"},{t:"tiene sueño."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Tito",zh:"迪多"},{es:"Mimi",zh:"咪咪"}]}]}},
+  {es:"Mamá Cata está ocupada en la cocina.",chunks:[{w:"Mamá Cata",role:"s"},{w:"está",role:"v"},{w:"ocupada",role:"o"},{w:"en la cocina.",role:"o"}],zh:"卡妲媽媽在廚房裡忙著。",en:"Mamá Cata is busy in the kitchen.",noteZh:"está ocupada = 正忙著（ESTAR+狀態，形容當下）",noteEn:"'está ocupada' = is busy (ESTAR+state, describes the present moment)"},
+  {es:"Papá Tato está trabajando en el jardín.",chunks:[{w:"Papá Tato",role:"s"},{w:"está trabajando",role:"v"},{w:"en el jardín.",role:"o"}],zh:"達多爸爸在花園裡工作。",en:"Papá Tato is working in the garden."},
+  {es:"Tito está esperando su turno para jugar.",chunks:[{w:"Tito",role:"s"},{w:"está esperando",role:"v"},{w:"su turno para jugar.",role:"o"}],zh:"迪多在等輪到他玩。",en:"Tito is waiting for his turn to play."},
+  {es:"Vera está en la puerta, lista para entrar.",chunks:[{w:"Vera",role:"s"},{w:"está",role:"v"},{w:"en la puerta,",role:"o"},{w:"lista para entrar.",role:"o"}],zh:"薇拉在門口，準備要進來。",en:"Vera is at the door, ready to come in."},
+  {es:"Mimi tiene hambre y llora un poco.",chunks:[{w:"Mimi",role:"s"},{w:"tiene hambre",role:"v"},{w:"y",role:"c"},{w:"llora un poco.",role:"v"}],zh:"咪咪肚子餓了，哭了一下下。",en:"Mimi is hungry and cries a little."},
+  {es:"Nita está tranquila en su rincón favorito.",chunks:[{w:"Nita",role:"s"},{w:"está",role:"v"},{w:"tranquila",role:"o"},{w:"en su rincón favorito.",role:"o"}],zh:"妮妲在她最愛的角落裡，很安靜。",en:"Nita is calm in her favorite corner."},
+  {es:"Toda la familia está en casa hoy.",chunks:[{w:"Toda la familia",role:"s"},{w:"está",role:"v"},{w:"en casa hoy.",role:"o"}],zh:"今天全家人都在家。",en:"The whole family is home today."},
+  {es:"Nita tiene ganas de jugar con Tito.",chunks:[{w:"Nita",role:"s"},{w:"tiene ganas de jugar",role:"v"},{w:"con Tito.",role:"o"}],zh:"妮妲很想跟迪多一起玩。",en:"Nita feels like playing with Tito.",noteZh:"tener ganas de + 動詞 = 很想做某事",noteEn:"'tener ganas de + verb' = to feel like doing something"},
+  {es:"Es un día tranquilo en la Casa Gato.",chunks:[{w:"Es",role:"v"},{w:"un día tranquilo",role:"o"},{w:"en la Casa Gato.",role:"o"}],zh:"這是貓咪家平靜的一天。",en:"It's a calm day at the Cat House."}
+]},
+{title:"Lo Que Nos Gusta",titleZh:"我的喜歡",dur:150,sentences:[
+  {es:"A Nita le gusta el silencio.",chunks:[{w:"A Nita le",role:"s"},{w:"gusta",role:"v"},{w:"el silencio.",role:"o"}],zh:"妮妲喜歡安靜。",en:"Nita likes silence.",noteZh:"A + 人 + le gusta = 某人喜歡（gustar句型正式登場：喜歡的東西才是主詞）",noteEn:"'A + person + le gusta' = someone likes... (the thing liked is the real subject)",
+  expand:{note:"A ___ le gusta el silencio. = 換誰喜歡安靜",template:[{t:"A"},{g:"who"},{t:"le gusta el silencio."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Vera",zh:"薇拉"},{es:"Tato",zh:"達多"}]}]}},
+  {es:"A Tito le encanta su carrito rojo.",chunks:[{w:"A Tito le",role:"s"},{w:"encanta",role:"v"},{w:"su carrito rojo.",role:"o"}],zh:"迪多超愛他的紅色小車車。",en:"Tito loves his little red car."},
+  {es:"A Papá Tato le encanta cocinar para su familia.",chunks:[{w:"A Papá Tato le",role:"s"},{w:"encanta",role:"v"},{w:"cocinar para su familia.",role:"o"}],zh:"達多爸爸超愛為家人下廚。",en:"Papá Tato loves cooking for his family."},
+  {es:"A Mamá Cata le gusta tomar café por la mañana.",chunks:[{w:"A Mamá Cata le",role:"s"},{w:"gusta",role:"v"},{w:"tomar café por la mañana.",role:"o"}],zh:"卡妲媽媽喜歡早上喝杯咖啡。",en:"Mamá Cata likes having coffee in the morning."},
+  {es:"A Vera le gusta escuchar a sus amigos.",chunks:[{w:"A Vera le",role:"s"},{w:"gusta",role:"v"},{w:"escuchar a sus amigos.",role:"o"}],zh:"薇拉喜歡聽朋友說話。",en:"Vera likes listening to her friends."},
+  {es:"A Mimi le encantan las galletas.",chunks:[{w:"A Mimi le",role:"s"},{w:"encantan",role:"v"},{w:"las galletas.",role:"o"}],zh:"咪咪超愛餅乾。",en:"Mimi loves cookies.",noteZh:"encantan（複數）vs encanta（單數）：要看後面喜歡的東西是單數還複數",noteEn:"'encantan' (plural) vs 'encanta' (singular): it matches the thing being liked, not the person"},
+  {es:"A Nita también le gusta dibujar.",chunks:[{w:"A Nita también le",role:"s"},{w:"gusta",role:"v"},{w:"dibujar.",role:"o"}],zh:"妮妲也喜歡畫畫。",en:"Nita also likes drawing."},
+  {es:"A Tito no le gusta el ruido fuerte.",chunks:[{w:"A Tito no le",role:"s"},{w:"gusta",role:"v"},{w:"el ruido fuerte.",role:"o"}],zh:"迪多不喜歡很大的聲音。",en:"Tito doesn't like loud noise.",noteZh:"否定句：no放在le前面",noteEn:"negation: 'no' goes right before 'le'"},
+  {es:"A toda la familia le gusta estar junta.",chunks:[{w:"A toda la familia le",role:"s"},{w:"gusta",role:"v"},{w:"estar junta.",role:"o"}],zh:"全家人都喜歡待在一起。",en:"The whole family likes being together."},
+  {es:"Y a Nita le gusta mucho su pequeña casa.",chunks:[{w:"Y",role:"c"},{w:"a Nita le",role:"s"},{w:"gusta mucho",role:"v"},{w:"su pequeña casa.",role:"o"}],zh:"而妮妲很喜歡她的小房子。",en:"And Nita likes her little house a lot."}
 ]}
 ];
 
@@ -1435,7 +1491,7 @@ const EPS=[
 // 🌍 cultureImmersion 文化沉浸劇情：特輯型，補文化背景知識，長背景
 // 💞 emotionalNarrative 情緒敘事劇情：核心目的是情緒/身份/關係的理解與陪伴，長連結
 const EPISODE_LIFECYCLE = {
-  abilityBuilding:   [0,1,2,6],           // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）
+  abilityBuilding:   [0,1,2,6,16,17,18,19], // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）＋2026-07-20新增第一章重鋪4集（認識自己/我的家人/我的日常狀態/我的喜歡，系統性教llamarse/SER/ESTAR/TENER/gustar，尚未接grammar/ammo連結，等內容定案後再重整）
   chunkInput:        [3,4,5,13],          // E4 E5 E6 E14（日常敘事/連接詞複習，重點在產出語塊不在教單一能力，E14即使包裝成情緒角色，設計初衷是連接詞練習）
   cultureImmersion:  [10],                // E11（亡靈節特輯，明確以文化背景為主，porque/pero教學是附帶收穫）
   emotionalNarrative:[7,8,9,11,12,14,15]  // E8 E9 E10 E12 E13 E15 E16（迪多溝通方式/媽媽自我覺察/媽媽與迪多排程衝突/小小自我系列/社交電量，核心是情緒理解與陪伴）

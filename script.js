@@ -251,22 +251,29 @@ function buildNav(){
 // ── 🏡 A1-A2 劇情索引：不改episodes.js，只是把已有內容重新串成新手路線 ──
 // 盤點結果（E1-E11）：①「打招呼/認識自己」目前episodes.js完全沒有對應場景，改連到g117(llamarse)+g01(SER)文法卡；
 // 其餘三個場景都能直接連到已有劇情集數，不用新增內容
+// 2026-07-20 VERA指示重鋪：第一章改成新使用者依序認識自己/家人/日常狀態/喜好，
+// 之後自然接回原本的「妮妲的角落」（現E1，idx0）——四張新卡對應到新增的4集（idx16-19），
+// 最後一張直接指向E1讓故事線接續，不是文法卡跳轉。
 const STORY_INDEX = {
   title: '🏡 第一章：我的西語小世界',
   scenes: [
     {icon:'👋', label:'認識自己', chunks:[
       {es:'Me llamo Nita.', zh:'我叫妮妲。'},
-      {es:'Yo soy Gatita Nita.', zh:'我是小貓妮妲。'}
-    ], jumpLabel:'▶ 看文法卡', jump:{type:'grammar', id:'g117'}},
-    {icon:'👨‍👩‍👧', label:'我的家人', chunks:[
-      {es:'Mamá Cata ha tenido un bebé.', zh:'貓媽媽生了一個寶寶。'}
-    ], jumpLabel:'▶ 看劇情 E4', jump:{type:'episode', ep:3}},
-    {icon:'💕', label:'我的喜好', chunks:[
-      {es:'A Nita le encanta el helado de chocolate.', zh:'妮妲超愛巧克力冰淇淋。'}
-    ], jumpLabel:'▶ 看劇情 E6', jump:{type:'episode', ep:5}},
+      {es:'Soy una gatita pequeña.', zh:'我是一隻小小的貓咪。'}
+    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
+    {icon:'🏡', label:'我的家人', chunks:[
+      {es:'Yo soy Mamá Cata.', zh:'我是卡妲媽媽。'},
+      {es:'Soy la mamá de Nita.', zh:'我是妮妲的媽媽。'}
+    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
     {icon:'☀️', label:'我的日常', chunks:[
-      {es:'Nita tiene mucho sueño.', zh:'妮妲很想睡。'}
-    ], jumpLabel:'▶ 看劇情 E7', jump:{type:'episode', ep:6}}
+      {es:'Nita tiene sueño por la mañana.', zh:'妮妲早上很想睡。'}
+    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:18}},
+    {icon:'💛', label:'我的喜歡', chunks:[
+      {es:'A Nita le gusta el silencio.', zh:'妮妲喜歡安靜。'}
+    ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:19}},
+    {icon:'🐱', label:'妮妲的角落', chunks:[
+      {es:'A Nita le gusta estar en los rincones.', zh:'妮妲喜歡待在角落裡。'}
+    ], jumpLabel:'▶ 看劇情 E1', jump:{type:'episode', ep:0}}
   ]
 };
 function storyIndexJump(sceneIdx){
@@ -620,8 +627,8 @@ function renderBeVerbNote(a){
 
 // 西語數字 1-10：基數/序數/emoji 三態並列
 const NUM_EMOJI=['','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'];
-const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis'];
-const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto'];
+const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte'];
+const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto','decimoséptimo','decimoctavo','decimonoveno','vigésimo'];
 
 function renderAmmo(){
   document.getElementById('ammoCount').textContent = ammoUnlocked.length;
@@ -2866,10 +2873,12 @@ const LEVEL_NAV_ITEMS = [
   {icon:'🏆', label:'我想更貼近母語', sub:'俚語／文化深度', level:'c1'}
 ];
 // 真正的新手要的不是文法卡列表，是直接開始跟著劇情學（2026-07-19 VERA指正）
+// 2026-07-20：改指向新增的第一章重鋪起點（idx16「認識自己」），不再是舊E1「妮妲的角落」——
+// 讓新手先依序認識自己/家人/日常狀態/喜好，最後才自然接回E1，見STORY_INDEX。
 function jumpToStoryStart(){
   closeWelcomeTour();
   switchMainTab('play');
-  selectEp(0);
+  selectEp(16);
   window.scrollTo({top:0, behavior:'smooth'});
 }
 // 給「不是第一次來」的人直接跳進等級路標，不用重播整輪導覽（🗝️莊園導覽對回訪者會改跳農間小報，這個是專門的捷徑）
