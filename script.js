@@ -3450,6 +3450,14 @@ window.addEventListener('popstate', ()=>{
   const sheet = document.getElementById('grammarSheet');
   if(sheet && sheet.style.display === 'block'){
     closeGrammarSheet(true);
+    return;
+  }
+  const overlay = document.getElementById('welcomeTourOverlay');
+  if(overlay && overlay.style.display === 'flex'){
+    const nav = overlay.querySelector('.welcome-tour-nav');
+    // nav隱藏＝目前顯示的是農間小報，不是歡迎導覽/莊園導覽（見showMorningBrief）
+    if(nav && nav.style.display === 'none'){ closeMorningBrief(true); }
+    else { closeWelcomeTour(true); }
   }
 });
 
@@ -4437,14 +4445,16 @@ function showMorningBrief(){
   const body = document.getElementById('welcomeTourBody');
   if(body) body.innerHTML = getMorningBriefHTML();
   overlay.style.display = 'flex';
+  _pushTourOverlayState();
 }
-function closeMorningBrief(){
+function closeMorningBrief(_fromPop){
   const overlay = document.getElementById('welcomeTourOverlay');
   if(!overlay) return;
   const nav = overlay.querySelector('.welcome-tour-nav');
   if(nav) nav.style.display = '';
   overlay.style.display = 'none';
   try{ localStorage.setItem('peppa_brief_day_v1', String(Math.floor(Date.now()/86400000))); }catch(e){}
+  _popTourOverlayState(_fromPop);
 }
 
 // 農間小報彈窗「去核對答案」：關彈窗、切到日光育苗場、展開歌詞填空、捲到那張卡並閃一下
@@ -4522,6 +4532,7 @@ function showWelcomeTour(force){
     _welcomeTourStep = 0;
     renderWelcomeTourStep();
     if(overlay) overlay.style.display = 'flex';
+    _pushTourOverlayState();
     return;
   }
   // Returning visitor
@@ -4547,6 +4558,7 @@ function showWorldTour(){
   _welcomeTourStep = 0;
   renderWelcomeTourStep();
   overlay.style.display = 'flex';
+  _pushTourOverlayState();
 }
 function renderWelcomeTourStep(){
   const s = WELCOME_TOUR_STEPS[_welcomeTourStep];
@@ -4581,9 +4593,26 @@ function welcomeTourPrev(){
   _welcomeTourStep--;
   renderWelcomeTourStep();
 }
-function closeWelcomeTour(){
+function closeWelcomeTour(_fromPop){
   document.getElementById('welcomeTourOverlay').style.display = 'none';
   try{ localStorage.setItem('peppa_welcome_tour_seen_v1', '1'); }catch(e){}
+  _popTourOverlayState(_fromPop);
+}
+
+// ── 手機瀏覽器「返回」鍵：讓歡迎導覽/農間小報這個共用彈窗跟文法卡彈窗一樣，
+// 按返回先關彈窗，不要直接離開網站（2026-07-20 VERA回報，見popstate監聽器）──
+let _tourOverlayPushed = false;
+function _pushTourOverlayState(){
+  history.pushState({sheet:'tour'}, '');
+  _tourOverlayPushed = true;
+}
+function _popTourOverlayState(_fromPop){
+  if(_tourOverlayPushed && !_fromPop){
+    _tourOverlayPushed = false;
+    history.back();
+  } else {
+    _tourOverlayPushed = false;
+  }
 }
 
 function initReminders(){

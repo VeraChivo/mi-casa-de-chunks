@@ -979,3 +979,4 @@ curl -s -X PUT \
 - **語塊配色系統**：S=虛線框、V=實色底、O=實線框，色票變數在style.css開頭:root（--v-navy、--o-deepblue等），之前被覆蓋過一次，改動前建議先確認現況。
 - **隱含主詞一律用西語**：不要改回中文括號。
 - **GitHub Actions workflow**：.github/workflows/deploy.yml目前只跑GitHub Pages，Netlify job已經想拿掉但token權限不足沒推成功，如果之後要處理需要有workflow權限的token。
+- **手機瀏覽器「返回」鍵行為（2026-07-20 修復）**：全站目前有兩個「彈窗」等級的全螢幕覆蓋層——`#grammarSheet`（文法卡彈窗，原本就有正確處理）跟`#welcomeTourOverlay`（歡迎導覽/莊園導覽重播/農間小報三種模式共用同一個元素，原本沒處理，按手機返回鍵會直接離開網站）。修法統一比照同一套pattern：開啟時`history.pushState()`+記一個旗標，關閉時如果旗標是true且不是從popstate觸發的就呼叫`history.back()`；`window.addEventListener('popstate',...)`裡依序檢查`grammarSheet`→`welcomeTourOverlay`（用`.welcome-tour-nav`是否隱藏分辨目前是農間小報還是導覽模式）決定關哪一個。**之後如果新增其他全螢幕彈窗/覆蓋層，都要比照這個pattern補history處理，不然手機使用者按返回會直接跳出網站**——這條不含分頁切換(`switchMainTab`)或一般卡片展開/收合(`toggle*`系列)，那些目前刻意沒有整合進history stack（範圍太大、風險相對高，VERA尚未要求這塊）。
