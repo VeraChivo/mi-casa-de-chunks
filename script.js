@@ -2604,6 +2604,18 @@ function togglePronounLib(){
   t.textContent=open?'▲ 收起':'▼ 展開';
 }
 
+// 文法卡「補充理解」跳轉去🏰莊園人物冊，重用既有代名詞對照表，不重複列一份新表（2026-07-24）
+function jumpToPronounLibrary(){
+  closeGrammarSheet();
+  switchMainTab('know');
+  const body = document.getElementById('pronounLibBody');
+  if(body && !body.classList.contains('open')) togglePronounLib();
+  setTimeout(()=>{
+    const wrap = document.querySelector('.pron-lib-wrap');
+    if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 60);
+}
+
 // ── 🔄 動詞變位庫（獨立瀏覽區）──
 // gId → 音檔用動詞代號（g03跟g02變位相同,共用estar）
 const CONJ_AUDIO_VERB = {g01:'ser',g02:'estar',g03:'estar',g05:'haber',g07:'serfut',g10:'poder',g11:'deber',g17:'sentir',g18:'ir',g20:'tener',g23:'andar'};
@@ -3442,6 +3454,7 @@ function openGrammarCard(gId){
     ${buildConjTable(g.conj, g.id)}
     ${familyHtml}
     ${extraFamilyHtml}
+    ${g.note?`<div class="grammar-tag-box tag-note"><div class="grammar-tag-badge">💡 補充理解</div><div class="grammar-tag-body">${g.note}</div></div>`:''}
     ${g.trap?`<div class="grammar-tag-box tag-trap"><div class="grammar-tag-badge">⚠️ 常見陷阱</div><div class="grammar-tag-body">${g.trap}</div></div>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
     ${g.quirk?`<div class="grammar-tag-box tag-quirk"><div class="grammar-tag-badge">🐛 調皮特例</div><div class="grammar-tag-body">${g.quirk}</div></div>`:''}

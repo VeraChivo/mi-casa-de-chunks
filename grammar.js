@@ -419,10 +419,10 @@ const GRAMMAR_DATA = [
     rule:"A + 人名或代名詞 + le/les + gusta(n) + 名詞或原型動詞。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
-      {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"},
-      {es:"A mí me gusta el café.", zh:"我喜歡咖啡。（加 a mí 是為了強調）"}
+      {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"}
     ],
-    trap:"代名詞對應：a mí me / a ti te / a él,ella,usted le / a nosotros nos / a ustedes,ellos,ellas les（西班牙另有 a vosotros os，拉美不用）",
+    note:"A mí me gusta el café. 我喜歡咖啡。——單獨說 Me gusta el café. 就已經完整，加上「A mí」只是為了強調「是我」喜歡（不是別人）。",
+    trap:"完整的me/te/le/nos/les對照表，已經收在🏰莊園人物冊裡，不重複列一份 <button class=\"grammar-link-btn\" onclick=\"jumpToPronounLibrary()\">🏰 查看完整對照 →</button>",
     source:"E3·S6 / E1·S10"
   },
 
