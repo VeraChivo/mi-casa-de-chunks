@@ -229,6 +229,16 @@ function renderStage2(){
 function renderStage3(){
   const el=document.getElementById('stage3Area');
   if(!el) return;
+  // 2026-07-24 VERA錄影抓到的bug：這裡本來每次被呼叫(重新展開/再點一次「邁向精釀下一階」)
+  // 都會整個重置，使用者選好的Yo/soy/amigo會被默默清空，卻沒有任何提示，看起來像「動詞/
+  // 語塊選擇需要重新解鎖」。已修：只有第一次渲染(容器還是空的)才重置選字狀態，之後重新
+  // 呼叫只刷新「🎒你學過的語塊庫」(可能因為在別處完成新句子而累積了新語塊)，不動使用者
+  // 正在進行中的S/V/O選擇。
+  if(el.innerHTML.trim() !== ''){
+    const learnedEl = document.getElementById('s3LearnedPoolArea');
+    if(learnedEl) learnedEl.innerHTML = _renderS3LearnedPool();
+    return;
+  }
   _s3Gender='male'; _s3SelectedSubjEs=null; _s3SelectedVerbId=null; _s3SelectedObjIdx=null;
   el.innerHTML=`
     <div class="stage3-container">
