@@ -1570,11 +1570,17 @@ function render(){
   const tipEl = document.getElementById('grammarTip');
   if(tipEl) tipEl.style.display='none';
   // 入倉不是所有句子的下一步，而是可重複使用語塊的收藏入口——不是每句都該有ammo
-  // （見CHUNK_ECOLOGY的reusableChunk判準），這裡沒有對應ammo時直接隱藏按鈕，
-  // 不要讓使用者點了沒反應（比照grammarTip「沒有秘方就不顯示」同一套防呆邏輯）。
-  // 之後新增E21+，看到這顆按鈕不代表「一定要建ammo」，沒有就讓它自然隱藏即可。
+  // （見CHUNK_ECOLOGY的reusableChunk判準：劇情限定句/文化體驗句/尚未整理成可重複
+  // 練習語塊的句子，本來就不會有）。之後新增E21+，看到這顆按鈕不代表「一定要建ammo」。
+  // 沒有ammo時不隱藏、不裝作沒事：改成「培育中」灰階狀態，讓使用者知道「這句還沒
+  // 整理好，不是壞了」，不是「有按鈕點了卻沒反應」。
   const ammoBtn = document.getElementById('jumpAmmoBtn');
-  if(ammoBtn) ammoBtn.style.display = (SENTENCE_AMMO_MAP2[currentGlobalIdx()]||[]).length ? '' : 'none';
+  if(ammoBtn){
+    const hasAmmo = (SENTENCE_AMMO_MAP2[currentGlobalIdx()]||[]).length > 0;
+    ammoBtn.classList.toggle('is-disabled', !hasAmmo);
+    ammoBtn.textContent = hasAmmo ? '🌾 骨架抓到了 → 入倉語塊模組' : '🌱 語塊正在培育中';
+    ammoBtn.title = hasAmmo ? '' : '小蜜蜂們正在整理這句話的練習素材，未來會慢慢收入語塊花園';
+  }
   document.getElementById('userInput').value='';
   document.getElementById('userInput').className='trans-input';
   if(document.getElementById('transFeedback')){
@@ -2324,10 +2330,14 @@ function showComplete(){
 
   const nextEpBtn = document.getElementById('nextEpBtn');
   const finaleEgg = document.getElementById('completeFinaleEgg');
+  const routeBridge = document.getElementById('completeRouteBridge');
   // 終點角色由EPISODE_COMPLETION_MARKERS宣告，不用ep===EPS.length-1推論（見episodes.js說明）
   const isStoryFinale = EPISODE_COMPLETION_MARKERS.storyFinale.includes(ep);
   const isRouteComplete = EPISODE_COMPLETION_MARKERS.routeComplete.includes(ep);
   finaleEgg.style.display = isStoryFinale ? '' : 'none';
+  // 第一站(E17-E20)結束接回E1時，補一句故事銜接說明，避免使用者覺得突然換教材——
+  // 「認識自己」是妮妲故事的前傳，不是跟主線無關的另一套內容
+  if(routeBridge) routeBridge.style.display = isRouteComplete ? '' : 'none';
 
   if(isRouteComplete){
     nextEpBtn.classList.remove('locked');

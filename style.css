@@ -291,6 +291,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 /* ── 跳轉按鈕（四階漸層藍） ── */
 .btn-jump-ammo{width:100%;padding:9px;border-radius:11px;border:none;font-size:12px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s}
 .btn-jump-ammo:active{opacity:.8}
+.btn-jump-ammo.is-disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
 #jumpAmmoBtn{background:linear-gradient(135deg,#C8E4FF,#B3D9FF);color:#1A3D6B;margin-bottom:8px}
 #jumpStagesBtn{background:linear-gradient(135deg,#9DC8F5,#7FB5F0);color:#0F2D5A;margin-bottom:12px}
 .btn-next{flex:2;background:linear-gradient(135deg,var(--misora),var(--konpeki));color:white;box-shadow:0 4px 14px rgba(0,91,152,.2);display:none;font-size:14px}
@@ -317,6 +318,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .cf-zh{font-size:15px;font-weight:800;color:#B87800;line-height:1.5;margin-top:2px}
 .complete-finale-egg{margin-top:10px;font-style:italic;opacity:.92}
 .complete-cheer{font-size:12px;font-weight:600;color:var(--tlight);background:rgba(108,155,210,.06);border-radius:10px;padding:8px 12px;margin-bottom:4px;line-height:1.5;font-style:italic}
+.complete-route-bridge{font-size:13px;font-weight:700;color:var(--konpeki);background:rgba(159,208,222,.16);border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.6}
 
 /* COGNATE SECTION IN PASSBOOK */
 .lvlnav-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
