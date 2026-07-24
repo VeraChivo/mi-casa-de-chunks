@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260724a4">
+<link rel="stylesheet" href="style.css?v=20260724a5">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -124,6 +124,12 @@
 
       <!-- 文法情境提示（解鎖後出現） -->
       <div id="grammarTip" style="display:none;margin:10px 0 2px"></div>
+
+      <!-- 完成句子→引導帶去日記寫下今天的想法（解鎖後出現） -->
+      <div class="diary-bridge" id="diaryBridge" style="display:none">
+        <div class="diary-bridge-text">🌼 這句話開花了，想帶回生活寫下今天的想法嗎？</div>
+        <button class="diary-bridge-btn" onclick="jumpToDiaryWithSentence()">🛌 寫進床邊低語呢</button>
+      </div>
 
       <div class="btn-row">
         <button class="btn btn-next" id="nextBtn" onclick="nextCard()">下一句 →</button>
@@ -588,11 +594,11 @@
   <script src="ammo.js?v=20260724a1"></script>
   <script src="cognates.js?v=20260719a8"></script>
   <script src="grammar.js?v=20260724a4"></script>
-  <script src="stages.js?v=20260724a2"></script>
+  <script src="stages.js?v=20260724a3"></script>
   <script src="mom.js?v=20260719a1"></script>
-  <script src="diary.js?v=20260719a6"></script>
+  <script src="diary.js?v=20260724a1"></script>
   <script src="corazon.js?v=20260719a2"></script>
   <script src="news.js?v=20260719a3"></script>
-  <script src="script.js?v=20260724a10"></script>
+  <script src="script.js?v=20260724a11"></script>
 </body>
 </html>

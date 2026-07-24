@@ -308,6 +308,32 @@ function diaryDeleteEntry(id){
   if(typeof toast === 'function') toast('🗑️ 已刪除這篇');
 }
 
+// 🌼 學習完成→日記出口（2026-07-24 VERA定案第一階段：只做按鈕入口+帶入句子+跳轉，
+// 不改日記資料結構）：從田間播語塊的完成句子，引導帶去📔Vivencias de mamá的自由手札欄，
+// 不是💬聊療吾心語——後者是「挑片語→自動對照→擴寫」三步驟流程，需要先從固定片語庫選字，
+// 硬塞任意劇情句進去會跳過①②步驟、UI狀態對不上；Vivencias de mamá的手札欄本來就是
+// 自由書寫、沒有前置步驟，適合承接「把這句話帶回生活寫下今天的想法」。
+function jumpToDiaryWithSentence(){
+  if(typeof cur !== 'function') return;
+  const s = cur();
+  if(!s) return;
+  switchMainTab('mom');
+  setTimeout(()=>{
+    const ta = document.getElementById('diaryDraftText');
+    if(ta){
+      // 附加而不是覆蓋——手札欄本來就會自動帶入日期/心情草稿模板(diaryBuildDraftText)，
+      // 不會是真的空白，用「是否已包含這句」判斷避免重複點擊插入好幾次
+      const quote = `「${s.es}」`;
+      if(!ta.value.includes(quote)){
+        ta.value = ta.value.replace(/\n+$/,'') + `\n${quote}\n`;
+        _diaryDraftDirty = true;
+      }
+      ta.scrollIntoView({behavior:'smooth', block:'center'});
+      ta.focus();
+    }
+  }, 60);
+}
+
 function renderDiaryList(){
   const el = document.getElementById('diaryListArea');
   if(!el) return;

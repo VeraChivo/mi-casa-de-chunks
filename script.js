@@ -1569,6 +1569,8 @@ function render(){
   const uz=document.getElementById('unlockZone');if(uz){uz.style.display='';}
   const tipEl = document.getElementById('grammarTip');
   if(tipEl) tipEl.style.display='none';
+  const dbEl = document.getElementById('diaryBridge');
+  if(dbEl) dbEl.style.display='none';
   // 入倉不是所有句子的下一步，而是可重複使用語塊的收藏入口——不是每句都該有ammo
   // （見CHUNK_ECOLOGY的reusableChunk判準：劇情限定句/文化體驗句/尚未整理成可重複
   // 練習語塊的句子，本來就不會有）。之後新增E21+，看到這顆按鈕不代表「一定要建ammo」。
@@ -1681,6 +1683,8 @@ function revealAnswer(){
   const nb=document.getElementById('nextBtn');
   nb.style.display='block';nb.style.flex='1';
   showGrammarTip(ep * 10 + idx);
+  const db=document.getElementById('diaryBridge');
+  if(db) db.style.display='';
   if(!answered.includes(idx)){
     answered.push(idx);
     answeredByEp[ep]=answered;

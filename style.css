@@ -626,6 +626,10 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .grammar-tip-label{font-size:9px;font-weight:800;color:var(--tlight);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
 .grammar-tip-title{font-size:13px;font-weight:800;color:var(--konpeki);line-height:1.3}
 .grammar-tip-arrow{font-size:15px;color:var(--misora);font-weight:900;flex-shrink:0}
+.diary-bridge{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:rgba(180,145,195,.10);border:1.5px solid rgba(180,145,195,.35);border-radius:11px;padding:10px 13px;margin:10px 0 2px;animation:fadeUp .22s ease}
+.diary-bridge-text{font-size:12px;font-weight:700;color:var(--tmid);flex:1;min-width:140px}
+.diary-bridge-btn{flex-shrink:0;background:#B08BBB;color:#fff;border:none;border-radius:999px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif}
+.diary-bridge-btn:active{opacity:.8}
 
 /* ── GRAMMAR MODAL ── */
 #grammarModal{display:none;position:fixed;inset:0;background:rgba(26,46,59,.55);z-index:999;align-items:flex-end;justify-content:center;padding:0}
@@ -983,6 +987,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .s3-gender-btn.is-active{background:var(--misora);color:white}
 .s3-picker-section{margin:10px 0 4px}
 .s3-picker-toggle{font-size:12px;font-weight:800;color:var(--tmid);cursor:pointer;padding:6px 2px;list-style:none}
+.s3-picker-sub{font-size:11px;font-weight:600;color:var(--tlight);padding:0 2px 4px}
 .s3-picker-section .s3-col-wrap:first-of-type{margin-top:8px}
 .s3-col-wrap{margin-bottom:14px}
 .s3-col-label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;padding:3px 10px;border-radius:6px;display:inline-block}

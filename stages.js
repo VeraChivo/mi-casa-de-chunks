@@ -253,7 +253,8 @@ function renderStage3(){
         <button class="speak-btn" id="s3SpeakBtn" onclick="s3SpeakCurrent()" disabled>🔊 聽整句</button>
       </div>
       <details class="s3-picker-section" open>
-        <summary class="s3-picker-toggle">🧩 選語塊造句 ▾</summary>
+        <summary class="s3-picker-toggle">🧩 句型拼裝練習 ▾</summary>
+        <div class="s3-picker-sub">跟著句型骨架，練習組出完整句子</div>
         <div class="s3-col-wrap">
           <div class="s3-col-label s3-label-s">👤 主詞 S</div>
           <div class="s3-chip-pool" id="s3SubjPool">${_renderS3SubjChips()}</div>
