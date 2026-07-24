@@ -270,8 +270,16 @@ function renderStage3(){
 // ── 累積詞池（從完成過的句子自動收集，見 script.js accumulateSVOPool）──
 function _s3LearnedChipRow(label, role, words){
   if(!words.length) return '';
-  const chips = words.map(w=>`<button class="s3-chip s3-learned-chip s3-learned-${role}" data-search="${escStage(w).toLowerCase()}" onclick="speakGardenChunk('${escStage(w)}')">${w}</button>`).join('');
+  const chips = words.map(w=>`<button class="s3-chip s3-learned-chip s3-learned-${role}" data-search="${escStage(w).toLowerCase()}" onclick="speakGardenChunk('${escStage(w)}')">${w}<span class="s3-practice-btn" onclick="event.stopPropagation();s3BringToPractice('${escStage(w)}')" title="帶去造句練習">🌱</span></button>`).join('');
   return `<div class="s3-col-wrap"><div class="s3-col-label s3-label-${role}">${label}</div><div class="s3-chip-pool">${chips}</div></div>`;
+}
+
+// 學過的語塊 → 帶去造句練習：只展開＋捲動＋提示，不碰S3固定選字邏輯（A方案，2026-07-24 VERA定案）
+function s3BringToPractice(text){
+  const details = document.querySelector('.s3-picker-section');
+  if(details) details.open = true;
+  if(details) details.scrollIntoView({behavior:'smooth', block:'start'});
+  toast(`🌱 用「${text}」練習：試著選語塊組出類似的句子`);
 }
 
 function filterS3LearnedPool(query){

@@ -994,6 +994,8 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .s3-learned-search{width:100%;box-sizing:border-box;border:1.5px solid var(--usumizu);border-radius:10px;padding:7px 11px;font-size:13px;font-family:'Nunito',sans-serif;color:var(--tdark);background:var(--bg2);margin:8px 0 10px}
 .s3-learned-empty{font-size:12px;font-weight:600;color:var(--tlight)}
 .s3-learned-chip{font-size:12px;padding:5px 10px}
+.s3-practice-btn{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(61,184,122,.15);color:var(--ok);font-size:10px;flex-shrink:0}
+.s3-practice-btn:active{background:var(--ok);color:white}
 .s3-learned-s{background:white;border:1.5px dashed var(--s-babyblue) !important;color:var(--konpeki)}
 .s3-learned-v{background:var(--v-navy);color:var(--v-gold)}
 .s3-learned-o{background:white;border:1.5px solid var(--o-deepblue) !important;color:var(--o-deepblue)}
