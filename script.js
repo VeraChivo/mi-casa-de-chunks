@@ -4572,7 +4572,7 @@ const ENTRY_MATRIX_ITEMS = [
   {icon:'🌱', label:'今天只有10分鐘', sub:'今日耕耘任務', target:'daily'},
   {icon:'🌾', label:'想系統學文法', sub:'文法儲水槽', target:'grammar'},
   {icon:'🎵', label:'想聽歌學西語', sub:'聽歌填空', target:'lyrics'},
-  {icon:'📰', label:'想看世界時事', sub:'B2時事傳送門', target:'news'},
+  {icon:'🌎', label:'想看世界時事', sub:'西語世界：時事與文化', target:'news'},
   {icon:'📔', label:'想放鬆說說話', sub:'床邊低語呢', target:'mom'},
   {icon:'🎲', label:'小蜜蜂選給你', sub:'驚喜包（建置中）', target:'surprise', disabled:true}
 ];
@@ -4707,7 +4707,7 @@ function initReminders(){
   checkReminders();
 }
 
-// ── 📰 B2 時事傳送門：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
+// ── 🌎 西語世界：時事與文化：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
 let _newsTopicFilter = 'all';
 let _newsExpandedId = null;
 let _newsSectionOpen = false; // 2026-07-19修正：原本開合狀態只存在DOM的inline style裡，
@@ -4820,7 +4820,7 @@ function renderNewsSection(){
     <div class="news-section-header" onclick="toggleNewsSection()">
       <div class="news-section-header-main">
         <div class="news-section-title-row">
-          <span class="news-section-title">📰 B2 時事傳送門</span>
+          <span class="news-section-title">🌎 西語世界：時事與文化</span>
           <span class="news-section-badge">B2</span>
         </div>
         <div class="news-section-sub">挖空填詞・錯字修正，讓語塊長進真實新聞</div>
