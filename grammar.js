@@ -159,7 +159,7 @@ const GRAMMAR_DATA = [
     },
     crossLang:"快速對接：SER＝「是」——華語「是」、台語「是（sī）」、客語「係（he）」，四種語言在『本質認同』這個字上都對得起來，比死背 DOCTOR 口訣更直覺！",
     quirk:"📍 事件發生地點 → SER；物體本身的位置 → ESTAR。<br>❌ 直覺：婚禮在哪裡？= 地點 = ESTAR？<br>✅ 其實是：什麼事情在哪裡發生？= SER<br>La boda es en la iglesia.（婚禮在教堂舉行——事件發生地點，用SER，跟tener lugar「舉行」同義）<br>≠ La iglesia está en el centro.（教堂位於市中心——這是教堂這個「東西」本身的位置，才輪到ESTAR）",
-    source:"E1·S1 / E1·S2 / E3·S3",
+    source:"E3·S3",
     conj:{
       verb:"ser（是）",
       rows:[
@@ -279,7 +279,7 @@ const GRAMMAR_DATA = [
       {es:"Estoy esperando el autobús.", zh:"我正在等公車。（estoy + esperar → esperando）"}
     ],
     trap:"-ar 動詞字尾換 -ando（jugar → jugando）；-er/-ir 動詞字尾換 -iendo（comer → comiendo）",
-    source:"E1·S3 / E2·S9 / E3·S1",
+    source:"E2·S9 / E3·S1",
     conj:{
       verb:"estar + -ando（西語的-ing形態）",
       rows:[
@@ -317,7 +317,7 @@ const GRAMMAR_DATA = [
       {es:"He perdido mi mochila.", zh:"我把我的書包弄丟了。（「我」用 he）"}
     ],
     trap:"字尾規則：-ar → -ado（encontrar→encontrado）；-er/-ir → -ido（perder→perdido）",
-    source:"E1·S7 / E2·S3",
+    source:"E2·S3",
     conj:{
       verb:"haber（幫忙的動詞）",
       rows:[
@@ -410,7 +410,7 @@ const GRAMMAR_DATA = [
       {es:"¿Te gusta el chocolate?", zh:"你喜歡巧克力嗎？（問句：me換成 te）"}
     ],
     trap:"動詞跟著「被喜歡的事物」走：Me gusta el libro（單）vs Me gustan los libros（複）",
-    source:"E1·S6 / E1·S10"
+    source:"E20·S1（全集10句皆示範gusta/encanta，見SENTENCE_GRAMMAR_MAP globalIdx190-199）"
   },
 
   {
@@ -423,7 +423,7 @@ const GRAMMAR_DATA = [
     ],
     note:"A mí me gusta el café. 我喜歡咖啡。——單獨說 Me gusta el café. 就已經完整，加上「A mí」只是為了強調「是我」喜歡（不是別人）。",
     trap:"完整的me/te/le/nos/les對照表，已經收在🏰莊園人物冊裡，不重複列一份 <button class=\"grammar-link-btn\" onclick=\"jumpToPronounLibrary()\">🏰 查看完整對照 →</button>",
-    source:"E3·S6 / E1·S10"
+    source:"E3·S6"
   },
 
   // ══ 動詞句型 ══
@@ -438,7 +438,7 @@ const GRAMMAR_DATA = [
       {es:"¿Podemos ver la tele?", zh:"我們可以看電視嗎？"}
     ],
     trap:"poder 變化比較特別：puedo / puedes / puede / podemos / podéis（拉美:pueden）/ pueden",
-    source:"E1·S4",
+    source:"E12·S3（¿Puedo jugar también?，劇情現行例句）",
     conj:{
       verb:"poder（能夠／可以）",
       rows:[
@@ -491,7 +491,7 @@ const GRAMMAR_DATA = [
       {es:"Debemos respetar las reglas.", zh:"我們該遵守規則。"}
     ],
     trap:"deber 變化：debo / debes / debe / debemos / debéis（拉美常用 deben）/ deben",
-    source:"E1·S5",
+    source:"目前現行主線暫無deber對應劇情語料（原引用之E1舊版泥巴坑劇情已移除）。deber仍為A1核心情態動詞能力，保留本卡，待未來劇情自然涵蓋時再補回現行來源，不為此新增劇情",
     conj:{
       verb:"deber（應該／必須）",
       rows:[
