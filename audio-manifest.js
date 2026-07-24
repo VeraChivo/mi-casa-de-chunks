@@ -224,6 +224,32 @@ const AUDIO_MANIFEST={
     ["audio/e18/09_soy_la_mejor_amiga.mp3"],
     ["audio/e18/10_somos_la_familia_y_los_amigos.mp3"],
   ],
+  // E19 我的日常（2026-07-24 盤查後預留，同E17/E18先預留整句key，尚未錄製）
+  18:[
+    ["audio/e19/01_nita_tiene_sueno.mp3"],
+    ["audio/e19/02_mama_cata_esta_ocupada.mp3"],
+    ["audio/e19/03_papa_tato_esta_trabajando.mp3"],
+    ["audio/e19/04_tito_esta_esperando.mp3"],
+    ["audio/e19/05_vera_esta_en_la_puerta.mp3"],
+    ["audio/e19/06_mimi_tiene_hambre.mp3"],
+    ["audio/e19/07_nita_esta_tranquila.mp3"],
+    ["audio/e19/08_toda_la_familia_esta_en_casa.mp3"],
+    ["audio/e19/09_nita_tiene_ganas_de_jugar.mp3"],
+    ["audio/e19/10_es_un_dia_tranquilo.mp3"],
+  ],
+  // E20 我的喜歡（2026-07-24 盤查後預留）
+  19:[
+    ["audio/e20/01_a_nita_le_gusta_el_helado.mp3"],
+    ["audio/e20/02_a_tito_le_encanta_su_carrito.mp3"],
+    ["audio/e20/03_a_papa_tato_le_encanta_cocinar.mp3"],
+    ["audio/e20/04_a_mama_cata_le_gusta_el_cafe.mp3"],
+    ["audio/e20/05_a_vera_le_gusta_escuchar.mp3"],
+    ["audio/e20/06_a_mimi_le_encantan_las_galletas.mp3"],
+    ["audio/e20/07_a_nita_tambien_le_gusta_dibujar.mp3"],
+    ["audio/e20/08_a_tito_no_le_gusta_el_ruido.mp3"],
+    ["audio/e20/09_a_toda_la_familia_le_gusta_estar_junta.mp3"],
+    ["audio/e20/10_y_a_nita_le_gusta_su_casa.mp3"],
+  ],
 };
 
 // mom.js（🛡️情緒會說話／🎀馬麻有話講／👩🏻馬麻小情緒＆情緒這樣說）真人整句音檔
