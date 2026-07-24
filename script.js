@@ -2616,6 +2616,39 @@ function jumpToPronounLibrary(){
   }, 60);
 }
 
+// 🧰 莊園工具間（2026-07-24 header入口，重用openGrammarSheet()面板，不新增另一套UI）
+// 內容＝原本頁尾攤平的6個查詢工具連結，分3類收起來，避免重複入口
+const WORKSHOP_TOOLS = {
+  title: '🧰 莊園工具間',
+  subtitle: '查發音、找例句、製作素材',
+  categories: [
+    { icon:'👂', label:'聽音工具', tools:[
+      {label:'🔊 Forvo', url:'https://forvo.com'},
+      {label:'🎙️ YouGlish', url:'https://youglish.com'}
+    ]},
+    { icon:'📖', label:'查詢工具', tools:[
+      {label:'📖 WordReference', url:'https://www.wordreference.com'}
+    ]},
+    { icon:'🎬', label:'創作工具', tools:[
+      {label:'🎬 CapCut', url:'https://www.capcut.com'},
+      {label:'🗣️ Ondoku 音讀', url:'https://ondoku3.com/ja'},
+      {label:'🎧 Luvvoice', url:'https://luvvoice.com'}
+    ]}
+  ]
+};
+function openWorkshopPanel(){
+  const html = `
+    <div class="grammar-title">${WORKSHOP_TOOLS.title}</div>
+    <div class="grammar-rule">${WORKSHOP_TOOLS.subtitle}</div>
+    ${WORKSHOP_TOOLS.categories.map(cat => `
+      <div class="workshop-cat">
+        <div class="workshop-cat-title">${cat.icon} ${cat.label}</div>
+        <div class="query-links-row">${cat.tools.map(t=>`<a href="${t.url}" target="_blank" rel="noopener" class="query-link">${t.label}</a>`).join('')}</div>
+      </div>`).join('')}
+  `;
+  openGrammarSheet(html);
+}
+
 // ── 🔄 動詞變位庫（獨立瀏覽區）──
 // gId → 音檔用動詞代號（g03跟g02變位相同,共用estar）
 const CONJ_AUDIO_VERB = {g01:'ser',g02:'estar',g03:'estar',g05:'haber',g07:'serfut',g10:'poder',g11:'deber',g17:'sentir',g18:'ir',g20:'tener',g23:'andar'};

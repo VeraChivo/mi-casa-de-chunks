@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260724a2">
+<link rel="stylesheet" href="style.css?v=20260724a3">
 <link rel="manifest" href="manifest.json?v=20260713a2">
 <link rel="icon" href="icon.svg?v=20260713a2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg?v=20260713a2">
@@ -26,10 +26,12 @@
     <div class="header-title">🏡 Mi Pequeña Casa</div>
     <div class="header-subtitle">拉美西語小莊園</div>
     <div class="header-entry-row">
-      <span id="headerStartSlot"></span>
-      <button class="header-entry-btn" onclick="entryMatrixJump('daily')" title="今天做什麼？">🎁 入園巧遇</button>
       <button class="header-entry-btn" onclick="openLevelNavDirect()" title="不是新手？直接挑一條適合的路線">🧭 探索路線</button>
       <button class="header-entry-btn" onclick="showWorldTour()" title="了解整座莊園">🗺️ 莊園導覽</button>
+      <button class="header-entry-btn" onclick="entryMatrixJump('daily')" title="今天做什麼？">🎁 入園巧遇</button>
+      <span id="headerStartSlot"></span>
+      <button class="header-entry-btn" onclick="openWorkshopPanel()" title="查發音、找例句、製作素材">🧰 莊園工具</button>
+      <button class="header-entry-btn is-disabled" disabled title="建置中，敬請期待">🌎 西語世界</button>
     </div>
   </div>
 
@@ -559,17 +561,7 @@
 
   </div> <!-- ══════════ / TAB D：穀倉豐收 結束 ══════════ -->
 
-  <!-- 頁尾工具列：查詢工具，同一排常駐 -->
-  <div class="query-links-row">
-    <a href="https://forvo.com" target="_blank" rel="noopener" class="query-link">🔊 Forvo</a>
-    <a href="https://youglish.com" target="_blank" rel="noopener" class="query-link">🎙️ YouGlish</a>
-    <a href="https://www.wordreference.com" target="_blank" rel="noopener" class="query-link">📖 WordRef</a>
-  </div>
-  <div class="query-links-row">
-    <a href="https://www.capcut.com" target="_blank" rel="noopener" class="query-link">🎬 CapCut</a>
-    <a href="https://ondoku3.com/ja" target="_blank" rel="noopener" class="query-link">🗣️ Ondoku 音讀</a>
-    <a href="https://luvvoice.com" target="_blank" rel="noopener" class="query-link">🎧 Luvvoice</a>
-  </div>
+  <!-- 頁尾查詢工具連結已收進header「🧰 莊園工具」面板（見script.js openWorkshopPanel()），避免重複入口 -->
 
   <!-- ── 文法酷庫 Modal ── -->
   <div id="grammarModal">
@@ -597,6 +589,6 @@
   <script src="diary.js?v=20260719a6"></script>
   <script src="corazon.js?v=20260719a2"></script>
   <script src="news.js?v=20260719a3"></script>
-  <script src="script.js?v=20260724a4"></script>
+  <script src="script.js?v=20260724a5"></script>
 </body>
 </html>
