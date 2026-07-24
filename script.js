@@ -1578,7 +1578,7 @@ function render(){
   if(ammoBtn){
     const hasAmmo = (SENTENCE_AMMO_MAP2[currentGlobalIdx()]||[]).length > 0;
     ammoBtn.classList.toggle('is-disabled', !hasAmmo);
-    ammoBtn.textContent = hasAmmo ? '🌾 骨架抓到了 → 入倉語塊模組' : '🌱 語塊正在培育中';
+    ammoBtn.textContent = hasAmmo ? '🌾 骨架抓到了 → 入倉語塊模組' : '🐝 小蜜蜂正在採集這句話';
     ammoBtn.title = hasAmmo ? '' : '小蜜蜂們正在整理這句話的練習素材，未來會慢慢收入語塊花園';
   }
   document.getElementById('userInput').value='';
