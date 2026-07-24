@@ -1569,6 +1569,12 @@ function render(){
   const uz=document.getElementById('unlockZone');if(uz){uz.style.display='';}
   const tipEl = document.getElementById('grammarTip');
   if(tipEl) tipEl.style.display='none';
+  // 入倉不是所有句子的下一步，而是可重複使用語塊的收藏入口——不是每句都該有ammo
+  // （見CHUNK_ECOLOGY的reusableChunk判準），這裡沒有對應ammo時直接隱藏按鈕，
+  // 不要讓使用者點了沒反應（比照grammarTip「沒有秘方就不顯示」同一套防呆邏輯）。
+  // 之後新增E21+，看到這顆按鈕不代表「一定要建ammo」，沒有就讓它自然隱藏即可。
+  const ammoBtn = document.getElementById('jumpAmmoBtn');
+  if(ammoBtn) ammoBtn.style.display = (SENTENCE_AMMO_MAP2[currentGlobalIdx()]||[]).length ? '' : 'none';
   document.getElementById('userInput').value='';
   document.getElementById('userInput').className='trans-input';
   if(document.getElementById('transFeedback')){
