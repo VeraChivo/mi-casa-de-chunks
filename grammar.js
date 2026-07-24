@@ -948,7 +948,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g27", cat:"subjunctive", level:"b1",
-    title:"虛擬語氣入門：WEIRDO觸發詞",
+    title:"Quiero que...：想要、希望與期待的語氣",
     rule:"主要子句是「願望／情緒／非人稱評論／請求／懷疑或否定／Ojalá」這六類，而且**主要子句的主詞跟後面子句的主詞不一樣**時，que 後面的動詞要變成虛擬式（不是陳述式）。如果主詞相同，直接用原形動詞就好，不用 que + 虛擬式。",
     examples:[
       {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。（否定信念 D=Doubt/Denial，觸發虛擬式 esté）"},
@@ -1366,7 +1366,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g53", cat:"subjunctive", level:"b2c1",
-    title:"過去虛擬式：Imperfecto de Subjuntivo",
+    title:"Quería que...：過去的願望與請求",
     rule:"當主要子句的動詞是**過去時態**（quería、pidió、esperaba…），而且滿足 WEIRDO 條件時，que 後面要用過去虛擬式（Imperfecto de Subjuntivo）。<br><br>規則變化：<br>• -AR 動詞：hablar → habl<b>ara</b>（我說了但那是在過去語境裡的願望）<br>• -ER / -IR 動詞：comer → com<b>iera</b>、vivir → viv<b>iera</b><br><br>高頻不規則形（背這幾個最夠用）：<br>ser／ir → fuera／fuera　tener → tuviera　hacer → hiciera　poder → pudiera　decir → dijera　haber → hubiera",
     examples:[
       {es:"Mamá Cata quería que Nita durmiera temprano.", zh:"卡妲媽媽希望妮妲早點睡。（quería=過去，→過去虛擬式 durmiera）"},
@@ -1389,7 +1389,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g54", cat:"subjunctive", level:"b2c1",
-    title:"現在完成虛擬式：haya + 過去分詞",
+    title:"No creo que haya...：懷疑一件可能已發生的事",
     rule:"當 WEIRDO 主句的動詞是**現在時態**，但後面子句說的是一件「可能已經發生」的事，que 後面就用「現在完成虛擬式」：**haya / hayas / haya / hayamos / hayan + 過去分詞（-ado/-ido）**。<br><br>白話判斷法：說的是「現在懷疑/希望/擔心——某件過去的事有沒有發生」→ haya + 過去分詞。",
     examples:[
       {es:"No creo que Nita haya terminado de comer.", zh:"我不覺得妮妲已經吃完了。（現在不信 → 對已發生的事）"},
@@ -1709,7 +1709,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g75", cat:"subjunctive", level:"b2c1",
-    title:"過去虛擬式（Imperfecto de Subjuntivo）：與現在事實相反的假設",
+    title:"如果人生重來一次：不可能的假設情境（過去虛擬式延伸）",
     rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。過去虛擬式的規則變化基準是「陳述式簡單過去式第三人稱複數」去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
     examples:[
       {es:"Si tuviera dinero, viajaría por toda Latinoamérica.", zh:"如果我有錢，我會環遊整個拉丁美洲。"},
@@ -1722,7 +1722,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g76", cat:"verb-pattern", level:"b2c1",
-    title:"被動語態：voz pasiva 與更常用的 se pasivo",
+    title:"Se habla español：西語裡不說主角的說法（被動延伸）",
     rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（依主詞陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞第三人稱，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
     examples:[
       {es:"El puente fue construido por ingenieros franceses.", zh:"這座橋是由法國工程師建造的。"},
@@ -1735,7 +1735,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g77", cat:"connector", level:"b2c1",
-    title:"讓步子句：Aunque 的雙重用法（陳述式 vs 虛擬式）",
+    title:"Aunque怎麼聽出說話者的態度：讓步語氣延伸",
     rule:"Aunque（雖然/即使）後面接陳述式還是虛擬式，意思會不同：①Aunque + 陳述式＝敘述已知的事實，說話者確定這件事發生了，例如 Aunque llueve, voy a salir.（雖然在下雨〔真的在下雨〕，我還是要出門）。②Aunque + 虛擬式＝假設/不確定的情況，說話者不確定或不在乎這件事是否發生，例如 Aunque llueva, voy a salir.（就算下雨〔不確定會不會下雨，或不在乎〕，我還是要出門）。這是同一個連接詞，換個動詞語氣就能表達完全不同的態度，是B2讓步子句的核心考點。",
     examples:[
       {es:"Aunque llueve, iré a la fiesta.", zh:"雖然在下雨，我還是會去派對（真的在下雨）。"},
@@ -2063,7 +2063,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g94", cat:"rhetoric", level:"c2",
-    title:"修辭手法：新聞和演講都在用的5種技巧",
+    title:"El tiempo es oro：新聞和演講怎麼把話說得更有力",
     rule:"B2之後文法幾乎都學完了，真正的差距在於認得出「這句話用了什麼修辭技巧」——新聞標題、政治演講、廣告文案幾乎都建立在這幾種修辭手法上，認得出來，讀西語文本的理解深度會完全不同。",
     examples:[
       {es:"El tiempo es oro.", zh:"時間就是金錢。（metáfora隱喻：直接把兩個不同的東西劃上等號，不用「像」）"},
