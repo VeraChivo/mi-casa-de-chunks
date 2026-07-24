@@ -263,12 +263,12 @@ const NEWCOMER_ROADMAP = {
   subtitle: '從第一句西語開始',
   chapters: [
     {
-      title: '第一章：我的西語小世界',
+      title: '第一站：我的西語小世界',
       description: '跟著妮妲認識自己的小世界',
       scenes: [
         {icon:'👋', label:'認識自己', chunks:[
           {es:'Me llamo Nita.', zh:'我叫妮妲。'},
-          {es:'Soy una gatita pequeña.', zh:'我是一隻小小的貓咪。'}
+          {es:'Soy una gatita.', zh:'我是一隻小貓咪。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
         {icon:'🏡', label:'我的家人', chunks:[
           {es:'Yo soy Mamá Cata.', zh:'我是卡妲媽媽。'},

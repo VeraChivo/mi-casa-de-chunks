@@ -197,6 +197,20 @@ const AUDIO_MANIFEST={
     ["audio/e16/09a_Adv_Un_rincon_silencioso_un_poco_de_tiempo_a_solas.mp3","audio/e16/09b_S_eso.mp3","audio/e16/09c_V_basta.mp3"],
     ["audio/e16/10a_Conj_Cuando.mp3","audio/e16/10b_S_la_bateria.mp3","audio/e16/10c_V_vuelve_a_subir.mp3","audio/e16/10d_S_Cata.mp3","audio/e16/10e_V_regresa.mp3","audio/e16/10f_O_mas_llena_y_mas_ella_misma.mp3"],
   ],
+  // E17 認識自己（2026-07-24 第一站定稿，音檔尚未錄製——先預留整句key，找不到檔案會自動fallback回瀏覽器TTS，
+  // 依CLAUDE.md工作守則11：真人錄音先錄整句一次，之後再視需要切割分段，不預先猜切點）
+  16:[
+    ["audio/e17/01_me_llamo_nita.mp3"],
+    ["audio/e17/02_soy_nita.mp3"],
+    ["audio/e17/03_soy_una_gatita.mp3"],
+    ["audio/e17/04_mi_nombre_es_nita.mp3"],
+    ["audio/e17/05_me_dicen_nita.mp3"],
+    ["audio/e17/06_hola_me_llamo_nita.mp3"],
+    ["audio/e17/07_soy_una_gata_pequena.mp3"],
+    ["audio/e17/08_mi_nombre_es_nita_y_soy_gatita.mp3"],
+    ["audio/e17/09_mucho_gusto_soy_nita.mp3"],
+    ["audio/e17/10_este_es_mi_pequeno_mundo.mp3"],
+  ],
 };
 
 // mom.js（🛡️情緒會說話／🎀馬麻有話講／👩🏻馬麻小情緒＆情緒這樣說）真人整句音檔

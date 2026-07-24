@@ -2581,6 +2581,17 @@ const SENTENCE_GRAMMAR_MAP = {
   107: null,  // y comparte historias → y 順接，無專屬卡
   108:'g32',  // pero sí cambia de forma → pero 強調對比
   109:'g32',  // pero el amor es para siempre → pero 轉折
+  // E17 認識自己（2026-07-24 第一站定稿）
+  160:'g117', // Me llamo Nita → llamarse
+  161:'g01',  // Soy Nita → SER
+  162:'g01',  // Soy una gatita → SER
+  163:'g117', // Mi nombre es Nita → llamarse/名字
+  164:'g117', // Me dicen Nita → 別人怎麼稱呼我
+  165:'g117', // ¡Hola! Me llamo Nita → llamarse
+  166:'g01',  // Soy una gata pequeña → SER
+  167:'g01',  // Mi nombre es Nita y soy una gatita → SER
+  168:'g01',  // Mucho gusto, soy Nita → SER
+  169:'g01',  // Este es mi pequeño mundo → SER
 };
 
 // ── D-0.5 能力卡生命週期分類（2026-07-20 盤查，純標記，不影響任何既有渲染/入口邏輯）──
