@@ -140,6 +140,16 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .query-link{font-size:10px;font-weight:700;color:var(--tlight);border:1px solid var(--nezumi);border-radius:999px;padding:3px 10px;text-decoration:none;transition:background .15s;cursor:pointer;user-select:none}
 .workshop-cat{margin:12px 0}
 .workshop-cat-title{font-size:12px;font-weight:900;color:var(--konpeki);margin-bottom:6px}
+.world-entry-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.world-entry-row{display:flex;align-items:center;gap:10px;background:rgba(159,208,222,.10);border:1.5px solid var(--usumizu);border-radius:12px;padding:11px 13px;cursor:pointer;transition:background .15s}
+.world-entry-row:active{background:rgba(159,208,222,.22)}
+.world-entry-row.is-disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+.world-entry-icon{font-size:22px;flex-shrink:0}
+.world-entry-body{flex:1;min-width:0}
+.world-entry-title{font-size:14px;font-weight:900;color:var(--konpeki)}
+.world-entry-sub{font-size:11px;font-weight:600;color:var(--tlight);margin-top:1px}
+.world-entry-teaser{font-size:10px;color:var(--tlight);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.world-entry-arrow{font-size:16px;color:var(--misora);font-weight:900;flex-shrink:0}
 .query-link:active{background:var(--bg2)}
 
 /* ── 🌻 花園新鮮度橫幅 ── */

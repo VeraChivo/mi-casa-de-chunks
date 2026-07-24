@@ -2663,6 +2663,48 @@ const WORKSHOP_TOOLS = {
     ]}
   ]
 };
+// ── 🌎 西語世界入口分層（2026-07-24 第一階段收斂，只做入口層，不搬移grammar C1/C2
+// 文化卡、不建文化資料庫、不做收藏/推薦系統）：Header點🌎西語世界不再直接掉進DW新聞
+// 全列表，先看到這個小入口頁，讓使用者知道「這是一個探索入口」，選了「世界新聞」才
+// 真正進news區。文化探索/語言觀察兩項目前故意disabled+建置中，等內容成熟再開放。
+function openWorldEntryPanel(){
+  const preview = (typeof NEWS_ITEMS !== 'undefined') ? NEWS_ITEMS.slice(0,3) : [];
+  const html = `
+    <div class="grammar-title">🌎 西語世界</div>
+    <div class="grammar-rule">走進真實世界，看看西語如何生活。</div>
+    <div class="world-entry-list">
+      <div class="world-entry-row" onclick="worldEntryJumpNews()">
+        <span class="world-entry-icon">📰</span>
+        <div class="world-entry-body">
+          <div class="world-entry-title">世界新聞</div>
+          <div class="world-entry-sub">德國之聲 DW 西語新聞・共${(typeof NEWS_ITEMS!=='undefined')?NEWS_ITEMS.length:0}篇</div>
+          ${preview.length ? `<div class="world-entry-teaser">${preview.map(n=>`「${(n.headline||'').replace('[?]','﹍﹍').replace(/<[^>]+>/g,'')}」`).join('・')}</div>` : ''}
+        </div>
+        <span class="world-entry-arrow">→</span>
+      </div>
+      <div class="world-entry-row is-disabled" title="建置中，敬請期待">
+        <span class="world-entry-icon">📖</span>
+        <div class="world-entry-body">
+          <div class="world-entry-title">文化探索</div>
+          <div class="world-entry-sub">文學・電影・歷史（建置中）</div>
+        </div>
+      </div>
+      <div class="world-entry-row is-disabled" title="建置中，敬請期待">
+        <span class="world-entry-icon">🗣️</span>
+        <div class="world-entry-body">
+          <div class="world-entry-title">語言觀察</div>
+          <div class="world-entry-sub">不同地區的說法與文化（建置中）</div>
+        </div>
+      </div>
+    </div>
+  `;
+  openGrammarSheet(html);
+}
+function worldEntryJumpNews(){
+  closeGrammarSheet();
+  dtaskJump('news');
+}
+
 function openWorkshopPanel(){
   const html = `
     <div class="grammar-title">${WORKSHOP_TOOLS.title}</div>
