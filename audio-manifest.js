@@ -211,6 +211,19 @@ const AUDIO_MANIFEST={
     ["audio/e17/09_mucho_gusto_soy_nita.mp3"],
     ["audio/e17/10_este_es_mi_pequeno_mundo.mp3"],
   ],
+  // E18 我的家人與朋友（2026-07-24 第一站定稿，音檔尚未錄製，同E17先預留整句key）
+  17:[
+    ["audio/e18/01_tengo_una_familia_y_una_amiga.mp3"],
+    ["audio/e18/02_yo_soy_mama_cata.mp3"],
+    ["audio/e18/03_yo_soy_papa_tato.mp3"],
+    ["audio/e18/04_yo_soy_kito.mp3"],
+    ["audio/e18/05_soy_el_hermano_mayor.mp3"],
+    ["audio/e18/06_yo_soy_tito.mp3"],
+    ["audio/e18/07_yo_soy_mimi.mp3"],
+    ["audio/e18/08_yo_soy_vera.mp3"],
+    ["audio/e18/09_soy_la_mejor_amiga.mp3"],
+    ["audio/e18/10_somos_la_familia_y_los_amigos.mp3"],
+  ],
 };
 
 // mom.js（🛡️情緒會說話／🎀馬麻有話講／👩🏻馬麻小情緒＆情緒這樣說）真人整句音檔

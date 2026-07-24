@@ -270,9 +270,9 @@ const NEWCOMER_ROADMAP = {
           {es:'Me llamo Nita.', zh:'我叫妮妲。'},
           {es:'Soy una gatita.', zh:'我是一隻小貓咪。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
-        {icon:'🏡', label:'我的家人', chunks:[
-          {es:'Yo soy Mamá Cata.', zh:'我是卡妲媽媽。'},
-          {es:'Soy la mamá de Nita.', zh:'我是妮妲的媽媽。'}
+        {icon:'🏡', label:'我的家人與朋友', chunks:[
+          {es:'Yo soy Mamá Cata, la mamá de Nita.', zh:'我是卡妲媽媽，妮妲的媽媽。'},
+          {es:'Yo soy Vera.', zh:'我是薇拉。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
         {icon:'☀️', label:'我的日常', chunks:[
           {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
@@ -526,6 +526,8 @@ const SENTENCE_AMMO_MAP2 = {
   85:['e9_06'], 86:['e9_07'], 87:['e9_08'], 88:['e9_09'], 89:['e9_10'],
   90:['e10_01'], 91:['e10_02'], 92:['e10_03'], 93:['e10_04'], 94:['e10_05'],
   95:['e10_06'], 96:['e10_07'], 97:['e10_08'], 98:['e10_09'], 99:['e10_10'],
+  // E17 我最小核心彈藥（2026-07-24，只4句：Me llamo/Soy/Soy una/Mucho gusto，其餘6句不建ammo，見CHUNK_ECOLOGY分類）
+  160:['e17_01'], 161:['e17_02'], 162:['e17_03'], 168:['e17_04'],
 };
 
 function unlockAmmo(globalIdx){

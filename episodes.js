@@ -1440,19 +1440,18 @@ const EPS=[
   {es:"Mucho gusto, soy Nita.",chunks:[{w:"Mucho gusto,"},{w:"soy",role:"v"},{w:"Nita.",role:"o"}],zh:"很高興認識你，我是妮妲。",en:"Nice to meet you, I'm Nita.",noteZh:"mucho gusto = 第一次見面時說的「很高興認識你」",noteEn:"'mucho gusto' = 'nice to meet you', said the first time you meet someone"},
   {es:"Este es mi pequeño mundo.",chunks:[{w:"Este es",role:"v"},{w:"mi pequeño mundo.",role:"o"}],zh:"這就是我的小世界。",en:"This is my little world."}
 ]},
-{title:"Mi Familia",titleZh:"我的家人",dur:150,sentences:[
-  {es:"Yo soy Mamá Cata.",chunks:[{w:"Yo soy",role:"v"},{w:"Mamá Cata.",role:"o"}],zh:"我是卡妲媽媽。",en:"I am Mamá Cata.",noteZh:"Yo soy + 名字 = 自我介紹的第一句",noteEn:"'Yo soy + name' = the first line of introducing yourself",
-  expand:{note:"Yo soy ___. = 換角色自我介紹",template:[{t:"Yo soy"},{g:"who"},{t:"."}],groups:[{label:"是誰",key:"who",options:[{es:"Mamá Cata",zh:"卡妲媽媽"},{es:"Papá Tato",zh:"達多爸爸"},{es:"Vera",zh:"薇拉"}]}]}},
-  {es:"Soy la mamá de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la mamá de Nita.",role:"o"}],zh:"我是妮妲的媽媽。",en:"I am Nita's mom.",noteZh:"Soy el/la ___ de Nita = 說明跟妮妲的關係",noteEn:"'Soy el/la ___ de Nita' = describing your relationship to Nita",
-  expand:{note:"Soy ___ de Nita. = 換跟妮妲的關係",template:[{t:"Soy"},{g:"relation"},{t:"de Nita."}],groups:[{label:"關係",key:"relation",options:[{es:"la mamá",zh:"媽媽"},{es:"el papá",zh:"爸爸"},{es:"la mejor amiga",zh:"最好的朋友"}]}]}},
-  {es:"Yo soy Papá Tato.",chunks:[{w:"Yo soy",role:"v"},{w:"Papá Tato.",role:"o"}],zh:"我是達多爸爸。",en:"I am Papá Tato."},
-  {es:"Soy el papá de Nita.",chunks:[{w:"Soy",role:"v"},{w:"el papá de Nita.",role:"o"}],zh:"我是妮妲的爸爸。",en:"I am Nita's dad."},
+{title:"Mi Familia y Mis Amigos",titleZh:"我的家人與朋友",dur:150,sentences:[
+  {es:"Tengo una familia y una amiga.",chunks:[{w:"Tengo",role:"v"},{w:"una familia",role:"o"},{w:"y",role:"c"},{w:"una amiga.",role:"o"}],zh:"我有一個家庭和一個朋友。",en:"I have a family and a friend.",noteZh:"tengo = 我有（開場先帶出接下來要介紹的人）",noteEn:"'tengo' = I have (introducing who's about to be introduced)"},
+  {es:"Yo soy Mamá Cata, la mamá de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Mamá Cata,",role:"o"},{w:"la mamá de Nita.",role:"o"}],zh:"我是卡妲媽媽，妮妲的媽媽。",en:"I am Mamá Cata, Nita's mom.",noteZh:"Yo soy + 名字 + 關係 = 一句話介紹自己是誰",noteEn:"'Yo soy + name + relation' = introducing yourself in one line",
+  expand:{note:"Yo soy ___, ___ de Nita. = 換角色自我介紹",template:[{t:"Yo soy"},{g:"who"},{t:","},{g:"relation"},{t:"de Nita."}],groups:[{label:"是誰",key:"who",options:[{es:"Mamá Cata",zh:"卡妲媽媽"},{es:"Papá Tato",zh:"達多爸爸"},{es:"Vera",zh:"薇拉"}]},{label:"關係",key:"relation",options:[{es:"la mamá",zh:"媽媽"},{es:"el papá",zh:"爸爸"},{es:"la mejor amiga",zh:"最好的朋友"}]}]}},
+  {es:"Yo soy Papá Tato, el papá de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Papá Tato,",role:"o"},{w:"el papá de Nita.",role:"o"}],zh:"我是達多爸爸，妮妲的爸爸。",en:"I am Papá Tato, Nita's dad."},
+  {es:"Yo soy Kito.",chunks:[{w:"Yo soy",role:"v"},{w:"Kito.",role:"o"}],zh:"我是奇托。",en:"I am Kito."},
+  {es:"Soy el hermano mayor de Nita.",chunks:[{w:"Soy",role:"v"},{w:"el hermano mayor de Nita.",role:"o"}],zh:"我是妮妲的哥哥。",en:"I am Nita's older brother.",noteZh:"hermano mayor = 哥哥（比自己年長的手足）",noteEn:"'hermano mayor' = older brother"},
+  {es:"Yo soy Tito, el hermano de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Tito,",role:"o"},{w:"el hermano de Nita.",role:"o"}],zh:"我是迪多，妮妲的弟弟。",en:"I am Tito, Nita's little brother."},
+  {es:"Yo soy Mimi, la hermanita bebé de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Mimi,",role:"o"},{w:"la hermanita bebé de Nita.",role:"o"}],zh:"我是咪咪，妮妲最小的妹妹。",en:"I am Mimi, Nita's baby sister."},
   {es:"Yo soy Vera.",chunks:[{w:"Yo soy",role:"v"},{w:"Vera.",role:"o"}],zh:"我是薇拉。",en:"I am Vera."},
   {es:"Soy la mejor amiga de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la mejor amiga de Nita.",role:"o"}],zh:"我是妮妲最好的朋友。",en:"I am Nita's best friend."},
-  {es:"Yo soy Tito.",chunks:[{w:"Yo soy",role:"v"},{w:"Tito.",role:"o"}],zh:"我是迪多。",en:"I am Tito."},
-  {es:"Soy el hermano de Nita.",chunks:[{w:"Soy",role:"v"},{w:"el hermano de Nita.",role:"o"}],zh:"我是妮妲的弟弟。",en:"I am Nita's little brother."},
-  {es:"Yo soy Mimi.",chunks:[{w:"Yo soy",role:"v"},{w:"Mimi.",role:"o"}],zh:"我是咪咪。",en:"I am Mimi."},
-  {es:"Soy la hermanita bebé de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la hermanita bebé de Nita.",role:"o"}],zh:"我是妮妲最小的妹妹。",en:"I am Nita's baby sister."}
+  {es:"Somos la familia y los amigos de Nita.",chunks:[{w:"Somos",role:"v"},{w:"la familia y los amigos de Nita.",role:"o"}],zh:"我們是妮妲的家人與朋友。",en:"We are Nita's family and friends.",noteZh:"somos = 我們是（第一次用「我們」做SER收尾）",noteEn:"'somos' = we are (first time using 'we' to close)"}
 ]},
 {title:"Mi Día a Día",titleZh:"我的日常／我的狀態",dur:150,sentences:[
   {es:"Nita tiene sueño.",chunks:[{w:"Nita",role:"s"},{w:"tiene sueño.",role:"v"}],zh:"妮妲想睡。",en:"Nita is sleepy.",noteZh:"tener sueño = 想睡（TENER+名詞 = 表達身體/生理感覺）；要加時間可以說 por la mañana(早上)",noteEn:"'tener sueño' = to be sleepy (TENER+noun expresses a physical feeling); add 'por la mañana' (in the morning) later if you want to say when",

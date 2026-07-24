@@ -2592,6 +2592,31 @@ const SENTENCE_GRAMMAR_MAP = {
   167:'g01',  // Mi nombre es Nita y soy una gatita → SER
   168:'g01',  // Mucho gusto, soy Nita → SER
   169:'g01',  // Este es mi pequeño mundo → SER
+  // E18 我的家人與朋友（2026-07-24 第一站定稿）
+  170:'g20',  // Tengo una familia y una amiga → TENER家族
+  171:'g01',  // Yo soy Mamá Cata, la mamá de Nita → SER
+  172:'g01',  // Yo soy Papá Tato, el papá de Nita → SER
+  173:'g01',  // Yo soy Kito → SER
+  174:'g01',  // Soy el hermano mayor de Nita → SER
+  175:'g01',  // Yo soy Tito, el hermano de Nita → SER
+  176:'g01',  // Yo soy Mimi, la hermanita bebé de Nita → SER
+  177:'g01',  // Yo soy Vera → SER
+  178:'g01',  // Soy la mejor amiga de Nita → SER
+  179:'g01',  // Somos la familia y los amigos de Nita → SER（複數somos）
+  // E19 我的日常（2026-07-24，ESTAR/TENER並存不拆集，逐句對應各自文法卡）
+  180:'g20',  // Nita tiene sueño → TENER家族
+  181:'g02',  // Mamá Cata está ocupada en la cocina → ESTAR
+  182:'g02',  // Papá Tato está trabajando en el jardín → ESTAR（進行式）
+  183:'g02',  // Tito está esperando su turno → ESTAR（進行式）
+  184:'g02',  // Vera está en la puerta → ESTAR
+  185:'g20',  // Mimi tiene hambre → TENER家族
+  186:'g02',  // Nita está tranquila en su rincón → ESTAR
+  187:'g02',  // Toda la familia está en casa → ESTAR
+  188:'g20',  // Nita tiene ganas de jugar → TENER家族
+  189:'g01',  // Es un día tranquilo → SER
+  // E20 我的喜歡（2026-07-24，gustar/encantar正式登場，全部連g08：程度差異）
+  190:'g08', 191:'g08', 192:'g08', 193:'g08', 194:'g08',
+  195:'g08', 196:'g08', 197:'g08', 198:'g08', 199:'g08',
 };
 
 // ── D-0.5 能力卡生命週期分類（2026-07-20 盤查，純標記，不影響任何既有渲染/入口邏輯）──

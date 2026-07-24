@@ -1318,6 +1318,59 @@ const AMMO_DATA = [
       {es:"Su forma de pensar es diferente, no incorrecta.", zh:"他的思考方式只是不同，不是不對。", chunks:[{w:"Su forma de pensar",role:"s"},{w:"es",role:"v"},{w:"diferente, no incorrecta.",role:"o"}]}
     ]
   },
+  // ══════════ E17 · Me Llamo Nita（2026-07-24 第一站最小核心彈藥，只挑CHUNK_ECOLOGY判定的reusableChunk，不是10句全建）══════════
+  {
+    ammo_id:"e17_01", ep:"E17 · Me Llamo Nita",
+    core_ammo:"Me llamo Nita.", core_zh:"我叫妮妲。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Me llamo [名字].", pattern_zh:"我叫 ___。",
+    pattern_note:"llamarse是反身動詞，字面是「稱呼自己」", slots:["名字"],
+    fire_peppa:{es:"Me llamo Nita.", zh:"我叫妮妲。", ts:null,
+      chunks:[{w:"Me llamo",role:"v",note:"llamarse ➔ 變位 me llamo ➔ 意思：我叫（自己說出名字）"},{w:"Nita.",role:"o"}]},
+    fire_daily:[
+      {es:"Me llamo Ana.", zh:"我叫安娜。", chunks:[{w:"Me llamo",role:"v"},{w:"Ana.",role:"o"}]},
+      {es:"Me llamo Carlos.", zh:"我叫卡洛斯。", chunks:[{w:"Me llamo",role:"v"},{w:"Carlos.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e17_02", ep:"E17 · Me Llamo Nita",
+    core_ammo:"Soy Nita.", core_zh:"我是妮妲。",
+    be_verb_type:"ser", be_verb_note:"Ser用在身分本質：Soy = 我是",
+    pattern:"Soy [名字].", pattern_zh:"我是 ___。",
+    pattern_note:"跟me llamo說的是同一件事，只是用ser再說一次", slots:["名字"],
+    fire_peppa:{es:"Soy Nita.", zh:"我是妮妲。", ts:null,
+      chunks:[{w:"Soy",role:"v",note:"ser ➔ 變位 soy ➔ 意思：我是"},{w:"Nita.",role:"o"}]},
+    fire_daily:[
+      {es:"Soy estudiante.", zh:"我是學生。", chunks:[{w:"Soy",role:"v"},{w:"estudiante.",role:"o"}]},
+      {es:"Soy de Taiwán.", zh:"我是台灣人。", chunks:[{w:"Soy",role:"v"},{w:"de Taiwán.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e17_03", ep:"E17 · Me Llamo Nita",
+    core_ammo:"Soy una gatita.", core_zh:"我是一隻小貓咪。",
+    be_verb_type:"ser", be_verb_note:"Ser描述身分本質：Soy un/una + 名詞 = 我是一個/一隻___",
+    pattern:"Soy un/una [名詞].", pattern_zh:"我是一個/一隻 ___。",
+    pattern_note:"un/una依名詞陰陽性選擇", slots:["名詞"],
+    fire_peppa:{es:"Soy una gatita.", zh:"我是一隻小貓咪。", ts:null,
+      chunks:[{w:"Soy",role:"v"},{w:"una gatita.",role:"o"}]},
+    fire_daily:[
+      {es:"Soy un perro.", zh:"我是一隻狗。", chunks:[{w:"Soy",role:"v"},{w:"un perro.",role:"o"}]},
+      {es:"Soy una niña.", zh:"我是一個女孩。", chunks:[{w:"Soy",role:"v"},{w:"una niña.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e17_04", ep:"E17 · Me Llamo Nita",
+    core_ammo:"Mucho gusto, soy Nita.", core_zh:"很高興認識你，我是妮妲。",
+    be_verb_type:"ser", be_verb_note:"見面問候慣用語 + ser自我介紹",
+    pattern:"Mucho gusto, soy [名字].", pattern_zh:"很高興認識你，我是 ___。",
+    pattern_note:"mucho gusto是固定社交用語，第一次見面才說", slots:["名字"],
+    fire_peppa:{es:"Mucho gusto, soy Nita.", zh:"很高興認識你，我是妮妲。", ts:null,
+      chunks:[{w:"Mucho gusto,"},{w:"soy",role:"v"},{w:"Nita.",role:"o"}]},
+    fire_daily:[
+      {es:"Mucho gusto, soy Ana.", zh:"很高興認識你，我是安娜。", chunks:[{w:"Mucho gusto,"},{w:"soy",role:"v"},{w:"Ana.",role:"o"}]},
+      {es:"Mucho gusto, soy tu vecino.", zh:"很高興認識你，我是你的鄰居。", chunks:[{w:"Mucho gusto,"},{w:"soy",role:"v"},{w:"tu vecino.",role:"o"}]}
+    ]
+  },
 ];
 
 // ── 彈藥卡內容狀態盤查（2026-07-20，純標記，不刪除/不改寫任何既有卡片內容）──
