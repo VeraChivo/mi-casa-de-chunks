@@ -2318,14 +2318,20 @@ function showComplete(){
 
   const nextEpBtn = document.getElementById('nextEpBtn');
   const finaleEgg = document.getElementById('completeFinaleEgg');
-  if(ep < EPS.length-1){
+  // 終點角色由EPISODE_COMPLETION_MARKERS宣告，不用ep===EPS.length-1推論（見episodes.js說明）
+  const isStoryFinale = EPISODE_COMPLETION_MARKERS.storyFinale.includes(ep);
+  const isRouteComplete = EPISODE_COMPLETION_MARKERS.routeComplete.includes(ep);
+  finaleEgg.style.display = isStoryFinale ? '' : 'none';
+
+  if(isRouteComplete){
+    nextEpBtn.classList.remove('locked');
+    nextEpBtn.textContent = '🐱 妮妲的角落等你 →';
+  } else if(ep < EPS.length-1){
     nextEpBtn.classList.remove('locked');
     nextEpBtn.textContent = '下一集 →';
-    finaleEgg.style.display = 'none';
   } else {
     nextEpBtn.classList.add('locked');
-    nextEpBtn.textContent = '🎉 S1 全集完成！';
-    finaleEgg.style.display = '';
+    nextEpBtn.textContent = '🎉 全部完成！';
   }
 
   renderAmmo();
@@ -2342,6 +2348,7 @@ function restartEp(){
 }
 
 function goNextEp(){
+  if(EPISODE_COMPLETION_MARKERS.routeComplete.includes(ep)){ selectEp(0); return; }
   if(ep < EPS.length-1) selectEp(ep+1);
 }
 
