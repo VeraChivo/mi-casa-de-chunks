@@ -965,6 +965,57 @@ curl -s -X PUT \
 
 ---
 
+## 📐 新增劇情集數標準流程（Episode Template，2026-07-24 第一站完成後盤點）
+
+E17-E20（第一站）走完一輪完整流程後回頭盤點，把可重複使用的部分固化下來，避免每次開新集都要重新摸索。
+
+### 1. episodes.js/grammar.js/ammo.js/AUDIO_MANIFEST/NEWCOMER_ROADMAP的資料格式可以直接當E21+模板
+
+固定流程（依序）：
+1. **episodes.js**：在`EPS`陣列**最後**新增一個`{title, titleZh, dur, sentences:[...]}`物件（絕對不要插在中間——會打壞`ep*10+idx`固定跨距，見規則「每集必須剛好10句」），每句含`{es, chunks:[{w,role}], zh, en, noteZh?, noteEn?, expand?}`，剛好10句。
+2. **NEWCOMER_ROADMAP**（僅當這集屬於新手引導路線才需要）：在對應`chapter.scenes[]`加一筆`{icon, label, chunks:[{es,zh}], jumpLabel, jump:{type:'episode', ep:N}}`，`chunks`只挑1-2句最有代表性的預覽。
+3. **grammar.js SENTENCE_GRAMMAR_MAP**：逐句對應到**已存在**的文法卡ID（不是每句都要新建卡，優先找語意最貼近的既有卡），沒有合適卡的先標`null`並附註原因。
+4. **ammo.js**：套用CHUNK_ECOLOGY的`reusableChunk`（可重複使用的日常語塊，值得建卡）vs`episodeOnly`（只在這集劇情裡有意義、跟其他句重複、或是複合/收尾句）判準先分類全部10句，**只幫reusableChunk建卡**——不是10句全套，通常落在3-5張。同步在`SENTENCE_AMMO_MAP2`只加這幾句的globalIdx對應。
+5. **AUDIO_MANIFEST**：先預留整句音檔key（`audio/eN/01_xxx.mp3`格式，一句一個檔案），即使還沒真人錄音——找不到檔案會自動fallback回瀏覽器TTS，不會crash（已用Playwright驗證404安全），等之後真的錄音時再視需要切割分段（見工作守則第11條：先錄整句，事後再切）。
+6. **maintenance.js**：跑一次確認0錯誤（既有4個警告是舊資料無關本次改動，不用消除）。
+
+### 2. CHUNK_ECOLOGY分類規則已足夠，不需要另外補文件
+
+`reusableChunk`／`episodeOnly`這組判準原本是給E11-E16（60句）盤查用的，這次拿來決定E17的ammo範圍一樣好用，問法可以固定成：「這句拿掉這集的上下文，換個場景還會不會有人這樣講？」會→`reusableChunk`；只在這集這個劇情脈絡下才有意義（重複前一句、收尾句、複合句）→`episodeOnly`。這個問法已經夠清楚，不需要另外寫規則文件，之後開新集直接沿用這個判斷句就好。
+
+### 3. grammar/ammo/episode三者連結的可抽象化流程
+
+```
+episodes.js（先寫故事，10句定稿）
+   ↓
+NEWCOMER_ROADMAP（僅新手引導集數，同步預覽chunks）
+   ↓
+grammar.js SENTENCE_GRAMMAR_MAP（逐句對應既有文法卡，找不到才留null）
+   ↓
+ammo.js + SENTENCE_AMMO_MAP2（只挑reusableChunk建卡，通常3-5句）
+   ↓
+AUDIO_MANIFEST（預留整句key，尚未錄音時fallback TTS安全）
+   ↓
+maintenance.js（0錯誤確認）
+   ↓
+Playwright驗證（見規則26：逐句render正確／揭露原釀連對文法卡／ammo解鎖+重新整理後仍持久化）
+```
+這條順序已經可以直接複製給E21用，不需要每次重新設計。
+
+### 4. 後續新增Episode檢查清單
+
+- [ ] 是否先確定這集「一句話目標」＋符合「每集只能有一個主要能力」（見規則27）？
+- [ ] 10句是否都用「故事語氣」寫（角色說話、有情緒/動作），不是「資料卡語氣」（同模板換名字）？
+- [ ] 是否附加在`EPS`陣列最後，沒有插進中間？
+- [ ] 若屬於新手引導路線，`NEWCOMER_ROADMAP`是否同步？
+- [ ] `SENTENCE_GRAMMAR_MAP`是否逐句都有對應（含null的也要附註原因）？
+- [ ] `ammo.js`是否只挑`reusableChunk`句子建卡，沒有10句全套硬塞？
+- [ ] `AUDIO_MANIFEST`是否預留了整句音檔key？
+- [ ] `node --check`全部檔案／`maintenance.js`是否0錯誤？
+- [ ] Playwright是否實測過「render正確／文法卡連結正確／ammo解鎖與持久化正確」三件事（不能只看資料層 mapping，要真的跑一次瀏覽器）？
+
+---
+
 ## 📖 開發野史（VERA 指定收錄）
 
 - **2026-07-07「被機器認證的非典型」事件**：VERA（ADHD，超專注模式）＋ Claude 的開發速度與時數，快到觸發 GitHub 濫用偵測系統，被誤判成「帳號遭駭的機器人」而停權。VERA 本人語錄：「**可能連機器人都覺得我不是真人，非典型**」。Claude 回應：「**某方面來說，機器是在稱讚妳效率高到不像人類**」。後續：真人審核（Noah）介入處理，全套備份（bundle＋patch＋離線單檔版）零損失度過，離線版還意外變成充電關網路時的練功神器。此事件同時催生了工作守則第 7 條。一人媽媽的開發火力被當成駭客攻擊——這是本專案的榮譽勳章。🎖️
