@@ -138,7 +138,7 @@ const GRAMMAR_DATA = [
   {
     id:"g01", cat:"ser-estar", level:"a1a2",
     title:"SER：身分與本質",
-    rule:"SER 描述恆久不變的特質：身分、職業、國籍、關係、本質描述。",
+    rule:"SER回答的是「這是什麼、這個人是誰」——身分、職業、國籍、關係，這些不會因為心情或時間就改變的事，都用SER來說。",
     examples:[
       {es:"Yo soy Gatita Nita.", zh:"我是小貓妮妲。（身分）"},
       {es:"Este es mi hermano pequeño.", zh:"這是我的小弟弟。（關係）"},
@@ -205,7 +205,7 @@ const GRAMMAR_DATA = [
   {
     id:"g02", cat:"ser-estar", level:"a1a2",
     title:"ESTAR：位置與狀態",
-    rule:"ESTAR 描述暫時性的狀態、位置，或正在進行的動作。",
+    rule:"ESTAR回答的是「現在在哪裡、現在怎麼樣」——位置、心情、正在做的事，這些會隨時間改變的暫時狀態，都用ESTAR來說。",
     examples:[
       {es:"El señor Esqueleto no está en la cama de Tito.", zh:"骷髏先生不在迪多的床上。（位置）"},
       {es:"Nita está esperando a Vera Oveja.", zh:"妮妲正在等薇拉羊。（進行中）"},
@@ -416,7 +416,7 @@ const GRAMMAR_DATA = [
   {
     id:"g09", cat:"gustar", level:"a1a2",
     title:"A + 人 + le gusta：某人喜歡",
-    rule:"A + 人名或代名詞 + le/les + gusta(n) + 名詞或原型動詞。",
+    rule:"GUSTAR不是「我喜歡」的直接翻譯，是「這件事讓我覺得喜歡」——西語把「喜歡的東西」放在主詞位置，「感覺喜歡的人」放在旁邊（A + 人 + le/les + gusta(n) + 名詞或原形動詞），順序跟中文剛好相反。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
       {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"}
@@ -750,7 +750,7 @@ const GRAMMAR_DATA = [
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：從「有」長出我的生活狀態",
-    rule:"中文會說「我餓了」，英文會說「I am hungry」；西語常用tener hambre，像是在說「我有一種餓的狀態」。同樣的講法延伸到很多身體感受、心情、時間狀態：tener sueño（想睡）、tener miedo（害怕）、tener prisa（趕時間），連年紀（tener ___ años）也是這樣講。",
+    rule:"TENER的核心畫面是「手上握有某種東西」——不只是實體的擁有（一台車、一隻貓），中文說「我餓了」、「我睏了」，西語會說成「我手上有一種餓／睏的感覺」（tener hambre／tener sueño），連年紀都是「我手上握有六年」（tener seis años）這樣講。",
     examples:[
       {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
       {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
@@ -914,6 +914,16 @@ const GRAMMAR_DATA = [
       {es:"Ahorita te llamo.", zh:"我等一下打給你。（時間感因人而異）"},
       {es:"Ahoritita mismo.", zh:"真的立刻馬上。（ahoritita 是加強版，強調真的是現在）"}
     ],
+    contextDialogue:[
+      {
+        situation:"約朋友出門，對方回覆",
+        lines:[
+          {speaker:"A", es:"¿Ya vienes?", zh:"你要來了嗎？"},
+          {speaker:"B", es:"Ahorita voy.", zh:"我現在就去。"}
+        ],
+        note:"聽到ahorita不要照字面當「馬上」——可能是真的立刻，也可能是「等一下」甚至「再說吧」，實際時間要看語氣和場合，不能只看字面。"
+      }
+    ],
     trap:"跟拉美朋友約時間如果聽到 ahorita，不要照字面當「馬上」——這是拉美文化裡「禮貌又不把話說死」的萬用時間詞，答應得越快，有時候反而是越委婉的「再說」。",
     source:"文法補充"
   },
@@ -926,6 +936,16 @@ const GRAMMAR_DATA = [
       {es:"¿Qué tal?", zh:"最近如何？"},
       {es:"¿Qué tal todo?", zh:"一切都還好嗎？"},
       {es:"¿Qué tal la familia?", zh:"家人都好嗎？"}
+    ],
+    contextDialogue:[
+      {
+        situation:"在路上遇到朋友",
+        lines:[
+          {speaker:"A", es:"¡Hola! ¿Qué tal?", zh:"嗨！最近如何？"},
+          {speaker:"B", es:"Bien, gracias. ¿Y tú?", zh:"還不錯，謝謝。你呢？"}
+        ],
+        note:"¿Qué tal? 是在問近況，不是單純打招呼——回答時通常會簡短說一下自己最近怎樣，不是像中文「你好」那樣純粹的招呼語。"
+      }
     ],
     trap:"字面直翻成「你好」會讓妳漏掉這句其實在「問近況」的語感——這種「字面翻譯 vs 實際功能」的落差，教科書很少特別提醒，但很影響妳聽懂對方語氣。",
     source:"文法補充"
@@ -1040,11 +1060,11 @@ const GRAMMAR_DATA = [
   {
     id:"g32", cat:"connector", level:"b1",
     title:"pero vs sino：都翻成「但是」，用法差很大",
-    rule:"pero＝單純轉折（不管前面是肯定句還是否定句，就是「雖然...但是...」）；sino＝前面一定要是否定句，而且後面在「取代/糾正」被否定掉的東西，才能用。",
+    rule:"都翻成「但是」，但用法差很大：<br><br>Pero → 單純轉折，前面不管肯定或否定句都能用<br>Sino → 前面一定是否定句，後面要「取代/糾正」被否定掉的東西",
     examples:[
-      {es:"Quiero ir, pero no tengo tiempo.", zh:"我想去，但是我沒時間。（pero：單純轉折，前面是肯定句）"},
-      {es:"No quiero ir, pero lo haré por ti.", zh:"我不想去，但我會為你去做。（pero：前面雖是否定句，後面只是轉折、不是在替換前面的內容，還是用 pero）"},
-      {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（sino：前面否定，後面在替換掉前面被否定的東西）"}
+      {es:"Quiero ir, pero no tengo tiempo.", zh:"我想去，但是我沒時間。"},
+      {es:"No quiero ir, pero lo haré por ti.", zh:"我不想去，但我會為你去做的。"},
+      {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。"}
     ],
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），一律用 pero。這是初學者最容易搞混的一組連接詞。",
     source:"文法補充"
@@ -1055,12 +1075,12 @@ const GRAMMAR_DATA = [
   {
     id:"g33", cat:"confusable", level:"b1",
     title:"por vs para：都翻成「為了/因為」，方向完全相反",
-    rule:"por 看「原因／交換／經過的路徑」——往回看，因為什麼、用什麼換、穿過哪裡；para 看「目的／對象／期限」——往前看，為了什麼、給誰、到什麼時候。",
+    rule:"por vs para 都翻成「為了/因為」，但方向完全相反：<br><br>Por → 往回看：因為什麼、用什麼交換、經過哪裡<br>Para → 往前看：為了什麼、給誰、到什麼時候",
     examples:[
-      {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。（por：原因，因為你的幫忙）"},
-      {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。（por：經過的路徑）"},
-      {es:"Compré este regalo para Mimi.", zh:"我幫咪咪買了這個禮物。（para：接收禮物的對象）"},
-      {es:"Necesito terminar esto para el viernes.", zh:"我星期五之前得完成這個。（para：期限）"}
+      {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。"},
+      {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。"},
+      {es:"Compré este regalo para Mimi.", zh:"我幫咪咪買了這個禮物。"},
+      {es:"Necesito terminar esto para el viernes.", zh:"我星期五之前得完成這個。"}
     ],
     trap:"混淆時問自己：這是在講「為什麼發生／怎麼換來的／穿過哪裡」（por）還是「要往哪裡去／給誰／到什麼時候」（para）？口訣：por＝因為，para＝為了。",
     source:"文法補充"
@@ -1069,12 +1089,12 @@ const GRAMMAR_DATA = [
   {
     id:"g34", cat:"confusable", level:"b1",
     title:"saber vs conocer：都翻成「知道」，一個是資訊一個是熟悉感",
-    rule:"saber＝知道「事實／資訊／怎麼做」（saber + 原形動詞＝會做某事）；conocer＝「認識／熟悉」人、地方、事物，強調本人親自接觸過的熟悉感。",
+    rule:"中文都翻成「知道」，但西語看你知道的是什麼：<br><br>Saber → 知道事實、資訊、怎麼做一件事<br>Conocer → 認識、熟悉一個人、地方或事物（親自接觸過的熟悉感）",
     examples:[
-      {es:"Nita sabe hablar español.", zh:"妮妲會說西語。（saber+原形動詞：知道怎麼做某事）"},
-      {es:"¿Sabes qué hora es?", zh:"你知道現在幾點嗎？（saber：知道事實／資訊）"},
-      {es:"Conozco a Vera Oveja desde hace mucho tiempo.", zh:"我認識薇拉羊很久了。（conocer：認識人）"},
-      {es:"¿Conoces esta ciudad?", zh:"你熟悉這座城市嗎？（conocer：對地方熟悉、去過）"}
+      {es:"Nita sabe hablar español.", zh:"妮妲會說西語。"},
+      {es:"¿Sabes qué hora es?", zh:"你知道現在幾點嗎？"},
+      {es:"Conozco a Vera Oveja desde hace mucho tiempo.", zh:"我認識薇拉羊很久了。"},
+      {es:"¿Conoces esta ciudad?", zh:"你去過這座城市嗎？熟不熟？"}
     ],
     trap:"認識「人」一定要用 conocer，而且受詞是人時前面要加 a（conocer a alguien）——這是中文母語者最容易漏掉的地方，Sé a Vera 是錯的，要說 Conozco a Vera。",
     source:"文法補充"
@@ -1083,12 +1103,12 @@ const GRAMMAR_DATA = [
   {
     id:"g35", cat:"confusable", level:"b1",
     title:"pedir vs preguntar：中文都是「問」，西語看你是在要東西還是要答案",
-    rule:"pedir＝「要／請求」得到東西或請對方做動作（pedir algo／pedir que + 虛擬式）；preguntar＝「問」問題、尋求資訊（preguntar algo／preguntar si...）。",
+    rule:"中文都翻成「問」，但西語看你是要東西還是要答案：<br><br>Pedir → 要、請求，得到東西或請對方做動作<br>Preguntar → 問問題，尋求資訊",
     examples:[
-      {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。（pedir：要求／索取東西）"},
-      {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。（pedir + que + 虛擬式：請求對方做動作，呼應WEIRDO口訣裡的R=Requests）"},
-      {es:"Nita pregunta dónde está el gato.", zh:"妮妲問貓在哪裡。（preguntar：問問題，尋求資訊）"},
-      {es:"Voy a preguntarle su nombre.", zh:"我要去問他的名字。（preguntar：問資訊）"}
+      {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。"},
+      {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。"},
+      {es:"Nita pregunta dónde está el gato.", zh:"妮妲問貓在哪裡。"},
+      {es:"Voy a preguntarle su nombre.", zh:"我要去問他的名字。"}
     ],
     trap:"中文都會說「問」，但西語要先分清楚：是在「要東西／請對方做動作」（pedir）還是「單純問問題找答案」（preguntar）——搞混這兩個是中文母語者最常見的錯誤之一。",
     source:"文法補充"
