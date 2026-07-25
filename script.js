@@ -2682,19 +2682,21 @@ function openWorldEntryPanel(){
         </div>
         <span class="world-entry-arrow">→</span>
       </div>
-      <div class="world-entry-row is-disabled" title="建置中，敬請期待">
-        <span class="world-entry-icon">📖</span>
-        <div class="world-entry-body">
-          <div class="world-entry-title">文化探索</div>
-          <div class="world-entry-sub">文學・電影・歷史（建置中）</div>
-        </div>
-      </div>
-      <div class="world-entry-row is-disabled" title="建置中，敬請期待">
+      <div class="world-entry-row" onclick="worldEntryJumpSlang()">
         <span class="world-entry-icon">🗣️</span>
         <div class="world-entry-body">
-          <div class="world-entry-title">語言觀察</div>
-          <div class="world-entry-sub">不同地區的說法與文化（建置中）</div>
+          <div class="world-entry-title">街頭母語</div>
+          <div class="world-entry-sub">俚語・口頭禪・網路縮寫・固定搭配・共${(typeof WORLD_ZONE_MAP!=='undefined')?WORLD_ZONE_MAP.slang.length:0}張</div>
         </div>
+        <span class="world-entry-arrow">→</span>
+      </div>
+      <div class="world-entry-row" onclick="worldEntryJumpCulture()">
+        <span class="world-entry-icon">🎭</span>
+        <div class="world-entry-body">
+          <div class="world-entry-title">文化深度</div>
+          <div class="world-entry-sub">歷史・節慶・社會議題・文學影視・共${(typeof WORLD_ZONE_MAP!=='undefined')?WORLD_ZONE_MAP.culture.length:0}張</div>
+        </div>
+        <span class="world-entry-arrow">→</span>
       </div>
     </div>
   `;
@@ -3067,7 +3069,9 @@ function renderGrammarSupplement(){
   const topicWrap = document.getElementById('grammarTopicFilterWrap');
   if(!el) return;
   renderGsupCoreEssentials();
-  const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充'));
+  // 2026-07-25：儲水槽只留「怎麼組句」的純語言規則，WORLD_ZONE_MAP裡的卡
+  // （街頭母語/文化深度）已分流去🌎西語世界，這裡要排除，避免同一張卡兩處都看得到
+  const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充') && !_isWorldZoned(g.id));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
     filterEl.innerHTML = chip('all','📋','全部') + GRAMMAR_LEVEL_TIERS.map(t=>chip(t.key, t.icon, t.label)).join('');
@@ -3103,6 +3107,66 @@ function filterGrammarSupplementByLevel(key){
 function filterGrammarSupplementByTopic(key){
   _gsupTopicFilter = key;
   renderGrammarSupplement();
+}
+
+// ── 🌎西語世界：🗣️街頭母語／🎭文化深度（2026-07-25，見grammar.js WORLD_ZONE_MAP）──
+// 兩區共用同一套簡易列表渲染，卡片詳解仍是同一個openGrammarCard()，不重寫內容/不搬資料，
+// 只是換一個「這張卡從哪個列表被找到」的入口。
+function _isWorldZoned(gId){
+  return (typeof WORLD_ZONE_MAP !== 'undefined') && (WORLD_ZONE_MAP.slang.includes(gId) || WORLD_ZONE_MAP.culture.includes(gId));
+}
+function _renderWorldZoneList(elId, zoneKey){
+  const el = document.getElementById(elId);
+  if(!el || typeof WORLD_ZONE_MAP === 'undefined') return;
+  const ids = WORLD_ZONE_MAP[zoneKey] || [];
+  const items = ids.map(id => GRAMMAR_DATA.find(g=>g.id===id)).filter(Boolean);
+  el.innerHTML = items.map(g=>{
+    const lv = _gsupLevelInfo(g.level);
+    return `
+    <div class="gsup-row" onclick="openGrammarCard('${g.id}')">
+      <div class="gsup-title-row">
+        <span class="gsup-title">${g.title}</span>
+        <span class="gsup-level-badge" title="${lv.label}">${lv.icon}</span>
+      </div>
+      <div class="gsup-rule">${g.rule}</div>
+    </div>`;
+  }).join('') || `<div class="garden-empty-msg">這個分類目前沒有符合的卡片</div>`;
+}
+function renderWorldSlangSection(){ _renderWorldZoneList('worldSlangBody', 'slang'); }
+function renderWorldCultureSection(){ _renderWorldZoneList('worldCultureBody', 'culture'); }
+function toggleWorldSlang(){
+  const body=document.getElementById('worldSlangBody');
+  const t=document.getElementById('worldSlangToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+function toggleWorldCulture(){
+  const body=document.getElementById('worldCultureBody');
+  const t=document.getElementById('worldCultureToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+function worldEntryJumpSlang(){
+  closeGrammarSheet();
+  switchMainTab('know');
+  const body=document.getElementById('worldSlangBody');
+  const t=document.getElementById('worldSlangToggle');
+  if(body && !body.classList.contains('open')){ body.classList.add('open'); if(t) t.textContent='▲ 收起'; }
+  setTimeout(()=>{
+    const s = document.getElementById('worldSlangSection');
+    if(s) s.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 60);
+}
+function worldEntryJumpCulture(){
+  closeGrammarSheet();
+  switchMainTab('know');
+  const body=document.getElementById('worldCultureBody');
+  const t=document.getElementById('worldCultureToggle');
+  if(body && !body.classList.contains('open')){ body.classList.add('open'); if(t) t.textContent='▲ 收起'; }
+  setTimeout(()=>{
+    const s = document.getElementById('worldCultureSection');
+    if(s) s.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 60);
 }
 
 function toggleHvSection(){
@@ -5082,6 +5146,8 @@ function renderChangelog(){
   renderIndicSubjPairs();
   renderGrammarSupplement();
   renderNewsSection();
+  renderWorldSlangSection();
+  renderWorldCultureSection();
   renderChangelog();
   renderVocab();
   renderGardenView();
