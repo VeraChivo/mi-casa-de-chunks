@@ -3587,8 +3587,10 @@ function openGrammarCard(gId){
   const g = GRAMMAR_DATA.find(x => x.id===gId);
   if(!g) return;
   const catLabel = (GRAMMAR_CATS.find(c=>c.key===g.cat)||{label:''}).label;
-  const exHtml = g.examples.map(ex =>
-    `<div class="grammar-ex-row" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">
+  // 第一句放大當「主要教學例句」，其餘例句是換人物/換情境的變化版，字級略收斂——
+  // 使用者第一眼吸收區只該有一句最清楚的畫面，不是每句同等重量（2026-07-25 VERA提案）
+  const exHtml = g.examples.map((ex,exi) =>
+    `<div class="grammar-ex-row${exi===0?' is-first':''}" onclick="speakGramSmart('${escAttr(ex.es)}')" title="點這裡聽整句">
       <div class="grammar-ex-chunks">${_grammarExChunks(ex.es, `speakGramSmart('${escAttr(ex.es)}')`)}</div>
       <div class="grammar-ex-zh">${ex.zh}</div>
     </div>`

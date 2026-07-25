@@ -654,6 +654,12 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .grammar-rule{font-size:13px;color:var(--tmid);font-weight:600;line-height:1.65;margin-bottom:12px;padding:9px 11px;background:rgba(159,208,222,.1);border-radius:9px;border-left:3px solid var(--mizu)}
 .grammar-examples{display:flex;flex-direction:column;gap:6px;margin-bottom:11px}
 .grammar-ex-row{display:flex;flex-direction:column;gap:5px;padding:9px 11px;background:var(--bg2);border-radius:10px;border:1px solid transparent;user-select:none;cursor:pointer}
+/* 第一句＝主要教學例句，字級放大；其餘是換人物/情境的變化版，字級收斂一點（2026-07-25） */
+.grammar-ex-row.is-first{background:var(--bg);border-color:var(--usumizu)}
+.grammar-ex-row.is-first .ge-chunk{font-size:16px}
+.grammar-ex-row.is-first .grammar-ex-zh{font-size:14.5px;font-weight:800;color:var(--tdark)}
+.grammar-ex-row:not(.is-first) .ge-chunk{font-size:12.5px}
+.grammar-ex-row:not(.is-first) .grammar-ex-zh{font-size:12px}
 .grammar-ex-chunks{display:flex;flex-wrap:wrap;align-items:center;gap:2px;row-gap:6px}
 .ge-chunk{font-size:14px;font-weight:800;color:var(--konpeki);cursor:pointer;padding:2px 3px;border-radius:5px}
 .ge-chunk:active{background:rgba(108,155,210,.2)}
