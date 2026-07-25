@@ -3560,6 +3560,32 @@ function openGrammarCard(gId){
           <span class="family-zh">${it.zh}</span>
         </div>`).join('')}</div>
     </div>` : '';
+  // 🪞眼前現實↔心裡想像：原本是☀️育苗場常駐獨立卡片，2026-07-25收斂進g27
+  // （虛擬語氣入門）當情境延伸子區塊，不再佔第一眼版面——INDIC_SUBJ_PAIRS
+  // 資料/渲染邏輯完全沒動，只是換一個掛載位置。
+  const subjPairsHtml = (g.id === 'g27' && typeof INDIC_SUBJ_PAIRS !== 'undefined') ? `
+    <div class="grammar-family">
+      <div class="family-title">🪞 眼前現實 ↔ 心裡想像</div>
+      <div class="family-intro">同一件事，看到的跟想的不一樣——多聽幾組情境對照</div>
+      <div class="is-pair-wrap">
+        ${INDIC_SUBJ_PAIRS.map(p=>`
+          <div class="is-pair-row">
+            <div class="is-pair-verb">${p.verb}</div>
+            <div class="is-pair-cols">
+              <div class="is-pair-col is-indic" onclick="event.stopPropagation();speakGramSmart('${escAttr(p.indic.es)}')">
+                <div class="is-pair-label">🌍 眼前現實</div>
+                <div class="is-pair-es">${_grammarExChunks(p.indic.es, `speakGramSmart('${escAttr(p.indic.es)}')`)}</div>
+                <div class="is-pair-zh">${p.indic.zh}</div>
+              </div>
+              <div class="is-pair-col is-subj" onclick="event.stopPropagation();speakGramSmart('${escAttr(p.subj.es)}')">
+                <div class="is-pair-label">🌙 心裡想像</div>
+                <div class="is-pair-es">${_grammarExChunks(p.subj.es, `speakGramSmart('${escAttr(p.subj.es)}')`)}</div>
+                <div class="is-pair-zh">${p.subj.zh}</div>
+              </div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
   const userExs = (grammarUserExamples[gId]||{}).user_examples||[];
   const userExHtml = userExs.length
     ? `<div class="grammar-user-examples">
@@ -3576,6 +3602,7 @@ function openGrammarCard(gId){
     ${buildConjTable(g.conj, g.id)}
     ${familyHtml}
     ${extraFamilyHtml}
+    ${subjPairsHtml}
     ${g.note?`<div class="grammar-tag-box tag-note"><div class="grammar-tag-badge">💡 補充理解</div><div class="grammar-tag-body">${g.note}</div></div>`:''}
     ${g.trap?`<div class="grammar-tag-box tag-trap"><div class="grammar-tag-badge">⚠️ 常見陷阱</div><div class="grammar-tag-body">${g.trap}</div></div>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}

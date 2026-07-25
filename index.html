@@ -271,40 +271,20 @@
     <div id="cogLibraryBody" class="cog-library-body"></div>
   </div>
 
-  <!-- ── ☯️ 太極變身鏡（上層：太極定裝鏡／下層：超級變變變） ── -->
-  <div class="taichi-outer card-container">
-    <div class="taichi-outer-header">☯️ 太極變身鏡</div>
-    <div class="taichi-outer-sub">陰陽字尾規律 ＋ 動詞變位查詢，人稱變化一次搞定</div>
-
-    <div class="taichi-outer-body">
-      <div class="gp-wrap">
-        <div class="ammo-book-top" onclick="toggleGenderPairs()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C9BD2)">
-          <div>
-            <div class="pb-book-title">⚧ 太極定裝鏡</div>
-            <div class="pb-book-sub">點字尾切換 o/a，聽真實例句</div>
-            <div class="pb-book-preview" id="genderPairsPreview"></div>
-          </div>
-          <span id="genderPairsToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
-        </div>
-        <div id="genderPairsBody" class="ammo-body"></div>
-        <div class="gp-landmine" onclick="openGrammarCard('g22')">🪤 小心陷阱：連死物都有陰陽性？點這裡看</div>
+  <!-- ── ⚧ 太極定裝鏡（原☯️太極變身鏡上層，🌀超級變變變已搬進💧文法儲水槽當進階子區塊，
+       💎☁️是・在對照站／🪞眼前現實↔心裡想像已移除獨立入口，內容已埋進對應文法卡片內，
+       見2026-07-25「☀️育苗場入口整併」） ── -->
+  <div class="pron-lib-wrap card-container">
+    <div class="ammo-book-top" onclick="toggleGenderPairs()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C9BD2)">
+      <div>
+        <div class="pb-book-title">⚧ 太極定裝鏡</div>
+        <div class="pb-book-sub">點字尾切換 o/a，聽真實例句</div>
+        <div class="pb-book-preview" id="genderPairsPreview"></div>
       </div>
-
-      <div class="conj-lib-wrap">
-        <div class="ammo-book-top" onclick="toggleConjLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
-          <div>
-            <div class="pb-book-title">🌀 超級變變變</div>
-            <div class="pb-book-sub">ser／estar／poder／deber…完整六人稱一次查</div>
-            <div class="pb-book-preview" id="conjLibPreview"></div>
-          </div>
-          <span id="conjLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
-        </div>
-        <div class="conj-lib-search-row">
-          <input type="text" id="conjLibSearch" class="conj-lib-search-input" placeholder="🔍 搜尋動詞、例句、中文…" oninput="filterConjLibrary(this.value)">
-        </div>
-        <div id="conjLibBody" class="ammo-body"></div>
-      </div>
+      <span id="genderPairsToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
+    <div id="genderPairsBody" class="ammo-body"></div>
+    <div class="gp-landmine" onclick="openGrammarCard('g22')">🪤 小心陷阱：連死物都有陰陽性？點這裡看</div>
   </div>
 
   <!-- ── 🏰 莊園人物冊（原人稱代名詞查詢庫） ── -->
@@ -318,29 +298,6 @@
       <span id="pronounLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
     <div id="pronounLibBody" class="ammo-body"></div>
-  </div>
-
-  <!-- ── 💎☁️ 是・在對照站（SER vs ESTAR） ── -->
-  <div class="pron-lib-wrap card-container">
-    <div class="ammo-book-top" style="cursor:default;background:linear-gradient(135deg,var(--misora),var(--benikake))">
-      <div>
-        <div class="pb-book-title">💎☁️ 是・在對照站</div>
-        <div class="pb-book-sub">SER＝恆久本質（DOCTOR口訣）／ESTAR＝暫時狀態（PLACE口訣），點卡片看完整用法＋變位</div>
-      </div>
-    </div>
-    <div id="serEstarBody" class="ammo-body open"></div>
-  </div>
-
-  <!-- ── 🪞 眼前現實 ↔ 心裡想像：直接對照 ── -->
-  <div class="pron-lib-wrap card-container">
-    <div class="ammo-book-top" onclick="toggleIndicSubj()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--misora),var(--benikake))">
-      <div>
-        <div class="pb-book-title">🪞 眼前現實 ↔ 心裡想像</div>
-        <div class="pb-book-sub">同一件事，看到的跟想的不一樣</div>
-      </div>
-      <span id="indSubjToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
-    </div>
-    <div id="indSubjBody" class="ammo-body is-pair-wrap"></div>
   </div>
 
   <!-- ── 🎵 歌詞填空 · 聽歌學語法 ── -->
@@ -373,6 +330,25 @@
       <div id="grammarTopicFilter" class="gsup-level-filter"></div>
     </div>
     <div id="grammarSupplementBody" class="ammo-body"></div>
+
+    <!-- 🌀超級變變變（原☯️太極變身鏡下層，2026-07-25搬進儲水槽當進階子區塊——
+         內容比單張文法卡內嵌的變位表更完整（含虛擬式/條件式時態切換+練習星星追蹤），
+         不能直接刪除，改成不佔第一眼版面的次要工具，仍可透過卡片內「🔄查完整變位庫」
+         按鈕(jumpToConjLib)跳轉進來 ── -->
+    <div class="conj-lib-wrap">
+      <div class="ammo-book-top" onclick="toggleConjLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+        <div>
+          <div class="pb-book-title">🔄 進階：完整變位庫</div>
+          <div class="pb-book-sub">ser／estar／poder／deber…含虛擬式／條件式時態切換</div>
+          <div class="pb-book-preview" id="conjLibPreview"></div>
+        </div>
+        <span id="conjLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
+      </div>
+      <div class="conj-lib-search-row">
+        <input type="text" id="conjLibSearch" class="conj-lib-search-input" placeholder="🔍 搜尋動詞、例句、中文…" oninput="filterConjLibrary(this.value)">
+      </div>
+      <div id="conjLibBody" class="ammo-body"></div>
+    </div>
   </div>
 
     <!-- ══════════ 🌎 西語世界：時事與文化 ══════════ -->
@@ -601,6 +577,6 @@
   <script src="diary.js?v=20260724a1"></script>
   <script src="corazon.js?v=20260719a2"></script>
   <script src="news.js?v=20260719a3"></script>
-  <script src="script.js?v=20260724a14"></script>
+  <script src="script.js?v=20260725a1"></script>
 </body>
 </html>
