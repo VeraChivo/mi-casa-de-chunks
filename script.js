@@ -334,7 +334,7 @@ function selectEp(n){
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
   document.getElementById('completeScreen').classList.remove('show');
   document.querySelector('.card-container').style.display='block';
-  document.querySelector('.nav-row').style.display='flex';
+  document.querySelectorAll('.nav-row').forEach(r=>r.style.display='flex');
   window.scrollTo({top:0,behavior:'instant'});
   buildNav();render();
   _epSwitching=false;
@@ -2317,7 +2317,10 @@ function renderLevelUpCert(data){
 // ── COMPLETE SCREEN ──
 function showComplete(){
   document.querySelector('.card-container').style.display='none';
-  document.querySelector('.nav-row').style.display='none';
+  // .nav-row 有兩個(上一句/下一句列 + 複製整集西語列)，querySelector只抓第一個，
+  // 導致「複製整集西語」按鈕完成畫面後卡在螢幕上，把🎖️晉級證書擠到下面不起眼的位置——
+  // 已修：改用querySelectorAll全部隱藏（2026-07-25）
+  document.querySelectorAll('.nav-row').forEach(r=>r.style.display='none');
   const cs = document.getElementById('completeScreen');
   cs.classList.add('show');
 
@@ -2363,7 +2366,7 @@ function restartEp(){
   delete answeredByEp[ep];saveToLS();
   document.getElementById('completeScreen').classList.remove('show');
   document.querySelector('.card-container').style.display='block';
-  document.querySelector('.nav-row').style.display='flex';
+  document.querySelectorAll('.nav-row').forEach(r=>r.style.display='flex');
   render();
 }
 
