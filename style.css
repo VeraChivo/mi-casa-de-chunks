@@ -696,6 +696,16 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .family-item:active{opacity:.7}
 .family-es{font-size:13px;font-weight:800;color:var(--konpeki)}
 .family-zh{font-size:11.5px;color:var(--tmid)}
+/* 💬情境對話（2026-07-25試點，見openGrammarCard的contextDialogueHtml） */
+.grammar-dialogue{margin:10px 0;padding:10px 11px;background:rgba(132,145,195,.08);border-radius:10px;border-left:3px solid var(--benikake)}
+.dialogue-situation{font-size:11.5px;font-weight:800;color:var(--benikake);margin-bottom:7px}
+.dialogue-lines{display:flex;flex-direction:column;gap:6px;margin-bottom:6px}
+.dialogue-line{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;cursor:pointer}
+.dialogue-line:active{opacity:.7}
+.dialogue-speaker{font-size:11px;font-weight:900;color:var(--tlight);flex-shrink:0}
+.dialogue-es{font-size:14px;font-weight:800;color:var(--konpeki)}
+.dialogue-zh{font-size:12px;color:var(--tmid)}
+.dialogue-note{font-size:11px;color:var(--tmid);line-height:1.5;padding-top:6px;border-top:1px dashed rgba(132,145,195,.3)}
 .gp-landmine{font-size:11.5px;font-weight:800;color:var(--benikake);text-align:center;padding:9px 10px;cursor:pointer;background:rgba(132,145,195,.08)}
 .gp-landmine:active{opacity:.7}
 .grammar-rule-emph{font-size:14.4px;font-weight:900;color:var(--tmid);line-height:1.65;margin-bottom:12px;padding:9px 11px;background:rgba(159,208,222,.1);border-radius:9px;border-left:3px solid var(--mizu)}

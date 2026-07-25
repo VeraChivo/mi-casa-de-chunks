@@ -3626,6 +3626,19 @@ function openGrammarCard(gId){
           <span class="family-zh">${it.zh}</span>
         </div>`).join('')}</div>
     </div>` : '';
+  // 💬情境對話（2026-07-25試點欄位，目前只有g46在用——俚語/固定搭配這類「怎麼用」比「是什麼」
+  // 更重要的卡，用真實對話比單句+括號註解更容易記住。是否要推廣到更多卡，等VERA看過效果再決定。
+  const contextDialogueHtml = (g.contextDialogue||[]).map(d=>`
+    <div class="grammar-dialogue">
+      <div class="dialogue-situation">💬 ${d.situation}</div>
+      <div class="dialogue-lines">${d.lines.map(l=>`
+        <div class="dialogue-line" onclick="speakGramSmart('${escAttr(l.es)}')">
+          <span class="dialogue-speaker">${l.speaker}</span>
+          <span class="dialogue-es">${l.es}</span>
+          <span class="dialogue-zh">${l.zh}</span>
+        </div>`).join('')}</div>
+      ${d.note?`<div class="dialogue-note">${d.note}</div>`:''}
+    </div>`).join('');
   // 🪞眼前現實↔心裡想像：原本是☀️育苗場常駐獨立卡片，2026-07-25收斂進g27
   // （虛擬語氣入門）當情境延伸子區塊，不再佔第一眼版面——INDIC_SUBJ_PAIRS
   // 資料/渲染邏輯完全沒動，只是換一個掛載位置。
@@ -3668,6 +3681,7 @@ function openGrammarCard(gId){
     ${buildConjTable(g.conj, g.id)}
     ${familyHtml}
     ${extraFamilyHtml}
+    ${contextDialogueHtml}
     ${subjPairsHtml}
     ${g.note?`<div class="grammar-tag-box tag-note"><div class="grammar-tag-badge">💡 補充理解</div><div class="grammar-tag-body">${g.note}</div></div>`:''}
     ${g.trap?`<div class="grammar-tag-box tag-trap"><div class="grammar-tag-badge">⚠️ 常見陷阱</div><div class="grammar-tag-body">${g.trap}</div></div>`:''}

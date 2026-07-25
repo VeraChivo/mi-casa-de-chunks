@@ -1266,6 +1266,18 @@ const GRAMMAR_DATA = [
       {es:"¿Viste? Te lo dije.", zh:"你看到了吧？我早就跟你說了。（阿根廷常用 ¿Viste?，確認對方有沒有注意到）"},
       {es:"¡Dale, vamos!", zh:"好，走吧！（Dale：拉美通用的肯定語，「好/來吧」）"}
     ],
+    // 2026-07-25 上下文對話試點（VERA指定用Dale測「情境對話」格式，只有這張卡有這個欄位，
+    // 是模板試驗不是全站規格，其他卡不受影響）
+    contextDialogue:[
+      {
+        situation:"朋友約明天一起出門",
+        lines:[
+          {speaker:"A", es:"¿Vamos mañana?", zh:"我們明天一起去嗎？"},
+          {speaker:"B", es:"¡Dale!", zh:"好啊！"}
+        ],
+        note:"Dale 不是「給」的意思，是拉美口語裡最常見的「好啊／來吧」，約時間、答應請求都能用。"
+      }
+    ],
     family:{
       title:"🗺️ 各國口頭禪小地圖",
       intro:"這些是文化知識補充，不是要妳學會每個國家的腔調——認得、聽得懂就好。",
@@ -1442,11 +1454,11 @@ const GRAMMAR_DATA = [
   {
     id:"g58", cat:"verb-pattern", level:"b2c1",
     title:"Ponerse / Quedarse / Volverse：三種「變成」",
-    rule:"西語有三個表示「變成/成為」的動詞，各有各的語感：<br><br>• **ponerse + 形容詞** = 暫時性情緒／生理狀態的突然改變（「一下子就...」）<br>• **quedarse + 形容詞** = 某件事發生後留下的結果狀態（「結果變成...」）<br>• **volverse + 形容詞／名詞** = 逐漸且深層的改變，像性格或本質變了（「越來越...、變成了...這樣的人」）",
+    rule:"變化不是只有一種「變成」——西語依「這個改變有多突然、多深層」分成三個動詞：<br><br>Ponerse → 情緒或狀態突然冒出來，通常很快就會退<br>Quedarse → 事情發生完之後，留下來的結果狀態<br>Volverse → 從根本上、慢慢地整個人（或整件事）變了",
     examples:[
-      {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候立刻很開心。（ponerse：情緒瞬間浮現）"},
-      {es:"Tito se quedó dormido en el sofá.", zh:"迪多（看著看著）就在沙發上睡著了。（quedarse：某件事導致的結果狀態）"},
-      {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時天空慢慢變成橘色。（volverse：漸進深層的改變）"}
+      {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，臉上立刻亮了起來。"},
+      {es:"Tito se quedó dormido en el sofá.", zh:"迪多看著看著，就在沙發上睡著了。"},
+      {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢染成了橘色。"}
     ],
     trap:"三個都能翻成「變」，但語感差很多：ponerse 強調「突然冒出來的情緒或感覺」（短暫）；quedarse 強調「發生完某事後的結果」（留下來）；volverse 強調「慢慢從根本上改變了」（深層）。不確定時，情緒變化先選 ponerse，結果狀態選 quedarse，性格本質改變選 volverse。",
     source:"文法補充"
@@ -2342,7 +2354,7 @@ const GRAMMAR_DATA = [
   {
     id:"g109", cat:"verb-pattern", level:"a1a2",
     title:"HACER：從「做」長出的生活變化",
-    rule:"貓媽媽排計畫用hace un plan，講天氣冷用hace frío，講很久以前的事用hace mucho tiempo——這幾種用法乍看不同，但都是同一個hacer在讓某件事發生，或標出一段距離。IR的部分已經在g19教過了，這裡專注在HACER自己的生活路線。",
+    rule:"HACER的核心畫面是「讓一件事發生」——可以是動手做一件事（排計畫、做功課），也可以是描述天氣現象（很冷、很熱），甚至能標出時間距離（很久以前）。同一個動詞，撐起這麼多不同情境，是HACER最值得記住的地方。",
     examples:[
       {es:"Mamá Cata hace un plan para el día.", zh:"貓媽媽排好了今天的行程。（劇情原句，E10）"},
       {es:"Hace frío hoy.", zh:"今天很冷。（hacer + 天氣，西語固定用hacer不是estar）"},
