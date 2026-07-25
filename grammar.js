@@ -1004,7 +1004,7 @@ const GRAMMAR_DATA = [
   {
     id:"g28", cat:"subjunctive", level:"b1",
     title:"情緒動詞句型：主詞不同才觸發虛擬式",
-    rule:"句型＝(A+人稱代詞)＋間接受詞＋情緒動詞＋infinitivo/sustantivo/que+虛擬式。同一個主詞造成自己的情緒反應時，用原形動詞；情緒反應的人（我）跟造成情緒的動作主詞（別人）不同時，才用 que + 虛擬式。",
+    rule:"核心畫面：一件事讓某人產生某種情緒。如果讓自己產生情緒的人跟感受情緒的人是同一個人，動詞用原形（hablar/escuchar）；如果讓人產生情緒的是「別人做的事」，就要用 que + 虛擬式。",
     examples:[
       {es:"A mí me pone nervioso hablar en público.", zh:"公開說話讓我很緊張。（同一主詞：是「我」自己說話讓自己緊張，用原形動詞 hablar）"},
       {es:"Me relaja escuchar el agua de un arroyo en un bosque.", zh:"在森林中聽溪水聲讓我感到放鬆。（同一主詞，用原形動詞 escuchar）"},
@@ -1164,7 +1164,7 @@ const GRAMMAR_DATA = [
       {es:"Ese chico me cae mal.", zh:"我對那個男生印象不好。"},
       {es:"Me cae gordo.", zh:"我看他不順眼。（拉美口語，比 cae mal 更直接、更帶情緒）"}
     ],
-    trap:"跟 gustar 句型結構一模一樣（間接受詞 + 動詞 + 主詞）：問自己「是誰造成這個印象？」，那個人才是文法上的主詞，不是「我」。",
+    trap:"跟 gustar 是同一種說法：問自己「是誰讓誰產生這個印象？」——造成印象的那個人/東西放在句子前面，「我」只是被影響的人。",
     source:"文法補充"
   },
 
@@ -1461,13 +1461,13 @@ const GRAMMAR_DATA = [
   {
     id:"g57", cat:"verb-pattern", level:"b2c1",
     title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
-    rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞數量要跟後面的名詞一致（單數→動詞單數，複數→複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用第三人稱單數",
+    rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞要跟後面那個東西的單複數一致（一個東西→動詞單數，好幾個東西→動詞複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用同一種形式（se dice/se puede，不隨東西的單複數變化）",
     examples:[
       {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。（se pasivo，主詞 el Día 是單數）（es：se + 動詞 = 不指出動作者的表達方式）"},
       {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。（se pasivo，flores 複數 → venden 複數）"},
       {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（se impersonal，que 後面整句，動詞固定單數）"}
     ],
-    trap:"SE 被動的動詞要跟名詞在數上一致（Se vende pan. vs Se venden flores.）；SE 無人稱沒有可以配對的名詞主詞，所以永遠是第三人稱單數 se dice/se puede/se considera。判斷有沒有「東西/名詞」是誰在被動受到那個動作——有的話是 SE 被動，沒有的話是 SE 無人稱。",
+    trap:"SE 被動的動詞要跟後面那個東西的單複數一致（Se vende pan. vs Se venden flores.）；SE 無人稱沒有東西可以對應，所以永遠固定用同一種形式：se dice/se puede/se considera。判斷方法：句子裡有沒有一個「東西」被動作影響到——有的話是 SE 被動，沒有的話是 SE 無人稱。",
     source:"文法補充"
   },
 
@@ -1742,20 +1742,20 @@ const GRAMMAR_DATA = [
   {
     id:"g75", cat:"subjunctive", level:"b2c1",
     title:"如果人生重來一次：不可能的假設情境（過去虛擬式延伸）",
-    rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。過去虛擬式的規則變化基準是「陳述式簡單過去式第三人稱複數」去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
+    rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。過去虛擬式的變化找法：先找出這個動詞「他們」那個過去式形式（tuvieron這種），去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
     examples:[
       {es:"Si tuviera dinero, viajaría por toda Latinoamérica.", zh:"如果我有錢，我會環遊整個拉丁美洲。"},
       {es:"Ojalá pudiera hablar español perfectamente.", zh:"真希望我能講一口完美的西語。"},
       {es:"No creía que fuera tan difícil aprender los tiempos verbales.", zh:"我沒想到學動詞時態會這麼難。"}
     ],
-    trap:"過去虛擬式的規則變化基準是「陳述式簡單過去式第三人稱複數」，不是從原形動詞直接推——例如 tener → tuvieron → tuviera（不是從tener直接變）。這也是為什麼不規則動詞的過去虛擬式反而更好推：只要記得該動詞的簡單過去式第三人稱複數，就能推出整組過去虛擬式變位。",
+    trap:"過去虛擬式不是從原形動詞直接推，而是從這個動詞「他們」的過去式形式推——例如 tener → tuvieron → tuviera（不是從tener直接變）。這也是為什麼不規則動詞的過去虛擬式反而更好推：只要記得該動詞「他們」的過去式怎麼講，就能推出整組過去虛擬式變位。",
     source:"文法補充"
   },
 
   {
     id:"g76", cat:"verb-pattern", level:"b2c1",
     title:"Se habla español：西語裡不說主角的說法（被動延伸）",
-    rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（依主詞陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞第三人稱，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
+    rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（要依東西的陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
     examples:[
       {es:"El puente fue construido por ingenieros franceses.", zh:"這座橋是由法國工程師建造的。"},
       {es:"Se habla español en toda Latinoamérica.", zh:"整個拉丁美洲都講西語。"},
@@ -2312,7 +2312,7 @@ const GRAMMAR_DATA = [
         {es:"los niños → la infancia", zh:"孩子們 → 兒童（集合概念，較正式/書面）"}
       ]
     },
-    trap:"RAE的官方立場是：西語的陽性複數本來就有「泛指/中性」功能，不需要另外造字，todes/-e字尾、todxs/@這類寫法不屬於規範文法；但反對意見認為語言會隨社會演變、官方規範不代表唯一現實。集合名詞策略（alumnado/profesorado/ciudadanía）是三種方案裡爭議最小的一種，因為它不發明新文法，只是換一個本來就存在、大家都能接受的字。讀者遇到todes/elle（第三人稱中性代名詞，介於él/ella之間）這類形式時，只需要知道「這是特定圈子的性別中性表達方式，不是拼字錯誤」，這場辯論在西語圈仍在進行中，沒有單一定論。",
+    trap:"RAE的官方立場是：西語的陽性複數本來就有「泛指/中性」功能，不需要另外造字，todes/-e字尾、todxs/@這類寫法不屬於規範文法；但反對意見認為語言會隨社會演變、官方規範不代表唯一現實。集合名詞策略（alumnado/profesorado/ciudadanía）是三種方案裡爭議最小的一種，因為它不發明新文法，只是換一個本來就存在、大家都能接受的字。讀者遇到todes/elle（介於él/ella之間的性別中性代名詞）這類形式時，只需要知道「這是特定圈子的性別中性表達方式，不是拼字錯誤」，這場辯論在西語圈仍在進行中，沒有單一定論。",
     source:"文法補充"
   },
 

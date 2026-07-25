@@ -125,7 +125,7 @@ const AMMO_DATA = [
     pattern:"A todos les encanta [原形動詞].", pattern_zh:"所有人都超愛 ___。",
     pattern_note:"encanta 「他們」，les 取代 me", slots:["原形動詞"],
     fire_peppa:{es:"A todos les encanta chapotear en los charcos de barro.", zh:"所有人都超愛在泥巴坑裡玩水！", ts:null,
-      chunks:[{w:"A todos les",role:"s",hideYg:true},{w:"encanta chapotear en los charcos de barro.",role:"v",note:"encantar ➔ encanta（「他/她」）+ les（間接受詞（英文的 to him / to her / to them）代詞）➔ 意思：所有人都超愛（A+人+le/les encanta = 某人超愛）"}]},
+      chunks:[{w:"A todos les",role:"s",hideYg:true},{w:"encanta chapotear en los charcos de barro.",role:"v",note:"encantar ➔ encanta（「他/她」）+ les（給他們）➔ 意思：所有人都超愛（A+人+le/les encanta = 某人超愛）"}]},
     fire_daily:[
       {es:"A todos les encanta cantar.", zh:"所有人都超愛唱歌。", chunks:[{w:"A todos les",role:"s"},{w:"encanta cantar.",role:"v"}]},
       {es:"A todos les encanta el verano.", zh:"所有人都超愛夏天。", chunks:[{w:"A todos les",role:"s"},{w:"encanta el verano.",role:"v"}]}
@@ -337,7 +337,7 @@ const AMMO_DATA = [
     pattern:"A [人] no le gusta [原形動詞].", pattern_zh:"___ 不喜歡 ___。",
     pattern_note:"A + 人 + le gusta = 某人喜歡，西語必學句型", slots:["人","原形動詞"],
     fire_peppa:{es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。", ts:null,
-      chunks:[{w:"A Tito",role:"s"},{w:"no le gusta",role:"v",note:"gustar ➔ gusta（「他/她」）+ le（間接受詞（英文的 to him / to her / to them））+ no ➔ 意思：不喜歡（倒裝：A+人+le gusta+動詞）"},{w:"jugar solo.",role:"o"}]},
+      chunks:[{w:"A Tito",role:"s"},{w:"no le gusta",role:"v",note:"gustar ➔ gusta（「他/她」）+ le（給他）+ no ➔ 意思：不喜歡（倒裝：A+人+le gusta+動詞）"},{w:"jugar solo.",role:"o"}]},
     fire_daily:[
       {es:"A mí no me gusta el café.", zh:"我不喜歡咖啡。", chunks:[{w:"A mí",role:"s"},{w:"no me gusta",role:"v"},{w:"el café.",role:"o"}]},
       {es:"A Vera le gusta dibujar.", zh:"薇拉喜歡畫畫。", chunks:[{w:"A Vera",role:"s"},{w:"le gusta",role:"v"},{w:"dibujar.",role:"o"}]}
@@ -549,7 +549,7 @@ const AMMO_DATA = [
     pattern:"[人] le da de comer a [受詞].", pattern_zh:"___ 餵 ___ 吃東西。",
     pattern_note:"le da de comer a + 人 = 餵某人，固定搭配直接整句記", slots:["人","受詞"],
     fire_peppa:{es:"Mamá Cata le da de comer a Mimi.", zh:"貓媽媽餵咪咪吃東西。", ts:null,
-      chunks:[{w:"Mamá Cata",role:"s"},{w:"le da de comer",role:"v",note:"dar de comer a = 餵吃（固定搭配）+ le = 給她（間接受詞代詞）"},{w:"a Mimi.",role:"o"}]},
+      chunks:[{w:"Mamá Cata",role:"s"},{w:"le da de comer",role:"v",note:"dar de comer a = 餵吃（固定搭配）+ le = 給她"},{w:"a Mimi.",role:"o"}]},
     fire_daily:[
       {es:"Papá le da de comer al gato.", zh:"爸爸餵貓吃東西。", chunks:[{w:"Papá",role:"s"},{w:"le da de comer",role:"v"},{w:"al gato.",role:"o"}]},
       {es:"Le doy de comer al pez.", zh:"我餵魚吃東西。", chunks:[{w:"(yo)",role:"s"},{w:"Le doy de comer",role:"v"},{w:"al pez.",role:"o"}]}
@@ -586,9 +586,9 @@ const AMMO_DATA = [
     core_ammo:"Tito le enseña su esqueleto a Mimi.", core_zh:"迪多給咪咪看他的骷髏。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] le enseña [受詞] a [受詞].", pattern_zh:"___ 給 ___ 看 ___。",
-    pattern_note:"enseñar = 展示/給看，le = 間接受詞代詞（給她/他）", slots:["人","受詞","受詞"],
+    pattern_note:"enseñar = 展示/給看，le = 給她/他", slots:["人","受詞","受詞"],
     fire_peppa:{es:"Tito le enseña su esqueleto a Mimi.", zh:"迪多給咪咪看他的骷髏。", ts:null,
-      chunks:[{w:"Tito",role:"s"},{w:"le enseña",role:"v",note:"enseñar ➔ enseña（「他」）+ le = 間接受詞代詞 ➔ 意思：給她看（enseñar a = 展示給某人）"},{w:"su esqueleto a Mimi.",role:"o"}]},
+      chunks:[{w:"Tito",role:"s"},{w:"le enseña",role:"v",note:"enseñar ➔ enseña（「他」）+ le = 給她 ➔ 意思：給她看（enseñar a = 展示給某人）"},{w:"su esqueleto a Mimi.",role:"o"}]},
     fire_daily:[
       {es:"Le enseño mi foto a mamá.", zh:"我給媽媽看我的照片。", chunks:[{w:"(yo)",role:"s"},{w:"Le enseño",role:"v"},{w:"mi foto a mamá.",role:"o"}]},
       {es:"Nita le enseña su libro a Tito.", zh:"妮妲給迪多看她的書。", chunks:[{w:"Nita",role:"s"},{w:"le enseña",role:"v"},{w:"su libro a Tito.",role:"o"}]}
@@ -942,7 +942,7 @@ const AMMO_DATA = [
     core_ammo:"Mamá Cata le pregunta algo.", core_zh:"卡妲媽媽問他一件事。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] le pregunta [事情].", pattern_zh:"___ 問他/她 ___。",
-    pattern_note:"le pregunta = 問他/她（間接受詞 le + preguntar）", slots:["人物","事情"],
+    pattern_note:"le pregunta = 問他/她（le=給他/她 + preguntar）", slots:["人物","事情"],
     fire_peppa:{es:"Mamá Cata le pregunta algo.", zh:"卡妲媽媽問他一件事。", ts:null,
       chunks:[{w:"Mamá Cata",role:"s"},{w:"le pregunta",role:"v",note:"preguntar ➔ le + pregunta（「她」）➔ 意思：問他"},{w:"algo.",role:"o"}]},
     fire_daily:[
@@ -1206,7 +1206,7 @@ const AMMO_DATA = [
     core_ammo:"A Tito no le gustan los cambios repentinos.", core_zh:"迪多不喜歡突如其來的改變。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人物] no le gustan los cambios repentinos.", pattern_zh:"___ 不喜歡突如其來的改變。",
-    pattern_note:"gustar 句型：喜歡的東西當主詞，人當間接受詞", slots:["人物"],
+    pattern_note:"gustar 句型：先講喜歡的東西，再講受影響的是誰", slots:["人物"],
     fire_peppa:{es:"A Tito no le gustan los cambios repentinos.", zh:"迪多不喜歡突如其來的改變。", ts:null,
       chunks:[{w:"A Tito",role:"o"},{w:"no le gustan",role:"v",note:"gustar ➔ le gustan（否定）➔ 意思：不喜歡（gustar句型反著講）"},{w:"los cambios repentinos.",role:"s"}]},
     fire_daily:[
@@ -1258,7 +1258,7 @@ const AMMO_DATA = [
     core_ammo:"Rehacer el plan le cuesta muchísima energía.", core_zh:"重新安排這件事，耗掉她非常多的能量。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Le cuesta muchísima [東西].", pattern_zh:"這件事耗掉她非常多的 ___。",
-    pattern_note:"costar 句型：跟 gustar 一樣，事情當主詞、人當間接受詞", slots:["東西"],
+    pattern_note:"costar 句型：跟 gustar 一樣，先講事情、再講受影響的是誰", slots:["東西"],
     fire_peppa:{es:"Rehacer el plan le cuesta muchísima energía.", zh:"重新安排這件事，耗掉她非常多的能量。", ts:null,
       chunks:[{w:"Rehacer el plan",role:"s"},{w:"le cuesta",role:"v",note:"costar ➔ le cuesta ➔ 意思：耗掉她（costar句型跟gustar同邏輯）"},{w:"muchísima energía.",role:"o"}]},
     fire_daily:[

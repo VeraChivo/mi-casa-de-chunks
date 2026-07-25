@@ -883,7 +883,7 @@ const EPS=[
       {es:"Mimi",zh:"咪咪"},
     ]}]
   }},
-  {es:"Mamá Cata le pregunta algo.",chunks:[{w:"Mamá Cata",role:"s"},{w:"le pregunta",role:"v"},{w:"algo.",role:"o"}],zh:"卡妲媽媽問他一件事。",en:"Mom Cata asks him something.",noteZh:"「le pregunta」= 問他/她（間接受詞 le + preguntar）",noteEn:"'le pregunta' = asks him/her (indirect object le + preguntar)",
+  {es:"Mamá Cata le pregunta algo.",chunks:[{w:"Mamá Cata",role:"s"},{w:"le pregunta",role:"v"},{w:"algo.",role:"o"}],zh:"卡妲媽媽問他一件事。",en:"Mom Cata asks him something.",noteZh:"「le pregunta」= 問他/她（le=給他/她 + preguntar）",noteEn:"'le pregunta' = asks him/her (le = to him/her + preguntar)",
   expand:{
     note:"Mamá Cata le pregunta ___. = 換問的內容",
     template:[{t:"Mamá Cata le pregunta"},{g:"thing"}],
@@ -1103,7 +1103,7 @@ const EPS=[
       {es:"Kito",zh:"哥哥"},
     ]}]
   }},
-  {es:"A Tito no le gustan los cambios repentinos.",chunks:[{w:"A Tito",role:"o"},{w:"no le gustan",role:"v"},{w:"los cambios repentinos.",role:"s"}],zh:"迪多不喜歡突如其來的改變。",en:"Tito doesn't like sudden changes.",noteZh:"「gustar」句型：喜歡的東西當主詞，人當間接受詞",noteEn:"'gustar' construction: the liked thing is the subject, the person is the indirect object",
+  {es:"A Tito no le gustan los cambios repentinos.",chunks:[{w:"A Tito",role:"o"},{w:"no le gustan",role:"v"},{w:"los cambios repentinos.",role:"s"}],zh:"迪多不喜歡突如其來的改變。",en:"Tito doesn't like sudden changes.",noteZh:"「gustar」句型：先講喜歡的東西，再講受影響的是誰",noteEn:"'gustar' construction: the liked thing comes first, then who it affects",
   expand:{
     note:"A ___ no le gustan los cambios repentinos. = 換主詞練習",
     template:[{t:"A"},{g:"name"},{t:"no le gustan los cambios repentinos."}],
@@ -1313,9 +1313,9 @@ const EPS=[
   expand:{note:"pero quiere ___. = 換他想做什麼",template:[{t:"Está escondido, pero"},{g:"want"}],groups:[{label:"他想做什麼",key:"want",options:[{es:"quiere salir.",zh:"想出去"},{es:"quiere jugar.",zh:"想玩"},{es:"quiere hablar.",zh:"想說話"}]}]}},
   {es:'Asoma la cabeza y pregunta: "¿Puedo jugar también?"',chunks:[{w:"Asoma",role:"v"},{w:"la cabeza",role:"o"},{w:"y",role:"c"},{w:"pregunta:",role:"v"},{w:'"¿Puedo jugar también?"',role:"o"}],zh:"他探出頭，問：「我也可以加入嗎？」",en:'He peeks his head out and asks: "Can I join too?"',noteZh:"asomar la cabeza = 探出頭；puedo + 原形動詞 = 我可以做某事",noteEn:"'asomar la cabeza' = to peek one's head out; 'puedo + infinitive' = I can...",
   expand:{note:"pregunta: ___ = 換他問什麼",template:[{t:"Asoma la cabeza y pregunta:"},{g:"question"}],groups:[{label:"他問什麼",key:"question",options:[{es:'"¿Puedo jugar también?"',zh:"我也可以加入嗎？"},{es:'"¿Puedo quedarme aquí?"',zh:"我可以留在這裡嗎？"},{es:'"¿Me pueden escuchar?"',zh:"你們能聽見我嗎？"}]}]}},
-  {es:'Ellos le dicen: "Eres muy pequeño todavía."',chunks:[{w:"Ellos",role:"s"},{w:"le dicen:",role:"v"},{w:'"Eres muy pequeño todavía."',role:"o"}],zh:"他們對他說：「你還太小了。」",en:'They tell him: "You\'re still too small."',noteZh:"le dicen = 對他說（間接受詞le）；todavía = 還、仍然",noteEn:"'le dicen' = they say to him (indirect object 'le'); 'todavía' = still",
+  {es:'Ellos le dicen: "Eres muy pequeño todavía."',chunks:[{w:"Ellos",role:"s"},{w:"le dicen:",role:"v"},{w:'"Eres muy pequeño todavía."',role:"o"}],zh:"他們對他說：「你還太小了。」",en:'They tell him: "You\'re still too small."',noteZh:"le dicen = 對他說（le=給他）；todavía = 還、仍然",noteEn:"'le dicen' = they say to him (le = to him); 'todavía' = still",
   expand:{note:"le dicen: ___ = 換他們回答什麼",template:[{t:"Ellos le dicen:"},{g:"reply"}],groups:[{label:"他們回答什麼",key:"reply",options:[{es:'"Eres muy pequeño todavía."',zh:"你還太小了"},{es:'"Ahora no es el momento."',zh:"現在不是時候"},{es:'"Todavía no puedes."',zh:"你還不行"}]}]}},
-  {es:"La Tristeza y el Miedo lo abrazan.",chunks:[{w:"La Tristeza y el Miedo",role:"s"},{w:"lo abrazan.",role:"v"}],zh:"悲傷和恐懼抱住他。",en:"Sadness and Fear hug him.",noteZh:"lo abrazan = 抱住他（直接受詞lo）",noteEn:"'lo abrazan' = they hug him (direct object 'lo')",
+  {es:"La Tristeza y el Miedo lo abrazan.",chunks:[{w:"La Tristeza y el Miedo",role:"s"},{w:"lo abrazan.",role:"v"}],zh:"悲傷和恐懼抱住他。",en:"Sadness and Fear hug him.",noteZh:"lo abrazan = 抱住他（lo=他）",noteEn:"'lo abrazan' = they hug him (lo = him)",
   expand:{note:"___ lo abrazan. = 換誰抱住他",template:[{g:"who"},{t:"lo abrazan."}],groups:[{label:"誰抱住他",key:"who",options:[{es:"La Tristeza y el Miedo",zh:"悲傷和恐懼"},{es:"Cansancio",zh:"倦倦"},{es:"Esperanza",zh:"嬉汐"}]}]}},
   {es:"Esperan juntos la escalera de madera.",chunks:[{w:"Esperan juntos",role:"v"},{w:"la escalera de madera.",role:"o"}],zh:"他們一起等那道木梯。",en:"They wait together for the wooden ladder.",noteZh:"esperar + 受詞 = 等待某事物（不用加介系詞）；juntos = 一起",noteEn:"'esperar' takes a direct object with no preposition; 'juntos' = together",
   expand:{note:"Esperan juntos ___. = 換等待什麼",template:[{t:"Esperan juntos"},{g:"thing"}],groups:[{label:"等待什麼",key:"thing",options:[{es:"la escalera de madera.",zh:"木梯"},{es:"la luz del sol.",zh:"陽光"},{es:"el momento perfecto.",zh:"完美的時機"}]}]}},
