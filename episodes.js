@@ -1143,7 +1143,7 @@ const EPS=[
       {es:"Kito",zh:"哥哥"},
     ]}]
   }},
-  {es:"Rehacer el plan le cuesta muchísima energía.",chunks:[{w:"Rehacer el plan",role:"s"},{w:"le cuesta",role:"v"},{w:"muchísima energía.",role:"o"}],zh:"重新安排這件事，耗掉她非常多的能量。",en:"Remaking the plan costs her a huge amount of energy.",noteZh:"「costar」句型：跟 gustar 一樣，事情當主詞、人當間接受詞",noteEn:"'costar' construction: like gustar, the thing costs energy 'to' the person",
+  {es:"Rehacer el plan le cuesta muchísima energía.",chunks:[{w:"Rehacer el plan",role:"s"},{w:"le cuesta",role:"v"},{w:"muchísima energía.",role:"o"}],zh:"重新安排這件事，耗掉她非常多的能量。",en:"Remaking the plan costs her a huge amount of energy.",noteZh:"le cuesta = 讓她很吃力（這句型跟gustar很像：先講事情，再講受影響的是誰）",noteEn:"'le cuesta' = costs her effort (same pattern as gustar: the thing comes first, then who it affects)",
   expand:{
     note:"Rehacer el plan le cuesta ___. = 換耗費的東西",
     template:[{t:"Rehacer el plan le cuesta"},{g:"thing"}],
