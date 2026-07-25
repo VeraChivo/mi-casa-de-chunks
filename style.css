@@ -668,7 +668,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .ge-quote-seg{white-space:nowrap;display:inline-flex;align-items:center}
 .ge-glue{white-space:nowrap;display:inline-flex;align-items:center}
 .ge-chunk-unit{display:inline-flex;align-items:center;white-space:nowrap}
-.grammar-ex-zh{font-size:13px;color:var(--tmid);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
+.grammar-ex-zh{font-size:13px;color:var(--tmid);font-weight:600;cursor:pointer}
 .ex-zh-play{font-size:11px;font-weight:800;color:var(--misora);white-space:nowrap}
 .grammar-crosslang{font-size:12px;font-weight:700;color:var(--tmid);margin:8px 0 4px;line-height:1.5;padding:8px 10px;background:rgba(61,184,122,.08);border-radius:8px;border-left:3px solid var(--ok)}
 
