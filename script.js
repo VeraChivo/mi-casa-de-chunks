@@ -1229,7 +1229,10 @@ function getMakePattern(s){
     }),
     // key verbs that must appear
     keyVerbs: [...verbWords],
-    wordCount: s.chunks.length,
+    // 字數要用整句實際字數比對，不能用chunks.length(語意分組數)——
+    // 「le da de comer」這種多字動詞語塊只算1個chunk卻是4個字，
+    // 用chunks.length當wordCount會讓±3字數容錯永遠對不上，導致換詞後(即使字數對)一律判錯
+    wordCount: s.es.trim().split(/\s+/).length,
   };
 }
 
@@ -1453,7 +1456,7 @@ function checkMakeFree(){
     if(!makeAnswered.includes(idx)){makeAnswered.push(idx);makeScore++;}
     const gId=SENTENCE_GRAMMAR_MAP[currentGlobalIdx()];
     const saved=gId?saveToGrammarLib(gId,val):false;
-    res.innerHTML=`¡Eso es! 🌟 用了 ${verbsFound.join(' / ')}${saved?' — 已存進文法酷庫 💡':' — 就是這樣！'}<span class="make-stt-hint">🎤 進階：用 Google 鍵盤語音輸入再唸一次，看能不能辨識出來</span><button class="make-notes-btn" onclick="switchTab('tabMom');setTimeout(()=>{const n=document.getElementById('mama-secret-notes');if(n)n.focus()},350)">📝 記到手札</button>`;
+    res.innerHTML=`¡Eso es! 🌟 用了 ${verbsFound.join(' / ')}${saved?' — 已存進文法酷庫 💡':' — 就是這樣！'}<span class="make-stt-hint">🎤 進階：用 Google 鍵盤語音輸入再唸一次，看能不能辨識出來</span><button class="make-notes-btn" onclick="switchMainTab('mom');setTimeout(()=>{const n=document.getElementById('mama-secret-notes');if(n)n.focus()},350)">📝 記到手札</button>`;
     res.style.display='block';
     speakFull(val);
     toast('🔊 念你的句子給你聽！');

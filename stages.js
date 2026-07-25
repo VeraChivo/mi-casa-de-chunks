@@ -270,6 +270,7 @@ function renderStage3(){
       </details>
       <div class="s3-learned-wrap">
         <div class="s3-col-label s3-label-learned">🎒 你學過的語塊庫</div>
+        <div class="vocab-howto">🔊 點擊聽發音　📋 長按複製語塊　🌱 點按鈕帶去造句練習</div>
         <input type="text" class="s3-learned-search" placeholder="🔍 搜尋學過的語塊…" oninput="filterS3LearnedPool(this.value)">
         <div id="s3LearnedPoolArea">${_renderS3LearnedPool()}</div>
       </div>
