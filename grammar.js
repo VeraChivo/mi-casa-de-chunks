@@ -410,6 +410,14 @@ const GRAMMAR_DATA = [
       {es:"¿Te gusta el chocolate?", zh:"你喜歡巧克力嗎？（問句：me換成 te）"}
     ],
     trap:"動詞跟著「被喜歡的事物」走：Me gusta el libro（單）vs Me gustan los libros（複）",
+    contextDialogue:[{
+      situation:"朋友問你想吃什麼點心",
+      lines:[
+        {speaker:"A", es:"¿Quieres galletas o chocolate?", zh:"你要餅乾還是巧克力？"},
+        {speaker:"B", es:"Me encantan las galletas, pero también me gusta el chocolate.", zh:"我超愛餅乾，不過巧克力我也喜歡。"}
+      ],
+      note:"encanta比gusta語氣強很多，講出來對方就聽得出你比較想要哪一個。"
+    }],
     source:"E20·S1（全集10句皆示範gusta/encanta，見SENTENCE_GRAMMAR_MAP globalIdx190-199）"
   },
 
@@ -423,6 +431,14 @@ const GRAMMAR_DATA = [
     ],
     note:"A mí me gusta el café. 我喜歡咖啡。——單獨說 Me gusta el café. 就已經完整，加上「A mí」只是為了強調「是我」喜歡（不是別人）。",
     trap:"完整的me/te/le/nos/les對照表，已經收在🏰莊園人物冊裡，不重複列一份 <button class=\"grammar-link-btn\" onclick=\"jumpToPronounLibrary()\">🏰 查看完整對照 →</button>",
+    contextDialogue:[{
+      situation:"聊到弟弟妹妹喜歡玩什麼",
+      lines:[
+        {speaker:"A", es:"¿A Tito le gusta jugar solo?", zh:"迪多喜歡自己玩嗎？"},
+        {speaker:"B", es:"No, a Tito no le gusta jugar solo, le gusta jugar con Mimi.", zh:"不喜歡，迪多喜歡跟咪咪一起玩。"}
+      ],
+      note:"這句型是介紹/詢問「某人喜不喜歡」最常用的講法，聊天問候小孩、朋友喜好時很常出現。"
+    }],
     source:"E3·S6"
   },
 
@@ -1165,6 +1181,14 @@ const GRAMMAR_DATA = [
       {es:"Me cae gordo.", zh:"我看他不順眼。（拉美口語，比 cae mal 更直接、更帶情緒）"}
     ],
     trap:"跟 gustar 是同一種說法：問自己「是誰讓誰產生這個印象？」——造成印象的那個人/東西放在句子前面，「我」只是被影響的人。",
+    contextDialogue:[{
+      situation:"朋友問你對新同事的第一印象",
+      lines:[
+        {speaker:"A", es:"¿Qué tal el chico nuevo?", zh:"新來的那個人怎麼樣？"},
+        {speaker:"B", es:"Me cae muy bien, es simpático.", zh:"我對他印象很好，人很親切。"}
+      ],
+      note:"caer bien/mal專門用來聊「對人的第一印象」，跟gustar比起來更適合形容一個人給你的感覺。"
+    }],
     source:"文法補充"
   },
 
@@ -1832,6 +1856,14 @@ const GRAMMAR_DATA = [
       {es:"Perdí el autobús otra vez... ni modo.", zh:"我又錯過公車了……唉，沒辦法。（Ni modo：墨西哥高頻口頭禪，「事已至此、只能這樣」的無奈聳肩感）"}
     ],
     trap:"這些詞的共同點是：字面翻譯常常誤導（No pasa nada字面是「什麼都沒發生」，實際是在說「別放在心上」），母語者說出口時往往帶著一個聳肩或攤手的肢體語氣，語調比字面意思更重要。",
+    contextDialogue:[{
+      situation:"不小心打翻東西後道歉",
+      lines:[
+        {speaker:"A", es:"¡Perdón! Se me cayó tu café.", zh:"對不起！我把你的咖啡弄翻了。"},
+        {speaker:"B", es:"No pasa nada, tranquilo.", zh:"沒關係，別擔心。"}
+      ],
+      note:"No pasa nada是安慰對方、降低尷尬時的標準回應，聽到不用照字面想「什麼都沒發生」。"
+    }],
     source:"文法補充"
   },
 
@@ -1847,6 +1879,14 @@ const GRAMMAR_DATA = [
       {es:"No aguanto más este calor.", zh:"我再也受不了這種熱了。（No aguanto más：我忍不下去了，比No puedo más語氣更強烈）"}
     ],
     trap:"¡Qué pena! 是這批裡最危險的地雷——同一句話，在秘魯/智利聽起來是「真可惜」（惋惜），在哥倫比亞聽起來卻是「不好意思」（道歉/尷尬），聽到這句要先看上下文再判斷情緒方向，不能套單一意思。",
+    contextDialogue:[{
+      situation:"抱怨一直重複做同一件事",
+      lines:[
+        {speaker:"A", es:"¿Otra vez tienes que explicar lo mismo?", zh:"你又要解釋一樣的事情了？"},
+        {speaker:"B", es:"Sí, estoy harta de repetir lo mismo mil veces.", zh:"對啊，我受夠了重複講一樣的話一千次。"}
+      ],
+      note:"estoy harto/a de表達「已經到極限、忍耐用盡」的語氣，比單純說「不高興」更強烈。"
+    }],
     source:"文法補充"
   },
 
@@ -1861,6 +1901,14 @@ const GRAMMAR_DATA = [
       {es:"¿Nos vamos ya? — De una.", zh:"我們現在走嗎？——當然，走吧。（de una：哥倫比亞，立刻/毫不猶豫）"}
     ],
     trap:"órale 是這批裡最需要靠語調判斷意思的詞——同一個字，驚訝地說是「哇！」，平淡地說是「好喔」，急促地說是「快點！」，光看文字容易誤判，要連著語境/語氣一起理解。",
+    contextDialogue:[{
+      situation:"請朋友幫忙搬東西",
+      lines:[
+        {speaker:"A", es:"¿Me echas la mano con esto?", zh:"你可以幫我一下這個嗎？"},
+        {speaker:"B", es:"¡Dale, claro!", zh:"好啊，沒問題！"}
+      ],
+      note:"echar la mano=請求幫忙，dale=爽快答應，這兩個詞常常一起出現在同一段對話裡。"
+    }],
     source:"文法補充"
   },
 
@@ -1876,6 +1924,14 @@ const GRAMMAR_DATA = [
       {es:"¿Que yo pague todo? ¡Ni hablar!", zh:"要我付全部的錢？想都別想！（Ni hablar：斷然拒絕，比No更堅決）"}
     ],
     trap:"No me digas 字面是命令句「別跟我說」，但實際意思剛好相反——是「請繼續說，我很驚訝」，這種「字面否定、實際是鼓勵繼續講」的反差是初學者最容易誤解的地方。",
+    contextDialogue:[{
+      situation:"聽到朋友又搞丟東西",
+      lines:[
+        {speaker:"A", es:"Perdí las llaves otra vez.", zh:"我鑰匙又搞丟了。"},
+        {speaker:"B", es:"No me digas... ¿otra vez?", zh:"不會吧……又來？"}
+      ],
+      note:"No me digas表達「不會吧/真的假的」的驚訝反應，不是字面上「別跟我說」的意思。"
+    }],
     source:"文法補充"
   },
 
@@ -1890,6 +1946,14 @@ const GRAMMAR_DATA = [
       {es:"Ese abrigo me costó un ojo de la cara.", zh:"那件外套花了我一大筆錢。（costar un ojo de la cara：非常貴，字面「花一隻眼睛的價錢」）"}
     ],
     trap:"這類成語的共同點是：拆開單字完全猜不出意思，一定要整組當一個「語塊」記，跟本站一貫的教學原則（禁止單字死背）完全一致——遇到新成語不要逐字翻譯，先當一個不可分割的整體記下來。",
+    contextDialogue:[{
+      situation:"描述兩人如何從陌生變熟識",
+      lines:[
+        {speaker:"A", es:"¿Cómo se conocieron?", zh:"你們是怎麼認識的？"},
+        {speaker:"B", es:"Al principio no nos conocíamos, pero un chiste ayudó a romper el hielo.", zh:"一開始我們不認識，不過一個笑話幫忙打破了僵局。"}
+      ],
+      note:"romper el hielo專門用來形容化解尷尬、打開話題的那個關鍵時刻，字面「打破冰」不用逐字理解。"
+    }],
     source:"文法補充"
   },
 
@@ -1984,6 +2048,14 @@ const GRAMMAR_DATA = [
       {es:"Esa película está re buena.", zh:"那部電影超好看的。（re + 形容詞：阿根廷，非常……，re可以隨意接在大部分形容詞前面加強語氣）"}
     ],
     trap:"re + 形容詞 是這批裡最好用的造詞模式——阿根廷人幾乎任何形容詞前面都能加re來加強語氣（re lindo/re difícil/re tarde），聽到「re」開頭先反應成「非常」就對了，不用逐字翻譯。",
+    contextDialogue:[{
+      situation:"聽到朋友錯過班機的誇張消息",
+      lines:[
+        {speaker:"A", es:"Perdí el vuelo por 5 minutos.", zh:"我因為5分鐘錯過班機了。"},
+        {speaker:"B", es:"¡No manches! ¿En serio?", zh:"不會吧！真的假的？"}
+      ],
+      note:"no manches是墨西哥常用的「不會吧」，比no mames溫和，適合日常朋友之間的對話。"
+    }],
     source:"文法補充"
   },
 
@@ -2424,6 +2496,14 @@ const GRAMMAR_DATA = [
       {es:"¡Ah, claro! Ahora entiendo.", zh:"啊，原來如此！我現在懂了。（claro單獨使用：表達「我懂了/恍然大悟」，不是字面「清楚」）"}
     ],
     trap:"這批詞的共同心法：hombre不分性別對象都能用（對女性說¡hombre!完全正常，這個字在這裡已經跟「男人」的字面意思脫鉤，變成純粹的語氣詞）；venga多見於西班牙，拉美不常這樣用；pues的功能範圍最廣，可以是猶豫、轉折、強調同意，甚至單獨一個「Pues...」就能表達「呃，這有點難回答」的整段語氣，聽的時候一定要靠語調判斷，不能只看文字。",
+    contextDialogue:[{
+      situation:"朋友問要不要參加派對",
+      lines:[
+        {speaker:"A", es:"¿Vienes a la fiesta?", zh:"你要來派對嗎？"},
+        {speaker:"B", es:"Pues claro, ahí estaré.", zh:"那當然，我會到的。"}
+      ],
+      note:"pues+claro組合強化肯定語氣，帶點「廢話當然」的輕鬆感，比單獨說claro更自然。"
+    }],
     source:"文法補充"
   },
 
