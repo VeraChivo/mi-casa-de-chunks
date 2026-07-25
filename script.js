@@ -2994,7 +2994,26 @@ function _catGroupFor(cat){
   const g = CAT_GROUPS.find(grp => grp.cats.includes(cat));
   return g ? g.key : 'structure';
 }
-let _gsupLevelFilter = 'all';
+// ⭐必學核心：不是新資料，只是把散落各處的核心動詞卡收成一排快速入口（2026-07-24 VERA盤查發現
+// SER/ESTAR/GUSTAR等核心卡因為source欄位不含"文法補充"，反而不會出現在下面的儲水槽列表裡，
+// 造成「核心卡在外面、TENER/HACER卻混在裡面」的不一致體感）。純UI，不搬移/不新增任何grammar.js資料。
+const CORE_ESSENTIALS = [
+  {id:'g01', label:'SER'},
+  {id:'g02', label:'ESTAR'},
+  {id:'g09', label:'GUSTAR'},
+  {id:'g20', label:'TENER'},
+  {id:'g109', label:'HACER'},
+  {id:'g19', label:'IR'},
+  {id:'g117', label:'LLAMARSE'}
+];
+function renderGsupCoreEssentials(){
+  const el = document.getElementById('gsupCoreEssentials');
+  if(!el) return;
+  el.innerHTML = CORE_ESSENTIALS.map(c=>`<span class="gsup-core-chip" onclick="event.stopPropagation();openGrammarCard('${c.id}')">${c.label}</span>`).join('');
+}
+// 預設只顯示🌱護土嫩芽，不是「全部」——100張卡一次攤開對新手是資訊爆炸，
+// 等級篩選chip仍在，隨時可以自己切到其他等級看更多
+let _gsupLevelFilter = 'a1a2';
 let _gsupTopicFilter = 'all';
 function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
@@ -3047,6 +3066,7 @@ function renderGrammarSupplement(){
   const topicEl = document.getElementById('grammarTopicFilter');
   const topicWrap = document.getElementById('grammarTopicFilterWrap');
   if(!el) return;
+  renderGsupCoreEssentials();
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充'));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
