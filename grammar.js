@@ -140,9 +140,9 @@ const GRAMMAR_DATA = [
     title:"SER：身分與本質",
     rule:"SER回答的是「這是什麼、這個人是誰」——身分、職業、國籍、關係，這些不會因為心情或時間就改變的事，都用SER來說。",
     examples:[
-      {es:"Yo soy Gatita Nita.", zh:"我是小貓妮妲。（身分）"},
-      {es:"Este es mi hermano pequeño.", zh:"這是我的小弟弟。（關係）"},
-      {es:"Son las mejores amigas.", zh:"她們是最好的朋友。（本質關係）"}
+      {es:"Soy Nita.", zh:"我是妮妲。（身分，劇情原句，E17）"},
+      {es:"Soy el hermano mayor de Nita.", zh:"我是妮妲的哥哥。（關係，劇情原句，E18）"},
+      {es:"Son las mejores amigas.", zh:"她們是最好的朋友。（本質關係，劇情原句，E3）"}
     ],
     trap:"「她在廚房」= Está en la cocina，位置要用 ESTAR，不用 SER！",
     mnemonic:{
@@ -159,7 +159,7 @@ const GRAMMAR_DATA = [
     },
     crossLang:"快速對接：SER＝「是」——華語「是」、台語「是（sī）」、客語「係（he）」，四種語言在『本質認同』這個字上都對得起來，比死背 DOCTOR 口訣更直覺！",
     quirk:"📍 事件發生地點 → SER；物體本身的位置 → ESTAR。<br>❌ 直覺：婚禮在哪裡？= 地點 = ESTAR？<br>✅ 其實是：什麼事情在哪裡發生？= SER<br>La boda es en la iglesia.（婚禮在教堂舉行——事件發生地點，用SER，跟tener lugar「舉行」同義）<br>≠ La iglesia está en el centro.（教堂位於市中心——這是教堂這個「東西」本身的位置，才輪到ESTAR）",
-    source:"E3·S3",
+    source:"E17·S2／E18·S5／E3·S3",
     conj:{
       verb:"ser（是）",
       rows:[
@@ -207,9 +207,9 @@ const GRAMMAR_DATA = [
     title:"ESTAR：位置與狀態",
     rule:"ESTAR回答的是「現在在哪裡、現在怎麼樣」——位置、心情、正在做的事，這些會隨時間改變的暫時狀態，都用ESTAR來說。",
     examples:[
-      {es:"El señor Esqueleto no está en la cama de Tito.", zh:"骷髏先生不在迪多的床上。（位置）"},
-      {es:"Nita está esperando a Vera Oveja.", zh:"妮妲正在等薇拉羊。（進行中）"},
-      {es:"Estoy cansada.", zh:"我現在很累。（暫時狀態）"}
+      {es:"El señor Esqueleto no está en la cama de Tito.", zh:"骷髏先生不在迪多的床上。（位置，劇情原句，E2）"},
+      {es:"Tito está esperando su turno para jugar.", zh:"迪多在等輪到他玩。（進行中，劇情原句，E19）"},
+      {es:"Estoy cansada.", zh:"我現在很累。（暫時狀態，新編例句，劇情裡沒有『我』自己說這句話的確切例子）"}
     ],
     trap:"口訣：SER = 本質身分（永久）；ESTAR = 位置狀態（暫時）",
     mnemonic:{
@@ -225,7 +225,7 @@ const GRAMMAR_DATA = [
     },
     crossLang:"快速對接：ESTAR＝「在」——華語「在」、台語「在、佇（tī）」、客語「在」，四種語言在『位置／暫時狀態』這個字上也對得起來。記法：SER 是本質的『是』，ESTAR 是暫時的『在』。",
     quirk:"❌ 直覺：死亡很永久，應該是本質身分 = SER？<br>✅ 其實是：西語把死亡當成「外力造成、改變後的狀態」= ESTAR<br>Está muerto.（他死了——跟está roto壞掉了、está cansado累了是同一掛邏輯，不是在描述這個人的本質身分）",
-    source:"E2·S8 / E3·S1",
+    source:"E2·S8 / E19·S4",
     conj:{
       verb:"estar（在／處於狀態）",
       rows:[
@@ -274,9 +274,9 @@ const GRAMMAR_DATA = [
     rule:"ESTAR（正確人稱）+ 動詞字尾改成 -ando / -iendo = 正在做某事。就像英文的 -ing！",
     emph:true,
     examples:[
-      {es:"Hoy está lloviendo.", zh:"今天正在下雨。（está + llovier → lloviendo）"},
-      {es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸達多正在下棋。（están + jugar → jugando）"},
-      {es:"Estoy esperando el autobús.", zh:"我正在等公車。（estoy + esperar → esperando）"}
+      {es:"Hoy está lloviendo.", zh:"今天正在下雨。（新編例句，劇情原句是「De repente, empieza a llover.」不是estar+ando形式；está + llover → lloviendo）"},
+      {es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸正在玩跳棋。（劇情原句，E2；están + jugar → jugando）"},
+      {es:"Nita está esperando a su mejor amiga, Vera Oveja.", zh:"妮妲正在等她最好的朋友薇拉羊。（劇情原句，E3；está + esperar → esperando）"}
     ],
     trap:"-ar 動詞字尾換 -ando（jugar → jugando）；-er/-ir 動詞字尾換 -iendo（comer → comiendo）",
     source:"E2·S9 / E3·S1",
@@ -403,11 +403,11 @@ const GRAMMAR_DATA = [
     title:"Me gusta vs Me encanta：喜歡的程度",
     rule:"中文腦：「我喜歡這首歌。」→ 西語腦：「這首歌讓我覺得喜歡。」→ Me gusta esta canción. 動詞跟著「被喜歡的事物」走，不是說話者！Me gusta（單數事物）/ Me gustan（複數事物）；Me encanta = 我超愛（比 gusta 強 10 倍）。",
     examples:[
-      {es:"Me gusta el chocolate.", zh:"我喜歡巧克力。"},
-      {es:"Me encanta chapotear en los charcos.", zh:"我超愛在水坑裡玩水。"},
-      {es:"Me gustan las galletas.", zh:"我喜歡餅乾。"},
-      {es:"No me gusta la lluvia.", zh:"我不喜歡下雨。（否定：前面加 no）"},
-      {es:"¿Te gusta el chocolate?", zh:"你喜歡巧克力嗎？（問句：me換成 te）"}
+      {es:"A Nita le gusta el helado.", zh:"妮妲喜歡冰淇淋。（劇情原句，E20）"},
+      {es:"A Tito le encanta su carrito rojo.", zh:"迪多超愛他的紅色小車車。（劇情原句，E20）"},
+      {es:"Me gustan las galletas.", zh:"我喜歡餅乾。（新編例句，劇情裡的『喜歡』例句都只講一樣東西，沒有像餅乾這種一次喜歡好幾個的說法）"},
+      {es:"A Tito no le gusta el ruido fuerte.", zh:"迪多不喜歡很大的聲音。（否定，劇情原句，E20）"},
+      {es:"¿Te gusta el chocolate?", zh:"你喜歡巧克力嗎？（新編例句，問句：me換成te，劇情裡沒有問句形式）"}
     ],
     trap:"動詞跟著「被喜歡的事物」走：Me gusta el libro（單）vs Me gustan los libros（複）",
     contextDialogue:[{
@@ -1052,12 +1052,12 @@ const GRAMMAR_DATA = [
     title:"porque：因為",
     rule:"porque（因為）後面一定要接「完整的一句話」（有自己的主詞+動詞），用來說明原因。跟長得很像的 por 不一樣：por 是介系詞，後面直接接名詞就好，不用整句。",
     examples:[
-      {es:"Nita está cansada porque no durmió bien anoche.", zh:"妮妲很累，因為她昨晚沒睡好。"},
-      {es:"Tito no quiere hablar porque tiene vergüenza.", zh:"迪多不想說話，因為他覺得害羞。"},
-      {es:"No fuimos al parque porque estaba lloviendo.", zh:"我們沒去公園，因為在下雨。"}
+      {es:'Papá Tato dice: "Los recordamos porque los queremos."', zh:"達多爸爸說：「我們記得他們，因為我們愛他們。」（劇情原句，E11）"},
+      {es:"Tito no quiere hablar porque tiene vergüenza.", zh:"迪多不想說話，因為他覺得害羞。（新編例句）"},
+      {es:"No fuimos al parque porque estaba lloviendo.", zh:"我們沒去公園，因為在下雨。（新編例句）"}
     ],
     trap:"porque 後面接「主詞+動詞」的完整句子；如果原因只是一個名詞、不是一整句話，要換成 por + 名詞（例如 por la lluvia／因為下雨），不能說 porque la lluvia。",
-    source:"文法補充"
+    source:"E11·S6（文法補充）"
   },
 
   {
@@ -1078,12 +1078,12 @@ const GRAMMAR_DATA = [
     title:"pero vs sino：都翻成「但是」，用法差很大",
     rule:"都翻成「但是」，但用法差很大：<br><br>Pero → 單純轉折，前面不管肯定或否定句都能用<br>Sino → 前面一定是否定句，後面要「取代/糾正」被否定掉的東西",
     examples:[
-      {es:"Quiero ir, pero no tengo tiempo.", zh:"我想去，但是我沒時間。"},
-      {es:"No quiero ir, pero lo haré por ti.", zh:"我不想去，但我會為你去做的。"},
-      {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。"}
+      {es:"El amor no se muere, pero sí cambia de forma.", zh:"愛不會死，但它的形式會改變。（劇情原句，E11）"},
+      {es:"Nita chapotea en los charcos, pero la ropa se moja.", zh:"妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1）"},
+      {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（新編例句，劇情裡沒有sino用法）"}
     ],
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），一律用 pero。這是初學者最容易搞混的一組連接詞。",
-    source:"文法補充"
+    source:"E11·S9／E1·S7（sino為文法補充）"
   },
 
   // ══ 易混淆詞組 ══
@@ -2600,7 +2600,7 @@ const GRAMMAR_DATA = [
     title:"Llamarse：從名字開始建立自己的位置",
     rule:"llamarse字面是「稱呼自己」（反身動詞），是打開自己在西語世界裡第一個身分入口的鑰匙——「我是誰」「你是誰」「他是誰」，最先都是靠這句話回答的。",
     examples:[
-      {es:"Me llamo Vera.", zh:"我叫Vera。（彈藥庫e4_02原句，反身代名詞me不能省略）"},
+      {es:"Me llamo Nita.", zh:"我叫妮妲。（劇情原句，E17）"},
       {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（新編例句，A1核心問句，目前劇情裡還沒出現）"},
       {es:"Se llama Mimi.", zh:"她叫做咪咪。（劇情原句，E4）"}
     ],
@@ -2608,15 +2608,15 @@ const GRAMMAR_DATA = [
       title:"🌿 Llamarse：不只一種畫面",
       intro:"同一個「稱呼」骨架，因為想讓對方知道的事不同，會長出不同分支——不是同義句堆疊，每句背後的溝通目的都不一樣。",
       items:[
-        {es:"Me llamo Vera.", zh:"👋自我介紹：我想讓對方知道我的名字（彈藥庫e4_02原句）"},
+        {es:"Me llamo Nita.", zh:"👋自我介紹：我想讓對方知道我的名字（劇情原句，E17）"},
         {es:"¿Cómo te llamas?", zh:"❓問名字：我想知道對方的名字（新編，A1核心問句）"},
         {es:"Se llama Mimi.", zh:"🤝認識別人：我想讓對方知道另一個人的名字（劇情原句，E4）"}
       ]
     },
     trap:"Me llamo跟Soy都能用在自我介紹（Me llamo Nita. / Soy Nita.意思很接近），差別是llamarse更專注在「名字」這件事本身，soy則是更廣泛的身分描述（可以接名字，也可以接職業/國籍等）——初學者兩句都要會，混著用沒問題。",
-    source:"劇情E4／彈藥庫e4_02／文法補充（問句為新編）",
+    source:"劇情E17·S1／E4·S2／文法補充（問句為新編）",
     storyRoles:[
-      {es:"Me llamo Vera.", semanticRole:"self-identity", communicationGoal:"我想讓對方知道我的名字", scene:"彈藥庫e4_02（真實例句）"},
+      {es:"Me llamo Nita.", semanticRole:"self-identity", communicationGoal:"我想讓對方知道我的名字", scene:"E17劇情（真實例句）"},
       {es:"¿Cómo te llamas?", semanticRole:"inquiry", communicationGoal:"我想知道對方的名字", scene:"新編（A1核心問句，目前劇情裡還沒出現）"},
       {es:"Se llama Mimi.", semanticRole:"introducing-others", communicationGoal:"我想讓對方知道另一個人的名字", scene:"E4劇情（真實例句）"}
     ]
@@ -2669,6 +2669,8 @@ const SENTENCE_GRAMMAR_MAP = {
   27:'g16',  // respira hondo / tose → 下指令
   28:'g13',  // Creo que tienes → Creo que
   29:'g12',  // para curarse → para + 動詞
+  // E4 新的小妹妹（僅補這一句，讓g117有入口，2026-07-26盤查發現examples引用了這句卻從沒連結）
+  31:'g117', // Se llama Mimi. → llamarse（認識別人）
   // E6 好吃的東西（僅補這一句，讓g08有入口）
   50:'g08',  // A Nita le encanta el helado → gusta vs encanta 程度對比
   // E7 手忙腳亂的早晨
