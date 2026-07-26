@@ -2639,12 +2639,12 @@ const SENTENCE_GRAMMAR_MAP = {
   // E1 妮妲的角落
    0:'g09',  // A Nita le gusta estar → gustar 句型
    1:'g01',  // rincón favorito es muy tranquilo → SER 描述
-   2:'g10',  // Tito quiere jugar → querer + infinitive
-   3:'g10',  // nadie la puede encontrar → poder
+   2: null,  // Tito quiere jugar（2026-07-26移除g10連結：querer+原形≠poder+原形，教學點不同，真正對應句在globalIdx112）
+   3: null,  // nadie la puede encontrar（2026-07-26移除g10連結：有puede但是陳述句非¿Podemos...?問句，留給未來poder能力句型卡）
    4: null,  // empieza a llover（無專屬文法卡）
    5: null,  // sin pensar, sale corriendo（無專屬文法卡）
    6:'g32',  // pero → 連接詞轉折卡
-   7:'g09',  // la ropa mojada le molesta → molestar 跟 gustar 同句型
+   7:'g09',  // la ropa mojada le molesta → 同族心理動詞結構（le+動詞+主詞倒裝），非gustar核心例句，g09卡內examples不應以此句為主
    8: null,  // vuelve a su rincón（無專屬文法卡）
    9: null,  // se sientan cerca, sin decir nada（無專屬文法卡）
   // E2 骷髏先生不見了
@@ -2660,7 +2660,7 @@ const SENTENCE_GRAMMAR_MAP = {
   19:'g06',  // habéis estado saltando → 一直做到現在
   // E3 最好的朋友
   20:'g03',  // está esperando → ESTAR + -ando
-  21:'g09',  // quiere mucho a Vera → A+人+le 同族結構
+  21: null,  // quiere mucho a Vera（2026-07-26移除g09連結：querer a alguien是規則動詞正常主詞變位，不是gustar倒裝結構）
   22:'g01',  // Son las mejores amigas → SER
   23:'g01',  // Este juego es solo para → SER
   24:'g01',  // Soy una princesa → SER 身分
@@ -2693,6 +2693,7 @@ const SENTENCE_GRAMMAR_MAP = {
   107: null,  // y comparte historias → y 順接，無專屬卡
   108:'g32',  // pero sí cambia de forma → pero 強調對比
   109:'g32',  // pero el amor es para siempre → pero 轉折
+  112:'g10',  // ¿Puedo jugar también? → ¿Podemos+動詞?（E12·S3，SEL情緒敘事集唯一例外連結，source欄位本來就指向這句，2026-07-26補上真正連線）
   // E17 認識自己（2026-07-24 第一站定稿）
   160:'g117', // Me llamo Nita → llamarse
   161:'g01',  // Soy Nita → SER
