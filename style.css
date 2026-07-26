@@ -821,6 +821,12 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-title{display:none}
 
 /* 人稱代名詞查詢庫 */
+.pron-role-legend{background:rgba(108,155,210,.08);padding:12px 14px;border-bottom:1px solid var(--bg2)}
+.pron-role-legend-intro{font-size:13px;color:var(--tmid);font-weight:700;margin-bottom:8px}
+.pron-role-item{display:flex;align-items:baseline;gap:6px;padding:3px 0}
+.pron-role-icon{font-size:14px}
+.pron-role-name{font-size:13px;font-weight:900;color:var(--konpeki);white-space:nowrap}
+.pron-role-desc{font-size:13px;color:var(--tlight)}
 .pron-cat-card{background:white;border-bottom:1px solid var(--bg2);padding:12px 14px}
 .pron-cat-card:last-child{border-bottom:none;border-radius:0 0 14px 14px}
 .pron-cat-header{font-size:18px;font-weight:900;color:var(--konpeki)}
