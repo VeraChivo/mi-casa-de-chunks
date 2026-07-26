@@ -2605,17 +2605,17 @@ function buildConjTable(conj, gId, showLabel){
 const PERSON_ICONS = ['🙋','👉','👤','👥','🙌','👨‍👩‍👧‍👦']; // 依序：1單/2單/3單/1複/2複/3複（6列，主詞類專用，因為拉美 ustedes 是獨立的字）
 const PERSON_ICONS_5 = ['🙋','👉','👤','👥','👨‍👩‍👧‍👦']; // 拉美版5列（受詞/間接受詞/反身代名詞用，ustedes 跟 ellos/ellas 共用同一格）
 const PRONOUN_ROLE_LEGEND = [
-  {icon:'👤', name:'主詞', desc:'誰正在做這件事'},
-  {icon:'🎯', name:'直接受詞', desc:'動作直接碰到誰或什麼'},
-  {icon:'🤝', name:'間接受詞', desc:'這件事是給誰、對誰發生'},
-  {icon:'🔄', name:'反身', desc:'做這件事的人也承受這個動作'}
+  {icon:'🙋', worldName:'農夫本人', question:'「誰做這件事？」', term:'文法上叫：主詞'},
+  {icon:'📦', worldName:'倒楣作物', question:'「動作碰到誰？」', term:'文法上叫：直接受詞'},
+  {icon:'👥', worldName:'八卦鄰居', question:'「跟誰說、對誰發生影響？」', term:'文法上叫：間接受詞'},
+  {icon:'🪞', worldName:'自戀鏡子', question:'「自己對自己做動作」', term:'文法上叫：反身'}
 ];
 function renderPronounLibrary(){
   const el = document.getElementById('pronounLibBody');
   if(!el) return;
   const legendHtml = `<div class="pron-role-legend">
-    <div class="pron-role-legend-intro">在一句西語裡，每個角色都有自己的位置：</div>
-    ${PRONOUN_ROLE_LEGEND.map(r=>`<div class="pron-role-item"><span class="pron-role-icon">${r.icon}</span><span class="pron-role-name">${r.name}</span><span class="pron-role-desc">${r.desc}</span></div>`).join('')}
+    <div class="pron-role-legend-intro">每個角色在句子裡都有自己的工作位置。</div>
+    ${PRONOUN_ROLE_LEGEND.map(r=>`<div class="pron-role-item"><span class="pron-role-icon">${r.icon}</span><div class="pron-role-body"><div class="pron-role-worldname">${r.worldName}</div><div class="pron-role-question">${r.question}</div><div class="pron-role-term">${r.term}</div></div></div>`).join('')}
   </div>`;
   el.innerHTML = legendHtml + PRONOUN_LIBRARY.map(cat=>`
     <div class="pron-cat-card">
