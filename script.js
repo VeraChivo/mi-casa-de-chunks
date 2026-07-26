@@ -4342,10 +4342,10 @@ const DAILY_TASK_RECIPES = {
   }
 };
 const DTASK_CELEBRATE_MSGS = [
-  {es:'¡Felicidades, jardinero/jardinera! 🌱 Hoy cuidaste tu jardín de español, y cada pequeño paso lo hace crecer.', zh:'恭喜，西語小園丁！今天你照顧了你的西語花園，每一小步都讓它繼續成長。'},
-  {es:'¡Lo lograste! 💧 Regaste tus chunks de hoy, y las abejitas están felices contigo.', zh:'你做到了！今天的語塊都澆過水了，小蜜蜂們也替你開心。'},
-  {es:'¡Otro día de cosecha completado! 🌾 Tu español sigue creciendo, poquito a poquito.', zh:'又完成了豐收的一天！你的西語持續在成長，一點一點地。'},
-  {es:'¡Bien hecho! 🌱 El jardín de hoy ya está regado, y mañana seguimos sembrando juntas.', zh:'做得好！今天的花園已經澆好水了，明天我們繼續一起播種。'}
+  {es:'¡Tu jardín de español creció un poco más hoy! 🌱', zh:'你的西語花園，今天又長大了一點！🌱'},
+  {es:'¡Hoy le diste agua a tu español! 💧', zh:'今天，你替西語澆了水！💧'},
+  {es:'¡Otra cosecha lograda, poquito a poquito! 🌾', zh:'又一次小小的豐收，一點一點累積！🌾'},
+  {es:'¡El jardín de hoy ya está regado! 🌤️', zh:'今天的花園，已經澆好水了！🌤️'}
 ];
 function _dtaskTodayISO(){
   const d = new Date();
