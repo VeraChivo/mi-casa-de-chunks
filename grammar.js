@@ -194,7 +194,7 @@ const GRAMMAR_DATA = [
       verb:"ser（條件式）",
       rows:[
         {person:"yo",                  form:"sería",    ex:"Eso sería genial.",          zh:"那會很棒。"},
-        {person:"tú",                  form:"serías",   ex:"¿Serías tan amable?",        zh:"可以麻煩你一下嗎？"},
+        {person:"tú",                  form:"serías",   ex:"¿Serías tan amable?",        zh:"可以麻煩你一下嗎？（字面：你願意這麼好心嗎？）"},
         {person:"él/ella/usted",       form:"sería",    ex:"Sería un buen día.",         zh:"那會是美好的一天。"},
         {person:"nosotros",            form:"seríamos", ex:"Seríamos más felices.",      zh:"我們會更快樂。"},
         {person:"ellos/ellas/ustedes", form:"serían",   ex:"Serían perfectos juntos.",   zh:"他們在一起會很完美。"}
@@ -595,7 +595,7 @@ const GRAMMAR_DATA = [
     title:"No pasa nada：沒關係、沒事",
     rule:"字面意思「什麼都沒發生」，是西語最高頻的安慰語之一。",
     examples:[
-      {es:"No pasa nada. Sólo es barro.", zh:"沒關係，只是泥巴而已。"},
+      {es:"No pasa nada. Sólo es barro.", zh:"沒關係，只是泥巴而已。（No pasa nada字面：什麼都沒發生）"},
       {es:"No pasa nada, yo te ayudo.", zh:"沒關係，我來幫你。"},
       {es:"Lo siento. No pasa nada.", zh:"對不起。——沒關係。"}
     ],
@@ -1137,7 +1137,7 @@ const GRAMMAR_DATA = [
     title:"Darle vueltas a algo：鑽牛角尖",
     rule:"字面「把某件事轉來轉去」，意思是反覆思考同一件事、停不下來地一直想，中文的「鑽牛角尖」剛好對得上。",
     examples:[
-      {es:"Deja de darle vueltas a lo mismo.", zh:"別再鑽牛角尖想同一件事了。"},
+      {es:"Deja de darle vueltas a lo mismo.", zh:"別再鑽牛角尖想同一件事了。（字面：別再把同一件事轉來轉去）"},
       {es:"Llevo todo el día dándole vueltas a este problema.", zh:"我一整天都在反覆想這個問題。"},
       {es:"No le des más vueltas, ya está decidido.", zh:"別再想了，已經決定了。"}
     ],
@@ -1150,7 +1150,7 @@ const GRAMMAR_DATA = [
     title:"Estar de brazos cruzados：袖手旁觀",
     rule:"字面「雙手交叉站著」，意思是什麼都不做、袖手旁觀，帶一點批評對方該行動卻沒行動的語氣。",
     examples:[
-      {es:"No podemos quedarnos de brazos cruzados.", zh:"我們不能袖手旁觀。"},
+      {es:"No podemos quedarnos de brazos cruzados.", zh:"我們不能袖手旁觀。（字面：我們不能維持雙手交叉站著）"},
       {es:"Él siempre está de brazos cruzados cuando hay trabajo.", zh:"每次有工作要做，他總是在那邊什麼都不做。"},
       {es:"Ante esta situación, no hay que estar de brazos cruzados.", zh:"面對這種情況，不該袖手旁觀。"}
     ],
@@ -1163,7 +1163,7 @@ const GRAMMAR_DATA = [
     title:"Hacer la vista gorda：睜一隻眼閉一隻眼",
     rule:"字面「把視線變模糊」，意思是故意忽視某件事、睜一隻眼閉一隻眼，跟英文 turn a blind eye 是同一種「眼睛」隱喻，兩種語言剛好對得上。",
     examples:[
-      {es:"El profesor hizo la vista gorda con la tarea tarde.", zh:"老師對遲交的作業睜一隻眼閉一隻眼。"},
+      {es:"El profesor hizo la vista gorda con la tarea tarde.", zh:"老師對遲交的作業睜一隻眼閉一隻眼。（字面：把視線變模糊）"},
       {es:"A veces hay que hacer la vista gorda con los pequeños errores.", zh:"有時候對小錯誤要睜一隻眼閉一隻眼。"},
       {es:"No podemos seguir haciendo la vista gorda con esto.", zh:"我們不能再對這件事視而不見了。"}
     ],
@@ -1197,7 +1197,7 @@ const GRAMMAR_DATA = [
     title:"Ponerse las pilas：打起精神、加把勁",
     rule:"字面「幫自己裝上電池」，意思是打起精神、振作起來、加把勁去做某件事。",
     examples:[
-      {es:"¡Ponte las pilas, el examen es mañana!", zh:"打起精神！明天就要考試了！"},
+      {es:"¡Ponte las pilas, el examen es mañana!", zh:"打起精神！明天就要考試了！（字面：幫自己裝上電池）"},
       {es:"Tienes que ponerte las pilas con este proyecto.", zh:"你得對這個計畫更認真加把勁。"},
       {es:"Vamos a ponernos las pilas.", zh:"我們一起打起精神吧。"}
     ],
@@ -1210,7 +1210,7 @@ const GRAMMAR_DATA = [
     title:"Echar：萬用動詞，意思看後面接什麼",
     rule:"echar 字面是「丟、扔」，但西語日常有好幾組固定搭配延伸出去，意思差很大，是典型的「萬用動詞」——一定要看後面接什麼才能確定意思。",
     examples:[
-      {es:"Echaron a Tito del equipo.", zh:"迪多被踢出隊了。（echar a alguien de... ＝開除/趕走）"},
+      {es:"Echaron a Tito del equipo.", zh:"迪多被踢出隊了。（字面：把迪多從隊上丟出去；echar a alguien de...＝開除/趕走）"},
       {es:"¿Me echas un poco de agua?", zh:"可以幫我倒一點水嗎？（echar ＝倒/加）"},
       {es:"Echo de menos a mi familia.", zh:"我想念我的家人。（echar de menos ＝想念）"}
     ],
@@ -1941,8 +1941,8 @@ const GRAMMAR_DATA = [
     rule:"這幾個成語如果只看字面會完全誤解意思——「花一隻眼睛」跟「貴」有什麼關係？「有壞奶」又是什麼意思？母語者說這些的時候完全不會意識到字面有多奇怪，因為對他們來說這就是固定搭配，跟中文「炒魷魚」不會被拆開理解是同一個道理。",
     examples:[
       {es:"Al principio no nos conocíamos, pero el chiste ayudó a romper el hielo.", zh:"一開始我們不認識，不過那個笑話幫忙打破了僵局。（romper el hielo：打開話題、化解尷尬）"},
-      {es:"Perdona, ¿qué dijiste? Estaba en las nubes.", zh:"抱歉，你說什麼？我剛剛在放空。（estar en las nubes：心不在焉、恍神）"},
-      {es:"Hoy tiene mala leche, mejor no le hables.", zh:"他今天心情很差，最好別跟他說話。（tener mala leche：多見於西班牙，心地不好/倒楣/心情差，依語境判斷）"},
+      {es:"Perdona, ¿qué dijiste? Estaba en las nubes.", zh:"抱歉，你說什麼？我剛剛在放空。（字面：我剛剛在雲朵裡；estar en las nubes：心不在焉、恍神）"},
+      {es:"Hoy tiene mala leche, mejor no le hables.", zh:"他今天心情很差，最好別跟他說話。（字面：他今天有壞奶；tener mala leche：多見於西班牙，心地不好/倒楣/心情差，依語境判斷）"},
       {es:"Ese abrigo me costó un ojo de la cara.", zh:"那件外套花了我一大筆錢。（costar un ojo de la cara：非常貴，字面「花一隻眼睛的價錢」）"}
     ],
     trap:"這類成語的共同點是：拆開單字完全猜不出意思，一定要整組當一個「語塊」記，跟本站一貫的教學原則（禁止單字死背）完全一致——遇到新成語不要逐字翻譯，先當一個不可分割的整體記下來。",
@@ -2064,9 +2064,9 @@ const GRAMMAR_DATA = [
     title:"容易誤解的表達：字面翻不出真正意思",
     rule:"這批片語如果照字面翻譯會完全誤解——「留在空白」是什麼意思？「被做成灰塵」又是什麼？這些都是固定搭配，字面意思幫不了你，一定要整組記下來。",
     examples:[
-      {es:"Me preguntaron algo tan difícil que me quedé en blanco.", zh:"他們問了一個很難的問題，我腦袋一片空白。（quedarse en blanco：腦袋空白、想不起來）"},
+      {es:"Me preguntaron algo tan difícil que me quedé en blanco.", zh:"他們問了一個很難的問題，我腦袋一片空白。（字面：我留在空白裡；quedarse en blanco：腦袋空白、想不起來）"},
       {es:"Después de la mudanza, estoy hecho polvo.", zh:"搬完家之後我累壞了。（estar hecho polvo：字面「被做成灰塵」，累到極限）"},
-      {es:"Se puso rojo cuando le dijeron que le gustaba.", zh:"當他們說喜歡他的時候，他臉紅了。（ponerse rojo：臉紅）"},
+      {es:"Se puso rojo cuando le dijeron que le gustaba.", zh:"當他們說喜歡他的時候，他臉紅了。（字面：他讓自己變紅；ponerse rojo：臉紅）"},
       {es:"Nita y Tito se llevan muy bien.", zh:"妮妲和迪多相處得很融洽。（llevarse bien：相處融洽，跟caer bien不同——llevarse是描述兩人之間的關係，caer bien是描述某人給人的第一印象）"},
       {es:"Este examen es pan comido.", zh:"這場考試易如反掌。（ser pan comido：字面「被吃掉的麵包」，輕而易舉）"}
     ],
@@ -2113,9 +2113,9 @@ const GRAMMAR_DATA = [
       {es:"No todo lo que brilla es oro.", zh:"並非閃閃發光的都是金子。（對應中文「金玉其外，敗絮其中」的反向提醒）"},
       {es:"Más vale tarde que nunca.", zh:"遲做總比不做好。"},
       {es:"A caballo regalado no le mires el diente.", zh:"別人送的馬別去看牠的牙齒。（對應中文「禮物別挑剔」）"},
-      {es:"Quien mucho abarca, poco aprieta.", zh:"貪多嚼不爛。"},
+      {es:"Quien mucho abarca, poco aprieta.", zh:"貪多嚼不爛。（字面：想抓住太多的人，抓緊的反而少）"},
       {es:"Dime con quién andas y te diré quién eres.", zh:"告訴我你跟誰在一起，我就告訴你你是什麼樣的人。（對應中文「近朱者赤，近墨者黑」）"},
-      {es:"No hay mal que por bien no venga.", zh:"塞翁失馬，焉知非福。"}
+      {es:"No hay mal que por bien no venga.", zh:"塞翁失馬，焉知非福。（字面：沒有一件壞事不帶來一些好事）"}
     ],
     family:{
       title:"📚 再補四句",
