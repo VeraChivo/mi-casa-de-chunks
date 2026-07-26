@@ -811,8 +811,12 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-lib-card.conj-lib-ar{background:var(--conj-ar)}
 .conj-lib-card.conj-lib-erir{background:var(--conj-erir)}
 .conj-lib-card:last-child{border-bottom:none;border-radius:0 0 14px 14px}
-.conj-lib-header{font-size:14px;font-weight:900;color:var(--konpeki);padding:2px 12px 4px}
+.conj-lib-header{font-size:14px;font-weight:900;color:var(--konpeki);padding:2px 12px 4px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:5px}
+.conj-lib-header::-webkit-details-marker{display:none}
+.conj-lib-header::before{content:'▸';font-size:11px;color:var(--misora);transition:transform .15s}
+.conj-lib-card[open] .conj-lib-header::before{transform:rotate(90deg)}
 .conj-lib-card .conj-section{margin:0 8px 4px;border:none}
+.conj-tense-tip{font-size:10px;color:var(--tlight);align-self:center;margin-left:2px}
 .conj-title{display:none}
 
 /* 人稱代名詞查詢庫 */

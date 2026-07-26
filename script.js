@@ -2788,10 +2788,11 @@ function renderConjLibrary(){
     const hasTabs    = hasSubj || hasImpsubj || hasCond;
 
     const tabsHtml = hasTabs ? `<div class="conj-tense-tabs">
-      <button class="conj-tense-tab active" data-tense="present" onclick="switchConjTense('conjlib-${g.id}','present')">現在式</button>
-      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="switchConjTense('conjlib-${g.id}','subj')">現在虛擬式<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
-      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="switchConjTense('conjlib-${g.id}','impsubj')">過去未完成虛擬式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
-      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="switchConjTense('conjlib-${g.id}','cond')">條件式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      <button class="conj-tense-tab active" data-tense="present" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','present')">現在式</button>
+      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','subj')">現在虛擬式<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
+      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','impsubj')">過去未完成虛擬式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','cond')">條件式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      <span class="conj-tense-tip">👆 可多選對比</span>
     </div>` : '';
 
     const verbRoot = (g.conj.verb||'').split('（')[0].trim().toLowerCase();
@@ -2804,8 +2805,8 @@ function renderConjLibrary(){
       ...(hasCond    ? g.conj_cond.rows.map(r=>`${r.form} ${r.ex}`)    : [])
     ].join(' ').toLowerCase();
 
-    return `<div class="conj-lib-card ${familyCls}" id="conjlib-${g.id}" data-search="${escAttr(searchText)}">
-      <div class="conj-lib-header">${g.conj.verb}</div>
+    return `<details class="conj-lib-card ${familyCls}" id="conjlib-${g.id}" data-search="${escAttr(searchText)}">
+      <summary class="conj-lib-header">${g.conj.verb}</summary>
       ${tabsHtml}
       <div class="conj-section">
         ${buildTenseBlock(g.conj,        'present', true)}
@@ -2813,7 +2814,7 @@ function renderConjLibrary(){
         ${buildTenseBlock(g.conj_impsubj,'impsubj', false)}
         ${buildTenseBlock(g.conj_cond,   'cond',    false)}
       </div>
-    </div>`;
+    </details>`;
   }).join('');
 
   const preview = document.getElementById('conjLibPreview');
@@ -2824,15 +2825,15 @@ function renderConjLibrary(){
   bindLongPressCopyAll('.conj-ex', el);
 }
 
-function switchConjTense(cardId, tense){
+function toggleConjTense(cardId, tense){
   const card = document.getElementById(cardId);
   if(!card) return;
-  card.querySelectorAll('.conj-tense-tab').forEach(tab => {
-    tab.classList.toggle('active', tab.dataset.tense === tense);
-  });
-  card.querySelectorAll('.conj-tense-block').forEach(block => {
-    block.classList.toggle('active', block.dataset.tense === tense);
-  });
+  const tab = card.querySelector(`.conj-tense-tab[data-tense="${tense}"]`);
+  const block = card.querySelector(`.conj-tense-block[data-tense="${tense}"]`);
+  if(!tab || !block) return;
+  const nowActive = !tab.classList.contains('active');
+  tab.classList.toggle('active', nowActive);
+  block.classList.toggle('active', nowActive);
 }
 
 function filterConjLibrary(query){
@@ -2845,6 +2846,7 @@ function filterConjLibrary(query){
   document.querySelectorAll('#conjLibBody .conj-lib-card').forEach(card => {
     const hit = !q || (card.dataset.search||'').includes(q);
     card.style.display = hit ? '' : 'none';
+    if(q && hit) card.open = true;
   });
 }
 
@@ -2865,6 +2867,7 @@ function jumpToConjLib(gId){
   setTimeout(()=>{
     const card=document.getElementById('conjlib-'+gId);
     if(!card) return;
+    card.open = true;
     card.scrollIntoView({behavior:'smooth',block:'center'});
     card.classList.add('ammo-flash');
     setTimeout(()=>card.classList.remove('ammo-flash'),1200);
