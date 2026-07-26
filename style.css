@@ -1277,6 +1277,8 @@ details.mom-category .mom-cards-col{margin-top:8px}
 .lf-yt-btn{display:inline-block;padding:5px 12px;background:var(--misora);color:white;border-radius:999px;font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap}
 .lf-yt-btn:active{opacity:.8}
 .lf-lyric-line{font-size:18px;font-weight:700;color:var(--konpeki);line-height:1.7;margin-bottom:6px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.lf-before,.lf-after{cursor:pointer}
+.lf-before:active,.lf-after:active{opacity:.6}
 .lf-blank-wrap{display:inline-flex}
 .lf-input{width:110px;font-size:16px;font-weight:700;font-family:'Nunito',sans-serif;border:2px dashed var(--nezumi);border-radius:8px;padding:2px 8px;background:white;color:var(--tdark);outline:none;transition:border-color .2s}
 .lf-input:focus{border-color:var(--misora)}
@@ -1287,8 +1289,6 @@ details.mom-category .mom-cards-col{margin-top:8px}
 .lf-actions{display:flex;gap:8px;margin-bottom:8px}
 .lf-check-btn{flex:1;background:var(--misora);color:white;border:none;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif}
 .lf-check-btn:active{opacity:.85}
-.lf-hear-btn{background:transparent;border:1.5px solid var(--usumizu);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--tmid);cursor:pointer;font-family:'Nunito',sans-serif}
-.lf-hear-btn:active{opacity:.8}
 .lf-feedback{font-size:13px;font-weight:700;padding:8px 12px;border-radius:10px;margin-bottom:8px}
 .lf-correct{background:#f0fdf4;color:#2d6a4f;border:1px solid #b7e4c7}
 .lf-wrong{background:#fff5f5;color:var(--err);border:1px solid #fcc}

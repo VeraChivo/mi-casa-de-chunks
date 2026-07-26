@@ -403,9 +403,9 @@ const GRAMMAR_DATA = [
     title:"Me gusta vs Me encanta：喜歡的程度",
     rule:"中文腦：「我喜歡這首歌。」→ 西語腦：「這首歌讓我覺得喜歡。」→ Me gusta esta canción. 動詞跟著「被喜歡的事物」走，不是說話者！Me gusta（單數事物）/ Me gustan（複數事物）；Me encanta = 我超愛（比 gusta 強 10 倍）。",
     examples:[
-      {es:"Me gusta el chocolate.", zh:"我喜歡巧克力。（單數 → gusta）（es：me gusta = 它讓我喜歡，主詞邏輯跟中文「我喜歡」相反）"},
+      {es:"Me gusta el chocolate.", zh:"我喜歡巧克力。"},
       {es:"Me encanta chapotear en los charcos.", zh:"我超愛在水坑裡玩水。"},
-      {es:"Me gustan las galletas.", zh:"我喜歡餅乾。（複數 → gustan）"},
+      {es:"Me gustan las galletas.", zh:"我喜歡餅乾。"},
       {es:"No me gusta la lluvia.", zh:"我不喜歡下雨。（否定：前面加 no）"},
       {es:"¿Te gusta el chocolate?", zh:"你喜歡巧克力嗎？（問句：me換成 te）"}
     ],
@@ -782,7 +782,7 @@ const GRAMMAR_DATA = [
         {es:"Tengo sueño.", zh:"我想睡了。"},
         {es:"Tengo frío.", zh:"我冷了。"},
         {es:"Tengo calor.", zh:"我熱了。"},
-        {es:"Tengo miedo.", zh:"我害怕。（es：tener + 名詞 = 感到某種狀態）"},
+        {es:"Tengo miedo.", zh:"我害怕。"},
         {es:"Tengo razón.", zh:"我是對的。"},
         {es:"Tengo prisa.", zh:"我在趕時間。"},
         {es:"Tengo tiempo.", zh:"我有空。"},
@@ -987,9 +987,9 @@ const GRAMMAR_DATA = [
     title:"Quiero que...：想要、希望與期待的語氣",
     rule:"主要子句是「願望／情緒／非人稱評論／請求／懷疑或否定／Ojalá」這六類，而且**主要子句的主詞跟後面子句的主詞不一樣**時，que 後面的動詞要變成虛擬式（不是陳述式）。如果主詞相同，直接用原形動詞就好，不用 que + 虛擬式。",
     examples:[
-      {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。（否定信念 D=Doubt/Denial，觸發虛擬式 esté）"},
-      {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Ojalá/O 類，Espero que 的省略版）"},
-      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（情緒 E=Emotions，主詞是「我」但吵鬧的是「別人」，主詞不同才觸發虛擬式 haga）"}
+      {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。"},
+      {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
+      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（心情不好的是「我」，但在劇院吵鬧的是「別人」——這種「感受的人」跟「做動作的人」不同，是這句要小心處理的地方）"}
     ],
     mnemonic:{
       icon:"🌪️", word:"WEIRDO", side:"subj",
@@ -1025,7 +1025,7 @@ const GRAMMAR_DATA = [
       {es:"A mí me pone nervioso hablar en público.", zh:"公開說話讓我很緊張。（同一主詞：是「我」自己說話讓自己緊張，用原形動詞 hablar）"},
       {es:"Me relaja escuchar el agua de un arroyo en un bosque.", zh:"在森林中聽溪水聲讓我感到放鬆。（同一主詞，用原形動詞 escuchar）"},
       {es:"Me da vergüenza hablar con desconocidos.", zh:"和陌生人說話讓我感到害羞。（同一主詞，用原形動詞 hablar）"},
-      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（主詞不同：情緒的人是「我」，製造噪音的是「別人 la gente」，才用 que+虛擬式 haga）"}
+      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（主詞不同：心情不好的是「我」，但吵鬧的是「別人」）"}
     ],
     trap:"前三句看起來很像句型④，但差別在「動作是誰做的」——前三句都是「我自己在做那個動作」（我自己說話/我自己聽水聲），所以用原形動詞；句型④是「別人做的動作」讓我心情不好，主詞換人了，才需要 que + 虛擬式。這是最容易搞混、也最能看出真的懂不懂虛擬式的地方。",
     source:"文法補充"
@@ -1425,7 +1425,7 @@ const GRAMMAR_DATA = [
     title:"Quería que...：過去的願望與請求",
     rule:"當主要子句的動詞是**過去時態**（quería、pidió、esperaba…），而且滿足 WEIRDO 條件時，que 後面要用過去虛擬式（Imperfecto de Subjuntivo）。<br><br>規則變化：<br>• -AR 動詞：hablar → habl<b>ara</b>（我說了但那是在過去語境裡的願望）<br>• -ER / -IR 動詞：comer → com<b>iera</b>、vivir → viv<b>iera</b><br><br>高頻不規則形（背這幾個最夠用）：<br>ser／ir → fuera／fuera　tener → tuviera　hacer → hiciera　poder → pudiera　decir → dijera　haber → hubiera",
     examples:[
-      {es:"Mamá Cata quería que Nita durmiera temprano.", zh:"卡妲媽媽希望妮妲早點睡。（quería=過去，→過去虛擬式 durmiera）"},
+      {es:"Mamá Cata quería que Nita durmiera temprano.", zh:"卡妲媽媽希望妮妲早點睡。"},
       {es:"Tito pidió que todos tuvieran paciencia.", zh:"迪多請求大家有點耐心。（pidió=過去，→ tuvieran）"},
       {es:"Era importante que la familia estuviera unida.", zh:"家人團結在一起是很重要的事。（Era=過去非人稱，→ estuviera）"}
     ],
@@ -1474,9 +1474,9 @@ const GRAMMAR_DATA = [
     title:"Aunque：雖然（陳述式）vs 即使（虛擬式）",
     rule:"aunque 是 B2 的雙面刃連接詞——後面接陳述式還是虛擬式，意思完全不同：<br><br>• **aunque + 陳述式** = **雖然**（事實讓步，承認這件事確實發生）<br>• **aunque + 虛擬式** = **即使**（假設讓步，這件事還沒確定，只是假設）",
     examples:[
-      {es:"Aunque está cansada, Nita sigue dibujando.", zh:"雖然很累，妮妲還是繼續畫畫。（está 陳述式 → 她確實很累，這是事實）"},
-      {es:"Aunque esté cansada, Nita seguirá dibujando.", zh:"即使（萬一）累了，妮妲也還是會繼續畫畫。（esté 虛擬式 → 她現在不一定累，是假設情況）"},
-      {es:"Aunque llueva, iremos a la fiesta.", zh:"就算下雨，我們也要去派對。（虛擬式，現在不知道會不會下雨）"}
+      {es:"Aunque está cansada, Nita sigue dibujando.", zh:"雖然很累，妮妲還是繼續畫畫。（她真的很累，這是已經發生的事實）"},
+      {es:"Aunque esté cansada, Nita seguirá dibujando.", zh:"即使（萬一）累了，妮妲也還是會繼續畫畫。（現在還不確定她累不累，只是先假設）"},
+      {es:"Aunque llueva, iremos a la fiesta.", zh:"就算下雨，我們也要去派對。（現在還不知道會不會下雨）"}
     ],
     trap:"判斷訣竅：說話時你**確定這件事正在發生/已經發生**？用陳述式。你只是**假設/承認一種可能性**，不確定？用虛擬式。同一個 aunque，一字之差，語氣截然不同。",
     source:"文法補充"
@@ -1487,9 +1487,9 @@ const GRAMMAR_DATA = [
     title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
     rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞要跟後面那個東西的單複數一致（一個東西→動詞單數，好幾個東西→動詞複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用同一種形式（se dice/se puede，不隨東西的單複數變化）",
     examples:[
-      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。（se pasivo，主詞 el Día 是單數）（es：se + 動詞 = 不指出動作者的表達方式）"},
-      {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。（se pasivo，flores 複數 → venden 複數）"},
-      {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（se impersonal，que 後面整句，動詞固定單數）"}
+      {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。"},
+      {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。"},
+      {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（沒有指出是誰說的，動詞固定用這個形式，不隨後面內容變化）"}
     ],
     trap:"SE 被動的動詞要跟後面那個東西的單複數一致（Se vende pan. vs Se venden flores.）；SE 無人稱沒有東西可以對應，所以永遠固定用同一種形式：se dice/se puede/se considera。判斷方法：句子裡有沒有一個「東西」被動作影響到——有的話是 SE 被動，沒有的話是 SE 無人稱。",
     source:"文法補充"
@@ -1766,7 +1766,7 @@ const GRAMMAR_DATA = [
   {
     id:"g75", cat:"subjunctive", level:"b2c1",
     title:"如果人生重來一次：不可能的假設情境（過去虛擬式延伸）",
-    rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。過去虛擬式的變化找法：先找出這個動詞「他們」那個過去式形式（tuvieron這種），去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
+    rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。<br><br>過去虛擬式的變化找法：先找出這個動詞「他們」那個過去式形式（tuvieron這種），去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。<br><br>除了假設句，過去虛擬式也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
     examples:[
       {es:"Si tuviera dinero, viajaría por toda Latinoamérica.", zh:"如果我有錢，我會環遊整個拉丁美洲。"},
       {es:"Ojalá pudiera hablar español perfectamente.", zh:"真希望我能講一口完美的西語。"},
@@ -1778,7 +1778,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g76", cat:"verb-pattern", level:"b2c1",
-    title:"Se habla español：西語裡不說主角的說法（被動延伸）",
+    title:"Se habla español：西語裡不說主角的說法（日常西語真正常說的被動）",
     rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（要依東西的陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
     examples:[
       {es:"El puente fue construido por ingenieros franceses.", zh:"這座橋是由法國工程師建造的。"},
@@ -1791,14 +1791,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g77", cat:"connector", level:"b2c1",
-    title:"Aunque怎麼聽出說話者的態度：讓步語氣延伸",
-    rule:"Aunque（雖然/即使）後面接陳述式還是虛擬式，意思會不同：①Aunque + 陳述式＝敘述已知的事實，說話者確定這件事發生了，例如 Aunque llueve, voy a salir.（雖然在下雨〔真的在下雨〕，我還是要出門）。②Aunque + 虛擬式＝假設/不確定的情況，說話者不確定或不在乎這件事是否發生，例如 Aunque llueva, voy a salir.（就算下雨〔不確定會不會下雨，或不在乎〕，我還是要出門）。這是同一個連接詞，換個動詞語氣就能表達完全不同的態度，是B2讓步子句的核心考點。",
+    title:"同一句話，語氣一換，立場就變了：Aunque的說話者視角",
+    rule:"這張卡建立在g56已經教過的規則上（aunque+陳述式=雖然，aunque+虛擬式=即使），這裡不重教規則，練的是**聽懂說話者站在哪一邊**。同一句「Aunque + 動詞」，中文常常翻不出差別（兩句都可能翻成「雖然/就算下雨」），但西語母語者聽得出來立場不同——這正是這張卡存在的價值。<br><br>想像老師在跟學生講話：<br>「Aunque llueve, vamos a salir.」→ 老師正在告知一件已經發生的事實（外面真的在下雨）。<br>「Aunque llueva, vamos a salir.」→ 老師是先講好一個原則（不管天氣怎樣，我們都會出門），下雨與否還不確定。",
     examples:[
-      {es:"Aunque llueve, iré a la fiesta.", zh:"雖然在下雨，我還是會去派對（真的在下雨）。"},
-      {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（不確定會不會下雨）。"},
-      {es:"Aunque no tengo mucho dinero, soy feliz.", zh:"雖然我沒有很多錢，但我很快樂（陳述事實）。"}
+      {es:"Aunque llueve, iré a la fiesta.", zh:"雖然在下雨，我還是會去派對（我正在告訴你一個已經發生的事實）。"},
+      {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（我先講好這個原則，不管天氣如何都一樣）。"},
+      {es:"Aunque no tengo mucho dinero, soy feliz.", zh:"雖然我沒有很多錢，但我很快樂（陳述已經是事實的狀態）。"}
     ],
-    trap:"同一句「Aunque + 動詞」，光換陳述式或虛擬式就能傳達說話者到底知不知道／在不在乎這件事是否為真——這個細微差異在中文翻譯上常常看不出來（兩句都可能翻成「雖然/就算下雨」），但西語母語者聽得出來態度不同，這是B2讓步子句最容易被忽略的地方。",
+    trap:"聽力小技巧：不用逐字判斷語意，抓動詞形式就好——規則-ar動詞現在式(llueve/tiene/hace)跟虛擬式(llueva/tenga/haga)字尾常常只差一個母音，母語者靠這個小訊號分辨對方是在講事實還是講原則，練習時可以先從聽動詞字尾開始抓。",
     source:"文法補充"
   },
 
@@ -2233,7 +2233,7 @@ const GRAMMAR_DATA = [
     examples:[
       {es:"Verde que te quiero verde.", zh:"綠啊，我多麼愛你這綠色。（Federico García Lorca《夢遊人謠》1928年，收錄於《吉普賽故事詩集》。修辭：anáfora重複疊詠，「verde」像咒語一樣反覆出現，貫穿全詩製造神秘/慾望的氛圍。文化背景：這句是西語圈最常被單獨引用的詩句之一，即使沒讀過全詩，母語者聽到「verde que te quiero verde」也會立刻認出是Lorca。）"},
       {es:"El tiempo es la sustancia de que estoy hecho.", zh:"時間是構成我的材質。（Jorge Luis Borges《時間的新反駁》。修辭：隱喻，把抽象的「時間」直接說成具體的「材質/物質」。文化背景：這句出自Borges探討時間與自我認同的哲學隨筆，是他「用文學語言做哲學思考」風格的代表句，也曾被高達的電影《阿爾發城》引用。）"},
-      {es:"Puedo escribir los versos más tristes esta noche.", zh:"今夜我能寫出最悲傷的詩句。（Pablo Neruda《詩篇二十首》第20首開場白，1924年。修辭：直白的第一人稱陳述句，不用華麗辭藻卻極具情感重量，是Neruda早期風格的特色。文化背景：這是二十世紀被引用/翻譯最多次的西語情詩開頭之一，19歲的Neruda寫下這句時還未成名。）"}
+      {es:"Puedo escribir los versos más tristes esta noche.", zh:"今夜我能寫出最悲傷的詩句。（Pablo Neruda《詩篇二十首》第20首開場白，1924年。修辭：直接用「我」開口道出情感，不用華麗辭藻卻極具份量，是Neruda早期風格的特色。文化背景：這是二十世紀被引用/翻譯最多次的西語情詩開頭之一，19歲的Neruda寫下這句時還未成名。）"}
     ],
     trap:"Gabriel García Márquez沒有收錄在這批引用裡——不是他不重要（《百年孤寂》幾乎是拉美文學的代名詞），而是他2014年才過世，作品版權保護期還很長，這裡改用談論他開創的「魔幻寫實主義」（realismo mágico：把超自然/奇幻元素用平鋪直敘的語氣描述，讓讀者分不清是真實還是幻想）這個文學技巧本身，不直接引用他的原文字句。",
     source:"文法補充"
@@ -2261,7 +2261,7 @@ const GRAMMAR_DATA = [
       {es:"Pues no sé qué decirte.", zh:"呃，我不知道該說什麼。（pues：這裡是猶豫語氣詞，爭取思考時間，不是「所以/因此」的邏輯連接功能）"},
       {es:"Bueno... vamos a ver qué pasa.", zh:"呃……我們看看會怎樣吧。（bueno在句首：不是「好的」，是猶豫/轉折/準備換話題的語氣詞）"},
       {es:"Ya veo por qué no viniste.", zh:"我懂了，我知道你為什麼沒來了。（ya veo：不是字面「已經看見」，是「我懂了/我了解了」）"},
-      {es:"Ya veremos qué pasa.", zh:"到時候再看看情況吧。（ya veremos：不承諾任何事的緩兵之計，接近「再說吧」）（es：ya 不只表示「已經」，也可表示語氣轉折）"},
+      {es:"Ya veremos qué pasa.", zh:"到時候再看看情況吧。（ya veremos：不承諾任何事的緩兵之計，接近「再說吧」）"},
       {es:"¡Ya basta!", zh:"夠了！（ya basta：表達已經到極限、要求停止）"},
       {es:"¿Terminaste? — Ya está.", zh:"你弄完了嗎？——好了，就這樣。（ya está：完成了/就這樣定案，帶收尾語氣）"}
     ],
@@ -2308,7 +2308,7 @@ const GRAMMAR_DATA = [
     title:"西語裡的阿拉伯語遺產：800年伊斯蘭西班牙留下的字",
     rule:"西語詞彙裡藏著大量阿拉伯語借詞——這是伊斯蘭勢力統治伊比利半島（711-1492年，長達近800年）留下的語言遺產，估計現代西語詞彙裡有數千個字源自阿拉伯語。最好認的線索是「al-」開頭——這其實是阿拉伯語的定冠詞「al」黏進了字裡，跟阿拉伯語原文一起被借進西語，變成單字固定的一部分（不像英語borrow時通常會把冠詞拿掉）。",
     examples:[
-      {es:"Ojalá tengas un buen viaje.", zh:"希望你旅途順利。（ojalá源自阿拉伯語「law šā' allāh／in šā' allāh」，字面「若真主願意」——這正是為什麼ojalá後面固定接虛擬式（見g29）：它骨子裡本來就是「祈求上天允許」的語氣，不是普通的「希望」，虛擬式的不確定/祈願語感其實就藏在這個詞的阿拉伯語源頭裡。）"},
+      {es:"Ojalá tengas un buen viaje.", zh:"希望你旅途順利。（ojalá源自阿拉伯語「law šā' allāh／in šā' allāh」，字面「若真主願意」——這正是為什麼ojalá後面固定接一種帶著不確定、只是祈願語氣的動詞形式（見g29）：它骨子裡本來就是「祈求上天允許」，不是普通的「希望」，那種不確定/祈願的語感其實就藏在這個詞的阿拉伯語源頭裡。）"},
       {es:"Esta camisa es de algodón.", zh:"這件襯衫是棉做的。（algodón源自阿拉伯語al-qutn，「al-」定冠詞直接黏進西語字裡。）"},
       {es:"¿Me pasas el azúcar?", zh:"可以幫我拿糖嗎？（azúcar源自阿拉伯語as-sukkar，這個字本身還可以再往上追溯到梵語/波斯語，是一條橫跨歐亞的糖業貿易路線留下的語言痕跡。）"}
     ],
@@ -2532,7 +2532,7 @@ const GRAMMAR_DATA = [
       {es:"Fui al parque porque hacía buen tiempo.", zh:"我去了公園，因為天氣很好。（B1：加porque，開始交代原因，敘事有了第一層邏輯）"},
       {es:"Antes de ir al parque, terminé mi tarea.", zh:"去公園之前，我先做完了功課。（antes de + 原形動詞：交代事件的先後順序）"},
       {es:"Mientras estaba en el parque, empezó a llover.", zh:"我在公園的時候，開始下雨了。（mientras + 過去進行式：兩件事同時發生，一件是背景、一件是插入的新事件）"},
-      {es:"Cuando llegué a casa, ya estaba oscuro.", zh:"當我到家的時候，天已經黑了。（cuando + 過去式：標記一個時間點，後面接當下的狀態）"}
+      {es:"Cuando llegué a casa, ya estaba oscuro.", zh:"當我到家的時候，天已經黑了。（cuando標記一個時間點，後面接當下發生的狀態）"}
     ],
     trap:"這是A2升B2最關鍵的中間橋——B2需要講出像「Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.」（雖然我認為綠地空間很重要，但很多城市投資不足）這種抽象論述句，中間差的正是「先學會串連具體事件」這一步：A2只會單句「Fui al parque」，B1學會用porque/cuando/mientras/antes de/después de把好幾件事串成一段敘事，才有能力再往上疊加B2的虛擬式/讓步子句/抽象詞彙——跳過B1敘事直接學B2論述句型，會學得很痛苦，因為連接詞的基本功還沒打穩。",
     source:"文法補充"

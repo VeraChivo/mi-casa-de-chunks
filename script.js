@@ -3562,13 +3562,12 @@ function renderLyricsFill(){
         <span class="lf-song">《${lf.song}》</span>
       </div>
       <div class="lf-lyric-line">
-        <span class="lf-before">${lf.before}</span>
+        <span class="lf-before" onclick="speakGramSmart('${escAttr(lf.before+' '+lf.blank+' '+lf.after)}')" title="點這裡聽整句">${lf.before}</span>
         <span class="lf-blank-wrap"><input class="lf-input" id="lfi-${lf.id}" type="text" placeholder="填動詞" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkLyric('${lf.id}')"></span>
-        <span class="lf-after">${lf.after}</span>
+        <span class="lf-after" onclick="speakGramSmart('${escAttr(lf.before+' '+lf.blank+' '+lf.after)}')" title="點這裡聽整句">${lf.after}</span>
       </div>
       <div class="lf-actions">
         <button class="lf-check-btn" onclick="checkLyric('${lf.id}')">核對答案</button>
-        <button class="lf-hear-btn" onclick="speakGramSmart('${escAttr(lf.before+' '+lf.blank+' '+lf.after)}')">🔊 聽整句</button>
       </div>
       <div class="lf-feedback" id="lff-${lf.id}" style="display:none"></div>
       <div class="lf-hint" id="lfh-${lf.id}" style="display:none"><div class="lf-hint-label">💡 文法小芽</div>${lf.sprout||lf.hint}</div>
@@ -4280,10 +4279,10 @@ const DAILY_TASK_RECIPES = {
   }
 };
 const DTASK_CELEBRATE_MSGS = [
-  {es:'¡Felicidades, jardinero/jardinera! 🌱 ¡Hoy has cuidado tu jardín de español! ✨ Cada pequeño paso hace crecer tu mundo en español.', zh:'恭喜，西語小園丁！今天你照顧了你的西語花園！每一小步，都讓你的西語世界成長。'},
-  {es:'¡Lo lograste! 💧 Regaste tus chunks de hoy. 🐝 Las abejitas están felices contigo.', zh:'你做到了！今天的語塊都澆過水了。小蜜蜂們都替你開心。'},
+  {es:'¡Felicidades, jardinero/jardinera! 🌱 Hoy cuidaste tu jardín de español, y cada pequeño paso lo hace crecer.', zh:'恭喜，西語小園丁！今天你照顧了你的西語花園，每一小步都讓它繼續成長。'},
+  {es:'¡Lo lograste! 💧 Regaste tus chunks de hoy, y las abejitas están felices contigo.', zh:'你做到了！今天的語塊都澆過水了，小蜜蜂們也替你開心。'},
   {es:'¡Otro día de cosecha completado! 🌾 Tu español sigue creciendo, poquito a poquito.', zh:'又完成了豐收的一天！你的西語持續在成長，一點一點地。'},
-  {es:'¡Bien hecho! 🌱 El jardín de hoy ya está regado. 🌤️ Mañana seguimos sembrando juntas.', zh:'做得好！今天的花園已經澆好水了。明天我們繼續一起播種。'}
+  {es:'¡Bien hecho! 🌱 El jardín de hoy ya está regado, y mañana seguimos sembrando juntas.', zh:'做得好！今天的花園已經澆好水了，明天我們繼續一起播種。'}
 ];
 function _dtaskTodayISO(){
   const d = new Date();

@@ -163,24 +163,31 @@ try {
 // ── 翻譯品質提醒：不是判斷對錯，只是抓出「值得人工檢查」的可疑模式 ──
 // 這幾個 pattern 是從 g53/g54/g57 那次審查實際抓到的問題歸納出來的，之後每次新增卡片都跑一次，
 // 提早攔到類似的西語結構直譯痕跡，不用等到累積很多張卡才發現
+// 2026-07-25 擴充：①掃描範圍加入 extraFamily/conj（之前只查 examples/family/trap，
+//   漏掉了藏在這兩個欄位裡的jargon殘留，g20/g53等卡就是這樣被漏掉的）
+//   ②「不相信」pattern 只檢查 💡 之前的主翻譯，不然💡說明裡「提醒不要翻成不相信」
+//   這種示範用語會被誤判（g111就是這樣的假警報）
+//   ③「被…著」排除「帶著」這個固定詞組，避免「被解讀成帶著XX」這種自然中文被誤判（g101假警報）
 section('翻譯品質提醒（僅供人工複查，不代表一定錯）');
 try {
   const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
   const SUSPECT_PATTERNS = [
-    { re: /被.{1,6}著/, label: '疑似「被…著」西語se被動/ser+分詞的逐字直譯' },
-    { re: /我有(餓|渴|睏|累|怕)/, label: '疑似「tener+名詞」被直譯成「有+情緒」的破碎中文（應該是「我餓了/我很害怕」這類自然說法）' },
-    { re: /不相信/, label: '疑似把no creer/dudar翻得太重——中文「不相信」語氣接近質疑/偵查，通常應該是「不覺得/沒想到」這類較輕的說法' }
+    { test: t => /被.{1,6}著/.test(t) && !/被.{0,6}帶著/.test(t), label: '疑似「被…著」西語se被動/ser+分詞的逐字直譯' },
+    { test: t => /我有(餓|渴|睏|累|怕)/.test(t), label: '疑似「tener+名詞」被直譯成「有+情緒」的破碎中文（應該是「我餓了/我很害怕」這類自然說法）' },
+    { test: t => /不相信/.test(t.split('💡')[0]), label: '疑似把no creer/dudar翻得太重——中文「不相信」語氣接近質疑/偵查，通常應該是「不覺得/沒想到」這類較輕的說法' }
   ];
   const hits = [];
   GRAMMAR_DATA.forEach(g => {
     const texts = [];
     (g.examples || []).forEach(ex => texts.push(ex.zh));
     if (g.family && g.family.items) g.family.items.forEach(it => texts.push(it.zh));
+    if (g.extraFamily && g.extraFamily.items) g.extraFamily.items.forEach(it => texts.push(it.zh));
+    if (g.conj && g.conj.rows) g.conj.rows.forEach(r => texts.push(r.zh));
     if (g.trap) texts.push(g.trap);
     texts.forEach(t => {
       if (typeof t !== 'string') return;
       SUSPECT_PATTERNS.forEach(p => {
-        if (p.re.test(t)) hits.push({ id: g.id, text: t, label: p.label });
+        if (p.test(t)) hits.push({ id: g.id, text: t, label: p.label });
       });
     });
   });
@@ -191,6 +198,41 @@ try {
   }
 } catch (e) {
   fail('翻譯品質提醒檢查失敗：' + e.message);
+}
+
+// ── Jargon殘留檢查：規則15/19明講禁止的文法術語，不該直接出現在使用者第一眼看到的內容裡 ──
+// 只查 examples/family/extraFamily/conj（使用者「第一眼」會看到的欄位），不查 trap/rule/mnemonic——
+// 那幾欄本來就是進階補充說明的位置，允許帶一點技術性描述（見規則19「🔎想深入」的第二層精神）。
+// exemptIds：卡片本身的教學主題就是這個文法術語（例如g105整張卡在討論「陽性複數」這個文法概念
+// 本身的社會爭議），這種情況術語不是殘留、是正文，不算違規。
+section('Jargon殘留檢查（規則15/19：術語不該是使用者第一眼看到的內容）');
+try {
+  const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
+  const JARGON_WORDS = ['第一人稱', '第二人稱', '第三人稱', '單數', '複數', '現在式', '虛擬式',
+    '直述式', '不定詞', 'subjuntivo', 'pretérito', '過去式', '陳述式'];
+  const exemptIds = new Set(['g105']); // 卡片主題本身就是在討論這個文法術語，見grammar.js g105註解
+  const jargonHits = [];
+  GRAMMAR_DATA.forEach(g => {
+    if (exemptIds.has(g.id)) return;
+    const texts = [];
+    (g.examples || []).forEach((ex, i) => texts.push({ where: `examples[${i}]`, t: ex.zh }));
+    if (g.family && g.family.items) g.family.items.forEach((it, i) => texts.push({ where: `family[${i}]`, t: it.zh }));
+    if (g.extraFamily && g.extraFamily.items) g.extraFamily.items.forEach((it, i) => texts.push({ where: `extraFamily[${i}]`, t: it.zh }));
+    if (g.conj && g.conj.rows) g.conj.rows.forEach((r, i) => texts.push({ where: `conj[${i}]`, t: r.zh }));
+    texts.forEach(({ where, t }) => {
+      if (typeof t !== 'string') return;
+      if (/（es[:：]/.test(t)) jargonHits.push({ id: g.id, where, t, label: '舊式「（es：...）」括號格式殘留，規則15已明講改用💡另起一行' });
+      const hitWord = JARGON_WORDS.find(w => t.includes(w));
+      if (hitWord) jargonHits.push({ id: g.id, where, t, label: `文法術語「${hitWord}」直接出現在主要內容裡` });
+    });
+  });
+  if (jargonHits.length) {
+    jargonHits.forEach(h => warn(`${h.id} [${h.where}]：${h.label}\n      「${h.t}」`));
+  } else {
+    ok('沒有偵測到jargon殘留（examples/family/extraFamily/conj皆乾淨）');
+  }
+} catch (e) {
+  fail('Jargon殘留檢查失敗：' + e.message);
 }
 
 // ── 內容孤兒檢查：有沒有卡片完全沒被任何路線/關聯圖引用，只能靠瀏覽全部清單才找得到 ──
