@@ -27,7 +27,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 
 .header{text-align:center;margin-bottom:16px;width:100%;max-width:480px}
 /* 🚩 首頁入口 3×2 版面（2026-07-24）：第一排探索路線/莊園導覽/入園巧遇（使用入口），
-   第二排園區印記(動態)/莊園工具/西語世界（延伸功能），手機橫向排列時更像Tab選單 */
+   第二排園區印記(動態)/莊園工具/拉美巡禮（延伸功能，原名西語世界，2026-07-26更名），手機橫向排列時更像Tab選單 */
 .header-entry-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
 .header-entry-row>*{width:100%;box-sizing:border-box}
 #headerStartSlot>button{width:100%;box-sizing:border-box}

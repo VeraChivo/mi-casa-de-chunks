@@ -2679,15 +2679,15 @@ const WORKSHOP_TOOLS = {
     ]}
   ]
 };
-// ── 🌎 西語世界入口分層（2026-07-24 第一階段收斂，只做入口層，不搬移grammar C1/C2
-// 文化卡、不建文化資料庫、不做收藏/推薦系統）：Header點🌎西語世界不再直接掉進DW新聞
+// ── 🌎 拉美巡禮入口分層（原西語世界，2026-07-26更名；2026-07-24 第一階段收斂，只做入口層，不搬移grammar C1/C2
+// 文化卡、不建文化資料庫、不做收藏/推薦系統）：Header點🌎拉美巡禮不再直接掉進DW新聞
 // 全列表，先看到這個小入口頁，讓使用者知道「這是一個探索入口」，選了「世界新聞」才
 // 真正進news區。文化探索/語言觀察兩項目前故意disabled+建置中，等內容成熟再開放。
 function openWorldEntryPanel(){
   // 2026-07-25 VERA重寫文案：不顯示張數/篇數，讓這裡感覺像「世界入口」不是「資料庫」
   const html = `
-    <div class="grammar-title">🌎 西語世界</div>
-    <div class="grammar-rule">走進西語世界，從語言、文化與生活看見真實的拉丁美洲。</div>
+    <div class="grammar-title">🌎 拉美巡禮</div>
+    <div class="grammar-rule">走進拉美巡禮，從語言、文化與生活看見真實的拉丁美洲。</div>
     <div class="world-entry-list">
       <div class="world-entry-row" onclick="worldEntryJumpNews()">
         <span class="world-entry-icon">📰</span>
@@ -3121,7 +3121,7 @@ function renderGrammarSupplement(){
   if(!el) return;
   renderGsupCoreEssentials();
   // 2026-07-25：儲水槽只留「怎麼組句」的純語言規則，WORLD_ZONE_MAP裡的卡
-  // （街頭母語/文化深度）已分流去🌎西語世界，這裡要排除，避免同一張卡兩處都看得到
+  // （街頭母語/文化深度）已分流去🌎拉美巡禮，這裡要排除，避免同一張卡兩處都看得到
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充') && !_isWorldZoned(g.id));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
@@ -3167,7 +3167,7 @@ function filterGrammarSupplementByTopic(key){
   _gsupEnsureBodyOpen();
 }
 
-// ── 🌎西語世界：🗣️街頭母語／🎭文化深度（2026-07-25，見grammar.js WORLD_ZONE_MAP/WORLD_SUBCAT）──
+// ── 🌎拉美巡禮：🗣️街頭母語／🎭文化深度（原西語世界，2026-07-26更名；2026-07-25，見grammar.js WORLD_ZONE_MAP/WORLD_SUBCAT）──
 // 兩區共用同一套渲染，卡片詳解仍是同一個openGrammarCard()，不重寫內容/不搬資料，只是換一個
 // 「這張卡從哪個列表被找到」的入口。2026-07-25「卡片收斂」：比照主頁，先顯示分類入口卡，
 // 點了分類才展開該分類的卡片列表，不是一進來就攤開26/32張——預設不選任何分類(null)。
@@ -4846,7 +4846,7 @@ const ENTRY_MATRIX_ITEMS = [
   {icon:'🌱', label:'今天只有10分鐘', sub:'今日耕耘任務', target:'daily'},
   {icon:'🌾', label:'想系統學文法', sub:'文法儲水槽', target:'grammar'},
   {icon:'🎵', label:'想聽歌學西語', sub:'聽歌填空', target:'lyrics'},
-  {icon:'🌎', label:'想看世界時事', sub:'西語世界：時事與文化', target:'news'},
+  {icon:'🌎', label:'想看世界時事', sub:'拉美巡禮：時事與文化', target:'news'},
   {icon:'📔', label:'想放鬆說說話', sub:'床邊低語呢', target:'mom'},
   {icon:'🎲', label:'小蜜蜂選給你', sub:'驚喜包（建置中）', target:'surprise', disabled:true}
 ];
@@ -4981,7 +4981,7 @@ function initReminders(){
   checkReminders();
 }
 
-// ── 🌎 西語世界：時事與文化：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
+// ── 🌎 拉美巡禮：時事與文化：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
 let _newsTopicFilter = 'all';
 let _newsExpandedId = null;
 let _newsSectionOpen = false; // 2026-07-19修正：原本開合狀態只存在DOM的inline style裡，
