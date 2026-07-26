@@ -566,24 +566,24 @@ const GRAMMAR_DATA = [
   {
     id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que：讓別人知道我腦中怎麼理解這件事",
-    rule:"醫生摸摸額頭說Creo que tienes fiebre.（我覺得你發燒了）——這句話是「我想讓你知道，我腦中對這件事的判斷是這樣」，不是在宣告一個確定的事實。同一個骨架，可以用來猜測別人的狀態，也可以用來講出自己內心對某件事的想法，像是Creo que todo es mi error.（我以為都是我的錯）。",
+    rule:"醫生摸摸額頭說Creo que tienes el corazón un poco flojo.（我覺得你的心臟有點虛弱）——這句話是「我想讓你知道，我腦中對這件事的判斷是這樣」，不是在宣告一個確定的事實。同一個骨架，可以用來猜測別人的狀態，也可以用來講出自己內心對某件事的想法，像是Creo que todo es mi error.（我以為都是我的錯）。",
     examples:[
-      {es:"Creo que tienes fiebre.", zh:"我覺得你發燒了。（劇情原句，E3扮醫生場景）"},
+      {es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。（劇情原句，E3扮醫生場景）"},
       {es:"Creo que todo es mi error.", zh:"我以為都是我的錯。（劇情原句，SEL線）"},
-      {es:"Creo que tienes razón.", zh:"我覺得你說得對。（劇情原句，E3）"}
+      {es:"Creo que tienes razón.", zh:"我覺得你說得對。（彈藥庫e3系列原句）"}
     ],
     family:{
       title:"🌿 Creo que：不只一種畫面",
       intro:"同一個「我想讓你知道我的判斷」骨架，因為想讓對方知道的事不同，會長出不同分支——不是同義句堆疊，每句背後的溝通目的都不一樣。",
       items:[
-        {es:"Creo que tienes fiebre.", zh:"🩺猜測判斷：我想讓對方知道我對他狀態的猜測（劇情原句，E3扮醫生場景）"},
+        {es:"Creo que tienes el corazón un poco flojo.", zh:"🩺猜測判斷：我想讓對方知道我對他狀態的猜測（劇情原句，E3扮醫生場景）"},
         {es:"Creo que todo es mi error.", zh:"💭自我信念：我想讓對方知道我腦中對自己的想法，即使不一定正確（劇情原句，SEL線譴譴的台詞）"}
       ]
     },
     trap:"口語快速版：Creo que sí（我覺得是）/ Creo que no（我覺得不是）。",
     source:"劇情E3／SEL劇情線／彈藥庫e3系列",
     storyRoles:[
-      {es:"Creo que tienes fiebre.", semanticRole:"tentative-judgment", communicationGoal:"我想讓對方知道我對他狀態的猜測", scene:"E3劇情（真實例句）"},
+      {es:"Creo que tienes el corazón un poco flojo.", semanticRole:"tentative-judgment", communicationGoal:"我想讓對方知道我對他狀態的猜測", scene:"E3劇情（真實例句）"},
       {es:"Creo que todo es mi error.", semanticRole:"self-belief", communicationGoal:"我想讓對方知道我腦中對自己的想法", scene:"SEL劇情線（真實例句）"}
     ]
   },
