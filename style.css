@@ -427,6 +427,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 
 /* AMMO LIBRARY */
 .ammo-wrap,.pron-lib-wrap,.vocab-wrap,.garden-wrap,.chunk-fam-wrap{border-radius:14px;overflow:hidden}
+#worldSectionBody>.pron-lib-wrap{margin:10px 0}
 .chunk-fam-tree{padding:12px 14px;border-bottom:1px solid var(--usumizu);cursor:pointer}
 .chunk-fam-tree:last-child{border-bottom:none}
 .chunk-fam-tree:active{background:var(--bg2)}
@@ -863,8 +864,15 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-tense-tab:active{opacity:.7}
 .conj-tense-hint{font-size:9px;font-weight:700;color:#c9a84c;background:rgba(201,168,76,.12);border-radius:8px;padding:1px 4px;margin-left:1px}
 .conj-tense-tab.active .conj-tense-hint{color:#ffd97a;background:rgba(255,217,122,.18)}
-.conj-tense-block{display:none}
-.conj-tense-block.active{display:block}
+/* 人稱群組對比排版（2026-07-26）：yo/tú各自的多個時態變位排在同一群組裡，
+   不是整個時態各自一大塊——.conj-variant沿用.conj-form/.conj-ex/.conj-zh/.conj-note
+   既有樣式（那幾個class本身沒有grid-column依賴父層欄數，可以安全共用） */
+.conj-person-group{padding:5px 12px;border-top:1px solid rgba(184,200,209,.2)}
+.conj-person-group:first-child{border-top:none}
+.conj-person-label{font-size:13px;color:var(--tlight);font-weight:800;margin-bottom:2px}
+.conj-variant{display:grid;grid-template-columns:max-content 1fr auto;align-items:center;gap:3px 8px;padding:3px 0 3px 12px;margin-top:2px;border-left:2px solid rgba(159,208,222,.4)}
+.conj-variant-badge{grid-column:1/-1;font-size:9px;font-weight:800;color:var(--misora);background:rgba(108,155,210,.1);border-radius:6px;padding:1px 6px;width:fit-content}
+.conj-variant .conj-ex,.conj-variant .conj-zh,.conj-variant .conj-note{grid-column:1/-1}
 
 /* 陰陽字尾語塊卡 */
 .gp-card{background:white;border-bottom:1px solid var(--bg2);padding:9px 16px;text-align:center}

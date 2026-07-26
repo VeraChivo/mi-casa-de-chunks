@@ -194,7 +194,7 @@ const GRAMMAR_DATA = [
       verb:"ser（條件式）",
       rows:[
         {person:"yo",                  form:"sería",    ex:"Eso sería genial.",          zh:"那會很棒。"},
-        {person:"tú",                  form:"serías",   ex:"¿Serías tan amable?",        zh:"你能這麼好嗎？"},
+        {person:"tú",                  form:"serías",   ex:"¿Serías tan amable?",        zh:"可以麻煩你一下嗎？"},
         {person:"él/ella/usted",       form:"sería",    ex:"Sería un buen día.",         zh:"那會是美好的一天。"},
         {person:"nosotros",            form:"seríamos", ex:"Seríamos más felices.",      zh:"我們會更快樂。"},
         {person:"ellos/ellas/ustedes", form:"serían",   ex:"Serían perfectos juntos.",   zh:"他們在一起會很完美。"}

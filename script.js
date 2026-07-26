@@ -2745,43 +2745,75 @@ function speakConjForm(gId, person, formText){
   }
   speakWord(formText);
 }
+// 時態代號 → 中文標籤，比對切換按鈕與人稱群組共用同一份對照，不重複寫兩次
+const CONJ_TENSE_LABELS = {present:'現在式', subj:'現在虛擬式', impsubj:'過去未完成虛擬式', cond:'條件式'};
+
+// 把同一個動詞的「現在式/現在虛擬式/過去未完成虛擬式/條件式」四組rows依人稱位置對齊，
+// 讓yo跟yo放一起、tú跟tú放一起，而不是整組時態各自成一大塊、要上下捲動才能比較
+// （2026-07-26 VERA要求：多選對比要能「yo/yo、tú/tú」並排看，不是先看完一個時態的五個人稱
+// 才輪到下一個時態）
+function _conjPersonGroups(g){
+  const tenseDefs = [
+    {key:'present', rows: g.conj        && g.conj.rows},
+    {key:'subj',    rows: g.conj_subj   && g.conj_subj.rows},
+    {key:'impsubj', rows: g.conj_impsubj&& g.conj_impsubj.rows},
+    {key:'cond',    rows: g.conj_cond   && g.conj_cond.rows}
+  ].filter(t=>t.rows && t.rows.length);
+  const n = g.conj.rows.length;
+  const groups = [];
+  for(let i=0;i<n;i++){
+    groups.push({
+      person: g.conj.rows[i].person,
+      variants: tenseDefs.map(t=>({tense:t.key, row:t.rows[i]})).filter(v=>v.row)
+    });
+  }
+  return groups;
+}
+
+function _renderConjVariant(gId, tense, r, isPresent){
+  const gdb = getGardenDB();
+  const key = 'ge_'+r.form;
+  const st = (gdb[key]||{stage:0}).stage;
+  const starHtml = isPresent
+    ? `<span class="ge-chunk-star${st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度：點一下記錄熟練度">${GARDEN_STAGES[st]}</span>`
+    : '';
+  return `<div class="conj-variant" data-tense="${tense}">
+    ${tense!=='present' ? `<span class="conj-variant-badge">${CONJ_TENSE_LABELS[tense]}</span>` : ''}
+    <span class="conj-form" onclick="speakConjForm('${gId}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
+    <span class="conj-ex" onclick="speakGramSmart('${escAttr(r.ex)}')">${r.ex}</span>
+    ${starHtml}
+    <span class="conj-zh">${r.zh}</span>
+    ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
+    ${isPresent ? renderDynamicConjugationExamples(r.form.toLowerCase()) : ''}
+  </div>`;
+}
+
+function _renderConjPersonGroup(group, activeTenses, gId){
+  const visible = group.variants.filter(v=>activeTenses.includes(v.tense));
+  if(!visible.length) return '';
+  return `<div class="conj-person-group">
+    <div class="conj-person-label">${group.person}</div>
+    ${visible.map(v=>_renderConjVariant(gId, v.tense, v.row, v.tense==='present')).join('')}
+  </div>`;
+}
+
+// 依目前有效的時態集合(activeTenses)重繪整個.conj-section——初次渲染跟每次切換
+// tense tab都會呼叫這個函式，取代舊版「每個時態各自一大塊、用display切換」的做法
+function _renderConjSection(g, activeTenses){
+  const groups = _conjPersonGroups(g);
+  const main3 = groups.slice(0,3).map(gr=>_renderConjPersonGroup(gr, activeTenses, g.id)).join('');
+  const rest = groups.slice(3);
+  const restHtml = rest.length
+    ? `<details class="conj-expand"><summary class="conj-expand-summary">我們／你們／他們 ▾</summary>${rest.map(gr=>_renderConjPersonGroup(gr, activeTenses, g.id)).join('')}</details>`
+    : '';
+  return `<div class="conj-rows">${main3}</div>${restHtml}`;
+}
+
 function renderConjLibrary(){
   const el = document.getElementById('conjLibBody');
   if(!el) return;
   const verbs = GRAMMAR_DATA.filter(g=>g.conj && g.conj.rows && g.conj.rows.length);
-  const gdb = getGardenDB();
   el.innerHTML = verbs.map(g=>{
-    const renderStdRow = (r, tense) => {
-      const isPresent = tense === 'present';
-      const key = 'ge_'+r.form;
-      const st = (gdb[key]||{stage:0}).stage;
-      const starHtml = isPresent
-        ? `<span class="ge-chunk-star${st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('${escAttr(key)}',this)" title="語塊進度：點一下記錄熟練度">${GARDEN_STAGES[st]}</span>`
-        : '';
-      return `<div class="conj-row">
-        <span class="conj-person">${r.person}</span>
-        <span class="conj-form" onclick="speakConjForm('${g.id}','${escAttr(r.person)}','${escAttr(r.form)}')">${r.form}</span>
-        <span class="conj-ex" onclick="speakGramSmart('${escAttr(r.ex)}')">${r.ex}</span>
-        ${starHtml}
-        <span class="conj-zh">${r.zh}</span>
-        ${r.note?`<span class="conj-note">💡 ${r.note}</span>`:''}
-      </div>`;
-    };
-    const renderAllRows = (rows, tense) => rows.map(r =>
-      renderStdRow(r, tense) + (tense==='present' ? renderDynamicConjugationExamples(r.form.toLowerCase()) : '')
-    ).join('');
-    const buildTenseBlock = (conjData, tense, isActive) => {
-      if(!conjData || !conjData.rows || !conjData.rows.length) return '';
-      const m3 = renderAllRows(conjData.rows.slice(0,3), tense);
-      const r3 = conjData.rows.slice(3);
-      const rHtml = r3.length
-        ? `<details class="conj-expand"><summary class="conj-expand-summary">我們／你們／他們 ▾</summary>${renderAllRows(r3, tense)}</details>`
-        : '';
-      return `<div class="conj-tense-block${isActive?' active':''}" data-tense="${tense}">
-        <div class="conj-rows">${m3}${rHtml}</div>
-      </div>`;
-    };
-
     const hasSubj    = !!(g.conj_subj    && g.conj_subj.rows);
     const hasImpsubj = !!(g.conj_impsubj && g.conj_impsubj.rows);
     const hasCond    = !!(g.conj_cond    && g.conj_cond.rows);
@@ -2792,7 +2824,7 @@ function renderConjLibrary(){
       ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','subj')">現在虛擬式<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
       ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','impsubj')">過去未完成虛擬式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
       ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','cond')">條件式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
-      <span class="conj-tense-tip">👆 可多選對比</span>
+      <span class="conj-tense-tip">👆 可多選對比，yo／tú會排在一起方便比較</span>
     </div>` : '';
 
     const verbRoot = (g.conj.verb||'').split('（')[0].trim().toLowerCase();
@@ -2808,12 +2840,7 @@ function renderConjLibrary(){
     return `<details class="conj-lib-card ${familyCls}" id="conjlib-${g.id}" data-search="${escAttr(searchText)}">
       <summary class="conj-lib-header">${g.conj.verb}</summary>
       ${tabsHtml}
-      <div class="conj-section">
-        ${buildTenseBlock(g.conj,        'present', true)}
-        ${buildTenseBlock(g.conj_subj,   'subj',    false)}
-        ${buildTenseBlock(g.conj_impsubj,'impsubj', false)}
-        ${buildTenseBlock(g.conj_cond,   'cond',    false)}
-      </div>
+      <div class="conj-section">${_renderConjSection(g, ['present'])}</div>
     </details>`;
   }).join('');
 
@@ -2828,12 +2855,15 @@ function renderConjLibrary(){
 function toggleConjTense(cardId, tense){
   const card = document.getElementById(cardId);
   if(!card) return;
+  const gId = cardId.replace('conjlib-','');
+  const g = GRAMMAR_DATA.find(x=>x.id===gId);
   const tab = card.querySelector(`.conj-tense-tab[data-tense="${tense}"]`);
-  const block = card.querySelector(`.conj-tense-block[data-tense="${tense}"]`);
-  if(!tab || !block) return;
-  const nowActive = !tab.classList.contains('active');
-  tab.classList.toggle('active', nowActive);
-  block.classList.toggle('active', nowActive);
+  if(!g || !tab) return;
+  tab.classList.toggle('active');
+  const activeTenses = [...card.querySelectorAll('.conj-tense-tab.active')].map(t=>t.dataset.tense);
+  const section = card.querySelector('.conj-section');
+  if(section) section.innerHTML = _renderConjSection(g, activeTenses);
+  bindLongPressCopyAll('.conj-ex', section);
 }
 
 function filterConjLibrary(query){
@@ -3110,14 +3140,21 @@ function renderGrammarSupplement(){
     </div>`;
   }).join('') || `<div class="garden-empty-msg">這個分類目前沒有符合的卡片</div>`;
 }
+function _gsupEnsureBodyOpen(){
+  const body = document.getElementById('grammarSupplementBody');
+  const t = document.getElementById('grammarSupplementToggle');
+  if(body && !body.classList.contains('open')){ body.classList.add('open'); if(t) t.textContent='▲ 收起'; }
+}
 function filterGrammarSupplementByLevel(key){
   _gsupLevelFilter = key;
   _gsupTopicFilter = 'all';
   renderGrammarSupplement();
+  _gsupEnsureBodyOpen();
 }
 function filterGrammarSupplementByTopic(key){
   _gsupTopicFilter = key;
   renderGrammarSupplement();
+  _gsupEnsureBodyOpen();
 }
 
 // ── 🌎西語世界：🗣️街頭母語／🎭文化深度（2026-07-25，見grammar.js WORLD_ZONE_MAP/WORLD_SUBCAT）──
@@ -3159,6 +3196,17 @@ function renderWorldSlangSection(){ _renderWorldZoneList('worldSlangBody', 'slan
 function renderWorldCultureSection(){ _renderWorldZoneList('worldCultureBody', 'culture', _worldCultureSubcat, 'filterWorldCultureSubcat'); }
 function filterWorldSlangSubcat(key){ _worldSlangSubcat = key || null; renderWorldSlangSection(); }
 function filterWorldCultureSubcat(key){ _worldCultureSubcat = key || null; renderWorldCultureSection(); }
+function toggleWorldSection(){
+  const body=document.getElementById('worldSectionBody');
+  const t=document.getElementById('worldSectionToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+function _worldSectionEnsureOpen(){
+  const body=document.getElementById('worldSectionBody');
+  const t=document.getElementById('worldSectionToggle');
+  if(body && !body.classList.contains('open')){ body.classList.add('open'); if(t) t.textContent='▲ 收起'; }
+}
 function toggleWorldSlang(){
   const body=document.getElementById('worldSlangBody');
   const t=document.getElementById('worldSlangToggle');
@@ -3174,6 +3222,7 @@ function toggleWorldCulture(){
 function worldEntryJumpSlang(){
   closeGrammarSheet();
   switchMainTab('know');
+  _worldSectionEnsureOpen();
   const body=document.getElementById('worldSlangBody');
   const t=document.getElementById('worldSlangToggle');
   if(body && !body.classList.contains('open')){ body.classList.add('open'); if(t) t.textContent='▲ 收起'; }
@@ -3185,6 +3234,7 @@ function worldEntryJumpSlang(){
 function worldEntryJumpCulture(){
   closeGrammarSheet();
   switchMainTab('know');
+  _worldSectionEnsureOpen();
   const body=document.getElementById('worldCultureBody');
   const t=document.getElementById('worldCultureToggle');
   if(body && !body.classList.contains('open')){ body.classList.add('open'); if(t) t.textContent='▲ 收起'; }
@@ -4333,6 +4383,7 @@ function dtaskJump(target){
   }
   if(target==='news'){
     switchMainTab('know');
+    _worldSectionEnsureOpen();
     const body=document.getElementById('newsSectionBody');
     if(body && body.style.display==='none') toggleNewsSection();
     setTimeout(()=>{ const s=document.getElementById('newsSectionWrap'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
@@ -5033,7 +5084,7 @@ function renderNewsSection(){
     <div class="news-section-header" onclick="toggleNewsSection()">
       <div class="news-section-header-main">
         <div class="news-section-title-row">
-          <span class="news-section-title">🌎 西語世界：時事與文化</span>
+          <span class="news-section-title">📰 世界新聞</span>
           <span class="news-section-badge">B2</span>
         </div>
         <div class="news-section-sub">挖空填詞・錯字修正，讓語塊長進真實新聞</div>
