@@ -905,6 +905,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .grammar-sheet-box{position:relative}
 .chunk-pill.fam-0{font-weight:900;text-decoration:underline 1.5px solid var(--konpeki)}
 .chunk-pill.fam-1{text-decoration:underline 1px dashed var(--tlight)}
+.chunk-pill.fam-2{font-weight:900;text-decoration:underline 1.5px solid var(--ok)}
 
 /* ── 性別四形式 ── */
 .suffix-gender-row{display:flex;gap:4px;flex-wrap:wrap;margin:3px 0 5px}

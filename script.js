@@ -2429,7 +2429,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1','peppa_chunk_fam_seen_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1','peppa_chunk_fam_seen_v1','peppa_reminder_enabled'];
 
 function exportBackup(){
   const data = {};
@@ -2509,9 +2509,17 @@ function clearLS(){
   localStorage.removeItem('peppa_es_grammar_v1');
   localStorage.removeItem('peppa_es_familiarity_v1');
   localStorage.removeItem('dynamic_phrases_db');
+  // 這三個是衍生自上面幾個key的「進度標記」，不清會讓重新開墾後出現資料矛盾：
+  // milestones沒清→之後重新集滿同樣顆數不會再彈慶祝；chunk_fam_seen沒清→語塊家族
+  // 的「下一枝」會停在舊進度；first_chunk_date沒清→header會誤顯示「🌿園區印記」
+  // （老手樣式）而不是「🌱點播初芽」（見renderHeaderStartSlot的單一資料來源判斷）
+  localStorage.removeItem('peppa_milestones_v1');
+  localStorage.removeItem('peppa_chunk_fam_seen_v1');
+  localStorage.removeItem('peppa_first_chunk_date_v1');
   ammoUnlocked=[];ammoStars={};vocabList=[];answeredByEp={};answered=[];svoPool={s:[],v:[],o:[]};
   grammarUserExamples={};chunkFamiliarity={};
   renderAmmo();renderVocab();renderGardenView();renderConjLibrary();renderGardenFreshness();
+  renderHeaderStartSlot();renderMilestoneBadgeStrip();
   toast('已清除所有學習紀錄');
 }
 
