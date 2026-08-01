@@ -1,5 +1,7 @@
 # 🗝️ 地窖帳冊 — LocalStorage 全站盤點
 
+> **📍 定位**：`資料盤點_資料結構`（Data Track｜資料盤點）
+
 > 這份文件記錄「莊園裡每個木桶裝的是什麼」——全站目前有幾個 localStorage key、各自存什麼形狀的資料、誰讀誰寫、備份/重置有沒有涵蓋到。
 >
 > **只有 `script.js` 跟 `diary.js` 會碰 localStorage**（已用 `grep` 掃過全部 `.js`/`.html` 確認），其餘檔案都是純資料/純渲染，不直接讀寫。

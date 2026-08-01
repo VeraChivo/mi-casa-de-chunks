@@ -1,5 +1,7 @@
 # 📐 Storage Versioning 規則
 
+> **📍 定位**：`資料管理_版本管理`（Data Track｜資料管理）
+
 > Data Track 下一階段第一項（見 `LOCALSTORAGE_SCHEMA.md` 第六節）。這份文件回答 VERA 提出的四個問題：新 key 何時升版／舊版保留多久／migration function 放哪／clearLS 與 backup 是否需要同步版本——**全部依現有程式碼的實際做法歸納，不是憑空發明新規則**，目的是把已經在用、但沒寫下來的默契變成白紙黑字，避免下次又要重新摸索一次。
 
 ---
