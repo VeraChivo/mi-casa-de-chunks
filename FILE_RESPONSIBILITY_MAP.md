@@ -32,7 +32,7 @@ cognates/grammar/stages/mom/diary/corazon/news）→ script.js（最後）」，
 | `news.js` | 449 | B2新聞資料（0個function，純資料） | 支援 | 無 |
 | `stages.js` | 540 | Stage1/2/3練習引擎（27個function，自帶render/狀態） | 核心 | 自成一個小型子系統，未來若要拆分可獨立 |
 | `diary.js` | 979 | 日記功能全套（79個function，自帶render/狀態/localStorage） | 核心 | 已是責任邊界最清楚的「自治模組」，值得當範本 |
-| `maintenance.js` | 396 | 內容健康檢查腳本（10個function，讀localStorage做檢查用） | 支援 | 需補「規則來源」——目前檢查邏輯直接寫死，沒有文件對照CONTENT_RULES.md哪一條 |
+| `maintenance.js` | 396 | 靜態內容健檢腳本（10個function，Node.js讀取.js資料檔文字做結構檢查，**不是讀使用者localStorage**——2026-08-01 STATE_RESPONSIBILITY_MAP盤點時修正此處先前誤植） | 支援 | 需補「規則來源」——目前檢查邏輯直接寫死，沒有文件對照CONTENT_RULES.md哪一條 |
 | `script.js` | 5265 | render＋狀態管理＋事件處理＋localStorage讀寫（303個function，39個render*函式，管理24個peppa_*key） | 核心 | **責任過重（見下方混合責任說明）** |
 | `index.html` | — | 純HTML結構（無inline CSS/JS，依專案基本資訊定案） | 核心 | 無 |
 | `style.css` | — | 全站樣式＋:root CSS變數 | 核心 | 無 |
