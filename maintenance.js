@@ -6,7 +6,8 @@
  *   node maintenance.js
  *
  * 檢查範圍：grammar.js（GRAMMAR_DATA）／news.js（NEWS_ITEMS）／
- *          script.js（LYRICS_FILL_DATA）／cognates.js（FALSE_COGNATES）
+ *          script.js（LYRICS_FILL_DATA）／cognates.js（FALSE_COGNATES）／
+ *          episodes.js（EPS）／ammo.js（AMMO_DATA）
  *
  * 每次新增/修改一批卡片後，跑一次這個腳本，比每次手動寫 node -e 一次性檢查更省事、
  * 也不會漏掉之前想到但這次忘記查的項目。
@@ -158,6 +159,69 @@ try {
   checkRequiredFields(FALSE_COGNATES, 'es', ['looksLike', 'wrongZh', 'realZh', 'trap', 'wrongEx', 'rightEx'], 'FALSE_COGNATES');
 } catch (e) {
   fail('cognates.js（FALSE_COGNATES）讀取/檢查失敗：' + e.message);
+}
+
+// ── episodes.js — EPS ──
+// 2026-08-01 新增：EPS（劇情句子）之前完全沒有必填欄位檢查，跟其他四個資料檔不一致——
+// E17-E20 曾發生 noteZh/noteEn 漏寫、revealAnswer() 沒有防呆直接顯示字面 "undefined" 的
+// 真實bug（見CLAUDE.md規則26的教訓，是跑過瀏覽器才被抓到，不是靠資料層檢查抓到的）。
+// 這裡補上跟GRAMMAR_DATA/NEWS_ITEMS同一套checkRequiredFields，防止同類問題再發生，
+// 不是新設計一套機制（延續本檔案既有模式，見CLAUDE.md「內容品質軌」定案：先延伸既有
+// 檢查覆蓋範圍，而不是另外寫一份CONTENT_SCHEMA.md規範文件）。
+section('episodes.js — EPS');
+try {
+  const { EPS } = loadArray('episodes.js', ['EPS']);
+
+  // 架構鐵則：globalIdx = ep*10+idx 全站共用固定跨距（total()／showGrammarTip()／
+  // accumulateSVOPool()／currentGlobalIdx()多處依賴，見CONTENT_RULES.md「🌳架構限制備忘」），
+  // 每集必須剛好10句，多一句或少一句都會讓這一集之後全部集數的globalIdx錯位。
+  const badEpCount = EPS.map((ep, i) => ({ i, n: (ep.sentences || []).length })).filter(x => x.n !== 10);
+  if (badEpCount.length) fail(`EPS：以下集數句數不是10句，會打壞全站 globalIdx 固定跨距：${badEpCount.map(x => `第${x.i}集(${x.n}句)`).join(', ')}`);
+  else ok(`EPS：${EPS.length} 集，每集都剛好10句`);
+
+  const allSentences = [];
+  EPS.forEach((ep, epi) => (ep.sentences || []).forEach((s, si) => allSentences.push(Object.assign({ __loc: `第${epi}集第${si + 1}句` }, s))));
+  checkRequiredFields(allSentences, '__loc', ['es', 'chunks', 'zh', 'en', 'noteZh', 'noteEn'], 'EPS.sentences');
+
+  const emptyChunks = allSentences.filter(s => !Array.isArray(s.chunks) || s.chunks.length === 0);
+  if (emptyChunks.length) fail(`EPS.sentences：chunks 是空陣列：${emptyChunks.map(s => s.__loc).join(', ')}`);
+  else ok('EPS.sentences：每句 chunks 都至少有 1 個語塊');
+
+  const badChunkItems = [];
+  allSentences.forEach(s => (s.chunks || []).forEach((c, ci) => {
+    if (!c.w || typeof c.w !== 'string') badChunkItems.push(`${s.__loc} chunks[${ci}]`);
+  }));
+  if (badChunkItems.length) fail(`EPS.sentences：chunk 缺少 w（顯示文字）：${badChunkItems.join(', ')}`);
+  else ok('EPS.sentences：每個 chunk 都有合法的 w 欄位');
+
+  console.log(`   共 ${EPS.length} 集、${allSentences.length} 句`);
+} catch (e) {
+  fail('episodes.js 讀取/檢查失敗：' + e.message);
+}
+
+// ── ammo.js — AMMO_DATA ──
+// 2026-08-01 新增：AMMO_DATA（彈藥庫）同樣之前完全沒有必填欄位檢查，補上跟其他資料檔
+// 一致的檢查（同上，見CLAUDE.md「內容品質軌」定案）。
+section('ammo.js — AMMO_DATA');
+try {
+  const { AMMO_DATA } = loadArray('ammo.js', ['AMMO_DATA']);
+  checkDuplicateIds(AMMO_DATA, 'ammo_id', 'AMMO_DATA');
+  checkRequiredFields(AMMO_DATA, 'ammo_id',
+    ['ep', 'core_ammo', 'core_zh', 'be_verb_type', 'pattern', 'pattern_zh', 'slots', 'fire_peppa', 'fire_daily'],
+    'AMMO_DATA');
+
+  const badFirePeppa = AMMO_DATA.filter(a => !a.fire_peppa || !a.fire_peppa.es || !a.fire_peppa.zh
+    || !Array.isArray(a.fire_peppa.chunks) || a.fire_peppa.chunks.length === 0);
+  if (badFirePeppa.length) fail(`AMMO_DATA：fire_peppa 缺 es/zh/chunks：${badFirePeppa.map(a => a.ammo_id).join(', ')}`);
+  else ok('AMMO_DATA：每張卡的 fire_peppa 都有完整 es/zh/chunks');
+
+  const emptyFireDaily = AMMO_DATA.filter(a => !Array.isArray(a.fire_daily) || a.fire_daily.length === 0);
+  if (emptyFireDaily.length) fail(`AMMO_DATA：fire_daily 是空陣列：${emptyFireDaily.map(a => a.ammo_id).join(', ')}`);
+  else ok('AMMO_DATA：每張卡的 fire_daily 至少有 1 個延伸例句');
+
+  console.log('   共 ' + AMMO_DATA.length + ' 張彈藥卡');
+} catch (e) {
+  fail('ammo.js 讀取/檢查失敗：' + e.message);
 }
 
 // ── 翻譯品質提醒：不是判斷對錯，只是抓出「值得人工檢查」的可疑模式 ──
