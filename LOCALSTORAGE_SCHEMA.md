@@ -162,33 +162,31 @@ CLAUDE.md「📤 日記匯出備份按鈕」段落寫著「備份範圍＝全站
 
 ---
 
-## 六、🗝️ 地窖帳冊 v1.1 進度總覽（2026-08-01 VERA 重新排序確認）
+## 六、🗝️ 地窖帳冊 Data Track 進度總覽（2026-08-01 VERA 排序確認）
 
 ```
-產品層（另見 ROADMAP.md／CLAUDE.md）
-✅ 莊園設計核心 V1 定稿／教學哲學／協作模式
+Data Track（資料軌）
 
-資料層
-✅ LOCALSTORAGE_SCHEMA（本文件，22 key 全盤點）
-✅ Familiarity Model Boundary（已封存決策，見第三節，不再反覆討論）
-✅ 舊版 key migration 確認既有，不列為待辦
-✅ Storage Versioning 規則（STORAGE_VERSIONING.md）
-✅ State Responsibility Review（STATE_RESPONSIBILITY_MAP.md，本階段完成）
+✅ 資料盤點     LOCALSTORAGE_SCHEMA.md（本文件）
+✅ 資料責任     STATE_RESPONSIBILITY_MAP.md
+✅ 資料管理     STORAGE_VERSIONING.md
+✅ 資料領域     DATA_DOMAIN_MAP.md
 
-待處理
-⬜ script.js 長期拆分評估（要不要拆、怎麼拆——架構決定，排在 Review 之後才有依據）
+⬜ 資料規範     DATA_DICTIONARY.md
+⬜ 內容規範     CONTENT_SCHEMA.md
 ```
 
 ### 已封存決策（不再反覆討論）
 
 - **Familiarity Model Boundary**（見第三節）：`peppa_es_familiarity_v1`＝內容學習層／`peppa_garden_v1`＝使用體驗層，不合併、不同步、Owner 分離。這是 Data 架構決策，之後看到這兩套系統並存，直接視為刻意分工。
 - **舊版 key migration（v1/v2/v3）**：已驗證 `loadFromLS()` 本來就有清除邏輯，不用重做。
-- **Storage Versioning 規則**：完整規則見獨立文件 **`STORAGE_VERSIONING.md`**（回答新 key 何時升版／舊版保留多久／migration function 放哪／clearLS 與 backup 是否需要同步版本）。
+- **Storage Versioning 規則**：完整規則見獨立文件 **`STORAGE_VERSIONING.md`**。
+- **State Responsibility Review**：完整盤點見獨立文件 **`STATE_RESPONSIBILITY_MAP.md`**——22 個 key 裡已收斂 4／待整理 14／混合 4；`stages.js` 其實不是自治 owner（已訂正）；`peppa_es_v4` 的 `ammoStars` 已確認是凍結遺留欄位。
 
-### 本階段完成：State Responsibility Review
+### 本階段完成：Data Domain Map
 
-完整盤點見獨立文件 **`STATE_RESPONSIBILITY_MAP.md`**——維持「先盤點、不重構」邊界，沒有搬動任何程式碼。重點結論：22 個 key 裡已收斂 4／待整理 14／混合 4；**`stages.js` 其實不是自治 owner**（Stage2 進度寄居在 `peppa_garden_v1` 裡，用 `s2_p` 前綴區分，跟原先假設不同，已在文件第一節訂正）；`peppa_garden_v1` 是全站唯一橫跨多個 UI 表面／甚至跨檔案共同寫入的 key，`peppa_es_v4` 裡的 `ammoStars` 欄位已確認是沒人再寫入的凍結遺留欄位。這些發現是 script.js 拆分評估的前提依據，這次只到「先知道」為止。
+完整領域分解見獨立文件 **`DATA_DOMAIN_MAP.md`**——回答「這些資料屬於哪個產品領域」，19 個產品領域對應 22 個 key，核心案例是 `peppa_garden_v1` 拆成至少 6 個子領域共用（其中 `ge_` 前綴是**刻意設計**的跨領域熟練度共享，`gp_`／`sfx_`／`s2_p`／無前綴詞彙則是**各自獨立領域碰巧共用同一個容器**）；另外標記 `peppa_first_chunk_date_v1`（一寫二讀，Milestone Domain 跟 Header/Profile Domain 各自依賴）為「下一輪資料規範最優先要處理的案例」；`ammoStars` 凍結欄位的處理流程（確認無讀取依賴→移除欄位→必要時migration）已記錄但**這輪只做到第一步的一半（寫入面已確認，讀取面尚未），不進到移除**。全程沒有搬動任何程式碼、沒有拆開任何 key。
 
-### 下一步：script.js 長期拆分評估（❌ 未開始，暫不動工）
+### 下一步：DATA_DICTIONARY.md（❌ 未開始，暫不動工）
 
-要不要拆、怎麼拆，是架構決定，需要 VERA 排時間才進行，這次沒有動工。
+VERA 明確排序：**不直接跳去寫欄位字典**，因為當時還沒切好領域邊界，字典只會忠實記錄現況的混亂。現在領域邊界已經切好，`DATA_DICTIONARY.md` 可以照 `peppa_garden_v1` 的 sub-domain 分組來寫，不用把它當成單一扁平結構處理；`CONTENT_SCHEMA.md` 排在字典之後，性質上是 episodes.js／grammar.js／ammo.js 這類教學內容資料的 schema，跟這條 Data Track（localStorage runtime state）略有不同，這次都還沒動工。
