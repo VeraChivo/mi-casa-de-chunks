@@ -162,10 +162,40 @@ CLAUDE.md「📤 日記匯出備份按鈕」段落寫著「備份範圍＝全站
 
 ---
 
-## 六、下一個 Data 階段（VERA 2026-08-01 排定，本輪不動工，先記錄範圍）
+## 六、🗝️ 地窖帳冊 v1.1 進度總覽（2026-08-01 VERA 重新排序確認）
 
-VERA 確認目前 Data Track 已完成：22 key 盤點／`clearLS()` 修正／backup 邏輯補齊／熟悉度雙系統邊界標記／schema 文件建立。下一階段排定三項，逐項先做 Reality Check（工作流程鐵則第 4 條）再決定要不要真的動工：
+```
+產品層（另見 ROADMAP.md／CLAUDE.md）
+✅ 莊園設計核心 V1 定稿／教學哲學／協作模式
 
-1. **舊版 key migration（v1/v2/v3）**——✅ **已驗證完成，不用重做**：`loadFromLS()` 裡本來就有 `['peppa_es_v1','peppa_es_v2','peppa_es_v3'].forEach(k=>localStorage.removeItem(k))`，每次讀取 `peppa_es_v4` 時都會順手清掉這三個舊版殘留 key，這個遷移邏輯在 v4 上線時就已經存在。
-2. **script.js state 責任拆分評估**——❌ 未開始。script.js 目前單檔 5000+ 行，承載幾乎全部全域狀態（`ammoUnlocked`／`vocabList`／`chunkFamiliarity`／`grammarUserExamples`等），要不要拆分/怎麼拆，屬於架構決定，需要另外評估。
-3. **storage versioning 規則**——❌ 未開始。目前每個 key 各自帶版本後綴（`_v1`／`_v4`等），但沒有統一的版本升級規則文件（例如：什麼情況要開新版本 key、舊版怎麼遷移、遷移邏輯要放哪裡）。這次盤點只記錄現況，沒有制定這套規則。
+資料層
+✅ LOCALSTORAGE_SCHEMA（本文件，22 key 全盤點）
+✅ Familiarity Model Boundary（已封存決策，見第三節，不再反覆討論）
+✅ 舊版 key migration 確認既有，不列為待辦
+✅ Storage Versioning 規則（STORAGE_VERSIONING.md，本階段完成）
+
+待處理
+⬜ State Responsibility Review（script.js state 現況盤點，不重構）
+⬜ script.js 長期拆分評估（要不要拆、怎麼拆——架構決定，排在 Review 之後才有依據）
+```
+
+### 已封存決策（不再反覆討論）
+
+- **Familiarity Model Boundary**（見第三節）：`peppa_es_familiarity_v1`＝內容學習層／`peppa_garden_v1`＝使用體驗層，不合併、不同步、Owner 分離。這是 Data 架構決策，之後看到這兩套系統並存，直接視為刻意分工。
+- **舊版 key migration（v1/v2/v3）**：已驗證 `loadFromLS()` 本來就有清除邏輯，不用重做。
+
+### 本階段完成：Storage Versioning 規則
+
+原本排第三項，VERA 重新排序後定為優先——**低風險、高價值，且是之後任何 state 拆分的基礎**，先做完才不會在 State Responsibility Review／script.js 拆分評估的過程中，又重新踩一次「該不該換 key 名稱」的坑。完整規則見獨立文件 **`STORAGE_VERSIONING.md`**（回答新 key 何時升版／舊版保留多久／migration function 放哪／clearLS 與 backup 是否需要同步版本，四題皆依現有程式碼實際做法歸納，不是新發明規則）。
+
+### 下一步：State Responsibility Review（❌ 未開始，暫不動工）
+
+VERA 定調**先盤點、不重構**——目標只是把「哪些 localStorage state 還掛在 script.js」列成一份對照表（可能輸出成獨立的 `STATE_RESPONSIBILITY_MAP.md`），例如：
+
+| State | Owner（概念上） | 現況（實際存放位置） |
+|---|---|---|
+| 語塊進度 | chunk system | script.js |
+| Header 印記 | profile layer | script.js |
+| 任務狀態 | task system | script.js |
+
+**不要先碰 5265 行的 `script.js` 本身**——盤點跟拆分是兩件事，這次只排到「先知道」，還沒排到「動手拆」。
