@@ -172,10 +172,10 @@ CLAUDE.md「📤 日記匯出備份按鈕」段落寫著「備份範圍＝全站
 ✅ LOCALSTORAGE_SCHEMA（本文件，22 key 全盤點）
 ✅ Familiarity Model Boundary（已封存決策，見第三節，不再反覆討論）
 ✅ 舊版 key migration 確認既有，不列為待辦
-✅ Storage Versioning 規則（STORAGE_VERSIONING.md，本階段完成）
+✅ Storage Versioning 規則（STORAGE_VERSIONING.md）
+✅ State Responsibility Review（STATE_RESPONSIBILITY_MAP.md，本階段完成）
 
 待處理
-⬜ State Responsibility Review（script.js state 現況盤點，不重構）
 ⬜ script.js 長期拆分評估（要不要拆、怎麼拆——架構決定，排在 Review 之後才有依據）
 ```
 
@@ -183,19 +183,12 @@ CLAUDE.md「📤 日記匯出備份按鈕」段落寫著「備份範圍＝全站
 
 - **Familiarity Model Boundary**（見第三節）：`peppa_es_familiarity_v1`＝內容學習層／`peppa_garden_v1`＝使用體驗層，不合併、不同步、Owner 分離。這是 Data 架構決策，之後看到這兩套系統並存，直接視為刻意分工。
 - **舊版 key migration（v1/v2/v3）**：已驗證 `loadFromLS()` 本來就有清除邏輯，不用重做。
+- **Storage Versioning 規則**：完整規則見獨立文件 **`STORAGE_VERSIONING.md`**（回答新 key 何時升版／舊版保留多久／migration function 放哪／clearLS 與 backup 是否需要同步版本）。
 
-### 本階段完成：Storage Versioning 規則
+### 本階段完成：State Responsibility Review
 
-原本排第三項，VERA 重新排序後定為優先——**低風險、高價值，且是之後任何 state 拆分的基礎**，先做完才不會在 State Responsibility Review／script.js 拆分評估的過程中，又重新踩一次「該不該換 key 名稱」的坑。完整規則見獨立文件 **`STORAGE_VERSIONING.md`**（回答新 key 何時升版／舊版保留多久／migration function 放哪／clearLS 與 backup 是否需要同步版本，四題皆依現有程式碼實際做法歸納，不是新發明規則）。
+完整盤點見獨立文件 **`STATE_RESPONSIBILITY_MAP.md`**——維持「先盤點、不重構」邊界，沒有搬動任何程式碼。重點結論：22 個 key 裡已收斂 4／待整理 14／混合 4；**`stages.js` 其實不是自治 owner**（Stage2 進度寄居在 `peppa_garden_v1` 裡，用 `s2_p` 前綴區分，跟原先假設不同，已在文件第一節訂正）；`peppa_garden_v1` 是全站唯一橫跨多個 UI 表面／甚至跨檔案共同寫入的 key，`peppa_es_v4` 裡的 `ammoStars` 欄位已確認是沒人再寫入的凍結遺留欄位。這些發現是 script.js 拆分評估的前提依據，這次只到「先知道」為止。
 
-### 下一步：State Responsibility Review（❌ 未開始，暫不動工）
+### 下一步：script.js 長期拆分評估（❌ 未開始，暫不動工）
 
-VERA 定調**先盤點、不重構**——目標只是把「哪些 localStorage state 還掛在 script.js」列成一份對照表（可能輸出成獨立的 `STATE_RESPONSIBILITY_MAP.md`），例如：
-
-| State | Owner（概念上） | 現況（實際存放位置） |
-|---|---|---|
-| 語塊進度 | chunk system | script.js |
-| Header 印記 | profile layer | script.js |
-| 任務狀態 | task system | script.js |
-
-**不要先碰 5265 行的 `script.js` 本身**——盤點跟拆分是兩件事，這次只排到「先知道」，還沒排到「動手拆」。
+要不要拆、怎麼拆，是架構決定，需要 VERA 排時間才進行，這次沒有動工。
