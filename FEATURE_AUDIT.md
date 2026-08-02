@@ -37,9 +37,9 @@ Ammo Data Cleanup Track｜獨立串（尚未開始，VERA 2026-08-01定調記錄
 
 Product Track｜功能盤點（本文件主體）
 Track 1 — Product
-  01 PRODUCT_PRINCIPLES.md   🟡 Claude已從CLAUDE.md萃取草稿（見PRODUCT_PRINCIPLES.md），
-     待VERA審核是否失真／哪些該移到PRD，審核前不算基準確立
-  02 PRD                     ⬜ 未開始（需等01審核確認才開始，避免發散）
+  01 PRODUCT_PRINCIPLES.md   🟢 Ready（2026-08-02 VERA審核通過方向，見PRODUCT_PRINCIPLES.md，
+     文末「待VERA分類的邊界項目」表保留不併入正文，作為之後拆PRD的參考紀錄）
+  02 PRD                     ⬜ 未開始（下一階段）
   03 MVP_BOUNDARY            ⬜ 未開始
 Track 2 已發現問題／改善項   ✅ 7項已查證完成
 ```
