@@ -35,13 +35,20 @@ Ammo Data Cleanup Track｜獨立串（尚未開始，VERA 2026-08-01定調記錄
 狀態：📋 已確認的局部重構候選，不是阻塞問題
 範圍：見下方「Ammo Data Cleanup Track（記錄）」章節
 
+Documentation Sync｜獨立串（尚未開始，VERA 2026-08-02定調先記錄不順手改）
+狀態：📋 已確認CLAUDE.md「🪵方案A：雙音軌錄放對比」條目與實際程式碼不符（echo跟讀功能
+     已上線，CLAUDE.md仍記錄「先不動工」），留給未來獨立處理，不在PRD審核途中改CLAUDE.md
+範圍：①更正該條目狀態 ②檢查是否還有其他類似落差（這次是抽查發現，不保證只有這一個）
+
 Product Track｜功能盤點（本文件主體）
 Track 1 — Product
   01 PRODUCT_PRINCIPLES.md   🟢 Ready（2026-08-02 VERA審核通過方向，見PRODUCT_PRINCIPLES.md，
      文末「待VERA分類的邊界項目」表保留不併入正文，作為之後拆PRD的參考紀錄）
-  02 PRD                     🟡 草稿已完成（見PRD.md，聚焦核心學習迴路，Appendix A/B分開放，
-     待VERA審核；查證過程中發現🎙️跟讀回音比對功能已上線但CLAUDE.md待處理清單記錄過時）
-  03 MVP_BOUNDARY            ⬜ 未開始（待PRD審核後再開始，同樣避免繞一輪重調方向）
+  02 PRD                     🟢 Review通過方向（見PRD.md，聚焦核心學習迴路，Appendix A/B分開放；
+     查證過程中發現🎙️跟讀回音比對功能已上線但CLAUDE.md待處理清單記錄過時，已轉為Documentation
+     Sync獨立串記錄，不在此處理）
+  03 MVP_BOUNDARY            🟡 進行中（取捨文件形式：V1必須有／明確不做／延後原因，
+     不再列功能清單，見MVP_BOUNDARY.md）
 Track 2 已發現問題／改善項   ✅ 7項已查證完成
 ```
 
