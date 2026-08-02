@@ -31,8 +31,12 @@ Content Quality Track｜內容品質
 ② 語塊內容格式評估｜Content Structure Review   ✅ 盤點分析已完成（見下方「內容格式評估」章節，
    結論：不建立CONTENT_SCHEMA.md，改列點狀清理候選，實際清理留給未來實作輪）
 
+Ammo Data Cleanup Track｜獨立串（尚未開始，VERA 2026-08-01定調記錄即可、不阻塞）
+狀態：📋 已確認的局部重構候選，不是阻塞問題
+範圍：見下方「Ammo Data Cleanup Track（記錄）」章節
+
 Product Track｜功能盤點（本文件主體）
-Track 1 功能缺口   ⏳ 待補PRD/PRODUCT_PRINCIPLES/MVP_BOUNDARY內容
+Track 1 功能缺口   ⏳ 待補PRD/PRODUCT_PRINCIPLES/MVP_BOUNDARY內容（目前重新聚焦的優先項）
 Track 2 已發現問題／改善項   ✅ 7項已查證完成
 ```
 
@@ -303,6 +307,26 @@ maintenance.js 尚未覆蓋 EPS / AMMO_DATA 必填欄位與 ID 檢查。
    比較對的下一步是**點狀清理**（評估`be_verb_type`改名或拿掉、評估`fire_peppa.ts`整欄移除），
    不是寫規範文件——但這已經是「實作」範疇，依照本文件開頭的邊界說明，這輪只記錄發現，
    不在這裡動手。
+
+---
+
+## 🗃️ Ammo Data Cleanup Track（記錄，2026-08-01 VERA定調，尚未開始）
+
+VERA決定：**不現在開這條串，先回Product Track**。把ammo.js這兩組欄位定義為「已確認的局部
+重構候選，不是阻塞問題」——不影響現在的產品盤點工作，先記錄，之後獨立開一條
+`Ammo Data Cleanup Track`再處理，範圍只鎖定這兩組欄位，不要跟其他改動混在一起。
+
+### be_verb_type / be_verb_note
+問題定性：不是錯，是命名與現況不一致（69%卡片值為`"none"`，早期SER/ESTAR聚焦時代命名）。
+未來動工前需要先查的三件事（VERA列出）：
+1. 現有引用位置——`script.js`裡實際讀取這兩個欄位的地方有哪些、渲染時怎麼用
+2. 未來AI使用方式——如果之後有其他工具/流程要讀ammo.js資料，改名/移除會不會影響
+3. 是否有外部依賴——localStorage/備份資料裡有沒有反向依賴這個欄位名稱
+候選方向：改名成更廣義欄位／保留舊欄位相容／直接移除，三個方向都還沒選，等真的開工再評估。
+
+### fire_peppa.ts
+問題定性：較單純——104/104筆皆為`null`，對應的影片時間戳功能已確認放棄（見CLAUDE.md）。
+未來可以考慮整欄移除，但不急，維持在候選清單裡即可。
 
 ---
 
