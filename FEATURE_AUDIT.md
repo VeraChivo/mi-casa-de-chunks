@@ -39,8 +39,9 @@ Product Track｜功能盤點（本文件主體）
 Track 1 — Product
   01 PRODUCT_PRINCIPLES.md   🟢 Ready（2026-08-02 VERA審核通過方向，見PRODUCT_PRINCIPLES.md，
      文末「待VERA分類的邊界項目」表保留不併入正文，作為之後拆PRD的參考紀錄）
-  02 PRD                     ⬜ 未開始（下一階段）
-  03 MVP_BOUNDARY            ⬜ 未開始
+  02 PRD                     🟡 草稿已完成（見PRD.md，聚焦核心學習迴路，Appendix A/B分開放，
+     待VERA審核；查證過程中發現🎙️跟讀回音比對功能已上線但CLAUDE.md待處理清單記錄過時）
+  03 MVP_BOUNDARY            ⬜ 未開始（待PRD審核後再開始，同樣避免繞一輪重調方向）
 Track 2 已發現問題／改善項   ✅ 7項已查證完成
 ```
 
