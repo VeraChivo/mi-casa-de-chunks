@@ -44,12 +44,20 @@ Product Track｜功能盤點（本文件主體）
 Track 1 — Product
   01 PRODUCT_PRINCIPLES.md   🟢 Ready（2026-08-02 VERA審核通過方向，見PRODUCT_PRINCIPLES.md，
      文末「待VERA分類的邊界項目」表保留不併入正文，作為之後拆PRD的參考紀錄）
-  02 PRD                     🟢 Review通過方向（見PRD.md，聚焦核心學習迴路，Appendix A/B分開放；
+  02 PRD                     🟢 Ready（見PRD.md，聚焦核心學習迴路，Appendix A/B分開放；
      查證過程中發現🎙️跟讀回音比對功能已上線但CLAUDE.md待處理清單記錄過時，已轉為Documentation
      Sync獨立串記錄，不在此處理）
-  03 MVP_BOUNDARY            🟡 進行中（取捨文件形式：V1必須有／明確不做／延後原因，
-     不再列功能清單，見MVP_BOUNDARY.md）
+  03 MVP_BOUNDARY            🟢 Ready（2026-08-02 VERA審核通過，取捨文件形式：V1必須有／
+     明確不做／延後原因／重新評估條件，每項皆已核對兩個部分齊全，見MVP_BOUNDARY.md）
+
+**✅ Track 1 三文件封箱（2026-08-02）**——PRODUCT_PRINCIPLES / PRD / MVP_BOUNDARY 皆🟢 Ready。
+
 Track 2 已發現問題／改善項   ✅ 7項已查證完成
+
+Feature Inventory / System Map｜下一階段（見SYSTEM_MAP.md）
+狀態：✅ 現況地圖已完成——功能 × 實際檔案責任 × MVP_BOUNDARY符合度，逐區塊核對完成，
+     過程中新增發現兩項：①`chunkFamiliarity`與`CHUNK_FAMILIES`命名易混淆但是不同系統
+     ②`clearLS()`遺漏清除的key範圍比原記錄更廣（milestones/chunk_fam_seen/daily_task皆漏）
 ```
 
 **這條原則要守住：格式評估／盤點屬於「評估」，一旦動手改`maintenance.js`或任何程式碼，
@@ -350,4 +358,10 @@ VERA決定：**不現在開這條串，先回Product Track**。把ammo.js這兩�
 建議列入下一次「🔴真bug」批次一併處理（見CLAUDE.md「Git推送節奏規則」的bug優先級）；
 ⑦確認真正的規範缺口只在episodes.js/ammo.js，grammar.js已有基礎防呆不必重做。
 
-Track 1（功能缺口）仍等待PRD/PRODUCT_PRINCIPLES/MVP_BOUNDARY內容才能展開。
+**Track 1（功能缺口）已完成三份文件（PRODUCT_PRINCIPLES/PRD/MVP_BOUNDARY，皆🟢 Ready）。**
+
+**SYSTEM_MAP.md（Feature Inventory）補充**：逐區塊核對「檔案責任 × MVP_BOUNDARY符合度」後，
+確認`clearLS()`遺漏清除的key範圍比④原記錄更廣——除了`peppa_first_chunk_date_v1`，
+`peppa_milestones_v1`／`peppa_chunk_fam_seen_v1`／`peppa_daily_task_v1`同樣沒被清除，
+建議這次一併排進真bug批次修復；另發現`chunkFamiliarity`（單字熟悉度標記）與`CHUNK_FAMILIES`
+（語塊家族收集功能）命名易混淆但是兩個獨立系統，記錄供未來改名參考，本輪不動手。
