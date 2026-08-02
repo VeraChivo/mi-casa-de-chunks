@@ -64,6 +64,13 @@
 - Dashboard／Analytics／SEO／A-B Testing／管理員系統／多語系（DOCS_INVENTORY.md
   🟢三級缺口，且需先過 PRODUCT_PRINCIPLES.md 原則09/10 檢查是否符合莊園精神
   才能決定要不要做）
+- **C1/C2文化卡剩餘引用查證**（2026-08-02 Content Quality Track發現，見
+  `CULTURE_CITATION_AUDIT.md`）：117張文法卡裡c1/c2共28張，本輪只查證了7張
+  真正引用具體外部來源的卡（g95/g96/g97/g98/g99/g102/g106），其中g99已修
+  1處人物歸屬錯誤、1處疑似編造引用尚待選材替換（追蹤中，獨立開
+  Movie Citation Replacement Track處理）；**剩餘21張c1/c2卡從未查證過**，
+  含13張c1級卡完全沒被排進這輪範圍——是否要擴大查證範圍待VERA決定，不預設
+  優先度
 
 ## 4. 明確排除
 
@@ -84,22 +91,32 @@
 
 ---
 
-## 下一步（依你排定的順序）
+## 下一步（2026-08-02 更新現況，取代原本停在MVP_BOUNDARY的舊路線圖）
 
 ```
+產品定義（Product Definition）—— 3/3 完成
 ✅ PRODUCT_PRINCIPLES
-✅ DOCS_INVENTORY
 ✅ PRD
 ✅ MVP_BOUNDARY（本文件）
-⬇
-▶ File Responsibility Map（下一步——現在 MVP 邊界已定，才能判斷哪些檔案是
-  「核心責任」、哪些是歷史遺留）
-⬇
-localStorage Schema
-⬇
-Engineering 文件補齊
+
+系統盤點（System Inventory）—— 2/2 完成
+✅ DOCS_INVENTORY
+✅ FILE_RESPONSIBILITY_MAP
+
+Data Track —— 2/4 完成（原規劃4步：盤點→責任→管理→規範）
+✅ 資料盤點：LOCALSTORAGE_SCHEMA
+✅ 資料責任：STATE_RESPONSIBILITY_MAP（原路線圖未列，補回）
+⬜ 資料管理：STORAGE_VERSIONING（尚未建立，之前曾誤判「已完成」，已修正）
+⬜ 資料規範：DATA_DICTIONARY / CONTENT_SCHEMA
+
+Content Quality Track —— 進行中（原路線圖完全沒規劃到這條，補回）
+✅ 規則19修訂（術語判準：從「禁止出現」改成「禁止只有術語沒有白話」）
+🟡 C1/C2文化卡引用查證：CULTURE_CITATION_AUDIT.md
+   ├─ 7張已查證（g95/g96/g97/g98/g99/g102/g106）
+   ├─ g99 Issue A✅已修／g106✅已修／g99 Issue B🔴追蹤中（獨立Track）
+   └─ 21張同級卡尚未查證（見上方Future/Backlog）
 ```
 
 ---
-*首次建立：2026-08-01，分類依據全部來自 ROADMAP.md／CLAUDE.md 既有紀錄，
-非新增產品決策。*
+*首次建立：2026-08-01，2026-08-02 依 Reality Check 結果同步MVP範圍數字與
+下一步路線圖，MVP核心範圍/PRD結構/功能實作皆未變動，僅文件內容更新。*
