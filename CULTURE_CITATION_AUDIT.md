@@ -29,13 +29,13 @@
 | g96 | ✅ Verified | 1/1（左右派詞源：法國大革命國民議會座位安排） |
 | g97 | ✅ Verified | 1/1（唐吉訶德開場白逐字核對Cervantes Virtual Library原文） |
 | g98 | ✅ Verified | 4/4（Lorca/Borges/Neruda三句詩文引用＋GGM未引用的理由） |
-| g99 | 🔴 Needs Fix | 0/2確認，2個問題（見下方Issue A/B） |
+| g99 | 🟡 部分完成 | Issue A已修（Chuy→Luisa）；Issue B（河流引用）仍未處理，見下方 |
 | g102 | 🟡 Accepted Simplification | 9/11確認，2處輕微簡化不算錯 |
-| g106 | 🔴 Needs Fix | 4/5確認，1個歷史年代錯誤（見下方） |
+| g106 | ✅ Fixed | 4/5確認，年份錯誤已修正（756→785-786） |
 
 ## Issues（需要修正，尚未修）
 
-### 🔴 g99 · Issue A — Incorrect attribution（人物歸屬錯誤）
+### ✅ g99 · Issue A — Incorrect attribution（人物歸屬錯誤，已修）
 
 **卡片內容**：「La vida es como la espuma, por eso hay que darse como el
 mar.」（人生就像泡沫，所以要像大海一樣付出自己）標記為漁夫角色 Chuy 對兩位
@@ -46,11 +46,11 @@ Alfonso Cuarón）的真實台詞（多來源交叉確認），**但講這句話
 Luisa（Maribel Verdú飾），不是Chuy**。Chuy Carranza是片中真實存在的第四代
 漁夫角色，會帶主角一行人去Boca del Cielo，但沒有任何來源把這句台詞歸給他。
 
-**修正方向**：Chuy → Luisa，且需要重新調整卡片裡搭配這句話的「語氣/場景」
-文化解讀（原本圍繞Chuy「樸實漁夫講出生活智慧」的敘事框架不成立，Luisa
-說這句話的情境/意涵不同，不是只換名字就結束）。
+**已修正**（2026-08-02）：說話者改為 Luisa（Maribel Verdú飾），文化解讀
+從「樸實漁夫講出生活智慧」重新框成「看透生命有限後選擇活得盡興的坦然」，
+不只是換名字，語境敘述一併調整。
 
-### 🔴 g99 · Issue B — Unverified quotation（引用查無實據）
+### 🔴 g99 · Issue B — Unverified quotation（引用查無實據，尚未處理）
 
 **卡片內容**：「No puedes entrar en el mismo río dos veces.」標記為
 《羊男的迷宮》（El laberinto del fauno，2006，Guillermo del Toro）真實台詞。
@@ -68,7 +68,7 @@ Camilo/Rosalía假歌詞引用是同一種手法特徵**（真實存在的名言
 **修正方向**：不保留這句引用，除非找到可靠來源佐證。優先在同一部片裡找
 已驗證存在的台詞替換；找不到再考慮換一部片。
 
-### 🟠 g106 — Historical date error（歷史年代錯誤）
+### ✅ g106 — Historical date error（歷史年代錯誤，已修）
 
 **卡片內容**：「La Mezquita de Córdoba... 756年開始興建」
 
@@ -78,7 +78,8 @@ Camilo/Rosalía假歌詞引用是同一種手法特徵**（真實存在的名言
 （redhistoria.com／estudi-arte.blogspot.com／tourmezquitadecordoba.com）
 一致指出清真寺實際開工年份是 **785-786年**，788年由其繼任者Hisham一世完工。
 
-**修正方向**：最小修正，只改年份數字 756 → 785-786，不擴寫整段歷史敘述。
+**已修正**（2026-08-02）：只改年份數字 756 → 785-786，其餘描述（拱門/加建
+教堂/文明交會）維持原樣，未擴寫。
 
 ## Accepted Simplification（輕微簡化，判定不用修）
 
@@ -92,10 +93,14 @@ Camilo/Rosalía假歌詞引用是同一種手法特徵**（真實存在的名言
 
 ## Status Log
 
-- 2026-08-02：第一輪查證完成（本文件建立）。**grammar.js 尚未修改**，等
-  下一輪 commit 處理 g99 Issue A/B 與 g106。
-- ⬜ 下一步：修正 g99（重新歸屬台詞＋替換或移除河流引用）與 g106（年份），
-  修完後回來把對應卡片的狀態從🔴改成✅並記錄修正內容。
+- 2026-08-02：第一輪查證完成（本文件建立）。grammar.js 尚未修改。
+- 2026-08-02（Commit 2A）：依 VERA 決策分兩步處理——**g99 Issue A（人物歸屬）
+  與 g106（年份）已修正**，皆為低風險/已確認的修正；**g99 Issue B（河流引用）
+  刻意不動**，因為這不是單純資料錯誤，是教學素材選材問題，需要先找同片
+  已驗證台詞或考慮換片，留給 Commit 2B 單獨處理，避免拖住已確定的修正。
+- ⬜ 下一步（Commit 2B）：處理 g99 Issue B——①搜尋《羊男的迷宮》已驗證存在
+  的台詞，確認是否符合原本「一句話認一部片」的教學目的②若沒有合適句子，
+  考慮換一部片③修完後把 g99 狀態從🟡改成✅。
 
 ---
 *首次建立：2026-08-02，查證方法為WebSearch三項規則查證法，未編造任何引用；
