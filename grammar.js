@@ -2244,10 +2244,10 @@ const GRAMMAR_DATA = [
     title:"影視：一句台詞認一部片，不做完整對話",
     rule:"這兩句台詞都已查證是電影真實原文（多來源交叉確認），只收一句＋場景說明＋語氣解析，不重現完整對話——目標是「聽到這句話能聯想到哪部片、哪個場景、什麼語氣」，這是母語者看戲/聊電影時最自然會用到的文化默契。",
     examples:[
-      {es:"La vida es como la espuma, por eso hay que darse como el mar.", zh:"人生就像泡沫，所以要像大海一樣付出自己。（《你媽媽也一樣》Y tu mamá también，2001年，Alfonso Cuarón導演。場景：公路旅行途中，樸實的漁夫角色Chuy對兩個滿腦子只顧自己戀愛煩惱的青少年主角說的話。語氣：平靜、帶著生活智慧，跟電影其他部分青春期的浮躁形成強烈對比，是全片情感的轉折點之一。）"},
-      {es:"No puedes entrar en el mismo río dos veces.", zh:"你不能兩次踏入同一條河。（《羊男的迷宮》El laberinto del fauno，2006年，Guillermo del Toro導演。場景：談論改變與無常時說出的一句話。語氣：哲學性、帶著淡淡的憂傷，呼應全片在西班牙內戰背景下「童年純真 vs 殘酷現實」的核心對比。）"}
+      {es:"La vida es como la espuma, por eso hay que darse como el mar.", zh:"人生就像泡沫，所以要像大海一樣付出自己。（《你媽媽也一樣》Y tu mamá también，2001年，Alfonso Cuarón導演。場景：這是母親角色Luisa（Maribel Verdú飾）在公路旅行尾聲、獨自潛入海裡前說的一段自白——電影後段才揭露，這趟看似衝動任性的旅行其實是她人生最後一次遠行。語氣：表面平靜，實則是面對生命有限性時的坦然與成熟，跟兩位滿腦子戀愛煩惱的青少年主角形成強烈對比，是全片情感重量最深的一句台詞之一。）"},
+      {es:"Obedecer por obedecer, así, sin pensarlo, eso sólo lo hacen gentes como usted, capitán.", zh:"為了服從而服從，就這樣不假思索——這種事只有像您這樣的人才做得出來，上尉。（《羊男的迷宮》El laberinto del fauno，2006年，Guillermo del Toro導演。場景：醫生費雷洛（Doctor Ferreiro）被維達爾上尉發現，曾為一名遭凌虐的反抗軍注射藥物、讓他免於痛苦死去，維達爾質問他為何不服從命令繼續逼供，費雷洛說出這句話後隨即被上尉開槍打死。語氣：平靜卻堅定，是全片對「盲目服從」最直接的控訴。）"}
     ],
-    trap:"這句河流的台詞其實源自古希臘哲學家赫拉克利特（Heráclito）的名言，電影只是借用這個哲學典故放進台詞裡——聽到西語作品裡出現「el mismo río dos veces」這個意象，可以聯想到這是在引用一個更古老的西方哲學傳統，不是編劇原創的比喻，這種「借用經典典故」的手法跟文學卡片裡Lorca/Borges的引用邏輯是同一回事，都需要認出「這句話還在呼應誰」。",
+    trap:"這句台詞是全片『不服從的美德』(desobediencia virtuosa)這個主題的核心——導演Guillermo del Toro曾親自說明，這部片其實是「一則支持不服從的小寓言，因為……負責任的第一步就是不服從——為自己思考」。醫生費雷洛的不服從（讓受折磨的反抗軍安樂死，而不是照命令繼續逼供）跟女主角奧菲莉亞（Ofelia）最後拒絕潘神命令、不肯犧牲弟弟，是同一個主題的兩種呈現——一個是成人世界裡的政治抵抗，一個是童話世界裡的良知選擇。這句台詞雖然出現在片中段、看似跟奇幻主線無關，其實是理解整部片核心價值觀的鑰匙，這種「表面兩條故事線，其實在講同一件事」的手法，正是母語者聊起這部片時最常提起的默契。",
     source:"文法補充"
   },
 
@@ -2393,7 +2393,7 @@ const GRAMMAR_DATA = [
     title:"Al-Ándalus：伊斯蘭西班牙留下的不只是單字",
     rule:"g102提過ojalá/algodón/azúcar這些阿拉伯語借詞，但阿拉伯文明在伊比利半島留下的痕跡遠不只語言——Al-Ándalus是穆斯林統治時期（711-1492年）西班牙的名稱，這段近800年的歷史留下建築、學術、文化共存的實體遺產，至今仍是西班牙國家認同/文化觀光/當代西班牙與阿拉伯世界關係的重要背景知識。",
     examples:[
-      {es:"La Mezquita de Córdoba es uno de los monumentos más importantes de Al-Ándalus.", zh:"哥多華清真寺是Al-Ándalus最重要的古蹟之一。（756年開始興建，融合了伊斯蘭建築的馬蹄形拱門與後來天主教收復後加建的大教堂，同一棟建築裡疊著兩種信仰的痕跡，是「文明交會」最具體的實例。）"},
+      {es:"La Mezquita de Córdoba es uno de los monumentos más importantes de Al-Ándalus.", zh:"哥多華清真寺是Al-Ándalus最重要的古蹟之一。（785年動工、786年落成第一期，融合了伊斯蘭建築的馬蹄形拱門與後來天主教收復後加建的大教堂，同一棟建築裡疊著兩種信仰的痕跡，是「文明交會」最具體的實例。）"},
       {es:"La Alhambra de Granada refleja el esplendor del arte islámico en España.", zh:"格拉納達的阿爾罕布拉宮反映了伊斯蘭藝術在西班牙的鼎盛時期。（Nasrid王朝的宮殿，1492年格拉納達陷落〔Reconquista的最後一步〕後才落入天主教君主手中，是穆斯林統治西班牙最後據點的具體象徵。）"},
       {es:"Durante siglos, musulmanes, judíos y cristianos convivieron en la península ibérica.", zh:"好幾個世紀裡，穆斯林、猶太人與基督徒共同生活在伊比利半島上。（la convivencia：這段「共存」時期常被浪漫化描述成宗教和諧共處的黃金時代，但歷史學者也提醒實際情況更複雜，有合作也有衝突，不是單純的烏托邦敘事。）"}
     ],
