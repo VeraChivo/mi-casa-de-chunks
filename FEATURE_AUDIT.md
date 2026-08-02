@@ -21,6 +21,26 @@ Product Track｜功能盤點的產出文件。只盤點、不開發——這裡�
 
 ---
 
+## 🗂️ 串的邊界說明（2026-08-01）
+
+這份盤點跟「Content Quality Track」是不同的串，各自邊界要分清楚，不要互相吃掉對方的工作範圍：
+
+```
+Content Quality Track｜內容品質
+① 內容檢查補強    ⬜ 未完成（見下方⑦，只記錄現況，未來開發輪再實作）
+② 語塊內容格式評估｜Content Structure Review   ✅ 盤點分析已完成（見下方「內容格式評估」章節，
+   結論：不建立CONTENT_SCHEMA.md，改列點狀清理候選，實際清理留給未來實作輪）
+
+Product Track｜功能盤點（本文件主體）
+Track 1 功能缺口   ⏳ 待補PRD/PRODUCT_PRINCIPLES/MVP_BOUNDARY內容
+Track 2 已發現問題／改善項   ✅ 7項已查證完成
+```
+
+**這條原則要守住：格式評估／盤點屬於「評估」，一旦動手改`maintenance.js`或任何程式碼，
+就已經跨進「實作」，要另開「語塊系統｜內容品質檢查補強實作」串處理，不要在盤點串裡直接動手。**
+
+---
+
 ## ⚠️ 前置狀態說明（2026-08-01）
 
 `PRODUCT_PRINCIPLES.md`／`PRD.md`／`MVP_BOUNDARY.md`／Data Track整理文件，目前在repo與全部git歷史
@@ -183,9 +203,106 @@ Product Track｜功能盤點的產出文件。只盤點、不開發——這裡�
 
 **狀態**：✅部分驗證屬實，並修正了範圍——grammar.js已有基礎防呆，episodes.js/ammo.js才是真正的缺口。
 
-**建議**：是否要建立`CONTENT_SCHEMA.md`留給資料規範階段決定；如果要做，
-最小可行版本可以先比照grammar.js現有的`checkRequiredFields`模式，
-幫episodes.js/ammo.js各自補一組必要欄位檢查，不需要另外設計新機制。
+#### Content Quality Track ① 內容檢查補強
+
+```
+⬜ 未完成
+
+現況：
+maintenance.js 尚未覆蓋 EPS / AMMO_DATA 必填欄位與 ID 檢查。
+
+待辦：
+未來開發輪再補（另開「語塊系統｜內容品質檢查補強實作」串處理，比照grammar.js
+現有的checkRequiredFields模式即可，不需要另外設計新機制）。此輪盤點只記錄現況，不動手。
+```
+
+---
+
+---
+
+## 🧩 語塊內容格式評估｜Content Structure Review（Content Quality Track ②，2026-08-01）
+
+**方法**：不用示意欄位表用猜的，直接用node載入`episodes.js`/`grammar.js`/`ammo.js`裡的真實陣列
+（`EPS`/`GRAMMAR_DATA`/`AMMO_DATA`），統計每個欄位在全部項目裡的實際覆蓋率，用數字判斷
+「這是固定規則」還是「這是零星累積」，不是憑印象猜。
+
+### episodes.js（EPS，共20集／200句）
+
+- **集層級（100%固定4欄）**：`title`／`titleZh`／`dur`／`sentences`
+- **句層級（100%固定6欄）**：`es`／`chunks`／`zh`／`en`／`noteZh`／`noteEn`——**全部200句無一例外都有這6欄**
+- **句層級（選填1欄）**：`expand`（164/200＝82%，沒有的18%是刻意沒做換詞練習的句子，非缺漏）
+- **語塊層級**：`w`／`role`（role偶爾是undefined，代表非S/V/O/連接詞的裝飾字，如逗號後的語氣詞）／
+  極少數`hideYg`（特殊UI旗標，用途未深究，屬於個位數的一次性欄位）
+
+**結論**：episodes.js是三者裡結構最乾淨的，核心欄位100%一致，沒有找到欄位層級的不一致。
+
+### grammar.js（GRAMMAR_DATA，共117張卡）
+
+- **100%固定8欄**：`id`／`cat`／`level`／`title`／`rule`／`examples`／`trap`／`source`
+  （**注意**：`maintenance.js`目前只驗證其中6個——`cat`/`level`/`title`/`rule`/`examples`/`source`，
+  `trap`雖然實際100%都有，卻沒被列進必要欄位檢查清單，這是驗證清單跟實際現況之間一個小落差，
+  但因為trap目前本來就100%達標，暫不影響資料品質，只是清單本身沒跟上現況）
+- **`examples`內部結構100%一致**：405筆全部都是`{es, zh}`兩欄，沒有任何一筆例外
+- **`family`內部結構100%一致**：25張有用到的卡，全部都是`{title, intro, items}`物件
+- **低使用率的enrichment欄位（`family`25/117、`conj`13/117、`contextDialogue`13/117、
+  `crossLang`5/117、`storyRoles`5/117、`mnemonic`3/117、`quirk`3/117、`emph`/`note`/`extraFamily`
+  各僅1張）**——查證後**這些不是格式漂移，是刻意的單卡強化**：例如`mnemonic`只給g01/g02/g27
+  （SER/ESTAR口訣卡、虛擬語氣入門卡）、`quirk`只給g01/g02/g109（有特例反直覺用法要補充的卡），
+  每個都對應CLAUDE.md裡記錄過的具體教學需求，不是隨便加的。這跟「歷史累積雜訊」是兩回事，
+  評估時不能因為使用率低就當成問題。
+- **`contextDialogue`有一個小的結構怪異點**：13張卡全部都是「長度為1的陣列」包住單一
+  `{situation, lines, note}`物件，而不是直接存成物件本身。陣列包單一物件在目前13/13案例裡
+  完全一致，不算bug，但這個「明明只會有一筆卻包成陣列」的寫法，之後如果有人真的想放第二組
+  情境對話，資料結構已經支援（陣列可以推第二筆），算是預留彈性而非錯誤，只是目前看起來略為多餘。
+
+**結論**：grammar.js整體健康，必要欄位100%一致；「欄位很多、使用率參差」是刻意的漸進式豐富化
+設計，不是規範缺口。
+
+### ammo.js（AMMO_DATA，共104張卡）
+
+- **100%固定12欄**：`ammo_id`／`ep`／`core_ammo`／`core_zh`／`be_verb_type`／`be_verb_note`／
+  `pattern`／`pattern_zh`／`pattern_note`／`slots`／`fire_peppa`／`fire_daily`
+- **🆕 發現一組真正的「歷史累積」欄位（不是刻意設計）**：`be_verb_type`／`be_verb_note`
+  兩欄100%存在於全部104張卡，但`be_verb_type`的值只有3種——`ser`(22張)／`estar`(10張)／
+  `none`(**72張，占69%**)，`none`的72張裡`be_verb_note`全部是空字串。這代表這組欄位名稱
+  是早期彈藥庫還聚焦在SER/ESTAR教學時代設計的，後來彈藥庫擴充涵蓋PODER/DEBER/GUSTAR/
+  TENER等各種句型後，這組欄位對69%的卡片來說已經名不符實，只能靠`"none"`當佔位值撐住
+  schema一致性——這正是「哪些欄位只是歷史累積」的具體例證。
+- **🆕 確認`fire_peppa.ts`是100%死欄位**：全部104張卡（不只CLAUDE.md先前記錄的60張，
+  這次是全量核對）的`fire_peppa.ts`都是`null`，對應CLAUDE.md已記錄的「真實發音功能規劃
+  （影片時間戳跳轉）VERA已決定丟棄」——這個欄位留在schema裡但完全沒有任何用途，是可以
+  安全清理的死欄位。
+- **健康的部分**：`pattern_note`100%有內容（0筆空字串）；`slots`穩定是陣列（長度1-3隨內容
+  變化，屬合理變異不是不一致）；`fire_daily`**100%固定長度為2**（104/104都剛好2筆每日例句，
+  這是目前只靠慣例維持、從沒被寫成正式規則的「隱性固定規格」）；語塊層級`w`/`role`/選填的
+  `note`/`hideYg`跟episodes.js的語塊格式一致，沒有分裂出不同慣例。
+
+**結論**：ammo.js是三者中**唯一有真正歷史包袱**的檔案——`be_verb_type`/`be_verb_note`（69%卡片
+名不符實）與`fire_peppa.ts`（100%死值）都是具體、範圍明確、可以清楚指出「為什麼是歷史遺留」
+的欄位，不是含糊的整體評價。
+
+---
+
+### 回答四個問題
+
+1. **三套資料格式是否健康？** 三套都不差，但程度不同：episodes.js最乾淨（0個問題欄位）、
+   grammar.js健康（必要欄位穩固，豐富欄位是刻意設計不是雜訊，只有trap的檢查清單落後於現況這個
+   小落差）、ammo.js有兩個具體的歷史包袱欄位（`be_verb_type`/`be_verb_note`、`fire_peppa.ts`）。
+
+2. **哪些欄位是固定規則？** episodes.js的集層級4欄＋句層級6欄（100%）；grammar.js的8欄
+   （100%，含trap）；ammo.js的12欄（100%，含`fire_daily`固定長度2這個隱性規則）。
+
+3. **哪些欄位只是歷史累積？** 只有ammo.js的`be_verb_type`／`be_verb_note`／`fire_peppa.ts`
+   三個欄位符合「歷史累積」定義（早期設計、現在名不符實或完全死值）。grammar.js的低使用率
+   欄位（family/conj/mnemonic/quirk等）**不算**歷史累積，是刻意的單卡強化，不要混為一談。
+
+4. **是否需要建立`CONTENT_SCHEMA.md`？** **維持先前的Reality Check方向：不需要現在建立。**
+   理由用這輪的實際數字支撐：真正的問題只有ammo.js的2組具體欄位（範圍很小、很好指認），
+   不是「三個檔案格式普遍混亂」。寫一份完整schema文件解決不了這兩個具體欄位的問題，
+   反而可能把grammar.js刻意設計的豐富欄位誤判成「不一致該規範化」，做錯方向。
+   比較對的下一步是**點狀清理**（評估`be_verb_type`改名或拿掉、評估`fire_peppa.ts`整欄移除），
+   不是寫規範文件——但這已經是「實作」範疇，依照本文件開頭的邊界說明，這輪只記錄發現，
+   不在這裡動手。
 
 ---
 
