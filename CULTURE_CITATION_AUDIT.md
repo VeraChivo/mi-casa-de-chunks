@@ -126,8 +126,12 @@
 - 但卡片描述「樸實的漁夫角色Chuy對兩個滿腦子只顧自己戀愛煩惱的青少年主角說的話」**場景歸屬有誤**——查證（含學術文獻 Project MUSE）顯示這句話實際是 **Luisa**（Maribel Verdú飾）的話，透過旁白／她潛入水中前的自白方式出現，不是Chuy對兩位主角說的對白。Chuy 確實是片中的漁夫角色，但不是這句台詞的說話者。
 
 **Issue 2 — 《羊男的迷宮》疑似不存在台詞（風險較高）**
-- 「No puedes entrar en el mismo río dos veces.」——查了**六個獨立來源**：官方英文劇本PDF（dailyscript.com）、IMDb quotes頁面、GradeSaver quotes、ScreenRant「10 Most Memorable Quotes」、CBR「10 Best Quotes Ranked」、TV Tropes quotes頁面，**全部都找不到這句台詞**。
-- 這句話本身是古希臘哲學家赫拉克利特的名言（「人不能兩次踏入同一條河流」），高度懷疑是「借用電影『純真vs殘酷現實』的核心主題，反推編造一句聽起來很合理但實際不存在的台詞」——跟CLAUDE.md已記錄過的「隔壁AI編造具體引用」（Camilo/Rosalía假歌詞、假新聞標題）是同一種模式，屬於**AI幻覺型引用**。
+
+*查證範圍*：對「No puedes entrar en el mismo río dos veces.」分三輪搜尋——①西語原文直接搜尋 ②改搜英文片名+"cannot step in the same river twice" ③改搜西語變體「no te puedes bañar dos veces en el mismo río」＋片名交叉查。三輪都指向同一結論：查了**六個獨立來源**——官方英文劇本PDF（dailyscript.com）、IMDb quotes頁面、GradeSaver quotes、ScreenRant「10 Most Memorable Quotes」、CBR「10 Best Quotes Ranked」、TV Tropes quotes頁面，**全部都找不到這句台詞**，且第三輪搜尋顯示這句赫拉克利特原話常被聯想到的反而是《今天暫時停止》(Groundhog Day)這類完全不相關的電影，沒有任何結果把它跟《羊男的迷宮》連在一起。
+
+*查證限制*（誠實揭露，避免「查不到=絕對不存在」的過度斷言）：以上六個來源都是**劇本文件／粉絲整理的名言清單**，不是逐格看過整部電影的逐字字幕核對——理論上不能100%排除這句話是「電影裡一閃而過、沒被任何名言網站收錄的次要台詞」或「西語配音/字幕版本的在地化改寫，跟英文劇本不完全一致」。但六個獨立、性質不同的來源（官方劇本＋五個各自獨立編輯的名言精選網站）**同時都沒收錄同一句話**，這已經是相當強的統計證據——如果這句話真的是電影裡有份量的台詞，至少該出現在其中一兩個「10大名言」精選清單裡。综合判斷：證據強度足以支撐「Severity: High／建議直接處理」，但嚴謹起見不用「證實不存在」這種絕對用語，改用**「查無實據、高度疑似」**這個判斷用語（本文件標題已依此調整）。
+
+*為何判定 Severity: High*：這不是普通的年代/敘述誤差（那種歸類為Medium，見g106），而是「具體引用可能整句是編造的」——這正是CLAUDE.md規則反覆記錄、本站最想防範的風險類型（見已記錄的Camilo/Rosalía假歌詞、假DW新聞標題案例，同樣是「AI生出一句聽起來完美、實際查無依據的具體引用」）。這類錯誤如果流出去被使用者當真引用轉述，比單純的年份誤植更容易造成公開層面的可信度損害，故列最高優先級。
 
 **Evidence**
 - [X/Carmenchu：La vida es como la espuma — Maribel Verdú](https://x.com/CarmenchuFM/status/1875722906011074698)
@@ -135,6 +139,16 @@
 - [dailyscript.com：Pan's Labyrinth 官方劇本PDF（查無此句）](https://www.dailyscript.com/scripts/PansLabyrinthEnglishScreenplay.pdf)
 - [IMDb：El laberinto del fauno quotes（查無此句）](https://www.imdb.com/title/tt0457430/quotes/)
 - [GradeSaver：Pan's Labyrinth quotes（查無此句）](https://www.gradesaver.com/pans-labyrinth/study-guide/quotes)
+- [ScreenRant：Guillermo Del Toro's Pan's Labyrinth 10 Most Memorable Quotes（查無此句）](https://screenrant.com/guillermo-del-toro-pans-labyrinth-memorable-quotes/)
+- [CBR：10 Best Quotes From Pan's Labyrinth, Ranked（查無此句）](https://www.cbr.com/pans-labyrinth-best-quotes-ranked/)
+- [TV Tropes：Quotes/PansLabyrinth（查無此句）](https://tvtropes.org/pmwiki/pmwiki.php/Quotes/PansLabyrinth)
+
+**教學目的保留評估**（供未來修正時參考，本輪不動手實作）
+
+g99的`rule`欄位明講設計目的：「目標是『聽到這句話能聯想到哪部片、哪個場景、什麼語氣』」——是一種「聽到台詞→定位電影/場景/語氣」的文化默契訓練，跟g98文學卡「一句話認一位大師」是同一種能力的影視版本。修正時要分別保留兩句各自的教學意圖，不是「隨便換一句查證過的台詞」就算過關：
+
+- **《你媽媽也一樣》**：原本的教學框架是「樸實漁夫的生活智慧 vs 兩個滿腦子戀愛煩惱的青少年」，語氣設定成「平靜、帶著生活智慧」。若照查證結果改成正確歸屬（Luisa潛入水中前的話／內心獨白），**不能只是把「Chuy」換成「Luisa」**——這句話在電影裡的份量其實更重（後段劇情揭露Luisa在這趟旅行時已身患絕症，這趟公路旅行是她人生最後的冒險，這句話因此帶著「明知無常、仍選擇擁抱當下」的雙重意義），語氣描述也要從「老漁夫的民間智慧」改寫成「一個女人對無常人生的坦然擁抱」，兩者情感重量不同，直接find-and-replace人名會讓語氣解析跟實際場景對不上。
+- **《羊男的迷宮》**：原本的教學框架是「哲學性、帶著淡淡的憂傷，呼應全片『童年純真 vs 殘酷現實』的核心對比」。若這句查無實據，修正時有兩條路：①在同一部片裡找一句**已查證真實存在**、同樣能扛起「純真vs殘酷現實」這個對比的台詞（例如查證過程中曾檢索到 Doctor對Vidal上尉說的「服從不需要理由，這是只有你這種人才做得到的事」這類已有西語片段來源的台詞，可作為候選方向，但需要用同等嚴謹度重新查證，本輪未做這一步）②如果找不到同等份量的替代句，考慮換掉整部電影（但要重新設計整段「場景+語氣解析」，不是換句話就好）。無論哪條路，都要維持卡片「一句話認一部片」的設計精神，不能為了「有查證過就好」而選一句份量不夠、教不出「文化默契」的台詞。
 
 ---
 
@@ -206,13 +220,18 @@
 **Issue — 哥多華清真寺興建年份誤植**
 - 卡片寫「756年開始興建」——查證顯示這是**把兩個不同的歷史事件搞混了**：
   - **756年**：Abderramán I 在Alameda戰役擊敗Yusuf al-Fihri後，佔領哥多華、自立為獨立酋長（Emir），建立**哥多華酋長國（Emirato de Córdoba）**——這是「建國年份」，不是「清真寺動工年份」。
-  - **786年**（實際動工年份，多數史料共識為784-786年，786年為完工/最常見採用年份）：Abderramán I 才**開始興建哥多華清真寺**，比建國晚了30年。
+  - **785年動工／786年落成第一期**（兩輪查證交叉確認：史料對「動工」與「主體完工」兩個時間點分別記載，非單一年份）：Abderramán I 買下原西哥德教堂用地、拆除後**開始興建哥多華清真寺**，落成第一期在隔年，比756年建國晚了約29-30年。
+  - **建議修正方向**：「756年開始興建」→「785年開始興建」（若要強調「這棟建築花了一年多才蓋好第一期」，可寫成「785-786年」區間，兩種寫法皆有史料支持，786年單獨使用時容易被誤讀成「動工年」而非「完工年」，建議避免只寫786。）
 - 卡片「1492年」相關三件事同年發生（收復失地運動終結＝格拉納達陷落／哥倫布抵達美洲／猶太人被驅逐）——這是廣為人知且可信的史實，**未發現問題**，不影響本卡整體評級（僅Issue本身是Medium風險，不是整卡作廢）。
 
 **Evidence**
-- [Wikipedia ES：Mezquita-catedral de Córdoba（786年）](https://es.wikipedia.org/wiki/Mezquita-catedral_de_C%C3%B3rdoba)
-- [Wikipedia ES：Abderramán I（756年建國）](https://es.wikipedia.org/wiki/Abderram%C3%A1n_I)
-- [nuestrahistoria.es：14 mayo 756，origen Emirato de Córdoba](https://nuestrahistoria.es/efemerides-14-mayo-origen-emirato-cordoba/)
+- [Wikipedia ES：Mezquita-catedral de Córdoba（786年落成）](https://es.wikipedia.org/wiki/Mezquita-catedral_de_C%C3%B3rdoba)
+- [Wikipedia ES：Abderramán I（756年建國，非清真寺年份）](https://es.wikipedia.org/wiki/Abderram%C3%A1n_I)
+- [nuestrahistoria.es：14 mayo 756，origen Emirato de Córdoba（確認756年是「建國」而非「清真寺」事件）](https://nuestrahistoria.es/efemerides-14-mayo-origen-emirato-cordoba/)
+- [artencordoba.com：Primitiva Mezquita de Abd al-Rahman I（785年購地拆除動工，786年完成第一期）](https://www.artencordoba.com/en/mosque-cordoba/the-mosque/primitive-mosque-abd-al-rahman-i/)
+- [bajolamiradadecordoba：La Mezquita que construyó Abderramán I（785年動工、786年完工的雙年份記載）](https://bajolamiradadecordoba.blogspot.com/2015/07/la-mezquita-que-construyo-abderraman-i.html)
+
+**查證限制**：史料對「動工」跟「完工第一期」兩個時間點的年份標註不完全一致（多數來源用785/786，少數來源直接寫786涵蓋兩者），這是原始史料本身的常態模糊，不是本次查證的疏漏——修正時建議保留這個彈性（785-786），不要為了「單一數字」而過度精確化成查無依據的單一年份。
 
 ---
 
@@ -257,3 +276,4 @@ g92／g94／g95／g96／g97／g98／g101／g102／g104／g105／g107。
 | 日期 | 內容 |
 |---|---|
 | 2026-08-02 | 首版建立。13張C1/C2文化卡逐一查證，2張(g99/g106)標記Needs Fix，10張Verified，1張(g94)無需查證外部引用。本輪僅查證，未修改grammar.js。 |
+| 2026-08-02 | Review pass（Commit前檢視，仍未修改grammar.js）：①g99補上查證範圍/查證限制/風險判定理由三個小節，並補齊先前只在文字提到、沒附連結的3個Evidence連結（ScreenRant/CBR/TV Tropes）；②g99新增「教學目的保留評估」，先分析兩句台詞各自原本的教學設計意圖，供未來修正時參考，本輪不執行修正；③g106年份精修：756→786的單一數字結論改成785年動工/786年落成第一期的區間表述（原文786年措辭有「動工」與「完工」自我矛盾，已修正並補充2個新查證來源）。 |
