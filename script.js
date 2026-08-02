@@ -2509,6 +2509,15 @@ function clearLS(){
   localStorage.removeItem('peppa_es_grammar_v1');
   localStorage.removeItem('peppa_es_familiarity_v1');
   localStorage.removeItem('dynamic_phrases_db');
+  // 2026-08-02 補：這幾個原本漏清，導致「重新開墾」後 header 仍判斷成老使用者、
+  // 已解鎖里程碑也不會重新觸發——都是狀態/進度類 key，跟下面的日記類 key 不同性質。
+  localStorage.removeItem('peppa_milestones_v1');
+  localStorage.removeItem('peppa_first_chunk_date_v1');
+  localStorage.removeItem('peppa_daily_task_v1');
+  localStorage.removeItem('peppa_chunk_fam_seen_v1');
+  localStorage.removeItem('peppa_welcome_tour_seen_v1');
+  // 日記類 key（peppa_mom_diary_v1／peppa_mom_notes_v1／peppa_talk_diary_v1）刻意不清——
+  // 這些是使用者自己寫的內容，不屬於「莊園重置」範圍，VERA 2026-08-02 確認保留。
   ammoUnlocked=[];ammoStars={};vocabList=[];answeredByEp={};answered=[];svoPool={s:[],v:[],o:[]};
   grammarUserExamples={};chunkFamiliarity={};
   renderAmmo();renderVocab();renderGardenView();renderConjLibrary();renderGardenFreshness();
@@ -2654,7 +2663,10 @@ function jumpToPronounLibrary(){
   const body = document.getElementById('pronounLibBody');
   if(body && !body.classList.contains('open')) togglePronounLib();
   setTimeout(()=>{
-    const wrap = document.querySelector('.pron-lib-wrap');
+    // 2026-08-02 修：.pron-lib-wrap 這個class被7張卡共用(⚧太極定裝鏡/🏰莊園人物冊/
+    // 🎵歌詞填空/💧文法儲水槽/🌎拉美巡禮等)，querySelector只會抓DOM裡第一個(⚧太極定裝鏡)，
+    // 改用專屬id鎖定🏰莊園人物冊本身，不再依賴共用class。
+    const wrap = document.getElementById('pronounLibWrap');
     if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
   }, 60);
 }
