@@ -2800,8 +2800,22 @@ function speakConjForm(gId, person, formText){
   }
   speakWord(formText);
 }
-// 時態代號 → 中文標籤，比對切換按鈕與人稱群組共用同一份對照，不重複寫兩次
+// 時態代號 → 中文標籤，人稱群組展開後的.conj-variant-badge用這份（見_renderConjVariant）——
+// 這是「點開深入才看到」的正式術語層，維持不動
 const CONJ_TENSE_LABELS = {present:'現在式', subj:'現在虛擬式', impsubj:'過去未完成虛擬式', cond:'條件式'};
+// 時態代號 → 目的導向標籤，分頁選單按鈕（入口）專用（2026-08-03新增）——
+// 原本按鈕直接寫「現在虛擬式／過去未完成虛擬式／條件式」，初學者看了不知道要查什麼，
+// 術語先行。改成「入口白話→點開深入→保留正式術語」：按鈕只講「這個時態拿來做什麼」，
+// 正式文法名稱留給CONJ_TENSE_LABELS那層（人稱群組展開後才看得到）。
+// impsubj（過去未完成虛擬式）沿用g27/g53/g75/🪞陳述式↔虛擬式對照既有的教學說法——
+// 這個時態在站上一律教「與現在事實相反的假設」（Si yo fuera...），不是描述過去習慣，
+// 兩者是不同時態（後者是過去陳述式），這裡沿用既有說法才不會跟其他地方教的不一致。
+const CONJ_TENSE_PURPOSE = {
+  present: {icon:'💬', label:'現在做的事'},
+  subj:    {icon:'💭', label:'表達願望'},
+  impsubj: {icon:'🌙', label:'假設不是真的'},
+  cond:    {icon:'🔮', label:'可能會怎樣'}
+};
 
 // 把同一個動詞的「現在式/現在虛擬式/過去未完成虛擬式/條件式」四組rows依人稱位置對齊，
 // 讓yo跟yo放一起、tú跟tú放一起，而不是整組時態各自成一大塊、要上下捲動才能比較
@@ -2875,10 +2889,10 @@ function renderConjLibrary(){
     const hasTabs    = hasSubj || hasImpsubj || hasCond;
 
     const tabsHtml = hasTabs ? `<div class="conj-tense-tabs">
-      <button class="conj-tense-tab active" data-tense="present" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','present')">現在式</button>
-      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','subj')">現在虛擬式<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
-      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','impsubj')">過去未完成虛擬式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
-      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','cond')">條件式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      <button class="conj-tense-tab active" data-tense="present" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','present')">${CONJ_TENSE_PURPOSE.present.icon} ${CONJ_TENSE_PURPOSE.present.label}</button>
+      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','subj')">${CONJ_TENSE_PURPOSE.subj.icon} ${CONJ_TENSE_PURPOSE.subj.label}<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
+      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','impsubj')">${CONJ_TENSE_PURPOSE.impsubj.icon} ${CONJ_TENSE_PURPOSE.impsubj.label}<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','cond')">${CONJ_TENSE_PURPOSE.cond.icon} ${CONJ_TENSE_PURPOSE.cond.label}<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
       <span class="conj-tense-tip">👆 可多選對比，yo／tú會排在一起方便比較</span>
     </div>` : '';
 
