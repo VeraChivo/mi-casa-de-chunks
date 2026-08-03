@@ -5050,6 +5050,14 @@ function initReminders(){
 // ── 🌎 拉美巡禮：時事與文化：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
 let _newsTopicFilter = 'all';
 let _newsExpandedId = null;
+// 主題chip列原本13個一次攤開、左右捲動（見UX_ISSUES.md記錄），2026-08-04改成第一層只留
+// 「全部」+目前選中的主題，其餘12個收進「🔍查看全部主題」——不新增資料欄位/不改文章分類，
+// 只是呈現方式，順便解決chip列左右捲動的問題（展開後改用flex-wrap自然換行）
+let _newsTopicListOpen = false;
+function toggleNewsTopicList(){
+  _newsTopicListOpen = !_newsTopicListOpen;
+  renderNewsSection();
+}
 let _newsSectionOpen = false; // 2026-07-19修正：原本開合狀態只存在DOM的inline style裡，
 // 點分類篩選會觸發renderNewsSection()整個重繪，template又寫死display:none，等於每次選分類
 // 就把剛打開的區塊蓋回收起狀態——改成獨立變數記住開合狀態，重繪時讀這個變數，不會再被蓋掉
@@ -5137,13 +5145,19 @@ function renderNewsSection(){
   });
   dwHtml += '</div></div>';
 
-  // 主題篩選chip（含「全部」跟各主題數量）
+  // 主題篩選chip：第一層只留「全部」+目前選中的主題（若不是全部），其餘收進「查看全部主題」
   const topics = [...new Set(NEWS_ITEMS.map(n=>n.topic))];
-  const topicChips = ['all', ...topics].map(t=>{
+  const _newsChip = t => {
     const label = t==='all' ? '📋 全部' : t;
     const count = t==='all' ? NEWS_ITEMS.length : NEWS_ITEMS.filter(n=>n.topic===t).length;
     return `<span class="news-topic-chip${_newsTopicFilter===t?' active':''}" onclick="event.stopPropagation();newsFilterByTopic('${escAttr(t)}')">${label} (${count})</span>`;
-  }).join('');
+  };
+  const otherTopics = topics.filter(t=>t!==_newsTopicFilter);
+  const primaryChips = _newsChip('all') + (_newsTopicFilter!=='all' ? _newsChip(_newsTopicFilter) : '');
+  const moreBtnHtml = `<span class="news-topic-more-btn" onclick="event.stopPropagation();toggleNewsTopicList()">${_newsTopicListOpen?'▲ 收起主題':'🔍 查看全部主題'}</span>`;
+  const moreChipsHtml = _newsTopicListOpen
+    ? `<div class="news-topic-filter-more">${otherTopics.map(_newsChip).join('')}</div>` : '';
+  const topicChips = primaryChips + moreBtnHtml;
 
   const shown = _newsTopicFilter==='all' ? NEWS_ITEMS : NEWS_ITEMS.filter(n=>n.topic===_newsTopicFilter);
   const itemsHtml = shown.map(item=>{
@@ -5170,6 +5184,7 @@ function renderNewsSection(){
     <div id="newsSectionBody" style="display:${_newsSectionOpen?'block':'none'}">
       ${dwHtml}
       <div class="news-topic-filter">${topicChips}</div>
+      ${moreChipsHtml}
       <div class="news-items">${itemsHtml}</div>
       <div class="news-footer">題目來源：<a href="https://www.dw.com/es/" target="_blank" rel="noopener">DW Español</a>（每題點「↗」可直接跳去該篇真實文章，標題引用僅供教育學習）</div>
     </div>

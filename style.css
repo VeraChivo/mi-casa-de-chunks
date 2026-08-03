@@ -1462,9 +1462,13 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .news-dw-es:active{opacity:.7}
 .news-dw-text{color:var(--tmid)}
 /* 新聞卡片 */
-.news-topic-filter{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:10px 14px 4px}
+/* 主題chip列2026-08-04改兩層：第一層只有「全部」+目前選中主題+「查看全部主題」按鈕，
+   不再左右捲動；展開後的.news-topic-filter-more用flex-wrap自然換行，同樣不捲動 */
+.news-topic-filter{display:flex;gap:6px;flex-wrap:wrap;padding:10px 14px 4px}
+.news-topic-filter-more{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 6px}
 .news-topic-chip{font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;background:var(--bg2);color:var(--tmid);cursor:pointer;white-space:nowrap;border:1.5px solid transparent}
 .news-topic-chip.active{background:var(--konpeki);color:#fff;border-color:var(--konpeki)}
+.news-topic-more-btn{font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;background:none;color:var(--misora);cursor:pointer;white-space:nowrap;border:1.5px dashed var(--misora)}
 .news-items{padding:8px 14px 0}
 .news-row-collapsed{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;border:1px solid rgba(188,225,223,.5);cursor:pointer}
 .news-row-collapsed:active{background:var(--bg2)}
