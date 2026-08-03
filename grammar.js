@@ -871,14 +871,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g23", cat:"verb-pattern", level:"b1",
-    title:"Andar + 現在分詞：拉美口語版的「正在」",
-    rule:"andar（原意：走動、漫步）+ 動詞字尾改 -ando／-iendo，是拉美口語很愛用的「正在做」，比 estar + -ando 多一種『這陣子到處瞎忙、斷斷續續在做』的語感，不是單純陳述當下正在做。",
+    title:"Andar + 現在分詞：比 estar 多了什麼語氣？",
+    rule:"estar + 現在分詞很乾淨俐落，講的就是「現在正在做」。andar + 現在分詞是拉美口語更愛用的說法，多帶一種「這陣子到處走、斷斷續續在做、還沒個結果」的畫面，聽起來像是說話的人也在旁邊看著這件事一直拖著。<br><br>一句記住：estoy buscando trabajo＝我正在找工作；ando buscando trabajo＝我這陣子一直在到處找工作，還沒找到。",
     examples:[
       {es:"¿Qué andas haciendo?", zh:"你在忙什麼？（口語常用，也帶點「你又在搞什麼鬼」的語氣）"},
       {es:"Ando buscando trabajo.", zh:"我這陣子都在到處找工作。（斷斷續續、還沒找到）"},
       {es:"Ando pensando en eso.", zh:"我這陣子一直在想那件事。"}
     ],
-    trap:"andar + 現在分詞只能搭配「主動做的動作動詞」，不能用在狀態/轉變動詞上（例如不會說 ando siendo，因為 ser 是狀態動詞）。跟 estoy buscando 比，ando buscando 多了「到處/斷斷續續/還沒個結果」的感覺。",
+    trap:"andar + 現在分詞通常搭配主動的動作動詞（buscando/pensando/diciendo這類），像ser這種描述狀態的動詞不會這樣用（不會說ando siendo）。",
     source:"文法補充",
     conj:{
       verb:"andar（走動；口語進行式）",
@@ -985,8 +985,8 @@ const GRAMMAR_DATA = [
 
   {
     id:"g27", cat:"subjunctive", level:"b1",
-    title:"Quiero que...：想要、希望與期待的語氣",
-    rule:"主要子句是「願望／情緒／非人稱評論／請求／懷疑或否定／Ojalá」這六類，而且**主要子句的主詞跟後面子句的主詞不一樣**時，que 後面的動詞要變成虛擬式（不是陳述式）。如果主詞相同，直接用原形動詞就好，不用 que + 虛擬式。",
+    title:"Quiero que...：主詞換人，動詞要跟著換嗎？",
+    rule:"先問自己一件事：這句話裡，是「我」自己要做，還是「我」希望「別人」去做？<br><br>如果做動作的是同一個人（Quiero comer. 我想吃），後面直接接原形動詞就好。如果換成另一個人去做（Quiero que comas. 我希望你吃），que 後面的動詞就要換成虛擬式——兩個主詞不一樣，才會觸發這個轉換。<br><br>常見會觸發這個轉換的情境有願望、情緒、請求、懷疑等六種（下面 WEIRDO 口訣有列），但真正的判斷關鍵永遠是「主詞有沒有換人」。",
     examples:[
       {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。"},
       {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
@@ -1004,7 +1004,7 @@ const GRAMMAR_DATA = [
         {l:"O",label:"Ojalá 祈願",ex:"Ojalá que tengas suerte."}
       ]
     },
-    trap:"判斷關鍵不是「這句話難不難」，是**兩個子句的主詞是不是同一個人**：Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）。",
+    trap:"判斷關鍵不是「這句話難不難」，是兩個子句的主詞是不是同一個人：Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）。",
     source:"文法補充",
     conj:{
       verb:"hablar（虛擬式現在式，規則 -ar 動詞示範）",
@@ -1076,15 +1076,15 @@ const GRAMMAR_DATA = [
 
   {
     id:"g32", cat:"connector", level:"b1",
-    title:"pero vs sino：兩種不同的「轉折」動作",
-    rule:"pero：不是要推翻前面說的話，只是站在前面成立的基礎上，再補充另一個方向或限制——像是「我同意前面，但我還想再說一件事」。<br><br>sino：不是單純的轉折，是把前面已經被否定掉的說法，換成正確答案——像是「前面那個不對，真正的是後面這個」，只能接在否定句後面才會出現。",
+    title:"pero / sino：要補充，還是要換答案？",
+    rule:"pero：不是要推翻前面說的話，只是站在前面成立的基礎上，再補充另一個方向或限制——像是「我同意前面，但我還想再說一件事」。<br><br>sino：不是單純的轉折，是把前面已經被否定掉的說法，換成正確答案——像是「前面那個不對，真正的是後面這個」，通常會接在一個先被否定的說法後面才會出現。",
     examples:[
       {es:"El amor no se muere, pero sí cambia de forma.", zh:"愛不會死，但它的形式會改變。（劇情原句，E11）"},
       {es:"Nita chapotea en los charcos, pero la ropa se moja.", zh:"妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1）"},
       {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（新編例句，劇情裡沒有sino用法）"}
     ],
     note:"中文常常把兩個都翻成「但是」，容易讓人以為可以互換——其實 pero 更接近『可是／不過』，sino 更接近『不是……而是……』，是兩種不同的說話動作，不是同一個字換著寫。",
-    trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），一律用 pero。兩者不能互換：句子前面沒有先否定，不能用sino；只是想補充另一件事而不是換掉，也不能用sino硬套。",
+    trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），就用 pero。兩者通常不會互換：前面沒有先否定的句子，很少會用到sino；只是想補充另一件事而不是要換掉，也不適合硬套sino。",
     source:"E11·S9／E1·S7（sino為文法補充）"
   },
 
@@ -1092,7 +1092,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g33", cat:"confusable", level:"b1",
-    title:"por vs para：往回看的原因 vs 往前看的目標",
+    title:"por / para：西語先問「原因」還是「方向」？",
     rule:"por：往回看——因為什麼原因發生、拿什麼交換、經過哪裡。<br><br>para：往前看——為了什麼目的、給誰、到什麼時候之前。",
     examples:[
       {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。"},
@@ -1107,7 +1107,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g34", cat:"confusable", level:"b1",
-    title:"saber vs conocer：知道事實 vs 熟悉經歷",
+    title:"saber / conocer：你知道，還是你熟悉？",
     rule:"saber：知道一個事實、一個資訊，或知道怎麼做一件事。<br><br>conocer：認識、熟悉一個人、地方或事物——要親自接觸過，才有這種熟悉感。",
     examples:[
       {es:"Nita sabe hablar español.", zh:"妮妲會說西語。"},
@@ -1122,7 +1122,7 @@ const GRAMMAR_DATA = [
 
   {
     id:"g35", cat:"confusable", level:"b1",
-    title:"pedir vs preguntar：要東西/要行動 vs 要答案",
+    title:"pedir / preguntar：要東西，還是要答案？",
     rule:"pedir：要、請求——想從對方那裡得到東西，或請對方做一個動作。<br><br>preguntar：問問題——單純想知道一個答案、找資訊。",
     examples:[
       {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。"},
@@ -1428,7 +1428,7 @@ const GRAMMAR_DATA = [
   {
     id:"g53", cat:"subjunctive", level:"b2c1",
     title:"Quería que...：過去的願望與請求",
-    rule:"當主要子句的動詞是**過去時態**（quería、pidió、esperaba…），而且滿足 WEIRDO 條件時，que 後面要用過去虛擬式（Imperfecto de Subjuntivo）。<br><br>規則變化：<br>• -AR 動詞：hablar → habl<b>ara</b>（我說了但那是在過去語境裡的願望）<br>• -ER / -IR 動詞：comer → com<b>iera</b>、vivir → viv<b>iera</b><br><br>高頻不規則形（背這幾個最夠用）：<br>ser／ir → fuera／fuera　tener → tuviera　hacer → hiciera　poder → pudiera　decir → dijera　haber → hubiera",
+    rule:"當主要子句的動詞是<b>過去時態</b>（quería、pidió、esperaba…），而且滿足 WEIRDO 條件時，que 後面要用過去虛擬式（Imperfecto de Subjuntivo）。<br><br>規則變化：<br>• -AR 動詞：hablar → habl<b>ara</b>（我說了但那是在過去語境裡的願望）<br>• -ER / -IR 動詞：comer → com<b>iera</b>、vivir → viv<b>iera</b><br><br>高頻不規則形（背這幾個最夠用）：<br>ser／ir → fuera／fuera　tener → tuviera　hacer → hiciera　poder → pudiera　decir → dijera　haber → hubiera",
     examples:[
       {es:"Mamá Cata quería que Nita durmiera temprano.", zh:"卡妲媽媽希望妮妲早點睡。"},
       {es:"Tito pidió que todos tuvieran paciencia.", zh:"迪多請求大家有點耐心。（pidió=過去，→ tuvieran）"},
@@ -1451,7 +1451,7 @@ const GRAMMAR_DATA = [
   {
     id:"g54", cat:"subjunctive", level:"b2c1",
     title:"No creo que haya...：懷疑一件可能已發生的事",
-    rule:"當 WEIRDO 主句的動詞是**現在時態**，但後面子句說的是一件「可能已經發生」的事，que 後面就用「現在完成虛擬式」：**haya / hayas / haya / hayamos / hayan + 過去分詞（-ado/-ido）**。<br><br>白話判斷法：說的是「現在懷疑/希望/擔心——某件過去的事有沒有發生」→ haya + 過去分詞。",
+    rule:"當 WEIRDO 主句的動詞是<b>現在時態</b>，但後面子句說的是一件「可能已經發生」的事，que 後面就用「現在完成虛擬式」：<b>haya / hayas / haya / hayamos / hayan + 過去分詞（-ado/-ido）</b>。<br><br>白話判斷法：說的是「現在懷疑/希望/擔心——某件過去的事有沒有發生」→ haya + 過去分詞。",
     examples:[
       {es:"No creo que Nita haya terminado de comer.", zh:"我不覺得妮妲已經吃完了。（現在不信 → 對已發生的事）"},
       {es:"Espero que Tito haya dormido bien anoche.", zh:"希望迪多昨晚睡得好。（現在希望 → 對已發生的事）"},
@@ -1464,7 +1464,7 @@ const GRAMMAR_DATA = [
   {
     id:"g55", cat:"subjunctive", level:"b2c1",
     title:"Si + 過去虛擬式 + 條件式：與現實相反的假設",
-    rule:"這是西語假設句的 B2 大魔王：說一件**目前並非事實**的假設，格式固定——<br><br>**Si + 過去虛擬式（-ra 形） + 條件式（-ría）**<br><br>對照：Si + 現在陳述式 + 未來式 = 真實可能（見 g19 IR 近未來式旁邊的用法）<br>Si tuviera dinero, compraría → 我沒有錢（所以才假設）<br>Si tengo dinero, compraré → 我可能有錢（真實可能性）",
+    rule:"這是西語假設句的 B2 大魔王：說一件<b>目前並非事實</b>的假設，格式固定——<br><br><b>Si + 過去虛擬式（-ra 形） + 條件式（-ría）</b><br><br>對照：Si + 現在陳述式 + 未來式 = 真實可能（見 g19 IR 近未來式旁邊的用法）<br>Si tuviera dinero, compraría → 我沒有錢（所以才假設）<br>Si tengo dinero, compraré → 我可能有錢（真實可能性）",
     examples:[
       {es:"Si tuviera más tiempo, dormiría una siesta cada día.", zh:"如果我有更多時間，我每天都要午睡。（事實：沒時間）"},
       {es:"Si fuera viernes, saldríamos a pasear.", zh:"如果今天是週五，我們就出去散步了。（事實：今天不是週五）"},
@@ -1477,20 +1477,20 @@ const GRAMMAR_DATA = [
   {
     id:"g56", cat:"connector", level:"b2c1",
     title:"Aunque：雖然（陳述式）vs 即使（虛擬式）",
-    rule:"aunque 是 B2 的雙面刃連接詞——後面接陳述式還是虛擬式，意思完全不同：<br><br>• **aunque + 陳述式** = **雖然**（事實讓步，承認這件事確實發生）<br>• **aunque + 虛擬式** = **即使**（假設讓步，這件事還沒確定，只是假設）",
+    rule:"aunque 是 B2 的雙面刃連接詞——後面接陳述式還是虛擬式，意思完全不同：<br><br>• <b>aunque + 陳述式</b> = <b>雖然</b>（事實讓步，承認這件事確實發生）<br>• <b>aunque + 虛擬式</b> = <b>即使</b>（假設讓步，這件事還沒確定，只是假設）",
     examples:[
       {es:"Aunque está cansada, Nita sigue dibujando.", zh:"雖然很累，妮妲還是繼續畫畫。（她真的很累，這是已經發生的事實）"},
       {es:"Aunque esté cansada, Nita seguirá dibujando.", zh:"即使（萬一）累了，妮妲也還是會繼續畫畫。（現在還不確定她累不累，只是先假設）"},
       {es:"Aunque llueva, iremos a la fiesta.", zh:"就算下雨，我們也要去派對。（現在還不知道會不會下雨）"}
     ],
-    trap:"判斷訣竅：說話時你**確定這件事正在發生/已經發生**？用陳述式。你只是**假設/承認一種可能性**，不確定？用虛擬式。同一個 aunque，一字之差，語氣截然不同。",
+    trap:"判斷訣竅：說話時你<b>確定這件事正在發生/已經發生</b>？用陳述式。你只是<b>假設/承認一種可能性</b>，不確定？用虛擬式。同一個 aunque，一字之差，語氣截然不同。",
     source:"文法補充"
   },
 
   {
     id:"g57", cat:"verb-pattern", level:"b2c1",
     title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
-    rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① **SE 被動**（se pasivo）：「東西被做了某事」——動詞要跟後面那個東西的單複數一致（一個東西→動詞單數，好幾個東西→動詞複數）<br>② **SE 無人稱**（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用同一種形式（se dice/se puede，不隨東西的單複數變化）",
+    rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① <b>SE 被動</b>（se pasivo）：「東西被做了某事」——動詞要跟後面那個東西的單複數一致（一個東西→動詞單數，好幾個東西→動詞複數）<br>② <b>SE 無人稱</b>（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用同一種形式（se dice/se puede，不隨東西的單複數變化）",
     examples:[
       {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。"},
       {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。"},
@@ -1797,7 +1797,7 @@ const GRAMMAR_DATA = [
   {
     id:"g77", cat:"connector", level:"b2c1",
     title:"同一句話，語氣一換，立場就變了：Aunque的說話者視角",
-    rule:"這張卡建立在g56已經教過的規則上（aunque+陳述式=雖然，aunque+虛擬式=即使），這裡不重教規則，練的是**聽懂說話者站在哪一邊**。同一句「Aunque + 動詞」，中文常常翻不出差別（兩句都可能翻成「雖然/就算下雨」），但西語母語者聽得出來立場不同——這正是這張卡存在的價值。<br><br>想像老師在跟學生講話：<br>「Aunque llueve, vamos a salir.」→ 老師正在告知一件已經發生的事實（外面真的在下雨）。<br>「Aunque llueva, vamos a salir.」→ 老師是先講好一個原則（不管天氣怎樣，我們都會出門），下雨與否還不確定。",
+    rule:"這張卡建立在g56已經教過的規則上（aunque+陳述式=雖然，aunque+虛擬式=即使），這裡不重教規則，練的是<b>聽懂說話者站在哪一邊</b>。同一句「Aunque + 動詞」，中文常常翻不出差別（兩句都可能翻成「雖然/就算下雨」），但西語母語者聽得出來立場不同——這正是這張卡存在的價值。<br><br>想像老師在跟學生講話：<br>「Aunque llueve, vamos a salir.」→ 老師正在告知一件已經發生的事實（外面真的在下雨）。<br>「Aunque llueva, vamos a salir.」→ 老師是先講好一個原則（不管天氣怎樣，我們都會出門），下雨與否還不確定。",
     examples:[
       {es:"Aunque llueve, iré a la fiesta.", zh:"雖然在下雨，我還是會去派對（我正在告訴你一個已經發生的事實）。"},
       {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（我先講好這個原則，不管天氣如何都一樣）。"},
