@@ -1444,8 +1444,30 @@ function checkMakeFree(){
 
   // Case 2: check key verbs present
   const inputWords=input.split(/\s+/);
-  const verbsFound=pat.keyVerbs.filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
-  const hasVerbs=verbsFound.length>=Math.ceil(pat.keyVerbs.length/2);
+  let verbsFound=pat.keyVerbs.filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
+  let hasVerbs=verbsFound.length>=Math.ceil(pat.keyVerbs.length/2);
+
+  // 2026-08-03 補：同一集常常教好幾種同義說法(例如E17「Me llamo Nita./Soy Nita.」
+  // 都是自我介紹)，原本只認「目前這張卡自己的動詞」太窄——如果換用同一集其他句子
+  // 教過的動詞會被誤判錯。這裡不新增資料結構，直接重用episodes.js既有的chunks，
+  // 只有原本判斷沒過時才補查一次「同集其他句子的動詞」，範圍限定在同一集內。
+  if(!hasVerbs){
+    const epSentences=(epData().sentences||[]).filter(sent=>sent!==s);
+    const episodeVerbWords=new Set();
+    epSentences.forEach(sent=>{
+      (sent.chunks||[]).filter(c=>c.role==='v').forEach(c=>{
+        c.w.split(/\s+/).forEach(w=>{
+          const clean=w.replace(/[¡!¿?,.:;]/g,'').toLowerCase();
+          // "Me llamo"這種多字動詞語塊拆開後會混進me/te/se這類反身代名詞，
+          // 字太短會被下面的slice(0,-1)截字比對誤命中一堆不相關的字(如'me'→'m'誤配'mucho')，
+          // 排除PRONOUNS_ES＋長度≤2的字，只留真正的動詞本身
+          if(clean.length>2 && !PRONOUNS_ES.has(clean)) episodeVerbWords.add(clean);
+        });
+      });
+    });
+    const epVerbsFound=[...episodeVerbWords].filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
+    if(epVerbsFound.length){ verbsFound=epVerbsFound; hasVerbs=true; }
+  }
 
   // Case 3: rough word count check (±3)
   const countOk=Math.abs(inputWords.length-pat.wordCount)<=3;
