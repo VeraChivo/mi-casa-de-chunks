@@ -1064,26 +1064,26 @@ const GRAMMAR_DATA = [
   {
     id:"g31", cat:"connector", level:"b1",
     title:"sino / sino que：否定句後的修正",
-    rule:"sino 用在「前面是否定句」的情況，修正/替換成正確答案，中文常翻成「不是A而是B」。後面接名詞/形容詞/介系詞短語用 sino；後面要接一整句（有自己的主詞+動詞）就要用 sino que。",
+    rule:"前面說了「不是這個」，那真正的答案在哪？通常就在 sino 後面。<br><br>如果後面只是一個詞或一小段（名詞/形容詞/介系詞片語），直接接 sino；如果後面是一整句話（有自己的主詞+動詞），要換成 sino que。",
     examples:[
       {es:"Nita no es maleducada, sino que tiene ansiedad social.", zh:"妮妲不是沒禮貌，而是有社交焦慮。（後面是完整子句，用 sino que）"},
       {es:"Esto no es un problema, sino una oportunidad.", zh:"這不是問題，而是機會。（後面只是名詞，用 sino）"},
       {es:"Tito no está enojado, sino cansado.", zh:"迪多不是生氣，而是累了。（後面是形容詞，用 sino）"}
     ],
-    trap:"判斷用 sino 還是 sino que，看後面是不是一個完整句子（有自己的主詞+動詞）——有主詞+動詞用 sino que，只是名詞/形容詞/介系詞短語用 sino。sino 一定要「前面是否定句、後面在做替換/修正」才能用，這跟 pero 的單純轉折不一樣（見下一張卡對照）。",
+    trap:"判斷用 sino 還是 sino que，看後面是不是一個完整句子（有自己的主詞+動詞）——有主詞+動詞用 sino que，只是名詞/形容詞/介系詞短語用 sino。sino 通常會接在一個先被否定的說法後面才會出現，這跟 pero 的單純轉折不一樣（見下一張卡對照）。",
     source:"文法補充"
   },
 
   {
     id:"g32", cat:"connector", level:"b1",
     title:"pero / sino：要補充，還是要換答案？",
-    rule:"pero：不是要推翻前面說的話，只是站在前面成立的基礎上，再補充另一個方向或限制——像是「我同意前面，但我還想再說一件事」。<br><br>sino：不是單純的轉折，是把前面已經被否定掉的說法，換成正確答案——像是「前面那個不對，真正的是後面這個」，通常會接在一個先被否定的說法後面才會出現。",
+    rule:"你想在前面說的話之外，再補充一件事嗎？用 pero。<br><br>還是前面那句話根本說錯了，你想換成正確答案？用 sino。<br><br>兩個都能翻成「但是」，但 pero 是站在原地補充，sino 是把前面推翻重講。",
     examples:[
       {es:"El amor no se muere, pero sí cambia de forma.", zh:"愛不會死，但它的形式會改變。（劇情原句，E11）"},
       {es:"Nita chapotea en los charcos, pero la ropa se moja.", zh:"妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1）"},
       {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（新編例句，劇情裡沒有sino用法）"}
     ],
-    note:"中文常常把兩個都翻成「但是」，容易讓人以為可以互換——其實 pero 更接近『可是／不過』，sino 更接近『不是……而是……』，是兩種不同的說話動作，不是同一個字換著寫。",
+    note:"pero 更接近中文的『可是／不過』，sino 更接近『不是……而是……』——雖然都能翻成「但是」，容易讓人以為可以互換，但其實是兩種不同的說話動作。",
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），就用 pero。兩者通常不會互換：前面沒有先否定的句子，很少會用到sino；只是想補充另一件事而不是要換掉，也不適合硬套sino。",
     source:"E11·S9／E1·S7（sino為文法補充）"
   },
@@ -1093,7 +1093,7 @@ const GRAMMAR_DATA = [
   {
     id:"g33", cat:"confusable", level:"b1",
     title:"por / para：西語先問「原因」還是「方向」？",
-    rule:"por：往回看——因為什麼原因發生、拿什麼交換、經過哪裡。<br><br>para：往前看——為了什麼目的、給誰、到什麼時候之前。",
+    rule:"你現在想問的是「這件事怎麼發生的、從哪裡來」嗎？用 por。<br><br>你想說的是「要往哪裡去、為了什麼」嗎？用 para。<br><br>規則整理：por 往回看原因、來源、交換；para 往前看目的、方向、對象。",
     examples:[
       {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。"},
       {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。"},
@@ -1108,7 +1108,7 @@ const GRAMMAR_DATA = [
   {
     id:"g34", cat:"confusable", level:"b1",
     title:"saber / conocer：你知道，還是你熟悉？",
-    rule:"saber：知道一個事實、一個資訊，或知道怎麼做一件事。<br><br>conocer：認識、熟悉一個人、地方或事物——要親自接觸過，才有這種熟悉感。",
+    rule:"你想確認的是一個事實、一個資訊，或者知道怎麼做一件事嗎？用 saber。<br><br>你想說的是你對一個人、一個地方熟不熟嗎？用 conocer，因為這種熟悉感要親自接觸過才有。",
     examples:[
       {es:"Nita sabe hablar español.", zh:"妮妲會說西語。"},
       {es:"¿Sabes qué hora es?", zh:"你知道現在幾點嗎？"},
@@ -1123,7 +1123,7 @@ const GRAMMAR_DATA = [
   {
     id:"g35", cat:"confusable", level:"b1",
     title:"pedir / preguntar：要東西，還是要答案？",
-    rule:"pedir：要、請求——想從對方那裡得到東西，或請對方做一個動作。<br><br>preguntar：問問題——單純想知道一個答案、找資訊。",
+    rule:"你想從對方那裡得到一個東西，或請他做一件事嗎？用 pedir。<br><br>你只是想知道一個答案、找一個資訊嗎？用 preguntar。",
     examples:[
       {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。"},
       {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。"},
@@ -2776,7 +2776,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g23','g27','g32','g33','g34','g35']
+  revised: ['g23','g27','g31','g32','g33','g34','g35']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
