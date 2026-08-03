@@ -3112,6 +3112,15 @@ function renderGsupCoreEssentials(){
 // 等級篩選chip仍在，隨時可以自己切到其他等級看更多
 let _gsupLevelFilter = 'a1a2';
 let _gsupTopicFilter = 'all';
+// 🔍再細分（CAT_GROUPS：結構/陷阱/表達/文化）是否展開——2026-08-03改成獨立開關，
+// 不再跟著等級篩選自動顯示/隱藏，「全部」也能直接看內容分類
+let _gsupCatGroupsOpen = false;
+function toggleGsupCatGroups(){
+  _gsupCatGroupsOpen = !_gsupCatGroupsOpen;
+  if(!_gsupCatGroupsOpen) _gsupTopicFilter = 'all';
+  renderGrammarSupplement();
+  if(_gsupCatGroupsOpen) _gsupEnsureBodyOpen();
+}
 function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
@@ -3160,6 +3169,7 @@ function jumpToLevelFilter(levelKey){
 function renderGrammarSupplement(){
   const el = document.getElementById('grammarSupplementBody');
   const filterEl = document.getElementById('grammarLevelFilter');
+  const introEl = document.getElementById('gsupLevelIntro');
   const topicEl = document.getElementById('grammarTopicFilter');
   const topicWrap = document.getElementById('grammarTopicFilterWrap');
   if(!el) return;
@@ -3169,17 +3179,30 @@ function renderGrammarSupplement(){
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充') && !_isWorldZoned(g.id));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
-    filterEl.innerHTML = chip('all','📋','全部') + GRAMMAR_LEVEL_TIERS.map(t=>chip(t.key, t.icon, t.label)).join('');
+    // 2026-08-03：街頭母語/文化深度不再是這裡的篩選項（那兩個名字是🌎拉美巡禮的內容分區，
+    // 不是CEFR難度），改成純導覽捷徑——點了直接跳過去對應分區，不留在儲水槽篩選
+    const jumpChip = (icon, label, fn) => `<span class="gsup-level-chip jump" onclick="event.stopPropagation();${fn}()">${icon} ${label} ↗</span>`;
+    const catGroupsChip = `<span class="gsup-level-chip${_gsupCatGroupsOpen?' active':''}" onclick="event.stopPropagation();toggleGsupCatGroups()">🔍 再細分</span>`;
+    // 只列出儲水槽池子裡真的有卡片的等級——c2目前0張留在池子裡（全被分流去🎭文化深度），
+    // 不放進來當篩選項，避免點了看到空清單
+    const tiersInPool = GRAMMAR_LEVEL_TIERS.filter(t => items.some(g=>g.level===t.key));
+    filterEl.innerHTML = chip('all','📋','全部')
+      + tiersInPool.map(t=>chip(t.key, t.icon, t.label)).join('')
+      + jumpChip('🗣️','街頭母語','worldEntryJumpSlang')
+      + jumpChip('🎭','文化深度','worldEntryJumpCulture')
+      + catGroupsChip;
   }
-  // 「再細分」只在選了具體等級（不是全部）之後才出現，不常駐三排
-  if(topicWrap) topicWrap.style.display = (_gsupLevelFilter==='all') ? 'none' : '';
-  if(topicEl && _gsupLevelFilter!=='all'){
+  if(introEl) introEl.textContent = GSUP_LEVEL_INTRO[_gsupLevelFilter] || GSUP_LEVEL_INTRO.all;
+  // 「再細分」是獨立的顯示/隱藏開關（🔍再細分chip控制），跟等級篩選脫鉤——
+  // 不用先選特定等級才看得到內容分類，在「全部」也可以直接看結構/陷阱/表達/文化
+  if(topicWrap) topicWrap.style.display = _gsupCatGroupsOpen ? '' : 'none';
+  if(topicEl && _gsupCatGroupsOpen){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupTopicFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByTopic('${key}')">${icon} ${label}</span>`;
     topicEl.innerHTML = chip('all','📋','全部') + CAT_GROUPS.map(g=>chip(g.key, g.icon, g.label)).join('');
   }
   const shown = items.filter(g=>{
     const levelOk = _gsupLevelFilter==='all' || g.level===_gsupLevelFilter;
-    const topicOk = _gsupLevelFilter==='all' || _gsupTopicFilter==='all' || _catGroupFor(g.cat)===_gsupTopicFilter;
+    const topicOk = _gsupTopicFilter==='all' || _catGroupFor(g.cat)===_gsupTopicFilter;
     return levelOk && topicOk;
   });
   el.innerHTML = shown.map(g=>{
