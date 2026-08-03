@@ -881,6 +881,11 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-variant{display:grid;grid-template-columns:max-content 1fr auto;align-items:center;gap:3px 8px;padding:3px 0 3px 12px;margin-top:2px;border-left:2px solid rgba(159,208,222,.4)}
 .conj-variant-badge{grid-column:1/-1;font-size:9px;font-weight:800;color:var(--misora);background:rgba(108,155,210,.1);border-radius:6px;padding:1px 6px;width:fit-content}
 .conj-variant .conj-ex,.conj-variant .conj-zh,.conj-variant .conj-note{grid-column:1/-1}
+/* 熟練度星星（花）沒有指定欄位時，會被.conj-ex的1/-1強制換行擠到自己單獨一列（2026-08-03修復）——
+   只給grid-column不夠：.conj-ex在DOM順序上排在星星前面、佔滿整列，auto-placement的游標
+   已經往下移了，星星光指定欄位還是會被排到後面的列，必須連grid-row也一起釘死在第1列，
+   才能跟.conj-form同一列，符合「動詞形式右側加星星」的原始設計 */
+.conj-variant .ge-chunk-star{grid-column:2;grid-row:1;justify-self:start}
 
 /* 陰陽字尾語塊卡 */
 .gp-card{background:white;border-bottom:1px solid var(--bg2);padding:9px 16px;text-align:center}

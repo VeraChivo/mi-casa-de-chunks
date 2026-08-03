@@ -1108,6 +1108,7 @@ Yigú的兩個獨立練習頁面，跟主站 index.html 完全分開、不共用
       - 上層：⚧陰陽字尾語塊卡 → **太極定裝鏡**（純字尾規律）
       - 下層：🔄動詞變位庫 → **超級變變變**（實戰單字查詢）
     - [x] **下層「超級變變變」已整合既有語塊花園熟練度系統（2026-07-16 完成，見 script.js renderConjLibrary）**：每個變位表格的動詞形式（如soy/hablas）右側新增一顆熟練度星星（重用`ge-chunk-star`/`getGardenDB`/`handleGardenProgress`，跟句子裡點語塊累積進度是同一套資料，key用`ge_`+變位形式，沒有另外做一套系統）。**刻意不套用`isVocabWorthy`篩選**——那個過濾器會把soy/es/está這類常見動詞形式當「太普通」跳過不標星，但這裡的重點正是要練這些高頻動詞形式，所以每一列都給星星，不篩選。已用Node模擬驗證60顆星全部正確渲染、無crash。
+      - **✅ 2026-08-03 真bug已修：星星（花）在多選對比改版後被擠到自己單獨一列**：VERA回報「進階完整變位庫的花都跳行了」——查證是2026-07-26那次「多選對比改成人稱分組」的CSS grid重構（`.conj-variant`用`grid-template-columns:max-content 1fr auto`，`.conj-ex`/`.conj-zh`/`.conj-note`都強制`grid-column:1/-1`）沒有把`.ge-chunk-star`一起納入考慮：星星沒有指定欄位，會被排在`.conj-ex`後面，但`.conj-ex`的強制整列換行已經把auto-placement游標往下推，星星只指定`grid-column:2`還是不夠（游標已經過了第1列，不會回頭補），必須連`grid-row:1`一起釘死才會跟`.conj-form`同一列。已修：`.conj-variant .ge-chunk-star{grid-column:2;grid-row:1;justify-self:start}`。已用Playwright驗證ser/estar兩張卡、單一時態/多選對比(現在虛擬式同時顯示)、展開「我們/你們/他們」、點擊星星升級熟練度後，星星都正確跟在動詞形式（如soy）右側同一列，不再跳行。
   - **🏰莊園人物冊 = 👤人稱代名詞查詢庫**（改名，不是動詞變位庫）：
     - [x] 角色敘事已完成（見 commit 1a37de0, 15026b0, 3e99abd）：主詞=🙋農夫本人、直接受詞=📦倒楣作物、間接受詞=👥八卦鄰居、反身代名詞=🪞自戀鏡子
     - [x] 進階篇已完成（見 commit 2cff3ae）：代名詞組合排序規則（反身→間接→直接，R.I.D.順序）、le/les遇到lo/la/los/las時變成se的規則、命令句/現在進行式的代名詞附著規則。維持靜態文字+點擊聽發音，未做拖曳/音效/卡片變形動畫
