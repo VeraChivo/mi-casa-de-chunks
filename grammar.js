@@ -11,7 +11,7 @@ const PRONOUN_LIBRARY = [
       {es:'ustedes',        zh:'你們（拉美通用，不分熟悉/正式）', en:'you all (LatAm)'},
       {es:'ellos / ellas',  zh:'他們 / 她們', en:'they'}
     ],
-    example:{es:'Tengo hambre.', zh:'我肚子餓了。（加主詞版：Yo tengo hambre. — 兩句意思一樣，-o 字尾已代表「我」，Yo 可省略）'}
+    example:{es:'Tengo hambre.', zh:'我肚子餓了。（加主詞版：Yo tengo hambre. — 兩句意思一樣，現在式很多動詞的 -o 字尾可以看出「我」，Yo 可省略；但不是所有時態/動詞都這樣，之後遇到 soy／voy／estoy／hablé 這類不是這個規則）'}
   },
   {
     cat:'📦 倒楣作物', catEn:'（接受動作的人事物，像英文的 him / her / it）',
