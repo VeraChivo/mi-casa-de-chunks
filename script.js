@@ -333,9 +333,15 @@ function selectEp(n){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
   document.getElementById('completeScreen').classList.remove('show');
-  document.querySelector('.card-container').style.display='block';
+  // 2026-08-03 修：.card-container 這個class被🌱新人路線圖(renderStoryIndex產生的
+  // .story-idx-box)共用，querySelector永遠抓路線圖不是真正的主卡片，改用專屬id鎖定
+  const mainCardWrap = document.getElementById('mainCardWrap');
+  if(mainCardWrap) mainCardWrap.style.display='block';
   document.querySelectorAll('.nav-row').forEach(r=>r.style.display='flex');
-  window.scrollTo({top:0,behavior:'instant'});
+  // 2026-08-03 修：原本window.scrollTo({top:0})捲的是整頁最頂端，從展開的新人路線圖
+  // 深處點「看劇情」時，最頂端只會停在路線圖標題，真正更新的卡片內容遠在畫面外看不到，
+  // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
+  if(mainCardWrap) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
   _epSwitching=false;
 }
@@ -1444,8 +1450,30 @@ function checkMakeFree(){
 
   // Case 2: check key verbs present
   const inputWords=input.split(/\s+/);
-  const verbsFound=pat.keyVerbs.filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
-  const hasVerbs=verbsFound.length>=Math.ceil(pat.keyVerbs.length/2);
+  let verbsFound=pat.keyVerbs.filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
+  let hasVerbs=verbsFound.length>=Math.ceil(pat.keyVerbs.length/2);
+
+  // 2026-08-03 補：同一集常常教好幾種同義說法(例如E17「Me llamo Nita./Soy Nita.」
+  // 都是自我介紹)，原本只認「目前這張卡自己的動詞」太窄——如果換用同一集其他句子
+  // 教過的動詞會被誤判錯。這裡不新增資料結構，直接重用episodes.js既有的chunks，
+  // 只有原本判斷沒過時才補查一次「同集其他句子的動詞」，範圍限定在同一集內。
+  if(!hasVerbs){
+    const epSentences=(epData().sentences||[]).filter(sent=>sent!==s);
+    const episodeVerbWords=new Set();
+    epSentences.forEach(sent=>{
+      (sent.chunks||[]).filter(c=>c.role==='v').forEach(c=>{
+        c.w.split(/\s+/).forEach(w=>{
+          const clean=w.replace(/[¡!¿?,.:;]/g,'').toLowerCase();
+          // "Me llamo"這種多字動詞語塊拆開後會混進me/te/se這類反身代名詞，
+          // 字太短會被下面的slice(0,-1)截字比對誤命中一堆不相關的字(如'me'→'m'誤配'mucho')，
+          // 排除PRONOUNS_ES＋長度≤2的字，只留真正的動詞本身
+          if(clean.length>2 && !PRONOUNS_ES.has(clean)) episodeVerbWords.add(clean);
+        });
+      });
+    });
+    const epVerbsFound=[...episodeVerbWords].filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
+    if(epVerbsFound.length){ verbsFound=epVerbsFound; hasVerbs=true; }
+  }
 
   // Case 3: rough word count check (±3)
   const countOk=Math.abs(inputWords.length-pat.wordCount)<=3;
@@ -2319,7 +2347,9 @@ function renderLevelUpCert(data){
 
 // ── COMPLETE SCREEN ──
 function showComplete(){
-  document.querySelector('.card-container').style.display='none';
+  // 2026-08-03 修：同selectEp()註解，改用專屬id避免抓到🌱新人路線圖的.card-container
+  const mainCardWrap = document.getElementById('mainCardWrap');
+  if(mainCardWrap) mainCardWrap.style.display='none';
   // .nav-row 有兩個(上一句/下一句列 + 複製整集西語列)，querySelector只抓第一個，
   // 導致「複製整集西語」按鈕完成畫面後卡在螢幕上，把🎖️晉級證書擠到下面不起眼的位置——
   // 已修：改用querySelectorAll全部隱藏（2026-07-25）
@@ -2368,7 +2398,9 @@ function restartEp(){
   score=0;makeScore=0;idx=0;answered=[];makeAnswered=[];
   delete answeredByEp[ep];saveToLS();
   document.getElementById('completeScreen').classList.remove('show');
-  document.querySelector('.card-container').style.display='block';
+  // 2026-08-03 修：同selectEp()註解，改用專屬id避免抓到🌱新人路線圖的.card-container
+  const mainCardWrap = document.getElementById('mainCardWrap');
+  if(mainCardWrap) mainCardWrap.style.display='block';
   document.querySelectorAll('.nav-row').forEach(r=>r.style.display='flex');
   render();
 }
@@ -2509,6 +2541,15 @@ function clearLS(){
   localStorage.removeItem('peppa_es_grammar_v1');
   localStorage.removeItem('peppa_es_familiarity_v1');
   localStorage.removeItem('dynamic_phrases_db');
+  // 2026-08-02 補：這幾個原本漏清，導致「重新開墾」後 header 仍判斷成老使用者、
+  // 已解鎖里程碑也不會重新觸發——都是狀態/進度類 key，跟下面的日記類 key 不同性質。
+  localStorage.removeItem('peppa_milestones_v1');
+  localStorage.removeItem('peppa_first_chunk_date_v1');
+  localStorage.removeItem('peppa_daily_task_v1');
+  localStorage.removeItem('peppa_chunk_fam_seen_v1');
+  localStorage.removeItem('peppa_welcome_tour_seen_v1');
+  // 日記類 key（peppa_mom_diary_v1／peppa_mom_notes_v1／peppa_talk_diary_v1）刻意不清——
+  // 這些是使用者自己寫的內容，不屬於「莊園重置」範圍，VERA 2026-08-02 確認保留。
   ammoUnlocked=[];ammoStars={};vocabList=[];answeredByEp={};answered=[];svoPool={s:[],v:[],o:[]};
   grammarUserExamples={};chunkFamiliarity={};
   renderAmmo();renderVocab();renderGardenView();renderConjLibrary();renderGardenFreshness();
@@ -2654,7 +2695,10 @@ function jumpToPronounLibrary(){
   const body = document.getElementById('pronounLibBody');
   if(body && !body.classList.contains('open')) togglePronounLib();
   setTimeout(()=>{
-    const wrap = document.querySelector('.pron-lib-wrap');
+    // 2026-08-02 修：.pron-lib-wrap 這個class被7張卡共用(⚧太極定裝鏡/🏰莊園人物冊/
+    // 🎵歌詞填空/💧文法儲水槽/🌎拉美巡禮等)，querySelector只會抓DOM裡第一個(⚧太極定裝鏡)，
+    // 改用專屬id鎖定🏰莊園人物冊本身，不再依賴共用class。
+    const wrap = document.getElementById('pronounLibWrap');
     if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
   }, 60);
 }
