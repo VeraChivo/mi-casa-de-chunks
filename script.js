@@ -333,9 +333,15 @@ function selectEp(n){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
   document.getElementById('completeScreen').classList.remove('show');
-  document.querySelector('.card-container').style.display='block';
+  // 2026-08-03 修：.card-container 這個class被🌱新人路線圖(renderStoryIndex產生的
+  // .story-idx-box)共用，querySelector永遠抓路線圖不是真正的主卡片，改用專屬id鎖定
+  const mainCardWrap = document.getElementById('mainCardWrap');
+  if(mainCardWrap) mainCardWrap.style.display='block';
   document.querySelectorAll('.nav-row').forEach(r=>r.style.display='flex');
-  window.scrollTo({top:0,behavior:'instant'});
+  // 2026-08-03 修：原本window.scrollTo({top:0})捲的是整頁最頂端，從展開的新人路線圖
+  // 深處點「看劇情」時，最頂端只會停在路線圖標題，真正更新的卡片內容遠在畫面外看不到，
+  // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
+  if(mainCardWrap) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
   _epSwitching=false;
 }
@@ -2341,7 +2347,9 @@ function renderLevelUpCert(data){
 
 // ── COMPLETE SCREEN ──
 function showComplete(){
-  document.querySelector('.card-container').style.display='none';
+  // 2026-08-03 修：同selectEp()註解，改用專屬id避免抓到🌱新人路線圖的.card-container
+  const mainCardWrap = document.getElementById('mainCardWrap');
+  if(mainCardWrap) mainCardWrap.style.display='none';
   // .nav-row 有兩個(上一句/下一句列 + 複製整集西語列)，querySelector只抓第一個，
   // 導致「複製整集西語」按鈕完成畫面後卡在螢幕上，把🎖️晉級證書擠到下面不起眼的位置——
   // 已修：改用querySelectorAll全部隱藏（2026-07-25）
@@ -2390,7 +2398,9 @@ function restartEp(){
   score=0;makeScore=0;idx=0;answered=[];makeAnswered=[];
   delete answeredByEp[ep];saveToLS();
   document.getElementById('completeScreen').classList.remove('show');
-  document.querySelector('.card-container').style.display='block';
+  // 2026-08-03 修：同selectEp()註解，改用專屬id避免抓到🌱新人路線圖的.card-container
+  const mainCardWrap = document.getElementById('mainCardWrap');
+  if(mainCardWrap) mainCardWrap.style.display='block';
   document.querySelectorAll('.nav-row').forEach(r=>r.style.display='flex');
   render();
 }
