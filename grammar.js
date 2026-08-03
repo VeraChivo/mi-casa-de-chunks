@@ -1092,43 +1092,46 @@ const GRAMMAR_DATA = [
 
   {
     id:"g33", cat:"confusable", level:"b1",
-    title:"por vs para：都翻成「為了/因為」，方向完全相反",
-    rule:"por vs para 都翻成「為了/因為」，但方向完全相反：<br><br>Por → 往回看：因為什麼、用什麼交換、經過哪裡<br>Para → 往前看：為了什麼、給誰、到什麼時候",
+    title:"por vs para：往回看的原因 vs 往前看的目標",
+    rule:"por：往回看——因為什麼原因發生、拿什麼交換、經過哪裡。<br><br>para：往前看——為了什麼目的、給誰、到什麼時候之前。",
     examples:[
       {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。"},
       {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。"},
       {es:"Compré este regalo para Mimi.", zh:"我幫咪咪買了這個禮物。"},
       {es:"Necesito terminar esto para el viernes.", zh:"我星期五之前得完成這個。"}
     ],
-    trap:"混淆時問自己：這是在講「為什麼發生／怎麼換來的／穿過哪裡」（por）還是「要往哪裡去／給誰／到什麼時候」（para）？口訣：por＝因為，para＝為了。",
+    note:"中文常常都翻成「為了/因為」，但西語看的是方向：por 看的是已經發生的原因，para 看的是還沒到的目標，方向完全相反，不是同一個詞換著用。",
+    trap:"混淆時問自己：這是在講「為什麼發生／怎麼換來的／穿過哪裡」，還是「要往哪裡去／給誰／到什麼時候」？前者用por，後者用para。",
     source:"文法補充"
   },
 
   {
     id:"g34", cat:"confusable", level:"b1",
-    title:"saber vs conocer：都翻成「知道」，一個是資訊一個是熟悉感",
-    rule:"中文都翻成「知道」，但西語看你知道的是什麼：<br><br>Saber → 知道事實、資訊、怎麼做一件事<br>Conocer → 認識、熟悉一個人、地方或事物（親自接觸過的熟悉感）",
+    title:"saber vs conocer：知道事實 vs 熟悉經歷",
+    rule:"saber：知道一個事實、一個資訊，或知道怎麼做一件事。<br><br>conocer：認識、熟悉一個人、地方或事物——要親自接觸過，才有這種熟悉感。",
     examples:[
       {es:"Nita sabe hablar español.", zh:"妮妲會說西語。"},
       {es:"¿Sabes qué hora es?", zh:"你知道現在幾點嗎？"},
       {es:"Conozco a Vera Oveja desde hace mucho tiempo.", zh:"我認識薇拉羊很久了。"},
       {es:"¿Conoces esta ciudad?", zh:"你去過這座城市嗎？熟不熟？"}
     ],
+    note:"中文都翻成「知道」，但西語分得很細：saber是腦子裡知道的資訊，conocer是親身經驗累積出來的熟悉感。",
     trap:"認識「人」一定要用 conocer，而且受詞是人時前面要加 a（conocer a alguien）——這是中文母語者最容易漏掉的地方，Sé a Vera 是錯的，要說 Conozco a Vera。",
     source:"文法補充"
   },
 
   {
     id:"g35", cat:"confusable", level:"b1",
-    title:"pedir vs preguntar：中文都是「問」，西語看你是在要東西還是要答案",
-    rule:"中文都翻成「問」，但西語看你是要東西還是要答案：<br><br>Pedir → 要、請求，得到東西或請對方做動作<br>Preguntar → 問問題，尋求資訊",
+    title:"pedir vs preguntar：要東西/要行動 vs 要答案",
+    rule:"pedir：要、請求——想從對方那裡得到東西，或請對方做一個動作。<br><br>preguntar：問問題——單純想知道一個答案、找資訊。",
     examples:[
       {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。"},
       {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。"},
       {es:"Nita pregunta dónde está el gato.", zh:"妮妲問貓在哪裡。"},
       {es:"Voy a preguntarle su nombre.", zh:"我要去問他的名字。"}
     ],
-    trap:"中文都會說「問」，但西語要先分清楚：是在「要東西／請對方做動作」（pedir）還是「單純問問題找答案」（preguntar）——搞混這兩個是中文母語者最常見的錯誤之一。",
+    note:"中文都會翻成「問」，但西語先看你要的是「東西/行動」還是「答案」——這是中文母語者最容易搞混的地方之一。",
+    trap:"先問自己：我想從對方那裡「得到什麼／要他做什麼」，還是「單純想知道一個答案」？前者用pedir，後者用preguntar。",
     source:"文法補充"
   },
 
