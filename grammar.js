@@ -1065,7 +1065,7 @@ const GRAMMAR_DATA = [
   {
     id:"g31", cat:"connector", level:"b1",
     title:"sino / sino que：否定句後的修正",
-    rule:"前面說了「不是這個」，那真正的答案在哪？通常就在 sino 後面。<br><br>如果後面只是一個詞或一小段（名詞/形容詞/介系詞片語），直接接 sino；如果後面是一整句話（有自己的主詞+動詞），要換成 sino que。",
+    rule:"sino 後面接一個詞或短語（名詞/形容詞/介系詞片語）→ 換一個答案。<br><br>sino que 後面接一整句話（有自己的主詞+動詞）→ 換掉前面的說法，重新說一件事。",
     examples:[
       {es:"Nita no es maleducada, sino que tiene ansiedad social.", zh:"妮妲不是沒禮貌，而是有社交焦慮。（後面是完整子句，用 sino que）"},
       {es:"Esto no es un problema, sino una oportunidad.", zh:"這不是問題，而是機會。（後面只是名詞，用 sino）"},
