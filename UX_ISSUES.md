@@ -53,6 +53,21 @@ VERA 平常逛莊園時隨手記的小卡頓，不用停下來修、不用寫技
 狀態：
 🟡 待決策（2026-08-03記錄）——產品體驗調整，不急著修，等VERA挑方向再動工
 
+#### 📍 ☀️日光育苗場 · 世界新聞（主題篩選chip列，跟上面「初始載入過量」是不同問題，分開記）
+
+問題：
+`.news-topic-filter{flex-wrap:nowrap;overflow-x:auto}`（style.css）——主題篩選chip目前是左右捲動列，不是自然換行。實測NEWS_ITEMS共12個主題（economía💰/medio ambiente🌍/tecnología🤖/salud mental🧠/neurodiversidad🧩/diversidad étnica🌎/crianza👪/educación📚/migración🧳/pueblos indígenas🌾/género🚻/gastronomía🍽️）＋「全部」共13個chip，名稱長短差距大（género/crianza短，diversidad étnica/pueblos indígenas/neurodiversidad長），手機版要左右滑動才能看到全部分類，不建議左右捲動。
+
+第一次使用者可能誤會：
+容易漏看畫面外的分類選項，以為分類只有畫面上看得到的那幾個。
+
+方向（待VERA挑一個，先不動手，也不跟上面「初始載入過量」一起改）：
+1. **方案A**：`.news-topic-filter`改`flex-wrap:wrap`讓chip自適應換行（拿掉`overflow-x:auto`），依螢幕寬度自然排列，不強制等寬/兩欄
+2. **方案B**：分兩層——第一層只留「全部／熱門主題」，主題分類收進可折疊的「主題分類▼」第二層，因為分類本質是篩選工具不是主要導覽
+
+狀態：
+🟡 待決策（2026-08-03記錄）——不急著修，等VERA挑方向再動工
+
 #### 📍 ☀️日光育苗場 · 🫐遍地捻野莓（英西同源詞庫）
 
 問題：
