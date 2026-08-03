@@ -2769,6 +2769,16 @@ const GRAMMAR_LIFECYCLE = {
   incubating: []
 };
 
+// ── 文法卡「問題式改版」進度標記（2026-08-03新增，純標記，不影響任何既有欄位/渲染邏輯，
+// 跟GRAMMAR_LIFECYCLE/CHUNK_ECOLOGY同一套做法）──
+// revised：已套用CLAUDE.md「文法卡內容語感重整」規則（標題問題式／rule先西語邏輯／
+// 「中文都翻成X」收進note／trap避免死規則語氣）。
+// 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
+// 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
+const GRAMMAR_STYLE_REVISION = {
+  revised: ['g23','g27','g32','g33','g34','g35']
+};
+
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
 // 「人怎麼說話」跟「人為什麼這樣說」都移去🌎拉美巡禮。純加法分類，不改動GRAMMAR_DATA
 // 任何一張卡的既有欄位——跟GRAMMAR_LIFECYCLE/AMMO_LIFECYCLE/CHUNK_ECOLOGY同一種做法。
