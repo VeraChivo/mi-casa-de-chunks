@@ -11,6 +11,37 @@ E11整集、mom.js第25-39句、grammar.js 166句、歌曲25句+新聞53句—�
 
 ---
 
+## 🔴 缺口⑥：2026-07-26 grammar.js「8張高頻卡examples真實語料補接」批次沒接上真人錄音
+
+**2026-08-02 Documentation Sync盤點發現**（見`DOC_SYNC_INVENTORY.md`第2-4節，程式碼交叉比對已確認）：
+2026-07-26那輪把 g01/g02/g08/g30/g32 的examples換成劇情真句後，這批新句子沒有走過工作守則
+第28條的「音檔檢查鏈」，`audio-manifest.js`的`GRAM_AUDIO_MAP`完全沒有對應鍵值，點「聽整句」
+會fallback回瀏覽器TTS。（g117/g13換的句子沿用既有錄音，已確認有音檔，不在這份缺口清單裡。）
+
+需要真人錄音的8句：
+
+| 卡片 | 西語 | 中文 |
+|---|---|---|
+| g01 | Soy Nita. | 我是妮妲。 |
+| g01 | Soy el hermano mayor de Nita. | 我是妮妲的哥哥。 |
+| g02 | Tito está esperando su turno para jugar. | 迪多在等輪到他玩。 |
+| g08 | A Nita le gusta el helado. | 妮妲喜歡冰淇淋。 |
+| g08 | A Tito le encanta su carrito rojo. | 迪多超愛他的紅色小車車。 |
+| g08 | A Tito no le gusta el ruido fuerte. | 迪多不喜歡很大的聲音。 |
+| g30 | Papá Tato dice: "Los recordamos porque los queremos." | 達多爸爸說：「我們記得他們，因為我們愛他們。」 |
+| g32 | El amor no se muere, pero sí cambia de forma. | 愛不會死，但它的形式會改變。 |
+| g32 | Nita chapotea en los charcos, pero la ropa se moja. | 妮妲在水坑裡玩水，但是衣服被弄濕了。 |
+
+（共9句，上表g01/g08各2句、g30/g32合計3句——這幾句本來就是劇情裡已經出現過的真句，理論上
+可以直接沿用episode既有錄音檔案，不一定要重新錄，只是`GRAM_AUDIO_MAP`這張表需要補上對應的
+key，接的時候順手核對一下能不能重用`AUDIO_MANIFEST`裡E20/E19/E11的既有音檔，不一定要生成
+新的Colab錄音腳本。）
+
+排入下一批之前，先確認：這份與其他分支（`claude/bug-ui-inventory-repair-rlk906`等）是否有
+交叉修改到`audio-manifest.js`，避免重複作業（截至2026-08-02盤查，尚無其他分支動過這個檔案）。
+
+---
+
 ## 🔴 缺口①：E11 亡靈節特輯《El Camino de la Memoria》— 整集10句完全沒錄音
 
 `AUDIO_MANIFEST` 目前16集只有15集有音檔，唯獨這集（index 10）是空的。CLAUDE.md 也記錄過這個缺口。

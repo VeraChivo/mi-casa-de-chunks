@@ -1,10 +1,71 @@
 # 📖 文件同步盤點清單（Documentation Sync Inventory）
 
 2026-08-02 建立。這份文件只做一件事：**比對「文件說了什麼」跟「程式碼實際是什麼」，列出落差**。
-不改 CLAUDE.md / ROADMAP.md 本身，不新增功能、不改架構——這是盤點，不是施工。
+不新增功能、不改架構——這是盤點，不是施工（少數確認為單純文件過期的項目，經裁決後已直接修正，
+見下方「決策與後續處理記錄」）。
 
 查證方法：直接讀程式碼（grammar.js/script.js/episodes.js/ammo.js/audio-manifest.js/index.html 等）、
 用 Node.js 載入資料陣列跑實際數字、grep 交叉比對，不是憑印象判斷。每一項都附「證據」可回頭核對。
+
+---
+
+## 決策與後續處理記錄（2026-08-02，裁決後執行）
+
+針對上一輪五項待確認，裁決如下，並依裁決範圍執行：
+
+| 項目 | 裁決 | 處理狀態 |
+|---|---|---|
+| 文件過期（ROADMAP/CLAUDE/CHANGELOG等） | ✅ 可以開始修 | 見下方「已執行」，**CLAUDE.md本身暫緩**，理由見下方「重大發現」 |
+| clearLS 範圍 | ⏸ 先維持現況，不再擴大，日記保留 | 不動code，僅記錄決策——**但發現此決策實際上已經在別的分支被實作，見下方** |
+| c1/c2 篩選 chip | ⏸ 先不要改，另開UX/產品討論 | 不動code，本輪不處理，移出 Documentation Sync 範圍 |
+| GRAM_AUDIO_MAP 未同步 | 🔴 優先確認，查證屬實則列為修正項 | 已用 file:line 交叉比對二次確認（見原第2-4節），已登記進 `RECORDING_QUEUE.md`「缺口⑥」，未實際補錄音 |
+| FEATURE_INVENTORY 找不到 | 📋 先確認是否路徑/分支/未合併造成 | 已確認——**是未合併造成，不是缺失**，見下方 |
+
+### 🚨 重大發現：至少 8 條 sibling 分支尚未合併回 main，其中 3 條同時在改 CLAUDE.md
+
+執行「文件過期修正」前，先 `git fetch --prune` 檢查所有遠端分支（原本只看 main），發現：
+
+| 分支 | 內容 | 是否touch CLAUDE.md |
+|---|---|---|
+| `claude/feature-inventory-system-map-o8aumy` | 新增 `FEATURE_INVENTORY.md`（223行，功能盤點與系統地圖） | 否 |
+| `claude/mi-casa-feature-audit-dioiso` | 新增 `FEATURE_AUDIT.md`／`MVP_BOUNDARY.md`／`PRD.md`／`PRODUCT_PRINCIPLES.md`／`SYSTEM_MAP.md`（推測是「Product Track」的產物） | 否 |
+| `claude/bug-ui-inventory-repair-rlk906` | commit標題「修bug.ui第一批」——**已修 `clearLS()`，補清5個key**（milestones/first_chunk_date/daily_task/chunk_fam_seen/welcome_tour_seen），並明確留言註解「日記類key刻意不清，VERA 2026-08-02確認保留」——**跟這輪clearLS決策內容完全一致，但是獨立實作、尚未合併** | 是（但只動`script.js`/`index.html`，不動CLAUDE.md） |
+| `claude/localstorage-schema-cleanup-ursehf` 與 `claude/storage-versioning-rules-c8m7q6` | 兩分支對CLAUDE.md的diff**完全相同**——新增 `LOCALSTORAGE_SCHEMA.md`/`STORAGE_VERSIONING.md`/`DATA_DOMAIN_MAP.md`/`STATE_RESPONSIBILITY_MAP.md`，同時**也修了`clearLS()`，但只補3個key**（milestones/chunk_fam_seen/first_chunk_date，不含daily_task/welcome_tour_seen），順手修了一個`.chunk-pill.fam-2`遺漏的CSS規則 | **是**——改CLAUDE.md第831行（📤日記匯出備份按鈕條目） |
+| `claude/new-project-purpose-features-amidg9` | 新增 `DOCS_INVENTORY.md`（8軌文件分類盤點，跟這次 Documentation Sync 性質高度重疊，2026-08-01建立，比這份早一天）＋`MVP_BOUNDARY.md`/`PRD.md`/`PRODUCT_PRINCIPLES.md`/`FILE_RESPONSIBILITY_MAP.md`/`LOCALSTORAGE_SCHEMA.md`/`STATE_RESPONSIBILITY_MAP.md`/`CULTURE_CITATION_AUDIT.md` | **是**——改CLAUDE.md規則19（文法白話規則），2026-08-02修訂放寬術語判準 |
+| `claude/content-schema-assessment-d7hony` | 「內容品質軌」延伸`maintenance.js`必填欄位檢查 | 否 |
+| `claude/data-dictionary-fields-j44tg0` | 新增 `DATA_DICTIONARY.md`／`CULTURE_CITATION_AUDIT.md`，改grammar.js | 否 |
+
+**這代表兩件事：**
+
+1. **`FEATURE_INVENTORY.md` 確認是「分支未合併」，不是缺失**——已在
+   `claude/feature-inventory-system-map-o8aumy` 分支上，符合裁決預期。「UI Bug Fix Inventory」
+   沒有找到同名檔案，但 `claude/bug-ui-inventory-repair-rlk906` 這條分支的 commit 內容
+   （`clearLS()`/`jumpToPronounLibrary()`修正）本身就對應得上，只是沒有獨立命名的inventory檔案，
+   記錄直接寫在commit訊息裡。
+2. **clearLS 決策「先維持現況」已經被至少兩個獨立分支各自實作，而且兩者對不齊**：
+   `bug-ui-inventory-repair-rlk906` 補5個key，`localstorage-schema-cleanup-ursehf`／
+   `storage-versioning-rules-c8m7q6` 只補3個key（都不含`peppa_daily_task_v1`跟
+   `peppa_welcome_tour_seen_v1`）。這**不是**Documentation Sync該處理的範圍（是code層面的
+   分支協調問題），但既然裁決已經明確「日記保留、不擴大」，兩邊分支的實作方向是一致的，只是
+   涵蓋key數量不同，之後合併時需要有人對齊，這裡先記錄下來避免被忽略。
+
+**因此本輪對 CLAUDE.md 本身的修改先暫緩**（原本裁決允許修的「錄音仿說功能」「44篇vs53篇」
+「儲水槽42→59」等純CLAUDE.md內容過期項目）——理由：`CLAUDE.md`已經有3條分支平行修改中，
+這個branch若現在也動CLAUDE.md，會變成第4條平行修改，之後誰要合併這一批分支時，CLAUDE.md
+的衝突只會更難處理。**已執行、不涉及CLAUDE.md、也沒有其他分支touch的項目**：
+
+- ✅ `ROADMAP.md`「113張卡」→「117張卡」（無分支touch，已修）
+- ✅ `CHANGELOG.md` 回補 2026-07-20~07-26 停更的一週摘要＋本輪Documentation Sync記錄＋
+  上述分支未合併發現（無分支touch，已修）
+- ✅ `CONTENT_RULES.md`「首頁三橫標」段落加註過期提醒，指向CLAUDE.md現況章節，不刪除歷史記錄
+  （無分支touch，已修）
+- ✅ `RECORDING_QUEUE.md` 新增「缺口⑥」登記8句缺真人語音的例句（無分支touch，已修）
+
+**CLAUDE.md 本身待辦（暫緩，等分支協調後再處理）**：原清單1-2（錄音仿說功能）、2-1（44篇/53篇矛盾）、
+2-2（儲水槽42→59）、2-7（西語世界殘留字樣）——這四項純屬CLAUDE.md文字內容過期，修改本身沒有
+爭議，只是建議等CLAUDE.md的分支合併順序確定後再動手，避免多一份衝突。
+
+**c1/c2 篩選chip（原2-3）** 依裁決不在這輪處理，移出 Documentation Sync 範圍，改列產品/UX待討論。
 
 ---
 

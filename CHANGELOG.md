@@ -5,6 +5,46 @@
 
 ---
 
+## 2026-08-02（Documentation Sync Track：補回07-20~07-26停更的一週＋文件落差盤點）
+
+**⚠️ 這則是回補記錄**：本檔案 2026-07-19 之後停更了一週，中間 CLAUDE.md 持續有大量記錄，
+以下依 CLAUDE.md 既有內容濃縮回補，不是當天寫的即時記錄，細節仍以 CLAUDE.md 對應章節為準。
+
+**07-20 ~ 07-24（第一站 E17-E20＋Stage 1/2 收斂）**
+- 第一站新手引導路線 E17「認識妮妲」～E20「Gustar」定稿，含劇情→文法卡連結→彈藥庫最小核心版→
+  40句真人音檔全部補齊，`EPISODE_COMPLETION_MARKERS`取代`ep===EPS.length-1`的位置推論判斷終章
+- ☀️日光育苗場工具入口從10個收斂成5個（💎☁️是·在對照站/🪞陳述式↔虛擬式對照移入g27內嵌、
+  🌀超級變變變併入💧儲水槽當進階子區塊）
+- ⭐必學核心快速入口（7張核心動詞卡）、💧文法儲水槽等級篩選預設只顯示🌱a1a2
+- Header六入口定位定案：🧭探索路線／🗺️莊園導覽／🎁入園巧遇／🌿園區印記(動態)／🧰莊園工具／
+  🌎西語世界（🗺️莊園地圖章節）
+
+**07-25（🌎西語世界分流＋Day2/Day3內容深化）**
+- 💧文法儲水槽100張卡拆分成儲水槽留存／🗣️街頭母語(26張)／🎭文化深度(32張)三份`WORLD_ZONE_MAP`
+- 例句第一行放大、13張卡套用三種內容模板（核心畫面優先/中文語感拆行/情境對話）
+- 修好完成畫面「複製整集西語」按鈕殘留卡住畫面的真bug（`.nav-row`只抓到第一個的問題）
+
+**07-26（💧文法儲水槽三階段整理收尾＋🌎拉美巡禮更名）**
+- 高頻卡examples真實語料補接（g01/g02/g03/g08/g09/g10/g13/g30/g32/g117，交叉比對
+  SENTENCE_GRAMMAR_MAP實際連結修正真bug）——**這批新句子的真人語音尚未補上，見
+  RECORDING_QUEUE.md「缺口⑥」**
+- 🌎西語世界正式更名🌎拉美巡禮，🏰莊園人物冊完成橋接層修正並標記v1.0封存
+- 「第一站穩定版v1封存點」正式定案，收斂週結束
+
+**新增（今日，Documentation Sync Track）**
+- `DOC_SYNC_INVENTORY.md`：比對 CLAUDE.md/ROADMAP.md/CHANGELOG.md/CONTENT_RULES.md 與實際
+  程式碼，查證出117張文法卡數字未同步、錄音仿說功能文件未更新、clearLS範圍待確認、
+  儲水槽等級篩選c1/c2 chip變成死路、8句examples缺真人語音等落差，詳見該檔案
+
+**發現：多條 track 分支尚未合併回 main**——`claude/feature-inventory-system-map-o8aumy`（
+FEATURE_INVENTORY.md）、`claude/mi-casa-feature-audit-dioiso`（FEATURE_AUDIT/PRD/
+PRODUCT_PRINCIPLES/MVP_BOUNDARY/SYSTEM_MAP）、`claude/bug-ui-inventory-repair-rlk906`（
+已修clearLS()補5個key）、`claude/localstorage-schema-cleanup-ursehf`／
+`claude/storage-versioning-rules-c8m7q6`（皆已修clearLS()補3個key＋LOCALSTORAGE_SCHEMA.md）、
+`claude/new-project-purpose-features-amidg9`（DOCS_INVENTORY.md，跟本次Documentation Sync
+性質重疊）——這些都停留在各自的feature branch，main分支看不到。之後要merge時，特別是
+`CLAUDE.md`同時被至少3個分支各自修改，需要人工確認怎麼合併，不能無腦merge。
+
 ## 2026-07-19（真人錄音全部接入＋兩個發音bug修正）
 
 **新增**
