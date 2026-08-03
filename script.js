@@ -1753,6 +1753,7 @@ function retryAnswer(){
   const fb=document.getElementById('transFeedback');
   if(fb){fb.style.display='none';fb.innerHTML='';}
   const tip=document.getElementById('grammarTip'); if(tip) tip.style.display='none';
+  const db=document.getElementById('diaryBridge'); if(db) db.style.display='none';
   renderStars();
 }
 
@@ -3116,12 +3117,19 @@ function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
 // ── 🧭 我是什麼程度？等級路標——不是獨立新區塊，掛在莊園導覽最後一步裡 ──
+// ⚠️ 2026-08-03修復：「我想深入文化」原本用level:'c1'接jumpToLevelFilter，但2026-07-25
+// 街頭母語/文化深度內容已整批搬去🌎拉美巡禮，儲水槽c1篩選只剩2張不相干的卡（新聞動詞/
+// 正式連接詞），c2篩選則是完全空的死路——改成action:'worldzone'，直接開拉美巡禮入口面板。
 const LEVEL_NAV_ITEMS = [
   {icon:'🌱', label:'我是第一次來', sub:'從第一句西語開始', action:'start'},
   {icon:'🌿', label:'我學過一點了', sub:'繼續我的生活語塊', level:'b1'},
   {icon:'🏆', label:'我想驗收成果', sub:'測試自己的西語能力', level:'b2c1'},
-  {icon:'🌎', label:'我想深入文化', sub:'俚語與拉美故事', level:'c1'}
+  {icon:'🌎', label:'我想深入文化', sub:'俚語與拉美故事', action:'worldzone'}
 ];
+function jumpToWorldZoneFromNav(){
+  closeWelcomeTour();
+  setTimeout(()=>openWorldEntryPanel(), 60);
+}
 // 真正的新手要的不是文法卡列表，是直接開始跟著劇情學（2026-07-19 VERA指正）
 // 2026-07-20：改指向新增的第一章重鋪起點（idx16「認識自己」），不再是舊E1「妮妲的角落」——
 // 讓新手先依序認識自己/家人/日常狀態/喜好，最後才自然接回E1，見NEWCOMER_ROADMAP。
@@ -4965,7 +4973,7 @@ function renderWelcomeTourStep(){
   const btnsHtml = s.levelButtons ? `
     <div class="lvlnav-grid">
       ${LEVEL_NAV_ITEMS.map(it => `
-        <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : `jumpToLevelFilter('${it.level}')`}">
+        <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : it.action==='worldzone' ? 'jumpToWorldZoneFromNav()' : `jumpToLevelFilter('${it.level}')`}">
           <span class="lvlnav-icon">${it.icon}</span>
           <span class="lvlnav-label">${it.label}</span>
           <span class="lvlnav-sub">${it.sub}</span>
