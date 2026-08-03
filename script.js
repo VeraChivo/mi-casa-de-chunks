@@ -3081,11 +3081,13 @@ function _grammarExChunks(es, playExpr){
 // ── 💧 文法儲水槽（沒有綁定特定劇情句子、從外面引進來的零散文法點） ──
 // 等級標籤只是導覽輔助，不是內容鎖：篩選只是隱藏/顯示，隨時可以切回「全部」看到所有卡片
 // 27種cat值太多，不會全部露出——先分成4個大分群，選了等級之後才出現這一層「再細分」篩選（漸進式，不是三排常駐）
+// label含「類」：完整說法，給獨立呈現的地方用（例如每個等級底下的「內容方向」預覽）
+// shortLabel不含「類」：給「再細分」那排chip用，一橫行擠得下、讀起來也不重複
 const CAT_GROUPS = [
-  {key:'structure',  icon:'🧩', label:'結構類', cats:['ser-estar','tense','gustar','verb-pattern','word-order','subjunctive','connector','preposition','gender','vocab']},
-  {key:'trap',       icon:'⚠️', label:'陷阱類', cats:['confusable','falseeq']},
-  {key:'expression', icon:'💬', label:'表達類', cats:['phrase','slang','pragmatics','etiquette','socioling','inclusive','rhetoric']},
-  {key:'culture',    icon:'🌎', label:'文化類', cats:['history','politics','classical','literature','cinema','etymology','proverb','reading']}
+  {key:'structure',  icon:'🧩', label:'結構類', shortLabel:'結構', cats:['ser-estar','tense','gustar','verb-pattern','word-order','subjunctive','connector','preposition','gender','vocab']},
+  {key:'trap',       icon:'⚠️', label:'陷阱類', shortLabel:'陷阱', cats:['confusable','falseeq']},
+  {key:'expression', icon:'💬', label:'表達類', shortLabel:'表達', cats:['phrase','slang','pragmatics','etiquette','socioling','inclusive','rhetoric']},
+  {key:'culture',    icon:'🌎', label:'文化類', shortLabel:'文化', cats:['history','politics','classical','literature','cinema','etymology','proverb','reading']}
 ];
 function _catGroupFor(cat){
   const g = CAT_GROUPS.find(grp => grp.cats.includes(cat));
@@ -3192,13 +3194,27 @@ function renderGrammarSupplement(){
       + jumpChip('🎭','文化深度','worldEntryJumpCulture')
       + catGroupsChip;
   }
-  if(introEl) introEl.textContent = GSUP_LEVEL_INTRO[_gsupLevelFilter] || GSUP_LEVEL_INTRO.all;
+  if(introEl){
+    const introText = GSUP_LEVEL_INTRO[_gsupLevelFilter] || GSUP_LEVEL_INTRO.all;
+    // 📌內容方向：這個等級底下的卡，實際橫跨哪幾種CAT_GROUPS內容類型——
+    // 只在選了特定等級時顯示（「全部」本來就橫跨全部類型，講了等於沒講）
+    let tagsHtml = '';
+    if(_gsupLevelFilter !== 'all'){
+      const levelItems = items.filter(g=>g.level===_gsupLevelFilter);
+      const present = CAT_GROUPS.filter(cg=>levelItems.some(g=>_catGroupFor(g.cat)===cg.key));
+      if(present.length){
+        tagsHtml = `<div class="gsup-content-tags">📌 內容方向：${present.map(cg=>`${cg.icon} ${cg.label}`).join('　')}</div>`;
+      }
+    }
+    introEl.innerHTML = `<div class="gsup-intro-text">${introText}</div>${tagsHtml}`
+      + `<div class="gsup-intro-hint">💡 上面的等級幫你找「現在想學什麼」，下面的「再細分」讓你看「這張卡在處理哪一種語言問題」——同一張卡常常兩種都符合，不是只能選一邊。</div>`;
+  }
   // 「再細分」是獨立的顯示/隱藏開關（🔍再細分chip控制），跟等級篩選脫鉤——
   // 不用先選特定等級才看得到內容分類，在「全部」也可以直接看結構/陷阱/表達/文化
   if(topicWrap) topicWrap.style.display = _gsupCatGroupsOpen ? '' : 'none';
   if(topicEl && _gsupCatGroupsOpen){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupTopicFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByTopic('${key}')">${icon} ${label}</span>`;
-    topicEl.innerHTML = chip('all','📋','全部') + CAT_GROUPS.map(g=>chip(g.key, g.icon, g.label)).join('');
+    topicEl.innerHTML = chip('all','📋','全部') + CAT_GROUPS.map(g=>chip(g.key, g.icon, g.shortLabel)).join('');
   }
   const shown = items.filter(g=>{
     const levelOk = _gsupLevelFilter==='all' || g.level===_gsupLevelFilter;
