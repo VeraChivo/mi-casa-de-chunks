@@ -58,25 +58,25 @@ const PRONOUN_COMBO_RULES = [
     title:'🏎️ 出場排班',
     titleSub:'自戀鏡子 → 八卦鄰居 → 倒楣作物',
     hint:'莊園裡好幾個角色同時要對一個動作發表意見時，排隊順序死板板固定：第1順位永遠是自戀鏡子（反身），第2順位永遠是八卦鄰居（間接），第3順位永遠是倒楣作物（直接），不能插隊',
-    example:{es:'Me lo pongo.', zh:'我把它穿上。（鏡子 me ＋ 作物 lo ＋ 動詞 pongo）'}
+    example:{es:'Me lo pongo.', zh:'我把它穿上。', breakdown:'（自己身上 → 那件東西 → 放上去）'}
   },
   {
     title:'🎭 驚天大變身',
     titleSub:'八卦鄰居遇到倒楣作物 → le/les 變 se',
     hint:'八卦鄰居（le/les）遇到單複數倒楣作物（lo/la/los/las）時，唸起來會音韻大撞車<br>（Le lo 像警車在叫），這時 le/les 會瞬間變裝成 se',
-    example:{es:'Le lo doy (✗) → Se lo doy. (✓)', speakEs:'Le lo doy. Se lo doy.', zh:'我把書給他。<br>（<span class="nowrap">Le lo doy</span> 唸起來卡，要變成 <span class="nowrap">Se lo doy</span>）'}
+    example:{es:'Le lo doy (✗) → Se lo doy. (✓)', speakEs:'Le lo doy. Se lo doy.', zh:'我把書給他。', breakdown:'（Le lo doy 唸起來卡 → 換成 Se lo doy）'}
   },
   {
     title:'📢 命令大聲公',
     titleSub:'角色全部黏到動詞屁股後面',
     hint:'農夫開啟「命令模式」叫別人做事時，角色們會變成跟屁蟲，全部塞到動詞後面合併成一個新單字',
-    example:{es:'Comer + lo → Cómelo.', speakEs:'Cómelo.', zh:'吃掉它！（Comer 吃 ＋ lo 作物，黏在一起）'}
+    example:{es:'Comer + lo → Cómelo.', speakEs:'Cómelo.', zh:'吃掉它！', breakdown:'（吃 → 那個東西，黏成一個字）'}
   },
   {
     title:'🏃 正在忙碌中',
     titleSub:'站前面或抱屁股，兩種都可以',
     hint:'農夫正在做某件事（-ando/-iendo）時，角色可以選擇站在動詞前面，也可以選擇黏到動詞屁股後面，兩種說法都對',
-    example:{es:'Le estoy escribiendo.<br>＝ Estoy escribiéndole.', speakEs:'Le estoy escribiendo. Estoy escribiéndole.', zh:'我正在寫信給她。（兩種說法都可以）'}
+    example:{es:'Le estoy escribiendo.<br>＝ Estoy escribiéndole.', speakEs:'Le estoy escribiendo. Estoy escribiéndole.', zh:'我正在寫信給她。'}
   }
 ];
 
@@ -92,6 +92,7 @@ function renderPronounComboRules(){
           <div class="pron-ex-es">▶ ${r.example.es}</div>
           ${r.example.speakEs && r.example.speakEs!==r.example.es ? `<div class="pron-ex-speak">🔊 實際播放：${r.example.speakEs}</div>` : ''}
           <div class="pron-ex-zh">${r.example.zh}</div>
+          ${r.example.breakdown ? `<div class="pron-ex-breakdown">${r.example.breakdown}</div>` : ''}
         </div>
       </div>`).join('')}
   </details>`;
