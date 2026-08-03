@@ -872,7 +872,7 @@ const GRAMMAR_DATA = [
   {
     id:"g23", cat:"verb-pattern", level:"b1",
     title:"Andar + 現在分詞：比 estar 多了什麼語氣？",
-    rule:"estar + 現在分詞很乾淨俐落，講的就是「現在正在做」。andar + 現在分詞是拉美口語更愛用的說法，多帶一種「這陣子到處走、斷斷續續在做、還沒個結果」的畫面，聽起來像是說話的人也在旁邊看著這件事一直拖著。<br><br>一句記住：estoy buscando trabajo＝我正在找工作；ando buscando trabajo＝我這陣子一直在到處找工作，還沒找到。",
+    rule:"estar + 現在分詞很乾淨俐落，講的就是「現在正在做」。andar + 現在分詞是拉美口語更愛用的說法，帶有「這陣子一直在做、反覆進行、還沒結束」的語感。<br><br>一句記住：estoy buscando trabajo＝我正在找工作；ando buscando trabajo＝我這陣子一直在到處找工作，還沒找到。",
     examples:[
       {es:"¿Qué andas haciendo?", zh:"你在忙什麼？（口語常用，也帶點「你又在搞什麼鬼」的語氣）"},
       {es:"Ando buscando trabajo.", zh:"我這陣子都在到處找工作。（斷斷續續、還沒找到）"},
@@ -986,7 +986,7 @@ const GRAMMAR_DATA = [
   {
     id:"g27", cat:"subjunctive", level:"b1",
     title:"Quiero que...：主詞換人，動詞要跟著換嗎？",
-    rule:"先問自己一件事：這句話裡，是「我」自己要做，還是「我」希望「別人」去做？<br><br>如果做動作的是同一個人（Quiero comer. 我想吃），後面直接接原形動詞就好。如果換成另一個人去做（Quiero que comas. 我希望你吃），que 後面的動詞就要換成虛擬式——兩個主詞不一樣，才會觸發這個轉換。<br><br>常見會觸發這個轉換的情境有願望、情緒、請求、懷疑等六種（下面 WEIRDO 口訣有列），但真正的判斷關鍵永遠是「主詞有沒有換人」。",
+    rule:"先看做事的人有沒有換。<br><br>自己做，用原形動詞（Quiero comer. 我想吃）；希望別人做，用 que + 虛擬式（Quiero que comas. 我希望你吃）。",
     examples:[
       {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。"},
       {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
@@ -1005,6 +1005,7 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"判斷關鍵不是「這句話難不難」，是兩個子句的主詞是不是同一個人：Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）。",
+    note:"除了願望，情緒、非人稱評論、請求、懷疑或否定、Ojalá祈願，也都算「主詞換人」的情境（下面WEIRDO口訣有列六類），但判斷關鍵永遠是同一條：主詞有沒有換人。",
     source:"文法補充",
     conj:{
       verb:"hablar（虛擬式現在式，規則 -ar 動詞示範）",
@@ -1077,13 +1078,13 @@ const GRAMMAR_DATA = [
   {
     id:"g32", cat:"connector", level:"b1",
     title:"pero / sino：要補充，還是要換答案？",
-    rule:"你想在前面說的話之外，再補充一件事嗎？用 pero。<br><br>還是前面那句話根本說錯了，你想換成正確答案？用 sino。<br><br>兩個都能翻成「但是」，但 pero 是站在原地補充，sino 是把前面推翻重講。",
+    rule:"pero：前面成立，補充另一個方向或限制。<br><br>sino：前面被否定，後面換成真正答案。",
     examples:[
       {es:"El amor no se muere, pero sí cambia de forma.", zh:"愛不會死，但它的形式會改變。（劇情原句，E11）"},
       {es:"Nita chapotea en los charcos, pero la ropa se moja.", zh:"妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1）"},
       {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（新編例句，劇情裡沒有sino用法）"}
     ],
-    note:"pero 更接近中文的『可是／不過』，sino 更接近『不是……而是……』——雖然都能翻成「但是」，容易讓人以為可以互換，但其實是兩種不同的說話動作。",
+    note:"中文常常都翻成「但是」，但這只是表面翻譯，不是真正的語用——pero跟sino是兩種不同的說話動作，不是同一件事的兩種寫法。",
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），就用 pero。兩者通常不會互換：前面沒有先否定的句子，很少會用到sino；只是想補充另一件事而不是要換掉，也不適合硬套sino。",
     source:"E11·S9／E1·S7（sino為文法補充）"
   },
@@ -1093,14 +1094,14 @@ const GRAMMAR_DATA = [
   {
     id:"g33", cat:"confusable", level:"b1",
     title:"por / para：西語先問「原因」還是「方向」？",
-    rule:"你現在想問的是「這件事怎麼發生的、從哪裡來」嗎？用 por。<br><br>你想說的是「要往哪裡去、為了什麼」嗎？用 para。<br><br>規則整理：por 往回看原因、來源、交換；para 往前看目的、方向、對象。",
+    rule:"你現在想問的是「這件事怎麼發生的、從哪裡來」嗎？用 por。<br><br>你想說的是「要往哪裡去、為了什麼」嗎？用 para。<br><br>規則整理：por 回頭找原因，para 看接下來的目的。",
     examples:[
       {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。"},
       {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。"},
       {es:"Compré este regalo para Mimi.", zh:"我幫咪咪買了這個禮物。"},
       {es:"Necesito terminar esto para el viernes.", zh:"我星期五之前得完成這個。"}
     ],
-    note:"中文常常都翻成「為了/因為」，但西語看的是方向：por 看的是已經發生的原因，para 看的是還沒到的目標，方向完全相反，不是同一個詞換著用。",
+    note:"中文常常都翻成「為了/因為」，但西語看的是方向：por 看的是已經發生的原因，para 看的是還沒到的目標。",
     trap:"混淆時問自己：這是在講「為什麼發生／怎麼換來的／穿過哪裡」，還是「要往哪裡去／給誰／到什麼時候」？前者用por，後者用para。",
     source:"文法補充"
   },
@@ -1116,7 +1117,7 @@ const GRAMMAR_DATA = [
       {es:"¿Conoces esta ciudad?", zh:"你去過這座城市嗎？熟不熟？"}
     ],
     note:"中文都翻成「知道」，但西語分得很細：saber是腦子裡知道的資訊，conocer是親身經驗累積出來的熟悉感。",
-    trap:"認識「人」一定要用 conocer，而且受詞是人時前面要加 a（conocer a alguien）——這是中文母語者最容易漏掉的地方，Sé a Vera 是錯的，要說 Conozco a Vera。",
+    trap:"認識人用 conocer，不用 saber。受詞是人時，conocer 前面還要加 a（conocer a alguien），這是中文母語者最容易漏掉的地方——要說 Conozco a Vera，不是 Sé a Vera。",
     source:"文法補充"
   },
 
