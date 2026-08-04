@@ -872,13 +872,13 @@ const GRAMMAR_DATA = [
   {
     id:"g23", cat:"verb-pattern", level:"b1",
     title:"Andar + 現在分詞：比 estar 多了什麼語氣？",
-    rule:"estar + 現在分詞很乾淨俐落，講的就是「現在正在做」。andar + 現在分詞是拉美口語更愛用的說法，帶有「這陣子一直在做、反覆進行、還沒結束」的語感。<br><br>一句記住：estoy buscando trabajo＝我正在找工作；ando buscando trabajo＝我這陣子一直在到處找工作，還沒找到。",
+    rule:"estar + 現在分詞（-ando／-iendo）：現在正在做。<br><br>andar + 現在分詞：這陣子一直在做、事情還沒告一段落。<br><br>一句記住：Estoy buscando trabajo. ＝ 我正在找工作（此時此刻）。Ando buscando trabajo. ＝ 我這陣子一直在找工作（還沒找到）。",
     examples:[
       {es:"¿Qué andas haciendo?", zh:"你在忙什麼？（口語常用，也帶點「你又在搞什麼鬼」的語氣）"},
       {es:"Ando buscando trabajo.", zh:"我這陣子都在到處找工作。（斷斷續續、還沒找到）"},
       {es:"Ando pensando en eso.", zh:"我這陣子一直在想那件事。"}
     ],
-    trap:"andar + 現在分詞通常搭配主動的動作動詞（buscando/pensando/diciendo這類），像ser這種描述狀態的動詞不會這樣用（不會說ando siendo）。",
+    trap:"andar 後面只能接主動動作。描述狀態的 ser（是）不能這樣配（不會說ando siendo）。",
     source:"文法補充",
     conj:{
       verb:"andar（走動；口語進行式）",
@@ -986,7 +986,7 @@ const GRAMMAR_DATA = [
   {
     id:"g27", cat:"subjunctive", level:"b1",
     title:"Quiero que...：主詞換人，動詞要跟著換嗎？",
-    rule:"先看做事的人有沒有換。<br><br>自己做，用原形動詞（Quiero comer. 我想吃）；希望別人做，用 que + 虛擬式（Quiero que comas. 我希望你吃）。",
+    rule:"做事的人沒換，用原形動詞（Quiero comer. 我想吃）；希望別人做，用 que + 虛擬式（Quiero que comas. 我希望你吃）。<br><br>一句記住：除了願望，只要前面帶有情緒、評論、請求、懷疑或祈禱，而且主詞換人，就用虛擬式。",
     examples:[
       {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。"},
       {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
@@ -1005,7 +1005,6 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"判斷關鍵不是「這句話難不難」，是兩個子句的主詞是不是同一個人：Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）。",
-    note:"除了願望，情緒、非人稱評論、請求、懷疑或否定、Ojalá祈願，也都算「主詞換人」的情境（下面WEIRDO口訣有列六類），但判斷關鍵永遠是同一條：主詞有沒有換人。",
     source:"文法補充",
     conj:{
       verb:"hablar（虛擬式現在式，規則 -ar 動詞示範）",
@@ -1065,26 +1064,25 @@ const GRAMMAR_DATA = [
   {
     id:"g31", cat:"connector", level:"b1",
     title:"sino / sino que：否定句後的修正",
-    rule:"sino 後面接一個詞或短語（名詞/形容詞/介系詞片語）→ 換一個答案。<br><br>sino que 後面接一整句話（有自己的主詞+動詞）→ 換掉前面的說法，重新說一件事。",
+    rule:"前面先否定，後面用 sino 更正答案。<br><br>後面接詞或短語用 sino；後面接一整句話（含動詞）用 sino que。<br><br>一句記住：不是咖啡，而是茶 → sino té。不是我不去，而是你沒邀請我 → sino que no me invitaste。",
     examples:[
       {es:"Nita no es maleducada, sino que tiene ansiedad social.", zh:"妮妲不是沒禮貌，而是有社交焦慮。（後面是完整子句，用 sino que）"},
       {es:"Esto no es un problema, sino una oportunidad.", zh:"這不是問題，而是機會。（後面只是名詞，用 sino）"},
       {es:"Tito no está enojado, sino cansado.", zh:"迪多不是生氣，而是累了。（後面是形容詞，用 sino）"}
     ],
-    trap:"判斷用 sino 還是 sino que，看後面是不是一個完整句子（有自己的主詞+動詞）——有主詞+動詞用 sino que，只是名詞/形容詞/介系詞短語用 sino。sino 通常會接在一個先被否定的說法後面才會出現，這跟 pero 的單純轉折不一樣（見下一張卡對照）。",
     source:"文法補充"
   },
 
   {
     id:"g32", cat:"connector", level:"b1",
     title:"pero / sino：要補充，還是要換答案？",
-    rule:"pero：前面成立，補充另一個方向或限制。<br><br>sino：前面被否定，後面換成真正答案。",
+    rule:"pero：前面是真的，再補一句。<br><br>sino：前面錯了，換成真正答案。",
     examples:[
       {es:"El amor no se muere, pero sí cambia de forma.", zh:"愛不會死，但它的形式會改變。（劇情原句，E11）"},
       {es:"Nita chapotea en los charcos, pero la ropa se moja.", zh:"妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1）"},
       {es:"No quiero café, sino té.", zh:"我不要咖啡，而是要茶。（新編例句，劇情裡沒有sino用法）"}
     ],
-    note:"中文常常都翻成「但是」，但這只是表面翻譯，不是真正的語用——pero跟sino是兩種不同的說話動作，不是同一件事的兩種寫法。",
+    note:"中文常把 pero、sino 都翻成「但是」，但這只是翻譯習慣，不代表西語裡是同一種用法。<br><br>pero 比較像「好是好，但是……」「對是對，只是……」，前面的內容仍然成立。<br><br>sino 比較像「哪裡是 A，根本是 B」，前面的說法被推翻，後面才是真正答案。",
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），就用 pero。兩者通常不會互換：前面沒有先否定的句子，很少會用到sino；只是想補充另一件事而不是要換掉，也不適合硬套sino。",
     source:"E11·S9／E1·S7（sino為文法補充）"
   },
@@ -1094,7 +1092,7 @@ const GRAMMAR_DATA = [
   {
     id:"g33", cat:"confusable", level:"b1",
     title:"por / para：西語先問「原因」還是「方向」？",
-    rule:"你現在想問的是「這件事怎麼發生的、從哪裡來」嗎？用 por。<br><br>你想說的是「要往哪裡去、為了什麼」嗎？用 para。<br><br>規則整理：por 回頭找原因，para 看接下來的目的。",
+    rule:"por：回頭找原因。<br><br>para：往前看目的。",
     examples:[
       {es:"Gracias por tu ayuda.", zh:"謝謝你的幫忙。"},
       {es:"Caminamos por el parque todas las tardes.", zh:"我們每天下午走過這個公園。"},
@@ -1109,7 +1107,7 @@ const GRAMMAR_DATA = [
   {
     id:"g34", cat:"confusable", level:"b1",
     title:"saber / conocer：你知道，還是你熟悉？",
-    rule:"你想確認的是一個事實、一個資訊，或者知道怎麼做一件事嗎？用 saber。<br><br>你想說的是你對一個人、一個地方熟不熟嗎？用 conocer，因為這種熟悉感要親自接觸過才有。",
+    rule:"saber：知道資訊，或會做一件事。<br><br>conocer：熟悉人、地方或事物。",
     examples:[
       {es:"Nita sabe hablar español.", zh:"妮妲會說西語。"},
       {es:"¿Sabes qué hora es?", zh:"你知道現在幾點嗎？"},
@@ -1124,7 +1122,7 @@ const GRAMMAR_DATA = [
   {
     id:"g35", cat:"confusable", level:"b1",
     title:"pedir / preguntar：要東西，還是要答案？",
-    rule:"你想從對方那裡得到一個東西，或請他做一件事嗎？用 pedir。<br><br>你只是想知道一個答案、找一個資訊嗎？用 preguntar。",
+    rule:"pedir：要東西、請人做事。<br><br>preguntar：要答案、問資訊。",
     examples:[
       {es:"Tito pide un vaso de agua.", zh:"迪多要一杯水。"},
       {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。"},
