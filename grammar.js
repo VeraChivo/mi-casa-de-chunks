@@ -448,13 +448,12 @@ const GRAMMAR_DATA = [
   {
     id:"g10", cat:"verb-pattern", level:"a1a2",
     title:"¿Podemos + 動詞?：我們可以…嗎？",
-    rule:"poder 就是英文的 'can'，用來問「可以嗎」或說「能夠做」。podemos + 原型動詞（字典查到的形式）= 我們能夠 ___。",
+    rule:"想問能不能做一件事，就用 poder + 原形動詞。",
     examples:[
       {es:"¿Podemos salir a jugar?", zh:"我們可以出去玩嗎？"},
       {es:"¿Podemos comer ahora?", zh:"我們現在可以吃了嗎？"},
       {es:"¿Podemos ver la tele?", zh:"我們可以看電視嗎？"}
     ],
-    trap:"poder 變化比較特別：puedo / puedes / puede / podemos / podéis（拉美:pueden）/ pueden",
     source:"E12·S3（¿Puedo jugar también?，劇情現行例句）",
     conj:{
       verb:"poder（能夠／可以）",
@@ -501,13 +500,12 @@ const GRAMMAR_DATA = [
   {
     id:"g11", cat:"verb-pattern", level:"a1a2",
     title:"Deber + 動詞：你應該、必須",
-    rule:"deber（義務）+ 原型動詞（字典查到的形式）= 應該做、必須做某事。",
+    rule:"想說一件事應該做、必須做，就用 deber + 原形動詞。",
     examples:[
       {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
       {es:"Debes lavarte las manos.", zh:"你該洗手。"},
       {es:"Debemos respetar las reglas.", zh:"我們該遵守規則。"}
     ],
-    trap:"deber 變化：debo / debes / debe / debemos / debéis（拉美常用 deben）/ deben",
     source:"目前現行主線暫無deber對應劇情語料（原引用之E1舊版泥巴坑劇情已移除）。deber仍為A1核心情態動詞能力，保留本卡，待未來劇情自然涵蓋時再補回現行來源，不為此新增劇情",
     conj:{
       verb:"deber（應該／必須）",
@@ -685,14 +683,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g18", cat:"verb-pattern", level:"a1a2",
-    title:"Vamos a + 動詞：我們來一起…",
-    rule:"vamos a + 原型動詞 = let's + 動詞。也是 ir 動詞 nosotros 現在式。",
+    title:"Vamos a + 動詞：接下來要做什麼？",
+    rule:"想說接下來要做某件事，就用 vamos a + 原形動詞。",
     examples:[
       {es:"Vamos a respirar.", zh:"來，我們一起深呼吸。"},
       {es:"Vamos al parque.", zh:"我們去公園吧！"},
       {es:"Vamos a comer.", zh:"我們去吃東西吧！"}
     ],
-    trap:"Vamos a + 動詞原形 = let's；Vamos + 地點 = 去哪裡",
+    trap:"Vamos a + 動詞＝要做某件事；Vamos + 地點＝去某個地方。",
     source:"媽媽語塊 ATM·SEL",
     conj:{
       verb:"ir（去）",
@@ -2775,7 +2773,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g12','g17','g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g111']
+  revised: ['g07','g10','g11','g12','g17','g18','g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g111']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
