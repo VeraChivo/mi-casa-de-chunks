@@ -376,14 +376,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g07", cat:"tense", level:"a1a2",
-    title:"SER 說「將來的事」：seré / serás / será",
-    rule:"SER 動詞表示「將來成為」某種身分或角色，常用於角色扮演或預測。",
+    title:"SER 未來式：你會成為什麼？",
+    rule:"想說一個人以後會成為什麼，或猜未來會怎樣，就用 SER 的未來式。",
     examples:[
       {es:"Yo seré la doctora y tú serás la enfermera.", zh:"我來當醫生，你來當護士。"},
       {es:"Tú serás una estrella.", zh:"你將成為一顆明星。"},
       {es:"¿Qué serás de mayor?", zh:"你長大想做什麼？（字面：你將成為什麼？）"}
     ],
-    trap:"SER 未來人稱：seré / serás / será / seremos / seréis / serán",
+    trap:"SER 未來人稱：seré / serás / será / seremos / serán",
     source:"E3·S7",
     conj:{
       verb:"ser（以後要做：將成為）",
@@ -553,8 +553,8 @@ const GRAMMAR_DATA = [
 
   {
     id:"g12", cat:"verb-pattern", level:"a1a2",
-    title:"Para + 動詞：為了做某事",
-    rule:"para + 原型動詞 = 為了…、目的是…。表示「目的」。",
+    title:"Para + 動詞：為了做什麼？",
+    rule:"想說做一件事的目的，就用 para + 原形動詞。",
     examples:[
       {es:"Todos necesitan galletas para curarse.", zh:"所有人都需要餅乾才能康復。"},
       {es:"Necesitas agua para vivir.", zh:"你需要水才能生存。"},
@@ -632,14 +632,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g17", cat:"verb-pattern", level:"a1a2",
-    title:"Sentir：感受情緒動詞",
-    rule:"sentir（感受、覺得）用於描述情緒感受。常見句型：¿Cómo te sientes?（妳覺得怎麼樣？）",
+    title:"Sentirse：你現在感覺怎麼樣？",
+    rule:"想說自己或別人現在感覺怎麼樣，就用 sentirse：me siento／te sientes／se siente + 心情形容詞。",
     examples:[
       {es:"¿Cómo te sientes?", zh:"妳現在覺得怎麼樣？"},
       {es:"Me siento triste.", zh:"我覺得難過。"},
       {es:"Se siente sola.", zh:"她覺得孤單。"}
     ],
-    trap:"sentir（感受到某事）vs sentirse（自身狀態）：日常口語 me siento 最常用",
+    trap:"sentir（感受到一件具體的事，如 Lo siento mucho 我很遺憾）vs sentirse（自身狀態，如 Me siento triste 我覺得難過）——日常口語裡 me siento 最常用。",
     source:"媽媽語塊 ATM·SEL",
     conj:{
       verb:"sentir（感受／覺得）",
@@ -2775,7 +2775,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g111']
+  revised: ['g07','g12','g17','g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g111']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
