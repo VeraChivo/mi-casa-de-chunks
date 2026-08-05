@@ -565,7 +565,7 @@ const GRAMMAR_DATA = [
   {
     id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que：讓別人知道我腦中怎麼理解這件事",
-    rule:"醫生摸摸額頭說Creo que tienes el corazón un poco flojo.（我覺得你的心臟有點虛弱）——這句話是「我想讓你知道，我腦中對這件事的判斷是這樣」，不是在宣告一個確定的事實。同一個骨架，可以用來猜測別人的狀態，也可以用來講出自己內心對某件事的想法，像是Creo que todo es mi error.（我以為都是我的錯）。",
+    rule:"想表達自己的想法、意見或判斷，就用 Creo que + 一整句話。",
     examples:[
       {es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。（劇情原句，E3扮醫生場景）"},
       {es:"Creo que todo es mi error.", zh:"我以為都是我的錯。（劇情原句，SEL線）"},
@@ -617,14 +617,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g16", cat:"phrase", level:"a1a2",
-    title:"直接下指令（對你說）",
-    rule:"對「你」直接下指令：直接用動詞「他/她」的形式就行了，就像英文命令句去掉 You 一樣。",
+    title:"肯定命令句：怎麼對「你」下指令？",
+    rule:"想直接對「你」下命令，動詞直接用第三人稱單數（他／她）的現在式。<br><br>一句記住：Habla.（你說！← él habla）。Come.（你吃！← él come）。",
     examples:[
       {es:"Respira hondo.", zh:"深呼吸。（respirar → respira）"},
       {es:"Tose.", zh:"咳嗽。（toser → tose）"},
       {es:"Abre la boca, por favor.", zh:"請張開嘴巴。（abrir → abre）"}
     ],
-    trap:"否定說法完全不同：No abras la boca（不要張嘴）。例外：ir→ve, ser→sé, hacer→haz",
+    trap:"否定命令改用另一套規則；例外：ir → ve，ser → sé，hacer → haz。",
     source:"E3·S8"
   },
 
@@ -1049,13 +1049,13 @@ const GRAMMAR_DATA = [
   {
     id:"g30", cat:"connector", level:"a1a2",
     title:"porque：因為",
-    rule:"porque（因為）後面一定要接「完整的一句話」（有自己的主詞+動詞），用來說明原因。跟長得很像的 por 不一樣：por 是介系詞，後面直接接名詞就好，不用整句。",
+    rule:"porque ＋ 完整句子。<br><br>por ＋ 單一名詞。<br><br>一句記住：No voy porque llueve. ／ No voy por la lluvia.（意思一樣，前面接的東西不同）",
     examples:[
       {es:'Papá Tato dice: "Los recordamos porque los queremos."', zh:"達多爸爸說：「我們記得他們，因為我們愛他們。」（劇情原句，E11）"},
       {es:"Tito no quiere hablar porque tiene vergüenza.", zh:"迪多不想說話，因為他覺得害羞。（新編例句）"},
       {es:"No fuimos al parque porque estaba lloviendo.", zh:"我們沒去公園，因為在下雨。（新編例句）"}
     ],
-    trap:"porque 後面接「主詞+動詞」的完整句子；如果原因只是一個名詞、不是一整句話，要換成 por + 名詞（例如 por la lluvia／因為下雨），不能說 porque la lluvia。",
+    trap:"原因只是一個名詞、不是一整句話，就換成 por + 名詞（例如 por la lluvia／因為下雨），不能說 porque la lluvia。",
     source:"E11·S6（文法補充）"
   },
 
@@ -2432,7 +2432,7 @@ const GRAMMAR_DATA = [
   {
     id:"g108", cat:"preposition", level:"a1a2",
     title:"介系詞場景：en/a/de/con/por/para不是單字，是畫面",
-    rule:"這六個介系詞是A1之後每一句話都會用到的地基，但死背「en=在、a=去」這種單一翻譯完全沒用——要記的是「畫面」：en是待在一個空間裡面，a是朝向一個目的地，de是從某個起點來，con是兩樣東西綁在一起，para是朝著一個對象/目的，por是穿過/透過某個路徑或原因。",
+    rule:"看圖手指方向。<br><br>en → 在空間裡面。a → 朝向目的地。de → 從起點來。con → 一起、連在一起。para → 指向對象。por → 經過一段路。<br><br>一句記住：Estoy en casa.（在家）。Voy a casa.（前往）。Vengo de casa.（起點）。Voy con ella.（一起）。Esto es para ti.（對象）。Paso por tu casa.（經過）。",
     examples:[
       {es:"Estoy en casa.", zh:"我在家。（en：人待在一個空間「裡面」，画面是「被包在裡面」）"},
       {es:"Voy a la escuela.", zh:"我要去學校。（a：朝著一個目的地移動，畫面是「箭頭指向那裡」）"},
@@ -2441,7 +2441,7 @@ const GRAMMAR_DATA = [
       {es:"Este regalo es para ti.", zh:"這個禮物是給你的。（para：朝著一個對象/目的，畫面是「送到你手上」）"},
       {es:"Pasamos por el parque.", zh:"我們經過公園。（por：穿過一個路徑，畫面是「穿過去/路過」）"}
     ],
-    trap:"por跟para是這批裡最容易混的一組（見g33完整對照），但先不用急著鑽研細節——這張卡的重點是先把每個介系詞配一個「畫面」記住，之後遇到por/para的細節分岔，會比死背規則更容易理解，因為你已經知道por的核心畫面是「穿過/經過」，para的核心畫面是「朝向一個終點」。",
+    trap:"por跟para是這批裡最容易混的一組，細節見g33完整對照——這張卡的重點是先把每個介系詞配一個畫面記住。",
     source:"文法補充"
   },
 
@@ -2773,7 +2773,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g10','g11','g12','g17','g18','g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g111']
+  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g23','g27','g30','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
