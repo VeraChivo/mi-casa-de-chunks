@@ -1770,20 +1770,20 @@ const GRAMMAR_DATA = [
   {
     id:"g75", cat:"subjunctive", level:"b2c1",
     title:"如果人生重來一次：不可能的假設情境（過去虛擬式延伸）",
-    rule:"過去虛擬式用在「與現在事實相反的假設」句型：Si + 過去虛擬式，...就會 + 條件式。例如 Si tuviera dinero, compraría una finca.（如果我有錢，我就會買一座莊園——但實際上我沒有錢）。<br><br>過去虛擬式的變化找法：先找出這個動詞「他們」那個過去式形式（tuvieron這種），去掉-ron，加上-ra/-ras/-ra/-ramos/-rais/-ran（也有-se字尾的變體，兩者可互換，-ra版本較常用）。<br><br>除了假設句，過去虛擬式也用在Ojalá、no creía que、esperaba que等過去時態的願望/懷疑句型裡。",
+    rule:"除了 Si 假設句，願望、懷疑也會用過去虛擬式。主句回到過去，後面的動作也跟著退回過去虛擬式。",
     examples:[
       {es:"Si tuviera dinero, viajaría por toda Latinoamérica.", zh:"如果我有錢，我會環遊整個拉丁美洲。"},
       {es:"Ojalá pudiera hablar español perfectamente.", zh:"真希望我能講一口完美的西語。"},
       {es:"No creía que fuera tan difícil aprender los tiempos verbales.", zh:"我沒想到學動詞時態會這麼難。"}
     ],
-    trap:"過去虛擬式不是從原形動詞直接推，而是從這個動詞「他們」的過去式形式推——例如 tener → tuvieron → tuviera（不是從tener直接變）。這也是為什麼不規則動詞的過去虛擬式反而更好推：只要記得該動詞「他們」的過去式怎麼講，就能推出整組過去虛擬式變位。",
+    trap:"過去虛擬式從動詞第三人稱複數的過去式推（也就是「他們」那一格）。例如 tener → tuvieron → tuviera。不規則動詞反而比較容易找到規律。",
     source:"文法補充"
   },
 
   {
     id:"g76", cat:"verb-pattern", level:"b2c1",
     title:"Se habla español：西語裡不說主角的說法（日常西語真正常說的被動）",
-    rule:"西語有兩種被動語態表達方式。①正式被動語態（voz pasiva）：ser + 過去分詞（要依東西的陰陽性單複數變化），常見於書面新聞/正式文件，例如 El edificio fue construido en 1990.（這棟建築建於1990年）。②更常用、更口語的「se被動」（se pasivo）：se + 動詞，不需要明確指出動作執行者，例如 Se habla español aquí.（這裡講西語）、Se vende esta casa.（此屋出售）。日常口語裡se pasivo比正式voz pasiva更常見，新聞標題/書面正式文件才比較常用voz pasiva。",
+    rule:"不想指出是誰做的事，日常西語常用 se + 動詞帶過。<br><br>正式被動式（ser + 過去分詞）較常出現在新聞、文件等正式場合。",
     examples:[
       {es:"El puente fue construido por ingenieros franceses.", zh:"這座橋是由法國工程師建造的。"},
       {es:"Se habla español en toda Latinoamérica.", zh:"整個拉丁美洲都講西語。"},
@@ -1796,7 +1796,7 @@ const GRAMMAR_DATA = [
   {
     id:"g77", cat:"connector", level:"b2c1",
     title:"同一句話，語氣一換，立場就變了：Aunque的說話者視角",
-    rule:"這張卡建立在g56已經教過的規則上（aunque+陳述式=雖然，aunque+虛擬式=即使），這裡不重教規則，練的是<b>聽懂說話者站在哪一邊</b>。同一句「Aunque + 動詞」，中文常常翻不出差別（兩句都可能翻成「雖然/就算下雨」），但西語母語者聽得出來立場不同——這正是這張卡存在的價值。<br><br>想像老師在跟學生講話：<br>「Aunque llueve, vamos a salir.」→ 老師正在告知一件已經發生的事實（外面真的在下雨）。<br>「Aunque llueva, vamos a salir.」→ 老師是先講好一個原則（不管天氣怎樣，我們都會出門），下雨與否還不確定。",
+    rule:"Aunque llueve... → 說話者知道真的在下雨。<br><br>Aunque llueva... → 說話者不知道會不會下雨，只是假設這個情況。<br><br>陳述式：已知事實。虛擬式：未知可能。",
     examples:[
       {es:"Aunque llueve, iré a la fiesta.", zh:"雖然在下雨，我還是會去派對（我正在告訴你一個已經發生的事實）。"},
       {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（我先講好這個原則，不管天氣如何都一樣）。"},
@@ -2775,7 +2775,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57']
+  revised: ['g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
