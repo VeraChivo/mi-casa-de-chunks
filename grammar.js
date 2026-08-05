@@ -1427,13 +1427,14 @@ const GRAMMAR_DATA = [
   {
     id:"g53", cat:"subjunctive", level:"b2c1",
     title:"Quería que...：過去的願望與請求",
-    rule:"當主要子句的動詞是<b>過去時態</b>（quería、pidió、esperaba…），而且滿足 WEIRDO 條件時，que 後面要用過去虛擬式（Imperfecto de Subjuntivo）。<br><br>規則變化：<br>• -AR 動詞：hablar → habl<b>ara</b>（我說了但那是在過去語境裡的願望）<br>• -ER / -IR 動詞：comer → com<b>iera</b>、vivir → viv<b>iera</b><br><br>高頻不規則形（背這幾個最夠用）：<br>ser／ir → fuera／fuera　tener → tuviera　hacer → hiciera　poder → pudiera　decir → dijera　haber → hubiera",
+    rule:"以前希望、請求、期待別人做某件事時，後面的動作也跟著退回過去虛擬式。",
     examples:[
       {es:"Mamá Cata quería que Nita durmiera temprano.", zh:"卡妲媽媽希望妮妲早點睡。"},
       {es:"Tito pidió que todos tuvieran paciencia.", zh:"迪多請求大家有點耐心。（pidió=過去，→ tuvieran）"},
       {es:"Era importante que la familia estuviera unida.", zh:"家人團結在一起是很重要的事。（Era=過去非人稱，→ estuviera）"}
     ],
-    trap:"記憶公式：主句是過去時態 → que 後面用過去虛擬式。主句是現在時態（quiero/es importante）→ 用現在虛擬式（見 g27）。兩套虛擬式不混用，時間一對上就知道選哪個。",
+    trap:"主句是現在，用現在虛擬式。主句是過去，用過去虛擬式。先看時間，再選形式。",
+    note:"規則變化：-AR動詞 hablar → habl<b>ara</b>；-ER/-IR動詞 comer → com<b>iera</b>、vivir → viv<b>iera</b>。<br><br>高頻不規則形：ser／ir → fuera，tener → tuviera，hacer → hiciera，poder → pudiera，decir → dijera，haber → hubiera。",
     source:"文法補充",
     conj:{
       verb:"hablar（過去虛擬式 -ra 形，LatAm 優先用 -ra 不用 -se）",
@@ -1449,53 +1450,52 @@ const GRAMMAR_DATA = [
 
   {
     id:"g54", cat:"subjunctive", level:"b2c1",
-    title:"No creo que haya...：懷疑一件可能已發生的事",
-    rule:"當 WEIRDO 主句的動詞是<b>現在時態</b>，但後面子句說的是一件「可能已經發生」的事，que 後面就用「現在完成虛擬式」：<b>haya / hayas / haya / hayamos / hayan + 過去分詞（-ado/-ido）</b>。<br><br>白話判斷法：說的是「現在懷疑/希望/擔心——某件過去的事有沒有發生」→ haya + 過去分詞。",
+    title:"No creo que haya...：可能發生過，但我不確定",
+    rule:"你覺得某件事可能已經發生，但還不確定，就用 haya + 過去分詞。",
     examples:[
       {es:"No creo que Nita haya terminado de comer.", zh:"我不覺得妮妲已經吃完了。（現在不信 → 對已發生的事）"},
       {es:"Espero que Tito haya dormido bien anoche.", zh:"希望迪多昨晚睡得好。（現在希望 → 對已發生的事）"},
       {es:"Es una lástima que no hayas venido.", zh:"你沒來真是太可惜了。（現在惋惜 → 對已不來的事實）"}
     ],
-    trap:"跟一般現在完成式（He terminado. → 我已經吃完了）的差別是：一般完成式是陳述「確實發生」，現在完成虛擬式是在「懷疑/希望/擔心某件事有沒有發生」——後面那個不確定性才是觸發虛擬式的關鍵。",
+    note:"He terminado. → 我確定完成了。<br><br>No creo que haya terminado. → 我不確定他有沒有完成。",
     source:"文法補充"
   },
 
   {
     id:"g55", cat:"subjunctive", level:"b2c1",
     title:"Si + 過去虛擬式 + 條件式：與現實相反的假設",
-    rule:"這是西語假設句的 B2 大魔王：說一件<b>目前並非事實</b>的假設，格式固定——<br><br><b>Si + 過去虛擬式（-ra 形） + 條件式（-ría）</b><br><br>對照：Si + 現在陳述式 + 未來式 = 真實可能（見 g19 IR 近未來式旁邊的用法）<br>Si tuviera dinero, compraría → 我沒有錢（所以才假設）<br>Si tengo dinero, compraré → 我可能有錢（真實可能性）",
+    rule:"先問自己：這件事是真的有可能發生，還是只是想像？<br><br>現在不是事實，只是假設 → Si + 過去虛擬式，……就用條件式。",
     examples:[
       {es:"Si tuviera más tiempo, dormiría una siesta cada día.", zh:"如果我有更多時間，我每天都要午睡。（事實：沒時間）"},
       {es:"Si fuera viernes, saldríamos a pasear.", zh:"如果今天是週五，我們就出去散步了。（事實：今天不是週五）"},
       {es:"Si pudiera hablar español, viajaría por toda América Latina.", zh:"如果我能說西語，我就要遊遍整個拉丁美洲。（學到一半的感嘆版）"}
     ],
-    trap:"兩套 Si 句不可混搭：Si tuviera + compraría ✅；Si tengo + compraría ❌（時態搭配要一致）。過去虛擬式永遠搭條件式，現在陳述式永遠搭未來式——選定一組就成對用到底。",
+    trap:"Si tuviera dinero, compraría una casa. → 現在沒有錢，只是假設。<br><br>Si tengo tiempo, voy / iré. → 真的可能有時間。",
     source:"文法補充"
   },
 
   {
     id:"g56", cat:"connector", level:"b2c1",
-    title:"Aunque：雖然（陳述式）vs 即使（虛擬式）",
-    rule:"aunque 是 B2 的雙面刃連接詞——後面接陳述式還是虛擬式，意思完全不同：<br><br>• <b>aunque + 陳述式</b> = <b>雖然</b>（事實讓步，承認這件事確實發生）<br>• <b>aunque + 虛擬式</b> = <b>即使</b>（假設讓步，這件事還沒確定，只是假設）",
+    title:"Aunque：是真的發生，還是假設？",
+    rule:"你知道這件事正在發生、或已經發生了 → aunque 後面用陳述式。<br><br>你只是假設、不確定會不會發生 → aunque 後面用虛擬式。",
     examples:[
       {es:"Aunque está cansada, Nita sigue dibujando.", zh:"雖然很累，妮妲還是繼續畫畫。（她真的很累，這是已經發生的事實）"},
       {es:"Aunque esté cansada, Nita seguirá dibujando.", zh:"即使（萬一）累了，妮妲也還是會繼續畫畫。（現在還不確定她累不累，只是先假設）"},
       {es:"Aunque llueva, iremos a la fiesta.", zh:"就算下雨，我們也要去派對。（現在還不知道會不會下雨）"}
     ],
-    trap:"判斷訣竅：說話時你<b>確定這件事正在發生/已經發生</b>？用陳述式。你只是<b>假設/承認一種可能性</b>，不確定？用虛擬式。同一個 aunque，一字之差，語氣截然不同。",
+    trap:"同一個 aunque，一字之差，語氣差很多：Aunque llueve...（陳述式＝雖然，真的在下雨）vs Aunque llueva...（虛擬式＝即使，還不知道會不會下雨）。",
     source:"文法補充"
   },
 
   {
     id:"g57", cat:"verb-pattern", level:"b2c1",
-    title:"SE 被動 / SE 無人稱：「被動式」的拉美親戚",
-    rule:"西語的被動不只有 ser + 過去分詞，日常更自然的說法是用 se：<br><br>① <b>SE 被動</b>（se pasivo）：「東西被做了某事」——動詞要跟後面那個東西的單複數一致（一個東西→動詞單數，好幾個東西→動詞複數）<br>② <b>SE 無人稱</b>（se impersonal）：「大家都這樣說/做」——不知道或不想說是誰做的，動詞固定用同一種形式（se dice/se puede，不隨東西的單複數變化）",
+    title:"SE 被動 / SE 無人稱：到底有沒有一個東西被影響？",
+    rule:"有沒有一個東西被拿來做動作？有的話用 SE 被動，動詞跟那個東西單複數變化（Se vende pan. / Se venden flores.）。<br><br>沒有特定東西，只是在說「有人、大家都這樣做」→ SE 無人稱，通常用第三人稱單數（Se dice que… / Se puede…）。",
     examples:[
       {es:"En México se celebra el Día de los Muertos.", zh:"在墨西哥，亡靈節是大家都會慶祝的節日。"},
       {es:"Se venden flores de cempasúchil en todas partes.", zh:"到處都有萬壽菊在賣。"},
       {es:"Se dice que el cempasúchil guía a las almas.", zh:"據說萬壽菊能指引靈魂的路。（沒有指出是誰說的，動詞固定用這個形式，不隨後面內容變化）"}
     ],
-    trap:"SE 被動的動詞要跟後面那個東西的單複數一致（Se vende pan. vs Se venden flores.）；SE 無人稱沒有東西可以對應，所以永遠固定用同一種形式：se dice/se puede/se considera。判斷方法：句子裡有沒有一個「東西」被動作影響到——有的話是 SE 被動，沒有的話是 SE 無人稱。",
     source:"文法補充"
   },
 
@@ -2775,7 +2775,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g23','g27','g31','g32','g33','g34','g35']
+  revised: ['g23','g27','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
