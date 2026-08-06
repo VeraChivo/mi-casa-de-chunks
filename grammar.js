@@ -1209,14 +1209,14 @@ const GRAMMAR_DATA = [
 
   {
     id:"g41", cat:"verb-pattern", level:"b1",
-    title:"Echar：萬用動詞，意思看後面接什麼",
-    rule:"echar 字面是「丟、扔」，但西語日常有好幾組固定搭配延伸出去，意思差很大，是典型的「萬用動詞」——一定要看後面接什麼才能確定意思。",
+    title:"Echar：意思跟著後面接的東西變",
+    rule:"想知道 echar 在這句是什麼意思，先看後面接什麼——固定搭配的意思常常跟字面的「丟、扔」差很大。",
     examples:[
       {es:"Echaron a Tito del equipo.", zh:"迪多被踢出隊了。（字面：把迪多從隊上丟出去；echar a alguien de...＝開除/趕走）"},
       {es:"¿Me echas un poco de agua?", zh:"可以幫我倒一點水嗎？（echar ＝倒/加）"},
       {es:"Echo de menos a mi familia.", zh:"我想念我的家人。（echar de menos ＝想念）"}
     ],
-    trap:"echar 本身意思很廣（丟/倒/放/趕），不能只背「echar=丟」就套用所有句子——重點是記住整組固定搭配（echar a alguien／echar de menos），把它們當語塊背，不要拆開單獨背 echar。",
+    trap:"echar 本身意思很廣（丟/倒/放/趕）——重點是把整組固定搭配（echar a alguien／echar de menos）當語塊背，不要拆開單獨背 echar。",
     source:"文法補充"
   },
 
@@ -2773,7 +2773,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g23','g27','g30','g31','g32','g33','g34','g35','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111']
+  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g23','g27','g30','g31','g32','g33','g34','g35','g41','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111']
 };
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
