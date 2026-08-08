@@ -2542,8 +2542,8 @@ const GRAMMAR_DATA = [
 
   {
     id:"g113", cat:"verb-pattern", level:"b1",
-    title:"意見表達：Creo que之外還能怎麼說",
-    rule:"g13教過的Creo que是意見表達最基本的入門款，B1程度需要更多變化——en mi opinión/desde mi punto de vista這類開場白讓意見表達更正式有條理，estoy de acuerdo/no estoy de acuerdo讓你能回應別人的意見（同意或反對），depende de讓你能給出不那麼絕對的答案，這些是B1→B2「討論抽象話題」不可或缺的句型骨架。",
+    title:"意見表達：表達立場與保留",
+    rule:"想表達意見、表示同意，或保留立場，就用對應的句型。",
     examples:[
       {es:"En mi opinión, los espacios verdes son muy importantes.", zh:"依我看，綠地空間非常重要。（en mi opinión：比creo que更正式的意見開場白，常用在討論/寫作語境）"},
       {es:"Desde mi punto de vista, esta ciudad necesita más parques.", zh:"從我的角度來看，這座城市需要更多公園。（desde mi punto de vista：強調「這是我個人的視角」，語氣比creo que更慎重）"},
@@ -2551,7 +2551,7 @@ const GRAMMAR_DATA = [
       {es:"No estoy de acuerdo con esa idea.", zh:"我不同意那個想法。（no estoy de acuerdo con + 事物：表達不同意）"},
       {es:"Depende de la situación.", zh:"要看情況而定。（depende de：給出保留、不絕對的答案，日常對話跟正式討論都很常用）"}
     ],
-    trap:"這些句型是B2抽象論述的必要零件——B2例句「Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.」裡的「considero que」（我認為，比creo que更書面的同義詞）就是從這批意見表達句型再往上升一級，先把en mi opinión/estoy de acuerdo/depende de這幾個練順，才有辦法接住B2那種「先讓步、再表達立場」的複雜論述句。",
+    trap:"considero que是creo que的書面版，跟這批句型放在一起用更正式：Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.（雖然我認為綠地空間重要，但很多城市投資不足）",
     source:"文法補充"
   },
 
@@ -2584,16 +2584,46 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g116", cat:"tense", level:"b1",
-    title:"經驗時態前導詞：alguna vez/nunca/todavía/ya",
-    rule:"這批詞是B1→現在完成式（he hecho...）最常見的搭配副詞，用來問/答「有沒有經驗過」——alguna vez（曾經/有沒有過）通常用在疑問句，nunca（從未）用在否定回答，todavía（還/仍然，常配no todavía＝還沒）用在事情還沒發生，ya（已經）用在事情已經發生。",
+    id:"g116a", cat:"tense", level:"b1",
+    title:"alguna vez：曾經？",
+    rule:"alguna vez + 現在完成式 → 曾經？",
     examples:[
-      {es:"¿Alguna vez has comido chapulines?", zh:"你有吃過蚱蜢嗎？（¿Alguna vez has + 過去分詞...?：問對方有沒有過這個經驗）"},
-      {es:"Nunca he viajado a Argentina.", zh:"我從來沒去過阿根廷。（nunca + he + 過去分詞：從未做過某事）"},
-      {es:"Todavía no he terminado la tarea.", zh:"我還沒做完功課。（todavía no + he + 過去分詞：事情還沒發生）"},
-      {es:"Ya he comido, gracias.", zh:"我已經吃過了，謝謝。（ya + he + 過去分詞：事情已經發生）"}
+      {es:"¿Has estado alguna vez en España?", zh:"你曾經去過西班牙嗎？"},
+      {es:"¿Has probado alguna vez esto?", zh:"你曾經試過這個嗎？"}
     ],
-    trap:"這四個詞幾乎都固定搭配現在完成式（he/has/ha + 過去分詞），是「講經驗」最自然的語感標記——聽到alguna vez/nunca/todavía/ya，大腦要立刻反應「後面應該接現在完成式」，這個組合感抓熟了，B1的經驗敘事就會流暢很多。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g116b", cat:"tense", level:"b1",
+    title:"nunca：從來沒有",
+    rule:"nunca + 現在完成式 → 從來沒有……",
+    examples:[
+      {es:"Nunca he estado allí.", zh:"我從沒去過那裡。"},
+      {es:"Nunca he probado eso.", zh:"我從沒試過那個。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g116c", cat:"tense", level:"b1",
+    title:"todavía no：仍然 沒有／仍未／還沒",
+    rule:"todavía no + 現在完成式 → 仍然 沒有……／仍未……／還沒……",
+    examples:[
+      {es:"Todavía no he comido.", zh:"我還沒吃。"},
+      {es:"Todavía no lo he visto.", zh:"我還沒看到。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g116d", cat:"tense", level:"b1",
+    title:"ya：已經",
+    rule:"ya + 現在完成式 → 已經……",
+    examples:[
+      {es:"Ya he comido.", zh:"我已經吃了。"},
+      {es:"¿Ya has comido?", zh:"你已經吃了嗎？"}
+    ],
     source:"文法補充"
   },
 
@@ -2761,7 +2791,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52','g53','g54','g55','g56','g57','g58','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52','g53','g54','g55','g56','g57','g58','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
   historical: ['g14'],
   incubating: []
 };
@@ -2773,8 +2803,19 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g23','g27','g30','g31','g32','g33','g34','g35','g41','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111']
+  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g23','g27','g30','g31','g32','g33','g34','g35','g41','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g113','g116a','g116b','g116c','g116d']
 };
+
+// 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
+// relation五種：prerequisite前置技能／extends延伸技能／uses使用某文法結構／related相關技能／family同一語塊家族
+// 卡片本身只教自己的判斷，不把這裡的關係寫進title/rule——關係全部集中在這裡查
+const SKILL_GRAPH = [
+  { from: "g13", to: "g113", relation: "extends" },
+  { from: "g05", to: "g116a", relation: "uses" },
+  { from: "g05", to: "g116b", relation: "uses" },
+  { from: "g05", to: "g116c", relation: "uses" },
+  { from: "g05", to: "g116d", relation: "uses" }
+];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
 // 「人怎麼說話」跟「人為什麼這樣說」都移去🌎拉美巡禮。純加法分類，不改動GRAMMAR_DATA
