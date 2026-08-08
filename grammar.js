@@ -272,7 +272,7 @@ const GRAMMAR_DATA = [
   {
     id:"g03", cat:"ser-estar", level:"a1a2",
     title:"ESTAR + -ando：正在做某事",
-    rule:"ESTAR（正確人稱）+ 動詞字尾改成 -ando / -iendo = 正在做某事。就像英文的 -ing！",
+    rule:"ESTAR（正確人稱）+ 動詞字尾改成 -ando / -iendo → 正在做某事。",
     emph:true,
     examples:[
       {es:"Hoy está lloviendo.", zh:"今天正在下雨。（新編例句，劇情原句是「De repente, empieza a llover.」不是estar+ando形式；está + llover → lloviendo）"},
@@ -296,7 +296,7 @@ const GRAMMAR_DATA = [
   {
     id:"g04", cat:"ser-estar", level:"a1a2",
     title:"SER vs ESTAR + 描述詞：意思大不同！",
-    rule:"同一個描述詞接 SER 或 ESTAR，意思會完全不同！SER = 本質評價；ESTAR = 當下感受。",
+    rule:"同一個描述詞接SER或接ESTAR，意思常常會不一樣——這組例子裡，SER偏向本質評價，ESTAR偏向當下感受，但不是所有SER/ESTAR的用法都能套這個公式。",
     examples:[
       {es:"La sopa es buena.", zh:"這是好湯。（SER：本質評價）"},
       {es:"La sopa está buena.", zh:"這湯現在很好喝。（ESTAR：當下狀態）"},
@@ -402,7 +402,7 @@ const GRAMMAR_DATA = [
   {
     id:"g08", cat:"gustar", level:"a1a2",
     title:"Me gusta vs Me encanta：喜歡的程度",
-    rule:"中文腦：「我喜歡這首歌。」→ 西語腦：「這首歌讓我覺得喜歡。」→ Me gusta esta canción. 動詞跟著「被喜歡的事物」走，不是說話者！Me gusta（單數事物）/ Me gustan（複數事物）；Me encanta = 我超愛（比 gusta 強 10 倍）。",
+    rule:"中文「我喜歡」的主詞是「我」；西語gustar的主詞是「被喜歡的東西」，動詞要跟著它變化：Me gusta（單數）／Me gustan（複數）。<br><br>Me encanta比gusta強很多，等於「超愛」。",
     examples:[
       {es:"A Nita le gusta el helado.", zh:"妮妲喜歡冰淇淋。（劇情原句，E20）"},
       {es:"A Tito le encanta su carrito rojo.", zh:"迪多超愛他的紅色小車車。（劇情原句，E20）"},
@@ -425,7 +425,7 @@ const GRAMMAR_DATA = [
   {
     id:"g09", cat:"gustar", level:"a1a2",
     title:"A + 人 + le gusta：某人喜歡",
-    rule:"GUSTAR不是「我喜歡」的直接翻譯，是「這件事讓我覺得喜歡」——西語把「喜歡的東西」放在主詞位置，「感覺喜歡的人」放在旁邊（A + 人 + le/les + gusta(n) + 名詞或原形動詞），順序跟中文剛好相反。",
+    rule:"GUSTAR不是「我喜歡」的直接翻譯。想說「某人喜歡某事」，就用 A + 人 + le/les + gusta(n) + 名詞或原形動詞。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
       {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"}
@@ -2815,7 +2815,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d']
+  revised: ['g03','g04','g07','g08','g09','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
