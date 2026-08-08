@@ -3832,6 +3832,7 @@ function openGrammarCard(gId){
           </div>`).join('')}
       </div>
     </div>` : '';
+  const skillGraphHtml = _skillGraphHtml(gId);
   const userExs = (grammarUserExamples[gId]||{}).user_examples||[];
   const userExHtml = userExs.length
     ? `<div class="grammar-user-examples">
@@ -3854,9 +3855,36 @@ function openGrammarCard(gId){
     ${g.trap?`<div class="grammar-tag-box tag-trap"><div class="grammar-tag-badge">⚠️ 常見陷阱</div><div class="grammar-tag-body">${g.trap}</div></div>`:''}
     ${g.crossLang?`<div class="grammar-crosslang">🌐 ${g.crossLang}</div>`:''}
     ${g.quirk?`<div class="grammar-tag-box tag-quirk"><div class="grammar-tag-badge">🐛 調皮特例</div><div class="grammar-tag-body">${g.quirk}</div></div>`:''}
+    ${skillGraphHtml}
     ${userExHtml}
     <div class="grammar-source">📍 ${g.source}</div>
   `);
+}
+
+// 技能關係圖 MVP（2026-08-06）：只讀SKILL_GRAPH既有資料，不新增schema、不新增關係，
+// 純粹把「這張卡的前置/延伸卡是誰」畫出來、點了能跳過去。找不到對應卡片時退回顯示id本身，不中斷渲染。
+function _skillGraphHtml(gId){
+  if(typeof SKILL_GRAPH === 'undefined' || !SKILL_GRAPH.length) return '';
+  const incoming = SKILL_GRAPH.filter(r => r.to === gId);   // 別人指向這張卡＝這張卡的前置/被使用的基礎
+  const outgoing = SKILL_GRAPH.filter(r => r.from === gId); // 這張卡指向別人＝這張卡延伸出去的下一階
+  if(!incoming.length && !outgoing.length) return '';
+  const relLabel = {prerequisite:'前置技能', extends:'延伸', uses:'使用', related:'相關', family:'同語塊家族'};
+  const row = (otherId, dir, relation) => {
+    const other = GRAMMAR_DATA.find(x => x.id === otherId);
+    const label = other ? other.title : otherId;
+    const arrow = dir==='in' ? '⬅' : '➡';
+    const relTxt = relLabel[relation] || relation;
+    return `<div class="skill-graph-row" onclick="event.stopPropagation();openGrammarCard('${escAttr(otherId)}')">
+      <span class="skill-graph-arrow">${arrow}</span>
+      <span class="skill-graph-rel">${relTxt}</span>
+      <span class="skill-graph-label">${label}</span>
+    </div>`;
+  };
+  return `<div class="grammar-skill-graph">
+    <div class="skill-graph-title">🔗 技能關係</div>
+    ${incoming.map(r => row(r.from, 'in', r.relation)).join('')}
+    ${outgoing.map(r => row(r.to, 'out', r.relation)).join('')}
+  </div>`;
 }
 
 function closeGrammarModal(){

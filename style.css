@@ -712,6 +712,14 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gp-landmine:active{opacity:.7}
 .grammar-rule-emph{font-size:14.4px;font-weight:900;color:var(--tmid);line-height:1.65;margin-bottom:12px;padding:9px 11px;background:rgba(159,208,222,.1);border-radius:9px;border-left:3px solid var(--mizu)}
 .grammar-source{font-size:9px;font-weight:800;color:var(--nezumi);letter-spacing:.5px;text-transform:uppercase}
+/* 🔗技能關係圖MVP（2026-08-06，讀SKILL_GRAPH，只顯示已存在的前置/延伸關係） */
+.grammar-skill-graph{margin:10px 0;padding:8px 10px;background:rgba(108,155,210,.08);border-radius:10px;border-left:3px solid var(--misora)}
+.skill-graph-title{font-size:11px;font-weight:900;color:var(--misora);margin-bottom:6px}
+.skill-graph-row{display:flex;align-items:center;gap:7px;padding:5px 6px;border-radius:7px;cursor:pointer}
+.skill-graph-row:active{background:rgba(108,155,210,.14)}
+.skill-graph-arrow{font-size:13px;flex-shrink:0}
+.skill-graph-rel{font-size:10px;font-weight:800;color:var(--tlight);flex-shrink:0;background:var(--bg2);padding:1px 7px;border-radius:999px}
+.skill-graph-label{font-size:12.5px;font-weight:800;color:var(--konpeki)}
 /* 用戶造句區 */
 .grammar-user-examples{margin:10px 0 6px;border-top:1px solid var(--bg2);padding-top:10px}
 .grammar-user-label{font-size:11px;font-weight:900;color:var(--benikake);margin-bottom:6px;letter-spacing:.4px}
