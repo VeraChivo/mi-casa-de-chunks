@@ -737,7 +737,7 @@ const GRAMMAR_DATA = [
   {
     id:"g19", cat:"tense", level:"a1a2",
     title:"IR + a + 動詞：從「去」長出行動路線",
-    rule:"準備出門前，西語人常常先說一句「我要去做什麼」——ir的變位加上a和原形動詞，就是這句話的公式：Voy a comer.（我要吃飯了）、¿Vas a salir?（你要出去嗎）、Vamos a empezar.（我們要開始了），任何人稱都能用。voy不只是腳在移動，很多時候是「我現在決定要往那個方向走」的一個開關，人可能根本還沒動。",
+    rule:"想說「我要去做什麼」，就用 ir 的變位 + a + 原形動詞：voy/vas/va/vamos/van，任何人稱都能用。",
     examples:[
       {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
       {es:"Mamá siempre te va a cuidar.", zh:"媽媽會一直守護你喔。（🛌床邊低語呢原句）"},
@@ -752,7 +752,8 @@ const GRAMMAR_DATA = [
         {es:"Todo va a salir bien.", zh:"🔮結果預測：對還沒發生的結果表達安心（彈藥庫e2_04原句）"}
       ]
     },
-    trap:"跟「Vamos a + 動詞」（見另一張卡）不要搞混：那張是限定「我們一起來」，這裡任何人稱都能用。ir 也能單獨表示「去某地點」：Voy al parque.（我要去公園）——後面接地點、不接動詞。六人稱完整變位可到🌀超級變變變查 ir。",
+    trap:"跟「Vamos a + 動詞」（見另一張卡）不要搞混：那張是限定「我們一起來」，這裡任何人稱都能用。ir 也能單獨表示「去某地點」：Voy al parque.（我要去公園），後面接地點、不接動詞。六人稱完整變位可到🌀超級變變變查 ir。",
+    note:"voy常常是「我現在決定要往那個方向走」的一個開關動作，人可能根本還沒真的移動——這也是為什麼Todo va a salir bien、Mamá siempre te va a cuidar這種沒有物理移動的句子，也能用ir+a的原因。",
     crossLang:"快速對接：IR + a + 動詞＝<br>英文：be going to<br>台語：欲（beh）<br>我欲食（Guá beh tsia̍h）→ 華語：我要吃了<br>客語：愛（oi）<br>𠊎愛食（Ngài oi sṳt）<br>四種語言都在講『即將要做的事』，一秒對上！",
     source:"🛌床邊低語呢（生活指令）／🛌床邊低語呢（core安全感）／彈藥庫e2_04／文法補充",
     storyRoles:[
@@ -765,7 +766,7 @@ const GRAMMAR_DATA = [
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：從「有」長出我的生活狀態",
-    rule:"TENER的核心畫面是「手上握有某種東西」——不只是實體的擁有（一台車、一隻貓），中文說「我餓了」、「我睏了」，西語會說成「我手上有一種餓／睏的感覺」（tener hambre／tener sueño），連年紀都是「我手上握有六年」（tener seis años）這樣講。",
+    rule:"TENER的核心畫面是「手上握有某種東西」。<br><br>中文的「餓了」「睏了」，西語會說成「手上有一種餓／睏的感覺」（tener hambre／tener sueño）；連年紀也是「手上握有六年」（tener seis años）。",
     examples:[
       {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
       {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
@@ -1033,14 +1034,15 @@ const GRAMMAR_DATA = [
   {
     id:"g29", cat:"subjunctive", level:"b1",
     title:"Ojalá (que) / ¡Que + 虛擬式!：日常祝福語小補給包",
-    rule:"很多日常祝福語其實是「Espero que...」被省略掉 Espero 的簡化版——直接用 ¡Que + 虛擬式!開頭，是超高頻的口語祝福句型。Ojalá（源自阿拉伯語，字面「願真主保佑」）也一樣，後面固定接虛擬式表達願望。",
+    rule:"想用超高頻的口語祝福句型，直接用 ¡Que + 虛擬式!開頭就好。",
     examples:[
       {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
       {es:"¡Que te mejores pronto!", zh:"祝你早日康復！"},
       {es:"¡Que duermas bien!", zh:"祝你睡個好覺！"},
       {es:"Ojalá que llueva pronto.", zh:"希望快點下雨。"}
     ],
-    trap:"「Ojalá」後面加不加 que，兩種說法都有人講、且後面都一定要接虛擬式——網路上常聽到「拉美習慣加 que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。可以確定的是：Ojalá + 原形動詞（不接 que 也不接虛擬式）不符合 RAE 規範，這個要避免。",
+    note:"Ojalá（源自阿拉伯語，字面「願真主保佑」）是另一個高頻祝福句型，後面固定接虛擬式表達願望——跟¡Que+虛擬式!是兩個各自獨立的來源，不是同一種簡化。",
+    trap:"「Ojalá」後面加不加 que，兩種說法都有人講、且後面都一定要接虛擬式。<br><br>網路上常聽到「拉美習慣加 que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。可以確定的是：Ojalá + 原形動詞（不接 que 也不接虛擬式）不符合 RAE 規範，這個要避免。",
     source:"文法補充"
   },
 
@@ -2813,7 +2815,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g23','g27','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g113','g116a','g116b','g116c','g116d']
+  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g113','g116a','g116b','g116c','g116d']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
