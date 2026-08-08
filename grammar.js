@@ -2443,15 +2443,16 @@ const GRAMMAR_DATA = [
 
   {
     id:"g108", cat:"preposition", level:"a1a2",
-    title:"介系詞場景：en/a/de/con/por/para不是單字，是畫面",
-    rule:"看圖手指方向。<br><br>en → 在空間裡面。a → 朝向目的地。de → 從起點來。con → 一起、連在一起。para → 指向對象。por → 經過一段路。<br><br>一句記住：Estoy en casa.（在家）。Voy a casa.（前往）。Vengo de casa.（起點）。Voy con ella.（一起）。Esto es para ti.（對象）。Paso por tu casa.（經過）。",
+    title:"介系詞場景",
+    img:"img/g108_prepositions.png",
+    rule:"📦 en：在空間裡面。<br>🎯 a：朝向目的地。<br>🛫 de：從起點來。<br>🤝 con：一起、連在一起。<br>🎁 para：指向對象。<br>🌉 por：經過一段路。<br><br>看圖手指方向。<br><br>一句記住：Estoy en casa.（在家）。Voy a casa.（去家裡）。Vengo de casa.（從家裡來）。Voy con ella.（和她一起去）。Esto es para ti.（這是給你的）。Paso por tu casa.（經過你家）。",
     examples:[
-      {es:"Estoy en casa.", zh:"我在家。（en：人待在一個空間「裡面」，画面是「被包在裡面」）"},
-      {es:"Voy a la escuela.", zh:"我要去學校。（a：朝著一個目的地移動，畫面是「箭頭指向那裡」）"},
-      {es:"Vengo de México.", zh:"我從墨西哥來。（de：起點/來源，畫面是「從那裡出發」）"},
-      {es:"Quiero un café con leche.", zh:"我要一杯咖啡加牛奶。（con：兩樣東西綁在一起，畫面是「兩個東西黏在一起」）"},
-      {es:"Este regalo es para ti.", zh:"這個禮物是給你的。（para：朝著一個對象/目的，畫面是「送到你手上」）"},
-      {es:"Pasamos por el parque.", zh:"我們經過公園。（por：穿過一個路徑，畫面是「穿過去/路過」）"}
+      {es:"Estoy en casa.", zh:"我在家。（en：被包在裡面）"},
+      {es:"Voy a la escuela.", zh:"我要去學校。（a：箭頭指向那裡）"},
+      {es:"Vengo de México.", zh:"我從墨西哥來。（de：從那裡出發）"},
+      {es:"Quiero un café con leche.", zh:"我要一杯咖啡加牛奶。（con：兩個東西黏在一起）"},
+      {es:"Este regalo es para ti.", zh:"這個禮物是給你的。（para：送到你手上）"},
+      {es:"Pasamos por el parque.", zh:"我們經過公園。（por：穿過去／路過）"}
     ],
     trap:"por跟para是這批裡最容易混的一組，細節見g33完整對照——這張卡的重點是先把每個介系詞配一個畫面記住。",
     source:"文法補充"

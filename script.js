@@ -3840,9 +3840,11 @@ function openGrammarCard(gId){
         ${userExs.map(s=>`<div class="grammar-user-ex-row">${_grammarExChunks(s)}</div>`).join('')}
       </div>`
     : '';
+  const imgHtml = g.img ? `<img class="grammar-scene-img" src="${escAttr(g.img)}" alt="${escAttr(g.title)}" loading="lazy">` : '';
   openGrammarSheet(`
     <div class="grammar-cat-tag">${catLabel}</div>
     <div class="grammar-title">${g.title}</div>
+    ${imgHtml}
     <div class="${ruleClass}">${g.rule}</div>
     ${mnemonicHtml}
     <div class="grammar-examples">${exHtml}</div>
