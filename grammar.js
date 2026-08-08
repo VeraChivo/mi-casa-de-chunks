@@ -2540,7 +2540,7 @@ const GRAMMAR_DATA = [
   {
     id:"g112", cat:"connector", level:"b1",
     title:"敘事橋接：把單句串成一段小故事",
-    rule:"A2程度通常只會講孤立的單句（Fui al parque.），B1的關鍵突破是「用時間/因果連接詞把好幾個單句串成一段有邏輯的敘事」——cuando/mientras負責時間順序，porque/antes de/después de負責因果跟先後，這幾個詞組合起來，就能把「流水帳」升級成「有頭有尾的故事」。",
+    rule:"想把好幾個單句串成一段有邏輯的敘事，就用時間/因果連接詞：cuando/mientras負責時間順序，porque/antes de/después de負責因果跟先後。",
     examples:[
       {es:"Fui al parque.", zh:"我去了公園。（A2：孤立單句，只有事實，沒有脈絡）"},
       {es:"Fui al parque porque hacía buen tiempo.", zh:"我去了公園，因為天氣很好。（B1：加porque，開始交代原因，敘事有了第一層邏輯）"},
@@ -2548,7 +2548,6 @@ const GRAMMAR_DATA = [
       {es:"Mientras estaba en el parque, empezó a llover.", zh:"我在公園的時候，開始下雨了。（mientras + 過去進行式：兩件事同時發生，一件是背景、一件是插入的新事件）"},
       {es:"Cuando llegué a casa, ya estaba oscuro.", zh:"當我到家的時候，天已經黑了。（cuando標記一個時間點，後面接當下發生的狀態）"}
     ],
-    trap:"這是A2升B2最關鍵的中間橋——B2需要講出像「Aunque considero que los espacios verdes son importantes, muchas ciudades no invierten suficiente.」（雖然我認為綠地空間很重要，但很多城市投資不足）這種抽象論述句，中間差的正是「先學會串連具體事件」這一步：A2只會單句「Fui al parque」，B1學會用porque/cuando/mientras/antes de/después de把好幾件事串成一段敘事，才有能力再往上疊加B2的虛擬式/讓步子句/抽象詞彙——跳過B1敘事直接學B2論述句型，會學得很痛苦，因為連接詞的基本功還沒打穩。",
     source:"文法補充"
   },
 
@@ -2572,7 +2571,7 @@ const GRAMMAR_DATA = [
   {
     id:"g114", cat:"connector", level:"b1",
     title:"敘事排序詞：primero/luego/después/al final",
-    rule:"g112教過用porque/cuando/mientras把事件「串起因果」，這批詞負責另一件事——把好幾個步驟按「順序」排列清楚，是講故事、寫食譜、交代流程時的骨架詞，B1程度需要能流暢講出「第一步...然後...後來...最後...」這種多步驟敘事。",
+    rule:"想把好幾個步驟按順序排列清楚，就用這批敘事排序詞：primero/luego/después/al final，是講故事、寫食譜、交代流程時的骨架詞。",
     examples:[
       {es:"Primero, me desperté. Luego, desayuné. Después, fui a la escuela.", zh:"首先，我起床了。然後，我吃了早餐。接著，我去了學校。（primero/luego/después：標記步驟先後，是最基本的敘事排序組合）"},
       {es:"Al final, todo salió bien.", zh:"最後，一切都很順利。（al final：收尾用語，總結整段敘事的結果）"},
@@ -2585,13 +2584,13 @@ const GRAMMAR_DATA = [
   {
     id:"g115", cat:"connector", level:"b1",
     title:"因果連接詞：por eso/así que/por lo tanto",
-    rule:"g30教過porque（因為，先講原因），這批詞是反過來——先講原因、再講結果，用「所以/因此」把兩件事接起來。三個詞正式程度不同：por eso最口語，así que也偏口語但稍微強調結論，por lo tanto最正式書面，適合寫作/論述場合。",
+    rule:"想先講原因、再講結果，用「所以/因此」接起來，就用這三個詞：por eso最口語，así que也偏口語但稍微強調結論，por lo tanto最正式書面，適合寫作/論述場合。",
     examples:[
       {es:"Llovía mucho, por eso no salimos.", zh:"雨下得很大，所以我們沒出門。（por eso：最口語的「所以」，日常對話最常用）"},
       {es:"No tenía dinero, así que no compré nada.", zh:"我沒有錢，所以什麼都沒買。（así que：口語，帶一點「於是就」的順勢感）"},
-      {es:"Los datos son insuficientes; por lo tanto, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por lo tanto：正式書面用語，跟g88教過的一樣，適合寫作/論述）"}
+      {es:"Los datos son insuficientes; por lo tanto, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por lo tanto：正式書面用語，適合寫作/論述）"}
     ],
-    trap:"這三個詞的因果方向都一樣（原因在前，結果在後），差別純粹是語域（register）——朋友聊天用por eso/así que，寫報告/正式討論用por lo tanto，選錯不會造成誤解，但會顯得語氣不搭場合。",
+    trap:"這三個詞的因果方向都一樣（原因在前，結果在後），差別純粹是語域（register）。<br><br>朋友聊天用por eso/así que，寫報告/正式討論用por lo tanto，選錯不會造成誤解，但會顯得語氣不搭場合。",
     source:"文法補充"
   },
 
@@ -2815,7 +2814,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g113','g116a','g116b','g116c','g116d']
+  revised: ['g07','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
@@ -2827,7 +2826,11 @@ const SKILL_GRAPH = [
   { from: "g05", to: "g116b", relation: "uses" },
   { from: "g05", to: "g116c", relation: "uses" },
   { from: "g05", to: "g116d", relation: "uses" },
-  { from: "g42a", to: "g42b", relation: "extends" }
+  { from: "g42a", to: "g42b", relation: "extends" },
+  { from: "g30", to: "g115", relation: "related" },
+  { from: "g112", to: "g114", relation: "family" },
+  { from: "g112", to: "g115", relation: "family" },
+  { from: "g115", to: "g88", relation: "extends" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
