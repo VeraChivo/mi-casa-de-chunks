@@ -2443,9 +2443,9 @@ const GRAMMAR_DATA = [
 
   {
     id:"g108", cat:"preposition", level:"a1a2",
-    title:"介系詞場景",
+    title:"介系詞場景<br>en在、a去、從de來，con一起、para給，por穿過來",
     img:"img/g108_prepositions.png",
-    rule:"📦 en：在空間裡面。<br>🎯 a：朝向目的地。<br>🛫 de：從起點來。<br>🤝 con：一起、連在一起。<br>🎁 para：指向對象。<br>🌉 por：經過一段路。<br><br>看圖手指方向。<br><br>一句記住：Estoy en casa.（在家）。Voy a casa.（去家裡）。Vengo de casa.（從家裡來）。Voy con ella.（和她一起去）。Esto es para ti.（這是給你的）。Paso por tu casa.（經過你家）。",
+    rule:"📦 en：在空間裡面。<br>🎯 a：朝向目的地。<br>🛫 de：從起點來。<br>🤝 con：一起、連在一起。<br>🎁 para：指向對象。<br>🌉 por：經過一段路。<br><br>看圖手指方向。<br><br>一句話記住：<br>Estoy en casa.（在家）<br>Voy a casa.（去家裡）<br>Vengo de casa.（從家裡來）<br>Voy con ella.（和她一起去）<br>Esto es para ti.（這是給你的）<br>Paso por tu casa.（經過你家）",
     examples:[
       {es:"Estoy en casa.", zh:"我在家。（en：被包在裡面）"},
       {es:"Voy a la escuela.", zh:"我要去學校。（a：箭頭指向那裡）"},
