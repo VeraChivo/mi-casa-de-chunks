@@ -2967,25 +2967,22 @@ function jumpToConjLib(gId){
 
 // playExpr：可傳入該句整句的播放呼叫(字串，例如"speakGramSmart('...')")，
 // 有傳就統一點哪個字都播整句真人音檔，不再各字各自TTS(跟▶整句不同調)；不傳維持原本逐字TTS
+// 閱讀情境renderer（💧文法儲水槽例句/劇情對照句等）——2026-08-06 VERA定案：
+// 熟練度星星是收藏／練習工具（🌻語塊花園／💎醞釀私語窖），不是閱讀標記，這裡故意不產生.ge-chunk-star，
+// 不管stage是多少。要記錄/推進熟練度，去對應的收藏區點，不在這裡。
 function _grammarExChunks(es, playExpr){
   const words = es.split(/(\s+)/);
-  const _gdb = getGardenDB();
   const clickExpr = playExpr || null;
   const renderTok = tok => {
     if(!tok.trim()) return '';
     const clean = tok.replace(/[¡¿.,!?;:"]/g,'').trim();
     const onclickAttr = clickExpr ? clickExpr : `speakWord('${escAttr(clean)}',this)`;
-    if(!isVocabWorthy(clean)) return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>`;
-    const _key='ge_'+clean;
-    const _st=(_gdb[_key]||{stage:0}).stage;
-    const _ic=GARDEN_STAGES[_st];
-    const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
-    return `<span class="ge-chunk-unit"><span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}</span>`;
+    return `<span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>`;
   };
   // 引號內的對話如果只是句子裡一小段（≤6個字），包成不斷行區塊避免斷在對話中間；
   // 但如果整句話本身就是一個長引號（例如角色整句自我介紹），不要整句鎖死不斷行，
   // 不然手機螢幕會被撐出去，寧可讓它照正常換行
-  const QUOTE_SEG_WORD_LIMIT = 6;
+  const QUOTE_SEG_WORD_LIMIT = 4;
   // 短字（不限定冠詞/介系詞，任何≤7字母的字，含nueve/quiere/Siempre這類）容易斷行時
   // 單獨落在行尾變孤兒——關鍵是要「往後」黏住下一個字（往前黏沒用，因為斷點在
   // 短字的後面），連續遇到好幾個短字就一路往後黏成一組，直到遇到一個長字收尾；
