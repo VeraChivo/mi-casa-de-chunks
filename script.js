@@ -853,7 +853,8 @@ function renderGenderPairs(){
           const _key = 'gp_'+o.word;
           const _st = (_gdb[_key]||{stage:0}).stage;
           const _ic = GARDEN_STAGES[_st];
-          const starHtml = worthy ? `<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('gp_${escAttr(o.word)}',this)" title="語塊進度">${_ic}</span>` : '';
+          // 2026-08-09 同_grammarExChunks()：滿階(stage4)不再佔位、不能點
+          const starHtml = (worthy && _st<4) ? `<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('gp_${escAttr(o.word)}',this)" title="語塊進度">${_ic}</span>` : '';
           return `<span class="gp-toggle-wrap"><span class="gp-toggle ${o.suf==='a'?'gp-toggle-f':'gp-toggle-m'}" id="gp-${pi}-${oi}" onclick="pickGenderPair(${pi},${oi})">${o.word}</span>${starHtml}${addBtnHtml}</span>`;
         }).join('')}
       </div>
@@ -982,7 +983,8 @@ function renderCogLibrary(filter){
           const _sfKey='sfx_'+clean;
           const _sfSt=(_sfxDb[_sfKey]||{stage:0}).stage;
           const _sfIc=GARDEN_STAGES[_sfSt];
-          const starHtml = isVocabWorthy(ck.w) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
+          // 2026-08-09 同_grammarExChunks()：滿階(stage4)不再佔位、不能點
+          const starHtml = (isVocabWorthy(ck.w) && _sfSt<4) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
           const dispW=ck.role==='v'?renderVWords(ck.w):ck.w;
           const connCls=ck.role==='c'?connFlowClass(ck.w):'';
           return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+(connCls?' '+connCls:'')+'" data-copy-text="'+escAttr(clean)+'" onclick="event.stopPropagation();'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
@@ -2998,7 +3000,9 @@ function _grammarExChunks(es, playExpr){
     const _key='ge_'+clean;
     const _st=(_gdb[_key]||{stage:0}).stage;
     const _ic=GARDEN_STAGES[_st];
-    const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
+    // 2026-08-09 VERA定案：文法區/例句區的花花，🌻滿階(stage4)後不再佔位、不能點——
+    // 這裡的花花是「幫忙學詞」用的提示，已經學會的詞不用再提示，直接留白讓例句乾淨
+    const starHtml=_st>=4?'':`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
     return `<span class="ge-chunk-unit"><span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}</span>`;
   };
   // 引號內的對話如果只是句子裡一小段（≤6個字），包成不斷行區塊避免斷在對話中間；
