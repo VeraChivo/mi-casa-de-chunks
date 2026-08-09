@@ -791,16 +791,17 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gsup-rule{font-size:11.5px;color:var(--tmid);font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .gsup-filter-label{font-size:10px;font-weight:800;color:var(--tlight);padding:6px 12px 0}
 .gsup-level-filter{display:flex;gap:6px;padding:4px 12px 2px;flex-wrap:wrap}
+.gsup-level-filter-groups{flex-direction:column;gap:5px}
+.gsup-level-row{display:flex;gap:6px;flex-wrap:wrap}
+.gsup-level-row-scroll{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gsup-level-row-scroll::-webkit-scrollbar{display:none}
+.gsup-level-row-scroll .gsup-level-chip{flex-shrink:0}
 .gsup-level-chip{font-size:11px;font-weight:800;padding:4px 10px;border-radius:14px;background:var(--bg2);color:var(--tmid);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .gsup-level-chip:active{opacity:.7}
 .gsup-level-chip.active{background:var(--misora);color:white;border-color:var(--misora)}
-.gsup-level-chip.jump{background:transparent;color:var(--misora);border-color:var(--usumizu)}
-.gsup-level-intro{padding:2px 12px 6px}
-.gsup-intro-text{font-size:12px;color:var(--tmid);line-height:1.5;font-weight:600}
-.gsup-content-tags{font-size:11px;color:var(--misora);line-height:1.6;margin-top:4px;font-weight:700}
-.gsup-intro-hint{font-size:10.5px;color:var(--tlight);line-height:1.5;margin-top:5px}
+.gsup-level-intro{font-size:10px;font-weight:600;color:var(--tlight);margin-left:4px}
 .gsup-core-row{display:flex;gap:6px;padding:4px 12px 6px;flex-wrap:wrap}
-.gsup-core-chip{font-size:11.5px;font-weight:900;padding:5px 11px;border-radius:14px;background:var(--usumizu);color:var(--konpeki);cursor:pointer;border:1.5px solid var(--misora);white-space:nowrap}
+.gsup-core-chip{font-size:11.5px;font-weight:900;padding:5px 11px;border-radius:14px;background:var(--bg2);color:var(--konpeki);cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
 .gsup-core-chip:active{opacity:.7;transform:scale(.96)}
 
 /* ── ¡Variadísimo! 變位速查 ── */

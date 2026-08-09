@@ -3207,33 +3207,19 @@ function renderGrammarSupplement(){
   const items = GRAMMAR_DATA.filter(g=>(g.source||'').includes('文法補充') && !_isWorldZoned(g.id));
   if(filterEl){
     const chip = (key, icon, label) => `<span class="gsup-level-chip${_gsupLevelFilter===key?' active':''}" onclick="event.stopPropagation();filterGrammarSupplementByLevel('${key}')">${icon} ${label}</span>`;
-    // 2026-08-03：街頭母語/文化深度不再是這裡的篩選項（那兩個名字是🌎拉美巡禮的內容分區，
-    // 不是CEFR難度），改成純導覽捷徑——點了直接跳過去對應分區，不留在儲水槽篩選
-    const jumpChip = (icon, label, fn) => `<span class="gsup-level-chip jump" onclick="event.stopPropagation();${fn}()">${icon} ${label} ↗</span>`;
-    const catGroupsChip = `<span class="gsup-level-chip${_gsupCatGroupsOpen?' active':''}" onclick="event.stopPropagation();toggleGsupCatGroups()">🔍 再細分</span>`;
+    const catGroupsChip = `<span class="gsup-level-chip${_gsupCatGroupsOpen?' active':''}" onclick="event.stopPropagation();toggleGsupCatGroups()">🔍 內容類型</span>`;
     // 只列出儲水槽池子裡真的有卡片的等級——c2目前0張留在池子裡（全被分流去🎭文化深度），
     // 不放進來當篩選項，避免點了看到空清單
     const tiersInPool = GRAMMAR_LEVEL_TIERS.filter(t => items.some(g=>g.level===t.key));
-    filterEl.innerHTML = chip('all','📋','全部')
-      + tiersInPool.map(t=>chip(t.key, t.icon, t.label)).join('')
-      + jumpChip('🗣️','街頭母語','worldEntryJumpSlang')
-      + jumpChip('🎭','文化深度','worldEntryJumpCulture')
-      + catGroupsChip;
+    // 兩排：全部＋內容類型切換鈕併一排（都是輔助性質的單顆chip，湊一起才不會空一排）／
+    // 四個等級單獨一排（2026-08-09 VERA要求，之前擠在同一個flex-wrap容器裡，
+    // 「全部」跟等級chip寬度不一，換行位置很亂；三排各自獨立又覺得單顆chip那排太空）
+    filterEl.innerHTML = `<div class="gsup-level-row">${chip('all','📋','全部')}${catGroupsChip}</div>`
+      + `<div class="gsup-level-row gsup-level-row-scroll">${tiersInPool.map(t=>chip(t.key, t.icon, t.label)).join('')}</div>`;
   }
   if(introEl){
     const introText = GSUP_LEVEL_INTRO[_gsupLevelFilter] || GSUP_LEVEL_INTRO.all;
-    // 📌內容方向：這個等級底下的卡，實際橫跨哪幾種CAT_GROUPS內容類型——
-    // 只在選了特定等級時顯示（「全部」本來就橫跨全部類型，講了等於沒講）
-    let tagsHtml = '';
-    if(_gsupLevelFilter !== 'all'){
-      const levelItems = items.filter(g=>g.level===_gsupLevelFilter);
-      const present = CAT_GROUPS.filter(cg=>levelItems.some(g=>_catGroupFor(g.cat)===cg.key));
-      if(present.length){
-        tagsHtml = `<div class="gsup-content-tags">📌 內容方向：${present.map(cg=>`${cg.icon} ${cg.label}`).join('　')}</div>`;
-      }
-    }
-    introEl.innerHTML = `<div class="gsup-intro-text">${introText}</div>${tagsHtml}`
-      + `<div class="gsup-intro-hint">💡 上面的等級幫你找「現在想學什麼」，下面的「再細分」讓你看「這張卡在處理哪一種語言問題」——同一張卡常常兩種都符合，不是只能選一邊。</div>`;
+    introEl.textContent = `· ${introText}`;
   }
   // 「再細分」是獨立的顯示/隱藏開關（🔍再細分chip控制），跟等級篩選脫鉤——
   // 不用先選特定等級才看得到內容分類，在「全部」也可以直接看結構/陷阱/表達/文化
