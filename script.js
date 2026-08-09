@@ -2202,9 +2202,16 @@ function renderVWords(text){
   }).join('');
 }
 
+// 角色名字獨立一層判斷，不塞進SKIP——之後加新角色只要加名字，不用改判斷邏輯。
+// 人名本身沒有詞彙熟練度追蹤的意義（花園進度圖示不該貼在名字上），跟一般功能詞是不同性質的排除理由。
+const CHARACTER_NAMES = new Set(['nita','tito','kito','mimi','cata','tato','vera','chito','vivi','vivian','coco','socorro','leto','oveja','papá','mamá']);
 function isVocabWorthy(word){
   const w = (word||'').toLowerCase().replace(/[¡¿.,!?;:]+/g,'').trim();
-  const SKIP = new Set(['yo','tú','tu','él','el','ella','nosotros','nosotras','vosotros','vosotras','ellos','ellas','usted','ustedes','me','te','se','le','les','soy','eres','es','somos','sois','son','estoy','estás','estas','está','esta','estamos','estáis','estais','están','estan','hay','y','o','a','de','en','que','no','si','sí','muy','más','mas','todo','todos','una','un','la','lo','las','los','del','al','qué','quién']);
+  if(CHARACTER_NAMES.has(w)) return false;
+  // 這份SKIP只收「幾乎沒有獨立學習價值、主要是句法黏著劑」的功能詞——
+  // por/para/con/sin/desde/hasta/entre這類介系詞跟所有變位動詞（soy/tengo/voy...）
+  // 刻意不收，因為它們是站上真正要練熟練度的詞彙，不是單純語法膠水（2026-08-06 VERA定案）。
+  const SKIP = new Set(['yo','tú','tu','él','el','ella','nosotros','nosotras','vosotros','vosotras','ellos','ellas','usted','ustedes','me','te','se','le','les','soy','eres','es','somos','sois','son','estoy','estás','estas','está','esta','estamos','estáis','estais','están','estan','hay','y','o','pero','a','de','en','que','no','si','sí','muy','más','mas','todo','todos','una','un','la','lo','las','los','del','al','qué','quién']);
   return w.length > 1 && !SKIP.has(w);
 }
 
