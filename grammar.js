@@ -1057,7 +1057,7 @@ const GRAMMAR_DATA = [
       {es:"Tito no quiere hablar porque tiene vergüenza.", zh:"迪多不想說話，因為他覺得害羞。（新編例句）"},
       {es:"No fuimos al parque porque estaba lloviendo.", zh:"我們沒去公園，因為在下雨。（新編例句）"}
     ],
-    trap:"原因只是一個名詞、不是一整句話，就換成 por + 名詞（例如 por la lluvia／因為下雨），不能說 porque la lluvia。",
+    trap:"No fuimos al parque por la lluvia.／因為下雨，我們沒去公園。這樣是對的——lluvia只是一個名詞，接por不接porque；porque la lluvia是常見誤用，因為porque後面一定要接完整句子。",
     source:"E11·S6（文法補充）"
   },
 
