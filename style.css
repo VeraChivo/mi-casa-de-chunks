@@ -792,7 +792,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .gsup-content-tags{font-size:11px;color:var(--misora);line-height:1.6;margin-top:4px;font-weight:700}
 .gsup-intro-hint{font-size:10.5px;color:var(--tlight);line-height:1.5;margin-top:5px}
 .gsup-core-row{display:flex;gap:6px;padding:4px 12px 6px;flex-wrap:wrap}
-.gsup-core-chip{font-size:11.5px;font-weight:900;padding:5px 11px;border-radius:14px;background:#FFF6DD;color:#8A6100;cursor:pointer;border:1.5px solid #F0C866;white-space:nowrap}
+.gsup-core-chip{font-size:11.5px;font-weight:900;padding:5px 11px;border-radius:14px;background:var(--usumizu);color:var(--konpeki);cursor:pointer;border:1.5px solid var(--misora);white-space:nowrap}
 .gsup-core-chip:active{opacity:.7;transform:scale(.96)}
 
 /* ── ¡Variadísimo! 變位速查 ── */
