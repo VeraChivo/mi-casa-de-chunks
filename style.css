@@ -661,8 +661,8 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .grammar-ex-row.is-first{background:var(--bg);border-color:var(--usumizu)}
 .grammar-ex-row.is-first .ge-chunk{font-size:16px}
 .grammar-ex-row.is-first .grammar-ex-zh{font-size:14.5px;font-weight:800;color:var(--tdark)}
-.grammar-ex-row:not(.is-first) .ge-chunk{font-size:12.5px}
-.grammar-ex-row:not(.is-first) .grammar-ex-zh{font-size:12px}
+.grammar-ex-row:not(.is-first) .ge-chunk{font-size:14px}
+.grammar-ex-row:not(.is-first) .grammar-ex-zh{font-size:13px}
 .grammar-ex-chunks{display:flex;flex-wrap:wrap;align-items:center;gap:2px;row-gap:6px}
 .ge-chunk{font-size:14px;font-weight:800;color:var(--konpeki);cursor:pointer;padding:2px 3px;border-radius:5px}
 .ge-chunk:active{background:rgba(108,155,210,.2)}
