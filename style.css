@@ -428,6 +428,14 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 /* AMMO LIBRARY */
 .ammo-wrap,.pron-lib-wrap,.vocab-wrap,.garden-wrap,.chunk-fam-wrap{border-radius:14px;overflow:hidden}
 #worldSectionBody>.pron-lib-wrap{margin:10px 0}
+/* 🌎拉美巡禮外框（2026-08-03）——世界新聞／街頭母語／文化深度各自沿用.pron-lib-wrap／
+   .news-section-wrap既有的獨立卡片樣式（圓角/背景/margin，其他地方也共用這兩個class，
+   不能直接改），單獨收起來看像3張各自散開的卡，不像「拉美巡禮」這個大框裝著3個子項目。
+   只在#worldSection/#worldSectionBody這兩個id上加外框+內距，不動共用class本身，
+   其他用到.pron-lib-wrap/.news-section-wrap的地方（人物冊/太極定裝鏡）不受影響。*/
+#worldSection{border:2px solid #4A7C5F}
+#worldSectionBody.open{padding:10px 8px 4px}
+#worldSectionBody>.news-section-wrap{margin:0 0 10px}
 .chunk-fam-tree{padding:12px 14px;border-bottom:1px solid var(--usumizu);cursor:pointer}
 .chunk-fam-tree:last-child{border-bottom:none}
 .chunk-fam-tree:active{background:var(--bg2)}
@@ -896,6 +904,11 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .conj-variant{display:grid;grid-template-columns:max-content 1fr auto;align-items:center;gap:3px 8px;padding:3px 0 3px 12px;margin-top:2px;border-left:2px solid rgba(159,208,222,.4)}
 .conj-variant-badge{grid-column:1/-1;font-size:9px;font-weight:800;color:var(--misora);background:rgba(108,155,210,.1);border-radius:6px;padding:1px 6px;width:fit-content}
 .conj-variant .conj-ex,.conj-variant .conj-zh,.conj-variant .conj-note{grid-column:1/-1}
+/* 熟練度星星（花）沒有指定欄位時，會被.conj-ex的1/-1強制換行擠到自己單獨一列（2026-08-03修復）——
+   只給grid-column不夠：.conj-ex在DOM順序上排在星星前面、佔滿整列，auto-placement的游標
+   已經往下移了，星星光指定欄位還是會被排到後面的列，必須連grid-row也一起釘死在第1列，
+   才能跟.conj-form同一列，符合「動詞形式右側加星星」的原始設計 */
+.conj-variant .ge-chunk-star{grid-column:2;grid-row:1;justify-self:start}
 
 /* 陰陽字尾語塊卡 */
 .gp-card{background:white;border-bottom:1px solid var(--bg2);padding:9px 16px;text-align:center}
@@ -1464,9 +1477,13 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .news-dw-es:active{opacity:.7}
 .news-dw-text{color:var(--tmid)}
 /* 新聞卡片 */
-.news-topic-filter{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:10px 14px 4px}
+/* 主題chip列2026-08-04改兩層：第一層只有「全部」+目前選中主題+「查看全部主題」按鈕，
+   不再左右捲動；展開後的.news-topic-filter-more用flex-wrap自然換行，同樣不捲動 */
+.news-topic-filter{display:flex;gap:6px;flex-wrap:wrap;padding:10px 14px 4px}
+.news-topic-filter-more{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 6px}
 .news-topic-chip{font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;background:var(--bg2);color:var(--tmid);cursor:pointer;white-space:nowrap;border:1.5px solid transparent}
 .news-topic-chip.active{background:var(--konpeki);color:#fff;border-color:var(--konpeki)}
+.news-topic-more-btn{font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;background:none;color:var(--misora);cursor:pointer;white-space:nowrap;border:1.5px dashed var(--misora)}
 .news-items{padding:8px 14px 0}
 .news-row-collapsed{display:flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;border:1px solid rgba(188,225,223,.5);cursor:pointer}
 .news-row-collapsed:active{background:var(--bg2)}

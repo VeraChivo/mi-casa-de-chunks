@@ -270,7 +270,7 @@ function renderStage3(){
       </details>
       <div class="s3-learned-wrap">
         <div class="s3-col-label s3-label-learned">🎒 你學過的語塊庫</div>
-        <div class="vocab-howto">🔊 點擊聽發音　📋 長按複製語塊　🌱 點按鈕帶去造句練習</div>
+        <div class="vocab-howto">🔊 點擊聽發音　📋 長按複製語塊　🌱 點按鈕，照這個句型試一句</div>
         <input type="text" class="s3-learned-search" placeholder="🔍 搜尋學過的語塊…" oninput="filterS3LearnedPool(this.value)">
         <div id="s3LearnedPoolArea">${_renderS3LearnedPool()}</div>
       </div>
@@ -282,11 +282,14 @@ function renderStage3(){
 // ── 累積詞池（從完成過的句子自動收集，見 script.js accumulateSVOPool）──
 function _s3LearnedChipRow(label, role, words){
   if(!words.length) return '';
-  const chips = words.map(w=>`<button class="s3-chip s3-learned-chip s3-learned-${role}" data-search="${escStage(w).toLowerCase()}" onclick="speakGardenChunk('${escStage(w)}')">${w}<span class="s3-practice-btn" onclick="event.stopPropagation();s3BringToPractice('${escStage(w)}')" title="帶去造句練習">🌱</span></button>`).join('');
+  const chips = words.map(w=>`<button class="s3-chip s3-learned-chip s3-learned-${role}" data-search="${escStage(w).toLowerCase()}" onclick="speakGardenChunk('${escStage(w)}')">${w}<span class="s3-practice-btn" onclick="event.stopPropagation();s3BringToPractice('${escStage(w)}')" title="照這個句型試一句">🌱</span></button>`).join('');
   return `<div class="s3-col-wrap"><div class="s3-col-label s3-label-${role}">${label}</div><div class="s3-chip-pool">${chips}</div></div>`;
 }
 
-// 學過的語塊 → 帶去造句練習：只展開＋捲動＋提示，不碰S3固定選字邏輯（A方案，2026-07-24 VERA定案）
+// 學過的語塊 → 照這個句型試一句：只展開＋捲動＋提示，不碰S3固定選字邏輯（A方案，2026-07-24 VERA定案）。
+// 2026-08-03 VERA更正文案：原本「帶去造句練習」暗示系統會把語塊搬進S/V/O格子，
+// 但這裡只有展開/捲動/提示三件事，沒有真的塞值——跟「複製」同一種概念：
+// 不是搬移內容，是拿它當參考自己去練習，改成「照這個句型試一句」才準確。
 function s3BringToPractice(text){
   const details = document.querySelector('.s3-picker-section');
   if(details) details.open = true;

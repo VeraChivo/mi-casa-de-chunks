@@ -1753,6 +1753,7 @@ function retryAnswer(){
   const fb=document.getElementById('transFeedback');
   if(fb){fb.style.display='none';fb.innerHTML='';}
   const tip=document.getElementById('grammarTip'); if(tip) tip.style.display='none';
+  const db=document.getElementById('diaryBridge'); if(db) db.style.display='none';
   renderStars();
 }
 
@@ -2806,8 +2807,22 @@ function speakConjForm(gId, person, formText){
   }
   speakWord(formText);
 }
-// 時態代號 → 中文標籤，比對切換按鈕與人稱群組共用同一份對照，不重複寫兩次
+// 時態代號 → 中文標籤，人稱群組展開後的.conj-variant-badge用這份（見_renderConjVariant）——
+// 這是「點開深入才看到」的正式術語層，維持不動
 const CONJ_TENSE_LABELS = {present:'現在式', subj:'現在虛擬式', impsubj:'過去未完成虛擬式', cond:'條件式'};
+// 時態代號 → 目的導向標籤，分頁選單按鈕（入口）專用（2026-08-03新增）——
+// 原本按鈕直接寫「現在虛擬式／過去未完成虛擬式／條件式」，初學者看了不知道要查什麼，
+// 術語先行。改成「入口白話→點開深入→保留正式術語」：按鈕只講「這個時態拿來做什麼」，
+// 正式文法名稱留給CONJ_TENSE_LABELS那層（人稱群組展開後才看得到）。
+// impsubj（過去未完成虛擬式）沿用g27/g53/g75/🪞陳述式↔虛擬式對照既有的教學說法——
+// 這個時態在站上一律教「與現在事實相反的假設」（Si yo fuera...），不是描述過去習慣，
+// 兩者是不同時態（後者是過去陳述式），這裡沿用既有說法才不會跟其他地方教的不一致。
+const CONJ_TENSE_PURPOSE = {
+  present: {icon:'💬', label:'現在做的事'},
+  subj:    {icon:'💭', label:'表達願望'},
+  impsubj: {icon:'🌙', label:'假設不是真的'},
+  cond:    {icon:'🔮', label:'可能會怎樣'}
+};
 
 // 把同一個動詞的「現在式/現在虛擬式/過去未完成虛擬式/條件式」四組rows依人稱位置對齊，
 // 讓yo跟yo放一起、tú跟tú放一起，而不是整組時態各自成一大塊、要上下捲動才能比較
@@ -2881,10 +2896,10 @@ function renderConjLibrary(){
     const hasTabs    = hasSubj || hasImpsubj || hasCond;
 
     const tabsHtml = hasTabs ? `<div class="conj-tense-tabs">
-      <button class="conj-tense-tab active" data-tense="present" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','present')">現在式</button>
-      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','subj')">現在虛擬式<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
-      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','impsubj')">過去未完成虛擬式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
-      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','cond')">條件式<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      <button class="conj-tense-tab active" data-tense="present" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','present')">${CONJ_TENSE_PURPOSE.present.icon} ${CONJ_TENSE_PURPOSE.present.label}</button>
+      ${hasSubj    ? `<button class="conj-tense-tab" data-tense="subj"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','subj')">${CONJ_TENSE_PURPOSE.subj.icon} ${CONJ_TENSE_PURPOSE.subj.label}<span class="conj-tense-hint">💧 15粒</span></button>` : ''}
+      ${hasImpsubj ? `<button class="conj-tense-tab" data-tense="impsubj" onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','impsubj')">${CONJ_TENSE_PURPOSE.impsubj.icon} ${CONJ_TENSE_PURPOSE.impsubj.label}<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
+      ${hasCond    ? `<button class="conj-tense-tab" data-tense="cond"    onclick="event.stopPropagation();toggleConjTense('conjlib-${g.id}','cond')">${CONJ_TENSE_PURPOSE.cond.icon} ${CONJ_TENSE_PURPOSE.cond.label}<span class="conj-tense-hint">🎖️ 90粒</span></button>` : ''}
       <span class="conj-tense-tip">👆 可多選對比，yo／tú會排在一起方便比較</span>
     </div>` : '';
 
@@ -3131,12 +3146,19 @@ function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
 // ── 🧭 我是什麼程度？等級路標——不是獨立新區塊，掛在莊園導覽最後一步裡 ──
+// ⚠️ 2026-08-03修復：「我想深入文化」原本用level:'c1'接jumpToLevelFilter，但2026-07-25
+// 街頭母語/文化深度內容已整批搬去🌎拉美巡禮，儲水槽c1篩選只剩2張不相干的卡（新聞動詞/
+// 正式連接詞），c2篩選則是完全空的死路——改成action:'worldzone'，直接開拉美巡禮入口面板。
 const LEVEL_NAV_ITEMS = [
   {icon:'🌱', label:'我是第一次來', sub:'從第一句西語開始', action:'start'},
   {icon:'🌿', label:'我學過一點了', sub:'繼續我的生活語塊', level:'b1'},
   {icon:'🏆', label:'我想驗收成果', sub:'測試自己的西語能力', level:'b2c1'},
-  {icon:'🌎', label:'我想深入文化', sub:'俚語與拉美故事', level:'c1'}
+  {icon:'🌎', label:'我想深入文化', sub:'俚語與拉美故事', action:'worldzone'}
 ];
+function jumpToWorldZoneFromNav(){
+  closeWelcomeTour();
+  setTimeout(()=>openWorldEntryPanel(), 60);
+}
 // 真正的新手要的不是文法卡列表，是直接開始跟著劇情學（2026-07-19 VERA指正）
 // 2026-07-20：改指向新增的第一章重鋪起點（idx16「認識自己」），不再是舊E1「妮妲的角落」——
 // 讓新手先依序認識自己/家人/日常狀態/喜好，最後才自然接回E1，見NEWCOMER_ROADMAP。
@@ -5038,7 +5060,7 @@ function renderWelcomeTourStep(){
   const btnsHtml = s.levelButtons ? `
     <div class="lvlnav-grid">
       ${LEVEL_NAV_ITEMS.map(it => `
-        <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : `jumpToLevelFilter('${it.level}')`}">
+        <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : it.action==='worldzone' ? 'jumpToWorldZoneFromNav()' : `jumpToLevelFilter('${it.level}')`}">
           <span class="lvlnav-icon">${it.icon}</span>
           <span class="lvlnav-label">${it.label}</span>
           <span class="lvlnav-sub">${it.sub}</span>
@@ -5101,6 +5123,14 @@ function initReminders(){
 // ── 🌎 拉美巡禮：時事與文化：主題分類 + 收合列表（點一則才展開成完整互動卡，不是53張卡片一次全攤開）──
 let _newsTopicFilter = 'all';
 let _newsExpandedId = null;
+// 主題chip列原本13個一次攤開、左右捲動（見UX_ISSUES.md記錄），2026-08-04改成第一層只留
+// 「全部」+目前選中的主題，其餘12個收進「🔍查看全部主題」——不新增資料欄位/不改文章分類，
+// 只是呈現方式，順便解決chip列左右捲動的問題（展開後改用flex-wrap自然換行）
+let _newsTopicListOpen = false;
+function toggleNewsTopicList(){
+  _newsTopicListOpen = !_newsTopicListOpen;
+  renderNewsSection();
+}
 let _newsSectionOpen = false; // 2026-07-19修正：原本開合狀態只存在DOM的inline style裡，
 // 點分類篩選會觸發renderNewsSection()整個重繪，template又寫死display:none，等於每次選分類
 // 就把剛打開的區塊蓋回收起狀態——改成獨立變數記住開合狀態，重繪時讀這個變數，不會再被蓋掉
@@ -5188,13 +5218,19 @@ function renderNewsSection(){
   });
   dwHtml += '</div></div>';
 
-  // 主題篩選chip（含「全部」跟各主題數量）
+  // 主題篩選chip：第一層只留「全部」+目前選中的主題（若不是全部），其餘收進「查看全部主題」
   const topics = [...new Set(NEWS_ITEMS.map(n=>n.topic))];
-  const topicChips = ['all', ...topics].map(t=>{
+  const _newsChip = t => {
     const label = t==='all' ? '📋 全部' : t;
     const count = t==='all' ? NEWS_ITEMS.length : NEWS_ITEMS.filter(n=>n.topic===t).length;
     return `<span class="news-topic-chip${_newsTopicFilter===t?' active':''}" onclick="event.stopPropagation();newsFilterByTopic('${escAttr(t)}')">${label} (${count})</span>`;
-  }).join('');
+  };
+  const otherTopics = topics.filter(t=>t!==_newsTopicFilter);
+  const primaryChips = _newsChip('all') + (_newsTopicFilter!=='all' ? _newsChip(_newsTopicFilter) : '');
+  const moreBtnHtml = `<span class="news-topic-more-btn" onclick="event.stopPropagation();toggleNewsTopicList()">${_newsTopicListOpen?'▲ 收起主題':'🔍 查看全部主題'}</span>`;
+  const moreChipsHtml = _newsTopicListOpen
+    ? `<div class="news-topic-filter-more">${otherTopics.map(_newsChip).join('')}</div>` : '';
+  const topicChips = primaryChips + moreBtnHtml;
 
   const shown = _newsTopicFilter==='all' ? NEWS_ITEMS : NEWS_ITEMS.filter(n=>n.topic===_newsTopicFilter);
   const itemsHtml = shown.map(item=>{
@@ -5221,6 +5257,7 @@ function renderNewsSection(){
     <div id="newsSectionBody" style="display:${_newsSectionOpen?'block':'none'}">
       ${dwHtml}
       <div class="news-topic-filter">${topicChips}</div>
+      ${moreChipsHtml}
       <div class="news-items">${itemsHtml}</div>
       <div class="news-footer">題目來源：<a href="https://www.dw.com/es/" target="_blank" rel="noopener">DW Español</a>（每題點「↗」可直接跳去該篇真實文章，標題引用僅供教育學習）</div>
     </div>

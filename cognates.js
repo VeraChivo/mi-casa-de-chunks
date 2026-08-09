@@ -503,7 +503,7 @@ const COGNATE_LIBRARY = [
   {en:'princess',  es:'princesa',  art:'la',  zh:'公主',            ep:'E3 · 最好的朋友',
     cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'princeps（拉丁語，第一位、統治者）',
       source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
-  {en:'account',   es:'cuento',    art:'el',  zh:'帳戶、帳目、說明、敘述（account）／故事（cuento）', ep:'E3 · 最好的朋友',
+  {en:'account',   es:'cuento',    art:'el',  zh:'account＝帳戶／敘述；cuento＝故事（同源不同義，別當成同義詞）', ep:'E3 · 最好的朋友',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'computare（計算、清點）',
