@@ -206,7 +206,7 @@ const GRAMMAR_DATA = [
   {
     id:"g02", cat:"ser-estar", level:"a1a2",
     title:"ESTAR：位置與狀態",
-    rule:"ESTAR回答的是「現在在哪裡、現在怎麼樣」——位置、心情、正在做的事，這些會隨時間改變的暫時狀態，都用ESTAR來說。",
+    rule:"ESTAR回答的是「現在在哪裡、現在怎麼樣」。<br><br>位置、心情、正在做的事，這些會隨時間改變的暫時狀態，都用ESTAR來說。",
     examples:[
       {es:"El señor Esqueleto no está en la cama de Tito.", zh:"骷髏先生不在迪多的床上。（位置，劇情原句，E2）"},
       {es:"Tito está esperando su turno para jugar.", zh:"迪多在等輪到他玩。（進行中，劇情原句，E19）"},
@@ -311,7 +311,7 @@ const GRAMMAR_DATA = [
   {
     id:"g05", cat:"tense", level:"a1a2",
     title:"「已經做了」：haber + 動詞-ado/-ido形",
-    rule:"haber（幫忙的動詞）+ 動詞-ado/-ido形 = 「已經做了某事」，結果跟現在有關。",
+    rule:"haber（幫忙的動詞）+ 動詞-ado/-ido形 → 已經做了某事，結果跟現在有關。",
     examples:[
       {es:"Nita ha encontrado un charco pequeño.", zh:"妮妲找到了一個小水坑。（ha + encontrado）"},
       {es:"Tito ha perdido al señor Esqueleto.", zh:"迪多把骷髏先生弄丟了。（ha + perdido）"},
@@ -364,7 +364,7 @@ const GRAMMAR_DATA = [
   {
     id:"g06", cat:"tense", level:"b1",
     title:"「一直做到現在」：haber + estado + -ando",
-    rule:"haber + estado + 動詞-ando = 「一直在做某事直到現在」，動作從過去延續到現在。",
+    rule:"haber + estado + 動詞-ando → 一直在做某事直到現在，動作從過去延續到現在。",
     examples:[
       {es:"Ustedes han estado chapoteando en los charcos de barro.", zh:"你們一直在泥巴坑裡玩水。"},
       {es:"He estado estudiando toda la tarde.", zh:"我整個下午都在念書。"},
@@ -2027,7 +2027,7 @@ const GRAMMAR_DATA = [
   {
     id:"g88", cat:"connector", level:"c1",
     title:"正式連接詞：讓論述聽起來更有邏輯層次",
-    rule:"這批連接詞是C1程度的「論述骨架」——比B1教過的porque/pero/y更正式，常出現在新聞評論、學術寫作、正式演講，能把一長串句子串成有轉折/因果/補充層次的論述，是B2升C1最重要的語感差異之一。",
+    rule:"常見於新聞評論、學術寫作、正式演講，用來串起轉折、因果與補充，讓較長的論述更容易跟上。",
     examples:[
       {es:"El plan es ambicioso; no obstante, falta financiamiento.", zh:"這個計畫很有野心；然而，資金不足。（no obstante：然而，比pero更正式）"},
       {es:"No hay suficientes datos; por consiguiente, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por consiguiente：因此）"},
@@ -2461,7 +2461,7 @@ const GRAMMAR_DATA = [
   {
     id:"g109", cat:"verb-pattern", level:"a1a2",
     title:"HACER：從「做」長出的生活變化",
-    rule:"HACER的核心畫面是「讓一件事發生」——可以是動手做一件事（排計畫、做功課），也可以是描述天氣現象（很冷、很熱），甚至能標出時間距離（很久以前）。同一個動詞，撐起這麼多不同情境，是HACER最值得記住的地方。",
+    rule:"HACER的核心畫面是「讓一件事發生」。<br><br>可以是動手做一件事（排計畫、做功課），也可以是描述天氣現象（很冷、很熱），甚至能標出時間距離（很久以前）——同一個動詞撐起這麼多情境，是HACER最值得記住的地方。",
     examples:[
       {es:"Mamá Cata hace un plan para el día.", zh:"貓媽媽排好了今天的行程。（劇情原句，E10）"},
       {es:"Hace frío hoy.", zh:"今天很冷。（hacer + 天氣，西語固定用hacer不是estar）"},
@@ -2642,7 +2642,7 @@ const GRAMMAR_DATA = [
   {
     id:"g117", cat:"verb-pattern", level:"a1a2",
     title:"Llamarse：從名字開始建立自己的位置",
-    rule:"llamarse字面是「稱呼自己」（反身動詞），是打開自己在西語世界裡第一個身分入口的鑰匙——「我是誰」「你是誰」「他是誰」，最先都是靠這句話回答的。",
+    rule:"llamarse字面是「稱呼自己」（反身動詞）。<br><br>「我是誰」「你是誰」「他是誰」，最先都是靠這句話回答的——是打開自己在西語世界裡第一個身分入口的鑰匙。",
     examples:[
       {es:"Me llamo Nita.", zh:"我叫妮妲。（劇情原句，E17）"},
       {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（新編例句，A1核心問句，目前劇情裡還沒出現）"},
@@ -2815,7 +2815,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g03','g04','g07','g08','g09','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g108','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d']
+  revised: ['g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
