@@ -1549,15 +1549,38 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g58", cat:"verb-pattern", level:"b2c1",
-    title:"Ponerse / Quedarse / Volverse：三種「變成」",
-    rule:"變化不是只有一種「變成」——西語依「這個改變有多突然、多深層」分成三個動詞：<br><br>Ponerse → 情緒或狀態突然冒出來，通常很快就會退<br>Quedarse → 事情發生完之後，留下來的結果狀態<br>Volverse → 從根本上、慢慢地整個人（或整件事）變了",
+    id:"g58a", cat:"verb-pattern", level:"b2c1",
+    title:"Ponerse：突然變",
+    rule:"情緒或狀態突然變了，用ponerse。通常來得快，也退得快。",
     examples:[
-      {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，臉上立刻亮了起來。"},
-      {es:"Tito se quedó dormido en el sofá.", zh:"迪多看著看著，就在沙發上睡著了。"},
-      {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢染成了橘色。"}
+      {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，突然很開心。"},
+      {es:"Tito se puso rojo de vergüenza.", zh:"迪多害羞得臉都紅了。"}
     ],
-    trap:"三個都能翻成「變」，但語感差很多：ponerse 強調「突然冒出來的情緒或感覺」（短暫）；quedarse 強調「發生完某事後的結果」（留下來）；volverse 強調「慢慢從根本上改變了」（深層）。不確定時，情緒變化先選 ponerse，結果狀態選 quedarse，性格本質改變選 volverse。",
+    trap:"重點是「突然變成某種狀態」，不是慢慢改變。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g58b", cat:"verb-pattern", level:"b2c1",
+    title:"Quedarse：留下來",
+    rule:"事情發生後，留下某種狀態，用quedarse。",
+    examples:[
+      {es:"Tito se quedó dormido en el sofá.", zh:"迪多在沙發上睡著了。"},
+      {es:"Nita se quedó callada un momento.", zh:"妮妲安靜了一會兒。"}
+    ],
+    trap:"重點是「留下的結果」，不是變化的過程。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g58c", cat:"verb-pattern", level:"b2c1",
+    title:"Volverse：慢慢變",
+    rule:"人或事慢慢發生根本的改變，用volverse。",
+    examples:[
+      {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢變成橘色。"},
+      {es:"Con los años, Cata se volvió más paciente.", zh:"這些年下來，卡妲變得更有耐心了。"}
+    ],
+    trap:"重點是「慢慢、深層的改變」，不是一時的狀態。",
     source:"文法補充"
   },
 
@@ -2842,7 +2865,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
   historical: ['g14'],
   incubating: []
 };
@@ -2854,7 +2877,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
+  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g14','g15','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
@@ -2875,7 +2898,9 @@ const SKILL_GRAPH = [
   { from: "g50", to: "g52a", relation: "related" },
   { from: "g52a", to: "g52b", relation: "family" },
   { from: "g52a", to: "g52c", relation: "family" },
-  { from: "g52a", to: "g52d", relation: "family" }
+  { from: "g52a", to: "g52d", relation: "family" },
+  { from: "g58a", to: "g58b", relation: "family" },
+  { from: "g58a", to: "g58c", relation: "family" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
