@@ -1396,7 +1396,7 @@ const GRAMMAR_DATA = [
   {
     id:"g50", cat:"phrase", level:"b1",
     title:"Más / Menos + 形容詞 + que：比較級公式",
-    rule:"跟英文不同！英文依單字長短分裂（bigger vs more beautiful），西語不管單字長短，一律套同一個公式：más（更）／menos（比較不）+ 形容詞 + que（比）。",
+    rule:"英文依單字長短分裂比較級（taller／more beautiful）；西語不分長短，一律套同一個公式：más（更）／menos（比較不）+ 形容詞 + que（比）。",
     examples:[
       {es:"Este charco es más grande que mi cama.", zh:"這個水坑比我的床更大。"},
       {es:"El bug es menos difícil que ayer.", zh:"這個bug比昨天不難了。"},
@@ -1409,26 +1409,65 @@ const GRAMMAR_DATA = [
   {
     id:"g51", cat:"phrase", level:"b1",
     title:"Tan + 形容詞 + como：一樣...跟...一樣（大地雷：como不是que）",
-    rule:"同等比較「一樣...」英文是 as + 形容詞 + as（前後同一個字），西語是 tan + 形容詞 + como——後面固定接 como，不能接 que，這是初學者最常踩的雷。",
+    rule:"英文用as + 形容詞 + as（前後同一個字）；西語用tan + 形容詞 + como——後面固定接como，不能接que，這是初學者最常踩的雷。",
     examples:[
       {es:"El bebé es tan lindo como tú.", zh:"寶寶跟你一樣可愛。"},
       {es:"Esta galleta es tan dulce como la miel.", zh:"這塊餅乾跟蜂蜜一樣甜。"},
       {es:"Tito es tan curioso como Nita.", zh:"迪多跟妮妲一樣好奇。"}
     ],
-    trap:"❌ tan...que 是錯的組合（que 是「比較級」的專利，跟 más/menos 配對）；✅ tan...como 才是「同等比較」的固定搭配，後面一定要接 como，牢記這個地雷組合不要混。",
+    trap:"Nita es tan alta como Tito.／妮妲跟迪多一樣高。tan...como是同等比較的固定搭配，como不能換成que；tan...que是常見誤用，que只跟más/menos配對用在比較級，不會出現在tan後面。",
     source:"文法補充"
   },
 
   {
-    id:"g52", cat:"phrase", level:"b1",
-    title:"Mejor / Peor / Mayor / Menor：四個不規則比較級",
-    rule:"這四個字是比較級的傲嬌大魔王——前面絕對不能加 más 或 menos，它們自己就是「更好/更慘/更大/更小」的完整比較級形態，跟英文 good→better、bad→worse 是同一種邏輯。",
+    id:"g52a", cat:"phrase", level:"b1",
+    title:"MEJOR：更好 → 最好",
+    rule:"mejor本身就是「更好」。要表達「最好」，記得前面的定冠詞不能漏掉：el mejor。",
     examples:[
-      {es:"Tu ayuda es mejor que un café.", zh:"你的幫忙比咖啡更好。"},
-      {es:"El clima es peor hoy.", zh:"今天天氣更糟。"},
-      {es:"Mi hermano mayor juega en el lodo.", zh:"我哥哥（年紀較大的）在泥巴裡玩。"}
+      {es:"Este pastel es bueno.", zh:"這個蛋糕很好。"},
+      {es:"Este pastel es mejor que el otro.", zh:"這個蛋糕比另一個更好。"},
+      {es:"Este es el mejor pastel.", zh:"這是最好的蛋糕。"}
     ],
-    trap:"❌ más bueno／más malo 是錯的，要說 mejor／peor；mayor／menor 除了比較級（年長/年幼）也常直接當形容詞用（hermano mayor＝哥哥、hermana menor＝妹妹），不是每次都在做比較。",
+    trap:"La mejor amiga de Nita es Vera.／妮妲最好的朋友是薇拉。mejor不分陰陽性，會變的是前面的定冠詞（el mejor／la mejor，看名詞性別）；mejor本身就是「更好」，一般比較時不用再說más bueno。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g52b", cat:"phrase", level:"b1",
+    title:"PEOR：更慘 → 最慘",
+    rule:"peor本身就是「更慘/更糟」。要表達「最慘/最糟」，前面的定冠詞不能漏掉：el peor。",
+    examples:[
+      {es:"Este día es malo.", zh:"這天很糟。"},
+      {es:"Este día es peor que ayer.", zh:"這天比昨天更糟。"},
+      {es:"Este es el peor día.", zh:"這是最糟的一天。"}
+    ],
+    trap:"La peor parte fue el examen.／最慘的部分是那場考試。peor跟mejor一樣不分陰陽性，只有前面的定冠詞會變（el peor／la peor）；peor本身就是「更慘/更糟」，一般比較時不用再說más malo。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g52c", cat:"phrase", level:"b1",
+    title:"MAYOR：更年長／較大 → 最年長／最大",
+    rule:"mayor本身就是「更年長」（也能指程度上「更大」）。要表達「最年長/最大」，前面的定冠詞不能漏掉：el mayor／la mayor。",
+    examples:[
+      {es:"Nita es grande.", zh:"妮妲年紀不小了。"},
+      {es:"Nita es mayor que Tito.", zh:"妮妲比迪多年長。"},
+      {es:"Nita es la mayor de los hermanos.", zh:"妮妲是手足裡最年長的。"}
+    ],
+    trap:"Mi hermano mayor juega en el lodo.／我哥哥（年紀較大的）在泥巴裡玩。mayor也常直接當形容詞用，不一定是在做比較，像hermano mayor＝哥哥、hermana menor＝妹妹；日常講尺寸的「比較大」通常用más grande，mayor更常用在年紀或抽象程度。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g52d", cat:"phrase", level:"b1",
+    title:"MENOR：更年幼／較小 → 最年幼／最小",
+    rule:"menor本身就是「更年幼」（也能指程度上「更小」）。要表達「最年幼/最小」，前面的定冠詞不能漏掉：el menor／la menor。",
+    examples:[
+      {es:"Mimi es pequeña.", zh:"咪咪還小。"},
+      {es:"Mimi es menor que Nita.", zh:"咪咪比妮妲年幼。"},
+      {es:"Mimi es la menor de los hermanos.", zh:"咪咪是手足裡最年幼的。"}
+    ],
+    trap:"Tito es el hermano menor.／迪多是弟弟（年紀較小的那個）。menor也常直接當形容詞用，不一定是在做比較；日常講尺寸的「比較小」通常用más pequeño，menor更常用在年紀或抽象程度。",
     source:"文法補充"
   },
 
@@ -2803,7 +2842,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52','g53','g54','g55','g56','g57','g58','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
   historical: ['g14'],
   incubating: []
 };
@@ -2815,7 +2854,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g16','g17','g18','g19','g20','g23','g27','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g53','g54','g55','g56','g57','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
+  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
@@ -2831,7 +2870,12 @@ const SKILL_GRAPH = [
   { from: "g30", to: "g115", relation: "related" },
   { from: "g112", to: "g114", relation: "family" },
   { from: "g112", to: "g115", relation: "family" },
-  { from: "g115", to: "g88", relation: "extends" }
+  { from: "g115", to: "g88", relation: "extends" },
+  { from: "g50", to: "g51", relation: "related" },
+  { from: "g50", to: "g52a", relation: "related" },
+  { from: "g52a", to: "g52b", relation: "family" },
+  { from: "g52a", to: "g52c", relation: "family" },
+  { from: "g52a", to: "g52d", relation: "family" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
