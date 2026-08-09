@@ -2203,10 +2203,21 @@ function renderVWords(text){
   }).join('');
 }
 
+// 角色專有名詞：貓家族核心角色的給定名字，不是詞彙熟練度追蹤對象——認得「Nita」這個字
+// 不會帶來新的語言知識，跟功能詞(SKIP)一樣不該長熟練度花花。
+// 只收「實際出現在content資料es:欄位裡」的給定名字(2026-08-09盤點episodes/grammar/ammo/
+// mom/corazon/diary/sel全部檔案)，CLAUDE.md裡還沒真的寫進任何劇情/例句的候選角色
+// (Leto/Socorro/Clota/Cemani/Sarita等)不預先排除，等內容真的用到再補，避免排除一個
+// 從未出現過的字。
+// ⚠️不要跟親屬稱謂通用詞混淆：Papá/Mamá是A1核心詞彙本身有教學價值(E18教的就是這兩個字)，
+// 不是給定名字，不排除；只有Nita/Tito/Kito/Mimi/Cata/Tato/Vera/Coco/Chito/Vivi這些
+// 「名字本身」才排除。
+const CHARACTER_NAMES = new Set(['nita','tito','kito','mimi','cata','tato','vera','coco','chito','vivi']);
+
 function isVocabWorthy(word){
   const w = (word||'').toLowerCase().replace(/[¡¿.,!?;:]+/g,'').trim();
   const SKIP = new Set(['yo','tú','tu','él','el','ella','nosotros','nosotras','vosotros','vosotras','ellos','ellas','usted','ustedes','me','te','se','le','les','soy','eres','es','somos','sois','son','estoy','estás','estas','está','esta','estamos','estáis','estais','están','estan','hay','y','o','a','de','en','que','no','si','sí','muy','más','mas','todo','todos','una','un','la','lo','las','los','del','al','qué','quién']);
-  return w.length > 1 && !SKIP.has(w);
+  return w.length > 1 && !SKIP.has(w) && !CHARACTER_NAMES.has(w);
 }
 
 // ── SAVE / LOAD (LocalStorage) ──
