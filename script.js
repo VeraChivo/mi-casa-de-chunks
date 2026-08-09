@@ -853,7 +853,8 @@ function renderGenderPairs(){
           const _key = 'gp_'+o.word;
           const _st = (_gdb[_key]||{stage:0}).stage;
           const _ic = GARDEN_STAGES[_st];
-          const starHtml = worthy ? `<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('gp_${escAttr(o.word)}',this)" title="語塊進度">${_ic}</span>` : '';
+          // 2026-08-09 同_grammarExChunks()：滿階(stage4)不再佔位、不能點
+          const starHtml = (worthy && _st<4) ? `<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('gp_${escAttr(o.word)}',this)" title="語塊進度">${_ic}</span>` : '';
           return `<span class="gp-toggle-wrap"><span class="gp-toggle ${o.suf==='a'?'gp-toggle-f':'gp-toggle-m'}" id="gp-${pi}-${oi}" onclick="pickGenderPair(${pi},${oi})">${o.word}</span>${starHtml}${addBtnHtml}</span>`;
         }).join('')}
       </div>
@@ -982,7 +983,8 @@ function renderCogLibrary(filter){
           const _sfKey='sfx_'+clean;
           const _sfSt=(_sfxDb[_sfKey]||{stage:0}).stage;
           const _sfIc=GARDEN_STAGES[_sfSt];
-          const starHtml = isVocabWorthy(ck.w) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
+          // 2026-08-09 同_grammarExChunks()：滿階(stage4)不再佔位、不能點
+          const starHtml = (isVocabWorthy(ck.w) && _sfSt<4) ? '<span class="suffix-chunk-star'+(_sfSt===0?' garden-empty':'')+'" onclick="event.stopPropagation();handleGardenProgress(\'sfx_'+escAttr(clean)+'\',this)" title="語塊進度">'+_sfIc+'</span>' : '';
           const dispW=ck.role==='v'?renderVWords(ck.w):ck.w;
           const connCls=ck.role==='c'?connFlowClass(ck.w):'';
           return '<span class="suffix-ex-unit"><span class="suffix-ex-chunk role-'+ck.role+(connCls?' '+connCls:'')+'" data-copy-text="'+escAttr(clean)+'" onclick="event.stopPropagation();'+exPlayExpr+'">'+dispW+'</span>'+starHtml+'</span>';
@@ -2203,10 +2205,21 @@ function renderVWords(text){
   }).join('');
 }
 
+// 角色專有名詞：貓家族核心角色的給定名字，不是詞彙熟練度追蹤對象——認得「Nita」這個字
+// 不會帶來新的語言知識，跟功能詞(SKIP)一樣不該長熟練度花花。
+// 只收「實際出現在content資料es:欄位裡」的給定名字(2026-08-09盤點episodes/grammar/ammo/
+// mom/corazon/diary/sel全部檔案)，CLAUDE.md裡還沒真的寫進任何劇情/例句的候選角色
+// (Leto/Socorro/Clota/Cemani/Sarita等)不預先排除，等內容真的用到再補，避免排除一個
+// 從未出現過的字。
+// ⚠️不要跟親屬稱謂通用詞混淆：Papá/Mamá是A1核心詞彙本身有教學價值(E18教的就是這兩個字)，
+// 不是給定名字，不排除；只有Nita/Tito/Kito/Mimi/Cata/Tato/Vera/Coco/Chito/Vivi這些
+// 「名字本身」才排除。
+const CHARACTER_NAMES = new Set(['nita','tito','kito','mimi','cata','tato','vera','coco','chito','vivi']);
+
 function isVocabWorthy(word){
   const w = (word||'').toLowerCase().replace(/[¡¿.,!?;:]+/g,'').trim();
   const SKIP = new Set(['yo','tú','tu','él','el','ella','nosotros','nosotras','vosotros','vosotras','ellos','ellas','usted','ustedes','me','te','se','le','les','soy','eres','es','somos','sois','son','estoy','estás','estas','está','esta','estamos','estáis','estais','están','estan','hay','y','o','a','de','en','que','no','si','sí','muy','más','mas','todo','todos','una','un','la','lo','las','los','del','al','qué','quién']);
-  return w.length > 1 && !SKIP.has(w);
+  return w.length > 1 && !SKIP.has(w) && !CHARACTER_NAMES.has(w);
 }
 
 // ── SAVE / LOAD (LocalStorage) ──
@@ -2987,7 +3000,9 @@ function _grammarExChunks(es, playExpr){
     const _key='ge_'+clean;
     const _st=(_gdb[_key]||{stage:0}).stage;
     const _ic=GARDEN_STAGES[_st];
-    const starHtml=`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
+    // 2026-08-09 VERA定案：文法區/例句區的花花，🌻滿階(stage4)後不再佔位、不能點——
+    // 這裡的花花是「幫忙學詞」用的提示，已經學會的詞不用再提示，直接留白讓例句乾淨
+    const starHtml=_st>=4?'':`<span class="ge-chunk-star${_st===0?' garden-empty':''}" onclick="event.stopPropagation();handleGardenProgress('ge_${escAttr(clean)}',this)" title="語塊進度">${_ic}</span>`;
     return `<span class="ge-chunk-unit"><span class="ge-chunk" onclick="event.stopPropagation();${onclickAttr}">${tok}</span>${starHtml}</span>`;
   };
   // 引號內的對話如果只是句子裡一小段（≤6個字），包成不斷行區塊避免斷在對話中間；
