@@ -1275,6 +1275,17 @@ const GRAMMAR_DATA = [
   },
 
   {
+    id:"g43a", cat:"vocab", level:"b2c1",
+    title:"Agobiado：喘不過氣",
+    rule:"Agobiado常跟estar或sentirse連用，不跟ser——形容被壓力、待辦事項壓得喘不過氣，是暫時的心理狀態，不是本質。",
+    examples:[
+      {es:"Cata se siente agobiada por tantas tareas.", zh:"卡妲被那麼多待辦事項壓得喘不過氣。"},
+      {es:"Estoy agobiado con el trabajo esta semana.", zh:"這禮拜的工作讓我喘不過氣。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
     id:"g44", cat:"vocab", level:"b2c1",
     title:"B2社會時事詞彙",
     rule:"日常對話升級到能討論社會議題的B2詞彙——這些字常出現在新聞、社群討論、對社會現象發表意見的場合。",
@@ -2900,7 +2911,8 @@ const SKILL_GRAPH = [
   { from: "g52a", to: "g52c", relation: "family" },
   { from: "g52a", to: "g52d", relation: "family" },
   { from: "g58a", to: "g58b", relation: "family" },
-  { from: "g58a", to: "g58c", relation: "family" }
+  { from: "g58a", to: "g58c", relation: "family" },
+  { from: "g43a", to: "g02", relation: "uses" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
