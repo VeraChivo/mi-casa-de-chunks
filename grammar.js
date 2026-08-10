@@ -2900,6 +2900,12 @@ const SKILL_GRAPH = [
   { from: "g05", to: "g116b", relation: "uses" },
   { from: "g05", to: "g116c", relation: "uses" },
   { from: "g05", to: "g116d", relation: "uses" },
+  { from: "g116a", to: "g116b", relation: "family" },
+  { from: "g116a", to: "g116c", relation: "family" },
+  { from: "g116a", to: "g116d", relation: "family" },
+  { from: "g116b", to: "g116c", relation: "family" },
+  { from: "g116b", to: "g116d", relation: "family" },
+  { from: "g116c", to: "g116d", relation: "family" },
   { from: "g42a", to: "g42b", relation: "extends" },
   { from: "g30", to: "g115", relation: "related" },
   { from: "g112", to: "g114", relation: "family" },
@@ -2910,8 +2916,12 @@ const SKILL_GRAPH = [
   { from: "g52a", to: "g52b", relation: "family" },
   { from: "g52a", to: "g52c", relation: "family" },
   { from: "g52a", to: "g52d", relation: "family" },
+  { from: "g52b", to: "g52c", relation: "family" },
+  { from: "g52b", to: "g52d", relation: "family" },
+  { from: "g52c", to: "g52d", relation: "family" },
   { from: "g58a", to: "g58b", relation: "family" },
   { from: "g58a", to: "g58c", relation: "family" },
+  { from: "g58b", to: "g58c", relation: "family" },
   { from: "g43a", to: "g02", relation: "uses" }
 ];
 
