@@ -1589,6 +1589,180 @@ function echoPlayRecording(){
   player.play().catch(()=>toast('播放失敗，再試一次看看'));
 }
 
+// ══════════ 🗣️ 西語純發音特區：第一輪R/RR（2026-08-10 VERA定案）══════════
+// 錄音機制是上面 echo* 系列（造句區雙音軌錄放對比）的同一套 pattern，但刻意獨立一份
+// 狀態變數/函式，不共用——兩邊各自服務不同畫面（造句區單句 vs 發音區多個詞卡並排），
+// 且造句區已經上線穩定，不因為新增發音區而去改動它的呼叫介面。
+function togglePronunciationSection(){
+  const body=document.getElementById('pronunciationSectionBody');
+  const t=document.getElementById('pronunciationSectionToggle');
+  const open=body.classList.toggle('open');
+  t.textContent=open?'▲ 收起':'▼ 展開';
+}
+
+function _pronFindWord(wordId){
+  for(const skill of PRONUNCIATION_SKILLS){
+    for(const pair of skill.pairs){
+      const w = pair.words.find(x=>x.id===wordId);
+      if(w) return w;
+    }
+  }
+  return null;
+}
+
+function renderPronunciationSkills(){
+  const el = document.getElementById('pronunciationSectionBody');
+  if(!el || typeof PRONUNCIATION_SKILLS==='undefined') return;
+  const db = getPronDB();
+  el.innerHTML = PRONUNCIATION_SKILLS.map(skill => `
+    <div class="pron-skill-block">
+      <div class="pron-skill-head">
+        <span class="pron-skill-icon">${skill.icon}</span>
+        <div>
+          <div class="pron-skill-title">${skill.title}</div>
+          <div class="pron-skill-sub">${skill.subtitle}</div>
+        </div>
+      </div>
+      ${skill.pairs.map(pair => `
+        <div class="pron-pair-wrap">
+          ${pair.words.map(w => _pronWordCardHtml(w, db)).join('')}
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function _pronWordCardHtml(w, db){
+  const marked = !!db[w.id];
+  const wid = escAttr(w.id);
+  return `
+    <div class="pron-word-card">
+      <div class="pron-word-head">
+        <span><span class="pron-word-es">${w.es}</span><span class="pron-word-zh">${w.zh}</span></span>
+        <span class="pron-diff-label">${w.diffLabel}</span>
+      </div>
+      <div class="echo-row">
+        <button class="echo-btn echo-btn-ref" onclick="pronPlayRef('${wid}')">🔊 官方發音</button>
+        <button class="echo-btn echo-btn-rec" id="pron-recbtn-${wid}" onclick="pronToggleRecord('${wid}')">🎙️ 輪到我仿說</button>
+      </div>
+      <div class="echo-hint" id="pron-hint-${wid}" style="display:none"></div>
+      <button class="pron-diff-btn${marked?' active':''}" id="pron-diffbtn-${wid}" onclick="pronToggleDiff('${wid}')">🌱 ${marked?'已標記聽出差異':'聽出差異了'}</button>
+    </div>`;
+}
+
+function pronPlayRef(wordId){
+  const w = _pronFindWord(wordId);
+  if(!w) return;
+  const file = (typeof PRON_AUDIO_MAP!=='undefined') ? PRON_AUDIO_MAP[w.es] : null;
+  if(!file){ speakFull(w.es); return; }
+  _stopActiveAudio();
+  const player = new Audio(file);
+  _activeAudio = player;
+  player.onerror = () => speakFull(w.es);
+  player.play().catch(()=>speakFull(w.es));
+}
+
+// 全域單槽位：一次只服務「目前互動中的那個詞」，跟造句區echo系統同一種設計——
+// 瀏覽器本來就只能同時錄一軌，換詞時把前一個詞的暫存錄音丟掉即可，不用同時保留多筆。
+let _pronRecorder = null;
+let _pronChunks = [];
+let _pronBlobUrl = null;
+let _pronState = 'idle'; // idle | recording | ready
+let _pronActiveItemId = null;
+
+function _pronSetBtn(wordId, label, recording){
+  const btn = document.getElementById('pron-recbtn-'+wordId);
+  if(!btn) return;
+  btn.textContent = label;
+  btn.classList.toggle('echo-recording', !!recording);
+}
+function _pronSetHint(wordId, text, clickable){
+  const hint = document.getElementById('pron-hint-'+wordId);
+  if(!hint) return;
+  if(!text){ hint.style.display='none'; hint.onclick=null; return; }
+  hint.textContent = text;
+  hint.style.display = 'block';
+  hint.style.cursor = clickable ? 'pointer' : 'default';
+  hint.style.textDecoration = clickable ? 'underline' : 'none';
+  hint.onclick = clickable ? (()=>pronResetItem(wordId)) : null;
+}
+function pronResetItem(wordId){
+  if(_pronRecorder && _pronRecorder.state === 'recording'){
+    try{ _pronRecorder.stop(); }catch(e){}
+  }
+  if(_pronBlobUrl){ try{ URL.revokeObjectURL(_pronBlobUrl); }catch(e){} }
+  _pronBlobUrl = null;
+  _pronChunks = [];
+  _pronState = 'idle';
+  _pronSetBtn(wordId, '🎙️ 輪到我仿說', false);
+  _pronSetHint(wordId, '', false);
+}
+function pronToggleRecord(wordId){
+  if(_pronActiveItemId && _pronActiveItemId !== wordId) pronResetItem(_pronActiveItemId);
+  _pronActiveItemId = wordId;
+  if(_pronState === 'idle') pronStartRecording(wordId);
+  else if(_pronState === 'recording') pronStopRecording();
+  else if(_pronState === 'ready') pronPlayRecording();
+}
+function pronStartRecording(wordId){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === 'undefined'){
+    toast('這個瀏覽器不支援錄音功能，換個瀏覽器試試看吧');
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+    let mr;
+    try{ mr = new MediaRecorder(stream); }
+    catch(e){ toast('這個瀏覽器不支援錄音功能，換個瀏覽器試試看吧'); stream.getTracks().forEach(t=>t.stop()); return; }
+    _pronRecorder = mr;
+    _pronChunks = [];
+    mr.ondataavailable = (e)=>{ if(e.data && e.data.size>0) _pronChunks.push(e.data); };
+    mr.onstop = ()=>{
+      stream.getTracks().forEach(t=>t.stop());
+      if(_pronBlobUrl){ try{ URL.revokeObjectURL(_pronBlobUrl); }catch(e){} }
+      const blob = new Blob(_pronChunks, {type: mr.mimeType || 'audio/webm'});
+      _pronBlobUrl = URL.createObjectURL(blob);
+      _pronState = 'ready';
+      _pronSetBtn(wordId, '▶️ 播放我的仿說', false);
+      _pronSetHint(wordId, '🔄 想重錄嗎？點這裡', true);
+    };
+    mr.start();
+    _pronState = 'recording';
+    _pronSetBtn(wordId, '⏹️ 停止錄音', true);
+    _pronSetHint(wordId, '🔴 錄音中，講完按一下停止', false);
+  }).catch(()=>{
+    toast('🎙️ 沒有拿到麥克風權限，去瀏覽器設定開啟後再試一次');
+  });
+}
+function pronStopRecording(){
+  if(_pronRecorder && _pronRecorder.state === 'recording') _pronRecorder.stop();
+}
+function pronPlayRecording(){
+  if(!_pronBlobUrl) return;
+  _stopActiveAudio();
+  const player = new Audio(_pronBlobUrl);
+  _activeAudio = player;
+  player.play().catch(()=>toast('播放失敗，再試一次看看'));
+}
+
+// ── 🌱 聽出差異了：純自我回報的輕量標記，跟🌻花園熟練度完全分開的獨立key，
+//    只存布林值（不存錄音、不存時間戳——這輪明確不做錄音歷史/回顧功能）──
+function getPronDB(){
+  try{ return JSON.parse(localStorage.getItem('peppa_pron_v1')) || {}; }
+  catch(e){ return {}; }
+}
+function savePronDB(db){
+  localStorage.setItem('peppa_pron_v1', JSON.stringify(db));
+}
+function pronToggleDiff(wordId){
+  const db = getPronDB();
+  if(db[wordId]) delete db[wordId]; else db[wordId] = true;
+  savePronDB(db);
+  const btn = document.getElementById('pron-diffbtn-'+wordId);
+  if(btn){
+    const marked = !!db[wordId];
+    btn.classList.toggle('active', marked);
+    btn.textContent = '🌱 ' + (marked ? '已標記聽出差異' : '聽出差異了');
+  }
+}
+
 // ── RENDER CARD ──
 function render(){
   saveToLS(); // 記住目前瀏覽到哪一句，重新整理不要跳回第一集第一句
@@ -2469,7 +2643,7 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1','peppa_chunk_fam_seen_v1'];
+const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1','peppa_chunk_fam_seen_v1','peppa_pron_v1'];
 
 function exportBackup(){
   const data = {};
@@ -5383,6 +5557,7 @@ function renderChangelog(){
   renderConjLibrary();
   renderPronounLibrary();
   renderGenderPairs();
+  renderPronunciationSkills();
   renderSerEstarStation();
   renderIndicSubjPairs();
   renderGrammarSupplement();
