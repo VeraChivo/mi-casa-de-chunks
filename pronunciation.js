@@ -1,4 +1,4 @@
-// pronunciation.js — 🗣️ 西語純發音特區資料
+// pronunciation.js — 👅 口腔健舌坊資料（原🗣️西語純發音特區，2026-08-11 VERA定案改名）
 //
 // 第一輪範圍：只做 R/RR 一組最小對立音組（2026-08-10 VERA定案，見開發討論）。
 // 之後新增音位（ñ／b-v／j-g／ll-y…）時，直接在 PRONUNCIATION_SKILLS 陣列
@@ -42,6 +42,6 @@ const PRONUNCIATION_SKILLS = [
 ];
 
 // 真人音檔優先，找不到就 fallback 瀏覽器TTS（跟 GRAM_AUDIO_MAP 同一套邏輯，
-// 但獨立命名空間——這裡的 key 是發音特區自己的詞，不跟文法卡例句共用）。
+// 但獨立命名空間——這裡的 key 是口腔健舌坊自己的詞，不跟文法卡例句共用）。
 // 目前尚未錄音，先留空物件，播放時會自動 fallback TTS，不會出錯。
 const PRON_AUDIO_MAP = {};
