@@ -424,7 +424,7 @@ const GRAMMAR_DATA = [
   {
     id:"g09", cat:"gustar", level:"a1a2",
     title:"A + 人 + le gusta：某人喜歡",
-    rule:"GUSTAR不是「我喜歡」的直接翻譯。想說「某人喜歡某事」，就用 A + 人 + le/les + gusta(n) + 名詞或原形動詞。",
+    rule:"A + persona + le/les + gusta(n) + sustantivo/infinitivo<br><br>用來說某人喜歡某件事，不是「我喜歡」的直接翻譯。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
       {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"}
@@ -564,7 +564,7 @@ const GRAMMAR_DATA = [
   {
     id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que：讓別人知道我腦中怎麼理解這件事",
-    rule:"想表達自己的想法、意見或判斷，就用 Creo que + 一整句話。",
+    rule:"Creo que + oración<br><br>用來表達自己的想法、意見或判斷。",
     examples:[
       {es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。（劇情原句，E3扮醫生場景）"},
       {es:"Creo que todo es mi error.", zh:"我以為都是我的錯。（劇情原句，SEL線）"},
@@ -591,7 +591,7 @@ const GRAMMAR_DATA = [
   {
     id:"g14", cat:"phrase", level:"a1a2",
     title:"No pasa nada：沒關係、沒事",
-    rule:"字面意思「什麼都沒發生」，是西語最高頻的安慰語之一。",
+    rule:"No pasa nada.<br><br>西語最高頻的安慰語之一，字面是什麼都沒發生。",
     examples:[
       {es:"No pasa nada. Sólo es barro.", zh:"沒關係，只是泥巴而已。（No pasa nada字面：什麼都沒發生）"},
       {es:"No pasa nada, yo te ayudo.", zh:"沒關係，我來幫你。"},
@@ -617,7 +617,7 @@ const GRAMMAR_DATA = [
   {
     id:"g16", cat:"phrase", level:"a1a2",
     title:"肯定命令句：怎麼對「你」下指令？",
-    rule:"想直接對「你」下命令，動詞直接用第三人稱單數（他／她）的現在式。<br><br>一句記住：Habla.（你說！← él habla）。Come.（你吃！← él come）。",
+    rule:"動詞第三人稱單數現在式 = 肯定命令句<br><br>直接對「你」下指令時使用，例如habla（你說）、come（你吃）。",
     examples:[
       {es:"Respira hondo.", zh:"深呼吸。（respirar → respira）"},
       {es:"Tose.", zh:"咳嗽。（toser → tose）"},
@@ -736,7 +736,7 @@ const GRAMMAR_DATA = [
   {
     id:"g19", cat:"tense", level:"a1a2",
     title:"IR + a + 動詞：從「去」長出行動路線",
-    rule:"想說「我要去做什麼」，就用 ir 的變位 + a + 原形動詞：voy/vas/va/vamos/van，任何人稱都能用。",
+    rule:"voy / vas / va / vamos / van + a + infinitivo<br><br>用來說要去做什麼，任何人稱都能用。",
     examples:[
       {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
       {es:"Mamá siempre te va a cuidar.", zh:"媽媽會一直守護你喔。（🛌床邊低語呢原句）"},
@@ -841,13 +841,12 @@ const GRAMMAR_DATA = [
   {
     id:"g21", cat:"word-order", level:"a1a2",
     title:"形容詞位置：放在名詞後面",
-    rule:"跟英文相反，西語的形容詞通常放在被形容的名詞之後。例如：la casa blanca（那棟白色的房子，直譯「房子 白色的」）。",
+    rule:"西語形容詞通常放在名詞之後（la casa blanca）。<br><br>少數常見形容詞（bueno/malo/grande/primero/otro）放在名詞前面，且陽性單數名詞前會省略字尾（buen/mal/gran/primer）。",
     examples:[
       {es:"Tienes una hermana mayor.", zh:"你有一個大姊姊。（劇情原句，mayor 放在 hermana 後面）"},
       {es:"Tenemos una casa nueva.", zh:"我們有了一棟新房子。（劇情原句，nueva 放在 casa 後面）"},
       {es:"Mimi es una niña feliz.", zh:"咪咪是個快樂的女孩。（新編例句，feliz 放在 niña 後面）"}
     ],
-    trap:"少數常見形容詞（bueno好／malo壞／grande大／primero第一／otro其他）常放在名詞前面，且陽性單數名詞前會省略字尾（buen, mal, gran）——先抓住「大部分放後面」這個大原則，例外之後再慢慢熟悉。",
     crossLang:"這個「性別詞放名詞後面」的邏輯，台語（雞母 ke-bó／雞公 ke-kang／狗公 káu-kang）跟客語（雞嫲 gai-mâ／蝦公 ha-gûng）處理動物性別時也完全一樣，跟西語 gato macho／gato hembra 是同一套語序！",
     source:"彈藥庫 e4_03（前兩句）／文法補充（第三句為新編）"
   },
@@ -1217,7 +1216,7 @@ const GRAMMAR_DATA = [
       {es:"¿Me echas un poco de agua?", zh:"可以幫我倒一點水嗎？（echar ＝倒/加）"},
       {es:"Echo de menos a mi familia.", zh:"我想念我的家人。（echar de menos ＝想念）"}
     ],
-    trap:"echar 本身意思很廣（丟/倒/放/趕）——重點是把整組固定搭配（echar a alguien／echar de menos）當語塊背，不要拆開單獨背 echar。",
+    note:"echar本身意思很廣（丟/倒/放/趕），重點是把整組固定搭配（echar a alguien／echar de menos）當語塊背，不要拆開單獨背echar。",
     source:"文法補充"
   },
 
@@ -1432,7 +1431,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52a", cat:"phrase", level:"b1",
     title:"MEJOR：更好 → 最好",
-    rule:"mejor本身就是「更好」。要表達「最好」，記得前面的定冠詞不能漏掉：el mejor。",
+    rule:"el mejor / la mejor<br><br>mejor本身就是更好，加上定冠詞表示最好。",
     examples:[
       {es:"Este pastel es bueno.", zh:"這個蛋糕很好。"},
       {es:"Este pastel es mejor que el otro.", zh:"這個蛋糕比另一個更好。"},
@@ -1445,7 +1444,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52b", cat:"phrase", level:"b1",
     title:"PEOR：更慘 → 最慘",
-    rule:"peor本身就是「更慘/更糟」。要表達「最慘/最糟」，前面的定冠詞不能漏掉：el peor。",
+    rule:"el peor / la peor<br><br>peor本身就是更慘、更糟，加上定冠詞表示最慘或最糟。",
     examples:[
       {es:"Este día es malo.", zh:"這天很糟。"},
       {es:"Este día es peor que ayer.", zh:"這天比昨天更糟。"},
@@ -1458,7 +1457,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52c", cat:"phrase", level:"b1",
     title:"MAYOR：更年長／較大 → 最年長／最大",
-    rule:"mayor本身就是「更年長」（也能指程度上「更大」）。要表達「最年長/最大」，前面的定冠詞不能漏掉：el mayor／la mayor。",
+    rule:"el mayor / la mayor<br><br>mayor本身就是更年長，也能指程度上更大，加上定冠詞表示最年長或最大。",
     examples:[
       {es:"Nita es grande.", zh:"妮妲年紀不小了。"},
       {es:"Nita es mayor que Tito.", zh:"妮妲比迪多年長。"},
@@ -1471,7 +1470,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52d", cat:"phrase", level:"b1",
     title:"MENOR：更年幼／較小 → 最年幼／最小",
-    rule:"menor本身就是「更年幼」（也能指程度上「更小」）。要表達「最年幼/最小」，前面的定冠詞不能漏掉：el menor／la menor。",
+    rule:"el menor / la menor<br><br>menor本身就是更年幼，也能指程度上更小，加上定冠詞表示最年幼或最小。",
     examples:[
       {es:"Mimi es pequeña.", zh:"咪咪還小。"},
       {es:"Mimi es menor que Nita.", zh:"咪咪比妮妲年幼。"},
@@ -1561,7 +1560,7 @@ const GRAMMAR_DATA = [
   {
     id:"g58a", cat:"verb-pattern", level:"b2c1",
     title:"Ponerse：突然變",
-    rule:"情緒或狀態突然變了，用ponerse。通常來得快，也退得快。",
+    rule:"ponerse + adjetivo<br><br>形容情緒或狀態突然改變，來得快也退得快。",
     examples:[
       {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，突然很開心。"},
       {es:"Tito se puso rojo de vergüenza.", zh:"迪多害羞得臉都紅了。"}
@@ -1573,7 +1572,7 @@ const GRAMMAR_DATA = [
   {
     id:"g58b", cat:"verb-pattern", level:"b2c1",
     title:"Quedarse：留下來",
-    rule:"事情發生後，留下某種狀態，用quedarse。",
+    rule:"quedarse + adjetivo / participio<br><br>形容一件事發生後留下的狀態。",
     examples:[
       {es:"Tito se quedó dormido en el sofá.", zh:"迪多在沙發上睡著了。"},
       {es:"Nita se quedó callada un momento.", zh:"妮妲安靜了一會兒。"}
@@ -1585,7 +1584,7 @@ const GRAMMAR_DATA = [
   {
     id:"g58c", cat:"verb-pattern", level:"b2c1",
     title:"Volverse：慢慢變",
-    rule:"人或事慢慢發生根本的改變，用volverse。",
+    rule:"volverse + adjetivo<br><br>形容人或事慢慢發生根本的改變。",
     examples:[
       {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢變成橘色。"},
       {es:"Con los años, Cata se volvió más paciente.", zh:"這些年下來，卡妲變得更有耐心了。"}
@@ -2099,7 +2098,7 @@ const GRAMMAR_DATA = [
   {
     id:"g88", cat:"connector", level:"c1",
     title:"正式連接詞：讓論述聽起來更有邏輯層次",
-    rule:"常見於新聞評論、學術寫作、正式演講，用來串起轉折、因果與補充，讓較長的論述更容易跟上。",
+    rule:"a pesar de ello / de hecho / en definitiva / por otra parte / asimismo<br><br>用來讓論述有轉折、因果、補充的邏輯層次，語域比porque/pero/sino更正式。",
     examples:[
       {es:"El plan es ambicioso; no obstante, falta financiamiento.", zh:"這個計畫很有野心；然而，資金不足。（no obstante：然而，比pero更正式）"},
       {es:"No hay suficientes datos; por consiguiente, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por consiguiente：因此）"},
@@ -2627,7 +2626,7 @@ const GRAMMAR_DATA = [
   {
     id:"g113", cat:"verb-pattern", level:"b1",
     title:"意見表達：表達立場與保留",
-    rule:"想表達意見、表示同意，或保留立場，就用對應的句型。",
+    rule:"en mi opinión / desde mi punto de vista / estoy de acuerdo con / depende de<br><br>用來表達意見、同意或不同意、保留立場，語氣比creo que更正式或更謹慎。",
     examples:[
       {es:"En mi opinión, los espacios verdes son muy importantes.", zh:"依我看，綠地空間非常重要。（en mi opinión：比creo que更正式的意見開場白，常用在討論/寫作語境）"},
       {es:"Desde mi punto de vista, esta ciudad necesita más parques.", zh:"從我的角度來看，這座城市需要更多公園。（desde mi punto de vista：強調「這是我個人的視角」，語氣比creo que更慎重）"},
@@ -2644,26 +2643,25 @@ const GRAMMAR_DATA = [
   {
     id:"g114", cat:"connector", level:"b1",
     title:"敘事排序詞：primero/luego/después/al final",
-    rule:"想把好幾個步驟按順序排列清楚，就用這批敘事排序詞：primero/luego/después/al final，是講故事、寫食譜、交代流程時的骨架詞。",
+    rule:"primero / luego / después / al final<br><br>用來把好幾個步驟按順序排列清楚，luego比después稍微口語一點。",
     examples:[
       {es:"Primero, me desperté. Luego, desayuné. Después, fui a la escuela.", zh:"首先，我起床了。然後，我吃了早餐。接著，我去了學校。（primero/luego/después：標記步驟先後，是最基本的敘事排序組合）"},
       {es:"Al final, todo salió bien.", zh:"最後，一切都很順利。（al final：收尾用語，總結整段敘事的結果）"},
       {es:"Primero terminé la tarea, y al final pude descansar.", zh:"我先做完功課，最後才能休息。（primero...al final...：頭尾呼應的完整敘事框架）"}
     ],
-    trap:"luego跟después常常可以互換（都是「然後/接著」），差別很細微：luego語氣更口語隨性，después稍微正式一點，日常對話兩個都通用，不用太糾結該選哪個。",
+    note:"luego跟después常常可以互換，語氣差別很細微，日常對話兩個都通用，不用太糾結該選哪個。",
     source:"文法補充"
   },
 
   {
     id:"g115", cat:"connector", level:"b1",
     title:"因果連接詞：por eso/así que/por lo tanto",
-    rule:"想先講原因、再講結果，用「所以/因此」接起來，就用這三個詞：por eso最口語，así que也偏口語但稍微強調結論，por lo tanto最正式書面，適合寫作/論述場合。",
+    rule:"por eso / así que / por lo tanto<br><br>先講原因、再講結果時使用，por eso最口語，así que強調結論，por lo tanto最正式書面。",
     examples:[
       {es:"Llovía mucho, por eso no salimos.", zh:"雨下得很大，所以我們沒出門。（por eso：最口語的「所以」，日常對話最常用）"},
       {es:"No tenía dinero, así que no compré nada.", zh:"我沒有錢，所以什麼都沒買。（así que：口語，帶一點「於是就」的順勢感）"},
       {es:"Los datos son insuficientes; por lo tanto, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por lo tanto：正式書面用語，適合寫作/論述）"}
     ],
-    trap:"這三個詞的因果方向都一樣（原因在前，結果在後），差別純粹是語域（register）。<br><br>朋友聊天用por eso/así que，寫報告/正式討論用por lo tanto，選錯不會造成誤解，但會顯得語氣不搭場合。",
     source:"文法補充"
   },
 
@@ -2714,7 +2712,7 @@ const GRAMMAR_DATA = [
   {
     id:"g117", cat:"verb-pattern", level:"a1a2",
     title:"Llamarse：從名字開始建立自己的位置",
-    rule:"llamarse字面是「稱呼自己」（反身動詞）。<br><br>「我是誰」「你是誰」「他是誰」，最先都是靠這句話回答的——是打開自己在西語世界裡第一個身分入口的鑰匙。",
+    rule:"llamarse（反身動詞）<br><br>用來說自己或別人的名字，是自我介紹的第一句話。",
     examples:[
       {es:"Me llamo Nita.", zh:"我叫妮妲。（劇情原句，E17）"},
       {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（新編例句，A1核心問句，目前劇情裡還沒出現）"},
