@@ -377,13 +377,12 @@ const GRAMMAR_DATA = [
   {
     id:"g07", cat:"tense", level:"a1a2",
     title:"SER 未來式：你會成為什麼？",
-    rule:"想說一個人以後會成為什麼，或猜未來會怎樣，就用 SER 的未來式。",
+    rule:"seré / serás / será / seremos / serán<br><br>用來說一個人以後會成為什麼，或猜未來會怎樣。",
     examples:[
       {es:"Yo seré la doctora y tú serás la enfermera.", zh:"我來當醫生，你來當護士。"},
       {es:"Tú serás una estrella.", zh:"你將成為一顆明星。"},
       {es:"¿Qué serás de mayor?", zh:"你長大想做什麼？（字面：你將成為什麼？）"}
     ],
-    trap:"SER 未來人稱：seré / serás / será / seremos / serán",
     source:"E3·S7",
     conj:{
       verb:"ser（以後要做：將成為）",
@@ -448,7 +447,7 @@ const GRAMMAR_DATA = [
   {
     id:"g10", cat:"verb-pattern", level:"a1a2",
     title:"¿Podemos + 動詞?：我們可以…嗎？",
-    rule:"想問能不能做一件事，就用 poder + 原形動詞。",
+    rule:"poder + infinitivo<br><br>用來問能不能做一件事。",
     examples:[
       {es:"¿Podemos salir a jugar?", zh:"我們可以出去玩嗎？"},
       {es:"¿Podemos comer ahora?", zh:"我們現在可以吃了嗎？"},
@@ -500,7 +499,7 @@ const GRAMMAR_DATA = [
   {
     id:"g11", cat:"verb-pattern", level:"a1a2",
     title:"Deber + 動詞：你應該、必須",
-    rule:"想說一件事應該做、必須做，就用 deber + 原形動詞。",
+    rule:"deber + infinitivo<br><br>用來表達應該做、必須做一件事。",
     examples:[
       {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
       {es:"Debes lavarte las manos.", zh:"你該洗手。"},
@@ -552,7 +551,7 @@ const GRAMMAR_DATA = [
   {
     id:"g12", cat:"verb-pattern", level:"a1a2",
     title:"Para + 動詞：為了做什麼？",
-    rule:"想說做一件事的目的，就用 para + 原形動詞。",
+    rule:"para + infinitivo<br><br>用來表達做一件事的目的。",
     examples:[
       {es:"Todos necesitan galletas para curarse.", zh:"所有人都需要餅乾才能康復。"},
       {es:"Necesitas agua para vivir.", zh:"你需要水才能生存。"},
@@ -684,7 +683,7 @@ const GRAMMAR_DATA = [
   {
     id:"g18", cat:"verb-pattern", level:"a1a2",
     title:"Vamos a + 動詞：接下來要做什麼？",
-    rule:"想說接下來要做某件事，就用 vamos a + 原形動詞。",
+    rule:"vamos a + infinitivo<br><br>用來表達接下來要做的事。",
     examples:[
       {es:"Vamos a respirar.", zh:"來，我們一起深呼吸。"},
       {es:"Vamos al parque.", zh:"我們去公園吧！"},
@@ -1277,7 +1276,7 @@ const GRAMMAR_DATA = [
   {
     id:"g43a", cat:"vocab", level:"b2c1",
     title:"Agobiado：喘不過氣",
-    rule:"Agobiado常跟estar或sentirse連用，不跟ser——形容被壓力、待辦事項壓得喘不過氣，是暫時的心理狀態，不是本質。",
+    rule:"estar agobiado / sentirse agobiado<br><br>形容被壓力、待辦事項壓得喘不過氣。",
     examples:[
       {es:"Cata se siente agobiada por tantas tareas.", zh:"卡妲被那麼多待辦事項壓得喘不過氣。"},
       {es:"Estoy agobiado con el trabajo esta semana.", zh:"這禮拜的工作讓我喘不過氣。"}
