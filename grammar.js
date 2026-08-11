@@ -986,7 +986,7 @@ const GRAMMAR_DATA = [
     examples:[
       {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。"},
       {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
-      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（心情不好的是「我」，但在劇院吵鬧的是「別人」——這種「感受的人」跟「做動作的人」不同，是這句要小心處理的地方）"}
+      {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。（Requests請求：g35也用過這句）"}
     ],
     mnemonic:{
       icon:"🌪️", word:"WEIRDO", side:"subj",
@@ -1024,7 +1024,7 @@ const GRAMMAR_DATA = [
       {es:"Me da vergüenza hablar con desconocidos.", zh:"和陌生人說話讓我感到害羞。（同一主詞，用原形動詞 hablar）"},
       {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（主詞不同：心情不好的是「我」，但吵鬧的是「別人」）"}
     ],
-    trap:"前三句看起來很像句型④，但差別在「動作是誰做的」——前三句都是「我自己在做那個動作」（我自己說話/我自己聽水聲），所以用原形動詞；句型④是「別人做的動作」讓我心情不好，主詞換人了，才需要 que + 虛擬式。這是最容易搞混、也最能看出真的懂不懂虛擬式的地方。",
+    trap:"前三句看起來很像g27的判斷邏輯，但差別在「動作是誰做的」——前三句都是「我自己在做那個動作」（我自己說話/我自己聽水聲），所以用原形動詞；第四句是「別人做的動作」讓我心情不好，主詞換人了，才需要 que + 虛擬式。這是最容易搞混、也最能看出真的懂不懂虛擬式的地方。",
     source:"文法補充"
   },
 
@@ -2596,15 +2596,34 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g111", cat:"subjunctive", level:"b1",
-    title:"Dudo que / No creo que / Creo que no：你是懷疑，還是已經認定？",
-    rule:"先看你有多確定。<br><br>Dudo que + 虛擬式 → 我懷疑。<br><br>No creo que + 虛擬式 → 我不太相信。<br><br>Creo que no + 陳述式 → 我覺得不是。",
+    id:"g111a", cat:"subjunctive", level:"b1",
+    title:"Dudo que：我懷疑",
+    rule:"Dudo que + 虛擬式 → 我懷疑。",
     examples:[
-      {es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。<br><br>💡 這是最委婉的猜測——中文不要翻成「我懷疑」，那個字帶偵查/不相信證據的味道，比西語原本隨口猜測的語氣重很多。"},
-      {es:"No creo que quieras helado.", zh:"我不認為你想吃冰淇淋。<br><br>💡 比上一句再篤定一點點的「不相信/不認為」。"},
-      {es:"Creo que no quieres helado.", zh:"我覺得你不想吃冰淇淋。<br><br>💡 三句裡最直接篤定的判斷——先正面判斷，只是判斷出來的內容是否定的。"}
+      {es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。<br><br>💡 這是最委婉的猜測——中文不要翻成「我懷疑」，那個字帶偵查/不相信證據的味道，比西語原本隨口猜測的語氣重很多。"}
     ],
-    trap:"別只看no，要看它否定的是哪裡。<br><br>No creo que... → 否定的是creo，用虛擬式。<br><br>Creo que no... → 否定的是後面的內容，用陳述式。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g111b", cat:"subjunctive", level:"b1",
+    title:"No creo que：我不太相信",
+    rule:"No creo que + 虛擬式 → 我不太相信。",
+    examples:[
+      {es:"No creo que quieras helado.", zh:"我不認為你想吃冰淇淋。<br><br>💡 比Dudo que再篤定一點點的「不相信/不認為」。"}
+    ],
+    trap:"別只看no，要看它否定的是哪裡。No creo que... → 否定的是creo，所以用虛擬式（跟Creo que no相反，見那張卡）。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g111c", cat:"subjunctive", level:"b1",
+    title:"Creo que no：我覺得不是",
+    rule:"Creo que no + 陳述式 → 我覺得不是。",
+    examples:[
+      {es:"Creo que no quieres helado.", zh:"我覺得你不想吃冰淇淋。<br><br>💡 這三種說法裡最直接篤定的判斷——先正面判斷，只是判斷出來的內容是否定的。"}
+    ],
+    trap:"別只看no，要看它否定的是哪裡。Creo que no... → 否定的是後面的內容，creo本身沒被否定，所以用陳述式（跟No creo que相反，見那張卡）。",
     source:"文法補充"
   },
 
@@ -2879,7 +2898,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
   historical: ['g14'],
   incubating: []
 };
@@ -2891,7 +2910,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g14','g15','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
+  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g14','g15','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g75','g76','g77','g88','g108','g109','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
@@ -2925,7 +2944,11 @@ const SKILL_GRAPH = [
   { from: "g58a", to: "g58b", relation: "family" },
   { from: "g58a", to: "g58c", relation: "family" },
   { from: "g58b", to: "g58c", relation: "family" },
-  { from: "g43a", to: "g02", relation: "uses" }
+  { from: "g43a", to: "g02", relation: "uses" },
+  { from: "g27", to: "g28", relation: "extends" },
+  { from: "g111a", to: "g111b", relation: "family" },
+  { from: "g111a", to: "g111c", relation: "family" },
+  { from: "g111b", to: "g111c", relation: "family" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
