@@ -2759,6 +2759,157 @@ const GRAMMAR_DATA = [
       {es:"¿Cómo te llamas?", semanticRole:"inquiry", communicationGoal:"我想知道對方的名字", scene:"新編（A1核心問句，目前劇情裡還沒出現）"},
       {es:"Se llama Mimi.", semanticRole:"introducing-others", communicationGoal:"我想讓對方知道另一個人的名字", scene:"E4劇情（真實例句）"}
     ]
+  },
+
+  // ══ 🌿 B1 介系詞場景第二層：空間複合片語（承接g108核心六介系詞，往下細分方位） ══
+  // A上下／B前後／C內外／D距離／E左右 五組反義對＋F側邊／G雙錨點，皆用毛線球/貨車/樹等
+  // 固定小物件示意，圖片風格="文法點情境示意圖"（彩色情境插畫），跟g58/g116的抽象語感力學圖是兩套系統
+
+  {
+    id:"g118a", cat:"preposition", level:"b1",
+    title:"encima de：在……上面",
+    img:"img/g118a_encima_de.png",
+    rule:"encima de + 名詞 → 在……上面（浮在上方，不一定貼著）",
+    examples:[
+      {es:"El ovillo está encima de la mesa.", zh:"毛線球在桌子上面。"},
+      {es:"El gato duerme encima del sofá.", zh:"貓咪在沙發上面睡覺。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g118b", cat:"preposition", level:"b1",
+    title:"debajo de：在……下面",
+    img:"img/g118b_debajo_de.png",
+    rule:"debajo de + 名詞 → 在……下面",
+    examples:[
+      {es:"El ovillo está debajo de la mesa.", zh:"毛線球在桌子下面。"},
+      {es:"El gato se esconde debajo de la cama.", zh:"貓咪躲在床底下。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g119a", cat:"preposition", level:"b1",
+    title:"delante de：在……前面",
+    img:"img/g119a_delante_de.png",
+    rule:"delante de + 名詞 → 在……前面",
+    examples:[
+      {es:"El ovillo está delante del camión.", zh:"毛線球在貨車前面。"},
+      {es:"Nita está delante de la puerta.", zh:"妮妲站在門前面。"}
+    ],
+    trap:"de+el會縮成del（delante del camión，不能寫成delante de el），只有陽性名詞前面才會遇到這個縮合，陰性名詞不受影響（delante de la puerta維持原樣）。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g119b", cat:"preposition", level:"b1",
+    title:"detrás de：在……後面",
+    img:"img/g119b_detras_de.png",
+    rule:"detrás de + 名詞 → 在……後面",
+    examples:[
+      {es:"El ovillo está detrás del camión.", zh:"毛線球在貨車後面。"},
+      {es:"Nita se esconde detrás de la puerta.", zh:"妮妲躲在門後面。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g120a", cat:"preposition", level:"b1",
+    title:"dentro de：在……裡面",
+    img:"img/g120a_dentro_de.png",
+    rule:"dentro de + 名詞 → 在……裡面",
+    examples:[
+      {es:"El ovillo está dentro de la caja.", zh:"毛線球在箱子裡面。"},
+      {es:"Todo está dentro de la mochila.", zh:"所有東西都在背包裡面。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g120b", cat:"preposition", level:"b1",
+    title:"fuera de：在……外面",
+    img:"img/g120b_fuera_de.png",
+    rule:"fuera de + 名詞 → 在……外面",
+    examples:[
+      {es:"El ovillo está fuera de la caja.", zh:"毛線球在箱子外面。"},
+      {es:"El gato se queda fuera de casa.", zh:"貓咪待在家外面。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g121a", cat:"preposition", level:"b1",
+    title:"cerca de：離……很近",
+    img:"img/g121a_cerca_de.png",
+    rule:"cerca de + 名詞 → 離……很近",
+    examples:[
+      {es:"La mariposa está cerca de la flor.", zh:"蝴蝶離花很近。"},
+      {es:"Mi casa está cerca de la escuela.", zh:"我家離學校很近。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g121b", cat:"preposition", level:"b1",
+    title:"lejos de：離……很遠",
+    img:"img/g121b_lejos_de.png",
+    rule:"lejos de + 名詞 → 離……很遠",
+    examples:[
+      {es:"La mariposa está lejos de la flor.", zh:"蝴蝶離花很遠。"},
+      {es:"Mi casa está lejos de la escuela.", zh:"我家離學校很遠。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g122a", cat:"preposition", level:"b1",
+    title:"a la derecha de：在……右邊",
+    img:"img/g122a_a_la_derecha_de.png",
+    rule:"a la derecha de + 名詞 → 在……右邊",
+    examples:[
+      {es:"La colmena está a la derecha del árbol.", zh:"蜂巢在樹的右邊。"},
+      {es:"Nita está a la derecha de Tito.", zh:"妮妲在迪多的右邊。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g122b", cat:"preposition", level:"b1",
+    title:"a la izquierda de：在……左邊",
+    img:"img/g122b_a_la_izquierda_de.png",
+    rule:"a la izquierda de + 名詞 → 在……左邊",
+    examples:[
+      {es:"La colmena está a la izquierda del árbol.", zh:"蜂巢在樹的左邊。"},
+      {es:"Nita está a la izquierda de Tito.", zh:"妮妲在迪多的左邊。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g123", cat:"preposition", level:"b1",
+    title:"al lado de：在……旁邊",
+    img:"img/g123_al_lado_de.png",
+    rule:"al lado de + 名詞 → 在……旁邊（不特別指定左邊還是右邊，只是靠在一起）",
+    examples:[
+      {es:"La regadera está al lado del árbol.", zh:"澆花器在樹的旁邊。"},
+      {es:"Nita está al lado de Tito.", zh:"妮妲在迪多的旁邊。"}
+    ],
+    trap:"al lado de只講「靠在一起」，不像a la derecha de／a la izquierda de那樣講清楚是哪一邊——想強調左右方位時用那兩個，只想說「挨著」就用al lado de。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g124", cat:"preposition", level:"b1",
+    title:"entre：在……之間",
+    img:"img/g124_entre.png",
+    rule:"entre + A y B → 在A和B之間",
+    examples:[
+      {es:"El bolígrafo está entre el teléfono y la taza.", zh:"筆在手機和杯子之間。"},
+      {es:"Nita está entre Mamá Cata y Tito.", zh:"妮妲坐在貓媽媽和迪多之間。"}
+    ],
+    trap:"entre是這一批介系詞裡唯一不接de的——不是「entre de」，是entre直接接兩個錨點，中間用y連起來（entre A y B）。",
+    source:"文法補充"
   }
 
 ];
@@ -2898,7 +3049,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g118a','g118b','g119a','g119b','g120a','g120b','g121a','g121b','g122a','g122b','g123','g124'],
   historical: ['g14'],
   incubating: []
 };
@@ -2948,7 +3099,14 @@ const SKILL_GRAPH = [
   { from: "g27", to: "g28", relation: "extends" },
   { from: "g111a", to: "g111b", relation: "family" },
   { from: "g111a", to: "g111c", relation: "family" },
-  { from: "g111b", to: "g111c", relation: "family" }
+  { from: "g111b", to: "g111c", relation: "family" },
+  { from: "g118a", to: "g118b", relation: "family" },
+  { from: "g119a", to: "g119b", relation: "family" },
+  { from: "g120a", to: "g120b", relation: "family" },
+  { from: "g121a", to: "g121b", relation: "family" },
+  { from: "g122a", to: "g122b", relation: "family" },
+  { from: "g123", to: "g122a", relation: "related" },
+  { from: "g124", to: "g108", relation: "related" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
