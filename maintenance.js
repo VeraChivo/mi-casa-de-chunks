@@ -6,7 +6,8 @@
  *   node maintenance.js
  *
  * 檢查範圍：grammar.js（GRAMMAR_DATA）／news.js（NEWS_ITEMS）／
- *          script.js（LYRICS_FILL_DATA）／cognates.js（FALSE_COGNATES）
+ *          script.js（LYRICS_FILL_DATA）／cognates.js（FALSE_COGNATES）／
+ *          pronunciation.js（PRONUNCIATION_SKILLS）
  *
  * 每次新增/修改一批卡片後，跑一次這個腳本，比每次手動寫 node -e 一次性檢查更省事、
  * 也不會漏掉之前想到但這次忘記查的項目。
@@ -158,6 +159,27 @@ try {
   checkRequiredFields(FALSE_COGNATES, 'es', ['looksLike', 'wrongZh', 'realZh', 'trap', 'wrongEx', 'rightEx'], 'FALSE_COGNATES');
 } catch (e) {
   fail('cognates.js（FALSE_COGNATES）讀取/檢查失敗：' + e.message);
+}
+
+// ── pronunciation.js — PRONUNCIATION_SKILLS（2026-08-10 新增，🗣️西語純發音特區第一輪R/RR）──
+section('pronunciation.js — PRONUNCIATION_SKILLS');
+try {
+  const { PRONUNCIATION_SKILLS } = loadArray('pronunciation.js', ['PRONUNCIATION_SKILLS']);
+  const words = [];
+  PRONUNCIATION_SKILLS.forEach(skill => {
+    (skill.pairs || []).forEach(pair => {
+      const n = (pair.words || []).length;
+      if (n !== 2) fail(`PRONUNCIATION_SKILLS：${pair.id} 不是剛好2個對比詞（目前 ${n} 個）`);
+      (pair.words || []).forEach(w => words.push(w));
+    });
+  });
+  checkDuplicateIds(words, 'id', 'PRONUNCIATION_SKILLS（攤平後的詞）');
+  checkRequiredFields(words, 'id', ['es', 'zh', 'diffLabel'], 'PRONUNCIATION_SKILLS（攤平後的詞）');
+  const badPrefix = words.filter(w => w.id && !/^pron_/.test(w.id));
+  if (badPrefix.length) fail(`PRONUNCIATION_SKILLS：這些id沒有pron_前綴：${badPrefix.map(w => w.id).join(', ')}`);
+  else ok(`PRONUNCIATION_SKILLS：${words.length} 個詞，id前綴都是 pron_`);
+} catch (e) {
+  fail('pronunciation.js（PRONUNCIATION_SKILLS）讀取/檢查失敗：' + e.message);
 }
 
 // ── 翻譯品質提醒：不是判斷對錯，只是抓出「值得人工檢查」的可疑模式 ──
