@@ -765,7 +765,7 @@ const GRAMMAR_DATA = [
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：從「有」長出我的生活狀態",
-    rule:"TENER的核心畫面是「手上握有某種東西」。<br><br>中文的「餓了」「睏了」，西語會說成「手上有一種餓／睏的感覺」（tener hambre／tener sueño）；連年紀也是「手上握有六年」（tener seis años）。",
+    rule:"tener + sustantivo<br><br>用來表達擁有某物，以及西語裡用tener表達的身體感受、年齡等狀態（tener hambre、tener sueño、tener seis años）。",
     examples:[
       {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
       {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
@@ -854,14 +854,13 @@ const GRAMMAR_DATA = [
   {
     id:"g22", cat:"gender", level:"a1a2",
     title:"可鹽可甜（有規矩？）：西語名詞陰陽性",
-    rule:"奇異世界：el＝陽性／la＝陰性，連不會動的死物也不放過。<br><br>①能量感——El 像太陽（發散、直接），La 像月亮（包容、承載）。<br>②形狀感——El 常對應延伸／支撐／工具，La 常對應凹槽／容器／收納空間。",
+    rule:"奇異世界：el＝陽性／la＝陰性，連不會動的死物也不放過。<br><br>①能量感：El像太陽（發散、直接），La像月亮（包容、承載）。<br>②形狀感：El常對應延伸／支撐／工具，La常對應凹槽／容器／收納空間。<br><br>常見例外：長得甜（-a結尾）骨子裡是鹽的el mapa（地圖）、el día（日子）、el problema（問題）；長得鹽（-o或子音結尾）骨子裡是甜的la mano（手）、la flor（花）。真正屬於「-ma希臘字源陽性字群」的只有problema，跟programa／sistema／clima／tema同掛，día、mapa純粹是字尾巧合，各自獨立。",
     examples:[
       {es:"El sol brilla mucho hoy.", zh:"今天太陽很亮。（陽性：太陽，發散的能量）"},
       {es:"La luna es hermosa.", zh:"月亮很美。（陰性：月亮，包容的能量）"},
       {es:"La llave está en la mesa.", zh:"鑰匙在桌上。（陰性：llave 鑰匙／mesa 桌子，都是「容器／承載空間」意象）"},
       {es:"El camino es largo.", zh:"這條路很長。（陽性：camino 路，「延伸／支撐」意象）"}
     ],
-    trap:"叛逆名詞：長得甜（-a 結尾）骨子裡是鹽——el mapa（地圖）、el día（日子）、el problema（問題）。真正屬於「-ma 希臘字源陽性字群」的只有 problema，跟 programa／sistema／clima／tema 同掛；día、mapa 純粹字尾巧合，各自獨立，別混為一談。<br><br>長得鹽（-o 或子音結尾）骨子裡是甜的：la mano（手）、la flor（花）。<br><br>規矩藏在能量感／形狀感的直覺裡，不是死板字尾規則。",
     crossLang:"台客語同一套氣場：公／牯＝太陽，發散、能量源頭；母／嫲＝月亮，包容、孕育、承載空間，跟西語 El／La 對得上。<br><br>形狀感也一樣：台語「螺絲母」＝螺帽，凹槽收納，呼應 la llave／la puerta／la caja；el lápiz／el puente／el árbol／el camino 這種延伸支撐的工具感，也貼著台客語「公／牯」的陽性直覺。",
     source:"文法補充"
   },
@@ -1039,8 +1038,8 @@ const GRAMMAR_DATA = [
       {es:"¡Que duermas bien!", zh:"祝你睡個好覺！"},
       {es:"Ojalá que llueva pronto.", zh:"希望快點下雨。"}
     ],
-    note:"Ojalá（源自阿拉伯語，字面「願真主保佑」）是另一個高頻祝福句型，後面固定接虛擬式表達願望——跟¡Que+虛擬式!是兩個各自獨立的來源，不是同一種簡化。",
-    trap:"「Ojalá」後面加不加 que，兩種說法都有人講、且後面都一定要接虛擬式。<br><br>網路上常聽到「拉美習慣加 que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。可以確定的是：Ojalá + 原形動詞（不接 que 也不接虛擬式）不符合 RAE 規範，這個要避免。",
+    note:"Ojalá（源自阿拉伯語，字面「願真主保佑」）是另一個高頻祝福句型，後面固定接虛擬式表達願望——跟¡Que+虛擬式!是兩個各自獨立的來源，不是同一種簡化。<br><br>網路上常聽到「拉美習慣加que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。",
+    trap:"「Ojalá」後面加不加que，兩種說法都有人講、且後面都一定要接虛擬式。可以確定的是：Ojalá + 原形動詞（不接que也不接虛擬式）不符合RAE規範，這個要避免。",
     source:"文法補充"
   },
 
@@ -1560,6 +1559,7 @@ const GRAMMAR_DATA = [
   {
     id:"g58a", cat:"verb-pattern", level:"b2c1",
     title:"Ponerse：突然變",
+    img:"img/g58a_ponerse.svg",
     rule:"ponerse + adjetivo<br><br>形容情緒或狀態突然改變，來得快也退得快。",
     examples:[
       {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，突然很開心。"},
@@ -1572,6 +1572,7 @@ const GRAMMAR_DATA = [
   {
     id:"g58b", cat:"verb-pattern", level:"b2c1",
     title:"Quedarse：留下來",
+    img:"img/g58b_quedarse.svg",
     rule:"quedarse + adjetivo / participio<br><br>形容一件事發生後留下的狀態。",
     examples:[
       {es:"Tito se quedó dormido en el sofá.", zh:"迪多在沙發上睡著了。"},
@@ -1584,6 +1585,7 @@ const GRAMMAR_DATA = [
   {
     id:"g58c", cat:"verb-pattern", level:"b2c1",
     title:"Volverse：慢慢變",
+    img:"img/g58c_volverse.svg",
     rule:"volverse + adjetivo<br><br>形容人或事慢慢發生根本的改變。",
     examples:[
       {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢變成橘色。"},
@@ -1883,7 +1885,7 @@ const GRAMMAR_DATA = [
       {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（我先講好這個原則，不管天氣如何都一樣）。"},
       {es:"Aunque no tengo mucho dinero, soy feliz.", zh:"雖然我沒有很多錢，但我很快樂（陳述已經是事實的狀態）。"}
     ],
-    trap:"聽力小技巧：不用逐字判斷語意，抓動詞形式就好——規則-ar動詞現在式(llueve/tiene/hace)跟虛擬式(llueva/tenga/haga)字尾常常只差一個母音，母語者靠這個小訊號分辨對方是在講事實還是講原則，練習時可以先從聽動詞字尾開始抓。",
+    note:"聽力小技巧：不用逐字判斷語意，抓動詞形式就好。規則-ar動詞現在式(llueve/tiene/hace)跟虛擬式(llueva/tenga/haga)字尾常常只差一個母音，母語者靠這個小訊號分辨對方是在講事實還是講原則，練習時可以先從聽動詞字尾開始抓。",
     source:"文法補充"
   },
 
@@ -2668,6 +2670,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116a", cat:"tense", level:"b1",
     title:"alguna vez：曾經？",
+    img:"img/g116a_alguna_vez.svg",
     rule:"alguna vez + 現在完成式 → 曾經？",
     examples:[
       {es:"¿Has estado alguna vez en España?", zh:"你曾經去過西班牙嗎？"},
@@ -2679,6 +2682,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116b", cat:"tense", level:"b1",
     title:"nunca：從來沒有",
+    img:"img/g116b_nunca.svg",
     rule:"nunca + 現在完成式 → 從來沒有……",
     examples:[
       {es:"Nunca he estado allí.", zh:"我從沒去過那裡。"},
@@ -2690,6 +2694,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116c", cat:"tense", level:"b1",
     title:"todavía no：仍然 沒有／仍未／還沒",
+    img:"img/g116c_todavia_no.svg",
     rule:"todavía no + 現在完成式 → 仍然 沒有……／仍未……／還沒……",
     examples:[
       {es:"Todavía no he comido.", zh:"我還沒吃。"},
@@ -2701,6 +2706,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116d", cat:"tense", level:"b1",
     title:"ya：已經",
+    img:"img/g116d_ya.svg",
     rule:"ya + 現在完成式 → 已經……",
     examples:[
       {es:"Ya he comido.", zh:"我已經吃了。"},
