@@ -226,10 +226,20 @@ function diarySave(){
       db[idx] = { ...db[idx], dateIso: iso, dateEs: _diaryFormatDateEs(iso),
         kidNotes: { ..._diaryKidNotes }, moods: _diarySelMoods.slice(), weather: _diarySelWeather,
         personalNote, bodyText, updatedAt: Date.now() };
+      saveDiaryDB(db);
+      diaryAdvanceGardenMoods(moodEsList);
+      if(typeof toast === 'function') toast('✏️ 已更新這篇 Vivencias de mamá');
+    } else {
+      // 原本要修訂的那篇同時被刪掉了（例如在列表裡按了刪除）——
+      // 不要悄悄什麼都不做卻報告「已更新」，改成存成新的一篇，內容才不會憑空消失
+      const entry = { id: 'd_' + Date.now(), dateIso: iso, dateEs: _diaryFormatDateEs(iso),
+        kidNotes: { ..._diaryKidNotes }, moods: _diarySelMoods.slice(), weather: _diarySelWeather,
+        personalNote, bodyText, createdAt: Date.now() };
+      db.unshift(entry);
+      saveDiaryDB(db);
+      diaryAdvanceGardenMoods(moodEsList);
+      if(typeof toast === 'function') toast('⚠️ 原本那篇已經不在了，已幫你存成新的一篇');
     }
-    saveDiaryDB(db);
-    diaryAdvanceGardenMoods(moodEsList);
-    if(typeof toast === 'function') toast('✏️ 已更新這篇 Vivencias de mamá');
     _diaryEditingId = null;
   } else {
     const entry = {
@@ -272,6 +282,22 @@ function diaryResetForm(){
   _diaryRenderMoods();
   _diaryRenderWeather();
   diaryRegenerateDraft();
+  _diaryUpdateEditingBadge();
+}
+
+// ── ✏️ 修訂中的持續提示——不能只靠一閃即逝的 toast，容易分心的話一轉頭就忘記
+// 自己正在改哪一篇，導致後面存檔時把新內容誤蓋進舊那篇（見 diarySave 的分支說明）──
+function _diaryUpdateEditingBadge(){
+  const badge = document.getElementById('diaryEditingBadge');
+  const txt = document.getElementById('diaryEditingBadgeText');
+  if(!badge || !txt) return;
+  if(_diaryEditingId){
+    const entry = getDiaryDB().find(e => e.id === _diaryEditingId);
+    txt.textContent = entry ? `✏️ 正在修訂 ${entry.dateIso} 這篇，改完記得再存一次` : '✏️ 正在修訂舊稿，改完記得再存一次';
+    badge.style.display = 'flex';
+  } else {
+    badge.style.display = 'none';
+  }
 }
 
 function diaryDiscardForm(){
@@ -296,6 +322,7 @@ function diaryEditEntry(id){
   _diaryRenderKids();
   _diaryRenderMoods();
   _diaryRenderWeather();
+  _diaryUpdateEditingBadge();
   const card = document.querySelector('.diary-paper');
   if(card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
   if(typeof toast === 'function') toast('✏️ 已載入舊稿，改完記得再存一次');
@@ -377,6 +404,10 @@ function renderDiaryList(){
 function renderDiaryCardHtml(){
   return `<div class="diary-card diary-paper card-container">
     <div class="diary-paper-title">💙 Vivencias de mamá</div>
+    <div id="diaryEditingBadge" class="diary-editing-badge" style="display:none">
+      <span id="diaryEditingBadgeText"></span>
+      <button class="diary-editing-cancel" onclick="diaryDiscardForm()">取消修訂</button>
+    </div>
 
     <div class="diary-tag-row">
       <details class="diary-tag-group">
@@ -561,11 +592,17 @@ function talkSave(){
   const picked = _talkSelectedIds.map(id => _talkFindPhrase(id)).filter(Boolean);
   if(!picked.length) return;
   const voice = (document.getElementById('talkMamaVoice') || {}).value || '';
+  // isFreeWritten：只有使用者自己動手改過語音欄位才算「真的自己寫的」——
+  // _talkSyncVoiceFromNote() 會把 picker 挑的片語自動複製進來，那種不算
+  const isFreeWritten = !!_talkVoiceDirty;
+  const keyTakeaway = isFreeWritten ? _talkComputeKeyTakeaway(voice) : [];
   const db = getTalkDB();
   db.unshift({
     id: 'talk_' + Date.now(),
     sentences: picked.map(p => ({ es: p.es, zh: p.zh })),
     voice,
+    isFreeWritten,
+    keyTakeaway,
     createdAt: Date.now()
   });
   saveTalkDB(db);
@@ -632,8 +669,10 @@ function talkSaveGrowth(rootId){
   const ta = document.getElementById('talkGrowInput_' + rootId);
   const text = ((ta && ta.value) || '').trim();
   if(!text){ if(typeof toast === 'function') toast('先幫它多說一句再存吧'); return; }
+  // 長大表單本來就是空白讓使用者打字，沒有picker自動複製這一層，一律算「自己寫的」
+  const keyTakeaway = _talkComputeKeyTakeaway(text);
   const db = getTalkDB();
-  db.unshift({ id: 'talk_' + Date.now(), parentId: rootId, voice: text, createdAt: Date.now() });
+  db.unshift({ id: 'talk_' + Date.now(), parentId: rootId, voice: text, isFreeWritten: true, keyTakeaway, createdAt: Date.now() });
   saveTalkDB(db);
   _talkGrowingId = null;
   renderTalkList();
@@ -672,6 +711,7 @@ function renderTalkList(){
           <div class="talk-grow-item">
             <span class="talk-grow-item-day">🌿 ${_talkDaysAgoLabel(g.createdAt)}</span>
             <div class="talk-grow-item-text">${(typeof renderScriptLine === 'function') ? renderScriptLine(g.voice, `speakGramSmart('${(typeof escAttr==='function'?escAttr(g.voice):g.voice)}')`) : _diaryEsc(g.voice)}</div>
+            ${_talkKeyTakeawayHtml(g)}
           </div>
         `).join('')}
       </div>` : '';
@@ -699,6 +739,7 @@ function renderTalkList(){
       </div>
       ${sentHtml}
       ${t.voice ? `<div class="notes-entry-text">${_diaryEsc(t.voice).replace(/\n/g,'<br>')}</div>` : ''}
+      ${_talkKeyTakeawayHtml(t)}
       ${chainHtml}
       <div class="diary-entry-actions">
         <button class="diary-entry-grow" onclick="talkToggleGrow('${t.id}')">🌿 幫它長大</button>
@@ -823,6 +864,87 @@ function renderTalkGrowth(){
     </div>`;
 }
 
+/* ── ✨ Key Takeaway：「這次」真的自己寫出以前學過的語塊，不是「一路累積」的儀表板
+   （renderTalkGrowth 完全不動，這裡是獨立於它的另一個東西）。
+   規則鎖死三件事，不要自己加碼：
+   ①只在 isFreeWritten（使用者自己打字，不是picker自動複製）時才算②比對只做
+   精確符合＋去重音＋詞邊界，不做動詞變位/複數推導③一個語塊只慶祝一次——
+   已經出現在過去任何一篇的 keyTakeaway 裡，就不會再被列進來 ── */
+
+function _talkNormForMatch(s){
+  return _talkStripAccents((s||'').toLowerCase()).replace(/\s+/g, ' ').trim();
+}
+
+// 已學過的語塊池＝花園熟練度 key ∪ 💎私語窖收藏文字（同 _chunkFamCollectedKeys 的聯集邏輯），
+// 過 _gardenChunkDisplay 拿掉 ge_/sfx_/gp_ 前綴＋濾掉舊格式junk key，
+// 排掉帶符號的殘留 key（如「Sereno/a」這種slash寫法無法當成規則字串比對），
+// 再過 isVocabWorthy 濾掉人名跟句法黏著詞——三者皆是既有函式，沒有新建語言分析邏輯。
+function _talkLearnedPool(){
+  if(typeof getGardenDB !== 'function' || typeof isVocabWorthy !== 'function') return [];
+  const seen = new Set();
+  const pool = [];
+  const addCandidate = raw => {
+    if(!raw) return;
+    const clean = String(raw).trim();
+    if(clean.length < 2) return;
+    if(!/^[a-záéíóúñü\s]+$/i.test(clean)) return;
+    if(!isVocabWorthy(clean)) return;
+    const norm = _talkNormForMatch(clean);
+    if(seen.has(norm)) return;
+    seen.add(norm);
+    pool.push(clean);
+  };
+  try {
+    Object.keys(getGardenDB()).forEach(k => {
+      const disp = (typeof _gardenChunkDisplay === 'function') ? _gardenChunkDisplay(k) : { text: k, junk: false };
+      if(!disp.junk) addCandidate(disp.text);
+    });
+  } catch(e){}
+  if(typeof vocabList !== 'undefined') (vocabList || []).forEach(v => { if(v && v.text) addCandidate(v.text); });
+  return pool;
+}
+
+function _talkContainsChunk(haystackRaw, chunkRaw){
+  const hay = _talkNormForMatch(haystackRaw);
+  const needle = _talkNormForMatch(chunkRaw);
+  if(!needle) return false;
+  const esc = needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp('(^|[^a-z])' + esc + '([^a-z]|$)', 'i').test(hay);
+}
+
+// 「以前是否出現過」直接讀取歷史entry自己存的keyTakeaway，不重新比對舊voice原文——
+// 這樣不會被「picker自動複製、非自己寫的」舊entry污染判定，因為那些entry從一開始
+// isFreeWritten就是false，從沒被算進keyTakeaway過。
+function _talkAlreadyUsedTakeaways(){
+  const used = new Set();
+  getTalkDB().forEach(t => (t.keyTakeaway || []).forEach(w => used.add(_talkNormForMatch(w))));
+  return used;
+}
+
+function _talkComputeKeyTakeaway(voiceText){
+  if(!voiceText || !voiceText.trim()) return [];
+  const pool = _talkLearnedPool();
+  if(!pool.length) return [];
+  const alreadyUsed = _talkAlreadyUsedTakeaways();
+  const hits = [];
+  pool.forEach(chunk => {
+    if(alreadyUsed.has(_talkNormForMatch(chunk))) return;
+    if(_talkContainsChunk(voiceText, chunk)) hits.push(chunk);
+  });
+  return hits;
+}
+
+// 只保存事實（以前收過→這次自己寫出來→留下來），不評分不解釋，沒有符合項目就整段不渲染。
+function _talkKeyTakeawayHtml(entry){
+  const items = (entry && entry.keyTakeaway) || [];
+  if(!items.length) return '';
+  return `<div class="talk-takeaway">
+    <div class="talk-takeaway-label">✨ Key Takeaway</div>
+    <div class="talk-takeaway-chips">${items.map(w => `<span class="talk-growth-chip is-new">✓ ${_diaryEsc(w)}</span>`).join('')}</div>
+    <div class="talk-takeaway-caption">這次真的用出來了</div>
+  </div>`;
+}
+
 /* ── 📝 隨心一筆：不拘形式的雜記，跟媽媽碎語分開存 ── */
 
 const NOTES_TAGS = [
@@ -871,10 +993,18 @@ function notesSave(){
   const db = getNotesDB();
   if(_notesEditingId){
     const idx = db.findIndex(n => n.id === _notesEditingId);
-    if(idx !== -1) db[idx] = { ...db[idx], text, tag: _notesSelTag, updatedAt: Date.now() };
-    saveNotesDB(db);
+    if(idx !== -1){
+      db[idx] = { ...db[idx], text, tag: _notesSelTag, updatedAt: Date.now() };
+      saveNotesDB(db);
+      if(typeof toast === 'function') toast('✏️ 已更新這則');
+    } else {
+      // 原本要修訂的那則同時被刪掉了——不要悄悄什麼都不做卻報告「已更新」，
+      // 改成存成新的一則，剛打的內容才不會憑空消失
+      db.unshift({ id: 'n_' + Date.now(), text, tag: _notesSelTag, createdAt: Date.now() });
+      saveNotesDB(db);
+      if(typeof toast === 'function') toast('⚠️ 原本那則已經不在了，已幫你存成新的一則');
+    }
     _notesEditingId = null;
-    if(typeof toast === 'function') toast('✏️ 已更新這則');
   } else {
     db.unshift({ id: 'n_' + Date.now(), text, tag: _notesSelTag, createdAt: Date.now() });
     saveNotesDB(db);
@@ -883,8 +1013,26 @@ function notesSave(){
   ta.value = '';
   _notesSelTag = null;
   _notesRenderTags();
+  _notesUpdateEditingBadge();
   renderNotesList();
   if(typeof checkStorageQuota === 'function') checkStorageQuota();
+}
+
+// ── ✏️ 修訂中的持續提示，同 diary 卡片那一套——避免分心後忘記自己正在改哪一則，
+// 結果把新寫的內容誤蓋進舊那則裡 ──
+function _notesUpdateEditingBadge(){
+  const badge = document.getElementById('notesEditingBadge');
+  if(!badge) return;
+  badge.style.display = _notesEditingId ? 'flex' : 'none';
+}
+function notesCancelEdit(){
+  _notesEditingId = null;
+  _notesSelTag = null;
+  const ta = document.getElementById('notesInput');
+  if(ta) ta.value = '';
+  _notesRenderTags();
+  _notesUpdateEditingBadge();
+  if(typeof toast === 'function') toast('🍃 已取消修訂');
 }
 
 function notesEditEntry(id){
@@ -895,6 +1043,7 @@ function notesEditEntry(id){
   const ta = document.getElementById('notesInput');
   if(ta) ta.value = entry.text || '';
   _notesRenderTags();
+  _notesUpdateEditingBadge();
   const card = document.getElementById('notesInput');
   if(card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
   if(typeof toast === 'function') toast('✏️ 已載入舊稿，改完記得再存一次');
@@ -933,6 +1082,10 @@ function renderNotesCardHtml(){
   return `<div class="diary-card diary-paper card-container">
     <div class="diary-paper-title">🌱 靈感孵化與開發者手札</div>
     <div class="diary-card-sub">看一句想到十句延伸？開發靈感、學習方向，通通歡迎丟在這裡</div>
+    <div id="notesEditingBadge" class="diary-editing-badge" style="display:none">
+      <span id="notesEditingBadgeText">✏️ 正在修訂這則舊足跡，改完記得再存一次</span>
+      <button class="diary-editing-cancel" onclick="notesCancelEdit()">取消修訂</button>
+    </div>
     <div class="diary-chip-row" id="notesTagPool"></div>
     <textarea id="notesInput" class="diary-draft-textarea" rows="4" placeholder="在風和日麗的這裡，留下你的耕耘點滴、心情小記…"></textarea>
     <div class="diary-draft-actions">
