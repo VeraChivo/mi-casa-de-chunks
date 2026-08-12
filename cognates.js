@@ -114,7 +114,7 @@ const SENTENCE_COGNATES = {
     rows:[
       '👉 <b>Me encanta</b> 比 me gusta 強 10 倍，翻譯成「我超愛、我迷死了」',
       '💡 <b>encanta</b> ← 英文 <b>enchant</b>（著迷/施魔法）雙胞胎！',
-      '🎯 <b>charcos</b>（水坑）← charcoal（木炭）同字源 char，黑色的坑！',
+      '🎯 <b>charcos</b>（水坑）長得很像英文 charcoal（木炭），但其實只是巧合——charco 是西班牙前羅馬時期的古老底層詞，跟 charcoal 完全不同語源，不是同一家族喔！',
     ]
   },
   'e0_s6':{
@@ -210,7 +210,7 @@ const SENTENCE_COGNATES = {
     rows:[
       '👉 <b>no está</b> = is not there，estar 專門管位置和暫時狀態！',
       '💡 口訣：<b>SER = 本質身分</b>；<b>ESTAR = 位置狀態</b>',
-      '🎯 <b>cama</b>（床）← 英文 chamber（房間/床室）同字根！',
+      '🎯 <b>cama</b>（床）跟英文 chamber（房間）語源上可能有關，但學界對 cama 的確切詞源還有爭議，當作有趣的巧合看看就好，別當成定論！',
     ]
   },
   'e1_s8':{
@@ -234,7 +234,7 @@ const SENTENCE_COGNATES = {
     rows:[
       '👉 <b>está esperando</b> = is waiting（現在進行式）',
       '💡 <b>esperar</b> ← 英文 <b>hope / expect</b>（期待等待）同概念！',
-      '🎯 <b>mejor amiga</b> = best friend（female），mejor ← major/mayor！',
+      '🎯 <b>mejor amiga</b> = best friend（female），mejor 長得很像英文 major/mayor，但其實語源不同（mejor來自拉丁melior，major來自拉丁maior），純粹外型相似！',
     ]
   },
   'e2_s1':{
@@ -242,7 +242,7 @@ const SENTENCE_COGNATES = {
     rows:[
       '👉 <b>querer a alguien</b> = to love someone，人名前必加 a！',
       '💡 <b>querer</b> ← 英文 query（尋求）同字根，愛 = 尋求某人！',
-      '🎯 <b>mucho</b> ← 英文 much！西英同源！',
+      '🎯 <b>mucho</b> 長得很像英文 much，但其實只是巧合——mucho 源自拉丁multus，much 源自日耳曼語根，兩個字沒有親戚關係！',
     ]
   },
   'e2_s2':{
@@ -258,8 +258,8 @@ const SENTENCE_COGNATES = {
     title:'🚫 solo para — 限定句型',
     rows:[
       '👉 <b>solo para + 名詞</b> = only for ___',
-      '💡 <b>niñas mayores</b> = older girls，mayor ← major（較大的）！',
-      '🎯 <b>juego</b>（遊戲）← 英文 juggle → game，同字根！',
+      '💡 <b>niñas mayores</b> = older girls，mayor 長得很像英文 major，但語源不同（各自是bueno/grande的不規則比較級，字根不同），純粹外型相似！',
+      '🎯 <b>juego</b>（遊戲）長得很像英文 game，但其實是巧合——juego 源自拉丁iocus（笑話），game 源自古英語gamen，語源不同；真正同字根的是動詞 <b>jugar</b> ← 英文 <b>juggle</b>（都源自iocus）！',
       '⚠️ 記住：niño（男孩）niña（女孩）→ -o 陽性，-a 陰性<br><span style="display:block;margin-top:6px;padding:6px 10px;background:rgba(108,155,210,.08);border-radius:8px;font-size:12px;line-height:1.7"><b>Este juego es para niños.</b> → 這遊戲給男孩玩（niño → niños）<br><b>Este juego es para niñas.</b> → 這遊戲給女孩玩（niña → niñas）</span>',
     ]
   },
@@ -301,7 +301,7 @@ const SENTENCE_COGNATES = {
     rows:[
       '👉 <b>Creo que</b> = I think that...（後接完整子句）',
       '💡 <b>creo</b> ← 英文 <b>creed / credible</b>（相信）同字根！',
-      '🎯 <b>corazón</b>（心臟）← 英文 <b>core</b>（核心）同字根！心臟 = 核心！',
+      '🎯 <b>corazón</b>（心臟）跟英文 <b>core</b>（核心）的關係其實還不確定——corazón確定源自拉丁cor（心），但core本身的語源學界都標「不確定」，可能有關也可能只是巧合，先當記憶小趣聞就好！',
     ]
   },
   'e2_s9':{
