@@ -1621,6 +1621,11 @@ curl -s -X PUT \
       特殊理由欄位**——因為本質上跟其他假朋友一樣「表面像親戚，其實不是」，
       只是成因不同（嬰幼兒發聲生理的跨語言巧合，不是詞源傳承），仍歸類在
       `falseFriend`底下，`note`欄位解釋這個特殊成因即可，不需要另開分類。
+    - **⏳ 待決：axolotl/ajolote、capybara/capibara 暫不收進同源庫（2026-08-12查證，VERA裁決暫緩）**：
+      兩者都查證過語源（etymonline/Wiktionary），但都不是`confirmed`典型的「英西各自從拉丁/希臘祖先分頭演變」模式：
+      - **axolotl/ajolote**：英西**各自獨立借自同一個Nahuatl詞根**āxōlōtl（水的僕人，atl水+xolotl僕人/滑溜的東西）——是「並列借詞」，不是分家演變。
+      - **capybara/capibara**：源自Tupi語「kapi'i(草)+uára(吃的)」，經葡萄牙語capivara先進西語變capibara，**英文capybara其實是從西語借過去的**（v→b音變）——是有先後次序的「借詞鏈」，跟account/cuento那種「各自從拉丁分頭演變」不同，也跟axolotl的「並列借詞」不同模式。
+      **裁決**：先不新增`relationType:'sharedLoanword'`第4種schema值——只有2個案例不足以撐一個新分類，且新增前要先想清楚「同源庫是收etymological cognates，還是收所有英西之間有歷史關係的詞」這個產品定義問題，這是產品定義層級要先想清楚，不是schema小修。這兩個詞**暫不寫入`COGNATE_LIBRARY`**，`COGNATE_LIBRARY`/schema皆未變動。等之後累積更多「第三語言共同借入」或「經第三語言轉借」的案例，再決定值不值得開第4種正式relationType。
 23. **能力卡「AI語氣清理」標準指令（2026-07-19 VERA定案，之後任何工程AI要調整能力卡文字時，直接貼這段指令，避免重寫內容/改掉教學邏輯）**：
     ```
     請針對能力卡內文做「AI語氣清理」，不要改變原本知識內容、例句、邏輯順序。
