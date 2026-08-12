@@ -477,7 +477,7 @@ function renderMilestoneBadgeStrip(){
   html += '</div>';
   if(count > 0){
     const days = daysSinceFirstChunk();
-    html += `<div class="ms-days-hint">🌱 妳已經耕耘第 ${days} 天，累積 ${count} 顆語塊</div>`;
+    html += `<div class="ms-days-hint">🌱 辛勤耕耘第 ${days} 日夜，擁有 ${count} 顆語塊</div>`;
   }
   el.innerHTML = html;
 }
