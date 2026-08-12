@@ -1507,9 +1507,15 @@ const EPISODE_LIFECYCLE = {
 //   暫不顯示，等未來真的確認要用在哪裡再補。
 // routeComplete：新手引導路線的完成點，完成時顯示「完成這個路線」的專屬文案+導向下一步
 //   (目前是接回E1)，不使用容易誤導的「S1全集完成」通用文案。
+// coreRouteComplete：新人「核心技能路線」(E17-E20-E1-E2-E3-E7)的終點，2026-08-12依裁定原則新增
+//   （Grammar level ≠ Episode level ≠ User route level：核心路線任務是建立「能開口」的能力感，
+//   不追求文法覆蓋率，E7完成＝核心8集全部走完）。完成時顯示分岔選單，導向三種延伸角色
+//   （E11文化特輯/E12情緒陪伴線/E4語塊延伸）+ 核心複習(回E17)，不影響routeComplete/storyFinale
+//   既有邏輯，也不影響E7原本「下一集→E8」的路徑（保留給想繼續走S1原始故事的人）。
 const EPISODE_COMPLETION_MARKERS = {
   storyFinale: [],
-  routeComplete: [19] // E20，第一站(E17-E20)完成點
+  routeComplete: [19], // E20，第一站(E17-E20)完成點
+  coreRouteComplete: [6] // E7，核心技能路線(E17-E20-E1-E2-E3-E7)完成點
 };
 
 // ── D-2 語塊生態盤查（2026-07-20，範圍：E11-E16共60句，純分類，不改SENTENCE_AMMO_MAP2、

@@ -173,6 +173,17 @@
       🌱 你已經認識了自己，現在來看看妮妲如何開始她的故事吧。
     </div>
 
+    <div class="complete-core-route" id="completeCoreRouteBranch" style="display:none">
+      <div class="core-route-title">🎉 核心技能路線完成！</div>
+      <div class="core-route-sub">妳已經能用西語自我介紹、描述日常、表達喜歡——接下來想往哪裡走？</div>
+      <div class="core-route-branches">
+        <button class="core-route-btn" onclick="selectEp(10)">🌍 文化特輯</button>
+        <button class="core-route-btn" onclick="selectEp(11)">💞 情緒陪伴線</button>
+        <button class="core-route-btn" onclick="selectEp(3)">🧺 語塊延伸</button>
+        <button class="core-route-btn is-review" onclick="selectEp(16)">🔁 核心複習</button>
+      </div>
+    </div>
+
     <button class="btn-restart" onclick="restartEp()">🔁 重來一次</button>
     <button class="btn-next-ep" id="nextEpBtn" onclick="goNextEp()">下一集 →</button>
   </div>

@@ -2562,13 +2562,18 @@ function showComplete(){
   const nextEpBtn = document.getElementById('nextEpBtn');
   const finaleEgg = document.getElementById('completeFinaleEgg');
   const routeBridge = document.getElementById('completeRouteBridge');
+  const coreRouteBranch = document.getElementById('completeCoreRouteBranch');
   // 終點角色由EPISODE_COMPLETION_MARKERS宣告，不用ep===EPS.length-1推論（見episodes.js說明）
   const isStoryFinale = EPISODE_COMPLETION_MARKERS.storyFinale.includes(ep);
   const isRouteComplete = EPISODE_COMPLETION_MARKERS.routeComplete.includes(ep);
+  const isCoreRouteComplete = (EPISODE_COMPLETION_MARKERS.coreRouteComplete||[]).includes(ep);
   finaleEgg.style.display = isStoryFinale ? '' : 'none';
   // 第一站(E17-E20)結束接回E1時，補一句故事銜接說明，避免使用者覺得突然換教材——
   // 「認識自己」是妮妲故事的前傳，不是跟主線無關的另一套內容
   if(routeBridge) routeBridge.style.display = isRouteComplete ? '' : 'none';
+  // 核心技能路線(E17-E20-E1-E2-E3-E7)完成時顯示分岔選單，不取代原本「下一集→E8」的路徑，
+  // 只是額外提供三種延伸角色的入口——保留給還想繼續走S1原始故事線的人
+  if(coreRouteBranch) coreRouteBranch.style.display = isCoreRouteComplete ? '' : 'none';
 
   if(isRouteComplete){
     nextEpBtn.classList.remove('locked');
