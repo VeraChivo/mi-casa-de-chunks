@@ -62,9 +62,11 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .main-tab-btn.active{background:var(--misora);color:white;box-shadow:0 2px 6px rgba(108,155,210,.4)}
 .main-tab-panel{animation:fadeUp .2s ease;width:100%;max-width:480px;box-sizing:border-box}
 #tabMom{background:var(--mom-tab-bg);color:var(--mom-tab-text);border-radius:16px;padding:12px}
-.header-title{font-size:25px;font-weight:900;color:var(--konpeki);font-family:'Kosugi Maru',sans-serif;letter-spacing:.1em;display:flex;align-items:center;justify-content:center;gap:6px}
+.header-title-row{display:flex;align-items:center;justify-content:center;gap:10px}
+.header-title-col{text-align:left}
+.header-title{font-size:25px;font-weight:900;color:var(--konpeki);font-family:'Kosugi Maru',sans-serif;letter-spacing:.1em}
 .header-title span{color:var(--misora)}
-.header-title-icon{width:28px;height:28px;border-radius:8px;flex-shrink:0}
+.header-title-icon{width:48px;height:48px;flex-shrink:0}
 .header-subtitle{font-size:13px;font-weight:700;color:var(--tmid);margin-top:2px}
 
 .story-idx-box{width:100%;max-width:480px;margin:0 0 12px;box-sizing:border-box}
