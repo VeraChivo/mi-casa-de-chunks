@@ -63,7 +63,7 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .main-tab-panel{animation:fadeUp .2s ease;width:100%;max-width:480px;box-sizing:border-box}
 #tabMom{background:var(--mom-tab-bg);color:var(--mom-tab-text);border-radius:16px;padding:12px}
 .header-title-row{display:flex;align-items:center;justify-content:center;gap:10px}
-.header-title-col{text-align:left}
+.header-title-col{text-align:center}
 .header-title{font-size:25px;font-weight:900;color:var(--konpeki);font-family:'Kosugi Maru',sans-serif;letter-spacing:.1em}
 .header-title span{color:var(--misora)}
 .header-title-icon{width:48px;height:48px;flex-shrink:0}
