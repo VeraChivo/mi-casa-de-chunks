@@ -377,13 +377,12 @@ const GRAMMAR_DATA = [
   {
     id:"g07", cat:"tense", level:"a1a2",
     title:"SER 未來式：你會成為什麼？",
-    rule:"想說一個人以後會成為什麼，或猜未來會怎樣，就用 SER 的未來式。",
+    rule:"seré / serás / será / seremos / serán<br><br>用來說一個人以後會成為什麼，或猜未來會怎樣。",
     examples:[
       {es:"Yo seré la doctora y tú serás la enfermera.", zh:"我來當醫生，你來當護士。"},
       {es:"Tú serás una estrella.", zh:"你將成為一顆明星。"},
       {es:"¿Qué serás de mayor?", zh:"你長大想做什麼？（字面：你將成為什麼？）"}
     ],
-    trap:"SER 未來人稱：seré / serás / será / seremos / serán",
     source:"E3·S7",
     conj:{
       verb:"ser（以後要做：將成為）",
@@ -425,7 +424,7 @@ const GRAMMAR_DATA = [
   {
     id:"g09", cat:"gustar", level:"a1a2",
     title:"A + 人 + le gusta：某人喜歡",
-    rule:"GUSTAR不是「我喜歡」的直接翻譯。想說「某人喜歡某事」，就用 A + 人 + le/les + gusta(n) + 名詞或原形動詞。",
+    rule:"A + persona + le/les + gusta(n) + sustantivo/infinitivo<br><br>用來說某人喜歡某件事，不是「我喜歡」的直接翻譯。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
       {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"}
@@ -448,7 +447,7 @@ const GRAMMAR_DATA = [
   {
     id:"g10", cat:"verb-pattern", level:"a1a2",
     title:"¿Podemos + 動詞?：我們可以…嗎？",
-    rule:"想問能不能做一件事，就用 poder + 原形動詞。",
+    rule:"poder + infinitivo<br><br>用來問能不能做一件事。",
     examples:[
       {es:"¿Podemos salir a jugar?", zh:"我們可以出去玩嗎？"},
       {es:"¿Podemos comer ahora?", zh:"我們現在可以吃了嗎？"},
@@ -500,7 +499,7 @@ const GRAMMAR_DATA = [
   {
     id:"g11", cat:"verb-pattern", level:"a1a2",
     title:"Deber + 動詞：你應該、必須",
-    rule:"想說一件事應該做、必須做，就用 deber + 原形動詞。",
+    rule:"deber + infinitivo<br><br>用來表達應該做、必須做一件事。",
     examples:[
       {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
       {es:"Debes lavarte las manos.", zh:"你該洗手。"},
@@ -552,7 +551,7 @@ const GRAMMAR_DATA = [
   {
     id:"g12", cat:"verb-pattern", level:"a1a2",
     title:"Para + 動詞：為了做什麼？",
-    rule:"想說做一件事的目的，就用 para + 原形動詞。",
+    rule:"para + infinitivo<br><br>用來表達做一件事的目的。",
     examples:[
       {es:"Todos necesitan galletas para curarse.", zh:"所有人都需要餅乾才能康復。"},
       {es:"Necesitas agua para vivir.", zh:"你需要水才能生存。"},
@@ -565,7 +564,7 @@ const GRAMMAR_DATA = [
   {
     id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que：讓別人知道我腦中怎麼理解這件事",
-    rule:"想表達自己的想法、意見或判斷，就用 Creo que + 一整句話。",
+    rule:"Creo que + oración<br><br>用來表達自己的想法、意見或判斷。",
     examples:[
       {es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。（劇情原句，E3扮醫生場景）"},
       {es:"Creo que todo es mi error.", zh:"我以為都是我的錯。（劇情原句，SEL線）"},
@@ -592,7 +591,7 @@ const GRAMMAR_DATA = [
   {
     id:"g14", cat:"phrase", level:"a1a2",
     title:"No pasa nada：沒關係、沒事",
-    rule:"字面意思「什麼都沒發生」，是西語最高頻的安慰語之一。",
+    rule:"No pasa nada.<br><br>西語最高頻的安慰語之一，字面是什麼都沒發生。",
     examples:[
       {es:"No pasa nada. Sólo es barro.", zh:"沒關係，只是泥巴而已。（No pasa nada字面：什麼都沒發生）"},
       {es:"No pasa nada, yo te ayudo.", zh:"沒關係，我來幫你。"},
@@ -618,7 +617,7 @@ const GRAMMAR_DATA = [
   {
     id:"g16", cat:"phrase", level:"a1a2",
     title:"肯定命令句：怎麼對「你」下指令？",
-    rule:"想直接對「你」下命令，動詞直接用第三人稱單數（他／她）的現在式。<br><br>一句記住：Habla.（你說！← él habla）。Come.（你吃！← él come）。",
+    rule:"動詞第三人稱單數現在式 = 肯定命令句<br><br>直接對「你」下指令時使用，例如habla（你說）、come（你吃）。",
     examples:[
       {es:"Respira hondo.", zh:"深呼吸。（respirar → respira）"},
       {es:"Tose.", zh:"咳嗽。（toser → tose）"},
@@ -684,7 +683,7 @@ const GRAMMAR_DATA = [
   {
     id:"g18", cat:"verb-pattern", level:"a1a2",
     title:"Vamos a + 動詞：接下來要做什麼？",
-    rule:"想說接下來要做某件事，就用 vamos a + 原形動詞。",
+    rule:"vamos a + infinitivo<br><br>用來表達接下來要做的事。",
     examples:[
       {es:"Vamos a respirar.", zh:"來，我們一起深呼吸。"},
       {es:"Vamos al parque.", zh:"我們去公園吧！"},
@@ -737,7 +736,7 @@ const GRAMMAR_DATA = [
   {
     id:"g19", cat:"tense", level:"a1a2",
     title:"IR + a + 動詞：從「去」長出行動路線",
-    rule:"想說「我要去做什麼」，就用 ir 的變位 + a + 原形動詞：voy/vas/va/vamos/van，任何人稱都能用。",
+    rule:"voy / vas / va / vamos / van + a + infinitivo<br><br>用來說要去做什麼，任何人稱都能用。",
     examples:[
       {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
       {es:"Mamá siempre te va a cuidar.", zh:"媽媽會一直守護你喔。（🛌床邊低語呢原句）"},
@@ -766,7 +765,7 @@ const GRAMMAR_DATA = [
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：從「有」長出我的生活狀態",
-    rule:"TENER的核心畫面是「手上握有某種東西」。<br><br>中文的「餓了」「睏了」，西語會說成「手上有一種餓／睏的感覺」（tener hambre／tener sueño）；連年紀也是「手上握有六年」（tener seis años）。",
+    rule:"tener + sustantivo<br><br>用來表達擁有某物，以及西語裡用tener表達的身體感受、年齡等狀態（tener hambre、tener sueño、tener seis años）。",
     examples:[
       {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
       {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
@@ -842,13 +841,12 @@ const GRAMMAR_DATA = [
   {
     id:"g21", cat:"word-order", level:"a1a2",
     title:"形容詞位置：放在名詞後面",
-    rule:"跟英文相反，西語的形容詞通常放在被形容的名詞之後。例如：la casa blanca（那棟白色的房子，直譯「房子 白色的」）。",
+    rule:"西語形容詞通常放在名詞之後（la casa blanca）。<br><br>少數常見形容詞（bueno/malo/grande/primero/otro）放在名詞前面，且陽性單數名詞前會省略字尾（buen/mal/gran/primer）。",
     examples:[
       {es:"Tienes una hermana mayor.", zh:"你有一個大姊姊。（劇情原句，mayor 放在 hermana 後面）"},
       {es:"Tenemos una casa nueva.", zh:"我們有了一棟新房子。（劇情原句，nueva 放在 casa 後面）"},
       {es:"Mimi es una niña feliz.", zh:"咪咪是個快樂的女孩。（新編例句，feliz 放在 niña 後面）"}
     ],
-    trap:"少數常見形容詞（bueno好／malo壞／grande大／primero第一／otro其他）常放在名詞前面，且陽性單數名詞前會省略字尾（buen, mal, gran）——先抓住「大部分放後面」這個大原則，例外之後再慢慢熟悉。",
     crossLang:"這個「性別詞放名詞後面」的邏輯，台語（雞母 ke-bó／雞公 ke-kang／狗公 káu-kang）跟客語（雞嫲 gai-mâ／蝦公 ha-gûng）處理動物性別時也完全一樣，跟西語 gato macho／gato hembra 是同一套語序！",
     source:"彈藥庫 e4_03（前兩句）／文法補充（第三句為新編）"
   },
@@ -856,14 +854,13 @@ const GRAMMAR_DATA = [
   {
     id:"g22", cat:"gender", level:"a1a2",
     title:"可鹽可甜（有規矩？）：西語名詞陰陽性",
-    rule:"奇異世界：el＝陽性／la＝陰性，連不會動的死物也不放過。<br><br>①能量感——El 像太陽（發散、直接），La 像月亮（包容、承載）。<br>②形狀感——El 常對應延伸／支撐／工具，La 常對應凹槽／容器／收納空間。",
+    rule:"奇異世界：el＝陽性／la＝陰性，連不會動的死物也不放過。<br><br>①能量感：El像太陽（發散、直接），La像月亮（包容、承載）。<br>②形狀感：El常對應延伸／支撐／工具，La常對應凹槽／容器／收納空間。<br><br>常見例外：長得甜（-a結尾）骨子裡是鹽的el mapa（地圖）、el día（日子）、el problema（問題）；長得鹽（-o或子音結尾）骨子裡是甜的la mano（手）、la flor（花）。真正屬於「-ma希臘字源陽性字群」的只有problema，跟programa／sistema／clima／tema同掛，día、mapa純粹是字尾巧合，各自獨立。",
     examples:[
       {es:"El sol brilla mucho hoy.", zh:"今天太陽很亮。（陽性：太陽，發散的能量）"},
       {es:"La luna es hermosa.", zh:"月亮很美。（陰性：月亮，包容的能量）"},
       {es:"La llave está en la mesa.", zh:"鑰匙在桌上。（陰性：llave 鑰匙／mesa 桌子，都是「容器／承載空間」意象）"},
       {es:"El camino es largo.", zh:"這條路很長。（陽性：camino 路，「延伸／支撐」意象）"}
     ],
-    trap:"叛逆名詞：長得甜（-a 結尾）骨子裡是鹽——el mapa（地圖）、el día（日子）、el problema（問題）。真正屬於「-ma 希臘字源陽性字群」的只有 problema，跟 programa／sistema／clima／tema 同掛；día、mapa 純粹字尾巧合，各自獨立，別混為一談。<br><br>長得鹽（-o 或子音結尾）骨子裡是甜的：la mano（手）、la flor（花）。<br><br>規矩藏在能量感／形狀感的直覺裡，不是死板字尾規則。",
     crossLang:"台客語同一套氣場：公／牯＝太陽，發散、能量源頭；母／嫲＝月亮，包容、孕育、承載空間，跟西語 El／La 對得上。<br><br>形狀感也一樣：台語「螺絲母」＝螺帽，凹槽收納，呼應 la llave／la puerta／la caja；el lápiz／el puente／el árbol／el camino 這種延伸支撐的工具感，也貼著台客語「公／牯」的陽性直覺。",
     source:"文法補充"
   },
@@ -989,7 +986,7 @@ const GRAMMAR_DATA = [
     examples:[
       {es:"No creo que Nita esté cansada.", zh:"我不認為妮妲累了。"},
       {es:"¡Que tengas un buen día!", zh:"祝你有美好的一天！（Espero que tengas...的省略版）"},
-      {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（心情不好的是「我」，但在劇院吵鬧的是「別人」——這種「感受的人」跟「做動作的人」不同，是這句要小心處理的地方）"}
+      {es:"Le pido a Nita que me ayude.", zh:"我請妮妲幫我。（Requests請求：g35也用過這句）"}
     ],
     mnemonic:{
       icon:"🌪️", word:"WEIRDO", side:"subj",
@@ -1027,7 +1024,7 @@ const GRAMMAR_DATA = [
       {es:"Me da vergüenza hablar con desconocidos.", zh:"和陌生人說話讓我感到害羞。（同一主詞，用原形動詞 hablar）"},
       {es:"A mí me pone de mal humor que la gente haga ruido en el teatro.", zh:"有人在劇院裡製造噪音讓我心情不好。（主詞不同：心情不好的是「我」，但吵鬧的是「別人」）"}
     ],
-    trap:"前三句看起來很像句型④，但差別在「動作是誰做的」——前三句都是「我自己在做那個動作」（我自己說話/我自己聽水聲），所以用原形動詞；句型④是「別人做的動作」讓我心情不好，主詞換人了，才需要 que + 虛擬式。這是最容易搞混、也最能看出真的懂不懂虛擬式的地方。",
+    trap:"前三句看起來很像g27的判斷邏輯，但差別在「動作是誰做的」——前三句都是「我自己在做那個動作」（我自己說話/我自己聽水聲），所以用原形動詞；第四句是「別人做的動作」讓我心情不好，主詞換人了，才需要 que + 虛擬式。這是最容易搞混、也最能看出真的懂不懂虛擬式的地方。",
     source:"文法補充"
   },
 
@@ -1041,8 +1038,8 @@ const GRAMMAR_DATA = [
       {es:"¡Que duermas bien!", zh:"祝你睡個好覺！"},
       {es:"Ojalá que llueva pronto.", zh:"希望快點下雨。"}
     ],
-    note:"Ojalá（源自阿拉伯語，字面「願真主保佑」）是另一個高頻祝福句型，後面固定接虛擬式表達願望——跟¡Que+虛擬式!是兩個各自獨立的來源，不是同一種簡化。",
-    trap:"「Ojalá」後面加不加 que，兩種說法都有人講、且後面都一定要接虛擬式。<br><br>網路上常聽到「拉美習慣加 que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。可以確定的是：Ojalá + 原形動詞（不接 que 也不接虛擬式）不符合 RAE 規範，這個要避免。",
+    note:"Ojalá（源自阿拉伯語，字面「願真主保佑」）是另一個高頻祝福句型，後面固定接虛擬式表達願望——跟¡Que+虛擬式!是兩個各自獨立的來源，不是同一種簡化。<br><br>網路上常聽到「拉美習慣加que、西班牙習慣不加」的說法，但這只是母語者論壇觀察，不是查證得到的正式方言學規則，之後可以帶去問老師確認。",
+    trap:"「Ojalá」後面加不加que，兩種說法都有人講、且後面都一定要接虛擬式。可以確定的是：Ojalá + 原形動詞（不接que也不接虛擬式）不符合RAE規範，這個要避免。",
     source:"文法補充"
   },
 
@@ -1218,7 +1215,7 @@ const GRAMMAR_DATA = [
       {es:"¿Me echas un poco de agua?", zh:"可以幫我倒一點水嗎？（echar ＝倒/加）"},
       {es:"Echo de menos a mi familia.", zh:"我想念我的家人。（echar de menos ＝想念）"}
     ],
-    trap:"echar 本身意思很廣（丟/倒/放/趕）——重點是把整組固定搭配（echar a alguien／echar de menos）當語塊背，不要拆開單獨背 echar。",
+    note:"echar本身意思很廣（丟/倒/放/趕），重點是把整組固定搭配（echar a alguien／echar de menos）當語塊背，不要拆開單獨背echar。",
     source:"文法補充"
   },
 
@@ -1271,6 +1268,17 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"這些形容詞常跟 estar／sentirse 搭配，不是 ser——因為都是暫時的心理狀態，不是永久本質，跟💎☁️是・在對照站的 ESTAR 用法一致。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g43a", cat:"vocab", level:"b2c1",
+    title:"Agobiado：喘不過氣",
+    rule:"estar agobiado / sentirse agobiado<br><br>形容被壓力、待辦事項壓得喘不過氣。",
+    examples:[
+      {es:"Cata se siente agobiada por tantas tareas.", zh:"卡妲被那麼多待辦事項壓得喘不過氣。"},
+      {es:"Estoy agobiado con el trabajo esta semana.", zh:"這禮拜的工作讓我喘不過氣。"}
+    ],
     source:"文法補充"
   },
 
@@ -1422,7 +1430,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52a", cat:"phrase", level:"b1",
     title:"MEJOR：更好 → 最好",
-    rule:"mejor本身就是「更好」。要表達「最好」，記得前面的定冠詞不能漏掉：el mejor。",
+    rule:"el mejor / la mejor<br><br>mejor本身就是更好，加上定冠詞表示最好。",
     examples:[
       {es:"Este pastel es bueno.", zh:"這個蛋糕很好。"},
       {es:"Este pastel es mejor que el otro.", zh:"這個蛋糕比另一個更好。"},
@@ -1435,7 +1443,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52b", cat:"phrase", level:"b1",
     title:"PEOR：更慘 → 最慘",
-    rule:"peor本身就是「更慘/更糟」。要表達「最慘/最糟」，前面的定冠詞不能漏掉：el peor。",
+    rule:"el peor / la peor<br><br>peor本身就是更慘、更糟，加上定冠詞表示最慘或最糟。",
     examples:[
       {es:"Este día es malo.", zh:"這天很糟。"},
       {es:"Este día es peor que ayer.", zh:"這天比昨天更糟。"},
@@ -1448,7 +1456,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52c", cat:"phrase", level:"b1",
     title:"MAYOR：更年長／較大 → 最年長／最大",
-    rule:"mayor本身就是「更年長」（也能指程度上「更大」）。要表達「最年長/最大」，前面的定冠詞不能漏掉：el mayor／la mayor。",
+    rule:"el mayor / la mayor<br><br>mayor本身就是更年長，也能指程度上更大，加上定冠詞表示最年長或最大。",
     examples:[
       {es:"Nita es grande.", zh:"妮妲年紀不小了。"},
       {es:"Nita es mayor que Tito.", zh:"妮妲比迪多年長。"},
@@ -1461,7 +1469,7 @@ const GRAMMAR_DATA = [
   {
     id:"g52d", cat:"phrase", level:"b1",
     title:"MENOR：更年幼／較小 → 最年幼／最小",
-    rule:"menor本身就是「更年幼」（也能指程度上「更小」）。要表達「最年幼/最小」，前面的定冠詞不能漏掉：el menor／la menor。",
+    rule:"el menor / la menor<br><br>menor本身就是更年幼，也能指程度上更小，加上定冠詞表示最年幼或最小。",
     examples:[
       {es:"Mimi es pequeña.", zh:"咪咪還小。"},
       {es:"Mimi es menor que Nita.", zh:"咪咪比妮妲年幼。"},
@@ -1551,7 +1559,8 @@ const GRAMMAR_DATA = [
   {
     id:"g58a", cat:"verb-pattern", level:"b2c1",
     title:"Ponerse：突然變",
-    rule:"情緒或狀態突然變了，用ponerse。通常來得快，也退得快。",
+    img:"img/g58a_ponerse.svg",
+    rule:"ponerse + adjetivo<br><br>形容情緒或狀態突然改變，來得快也退得快。",
     examples:[
       {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，突然很開心。"},
       {es:"Tito se puso rojo de vergüenza.", zh:"迪多害羞得臉都紅了。"}
@@ -1563,7 +1572,8 @@ const GRAMMAR_DATA = [
   {
     id:"g58b", cat:"verb-pattern", level:"b2c1",
     title:"Quedarse：留下來",
-    rule:"事情發生後，留下某種狀態，用quedarse。",
+    img:"img/g58b_quedarse.svg",
+    rule:"quedarse + adjetivo / participio<br><br>形容一件事發生後留下的狀態。",
     examples:[
       {es:"Tito se quedó dormido en el sofá.", zh:"迪多在沙發上睡著了。"},
       {es:"Nita se quedó callada un momento.", zh:"妮妲安靜了一會兒。"}
@@ -1575,7 +1585,8 @@ const GRAMMAR_DATA = [
   {
     id:"g58c", cat:"verb-pattern", level:"b2c1",
     title:"Volverse：慢慢變",
-    rule:"人或事慢慢發生根本的改變，用volverse。",
+    img:"img/g58c_volverse.svg",
+    rule:"volverse + adjetivo<br><br>形容人或事慢慢發生根本的改變。",
     examples:[
       {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢變成橘色。"},
       {es:"Con los años, Cata se volvió más paciente.", zh:"這些年下來，卡妲變得更有耐心了。"}
@@ -1874,7 +1885,7 @@ const GRAMMAR_DATA = [
       {es:"Aunque llueva, iré a la fiesta.", zh:"就算下雨，我還是會去派對（我先講好這個原則，不管天氣如何都一樣）。"},
       {es:"Aunque no tengo mucho dinero, soy feliz.", zh:"雖然我沒有很多錢，但我很快樂（陳述已經是事實的狀態）。"}
     ],
-    trap:"聽力小技巧：不用逐字判斷語意，抓動詞形式就好——規則-ar動詞現在式(llueve/tiene/hace)跟虛擬式(llueva/tenga/haga)字尾常常只差一個母音，母語者靠這個小訊號分辨對方是在講事實還是講原則，練習時可以先從聽動詞字尾開始抓。",
+    note:"聽力小技巧：不用逐字判斷語意，抓動詞形式就好。規則-ar動詞現在式(llueve/tiene/hace)跟虛擬式(llueva/tenga/haga)字尾常常只差一個母音，母語者靠這個小訊號分辨對方是在講事實還是講原則，練習時可以先從聽動詞字尾開始抓。",
     source:"文法補充"
   },
 
@@ -2089,7 +2100,7 @@ const GRAMMAR_DATA = [
   {
     id:"g88", cat:"connector", level:"c1",
     title:"正式連接詞：讓論述聽起來更有邏輯層次",
-    rule:"常見於新聞評論、學術寫作、正式演講，用來串起轉折、因果與補充，讓較長的論述更容易跟上。",
+    rule:"a pesar de ello / de hecho / en definitiva / por otra parte / asimismo<br><br>用來讓論述有轉折、因果、補充的邏輯層次，語域比porque/pero/sino更正式。",
     examples:[
       {es:"El plan es ambicioso; no obstante, falta financiamiento.", zh:"這個計畫很有野心；然而，資金不足。（no obstante：然而，比pero更正式）"},
       {es:"No hay suficientes datos; por consiguiente, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por consiguiente：因此）"},
@@ -2585,15 +2596,34 @@ const GRAMMAR_DATA = [
   },
 
   {
-    id:"g111", cat:"subjunctive", level:"b1",
-    title:"Dudo que / No creo que / Creo que no：你是懷疑，還是已經認定？",
-    rule:"先看你有多確定。<br><br>Dudo que + 虛擬式 → 我懷疑。<br><br>No creo que + 虛擬式 → 我不太相信。<br><br>Creo que no + 陳述式 → 我覺得不是。",
+    id:"g111a", cat:"subjunctive", level:"b1",
+    title:"Dudo que：我懷疑",
+    rule:"Dudo que + 虛擬式 → 我懷疑。",
     examples:[
-      {es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。<br><br>💡 這是最委婉的猜測——中文不要翻成「我懷疑」，那個字帶偵查/不相信證據的味道，比西語原本隨口猜測的語氣重很多。"},
-      {es:"No creo que quieras helado.", zh:"我不認為你想吃冰淇淋。<br><br>💡 比上一句再篤定一點點的「不相信/不認為」。"},
-      {es:"Creo que no quieres helado.", zh:"我覺得你不想吃冰淇淋。<br><br>💡 三句裡最直接篤定的判斷——先正面判斷，只是判斷出來的內容是否定的。"}
+      {es:"Dudo que quieras helado.", zh:"我不太覺得你會想吃冰淇淋。<br><br>💡 這是最委婉的猜測——中文不要翻成「我懷疑」，那個字帶偵查/不相信證據的味道，比西語原本隨口猜測的語氣重很多。"}
     ],
-    trap:"別只看no，要看它否定的是哪裡。<br><br>No creo que... → 否定的是creo，用虛擬式。<br><br>Creo que no... → 否定的是後面的內容，用陳述式。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g111b", cat:"subjunctive", level:"b1",
+    title:"No creo que：我不太相信",
+    rule:"No creo que + 虛擬式 → 我不太相信。",
+    examples:[
+      {es:"No creo que quieras helado.", zh:"我不認為你想吃冰淇淋。<br><br>💡 比Dudo que再篤定一點點的「不相信/不認為」。"}
+    ],
+    trap:"別只看no，要看它否定的是哪裡。No creo que... → 否定的是creo，所以用虛擬式（跟Creo que no相反，見那張卡）。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g111c", cat:"subjunctive", level:"b1",
+    title:"Creo que no：我覺得不是",
+    rule:"Creo que no + 陳述式 → 我覺得不是。",
+    examples:[
+      {es:"Creo que no quieres helado.", zh:"我覺得你不想吃冰淇淋。<br><br>💡 這三種說法裡最直接篤定的判斷——先正面判斷，只是判斷出來的內容是否定的。"}
+    ],
+    trap:"別只看no，要看它否定的是哪裡。Creo que no... → 否定的是後面的內容，creo本身沒被否定，所以用陳述式（跟No creo que相反，見那張卡）。",
     source:"文法補充"
   },
 
@@ -2617,7 +2647,7 @@ const GRAMMAR_DATA = [
   {
     id:"g113", cat:"verb-pattern", level:"b1",
     title:"意見表達：表達立場與保留",
-    rule:"想表達意見、表示同意，或保留立場，就用對應的句型。",
+    rule:"en mi opinión / desde mi punto de vista / estoy de acuerdo con / depende de<br><br>用來表達意見、同意或不同意、保留立場，語氣比creo que更正式或更謹慎。",
     examples:[
       {es:"En mi opinión, los espacios verdes son muy importantes.", zh:"依我看，綠地空間非常重要。（en mi opinión：比creo que更正式的意見開場白，常用在討論/寫作語境）"},
       {es:"Desde mi punto de vista, esta ciudad necesita más parques.", zh:"從我的角度來看，這座城市需要更多公園。（desde mi punto de vista：強調「這是我個人的視角」，語氣比creo que更慎重）"},
@@ -2634,32 +2664,32 @@ const GRAMMAR_DATA = [
   {
     id:"g114", cat:"connector", level:"b1",
     title:"敘事排序詞：primero/luego/después/al final",
-    rule:"想把好幾個步驟按順序排列清楚，就用這批敘事排序詞：primero/luego/después/al final，是講故事、寫食譜、交代流程時的骨架詞。",
+    rule:"primero / luego / después / al final<br><br>用來把好幾個步驟按順序排列清楚，luego比después稍微口語一點。",
     examples:[
       {es:"Primero, me desperté. Luego, desayuné. Después, fui a la escuela.", zh:"首先，我起床了。然後，我吃了早餐。接著，我去了學校。（primero/luego/después：標記步驟先後，是最基本的敘事排序組合）"},
       {es:"Al final, todo salió bien.", zh:"最後，一切都很順利。（al final：收尾用語，總結整段敘事的結果）"},
       {es:"Primero terminé la tarea, y al final pude descansar.", zh:"我先做完功課，最後才能休息。（primero...al final...：頭尾呼應的完整敘事框架）"}
     ],
-    trap:"luego跟después常常可以互換（都是「然後/接著」），差別很細微：luego語氣更口語隨性，después稍微正式一點，日常對話兩個都通用，不用太糾結該選哪個。",
+    note:"luego跟después常常可以互換，語氣差別很細微，日常對話兩個都通用，不用太糾結該選哪個。",
     source:"文法補充"
   },
 
   {
     id:"g115", cat:"connector", level:"b1",
     title:"因果連接詞：por eso/así que/por lo tanto",
-    rule:"想先講原因、再講結果，用「所以/因此」接起來，就用這三個詞：por eso最口語，así que也偏口語但稍微強調結論，por lo tanto最正式書面，適合寫作/論述場合。",
+    rule:"por eso / así que / por lo tanto<br><br>先講原因、再講結果時使用，por eso最口語，así que強調結論，por lo tanto最正式書面。",
     examples:[
       {es:"Llovía mucho, por eso no salimos.", zh:"雨下得很大，所以我們沒出門。（por eso：最口語的「所以」，日常對話最常用）"},
       {es:"No tenía dinero, así que no compré nada.", zh:"我沒有錢，所以什麼都沒買。（así que：口語，帶一點「於是就」的順勢感）"},
       {es:"Los datos son insuficientes; por lo tanto, no podemos concluir nada.", zh:"數據不夠充分，因此我們無法下任何結論。（por lo tanto：正式書面用語，適合寫作/論述）"}
     ],
-    trap:"這三個詞的因果方向都一樣（原因在前，結果在後），差別純粹是語域（register）。<br><br>朋友聊天用por eso/así que，寫報告/正式討論用por lo tanto，選錯不會造成誤解，但會顯得語氣不搭場合。",
     source:"文法補充"
   },
 
   {
     id:"g116a", cat:"tense", level:"b1",
     title:"alguna vez：曾經？",
+    img:"img/g116a_alguna_vez.svg",
     rule:"alguna vez + 現在完成式 → 曾經？",
     examples:[
       {es:"¿Has estado alguna vez en España?", zh:"你曾經去過西班牙嗎？"},
@@ -2671,6 +2701,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116b", cat:"tense", level:"b1",
     title:"nunca：從來沒有",
+    img:"img/g116b_nunca.svg",
     rule:"nunca + 現在完成式 → 從來沒有……",
     examples:[
       {es:"Nunca he estado allí.", zh:"我從沒去過那裡。"},
@@ -2682,6 +2713,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116c", cat:"tense", level:"b1",
     title:"todavía no：仍然 沒有／仍未／還沒",
+    img:"img/g116c_todavia_no.svg",
     rule:"todavía no + 現在完成式 → 仍然 沒有……／仍未……／還沒……",
     examples:[
       {es:"Todavía no he comido.", zh:"我還沒吃。"},
@@ -2693,6 +2725,7 @@ const GRAMMAR_DATA = [
   {
     id:"g116d", cat:"tense", level:"b1",
     title:"ya：已經",
+    img:"img/g116d_ya.svg",
     rule:"ya + 現在完成式 → 已經……",
     examples:[
       {es:"Ya he comido.", zh:"我已經吃了。"},
@@ -2704,7 +2737,7 @@ const GRAMMAR_DATA = [
   {
     id:"g117", cat:"verb-pattern", level:"a1a2",
     title:"Llamarse：從名字開始建立自己的位置",
-    rule:"llamarse字面是「稱呼自己」（反身動詞）。<br><br>「我是誰」「你是誰」「他是誰」，最先都是靠這句話回答的——是打開自己在西語世界裡第一個身分入口的鑰匙。",
+    rule:"llamarse（反身動詞）<br><br>用來說自己或別人的名字，是自我介紹的第一句話。",
     examples:[
       {es:"Me llamo Nita.", zh:"我叫妮妲。（劇情原句，E17）"},
       {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（新編例句，A1核心問句，目前劇情裡還沒出現）"},
@@ -2726,6 +2759,157 @@ const GRAMMAR_DATA = [
       {es:"¿Cómo te llamas?", semanticRole:"inquiry", communicationGoal:"我想知道對方的名字", scene:"新編（A1核心問句，目前劇情裡還沒出現）"},
       {es:"Se llama Mimi.", semanticRole:"introducing-others", communicationGoal:"我想讓對方知道另一個人的名字", scene:"E4劇情（真實例句）"}
     ]
+  },
+
+  // ══ 🌿 B1 介系詞場景第二層：空間複合片語（承接g108核心六介系詞，往下細分方位） ══
+  // A上下／B前後／C內外／D距離／E左右 五組反義對＋F側邊／G雙錨點，皆用毛線球/貨車/樹等
+  // 固定小物件示意，圖片風格="文法點情境示意圖"（彩色情境插畫），跟g58/g116的抽象語感力學圖是兩套系統
+
+  {
+    id:"g118a", cat:"preposition", level:"b1",
+    title:"encima de：在……上面",
+    img:"img/g118a_encima_de.png",
+    rule:"encima de + 名詞 → 在……上面（浮在上方，不一定貼著）",
+    examples:[
+      {es:"El ovillo está encima de la mesa.", zh:"毛線球在桌子上面。"},
+      {es:"El gato duerme encima del sofá.", zh:"貓咪在沙發上面睡覺。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g118b", cat:"preposition", level:"b1",
+    title:"debajo de：在……下面",
+    img:"img/g118b_debajo_de.png",
+    rule:"debajo de + 名詞 → 在……下面",
+    examples:[
+      {es:"El ovillo está debajo de la mesa.", zh:"毛線球在桌子下面。"},
+      {es:"El gato se esconde debajo de la cama.", zh:"貓咪躲在床底下。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g119a", cat:"preposition", level:"b1",
+    title:"delante de：在……前面",
+    img:"img/g119a_delante_de.png",
+    rule:"delante de + 名詞 → 在……前面",
+    examples:[
+      {es:"El ovillo está delante del camión.", zh:"毛線球在貨車前面。"},
+      {es:"Nita está delante de la puerta.", zh:"妮妲站在門前面。"}
+    ],
+    trap:"de+el會縮成del（delante del camión，不能寫成delante de el），只有陽性名詞前面才會遇到這個縮合，陰性名詞不受影響（delante de la puerta維持原樣）。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g119b", cat:"preposition", level:"b1",
+    title:"detrás de：在……後面",
+    img:"img/g119b_detras_de.png",
+    rule:"detrás de + 名詞 → 在……後面",
+    examples:[
+      {es:"El ovillo está detrás del camión.", zh:"毛線球在貨車後面。"},
+      {es:"Nita se esconde detrás de la puerta.", zh:"妮妲躲在門後面。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g120a", cat:"preposition", level:"b1",
+    title:"dentro de：在……裡面",
+    img:"img/g120a_dentro_de.png",
+    rule:"dentro de + 名詞 → 在……裡面",
+    examples:[
+      {es:"El ovillo está dentro de la caja.", zh:"毛線球在箱子裡面。"},
+      {es:"Todo está dentro de la mochila.", zh:"所有東西都在背包裡面。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g120b", cat:"preposition", level:"b1",
+    title:"fuera de：在……外面",
+    img:"img/g120b_fuera_de.png",
+    rule:"fuera de + 名詞 → 在……外面",
+    examples:[
+      {es:"El ovillo está fuera de la caja.", zh:"毛線球在箱子外面。"},
+      {es:"El gato se queda fuera de casa.", zh:"貓咪待在家外面。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g121a", cat:"preposition", level:"b1",
+    title:"cerca de：離……很近",
+    img:"img/g121a_cerca_de.png",
+    rule:"cerca de + 名詞 → 離……很近",
+    examples:[
+      {es:"La mariposa está cerca de la flor.", zh:"蝴蝶離花很近。"},
+      {es:"Mi casa está cerca de la escuela.", zh:"我家離學校很近。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g121b", cat:"preposition", level:"b1",
+    title:"lejos de：離……很遠",
+    img:"img/g121b_lejos_de.png",
+    rule:"lejos de + 名詞 → 離……很遠",
+    examples:[
+      {es:"La mariposa está lejos de la flor.", zh:"蝴蝶離花很遠。"},
+      {es:"Mi casa está lejos de la escuela.", zh:"我家離學校很遠。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g122a", cat:"preposition", level:"b1",
+    title:"a la derecha de：在……右邊",
+    img:"img/g122a_a_la_derecha_de.png",
+    rule:"a la derecha de + 名詞 → 在……右邊",
+    examples:[
+      {es:"La colmena está a la derecha del árbol.", zh:"蜂巢在樹的右邊。"},
+      {es:"Nita está a la derecha de Tito.", zh:"妮妲在迪多的右邊。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g122b", cat:"preposition", level:"b1",
+    title:"a la izquierda de：在……左邊",
+    img:"img/g122b_a_la_izquierda_de.png",
+    rule:"a la izquierda de + 名詞 → 在……左邊",
+    examples:[
+      {es:"La colmena está a la izquierda del árbol.", zh:"蜂巢在樹的左邊。"},
+      {es:"Nita está a la izquierda de Tito.", zh:"妮妲在迪多的左邊。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g123", cat:"preposition", level:"b1",
+    title:"al lado de：在……旁邊",
+    img:"img/g123_al_lado_de.png",
+    rule:"al lado de + 名詞 → 在……旁邊（不特別指定左邊還是右邊，只是靠在一起）",
+    examples:[
+      {es:"La regadera está al lado del árbol.", zh:"澆花器在樹的旁邊。"},
+      {es:"Nita está al lado de Tito.", zh:"妮妲在迪多的旁邊。"}
+    ],
+    trap:"al lado de只講「靠在一起」，不像a la derecha de／a la izquierda de那樣講清楚是哪一邊——想強調左右方位時用那兩個，只想說「挨著」就用al lado de。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g124", cat:"preposition", level:"b1",
+    title:"entre：在……之間",
+    img:"img/g124_entre.png",
+    rule:"entre + A y B → 在A和B之間",
+    examples:[
+      {es:"El bolígrafo está entre el teléfono y la taza.", zh:"筆在手機和杯子之間。"},
+      {es:"Nita está entre Mamá Cata y Tito.", zh:"妮妲坐在貓媽媽和迪多之間。"}
+    ],
+    trap:"entre是這一批介系詞裡唯一不接de的——不是「entre de」，是entre直接接兩個錨點，中間用y連起來（entre A y B）。",
+    source:"文法補充"
   }
 
 ];
@@ -2865,7 +3049,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g118a','g118b','g119a','g119b','g120a','g120b','g121a','g121b','g122a','g122b','g123','g124'],
   historical: ['g14'],
   incubating: []
 };
@@ -2877,7 +3061,7 @@ const GRAMMAR_LIFECYCLE = {
 // 未列在這裡的卡＝維持舊版寫法，之後批次套用新規則時直接把id加進這個陣列，
 // 不用另外幫每張卡加欄位——避免舊版/新版卡混在一起卻分不出誰改過誰沒改。
 const GRAMMAR_STYLE_REVISION = {
-  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g14','g15','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g75','g76','g77','g88','g108','g109','g111','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
+  revised: ['g01','g02','g03','g04','g05','g06','g07','g08','g09','g10','g11','g12','g13','g14','g15','g16','g17','g18','g19','g20','g21','g22','g23','g27','g28','g29','g30','g31','g32','g33','g34','g35','g41','g42a','g42b','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g75','g76','g77','g88','g108','g109','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g117']
 };
 
 // 技能節點關係圖（純資料，尚無渲染/消費程式碼，只記錄卡片之間的前後階/使用關係）
@@ -2889,6 +3073,12 @@ const SKILL_GRAPH = [
   { from: "g05", to: "g116b", relation: "uses" },
   { from: "g05", to: "g116c", relation: "uses" },
   { from: "g05", to: "g116d", relation: "uses" },
+  { from: "g116a", to: "g116b", relation: "family" },
+  { from: "g116a", to: "g116c", relation: "family" },
+  { from: "g116a", to: "g116d", relation: "family" },
+  { from: "g116b", to: "g116c", relation: "family" },
+  { from: "g116b", to: "g116d", relation: "family" },
+  { from: "g116c", to: "g116d", relation: "family" },
   { from: "g42a", to: "g42b", relation: "extends" },
   { from: "g30", to: "g115", relation: "related" },
   { from: "g112", to: "g114", relation: "family" },
@@ -2899,8 +3089,24 @@ const SKILL_GRAPH = [
   { from: "g52a", to: "g52b", relation: "family" },
   { from: "g52a", to: "g52c", relation: "family" },
   { from: "g52a", to: "g52d", relation: "family" },
+  { from: "g52b", to: "g52c", relation: "family" },
+  { from: "g52b", to: "g52d", relation: "family" },
+  { from: "g52c", to: "g52d", relation: "family" },
   { from: "g58a", to: "g58b", relation: "family" },
-  { from: "g58a", to: "g58c", relation: "family" }
+  { from: "g58a", to: "g58c", relation: "family" },
+  { from: "g58b", to: "g58c", relation: "family" },
+  { from: "g43a", to: "g02", relation: "uses" },
+  { from: "g27", to: "g28", relation: "extends" },
+  { from: "g111a", to: "g111b", relation: "family" },
+  { from: "g111a", to: "g111c", relation: "family" },
+  { from: "g111b", to: "g111c", relation: "family" },
+  { from: "g118a", to: "g118b", relation: "family" },
+  { from: "g119a", to: "g119b", relation: "family" },
+  { from: "g120a", to: "g120b", relation: "family" },
+  { from: "g121a", to: "g121b", relation: "family" },
+  { from: "g122a", to: "g122b", relation: "family" },
+  { from: "g123", to: "g122a", relation: "related" },
+  { from: "g124", to: "g108", relation: "related" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，

@@ -4937,7 +4937,7 @@ function _reminderPickMsg(list, dateStr){
 }
 
 function _reminderShow(title, body, data){
-  const opts = { body, icon:'icon.svg', tag:'peppa-reminder', data };
+  const opts = { body, icon:'icon.png', tag:'peppa-reminder', data };
   if(navigator.serviceWorker && navigator.serviceWorker.ready){
     navigator.serviceWorker.ready.then(reg => {
       if(reg && reg.showNotification) reg.showNotification(title, opts);
