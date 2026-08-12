@@ -1359,7 +1359,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e17_04", ep:"E17 · Me Llamo Nita",
+    ammo_id:"e17_09", ep:"E17 · Me Llamo Nita",
     core_ammo:"Mucho gusto, soy Nita.", core_zh:"很高興認識你，我是妮妲。",
     be_verb_type:"ser", be_verb_note:"見面問候慣用語 + ser自我介紹",
     pattern:"Mucho gusto, soy [名字].", pattern_zh:"很高興認識你，我是 ___。",
