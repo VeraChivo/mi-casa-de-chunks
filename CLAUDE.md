@@ -130,6 +130,7 @@ VERA 是 ADHD 使用者，發散式思考、興趣廣泛，回報進度給她時
      - **真正的「教能力」集數只有8集**——依`EPISODE_LIFECYCLE.abilityBuilding`反推＝`E17→E18→E19→E20→E1→E2→E3→E7`（llamarse/ser自介→家人→日常tener/estar→gustar→回到S1加深ser/estar/gustar→tener/hay家族），這8集是100%對到a1a2文法、100%文法連結完整的區塊。**這條線現有的episode排列＋`routeComplete`機制已經接近正確順序，不需要重新排序。**
      - 其餘12集三種角色：🧺chunkInput（E4/E5/E6/E14，語塊延伸不綁能力）／🌍cultureImmersion（E11，文化特輯，b1密度全站最高）／💞emotionalNarrative（E8/E9/E10/E12/E13/E15/E16，情緒陪伴線）
      - E17-E20換詞練習(expand)覆蓋率只有1/10（全站唯一低於10/10的區塊）——這是官方新手入口本身的內容缺口，列入未來內容補強清單，不算路線架構問題
+       - **✅ 2026-08-12已補齊：E17-E20全40句換詞練習補到10/10**（VERA裁決「現在全補齊」）。36句新增`expand`區塊（每句沿用既有角色詞彙Nita/Tito/Mimi/Kito/Vera/Mamá Cata/Papá Tato，不新增世界觀名稱），沿用站上既有的`template`+`groups`+`options`資料結構，跟原本4句（各集第1句）的格式完全一致，沒有另立新格式。已用Playwright實測（本機http server+真實瀏覽器）驗證：①E17-E20全40句呼叫`populateMake()`後`#expandMap`都正確顯示且每句至少2個可選chip②互動測試——實際點擊E17第2句「Soy [名字].」的換詞chip，句型預覽正確從佔位符變成「Soy Mimi.」，證實不只是資料存在，換詞功能真的可以運作。`node --check`／`maintenance.js` 0錯誤。
      - **✅ VERA裁定的核心產品原則：Grammar level ≠ Episode level ≠ User route level**——一句劇情裡出現B1文法（例如E1#7的pero/sino、E2#10的「han estado chapoteando」現在完成進行式），**不代表這一集要被判定成B1、也不代表新人必須學會這個結構**。內容出現≠學習目標。原本分析報告裡列的「E1#7/E2#10難度地雷需要修」判斷**已被推翻**：這兩句維持原樣不用改，故事本來就可以帶著新人還沒學到的文法，新人只要能大概理解、跟著劇情走就好，不需要每個文法點都先教過才能出現在句子裡。
      - **裁定的三層架構**（取代原本「候選A/B/C」裡「B1後自動進文法庫」的簡化想法）：
        ```
