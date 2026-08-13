@@ -2900,7 +2900,13 @@ const SKILL_GRAPH = [
   { from: "g52a", to: "g52c", relation: "family" },
   { from: "g52a", to: "g52d", relation: "family" },
   { from: "g58a", to: "g58b", relation: "family" },
-  { from: "g58a", to: "g58c", relation: "family" }
+  { from: "g58a", to: "g58c", relation: "family" },
+  // 2026-08-13補：以下三組是2026-07-26「重複卡內容深化」VERA已確認的「能力階梯」判定
+  // （見CLAUDE.md「g53↔g75、g57↔g76判定通過,能力階梯成立」），當時只寫進文件文字，
+  // 沒有實際寫進SKILL_GRAPH，這次補齊既有判定，不是新增判斷。
+  { from: "g53", to: "g75", relation: "extends" },
+  { from: "g57", to: "g76", relation: "extends" },
+  { from: "g56", to: "g77", relation: "extends" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
