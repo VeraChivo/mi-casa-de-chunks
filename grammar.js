@@ -2906,7 +2906,15 @@ const SKILL_GRAPH = [
   // 沒有實際寫進SKILL_GRAPH，這次補齊既有判定，不是新增判斷。
   { from: "g53", to: "g75", relation: "extends" },
   { from: "g57", to: "g76", relation: "extends" },
-  { from: "g56", to: "g77", relation: "extends" }
+  { from: "g56", to: "g77", relation: "extends" },
+  // 2026-08-13補：108張孤兒卡盤查，VERA裁定的4組候選（見CLAUDE.md新人路線/孤兒卡盤查記錄）。
+  // related/family一筆資料即可雙向顯示（_skillGraphHtml()的incoming/outgoing filter已處理，
+  // 不需要各自再補一筆反向entry），跟g50→g51/g52a→g52b等既有寫法一致。
+  { from: "g27", to: "g28", relation: "family" },
+  { from: "g27", to: "g29", relation: "family" },
+  { from: "g54", to: "g111", relation: "related" },
+  { from: "g31", to: "g32", relation: "related" },
+  { from: "g55", to: "g75", relation: "related" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
