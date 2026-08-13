@@ -3106,7 +3106,10 @@ const SKILL_GRAPH = [
   { from: "g121a", to: "g121b", relation: "family" },
   { from: "g122a", to: "g122b", relation: "family" },
   { from: "g123", to: "g122a", relation: "related" },
-  { from: "g124", to: "g108", relation: "related" }
+  { from: "g124", to: "g108", relation: "related" },
+  { from: "g53", to: "g75", relation: "extends" },
+  { from: "g57", to: "g76", relation: "extends" },
+  { from: "g56", to: "g77", relation: "extends" }
 ];
 
 // ── 🌎拉美巡禮分流表（原西語世界，2026-07-26更名；2026-07-25，VERA定調：💧文法儲水槽只留「怎麼組句」的純語言規則，
