@@ -7,7 +7,76 @@
 ## ✅✅✅ 2026-07-19 這輪盤點出的四批缺口全部錄完接上了
 
 E11整集、mom.js第25-39句、grammar.js 166句、歌曲25句+新聞53句——全部有真人錄音，
-不再fallback瀏覽器TTS。這份清單留著當之後新內容的盤點格式範本，不用再往下找待辦。
+不再fallback瀏覽器TTS。這份清單留著當之後新內容的盤點格式範本。
+
+---
+
+## 🟡 缺口⑥：彈藥庫E12/E14/E16/E18-E20共27張新卡，`fire_daily`延伸例句54句全部沒錄音（2026-08-12新增）
+
+2026-08-12補齊E11-E20彈藥庫缺口那輪新建的27張卡（`AMMO_DATA` 104→131張），`core_ammo`本身
+借用episode既有真人音檔零缺口，但每卡2句`fire_daily`延伸例句（共54句）目前`AMMO_DAILY_AUDIO_MAP`
+完全沒有這些卡的key，會fallback瀏覽器TTS。錄完照現有命名規則存成
+`audio/ammo/ammo_{卡片id}_daily1.mp3`／`audio/ammo/ammo_{卡片id}_daily2.mp3`即可直接接上，不用改程式碼。
+
+| 卡片 | # | 西語 | 中文 |
+|---|---|---|---|
+| e12_03 | 1 | ¿Puedo comer también? | 我也可以吃嗎？ |
+| e12_03 | 2 | ¿Puedo ir también? | 我也可以去嗎？ |
+| e12_04 | 1 | Eres muy joven todavía. | 你還太年輕了。 |
+| e12_04 | 2 | Eres muy nueva todavía. | 妳還太新手了。 |
+| e12_10 | 1 | Nita dice: "¡Hoy es un buen día!" | 妮妲說：「今天是美好的一天！」 |
+| e12_10 | 2 | ¡Hoy es el momento! | 今天就是這個時刻！ |
+| e14_01 | 1 | Hoy llueve, sin embargo, vamos a salir. | 今天下雨，然而，我們還是要出門。 |
+| e14_01 | 2 | Estoy cansada, sin embargo, quiero terminar esto. | 我累了，然而，我想把這件事做完。 |
+| e14_02 | 1 | De hecho, no tengo que explicarlo todo. | 其實，我不需要把一切都解釋清楚。 |
+| e14_02 | 2 | De hecho, no tengo que estar bien todo el tiempo. | 其實，我不需要一直都很好。 |
+| e14_03 | 1 | A pesar de eso, también necesito descansar. | 即便如此，我也需要休息。 |
+| e14_03 | 2 | A pesar de eso, también necesito decir que no. | 即便如此，我也需要說不。 |
+| e14_04 | 1 | Estoy nerviosa, por eso, necesito respirar hondo. | 我很緊張，所以，我需要深呼吸。 |
+| e14_04 | 2 | No dormí bien, por eso, necesito una siesta. | 我沒睡好，所以，我需要小睡一下。 |
+| e14_05 | 1 | Pedir ayuda no es debilidad. | 尋求幫助不是軟弱。 |
+| e14_05 | 2 | Llorar no es un fracaso. | 哭泣不是失敗。 |
+| e14_06 | 1 | En realidad, no todo depende de ti. | 但其實，不是所有事都取決於你。 |
+| e14_06 | 2 | En realidad, no todo depende de una sola persona. | 但其實，不是所有事都取決於一個人。 |
+| e14_07 | 1 | Estudio al mismo tiempo que escucho música. | 我一邊讀書，同時聽音樂。 |
+| e14_07 | 2 | Camino al mismo tiempo que pienso. | 我一邊走路，同時思考。 |
+| e14_08 | 1 | Necesito silencio, sobre todo, cuando estoy cansada. | 我需要安靜，尤其是，當我累的時候。 |
+| e14_08 | 2 | Ella sonríe, sobre todo, cuando ve a su familia. | 她會笑，尤其是，當她看到家人的時候。 |
+| e14_09 | 1 | Mis críticas más duras son para mí misma. | 我最狠的批評，都是留給我自己的。 |
+| e14_09 | 2 | Mis pensamientos más oscuros son para nadie. | 我最陰暗的念頭，不留給任何人。 |
+| e16_05 | 1 | "Ya no puedo esperar más," dice Nita. | 「我沒辦法再等了」，妮妲說。 |
+| e16_05 | 2 | Ya no puedo caminar más. | 我沒辦法再走了。 |
+| e16_07 | 1 | No es que no quiera ir, es que estoy cansada. | 不是我不想去，是我累了。 |
+| e16_07 | 2 | No es que Tito no te escuche, es que necesita silencio. | 不是迪多不聽你說話，是他需要安靜。 |
+| e16_09 | 1 | Un vaso de agua, cinco minutos de silencio: eso basta. | 一杯水，五分鐘的安靜：這樣就夠了。 |
+| e16_09 | 2 | Una sonrisa, un abrazo: eso basta. | 一個微笑，一個擁抱：這樣就夠了。 |
+| e18_01 | 1 | Tengo un hermano y una hermana. | 我有一個哥哥和一個姐姐。 |
+| e18_01 | 2 | Tengo un perro y un gato. | 我有一隻狗和一隻貓。 |
+| e18_02 | 1 | Yo soy Ana, la profesora de Carlos. | 我是安娜，卡洛斯的老師。 |
+| e18_02 | 2 | Yo soy Luis, el vecino de Vera. | 我是路易斯，薇拉的鄰居。 |
+| e18_05 | 1 | Soy la hermana menor de Kito. | 我是奇托的妹妹。 |
+| e18_05 | 2 | Soy el amigo mayor del grupo. | 我是這群朋友裡年紀最大的。 |
+| e18_10 | 1 | Somos los vecinos de Cata. | 我們是卡妲的鄰居。 |
+| e18_10 | 2 | Somos compañeros de clase. | 我們是同班同學。 |
+| e19_01 | 1 | Mimi tiene sueño después de comer. | 咪咪吃飽後想睡。 |
+| e19_01 | 2 | Todos tienen sueño por la noche. | 大家晚上都想睡。 |
+| e19_03 | 1 | Mamá está cocinando en la cocina. | 媽媽正在廚房裡煮飯。 |
+| e19_03 | 2 | Los niños están jugando en el parque. | 孩子們正在公園裡玩。 |
+| e19_04 | 1 | Nita está esperando el autobús. | 妮妲在等公車。 |
+| e19_04 | 2 | Estoy esperando tu respuesta. | 我在等你的回覆。 |
+| e19_09 | 1 | Tengo ganas de bailar. | 我很想跳舞。 |
+| e19_09 | 2 | Mimi tiene ganas de comer galletas. | 咪咪很想吃餅乾。 |
+| e20_01 | 1 | A Vera le gusta el chocolate. | 薇拉喜歡巧克力。 |
+| e20_01 | 2 | A Kito le gusta la música. | 奇托喜歡音樂。 |
+| e20_03 | 1 | A Mamá Cata le encanta leer por la noche. | 卡妲媽媽超愛晚上讀書。 |
+| e20_03 | 2 | A Vera le encanta escuchar música. | 薇拉超愛聽音樂。 |
+| e20_06 | 1 | A Nita le encantan los charcos. | 妮妲超愛水坑。 |
+| e20_06 | 2 | A Tito le encantan los carritos. | 迪多超愛小車車。 |
+| e20_08 | 1 | A Mimi no le gusta la lluvia. | 咪咪不喜歡下雨。 |
+| e20_08 | 2 | A Nita no le gusta esperar. | 妮妲不喜歡等待。 |
+
+**優先度**：不急——這批卡的核心句（`core_ammo`）已經有真人音檔，使用者點卡片主體不會聽到TTS，
+只有展開「🔥全速運轉」延伸例句才會遇到。等VERA下次要錄音時，這是現成可以直接產生Colab腳本的清單。
 
 ---
 
