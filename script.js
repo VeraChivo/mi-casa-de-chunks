@@ -2444,6 +2444,22 @@ function copyWholeEpisode(){
   const fullText = data.sentences.map(s=>s.es).join('\n');
   copyTextWithFeedback(fullText);
 }
+function copyEpisodeForAI(){
+  const data = epData();
+  if(!data || !data.sentences) return;
+  const fullText = data.sentences.map(s=>s.es).join('\n');
+  const prompt = `你是我的拉丁美洲西語學習教練。
+不要先翻譯全文，也不要一次告訴我答案。
+先用簡短問題驗收我是否理解這集故事，等我回答後再逐題回饋。
+接著從這集挑選 2–3 個值得活用的語塊，讓我自己換詞造句。
+我回答後，指出最重要的一個修正，並給我一個自然、可重複使用的版本。
+如果我主動詢問文法，再解釋相關文法。
+使用拉丁美洲西語；必要時用繁體中文簡短說明。
+
+【本集西語全文】
+${fullText}`;
+  copyTextWithFeedback(prompt);
+}
 function bindLongPressCopy(el, text){
   if(!el || el.dataset.lpcBound) return;
   el.dataset.lpcBound = '1';
