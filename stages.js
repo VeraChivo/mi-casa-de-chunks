@@ -290,11 +290,15 @@ function _s3LearnedChipRow(label, role, words){
 // 2026-08-03 VERA更正文案：原本「帶去造句練習」暗示系統會把語塊搬進S/V/O格子，
 // 但這裡只有展開/捲動/提示三件事，沒有真的塞值——跟「複製」同一種概念：
 // 不是搬移內容，是拿它當參考自己去練習，改成「照這個句型試一句」才準確。
+// 2026-08-12 VERA抓到漏網之魚：常駐提示列跟按鈕title當時都改了，但這顆toast漏改，
+// 「試著選語塊組出類似的句子」還在暗示下面的固定選項會跟這個語塊（text）有關聯——
+// S3只有Yo/Tú固定主詞＋固定動詞池，跟任意學過的語塊（如第三人稱的「A Nita le」）對不上，
+// 改成不點名特定語塊、單純導向練句型骨架，跟常駐提示同一個口徑。
 function s3BringToPractice(text){
   const details = document.querySelector('.s3-picker-section');
   if(details) details.open = true;
   if(details) details.scrollIntoView({behavior:'smooth', block:'start'});
-  toast(`🌱 用「${text}」練習：試著選語塊組出類似的句子`);
+  toast(`🌱 去下面試著組一句，練習句型的感覺`);
 }
 
 function filterS3LearnedPool(query){
