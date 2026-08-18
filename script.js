@@ -859,11 +859,6 @@ function renderGenderPairs(){
       </div>
       <div class="gp-example" id="gp-ex-${pi}" style="display:none"></div>
     </div>`).join('');
-  const preview = document.getElementById('genderPairsPreview');
-  if(preview && GENDER_PAIRS.length){
-    const p0 = GENDER_PAIRS[0];
-    preview.textContent = `${p0.zh}：${p0.options.map(o=>o.word).join(' / ')}…`;
-  }
 }
 function pickGenderPair(pi, oi){
   const p = GENDER_PAIRS[pi];
@@ -3094,11 +3089,6 @@ function renderConjLibrary(){
     </details>`;
   }).join('');
 
-  const preview = document.getElementById('conjLibPreview');
-  if(preview){
-    const roots = [...new Set(verbs.map(g=>(g.conj.verb||'').split(/[（+]/)[0].trim()))];
-    preview.textContent = roots.join('・') + '…';
-  }
   bindLongPressCopyAll('.conj-ex', el);
 }
 

@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260812a1">
+<link rel="stylesheet" href="style.css?v=20260818a1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -266,13 +266,17 @@
   <!-- ══════════ TAB B：知識儲藏室 ══════════ -->
   <div id="tabKnow" class="main-tab-panel" style="display:none">
 
-  <!-- ── 英西同源詞庫總覽 ── -->
-  <div class="cognate-section card-container">
-    <div class="cog-header" onclick="toggleCogLibrary()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center">
-      <span>🫐 遍地捻野莓</span>
-      <span id="cogLibToggle" style="font-size:11px;font-weight:700">▼ 展開</span>
+  <!-- ── 🫐 遍地捻野莓（英西同源詞庫總覽，2026-08-18統一改用跟其餘卡片一致的
+       ammo-book-top 標題列結構，修正原本 cog-header/cog-sub 雙層舊樣式
+       跟其他卡片長得不一樣的問題） ── -->
+  <div class="pron-lib-wrap card-container">
+    <div class="ammo-book-top" onclick="toggleCogLibrary()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--misora),var(--konpeki))">
+      <div>
+        <div class="pb-book-title">🫐 遍地捻野莓</div>
+        <div class="pb-book-sub">零學習成本！看英文秒猜西語意思</div>
+      </div>
+      <span id="cogLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
-    <div class="cog-sub">零學習成本！看英文秒猜西語意思</div>
     <div id="cogLibraryBody" class="cog-library-body"></div>
   </div>
 
@@ -284,7 +288,6 @@
       <div>
         <div class="pb-book-title">⚧ 太極定裝鏡</div>
         <div class="pb-book-sub">點字尾切換 o/a，聽真實例句</div>
-        <div class="pb-book-preview" id="genderPairsPreview"></div>
       </div>
       <span id="genderPairsToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
@@ -311,7 +314,6 @@
       <div>
         <div class="pb-book-title">🏰 莊園人物冊</div>
         <div class="pb-book-sub">認識西語句子裡不同角色的位置</div>
-        <div class="pb-book-preview">yo・tú・él/ella・nosotros…</div>
       </div>
       <span id="pronounLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
@@ -323,7 +325,7 @@
     <div class="ammo-book-top" onclick="toggleLyricsFill()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C6FAF)">
       <div>
         <div class="pb-book-title">🎵 聽歌填空 · 語法闖關</div>
-        <div class="pb-book-sub">從A0兒歌到B2拉美名曲，點連結去聽那個片段，回來填動詞</div>
+        <div class="pb-book-sub">從A0兒歌到B2拉美名曲，聽片段回來填動詞</div>
       </div>
       <span id="lyricsFillToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
     </div>
@@ -358,7 +360,6 @@
         <div>
           <div class="pb-book-title">🔄 進階：完整變位庫</div>
           <div class="pb-book-sub">ser／estar／poder／deber…含虛擬式／條件式時態切換</div>
-          <div class="pb-book-preview" id="conjLibPreview"></div>
         </div>
         <span id="conjLibToggle" style="color:white;font-size:12px;font-weight:800">▼ 展開</span>
       </div>
@@ -638,6 +639,6 @@
   <script src="corazon.js?v=20260719a2"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20260811a1"></script>
+  <script src="script.js?v=20260818a1"></script>
 </body>
 </html>
