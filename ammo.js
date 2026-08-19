@@ -1371,6 +1371,364 @@ const AMMO_DATA = [
       {es:"Mucho gusto, soy tu vecino.", zh:"很高興認識你，我是你的鄰居。", chunks:[{w:"Mucho gusto,"},{w:"soy",role:"v"},{w:"tu vecino.",role:"o"}]}
     ]
   },
+  // ══════════ E12/E14/E16 · CHUNK_ECOLOGY reusableChunk（2026-08-19，依episodes.js
+  // CHUNK_ECOLOGY.reusableChunk清單建卡，只挑「拿掉這集情境換場景還有人會這樣講」的
+  // 15句，episodeOnly/emotionalNarrative/culturalInfo不建卡，跟E17同一套判準 ══════════
+  {
+    ammo_id:"e12_03", ep:"E12 · El Desván",
+    core_ammo:"Asoma la cabeza y pregunta: \"¿Puedo jugar también?\"", core_zh:"他探出頭，問：「我也可以加入嗎？」",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"¿Puedo [動詞原形] también?", pattern_zh:"我也可以 ___ 嗎？",
+    pattern_note:"想加入別人正在做的事時的禮貌問句，también放句尾", slots:["動詞原形"],
+    fire_peppa:{es:"Asoma la cabeza y pregunta: \"¿Puedo jugar también?\"", zh:"他探出頭，問：「我也可以加入嗎？」", ts:null,
+      chunks:[{w:"Asoma",role:"v"},{w:"la cabeza",role:"o"},{w:"y",role:"c"},{w:"pregunta:",role:"v"},{w:"\"¿Puedo jugar también?\"",role:"o"}]},
+    fire_daily:[
+      {es:"¿Puedo ir también?", zh:"我也可以去嗎？", chunks:[{w:"¿Puedo ir",role:"v"},{w:"también?"}]},
+      {es:"¿Puedo probar también?", zh:"我也可以試試看嗎？", chunks:[{w:"¿Puedo probar",role:"v"},{w:"también?"}]}
+    ]
+  },
+  {
+    ammo_id:"e12_04", ep:"E12 · El Desván",
+    core_ammo:"Ellos le dicen: \"Eres muy pequeño todavía.\"", core_zh:"他們對他說：「你還太小了。」",
+    be_verb_type:"ser", be_verb_note:"Ser描述本質特質：Eres muy + 形容詞 = 你很___",
+    pattern:"Eres muy [形容詞] todavía.", pattern_zh:"你還太 ___ 了。",
+    pattern_note:"todavía放句尾，強調「還沒到那個程度」", slots:["形容詞"],
+    fire_peppa:{es:"Ellos le dicen: \"Eres muy pequeño todavía.\"", zh:"他們對他說：「你還太小了。」", ts:null,
+      chunks:[{w:"Ellos",role:"s"},{w:"le dicen:",role:"v"},{w:"\"Eres muy pequeño todavía.\"",role:"o"}]},
+    fire_daily:[
+      {es:"Eres muy joven todavía.", zh:"你還太年輕了。", chunks:[{w:"Eres",role:"v"},{w:"muy joven todavía.",role:"o"}]},
+      {es:"Eres muy tímido todavía.", zh:"你還太害羞了。", chunks:[{w:"Eres",role:"v"},{w:"muy tímido todavía.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e12_10", ep:"E12 · El Desván",
+    core_ammo:"La Esperanza dice: \"¡Hoy es el día!\"", core_zh:"希望說：「今天就是那一天！」",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"¡Hoy es el día!", pattern_zh:"今天就是那一天！",
+    pattern_note:"固定感嘆句，宣告「等待已久的時刻到了」", slots:[],
+    fire_peppa:{es:"La Esperanza dice: \"¡Hoy es el día!\"", zh:"希望說：「今天就是那一天！」", ts:null,
+      chunks:[{w:"La Esperanza",role:"s"},{w:"dice:",role:"v"},{w:"\"¡Hoy es el día!\"",role:"o"}]},
+    fire_daily:[
+      {es:"¡Hoy es el día! Vamos a viajar.", zh:"今天就是那一天！我們要去旅行了。", chunks:[{w:"¡Hoy es el día!"},{w:"Vamos a viajar.",role:"v"}]},
+      {es:"Por fin, ¡hoy es el día!", zh:"終於，今天就是那一天！", chunks:[{w:"Por fin,"},{w:"¡hoy es el día!"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_01", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Agravio. Guardo lo que duele, sin embargo, no lo hago para siempre.", core_zh:"我是曲屈。我藏著那些傷，然而，我不會永遠藏著。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[事實], sin embargo, [轉折].", pattern_zh:"___，然而，___。",
+    pattern_note:"sin embargo＝然而/不過，承認前面的事實，但後面轉個方向", slots:["事實","轉折"],
+    fire_peppa:{es:"Yo soy Agravio. Guardo lo que duele, sin embargo, no lo hago para siempre.", zh:"我是曲屈。我藏著那些傷，然而，我不會永遠藏著。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Agravio.",role:"o"},{w:"Guardo",role:"v"},{w:"lo que duele,",role:"o"},{w:"sin embargo,",role:"c"},{w:"no lo hago",role:"v"},{w:"para siempre.",role:"o"}]},
+    fire_daily:[
+      {es:"Hoy llueve, sin embargo, vamos a salir.", zh:"今天下雨，然而，我們還是要出門。", chunks:[{w:"Hoy llueve,",role:"v"},{w:"sin embargo,",role:"c"},{w:"vamos a salir.",role:"v"}]},
+      {es:"Estoy cansada, sin embargo, sigo trabajando.", zh:"我很累，然而，我還是繼續工作。", chunks:[{w:"Estoy cansada,",role:"v"},{w:"sin embargo,",role:"c"},{w:"sigo trabajando.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_02", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Tristeza. A veces solo quiero llorar, de hecho, no tengo que buscar una razón inmediata.", core_zh:"我是茫茫。有時候我只想哭，其實，我不需要立刻找一個理由。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[陳述], de hecho, [補充事實].", pattern_zh:"___，其實，___。",
+    pattern_note:"de hecho＝其實/事實上，補充一個比前面更準確的說法", slots:["陳述","補充事實"],
+    fire_peppa:{es:"Yo soy Tristeza. A veces solo quiero llorar, de hecho, no tengo que buscar una razón inmediata.", zh:"我是茫茫。有時候我只想哭，其實，我不需要立刻找一個理由。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Tristeza.",role:"o"},{w:"A veces"},{w:"solo quiero llorar,",role:"v"},{w:"de hecho,",role:"c"},{w:"no tengo que buscar",role:"v"},{w:"una razón inmediata.",role:"o"}]},
+    fire_daily:[
+      {es:"Parece fácil, de hecho, es complicado.", zh:"看起來簡單，其實，很複雜。", chunks:[{w:"Parece fácil,",role:"v"},{w:"de hecho,",role:"c"},{w:"es complicado.",role:"v"}]},
+      {es:"No dije nada, de hecho, estaba de acuerdo.", zh:"我什麼都沒說，其實，我是同意的。", chunks:[{w:"No dije nada,",role:"v"},{w:"de hecho,",role:"c"},{w:"estaba de acuerdo.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_03", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Agrado. Quiero que todos estén bien, a pesar de eso, también necesito cuidarme a mí.", core_zh:"我是唆嗦。我想讓大家都好，即便如此，我也需要照顧自己。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[願望/事實], a pesar de eso, [另一件也重要的事].", pattern_zh:"___，即便如此，___。",
+    pattern_note:"a pesar de eso＝即便如此，承認前面成立，仍然補上一個同樣重要的事", slots:["願望/事實","另一件也重要的事"],
+    fire_peppa:{es:"Yo soy Agrado. Quiero que todos estén bien, a pesar de eso, también necesito cuidarme a mí.", zh:"我是唆嗦。我想讓大家都好，即便如此，我也需要照顧自己。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Agrado.",role:"o"},{w:"Quiero que todos estén bien,",role:"v"},{w:"a pesar de eso,",role:"c"},{w:"también"},{w:"necesito cuidarme",role:"v"},{w:"a mí.",role:"o"}]},
+    fire_daily:[
+      {es:"Quiero ayudarte, a pesar de eso, también necesito descansar.", zh:"我想幫你，即便如此，我也需要休息。", chunks:[{w:"Quiero ayudarte,",role:"v"},{w:"a pesar de eso,",role:"c"},{w:"también necesito descansar.",role:"v"}]},
+      {es:"Me gusta mi trabajo, a pesar de eso, a veces es agotador.", zh:"我喜歡我的工作，即便如此，有時候還是很累。", chunks:[{w:"Me gusta mi trabajo,",role:"v"},{w:"a pesar de eso,",role:"c"},{w:"a veces es agotador.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_04", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Miedo. Cuando algo cambia, me paralizo, por eso, necesito tiempo para adaptarme.", core_zh:"我是糾揪。有變化的時候我就凍住，所以，我需要時間來適應。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[原因], por eso, [結果].", pattern_zh:"___，所以，___。",
+    pattern_note:"por eso＝所以，前面是原因，後面是順理成章的結果", slots:["原因","結果"],
+    fire_peppa:{es:"Yo soy Miedo. Cuando algo cambia, me paralizo, por eso, necesito tiempo para adaptarme.", zh:"我是糾揪。有變化的時候我就凍住，所以，我需要時間來適應。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Miedo.",role:"o"},{w:"Cuando",role:"c"},{w:"algo cambia,",role:"v"},{w:"me paralizo,",role:"v"},{w:"por eso,",role:"c"},{w:"necesito tiempo",role:"v"},{w:"para adaptarme.",role:"o"}]},
+    fire_daily:[
+      {es:"No dormí bien, por eso, estoy de mal humor.", zh:"我沒睡好，所以，我心情不好。", chunks:[{w:"No dormí bien,",role:"v"},{w:"por eso,",role:"c"},{w:"estoy de mal humor.",role:"v"}]},
+      {es:"Llegamos tarde, por eso, nos perdimos el inicio.", zh:"我們遲到了，所以，錯過了開頭。", chunks:[{w:"Llegamos tarde,",role:"v"},{w:"por eso,",role:"c"},{w:"nos perdimos el inicio.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_05", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Cansancio. Necesito descanso, además, pedir descanso no es rendirse.", core_zh:"我是倦倦。我需要休息，而且，要求休息不是放棄。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[陳述], además, [追加的重點].", pattern_zh:"___，而且，___。",
+    pattern_note:"además＝而且，在前面的基礎上再補一個重點，通常是更強的說法", slots:["陳述","追加的重點"],
+    fire_peppa:{es:"Yo soy Cansancio. Necesito descanso, además, pedir descanso no es rendirse.", zh:"我是倦倦。我需要休息，而且，要求休息不是放棄。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Cansancio.",role:"o"},{w:"Necesito",role:"v"},{w:"descanso,",role:"o"},{w:"además,",role:"c"},{w:"pedir descanso no es rendirse.",role:"v"}]},
+    fire_daily:[
+      {es:"Necesito ayuda, además, no tengo por qué hacerlo solo.", zh:"我需要幫忙，而且，我沒必要一個人做。", chunks:[{w:"Necesito ayuda,",role:"v"},{w:"además,",role:"c"},{w:"no tengo por qué hacerlo solo.",role:"v"}]},
+      {es:"Me gusta este lugar, además, la comida es deliciosa.", zh:"我喜歡這個地方，而且，食物很好吃。", chunks:[{w:"Me gusta este lugar,",role:"v"},{w:"además,",role:"c"},{w:"la comida es deliciosa.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_06", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Culpa. Creo que todo es mi error, en realidad, no todo depende de mí.", core_zh:"我是譴譴。我以為什麼都是我的錯，但其實，並不是所有事都取決於我。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[以為的想法], en realidad, [真正的情況].", pattern_zh:"___，但其實，___。",
+    pattern_note:"en realidad＝但其實，糾正前面的想法，說出更準確的真相", slots:["以為的想法","真正的情況"],
+    fire_peppa:{es:"Yo soy Culpa. Creo que todo es mi error, en realidad, no todo depende de mí.", zh:"我是譴譴。我以為什麼都是我的錯，但其實，並不是所有事都取決於我。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Culpa.",role:"o"},{w:"Creo que todo es mi error,",role:"v"},{w:"en realidad,",role:"c"},{w:"no todo",role:"s"},{w:"depende",role:"v"},{w:"de mí.",role:"o"}]},
+    fire_daily:[
+      {es:"Pensaba que era fácil, en realidad, me tomó horas.", zh:"我以為很簡單，但其實，花了我好幾個小時。", chunks:[{w:"Pensaba que era fácil,",role:"v"},{w:"en realidad,",role:"c"},{w:"me tomó horas.",role:"v"}]},
+      {es:"Parece tranquilo, en realidad, está muy nervioso.", zh:"他看起來很平靜，但其實，他很緊張。", chunks:[{w:"Parece tranquilo,",role:"v"},{w:"en realidad,",role:"c"},{w:"está muy nervioso.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_07", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Esperanza. Busco la salida al mismo tiempo que acompaño al Yo Pequeñito.", core_zh:"我是嬉汐。我一邊找出路，同時，也陪伴著小小自我。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[動作A] al mismo tiempo que [動作B].", pattern_zh:"___，同時，也 ___。",
+    pattern_note:"al mismo tiempo que＝同時，兩件事一起發生", slots:["動作A","動作B"],
+    fire_peppa:{es:"Yo soy Esperanza. Busco la salida al mismo tiempo que acompaño al Yo Pequeñito.", zh:"我是嬉汐。我一邊找出路，同時，也陪伴著小小自我。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Esperanza.",role:"o"},{w:"Busco",role:"v"},{w:"la salida",role:"o"},{w:"al mismo tiempo que",role:"c"},{w:"acompaño",role:"v"},{w:"al Yo Pequeñito.",role:"o"}]},
+    fire_daily:[
+      {es:"Estudio al mismo tiempo que escucho música.", zh:"我一邊念書，同時，也聽音樂。", chunks:[{w:"Estudio",role:"v"},{w:"al mismo tiempo que",role:"c"},{w:"escucho música.",role:"v"}]},
+      {es:"Cocina al mismo tiempo que cuida a su hija.", zh:"她一邊做飯，同時，也照顧她的女兒。", chunks:[{w:"Cocina",role:"v"},{w:"al mismo tiempo que",role:"c"},{w:"cuida a su hija.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_08", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Guardián. Protejo el Corazón Verdadero, sobre todo, cuando Juicio ataca.", core_zh:"我是憨憨。我守護著本心，尤其是，當錐心魘發動攻擊的時候。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[一般情況], sobre todo, cuando [特別情況].", pattern_zh:"___，尤其是，當 ___ 的時候。",
+    pattern_note:"sobre todo＝尤其是，強調某個情況特別重要/特別明顯", slots:["一般情況","特別情況"],
+    fire_peppa:{es:"Yo soy Guardián. Protejo el Corazón Verdadero, sobre todo, cuando Juicio ataca.", zh:"我是憨憨。我守護著本心，尤其是，當錐心魘發動攻擊的時候。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Guardián.",role:"o"},{w:"Protejo",role:"v"},{w:"el Corazón Verdadero,",role:"o"},{w:"sobre todo,",role:"c"},{w:"cuando",role:"c"},{w:"Juicio ataca.",role:"v"}]},
+    fire_daily:[
+      {es:"Me gusta leer, sobre todo, cuando llueve.", zh:"我喜歡看書，尤其是，下雨的時候。", chunks:[{w:"Me gusta leer,",role:"v"},{w:"sobre todo,",role:"c"},{w:"cuando llueve.",role:"c"}]},
+      {es:"Está ocupada, sobre todo, cuando hay muchos clientes.", zh:"她很忙，尤其是，客人多的時候。", chunks:[{w:"Está ocupada,",role:"v"},{w:"sobre todo,",role:"c"},{w:"cuando hay muchos clientes.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e14_09", ep:"E14 · Conectores del Corazón",
+    core_ammo:"Yo soy Juicio. Juzgo cada palabra, sin embargo, mis palabras más duras son para mí.", core_zh:"我是錐心魘。我評判每一句話，然而，我最狠的話，都是留給自己的。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[行為], sin embargo, [轉折的對象是自己].", pattern_zh:"___，然而，___。",
+    pattern_note:"同一個sin embargo，這裡的轉折是把矛頭轉回自己身上", slots:["行為","轉折的對象是自己"],
+    fire_peppa:{es:"Yo soy Juicio. Juzgo cada palabra, sin embargo, mis palabras más duras son para mí.", zh:"我是錐心魘。我評判每一句話，然而，我最狠的話，都是留給自己的。", ts:null,
+      chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Juicio.",role:"o"},{w:"Juzgo",role:"v"},{w:"cada palabra,",role:"o"},{w:"sin embargo,",role:"c"},{w:"mis palabras más duras",role:"s"},{w:"son",role:"v"},{w:"para mí.",role:"o"}]},
+    fire_daily:[
+      {es:"Critico a otros fácilmente, sin embargo, soy peor conmigo mismo.", zh:"我很容易批評別人，然而，我對自己更嚴苛。", chunks:[{w:"Critico a otros fácilmente,",role:"v"},{w:"sin embargo,",role:"c"},{w:"soy peor conmigo mismo.",role:"v"}]},
+      {es:"Exijo mucho de los demás, sin embargo, me exijo aún más.", zh:"我對別人要求很多，然而，我對自己要求更多。", chunks:[{w:"Exijo mucho de los demás,",role:"v"},{w:"sin embargo,",role:"c"},{w:"me exijo aún más.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e16_05", ep:"E16 · La Batería Social",
+    core_ammo:"\"Ya no puedo sonreír más,\" susurra Cansancio.", core_zh:"「我沒辦法再多笑一次了」，倦倦小小聲說。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Ya no puedo [動詞原形] más.", pattern_zh:"我沒辦法再 ___ 了。",
+    pattern_note:"表達已經到極限、撐不下去的感覺", slots:["動詞原形"],
+    fire_peppa:{es:"\"Ya no puedo sonreír más,\" susurra Cansancio.", zh:"「我沒辦法再多笑一次了」，倦倦小小聲說。", ts:null,
+      chunks:[{w:"\"Ya no"},{w:"puedo sonreír",role:"v"},{w:"más,\""},{w:"susurra",role:"v"},{w:"Cansancio.",role:"s"}]},
+    fire_daily:[
+      {es:"Ya no puedo esperar más.", zh:"我沒辦法再等了。", chunks:[{w:"Ya no puedo esperar",role:"v"},{w:"más.",role:"c"}]},
+      {es:"Ya no puedo caminar más.", zh:"我沒辦法再走了。", chunks:[{w:"Ya no puedo caminar",role:"v"},{w:"más.",role:"c"}]}
+    ]
+  },
+  {
+    ammo_id:"e16_07", ep:"E16 · La Batería Social",
+    core_ammo:"No es que Cata no quiera estar contigo, es que necesita recargar.", core_zh:"不是卡妲不想陪你，是她需要充電。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"No es que [誤解的說法], es que [真正原因].", pattern_zh:"不是 ___，是 ___。",
+    pattern_note:"澄清誤會的固定結構，先否定對方可能的誤解，再說出真正原因", slots:["誤解的說法","真正原因"],
+    fire_peppa:{es:"No es que Cata no quiera estar contigo, es que necesita recargar.", zh:"不是卡妲不想陪你，是她需要充電。", ts:null,
+      chunks:[{w:"No es que",role:"v"},{w:"Cata",role:"s"},{w:"no quiera estar",role:"v"},{w:"contigo,",role:"o"},{w:"es que necesita recargar.",role:"v"}]},
+    fire_daily:[
+      {es:"No es que no quiera ir, es que estoy enfermo.", zh:"不是我不想去，是我生病了。", chunks:[{w:"No es que",role:"v"},{w:"no quiera ir,",role:"v"},{w:"es que",role:"v"},{w:"estoy enfermo.",role:"v"}]},
+      {es:"No es que no te quiera, es que necesito espacio.", zh:"不是我不愛你，是我需要空間。", chunks:[{w:"No es que",role:"v"},{w:"no te quiera,",role:"v"},{w:"es que",role:"v"},{w:"necesito espacio.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e16_09", ep:"E16 · La Batería Social",
+    core_ammo:"Un rincón silencioso, un poco de tiempo a solas: eso basta.", core_zh:"一個安靜的角落，一點獨處的時間，這樣就夠了。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[簡單的需求]: eso basta.", pattern_zh:"___：這樣就夠了。",
+    pattern_note:"列出簡單的需求，用「這樣就夠了」收尾，表示不需要更多", slots:["簡單的需求"],
+    fire_peppa:{es:"Un rincón silencioso, un poco de tiempo a solas: eso basta.", zh:"一個安靜的角落，一點獨處的時間，這樣就夠了。", ts:null,
+      chunks:[{w:"Un rincón silencioso, un poco de tiempo a solas:"},{w:"eso",role:"s"},{w:"basta.",role:"v"}]},
+    fire_daily:[
+      {es:"Una taza de té, un buen libro: eso basta.", zh:"一杯茶，一本好書：這樣就夠了。", chunks:[{w:"Una taza de té, un buen libro:"},{w:"eso basta.",role:"v"}]},
+      {es:"Un abrazo y silencio: eso basta.", zh:"一個擁抱和安靜：這樣就夠了。", chunks:[{w:"Un abrazo y silencio:"},{w:"eso basta.",role:"v"}]}
+    ]
+  },
+  // ══════════ E18/E19/E20 · CHUNK_ECOLOGY reusableChunk（2026-08-19，第一站E18-E20原本
+  // 完全沒有分類過，套用跟E11-E16/E17同一套「拿掉這集情境換場景還有人會這樣講嗎」測試，
+  // 30句裡挑出12句最具代表性、彼此不重疊的語塊，跟E17精選比例(4/10)一致，不做E1-E10
+  // 那種每句都建的舊模式 ── */
+  {
+    ammo_id:"e18_01", ep:"E18 · Mi Familia y Mis Amigos",
+    core_ammo:"Tengo una familia y una amiga.", core_zh:"我有一個家庭和一個朋友。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"Tengo [名詞] y [名詞].", pattern_zh:"我有 ___ 和 ___。",
+    pattern_note:"tener列出自己擁有/身邊有的人事物", slots:["名詞","名詞"],
+    fire_peppa:{es:"Tengo una familia y una amiga.", zh:"我有一個家庭和一個朋友。", ts:null,
+      chunks:[{w:"Tengo",role:"v"},{w:"una familia",role:"o"},{w:"y",role:"c"},{w:"una amiga.",role:"o"}]},
+    fire_daily:[
+      {es:"Tengo un hermano y una hermana.", zh:"我有一個哥哥和一個姊姊。", chunks:[{w:"Tengo",role:"v"},{w:"un hermano",role:"o"},{w:"y",role:"c"},{w:"una hermana.",role:"o"}]},
+      {es:"Tengo un perro y un gato.", zh:"我有一隻狗和一隻貓。", chunks:[{w:"Tengo",role:"v"},{w:"un perro",role:"o"},{w:"y",role:"c"},{w:"un gato.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e18_02", ep:"E18 · Mi Familia y Mis Amigos",
+    core_ammo:"Yo soy Mamá Cata, la mamá de Nita.", core_zh:"我是卡妲媽媽，妮妲的媽媽。",
+    be_verb_type:"ser", be_verb_note:"Ser介紹身分關係：Soy X, el/la Y de Z = 我是X，Z的Y",
+    pattern:"Soy [名字], el/la [關係] de [人名].", pattern_zh:"我是 ___，___ 的 ___。",
+    pattern_note:"用「el/la+關係+de+人名」介紹自己跟某人的關係", slots:["名字","關係","人名"],
+    fire_peppa:{es:"Yo soy Mamá Cata, la mamá de Nita.", zh:"我是卡妲媽媽，妮妲的媽媽。", ts:null,
+      chunks:[{w:"Yo soy",role:"v"},{w:"Mamá Cata,",role:"o"},{w:"la mamá de Nita.",role:"o"}]},
+    fire_daily:[
+      {es:"Soy Juan, el hermano de María.", zh:"我是胡安，瑪麗亞的哥哥。", chunks:[{w:"Soy",role:"v"},{w:"Juan,",role:"o"},{w:"el hermano de María.",role:"o"}]},
+      {es:"Soy Ana, la profesora de Carlos.", zh:"我是安娜，卡洛斯的老師。", chunks:[{w:"Soy",role:"v"},{w:"Ana,",role:"o"},{w:"la profesora de Carlos.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e18_05", ep:"E18 · Mi Familia y Mis Amigos",
+    core_ammo:"Soy el hermano mayor de Nita.", core_zh:"我是妮妲的哥哥。",
+    be_verb_type:"ser", be_verb_note:"Ser+排行：el/la hermano/a mayor/menor de X = X的哥哥/姊姊/弟弟/妹妹",
+    pattern:"Soy el/la hermano/a mayor/menor de [人名].", pattern_zh:"我是 ___ 的哥哥/姊姊/弟弟/妹妹。",
+    pattern_note:"mayor=年長的，menor=年幼的，放在hermano/hermana後面", slots:["人名"],
+    fire_peppa:{es:"Soy el hermano mayor de Nita.", zh:"我是妮妲的哥哥。", ts:null,
+      chunks:[{w:"Soy",role:"v"},{w:"el hermano mayor de Nita.",role:"o"}]},
+    fire_daily:[
+      {es:"Soy la hermana menor de Sara.", zh:"我是莎拉的妹妹。", chunks:[{w:"Soy",role:"v"},{w:"la hermana menor de Sara.",role:"o"}]},
+      {es:"Soy el hijo mayor de la familia.", zh:"我是家裡的長子。", chunks:[{w:"Soy",role:"v"},{w:"el hijo mayor de la familia.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e18_09", ep:"E18 · Mi Familia y Mis Amigos",
+    core_ammo:"Soy la mejor amiga de Nita.", core_zh:"我是妮妲最好的朋友。",
+    be_verb_type:"ser", be_verb_note:"Ser+最高級：el/la mejor amigo/a de X = X最好的朋友",
+    pattern:"Soy el/la mejor amigo/a de [人名].", pattern_zh:"我是 ___ 最好的朋友。",
+    pattern_note:"mejor放在amigo/amiga前面，是「好」bueno的不規則最高級", slots:["人名"],
+    fire_peppa:{es:"Soy la mejor amiga de Nita.", zh:"我是妮妲最好的朋友。", ts:null,
+      chunks:[{w:"Soy",role:"v"},{w:"la mejor amiga de Nita.",role:"o"}]},
+    fire_daily:[
+      {es:"Eres mi mejor amigo.", zh:"你是我最好的朋友。", chunks:[{w:"Eres",role:"v"},{w:"mi mejor amigo.",role:"o"}]},
+      {es:"Es la mejor amiga de mi hermana.", zh:"她是我姊姊最好的朋友。", chunks:[{w:"Es",role:"v"},{w:"la mejor amiga de mi hermana.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e19_01", ep:"E19 · Mi Día a Día",
+    core_ammo:"Nita tiene sueño.", core_zh:"妮妲想睡。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人] tiene sueño.", pattern_zh:"___ 想睡。",
+    pattern_note:"tener sueño＝想睡覺，跟tener hambre同一種「tener+感覺名詞」結構", slots:["人"],
+    fire_peppa:{es:"Nita tiene sueño.", zh:"妮妲想睡。", ts:null,
+      chunks:[{w:"Nita",role:"s"},{w:"tiene sueño.",role:"v"}]},
+    fire_daily:[
+      {es:"Tengo sueño, quiero dormir.", zh:"我想睡了，我想睡覺。", chunks:[{w:"Tengo sueño,",role:"v"},{w:"quiero dormir.",role:"v"}]},
+      {es:"¿Tienes sueño ya?", zh:"你已經想睡了嗎？", chunks:[{w:"¿Tienes sueño",role:"v"},{w:"ya?"}]}
+    ]
+  },
+  {
+    ammo_id:"e19_06", ep:"E19 · Mi Día a Día",
+    core_ammo:"Mimi tiene hambre y llora un poco.", core_zh:"咪咪肚子餓了，哭了一下下。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人] tiene hambre.", pattern_zh:"___ 肚子餓了。",
+    pattern_note:"tener hambre＝肚子餓，跟tener sueño同一種結構", slots:["人"],
+    fire_peppa:{es:"Mimi tiene hambre y llora un poco.", zh:"咪咪肚子餓了，哭了一下下。", ts:null,
+      chunks:[{w:"Mimi",role:"s"},{w:"tiene hambre",role:"v"},{w:"y",role:"c"},{w:"llora un poco.",role:"v"}]},
+    fire_daily:[
+      {es:"Tengo hambre, ¿comemos ya?", zh:"我肚子餓了，我們可以吃飯了嗎？", chunks:[{w:"Tengo hambre,",role:"v"},{w:"¿comemos ya?",role:"v"}]},
+      {es:"El bebé tiene hambre.", zh:"寶寶肚子餓了。", chunks:[{w:"El bebé",role:"s"},{w:"tiene hambre.",role:"v"}]}
+    ]
+  },
+  {
+    ammo_id:"e19_08", ep:"E19 · Mi Día a Día",
+    core_ammo:"Toda la familia está en casa hoy.", core_zh:"今天全家人都在家。",
+    be_verb_type:"estar", be_verb_note:"Estar+en+地點：está en casa＝在家（暫時的位置狀態）",
+    pattern:"[主詞] está/están en casa.", pattern_zh:"___ 在家。",
+    pattern_note:"estar en casa是高頻固定用法，表示目前人在家", slots:["主詞"],
+    fire_peppa:{es:"Toda la familia está en casa hoy.", zh:"今天全家人都在家。", ts:null,
+      chunks:[{w:"Toda la familia",role:"s"},{w:"está",role:"v"},{w:"en casa hoy.",role:"o"}]},
+    fire_daily:[
+      {es:"Hoy estoy en casa todo el día.", zh:"今天我整天都在家。", chunks:[{w:"Hoy"},{w:"estoy",role:"v"},{w:"en casa todo el día.",role:"o"}]},
+      {es:"Mis padres están en casa ahora.", zh:"我爸媽現在在家。", chunks:[{w:"Mis padres",role:"s"},{w:"están",role:"v"},{w:"en casa ahora.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e19_09", ep:"E19 · Mi Día a Día",
+    core_ammo:"Nita tiene ganas de jugar con Tito.", core_zh:"妮妲很想跟迪多一起玩。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"[人] tiene ganas de [動詞原形].", pattern_zh:"___ 很想 ___。",
+    pattern_note:"tener ganas de + 原形動詞＝很想做某件事，比querer更口語生活化", slots:["人","動詞原形"],
+    fire_peppa:{es:"Nita tiene ganas de jugar con Tito.", zh:"妮妲很想跟迪多一起玩。", ts:null,
+      chunks:[{w:"Nita",role:"s"},{w:"tiene ganas de jugar",role:"v"},{w:"con Tito.",role:"o"}]},
+    fire_daily:[
+      {es:"Tengo ganas de salir a caminar.", zh:"我很想出去走走。", chunks:[{w:"Tengo ganas de salir",role:"v"},{w:"a caminar.",role:"v"}]},
+      {es:"¿Tienes ganas de comer algo dulce?", zh:"你想吃點甜的嗎？", chunks:[{w:"¿Tienes ganas de comer",role:"v"},{w:"algo dulce?",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e20_01", ep:"E20 · Lo Que Nos Gusta",
+    core_ammo:"A Nita le gusta el helado.", core_zh:"妮妲喜歡冰淇淋。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"A [人] le gusta [名詞].", pattern_zh:"___ 喜歡 ___。",
+    pattern_note:"事情當主詞、人當受影響的對象，這是gustar固定的倒裝結構", slots:["人","名詞"],
+    fire_peppa:{es:"A Nita le gusta el helado.", zh:"妮妲喜歡冰淇淋。", ts:null,
+      chunks:[{w:"A Nita le",role:"s"},{w:"gusta",role:"v"},{w:"el helado.",role:"o"}]},
+    fire_daily:[
+      {es:"A mi hermano le gusta el fútbol.", zh:"我哥哥喜歡足球。", chunks:[{w:"A mi hermano le",role:"s"},{w:"gusta",role:"v"},{w:"el fútbol.",role:"o"}]},
+      {es:"A mí me gusta el chocolate.", zh:"我喜歡巧克力。", chunks:[{w:"A mí me",role:"s"},{w:"gusta",role:"v"},{w:"el chocolate.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e20_03", ep:"E20 · Lo Que Nos Gusta",
+    core_ammo:"A Papá Tato le encanta cocinar para su familia.", core_zh:"達多爸爸超愛為家人下廚。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"A [人] le encanta [動詞原形].", pattern_zh:"___ 超愛 ___。",
+    pattern_note:"encantar比gustar語氣更強，後面接原形動詞表示「超愛做某件事」", slots:["人","動詞原形"],
+    fire_peppa:{es:"A Papá Tato le encanta cocinar para su familia.", zh:"達多爸爸超愛為家人下廚。", ts:null,
+      chunks:[{w:"A Papá Tato le",role:"s"},{w:"encanta",role:"v"},{w:"cocinar para su familia.",role:"o"}]},
+    fire_daily:[
+      {es:"A ella le encanta bailar.", zh:"她超愛跳舞。", chunks:[{w:"A ella le",role:"s"},{w:"encanta",role:"v"},{w:"bailar.",role:"o"}]},
+      {es:"A los niños les encanta jugar afuera.", zh:"小朋友們超愛在外面玩。", chunks:[{w:"A los niños les",role:"s"},{w:"encanta",role:"v"},{w:"jugar afuera.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e20_06", ep:"E20 · Lo Que Nos Gusta",
+    core_ammo:"A Mimi le encantan las galletas.", core_zh:"咪咪超愛餅乾。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"A [人] le encantan [複數名詞].", pattern_zh:"___ 超愛 ___。",
+    pattern_note:"後面是複數名詞時，encanta要變成encantan，跟主詞（事物）一致", slots:["人","複數名詞"],
+    fire_peppa:{es:"A Mimi le encantan las galletas.", zh:"咪咪超愛餅乾。", ts:null,
+      chunks:[{w:"A Mimi le",role:"s"},{w:"encantan",role:"v"},{w:"las galletas.",role:"o"}]},
+    fire_daily:[
+      {es:"A mí me encantan los perros.", zh:"我超愛狗狗。", chunks:[{w:"A mí me",role:"s"},{w:"encantan",role:"v"},{w:"los perros.",role:"o"}]},
+      {es:"A Tito le encantan los carritos.", zh:"迪多超愛小車車。", chunks:[{w:"A Tito le",role:"s"},{w:"encantan",role:"v"},{w:"los carritos.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e20_08", ep:"E20 · Lo Que Nos Gusta",
+    core_ammo:"A Tito no le gusta el ruido fuerte.", core_zh:"迪多不喜歡很大的聲音。",
+    be_verb_type:"none", be_verb_note:"",
+    pattern:"A [人] no le gusta [名詞].", pattern_zh:"___ 不喜歡 ___。",
+    pattern_note:"否定詞no放在le前面，不是放在gusta前面", slots:["人","名詞"],
+    fire_peppa:{es:"A Tito no le gusta el ruido fuerte.", zh:"迪多不喜歡很大的聲音。", ts:null,
+      chunks:[{w:"A Tito no le",role:"s"},{w:"gusta",role:"v"},{w:"el ruido fuerte.",role:"o"}]},
+    fire_daily:[
+      {es:"A mi hermana no le gusta el pescado.", zh:"我姊姊不喜歡魚。", chunks:[{w:"A mi hermana no le",role:"s"},{w:"gusta",role:"v"},{w:"el pescado.",role:"o"}]},
+      {es:"A Vera no le gusta madrugar.", zh:"薇拉不喜歡早起。", chunks:[{w:"A Vera no le",role:"s"},{w:"gusta",role:"v"},{w:"madrugar.",role:"o"}]}
+    ]
+  },
 ];
 
 // ── 彈藥卡內容狀態盤查（2026-07-20，純標記，不刪除/不改寫任何既有卡片內容）──
