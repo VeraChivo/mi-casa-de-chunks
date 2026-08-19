@@ -212,7 +212,6 @@ const GRAMMAR_DATA = [
       {es:"Tito está esperando su turno para jugar.", zh:"迪多在等輪到他玩。（進行中，劇情原句，E19）"},
       {es:"Estoy cansada.", zh:"我現在很累。（暫時狀態，新編例句，劇情裡沒有『我』自己說這句話的確切例子）"}
     ],
-    trap:"口訣：SER = 本質身分（永久）；ESTAR = 位置狀態（暫時）",
     mnemonic:{
       icon:"🌦️", word:"PLACE", side:"estar",
       desc:"ESTAR 的口訣：抓住「暫時／此刻」的狀態",
@@ -597,7 +596,6 @@ const GRAMMAR_DATA = [
       {es:"No pasa nada, yo te ayudo.", zh:"沒關係，我來幫你。"},
       {es:"Lo siento. No pasa nada.", zh:"對不起。——沒關係。"}
     ],
-    trap:"超萬用！道歉回應、安慰他人、自我寬解都能用，記起來終身受益！",
     source:"舊版E1泥巴坑劇情（已移除，現行16集無對應句子，暫無現行劇情入口，待重建）"
   },
 
@@ -1000,7 +998,7 @@ const GRAMMAR_DATA = [
         {l:"O",label:"Ojalá 祈願",ex:"Ojalá que tengas suerte."}
       ]
     },
-    trap:"判斷關鍵不是「這句話難不難」，是兩個子句的主詞是不是同一個人：Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）。",
+    trap:"Quiero comer.（我想吃，同一人，用原形動詞）vs Quiero que comas.（我想要你吃，兩個不同人，用虛擬式 comas）——判斷關鍵不是「這句話難不難」，是兩個子句的主詞是不是同一個人。",
     source:"文法補充",
     conj:{
       verb:"hablar（虛擬式現在式，規則 -ar 動詞示範）",
@@ -1202,7 +1200,7 @@ const GRAMMAR_DATA = [
       {es:"Tienes que ponerte las pilas con este proyecto.", zh:"你得對這個計畫更認真加把勁。"},
       {es:"Vamos a ponernos las pilas.", zh:"我們一起打起精神吧。"}
     ],
-    trap:"反身動詞 ponerse，字尾要跟著主詞變（ponte/ponerte/ponernos）——對「你」下命令時最常聽到的是 ¡Ponte las pilas!",
+    trap:"¡Ponte las pilas!——對「你」下命令時最常聽到的用法。反身動詞ponerse字尾要跟著主詞變（ponte/ponerte/ponernos）。",
     source:"文法補充"
   },
 
