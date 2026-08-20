@@ -408,6 +408,42 @@ try {
   fail('Chunk 家族健康檢查失敗：' + e.message);
 }
 
+// ── 快取版本號同步檢查（CLAUDE.md 已列為鐵則：改了 js/css 一定要跳 index.html 的 ?v=）──
+// 起因：2026-08-20 盤查發現 5f93a13（ammo.js）與 6b2b3a9（grammar.js/stages.js）兩個 commit 只改了 js、
+// 完全沒動 index.html，版本號因此不可能跳過，使用者端會繼續吃舊快取、看不到修正。
+// 這個問題在 CLAUDE.md 記過一次教訓後又再犯，所以改成自動檢查。
+//
+// 判準刻意不是「比對 ?v= 裡的日期」——那會把「整包匯入 repo」那次的日期誤判成內容變更；
+// 真正能證明版本號沒跳的條件是：某個資源檔的最後一次 commit 之後，index.html 再也沒有被改過。
+section('快取版本號同步（js/css 改了但 index.html 沒跳 ?v=）');
+try {
+  const { execSync } = require('child_process');
+  const git = (cmd) => execSync(cmd, { cwd: __dirname, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  const indexTs = Number(git('git log -1 --format=%ct -- index.html'));
+  if (!indexTs) throw new Error('讀不到 index.html 的 commit 時間');
+  const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  const refs = [...html.matchAll(/(?:src|href)="([^"?]+)\?v=([^"]+)"/g)];
+  if (!refs.length) {
+    warn('index.html 找不到任何 ?v= 版本參數，這個檢查沒有生效');
+  } else {
+    let stale = 0;
+    refs.forEach(m => {
+      const file = m[1], ver = m[2];
+      if (!fs.existsSync(path.join(__dirname, file))) { fail(`index.html 引用的檔案不存在：${file}`); return; }
+      const fileTs = Number(git(`git log -1 --format=%ct -- "${file}"`));
+      if (!fileTs) return;
+      if (fileTs > indexTs) {
+        const last = git(`git log -1 --format=%h --abbrev=7 -- "${file}"`).split('\n')[0];
+        fail(`${file} 在 index.html 之後又被改過（${last}），但 ?v=${ver} 沒跟著跳 → 使用者會吃到舊快取`);
+        stale++;
+      }
+    });
+    if (!stale) ok(`${refs.length} 個帶 ?v= 的資源，都沒有「改了檔案卻沒跳版本號」的情況`);
+  }
+} catch (e) {
+  warn('快取版本號檢查略過（可能不在 git 環境）：' + e.message);
+}
+
 // ── 總結 ──
 console.log('\n' + '='.repeat(40));
 if (failCount === 0 && warnCount === 0) {
