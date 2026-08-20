@@ -504,7 +504,7 @@ const GRAMMAR_DATA = [
       {es:"Debes lavarte las manos.", zh:"你該洗手。"},
       {es:"Debemos respetar las reglas.", zh:"我們該遵守規則。"}
     ],
-    source:"目前現行主線暫無deber對應劇情語料（原引用之E1舊版泥巴坑劇情已移除）。deber仍為A1核心情態動詞能力，保留本卡，待未來劇情自然涵蓋時再補回現行來源，不為此新增劇情",
+    source:"文法補充｜目前現行主線暫無deber對應劇情語料（原引用之E1舊版泥巴坑劇情已移除）。deber仍為A1核心情態動詞能力，保留本卡，待未來劇情自然涵蓋時再補回現行來源，不為此新增劇情",
     conj:{
       verb:"deber（應該／必須）",
       rows:[
@@ -635,7 +635,7 @@ const GRAMMAR_DATA = [
       {es:"Se siente sola.", zh:"她覺得孤單。"}
     ],
     trap:"sentir（感受到一件具體的事，如 Lo siento mucho 我很遺憾）vs sentirse（自身狀態，如 Me siento triste 我覺得難過）——日常口語裡 me siento 最常用。",
-    source:"媽媽語塊 ATM·SEL",
+    source:"媽媽語塊 ATM·SEL／文法補充",
     conj:{
       verb:"sentir（感受／覺得）",
       rows:[
@@ -688,7 +688,7 @@ const GRAMMAR_DATA = [
       {es:"Vamos a comer.", zh:"我們去吃東西吧！"}
     ],
     trap:"Vamos a + 動詞＝要做某件事；Vamos + 地點＝去某個地方。",
-    source:"媽媽語塊 ATM·SEL",
+    source:"媽媽語塊 ATM·SEL／文法補充",
     conj:{
       verb:"ir（去）",
       rows:[
