@@ -1,0 +1,128 @@
+# ═══════════════════════════════════════════════════════════
+# 🎙️ 文法卡例句錄音（💧文法儲水槽／🌎拉美巡禮的卡片例句）
+# 共 61 句　｜　產生日期：2026-08-20
+#
+# 用法：整段複製貼進 Google Colab 的一個 cell，按執行。
+# 跑完會自動跳出 audio_gram_20260820.zip 的下載視窗。
+# 如果沒跳出來，看最後一行印出的絕對路徑，去 Colab 左側檔案面板手動下載。
+#
+# 下載後解壓縮，裡面已經照 repo 的資料夾結構分好（gram/），
+# 直接整包蓋進專案的 audio/ 資料夾即可，路徑已經在 audio-manifest.js 預留好了。
+# ═══════════════════════════════════════════════════════════
+
+!pip install -q gTTS
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+OUT = "/content/audio_gram"
+sentences = {
+    "gram/gram_g01_7.mp3": "Soy Nita.",  # 我是妮妲。（身分，劇情原句，E17）
+    "gram/gram_g01_8.mp3": "Soy el hermano mayor de Nita.",  # 我是妮妲的哥哥。（關係，劇情原句，E18）
+    "gram/gram_g02_8.mp3": "Tito está esperando su turno para jugar.",  # 迪多在等輪到他玩。（進行中，劇情原句，E19）
+    "gram/gram_g08_6.mp3": "A Nita le gusta el helado.",  # 妮妲喜歡冰淇淋。（劇情原句，E20）
+    "gram/gram_g08_7.mp3": "A Tito le encanta su carrito rojo.",  # 迪多超愛他的紅色小車車。（劇情原句，E20）
+    "gram/gram_g08_8.mp3": "A Tito no le gusta el ruido fuerte.",  # 迪多不喜歡很大的聲音。（否定，劇情原句，E20）
+    "gram/gram_g13_1.mp3": "Creo que todo es mi error.",  # 我以為都是我的錯。（劇情原句，SEL線）
+    "gram/gram_g30_1.mp3": "Papá Tato dice: \"Los recordamos porque los queremos.\"",  # 達多爸爸說：「我們記得他們，因為我們愛他們。」（劇情原句，E
+    "gram/gram_g32_1.mp3": "El amor no se muere, pero sí cambia de forma.",  # 愛不會死，但它的形式會改變。（劇情原句，E11）
+    "gram/gram_g32_2.mp3": "Nita chapotea en los charcos, pero la ropa se moja.",  # 妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1）
+    "gram/gram_g42b_1.mp3": "Quedamos en que él llamaría.",  # 我們講好他會打電話來。
+    "gram/gram_g42b_2.mp3": "Quedaron en que se verían el sábado.",  # 他們講好星期六會見面。
+    "gram/gram_g43a_1.mp3": "Estoy agobiado con el trabajo esta semana.",  # 這禮拜的工作讓我喘不過氣。
+    "gram/gram_g52a_1.mp3": "Este pastel es bueno.",  # 這個蛋糕很好。
+    "gram/gram_g52a_2.mp3": "Este pastel es mejor que el otro.",  # 這個蛋糕比另一個更好。
+    "gram/gram_g52a_3.mp3": "Este es el mejor pastel.",  # 這是最好的蛋糕。
+    "gram/gram_g52b_1.mp3": "Este día es malo.",  # 這天很糟。
+    "gram/gram_g52b_2.mp3": "Este día es peor que ayer.",  # 這天比昨天更糟。
+    "gram/gram_g52b_3.mp3": "Este es el peor día.",  # 這是最糟的一天。
+    "gram/gram_g52c_1.mp3": "Nita es grande.",  # 妮妲年紀不小了。
+    "gram/gram_g52c_2.mp3": "Nita es mayor que Tito.",  # 妮妲比迪多年長。
+    "gram/gram_g52c_3.mp3": "Nita es la mayor de los hermanos.",  # 妮妲是手足裡最年長的。
+    "gram/gram_g52d_1.mp3": "Mimi es pequeña.",  # 咪咪還小。
+    "gram/gram_g52d_2.mp3": "Mimi es menor que Nita.",  # 咪咪比妮妲年幼。
+    "gram/gram_g52d_3.mp3": "Mimi es la menor de los hermanos.",  # 咪咪是手足裡最年幼的。
+    "gram/gram_g58a_1.mp3": "Tito se puso rojo de vergüenza.",  # 迪多害羞得臉都紅了。
+    "gram/gram_g58b_1.mp3": "Nita se quedó callada un momento.",  # 妮妲安靜了一會兒。
+    "gram/gram_g58c_1.mp3": "Con los años, Cata se volvió más paciente.",  # 這些年下來，卡妲變得更有耐心了。
+    "gram/gram_g109_1.mp3": "Pero el Corazón fue herido hace mucho tiempo.",  # 但本心很久以前就受了傷。（劇情原句，E15換詞組合）
+    "gram/gram_g116a_1.mp3": "¿Has estado alguna vez en España?",  # 你曾經去過西班牙嗎？
+    "gram/gram_g116a_2.mp3": "¿Has probado alguna vez esto?",  # 你曾經試過這個嗎？
+    "gram/gram_g116b_1.mp3": "Nunca he estado allí.",  # 我從沒去過那裡。
+    "gram/gram_g116b_2.mp3": "Nunca he probado eso.",  # 我從沒試過那個。
+    "gram/gram_g116c_1.mp3": "Todavía no he comido.",  # 我還沒吃。
+    "gram/gram_g116c_2.mp3": "Todavía no lo he visto.",  # 我還沒看到。
+    "gram/gram_g116d_1.mp3": "Ya he comido.",  # 我已經吃了。
+    "gram/gram_g116d_2.mp3": "¿Ya has comido?",  # 你已經吃了嗎？
+    "gram/gram_g118a_1.mp3": "El ovillo está encima de la mesa.",  # 毛線球在桌子上面。
+    "gram/gram_g118a_2.mp3": "El gato duerme encima del sofá.",  # 貓咪在沙發上面睡覺。
+    "gram/gram_g118b_1.mp3": "El ovillo está debajo de la mesa.",  # 毛線球在桌子下面。
+    "gram/gram_g118b_2.mp3": "El gato se esconde debajo de la cama.",  # 貓咪躲在床底下。
+    "gram/gram_g119a_1.mp3": "El ovillo está delante del camión.",  # 毛線球在貨車前面。
+    "gram/gram_g119a_2.mp3": "Nita está delante de la puerta.",  # 妮妲站在門前面。
+    "gram/gram_g119b_1.mp3": "El ovillo está detrás del camión.",  # 毛線球在貨車後面。
+    "gram/gram_g119b_2.mp3": "Nita se esconde detrás de la puerta.",  # 妮妲躲在門後面。
+    "gram/gram_g120a_1.mp3": "El ovillo está dentro de la caja.",  # 毛線球在箱子裡面。
+    "gram/gram_g120a_2.mp3": "Todo está dentro de la mochila.",  # 所有東西都在背包裡面。
+    "gram/gram_g120b_1.mp3": "El ovillo está fuera de la caja.",  # 毛線球在箱子外面。
+    "gram/gram_g120b_2.mp3": "El gato se queda fuera de casa.",  # 貓咪待在家外面。
+    "gram/gram_g121a_1.mp3": "La mariposa está cerca de la flor.",  # 蝴蝶離花很近。
+    "gram/gram_g121a_2.mp3": "Mi casa está cerca de la escuela.",  # 我家離學校很近。
+    "gram/gram_g121b_1.mp3": "La mariposa está lejos de la flor.",  # 蝴蝶離花很遠。
+    "gram/gram_g121b_2.mp3": "Mi casa está lejos de la escuela.",  # 我家離學校很遠。
+    "gram/gram_g122a_1.mp3": "La colmena está a la derecha del árbol.",  # 蜂巢在樹的右邊。
+    "gram/gram_g122a_2.mp3": "Nita está a la derecha de Tito.",  # 妮妲在迪多的右邊。
+    "gram/gram_g122b_1.mp3": "La colmena está a la izquierda del árbol.",  # 蜂巢在樹的左邊。
+    "gram/gram_g122b_2.mp3": "Nita está a la izquierda de Tito.",  # 妮妲在迪多的左邊。
+    "gram/gram_g123_1.mp3": "La regadera está al lado del árbol.",  # 澆花器在樹的旁邊。
+    "gram/gram_g123_2.mp3": "Nita está al lado de Tito.",  # 妮妲在迪多的旁邊。
+    "gram/gram_g124_1.mp3": "El bolígrafo está entre el teléfono y la taza.",  # 筆在手機和杯子之間。
+    "gram/gram_g124_2.mp3": "Nita está entre Mamá Cata y Tito.",  # 妮妲坐在貓媽媽和迪多之間。
+}
+
+os.makedirs(OUT, exist_ok=True)
+for sub in ['gram']:
+    os.makedirs(os.path.join(OUT, sub), exist_ok=True)
+
+total = len(sentences)
+done, failed = 0, []
+
+for i, (path, text) in enumerate(sentences.items(), 1):
+    target = os.path.join(OUT, path)
+    print(f"[{i}/{total}] {path}  ←  {text}")
+    for attempt in range(1, 4):
+        try:
+            gTTS(text=text, lang="es", tld="com.mx").save(target)
+            size = os.path.getsize(target)
+            if size < 800:
+                raise RuntimeError(f"檔案只有 {size} bytes，可能是空檔")
+            done += 1
+            break
+        except Exception as e:
+            print(f"    ⚠️ 第 {attempt} 次失敗：{e}")
+            if attempt == 3:
+                failed.append(path)
+            else:
+                time.sleep(attempt * 3)   # 3秒 → 6秒，遞增等待
+    # 每句之間隨機停頓，避免被 Google 判定成批次攻擊整批擋掉
+    time.sleep(random.uniform(0.5, 1.2))
+
+print("\n" + "=" * 50)
+print(f"完成 {done}/{total} 句")
+if failed:
+    print(f"❌ 失敗 {len(failed)} 句（可以只把這幾句挑出來重跑）：")
+    for f in failed:
+        print("   " + f)
+
+zip_path = "/content/audio_gram_20260820.zip"
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            full = os.path.join(root, f)
+            z.write(full, os.path.relpath(full, OUT))
+
+print(f"\n📦 打包完成：{os.path.abspath(zip_path)}")
+print(f"   檔案大小：{os.path.getsize(zip_path)/1024:.0f} KB")
+
+from google.colab import files
+files.download(zip_path)

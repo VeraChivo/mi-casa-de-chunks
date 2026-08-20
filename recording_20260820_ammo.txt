@@ -1,0 +1,129 @@
+# ═══════════════════════════════════════════════════════════
+# 🎙️ 彈藥庫日常例句錄音（🔥全速運轉 fire_daily）
+# 共 62 句　｜　產生日期：2026-08-20
+#
+# 用法：整段複製貼進 Google Colab 的一個 cell，按執行。
+# 跑完會自動跳出 audio_ammo_20260820.zip 的下載視窗。
+# 如果沒跳出來，看最後一行印出的絕對路徑，去 Colab 左側檔案面板手動下載。
+#
+# 下載後解壓縮，裡面已經照 repo 的資料夾結構分好（ammo/），
+# 直接整包蓋進專案的 audio/ 資料夾即可，路徑已經在 audio-manifest.js 預留好了。
+# ═══════════════════════════════════════════════════════════
+
+!pip install -q gTTS
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+OUT = "/content/audio_ammo"
+sentences = {
+    "ammo/ammo_e17_01_daily1.mp3": "Me llamo Ana.",  # 我叫安娜。
+    "ammo/ammo_e17_01_daily2.mp3": "Me llamo Carlos.",  # 我叫卡洛斯。
+    "ammo/ammo_e17_02_daily1.mp3": "Soy estudiante.",  # 我是學生。
+    "ammo/ammo_e17_02_daily2.mp3": "Soy de Taiwán.",  # 我是台灣人。
+    "ammo/ammo_e17_03_daily1.mp3": "Soy un perro.",  # 我是一隻狗。
+    "ammo/ammo_e17_03_daily2.mp3": "Soy una niña.",  # 我是一個女孩。
+    "ammo/ammo_e17_04_daily1.mp3": "Mucho gusto, soy Ana.",  # 很高興認識你，我是安娜。
+    "ammo/ammo_e17_04_daily2.mp3": "Mucho gusto, soy tu vecino.",  # 很高興認識你，我是你的鄰居。
+    "ammo/ammo_e12_03_daily1.mp3": "¿Puedo ir también?",  # 我也可以去嗎？
+    "ammo/ammo_e12_03_daily2.mp3": "¿Puedo probar también?",  # 我也可以試試看嗎？
+    "ammo/ammo_e12_04_daily1.mp3": "Eres muy joven todavía.",  # 你還太年輕了。
+    "ammo/ammo_e12_04_daily2.mp3": "Eres muy tímido todavía.",  # 你還太害羞了。
+    "ammo/ammo_e12_10_daily1.mp3": "¡Hoy es el día! Vamos a viajar.",  # 今天就是那一天！我們要去旅行了。
+    "ammo/ammo_e12_10_daily2.mp3": "Por fin, ¡hoy es el día!",  # 終於，今天就是那一天！
+    "ammo/ammo_e14_01_daily1.mp3": "Hoy llueve, sin embargo, vamos a salir.",  # 今天下雨，然而，我們還是要出門。
+    "ammo/ammo_e14_01_daily2.mp3": "Estoy cansada, sin embargo, sigo trabajando.",  # 我很累，然而，我還是繼續工作。
+    "ammo/ammo_e14_02_daily1.mp3": "Parece fácil, de hecho, es complicado.",  # 看起來簡單，其實，很複雜。
+    "ammo/ammo_e14_02_daily2.mp3": "No dije nada, de hecho, estaba de acuerdo.",  # 我什麼都沒說，其實，我是同意的。
+    "ammo/ammo_e14_03_daily1.mp3": "Quiero ayudarte, a pesar de eso, también necesito descansar.",  # 我想幫你，即便如此，我也需要休息。
+    "ammo/ammo_e14_03_daily2.mp3": "Me gusta mi trabajo, a pesar de eso, a veces es agotador.",  # 我喜歡我的工作，即便如此，有時候還是很累。
+    "ammo/ammo_e14_04_daily1.mp3": "No dormí bien, por eso, estoy de mal humor.",  # 我沒睡好，所以，我心情不好。
+    "ammo/ammo_e14_04_daily2.mp3": "Llegamos tarde, por eso, nos perdimos el inicio.",  # 我們遲到了，所以，錯過了開頭。
+    "ammo/ammo_e14_05_daily1.mp3": "Necesito ayuda, además, no tengo por qué hacerlo solo.",  # 我需要幫忙，而且，我沒必要一個人做。
+    "ammo/ammo_e14_05_daily2.mp3": "Me gusta este lugar, además, la comida es deliciosa.",  # 我喜歡這個地方，而且，食物很好吃。
+    "ammo/ammo_e14_06_daily1.mp3": "Pensaba que era fácil, en realidad, me tomó horas.",  # 我以為很簡單，但其實，花了我好幾個小時。
+    "ammo/ammo_e14_06_daily2.mp3": "Parece tranquilo, en realidad, está muy nervioso.",  # 他看起來很平靜，但其實，他很緊張。
+    "ammo/ammo_e14_07_daily1.mp3": "Estudio al mismo tiempo que escucho música.",  # 我一邊念書，同時，也聽音樂。
+    "ammo/ammo_e14_07_daily2.mp3": "Ella cocina al mismo tiempo que cuida a su hija.",  # 她一邊做飯，同時，也照顧她的女兒。
+    "ammo/ammo_e14_08_daily1.mp3": "Me gusta leer, sobre todo, cuando llueve.",  # 我喜歡看書，尤其是，下雨的時候。
+    "ammo/ammo_e14_08_daily2.mp3": "Ella está ocupada, sobre todo, cuando hay muchos clientes.",  # 她很忙，尤其是，客人多的時候。
+    "ammo/ammo_e14_09_daily1.mp3": "Critico a otros fácilmente, sin embargo, soy más duro conmigo mismo.",  # 我很容易批評別人，然而，我對自己更嚴苛。
+    "ammo/ammo_e14_09_daily2.mp3": "Exijo mucho de los demás, sin embargo, me exijo aún más.",  # 我對別人要求很多，然而，我對自己要求更多。
+    "ammo/ammo_e16_05_daily1.mp3": "Ya no puedo esperar más.",  # 我沒辦法再等了。
+    "ammo/ammo_e16_05_daily2.mp3": "Ya no puedo caminar más.",  # 我沒辦法再走了。
+    "ammo/ammo_e16_07_daily1.mp3": "No es que no quiera ir, es que estoy enfermo.",  # 不是我不想去，是我生病了。
+    "ammo/ammo_e16_07_daily2.mp3": "No es que no te quiera, es que necesito espacio.",  # 不是我不愛你，是我需要空間。
+    "ammo/ammo_e16_09_daily1.mp3": "Una taza de té, un buen libro: eso basta.",  # 一杯茶，一本好書：這樣就夠了。
+    "ammo/ammo_e16_09_daily2.mp3": "Un abrazo y silencio: eso basta.",  # 一個擁抱和安靜：這樣就夠了。
+    "ammo/ammo_e18_01_daily1.mp3": "Tengo un hermano y una hermana.",  # 我有一個哥哥和一個姊姊。
+    "ammo/ammo_e18_01_daily2.mp3": "Tengo un perro y un gato.",  # 我有一隻狗和一隻貓。
+    "ammo/ammo_e18_02_daily1.mp3": "Soy Juan, el hermano de María.",  # 我是胡安，瑪麗亞的哥哥。
+    "ammo/ammo_e18_02_daily2.mp3": "Soy Ana, la profesora de Carlos.",  # 我是安娜，卡洛斯的老師。
+    "ammo/ammo_e18_05_daily1.mp3": "Soy la hermana menor de Sara.",  # 我是莎拉的妹妹。
+    "ammo/ammo_e18_05_daily2.mp3": "Soy el hijo mayor de la familia.",  # 我是家裡的長子。
+    "ammo/ammo_e18_09_daily1.mp3": "Eres mi mejor amigo.",  # 你是我最好的朋友。
+    "ammo/ammo_e18_09_daily2.mp3": "Es la mejor amiga de mi hermana.",  # 她是我姊姊最好的朋友。
+    "ammo/ammo_e19_01_daily1.mp3": "Tengo sueño, quiero dormir.",  # 我想睡了，我想睡覺。
+    "ammo/ammo_e19_01_daily2.mp3": "¿Tienes sueño ya?",  # 你已經想睡了嗎？
+    "ammo/ammo_e19_06_daily1.mp3": "Tengo hambre, ¿comemos ya?",  # 我肚子餓了，我們可以吃飯了嗎？
+    "ammo/ammo_e19_06_daily2.mp3": "El bebé tiene hambre.",  # 寶寶肚子餓了。
+    "ammo/ammo_e19_08_daily1.mp3": "Hoy estoy en casa todo el día.",  # 今天我整天都在家。
+    "ammo/ammo_e19_08_daily2.mp3": "Mis padres están en casa ahora.",  # 我爸媽現在在家。
+    "ammo/ammo_e19_09_daily1.mp3": "Tengo ganas de salir a caminar.",  # 我很想出去走走。
+    "ammo/ammo_e19_09_daily2.mp3": "¿Tienes ganas de comer algo dulce?",  # 你想吃點甜的嗎？
+    "ammo/ammo_e20_01_daily1.mp3": "A mi hermano le gusta el fútbol.",  # 我哥哥喜歡足球。
+    "ammo/ammo_e20_01_daily2.mp3": "A mí me gusta el chocolate.",  # 我喜歡巧克力。
+    "ammo/ammo_e20_03_daily1.mp3": "A ella le encanta bailar.",  # 她超愛跳舞。
+    "ammo/ammo_e20_03_daily2.mp3": "A los niños les encanta jugar afuera.",  # 小朋友們超愛在外面玩。
+    "ammo/ammo_e20_06_daily1.mp3": "A mí me encantan los perros.",  # 我超愛狗狗。
+    "ammo/ammo_e20_06_daily2.mp3": "A Tito le encantan los carritos.",  # 迪多超愛小車車。
+    "ammo/ammo_e20_08_daily1.mp3": "A mi hermana no le gusta el pescado.",  # 我姊姊不喜歡魚。
+    "ammo/ammo_e20_08_daily2.mp3": "A Vera no le gusta madrugar.",  # 薇拉不喜歡早起。
+}
+
+os.makedirs(OUT, exist_ok=True)
+for sub in ['ammo']:
+    os.makedirs(os.path.join(OUT, sub), exist_ok=True)
+
+total = len(sentences)
+done, failed = 0, []
+
+for i, (path, text) in enumerate(sentences.items(), 1):
+    target = os.path.join(OUT, path)
+    print(f"[{i}/{total}] {path}  ←  {text}")
+    for attempt in range(1, 4):
+        try:
+            gTTS(text=text, lang="es", tld="com.mx").save(target)
+            size = os.path.getsize(target)
+            if size < 800:
+                raise RuntimeError(f"檔案只有 {size} bytes，可能是空檔")
+            done += 1
+            break
+        except Exception as e:
+            print(f"    ⚠️ 第 {attempt} 次失敗：{e}")
+            if attempt == 3:
+                failed.append(path)
+            else:
+                time.sleep(attempt * 3)   # 3秒 → 6秒，遞增等待
+    # 每句之間隨機停頓，避免被 Google 判定成批次攻擊整批擋掉
+    time.sleep(random.uniform(0.5, 1.2))
+
+print("\n" + "=" * 50)
+print(f"完成 {done}/{total} 句")
+if failed:
+    print(f"❌ 失敗 {len(failed)} 句（可以只把這幾句挑出來重跑）：")
+    for f in failed:
+        print("   " + f)
+
+zip_path = "/content/audio_ammo_20260820.zip"
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            full = os.path.join(root, f)
+            z.write(full, os.path.relpath(full, OUT))
+
+print(f"\n📦 打包完成：{os.path.abspath(zip_path)}")
+print(f"   檔案大小：{os.path.getsize(zip_path)/1024:.0f} KB")
+
+from google.colab import files
+files.download(zip_path)
