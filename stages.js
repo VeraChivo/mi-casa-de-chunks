@@ -509,7 +509,7 @@ function s3SpeakCurrent(){
   speakFull(full);
 }
 
-function escStage(s){ return String(s).replace(/'/g,"\\'"); }
+function escStage(s){ return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
 
 // ── Toggle ──
 function toggleStages(){

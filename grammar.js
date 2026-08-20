@@ -88,7 +88,7 @@ function renderPronounComboRules(){
         <div class="pron-cat-header">${r.title}</div>
         <div class="pron-combo-titlesub">${r.titleSub}</div>
         <div class="pron-cat-hint">${r.hint}</div>
-        <div class="pron-example" onclick="speakGramSmart('${String(r.example.speakEs||r.example.es).replace(/'/g,"\\'")}')">
+        <div class="pron-example" onclick="speakGramSmart('${escAttr(r.example.speakEs||r.example.es)}')">
           <div class="pron-ex-es">▶ ${r.example.es}</div>
           ${r.example.speakEs && r.example.speakEs!==r.example.es ? `<div class="pron-ex-speak">🔊 實際播放：${r.example.speakEs}</div>` : ''}
           <div class="pron-ex-zh">${r.example.zh}</div>
