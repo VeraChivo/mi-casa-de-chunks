@@ -27,7 +27,18 @@ function getRandomFeedback(type){
   return list[Math.floor(Math.random()*list.length)];
 }
 
-// ── 星星成就機制 ──
+// ── 星星成就機制（⚠️ 舊路徑，目前是 no-op，不是使用者看到的進度）──
+// 使用者實際看到的花朵進度是 renderStars() → #starRow，資料來源是 answered / answeredByEp
+// （answeredByEp 有存進 localStorage，所以重新整理後進度會留著，連停在哪一句都會還原）。
+//
+// 下面這組 unlockedStars / unlockStar() / updateStarDisplay() 打的是 #star-rating，
+// 但那個元素早就不在 index.html 裡了，所以 updateStarDisplay() 永遠在第一行 return。
+// unlockStar() 仍然在 revealAnswer() 答對時被呼叫，但只是往一個沒人讀的 Set 塞資料。
+//
+// ⚠️ 給之後接手的人（人或 AI）：不要用 unlockedStars 判斷「使用者完成了哪些句子」，
+// 它不會被存檔、重新整理就歸零，拿它做驗證會得到「進度沒有持久化」的錯誤結論。
+// 要判斷完成狀態一律看 answered / answeredByEp。
+// （2026-08-20 全站盤查時實測確認；比照 toggleIndicSubj() 的處理方式先保留不刪除。）
 const unlockedStars = new Set();
 
 function unlockStar(globalIdx){

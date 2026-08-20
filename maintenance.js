@@ -408,6 +408,70 @@ try {
   fail('Chunk 家族健康檢查失敗：' + e.message);
 }
 
+// ── 卡片可達性檢查（active 的卡是不是真的打得開）──
+// 跟上面「內容孤兒檢查」不同：那個只問「有沒有被路線/關聯圖引用」，
+// 但一張卡就算沒被路線引用，只要出現在💧文法儲水槽清單裡，使用者還是找得到。
+// 這個檢查問的是更硬的問題：使用者從任何一個實際入口，到底打不打得開這張卡？
+//
+// 判準沿用 CLAUDE.md 已定案的生命週期語意：
+//   historical（歷史能力）→ 允許沒有入口（g14「No pasa nada」就是明訂的「寧可留白」）
+//   active / crossStory     → 現役能力，沒有入口就是資料矛盾，要報出來
+//
+// 起因：2026-08-20 盤查發現 g11／g17／g18 標 active 卻沒有任何入口——
+// g11 是規則29處理斷鏈時把 source 改成狀態說明後的副作用（不再含「文法補充」→ 從儲水槽消失），
+// g17/g18 的 source 寫「媽媽語塊 ATM·SEL」，但 mom.js 從來就沒有連到文法卡的入口。
+section('卡片可達性（active 的卡有沒有真的入口）');
+try {
+  const gj = loadArray('grammar.js', ['GRAMMAR_DATA', 'WORLD_ZONE_MAP', 'WORLD_SUBCAT', 'SENTENCE_GRAMMAR_MAP', 'SKILL_GRAPH', 'GRAMMAR_LIFECYCLE']);
+  const cards = gj.GRAMMAR_DATA, W = gj.WORLD_ZONE_MAP || {}, WS = gj.WORLD_SUBCAT || {};
+  const SG = gj.SENTENCE_GRAMMAR_MAP || {}, SK = gj.SKILL_GRAPH || [], LC = gj.GRAMMAR_LIFECYCLE || {};
+  const script = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
+
+  const world = new Set([...(W.slang || []), ...(W.culture || [])]);
+  const subcat = new Set();
+  Object.values(WS).forEach(cats => (Array.isArray(cats) ? cats : Object.values(cats))
+    .forEach(c => (c.ids || []).forEach(i => subcat.add(i))));
+  // 💧文法儲水槽的收錄條件（跟 script.js renderGrammarSupplement() 同一條）
+  const inTank = new Set(cards.filter(g => (g.source || '').includes('文法補充') && !world.has(g.id)).map(g => g.id));
+  const story = new Set();
+  Object.values(SG).forEach(v => (Array.isArray(v) ? v : [v]).forEach(id => id && story.add(id)));
+  const hardLinked = new Set([...script.matchAll(/openGrammarCard\(\s*['"]([a-z0-9]+)['"]/g)].map(m => m[1]));
+
+  const reach = new Set();
+  cards.forEach(g => {
+    if (inTank.has(g.id) || subcat.has(g.id) || world.has(g.id) || story.has(g.id) || hardLinked.has(g.id)) reach.add(g.id);
+  });
+  // 從可達的卡片，可以再點技能關係圖的節點跳過去
+  let grew = true;
+  while (grew) {
+    grew = false;
+    SK.forEach(e => {
+      if (reach.has(e.from) && !reach.has(e.to)) { reach.add(e.to); grew = true; }
+      if (reach.has(e.to) && !reach.has(e.from)) { reach.add(e.from); grew = true; }
+    });
+  }
+
+  const lifecycleOf = id => (Object.entries(LC).find(([, arr]) => (arr || []).includes(id)) || ['(未分類)'])[0];
+  const dead = cards.filter(g => !reach.has(g.id));
+  const deadActive = dead.filter(g => lifecycleOf(g.id) !== 'historical');
+  const deadOk = dead.filter(g => lifecycleOf(g.id) === 'historical');
+
+  if (deadActive.length) {
+    deadActive.forEach(g => fail(`${g.id}（${lifecycleOf(g.id)}）沒有任何入口，使用者打不開：「${(g.title || '').slice(0, 30)}」　source="${(g.source || '').slice(0, 28)}…"`));
+    console.log('   💡 最小修法是讓 source 含「文法補充」關鍵字，卡片就會回到💧文法儲水槽');
+    console.log('      （儲水槽的定義本來就是「沒有掛在劇情裡的零散文法點」，這幾張正好符合）。');
+    console.log('   ⚠️ 但「卡片放哪一區」屬於 CLAUDE.md 列為 ❌AI不可自行 的「改能力分類」，');
+    console.log('      要等 VERA 確認再改；不要因為看到紅字就自己動 source（g14 就是她明訂要留白的例子）。');
+  } else {
+    ok(`${cards.length} 張卡，active/crossStory 的卡都至少有一個入口`);
+  }
+  if (deadOk.length) {
+    console.log(`   ℹ️ ${deadOk.map(g => g.id).join(', ')} 沒有入口，但標記為 historical（歷史能力），依 CLAUDE.md「寧可留白」屬於刻意狀態，不算錯誤`);
+  }
+} catch (e) {
+  warn('卡片可達性檢查失敗：' + e.message);
+}
+
 // ── 快取版本號同步檢查（CLAUDE.md 已列為鐵則：改了 js/css 一定要跳 index.html 的 ?v=）──
 // 起因：2026-08-20 盤查發現 5f93a13（ammo.js）與 6b2b3a9（grammar.js/stages.js）兩個 commit 只改了 js、
 // 完全沒動 index.html，版本號因此不可能跳過，使用者端會繼續吃舊快取、看不到修正。
