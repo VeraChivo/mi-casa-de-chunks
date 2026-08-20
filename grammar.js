@@ -1245,33 +1245,6 @@ const GRAMMAR_DATA = [
   // ══ B2 詞彙清單 ══
 
   {
-    id:"g43", cat:"vocab", level:"b2c1",
-    title:"B2心理形容詞：描述複雜情緒與心理狀態",
-    rule:"A1-A2 常用的情緒字（feliz開心/triste難過）不夠用了，B2 需要更精準描述複雜心理狀態的形容詞——這些字幾乎都搭配 estar 或 sentirse（感覺起來），不是 ser，因為講的是暫時的心理狀態，不是永久本質。",
-    examples:[
-      {es:"Cata se siente agobiada por tantas tareas.", zh:"卡妲被那麼多待辦事項壓得喘不過氣。"},
-      {es:"Nita está harta de repetir lo mismo.", zh:"妮妲受夠了一直重複同樣的事。"},
-      {es:"Me siento inseguro cuando hablo en público.", zh:"我在公開演講時覺得沒有安全感。"}
-    ],
-    family:{
-      title:"🧠 B2心理形容詞小詞庫",
-      intro:"字尾要跟主詞的陰陽性一致（agobiado／agobiada），這裡列的是陽性預設形，實際用時記得改字尾。",
-      items:[
-        {es:"agobiado", zh:"壓得喘不過氣、心力交瘁（陰性：agobiada）"},
-        {es:"decepcionado", zh:"失望（陰性：decepcionada）"},
-        {es:"exigente", zh:"要求很高、嚴格（字尾不分陰陽性）"},
-        {es:"indiferente", zh:"漠不關心、無所謂（字尾不分陰陽性）"},
-        {es:"frustrado", zh:"挫折、灰心（陰性：frustrada）"},
-        {es:"estresado", zh:"壓力大（陰性：estresada）"},
-        {es:"inseguro", zh:"沒有安全感、不自信（陰性：insegura）"},
-        {es:"harto", zh:"受夠了、厭煩（陰性：harta）"}
-      ]
-    },
-    trap:"這些形容詞常跟 estar／sentirse 搭配，不是 ser——因為都是暫時的心理狀態，不是永久本質，跟💎☁️是・在對照站的 ESTAR 用法一致。",
-    source:"文法補充"
-  },
-
-  {
     id:"g43a", cat:"vocab", level:"b2c1",
     title:"Agobiado：喘不過氣",
     rule:"estar agobiado / sentirse agobiado<br><br>形容被壓力、待辦事項壓得喘不過氣。",
@@ -1279,6 +1252,75 @@ const GRAMMAR_DATA = [
       {es:"Cata se siente agobiada por tantas tareas.", zh:"卡妲被那麼多待辦事項壓得喘不過氣。"},
       {es:"Estoy agobiado con el trabajo esta semana.", zh:"這禮拜的工作讓我喘不過氣。"}
     ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g43b", cat:"vocab", level:"b2c1",
+    title:"Decepcionado vs Frustrado：失望還是挫折？",
+    rule:"想表達「事情/某人沒有達到期待」用decepcionado；想表達「想做卻做不到、被卡住」用frustrado。",
+    examples:[
+      {es:"Estoy decepcionado con el resultado.", zh:"我對這個結果很失望。"},
+      {es:"Me siento frustrado porque no puedo resolverlo.", zh:"我覺得很挫折，因為我解決不了這個問題。"}
+    ],
+    trap:"decepcionado通常有一個明確落空的對象（con algo/alguien）；frustrado常常跟著「no poder + 原形動詞」一起出現，強調被卡住做不到。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g43c", cat:"vocab", level:"b2c1",
+    title:"Estresado：壓力大",
+    rule:"estar estresado / sentirse estresado<br><br>形容承受壓力、精神緊繃的狀態。",
+    examples:[
+      {es:"Estoy muy estresada con los exámenes.", zh:"我因為考試壓力很大。"},
+      {es:"Tato se siente estresado antes de las reuniones importantes.", zh:"達多在重要會議前總會感到壓力很大。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g43d", cat:"vocab", level:"b2c1",
+    title:"Exigente：要求很高",
+    rule:"exigente通常在講一個人本身的個性（標準高、嚴格），是相對穩定不太會變的特質，所以用SER，不是ESTAR——跟這組其他心理狀態詞不一樣。",
+    examples:[
+      {es:"Mi profesora es muy exigente.", zh:"我的老師要求很高。"},
+      {es:"Tato es exigente consigo mismo.", zh:"達多對自己要求很嚴格。"}
+    ],
+    trap:"別套用「B2心理詞彙通通配estar」的直覺——exigente講的是人格特質不是暫時狀態，要用SER。",
+    source:"文法補充"
+  },
+
+  {
+    id:"g43e", cat:"vocab", level:"b2c1",
+    title:"Indiferente：無所謂、不在乎",
+    rule:"estar indiferente：對某件事當下沒感覺、不在乎。ser indiferente：形容一個人本來就是冷淡的個性。看你要講「這件事」還是「這個人」。",
+    examples:[
+      {es:"Estoy indiferente ante este tema.", zh:"我對這個話題完全無感。"},
+      {es:"Es una persona indiferente, nada le importa mucho.", zh:"他是個很冷淡的人，什麼都不太在意。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g43f", cat:"vocab", level:"b2c1",
+    title:"Inseguro：沒有安全感、不自信",
+    rule:"estar inseguro：當下沒自信、猶豫不決的狀態。ser inseguro：形容一個人本來就缺乏自信的個性——跟indiferente一樣，兩種都存在。",
+    examples:[
+      {es:"Me siento inseguro cuando hablo en público.", zh:"我在公開演講時覺得沒有安全感。"},
+      {es:"Ella es insegura, siempre duda de sí misma.", zh:"她本來就沒什麼自信，總是懷疑自己。"}
+    ],
+    source:"文法補充"
+  },
+
+  {
+    id:"g43g", cat:"vocab", level:"b2c1",
+    title:"Harto：受夠了",
+    rule:"estar harto de + 名詞/原形動詞<br><br>表示對某件事已經忍到極限、受夠了。",
+    examples:[
+      {es:"Nita está harta de repetir lo mismo.", zh:"妮妲受夠了一直重複同樣的事。"},
+      {es:"Estoy harto de esperar el autobús todos los días.", zh:"我受夠了每天等公車。"}
+    ],
+    trap:"harto幾乎一定搭配de，後面接讓你受夠的那件事；單獨說estoy harto意思不完整。",
     source:"文法補充"
   },
 
@@ -3049,7 +3091,7 @@ const SENTENCE_GRAMMAR_MAP = {
 //                 不要為了不留白硬塞假連結（目前0張卡屬於這個狀態）
 const GRAMMAR_LIFECYCLE = {
   active: ['g01','g02','g03','g05','g06','g07','g08','g09','g10','g11','g12','g13','g15','g16','g17','g18','g19','g20','g21','g109','g117'],
-  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43','g43a','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g118a','g118b','g119a','g119b','g120a','g120b','g121a','g121b','g122a','g122b','g123','g124'],
+  crossStory: ['g04','g22','g23','g24','g25','g26','g27','g28','g29','g30','g31','g32','g33','g34','g35','g36','g37','g38','g39','g40','g41','g42a','g42b','g43a','g43b','g43c','g43d','g43e','g43f','g43g','g44','g45','g46','g47','g48','g49','g50','g51','g52a','g52b','g52c','g52d','g53','g54','g55','g56','g57','g58a','g58b','g58c','g59','g60','g61','g62','g63','g64','g65','g66','g67','g68','g69','g70','g71','g72','g73','g74','g75','g76','g77','g78','g79','g80','g81','g82','g83','g84','g85','g86','g87','g88','g89','g90','g91','g92','g93','g94','g95','g96','g97','g98','g99','g100','g101','g102','g103','g104','g105','g106','g107','g108','g110','g111a','g111b','g111c','g112','g113','g114','g115','g116a','g116b','g116c','g116d','g118a','g118b','g119a','g119b','g120a','g120b','g121a','g121b','g122a','g122b','g123','g124'],
   historical: ['g14'],
   incubating: []
 };
@@ -3096,6 +3138,13 @@ const SKILL_GRAPH = [
   { from: "g58a", to: "g58c", relation: "family" },
   { from: "g58b", to: "g58c", relation: "family" },
   { from: "g43a", to: "g02", relation: "uses" },
+  { from: "g43a", to: "g43c", relation: "related" },
+  { from: "g43b", to: "g02", relation: "uses" },
+  { from: "g43c", to: "g02", relation: "uses" },
+  { from: "g43d", to: "g01", relation: "uses" },
+  { from: "g43e", to: "g02", relation: "uses" },
+  { from: "g43f", to: "g02", relation: "uses" },
+  { from: "g43g", to: "g02", relation: "uses" },
   { from: "g27", to: "g28", relation: "extends" },
   { from: "g111a", to: "g111b", relation: "family" },
   { from: "g111a", to: "g111c", relation: "family" },
