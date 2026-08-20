@@ -1501,7 +1501,7 @@ const AMMO_DATA = [
       chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Esperanza.",role:"o"},{w:"Busco",role:"v"},{w:"la salida",role:"o"},{w:"al mismo tiempo que",role:"c"},{w:"acompaño",role:"v"},{w:"al Yo Pequeñito.",role:"o"}]},
     fire_daily:[
       {es:"Estudio al mismo tiempo que escucho música.", zh:"我一邊念書，同時，也聽音樂。", chunks:[{w:"Estudio",role:"v"},{w:"al mismo tiempo que",role:"c"},{w:"escucho música.",role:"v"}]},
-      {es:"Cocina al mismo tiempo que cuida a su hija.", zh:"她一邊做飯，同時，也照顧她的女兒。", chunks:[{w:"Cocina",role:"v"},{w:"al mismo tiempo que",role:"c"},{w:"cuida a su hija.",role:"v"}]}
+      {es:"Ella cocina al mismo tiempo que cuida a su hija.", zh:"她一邊做飯，同時，也照顧她的女兒。", chunks:[{w:"Ella",role:"s"},{w:"cocina",role:"v"},{w:"al mismo tiempo que",role:"c"},{w:"cuida a su hija.",role:"v"}]}
     ]
   },
   {
@@ -1514,7 +1514,7 @@ const AMMO_DATA = [
       chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Guardián.",role:"o"},{w:"Protejo",role:"v"},{w:"el Corazón Verdadero,",role:"o"},{w:"sobre todo,",role:"c"},{w:"cuando",role:"c"},{w:"Juicio ataca.",role:"v"}]},
     fire_daily:[
       {es:"Me gusta leer, sobre todo, cuando llueve.", zh:"我喜歡看書，尤其是，下雨的時候。", chunks:[{w:"Me gusta leer,",role:"v"},{w:"sobre todo,",role:"c"},{w:"cuando llueve.",role:"c"}]},
-      {es:"Está ocupada, sobre todo, cuando hay muchos clientes.", zh:"她很忙，尤其是，客人多的時候。", chunks:[{w:"Está ocupada,",role:"v"},{w:"sobre todo,",role:"c"},{w:"cuando hay muchos clientes.",role:"c"}]}
+      {es:"Ella está ocupada, sobre todo, cuando hay muchos clientes.", zh:"她很忙，尤其是，客人多的時候。", chunks:[{w:"Ella",role:"s"},{w:"está ocupada,",role:"v"},{w:"sobre todo,",role:"c"},{w:"cuando hay muchos clientes.",role:"c"}]}
     ]
   },
   {
@@ -1526,7 +1526,7 @@ const AMMO_DATA = [
     fire_peppa:{es:"Yo soy Juicio. Juzgo cada palabra, sin embargo, mis palabras más duras son para mí.", zh:"我是錐心魘。我評判每一句話，然而，我最狠的話，都是留給自己的。", ts:null,
       chunks:[{w:"Yo",role:"s"},{w:"soy",role:"v"},{w:"Juicio.",role:"o"},{w:"Juzgo",role:"v"},{w:"cada palabra,",role:"o"},{w:"sin embargo,",role:"c"},{w:"mis palabras más duras",role:"s"},{w:"son",role:"v"},{w:"para mí.",role:"o"}]},
     fire_daily:[
-      {es:"Critico a otros fácilmente, sin embargo, soy peor conmigo mismo.", zh:"我很容易批評別人，然而，我對自己更嚴苛。", chunks:[{w:"Critico a otros fácilmente,",role:"v"},{w:"sin embargo,",role:"c"},{w:"soy peor conmigo mismo.",role:"v"}]},
+      {es:"Critico a otros fácilmente, sin embargo, soy más duro conmigo mismo.", zh:"我很容易批評別人，然而，我對自己更嚴苛。", chunks:[{w:"Critico a otros fácilmente,",role:"v"},{w:"sin embargo,",role:"c"},{w:"soy más duro conmigo mismo.",role:"v"}]},
       {es:"Exijo mucho de los demás, sin embargo, me exijo aún más.", zh:"我對別人要求很多，然而，我對自己要求更多。", chunks:[{w:"Exijo mucho de los demás,",role:"v"},{w:"sin embargo,",role:"c"},{w:"me exijo aún más.",role:"v"}]}
     ]
   },
