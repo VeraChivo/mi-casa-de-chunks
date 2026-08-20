@@ -483,6 +483,40 @@ const AMMO_DAILY_AUDIO_MAP={
   e10_08:["audio/ammo/ammo_e10_08_daily1.mp3", "audio/ammo/ammo_e10_08_daily2.mp3"],
   e10_09:["audio/ammo/ammo_e10_09_daily1.mp3", "audio/ammo/ammo_e10_09_daily2.mp3"],
   e10_10:["audio/ammo/ammo_e10_10_daily1.mp3", "audio/ammo/ammo_e10_10_daily2.mp3"],
+
+  // ── 2026-08-20 全站音檔盤查新增：E12/E14/E16/E17-E20 這批彈藥卡的 🔥全速運轉日常例句 ──
+  // 路徑先預留、檔案尚未錄製，speakAmmoDaily() 找不到檔案會 fallback 回瀏覽器 TTS。
+  e12_03:["audio/ammo/ammo_e12_03_daily1.mp3", "audio/ammo/ammo_e12_03_daily2.mp3"],
+  e12_04:["audio/ammo/ammo_e12_04_daily1.mp3", "audio/ammo/ammo_e12_04_daily2.mp3"],
+  e12_10:["audio/ammo/ammo_e12_10_daily1.mp3", "audio/ammo/ammo_e12_10_daily2.mp3"],
+  e14_01:["audio/ammo/ammo_e14_01_daily1.mp3", "audio/ammo/ammo_e14_01_daily2.mp3"],
+  e14_02:["audio/ammo/ammo_e14_02_daily1.mp3", "audio/ammo/ammo_e14_02_daily2.mp3"],
+  e14_03:["audio/ammo/ammo_e14_03_daily1.mp3", "audio/ammo/ammo_e14_03_daily2.mp3"],
+  e14_04:["audio/ammo/ammo_e14_04_daily1.mp3", "audio/ammo/ammo_e14_04_daily2.mp3"],
+  e14_05:["audio/ammo/ammo_e14_05_daily1.mp3", "audio/ammo/ammo_e14_05_daily2.mp3"],
+  e14_06:["audio/ammo/ammo_e14_06_daily1.mp3", "audio/ammo/ammo_e14_06_daily2.mp3"],
+  e14_07:["audio/ammo/ammo_e14_07_daily1.mp3", "audio/ammo/ammo_e14_07_daily2.mp3"],
+  e14_08:["audio/ammo/ammo_e14_08_daily1.mp3", "audio/ammo/ammo_e14_08_daily2.mp3"],
+  e14_09:["audio/ammo/ammo_e14_09_daily1.mp3", "audio/ammo/ammo_e14_09_daily2.mp3"],
+  e16_05:["audio/ammo/ammo_e16_05_daily1.mp3", "audio/ammo/ammo_e16_05_daily2.mp3"],
+  e16_07:["audio/ammo/ammo_e16_07_daily1.mp3", "audio/ammo/ammo_e16_07_daily2.mp3"],
+  e16_09:["audio/ammo/ammo_e16_09_daily1.mp3", "audio/ammo/ammo_e16_09_daily2.mp3"],
+  e17_01:["audio/ammo/ammo_e17_01_daily1.mp3", "audio/ammo/ammo_e17_01_daily2.mp3"],
+  e17_02:["audio/ammo/ammo_e17_02_daily1.mp3", "audio/ammo/ammo_e17_02_daily2.mp3"],
+  e17_03:["audio/ammo/ammo_e17_03_daily1.mp3", "audio/ammo/ammo_e17_03_daily2.mp3"],
+  e17_04:["audio/ammo/ammo_e17_04_daily1.mp3", "audio/ammo/ammo_e17_04_daily2.mp3"],
+  e18_01:["audio/ammo/ammo_e18_01_daily1.mp3", "audio/ammo/ammo_e18_01_daily2.mp3"],
+  e18_02:["audio/ammo/ammo_e18_02_daily1.mp3", "audio/ammo/ammo_e18_02_daily2.mp3"],
+  e18_05:["audio/ammo/ammo_e18_05_daily1.mp3", "audio/ammo/ammo_e18_05_daily2.mp3"],
+  e18_09:["audio/ammo/ammo_e18_09_daily1.mp3", "audio/ammo/ammo_e18_09_daily2.mp3"],
+  e19_01:["audio/ammo/ammo_e19_01_daily1.mp3", "audio/ammo/ammo_e19_01_daily2.mp3"],
+  e19_06:["audio/ammo/ammo_e19_06_daily1.mp3", "audio/ammo/ammo_e19_06_daily2.mp3"],
+  e19_08:["audio/ammo/ammo_e19_08_daily1.mp3", "audio/ammo/ammo_e19_08_daily2.mp3"],
+  e19_09:["audio/ammo/ammo_e19_09_daily1.mp3", "audio/ammo/ammo_e19_09_daily2.mp3"],
+  e20_01:["audio/ammo/ammo_e20_01_daily1.mp3", "audio/ammo/ammo_e20_01_daily2.mp3"],
+  e20_03:["audio/ammo/ammo_e20_03_daily1.mp3", "audio/ammo/ammo_e20_03_daily2.mp3"],
+  e20_06:["audio/ammo/ammo_e20_06_daily1.mp3", "audio/ammo/ammo_e20_06_daily2.mp3"],
+  e20_08:["audio/ammo/ammo_e20_08_daily1.mp3", "audio/ammo/ammo_e20_08_daily2.mp3"],
 };
 
 // 首頁課文S/V/O語塊(handleChunkTap)真人音檔，key=語塊原文(含標點/大小寫)
@@ -1255,6 +1289,73 @@ const GRAM_AUDIO_MAP={
   "hacer caso": "audio/gram/chunkfam_hacer_05.mp3",
   "hacer frío": "audio/gram/chunkfam_hacer_06.mp3",
   "hacer calor": "audio/gram/chunkfam_hacer_07.mp3",
+
+  // ── 2026-08-20 全站音檔盤查新增：這批路徑先預留，檔案尚未錄製 ──
+  // 找不到檔案時 speakGramSmart() 會自動 fallback 回瀏覽器 TTS（比照 E17 當初的做法）。
+  // 其中 8 句是「例句被改寫後，舊音檔的 key 對不上」造成的：g08×2 / g42b / g52b / g52c /
+  // g116a / g116d / g118a——舊檔案還在 audio/gram/ 裡，但唸的是舊句子，所以重新錄新句子，
+  // 舊檔案變成孤兒（要不要刪等 VERA 決定，留著不影響功能）。
+  "Soy Nita.": "audio/gram/gram_g01_7.mp3", // 我是妮妲。（身分，劇情原句，E17）
+  "Soy el hermano mayor de Nita.": "audio/gram/gram_g01_8.mp3", // 我是妮妲的哥哥。（關係，劇情原句，E18）
+  "Tito está esperando su turno para jugar.": "audio/gram/gram_g02_8.mp3", // 迪多在等輪到他玩。（進行中，劇情原句，E19）
+  "A Nita le gusta el helado.": "audio/gram/gram_g08_6.mp3", // 妮妲喜歡冰淇淋。（劇情原句，E20）
+  "A Tito le encanta su carrito rojo.": "audio/gram/gram_g08_7.mp3", // 迪多超愛他的紅色小車車。（劇情原句，E20）
+  "A Tito no le gusta el ruido fuerte.": "audio/gram/gram_g08_8.mp3", // 迪多不喜歡很大的聲音。（否定，劇情原句，E20）
+  "Creo que todo es mi error.": "audio/gram/gram_g13_1.mp3", // 我以為都是我的錯。（劇情原句，SEL線）
+  "Papá Tato dice: \"Los recordamos porque los queremos.\"": "audio/gram/gram_g30_1.mp3", // 達多爸爸說：「我們記得他們，因為我們愛他們。」（劇情
+  "El amor no se muere, pero sí cambia de forma.": "audio/gram/gram_g32_1.mp3", // 愛不會死，但它的形式會改變。（劇情原句，E11）
+  "Nita chapotea en los charcos, pero la ropa se moja.": "audio/gram/gram_g32_2.mp3", // 妮妲在水坑裡玩水，但是衣服被弄濕了。（劇情原句，E1
+  "Quedamos en que él llamaría.": "audio/gram/gram_g42b_1.mp3", // 我們講好他會打電話來。
+  "Quedaron en que se verían el sábado.": "audio/gram/gram_g42b_2.mp3", // 他們講好星期六會見面。
+  "Estoy agobiado con el trabajo esta semana.": "audio/gram/gram_g43a_1.mp3", // 這禮拜的工作讓我喘不過氣。
+  "Este pastel es bueno.": "audio/gram/gram_g52a_1.mp3", // 這個蛋糕很好。
+  "Este pastel es mejor que el otro.": "audio/gram/gram_g52a_2.mp3", // 這個蛋糕比另一個更好。
+  "Este es el mejor pastel.": "audio/gram/gram_g52a_3.mp3", // 這是最好的蛋糕。
+  "Este día es malo.": "audio/gram/gram_g52b_1.mp3", // 這天很糟。
+  "Este día es peor que ayer.": "audio/gram/gram_g52b_2.mp3", // 這天比昨天更糟。
+  "Este es el peor día.": "audio/gram/gram_g52b_3.mp3", // 這是最糟的一天。
+  "Nita es grande.": "audio/gram/gram_g52c_1.mp3", // 妮妲年紀不小了。
+  "Nita es mayor que Tito.": "audio/gram/gram_g52c_2.mp3", // 妮妲比迪多年長。
+  "Nita es la mayor de los hermanos.": "audio/gram/gram_g52c_3.mp3", // 妮妲是手足裡最年長的。
+  "Mimi es pequeña.": "audio/gram/gram_g52d_1.mp3", // 咪咪還小。
+  "Mimi es menor que Nita.": "audio/gram/gram_g52d_2.mp3", // 咪咪比妮妲年幼。
+  "Mimi es la menor de los hermanos.": "audio/gram/gram_g52d_3.mp3", // 咪咪是手足裡最年幼的。
+  "Tito se puso rojo de vergüenza.": "audio/gram/gram_g58a_1.mp3", // 迪多害羞得臉都紅了。
+  "Nita se quedó callada un momento.": "audio/gram/gram_g58b_1.mp3", // 妮妲安靜了一會兒。
+  "Con los años, Cata se volvió más paciente.": "audio/gram/gram_g58c_1.mp3", // 這些年下來，卡妲變得更有耐心了。
+  "Pero el Corazón fue herido hace mucho tiempo.": "audio/gram/gram_g109_1.mp3", // 但本心很久以前就受了傷。（劇情原句，E15換詞組合）
+  "¿Has estado alguna vez en España?": "audio/gram/gram_g116a_1.mp3", // 你曾經去過西班牙嗎？
+  "¿Has probado alguna vez esto?": "audio/gram/gram_g116a_2.mp3", // 你曾經試過這個嗎？
+  "Nunca he estado allí.": "audio/gram/gram_g116b_1.mp3", // 我從沒去過那裡。
+  "Nunca he probado eso.": "audio/gram/gram_g116b_2.mp3", // 我從沒試過那個。
+  "Todavía no he comido.": "audio/gram/gram_g116c_1.mp3", // 我還沒吃。
+  "Todavía no lo he visto.": "audio/gram/gram_g116c_2.mp3", // 我還沒看到。
+  "Ya he comido.": "audio/gram/gram_g116d_1.mp3", // 我已經吃了。
+  "¿Ya has comido?": "audio/gram/gram_g116d_2.mp3", // 你已經吃了嗎？
+  "El ovillo está encima de la mesa.": "audio/gram/gram_g118a_1.mp3", // 毛線球在桌子上面。
+  "El gato duerme encima del sofá.": "audio/gram/gram_g118a_2.mp3", // 貓咪在沙發上面睡覺。
+  "El ovillo está debajo de la mesa.": "audio/gram/gram_g118b_1.mp3", // 毛線球在桌子下面。
+  "El gato se esconde debajo de la cama.": "audio/gram/gram_g118b_2.mp3", // 貓咪躲在床底下。
+  "El ovillo está delante del camión.": "audio/gram/gram_g119a_1.mp3", // 毛線球在貨車前面。
+  "Nita está delante de la puerta.": "audio/gram/gram_g119a_2.mp3", // 妮妲站在門前面。
+  "El ovillo está detrás del camión.": "audio/gram/gram_g119b_1.mp3", // 毛線球在貨車後面。
+  "Nita se esconde detrás de la puerta.": "audio/gram/gram_g119b_2.mp3", // 妮妲躲在門後面。
+  "El ovillo está dentro de la caja.": "audio/gram/gram_g120a_1.mp3", // 毛線球在箱子裡面。
+  "Todo está dentro de la mochila.": "audio/gram/gram_g120a_2.mp3", // 所有東西都在背包裡面。
+  "El ovillo está fuera de la caja.": "audio/gram/gram_g120b_1.mp3", // 毛線球在箱子外面。
+  "El gato se queda fuera de casa.": "audio/gram/gram_g120b_2.mp3", // 貓咪待在家外面。
+  "La mariposa está cerca de la flor.": "audio/gram/gram_g121a_1.mp3", // 蝴蝶離花很近。
+  "Mi casa está cerca de la escuela.": "audio/gram/gram_g121a_2.mp3", // 我家離學校很近。
+  "La mariposa está lejos de la flor.": "audio/gram/gram_g121b_1.mp3", // 蝴蝶離花很遠。
+  "Mi casa está lejos de la escuela.": "audio/gram/gram_g121b_2.mp3", // 我家離學校很遠。
+  "La colmena está a la derecha del árbol.": "audio/gram/gram_g122a_1.mp3", // 蜂巢在樹的右邊。
+  "Nita está a la derecha de Tito.": "audio/gram/gram_g122a_2.mp3", // 妮妲在迪多的右邊。
+  "La colmena está a la izquierda del árbol.": "audio/gram/gram_g122b_1.mp3", // 蜂巢在樹的左邊。
+  "Nita está a la izquierda de Tito.": "audio/gram/gram_g122b_2.mp3", // 妮妲在迪多的左邊。
+  "La regadera está al lado del árbol.": "audio/gram/gram_g123_1.mp3", // 澆花器在樹的旁邊。
+  "Nita está al lado de Tito.": "audio/gram/gram_g123_2.mp3", // 妮妲在迪多的旁邊。
+  "El bolígrafo está entre el teléfono y la taza.": "audio/gram/gram_g124_1.mp3", // 筆在手機和杯子之間。
+  "Nita está entre Mamá Cata y Tito.": "audio/gram/gram_g124_2.mp3", // 妮妲坐在貓媽媽和迪多之間。
 };
 
 // grammar.js例句裡跟課文/彈藥庫/mom/心田深耕重複的句子，直接借用對應來源的音檔(不重複錄)

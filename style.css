@@ -370,11 +370,14 @@ body::before{content:'';position:fixed;top:-80px;right:-80px;width:300px;height:
 .cog-en{font-size:12px;font-weight:700;color:var(--tmid);min-width:80px;cursor:pointer}
 .cog-arrow{color:var(--mizu);font-size:12px;flex-shrink:0}
 .cog-es{font-size:13px;font-weight:900;color:#1A2E4A;flex:1;cursor:pointer}
+/* 中文註解較長時（如 account／query），讓中文換行、不要反過來把西語擠成兩行——
+   西語是這區的主要學習內容，優先保持完整一行 */
+.cog-row>.cog-es{flex:1 0 auto}
 .cog-es.playing{opacity:.55}
 /* 🔎查字典降級成次要動作（2026-07-19）：點單字本身＝聽發音，這顆小按鈕才會跳WordReference */
 .cog-dict-btn{background:none;border:none;font-size:13px;padding:2px 4px;cursor:pointer;flex-shrink:0;opacity:.6}
 .cog-dict-btn:active{opacity:1}
-.cog-zh{font-size:11px;color:var(--tlight);font-weight:600;white-space:nowrap}
+.cog-zh{font-size:11px;color:var(--tlight);font-weight:600;min-width:0;overflow-wrap:anywhere}
 .cog-tip{font-size:12px;font-weight:700;color:var(--misora);background:rgba(108,155,210,.08);border-radius:10px;padding:10px 14px;margin:8px 14px 14px;line-height:1.55;border-left:3px solid var(--mizu)}
 .cog-click{cursor:pointer;text-decoration:underline dotted var(--mizu);transition:all .15s}
 .cog-click:hover{color:var(--misora);text-decoration:underline solid var(--misora)}

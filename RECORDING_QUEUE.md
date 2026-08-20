@@ -1,118 +1,143 @@
 # 🎙️ 錄音待辦清單（RECORDING_QUEUE.md）
 
-2026-07-19 全站TTS盤查：比對 `audio-manifest.js` 各個音檔對照表 vs 各資料檔實際內容量，
-找出目前還在fallback瀏覽器TTS、沒有真人錄音的地方。之後有新增內容，照這個格式繼續往下加，
-確保不會漏掉——這份是「還缺什麼」的總清單，等妳排出優先順序、我再依批次產生Colab錄音腳本。
-
-## ✅✅✅ 2026-07-19 這輪盤點出的四批缺口全部錄完接上了
-
-E11整集、mom.js第25-39句、grammar.js 166句、歌曲25句+新聞53句——全部有真人錄音，
-不再fallback瀏覽器TTS。這份清單留著當之後新內容的盤點格式範本，不用再往下找待辦。
+這份是「還缺什麼真人音檔」的總清單。依 CLAUDE.md 工作守則第28條，TTS 只是開發期與 fallback，
+正式內容一律要真人錄音；新增/修改內容後要跑一次「AUDIO_MANIFEST key → 音檔檔案 → 播放測試」檢查鏈。
 
 ---
 
-## 🔴 缺口①：E11 亡靈節特輯《El Camino de la Memoria》— 整集10句完全沒錄音
+## 📋 2026-08-20 全站音檔盤查（目前狀態）
 
-`AUDIO_MANIFEST` 目前16集只有15集有音檔，唯獨這集（index 10）是空的。CLAUDE.md 也記錄過這個缺口。
-**建議優先度最高**——這是唯一「整集掛零」的劇情內容，其餘E1-E10、E12-E16都已完整。
+直接從 `audio-manifest.js` 對照各資料檔實際內容算出來的，不是憑記憶：
 
-需要具體文字：episodes.js 第10集（10句劇情句），可以直接請我抓出來準備錄音腳本。
+| 內容類型 | 總數 | 已有真人音檔 | 缺口 |
+|---|---|---|---|
+| 📺 劇情整句（E1–E20，`AUDIO_MANIFEST`） | 200 句 | 200 | ✅ 0 |
+| 🧺 彈藥庫核心句（`AUDIO_MANIFEST` 反查） | 131 張 | 131 | ✅ 0 |
+| 🔥 彈藥庫日常例句（`AMMO_DAILY_AUDIO_MAP`） | 262 句 | 200 | 🔴 62 |
+| 💧 文法卡例句（`GRAM_AUDIO_MAP`） | 448 句 | 387 | 🔴 61 |
+| 🌻 劇情逐字語塊（`CHUNK_AUDIO_MAP`） | 735 次／520 個 | 431 次 | 🟡 304 次（41%） |
 
----
-
-## 🟡 缺口②：🛌床邊低語呢／馬麻有話講 · peppa_chunks 分類第25-39句（TENER/HACER家族，共15句）
-
-`MOM_AUDIO_MAP.chunks` 只錄了前24句（mom_chunks_01~24.mp3），第25句之後（TENER/HACER家族）
-從沒錄過。具體句子：
-
-| # | 西語 | 中文 |
-|---|---|---|
-| 25 | Tengo hambre. | 我肚子餓了。 |
-| 26 | Tengo sed. | 我口渴了。 |
-| 27 | Tengo frío. | 我覺得好冷。 |
-| 28 | Tengo calor. | 我覺得好熱。 |
-| 29 | Tengo miedo. | 我會怕。 |
-| 30 | Tienes razón. | 你說得對。 |
-| 31 | ¡Qué suerte tienes! | 你好幸運喔！ |
-| 32 | Tengo ganas de abrazarte. | 我好想抱抱你。 |
-| 33 | Vamos a hacer ejercicio. | 我們來運動吧。 |
-| 34 | ¿Puedo hacerte una pregunta? | 我可以問你一個問題嗎？ |
-| 35 | Hay que hacer la tarea. | 該做功課囉。 |
-| 36 | Vamos a hacer un viaje. | 我們要去旅行囉。 |
-| 37 | Tienes que hacerle caso a mamá. | 要聽媽媽的話喔。 |
-| 38 | Hace frío hoy. | 今天天氣好冷。 |
-| 39 | Hace calor hoy. | 今天天氣好熱。 |
-
-錄完只要照現有命名規則存成 `mom_chunks_25.mp3` ~ `mom_chunks_39.mp3` 就能直接接上，不用改程式碼。
+**路徑已經全部預留好了**——上面兩批 🔴 缺口的 123 個檔案路徑，已經寫進 `audio-manifest.js`，
+錄好的檔案照資料夾結構丟進 `audio/` 就會自動生效，不用再改任何程式碼。
+檔案還沒錄之前，播放時會自動 fallback 回瀏覽器 TTS（已實測 404 不會 crash）。
 
 ---
 
-## 🟡 缺口③：💧文法儲水槽／🔄超級變變變 — 166句範例句沒有錄音
+## 🔴 缺口①：彈藥庫日常例句 62 句
 
-`GRAM_AUDIO_MAP` 現有839筆，但grammar.js目前總共467句不重複例句，其中166句完全沒對應錄音——
-主要集中在最近新增的B2/C1內容（虛擬語氣、連接詞、易混淆詞組、成語、拉美俚語、B2詞彙、比較級等）。
-量比較大，**不建議一次全錄**，建議照卡片分類分批：
+2026-08-19 那批「補完彈藥庫：E11–E20 新增 27 張 reusableChunk 卡」之後產生的缺口，
+加上第一站 E17–E20 的彈藥卡——核心句都有音檔，只有 🔥全速運轉的日常例句沒有。
 
-- 虛擬語氣類（g27/g28/g29 WEIRDO口訣/情緒動詞/Ojalá）
-- 連接詞類（g30/g31/g32 porque/sino/pero）
-- 易混淆詞組（g33/g34/g35 por-para/saber-conocer/pedir-preguntar）
-- 成語/俚語（g36-g40、拉美文化小卡g45-g49）
-- B2詞彙（g43/g44）
-- 比較級（g50/g51/g52）
+| 集數 | 缺幾句 |
+|---|---|
+| E12 | 6 |
+| E14 | 18 |
+| E16 | 6 |
+| E17 | 8 |
+| E18 | 8 |
+| E19 | 8 |
+| E20 | 8 |
 
-需要的話我可以先抓出其中一批（例如虛擬語氣，優先度最高、之前討論最多次）的完整句子清單。
-
----
-
-## 🟢 缺口④：🎵歌曲填空 LYRICS_FILL_DATA — 全部25句都是TTS，從未錄過
-
-歌詞本身（引號填空句）目前完全依賴瀏覽器TTS，沒有一句是真人錄音。這批句子涉及公共財兒歌
-（lf05-lf15）跟有版權限制只能少量引用的流行歌（lf01-lf04/lf16-lf25），**如果要錄，公共財兒歌
-的部分風險較低，可以先錄這批（lf05-lf15，共11句）**，流行歌那幾句版權考量下建議維持TTS或再討論。
+👉 錄音腳本：**`recording_20260820_ammo.txt`**（整段貼進 Colab 就能跑，62 句）
 
 ---
 
-## 🟢 缺口⑤：📰B2時事傳送門 news.js — 53則填空題全部TTS，從未錄過
+## 🔴 缺口②：文法卡例句 61 句
 
-新聞句子是DW等真實新聞的B2級語塊，全部依賴TTS。因為是每天輪播的內容池、單則使用機率不算高，
-優先度目前最低，除非妳覺得這塊很常用再考慮排進去。
+主要來自這幾波新卡：g52a–d（不規則比較級拆卡）、g116a–d（經驗時態拆卡）、
+g118a–g124（12 張介系詞空間片語）、g58a–c（三種「變成」拆卡）、g111a–c、g42b、g43a。
+
+| 卡片 | 缺幾句 |
+|---|---|
+| g08 | 3 |
+| g52a | 3 |
+| g52b | 3 |
+| g52c | 3 |
+| g52d | 3 |
+| g01 | 2 |
+| g116a | 2 |
+| g116b | 2 |
+| g116c | 2 |
+| g116d | 2 |
+| g118a | 2 |
+| g118b | 2 |
+| g119a | 2 |
+| g119b | 2 |
+| g120a | 2 |
+| g120b | 2 |
+| g121a | 2 |
+| g121b | 2 |
+| g122a | 2 |
+| g122b | 2 |
+| g123 | 2 |
+| g124 | 2 |
+| g32 | 2 |
+| g42b | 2 |
+| g02 | 1 |
+| g109 | 1 |
+| g13 | 1 |
+| g30 | 1 |
+| g43a | 1 |
+| g58a | 1 |
+| g58b | 1 |
+| g58c | 1 |
+
+👉 錄音腳本：**`recording_20260820_grammar.txt`**（整段貼進 Colab 就能跑，61 句）
+
+### ⚠️ 其中 8 句是「例句改寫後，舊音檔對不上」造成的
+
+`GRAM_AUDIO_MAP` 是用**句子文字本身**當 key，所以例句一被改寫，對照就靜默失效、
+直接掉回 TTS，畫面上完全看不出來。這批舊 mp3 檔案還在 `audio/gram/`，但唸的是舊句子：
+
+- **g08**：A Nita le gusta el helado.（舊音檔唸的是 A Nita le encanta el helado de chocolate.）
+- **g08**：A Tito no le gusta el ruido fuerte.（舊音檔唸的是 A Tito no le gusta jugar solo.）
+- **g42b**：Quedamos en que él llamaría.（舊音檔唸的是 ¿En qué quedamos?）
+- **g52b**：Este es el peor día.（舊音檔唸的是 El clima es peor hoy.）
+- **g52c**：Nita es mayor que Tito.（舊音檔唸的是 Nita es más alta que Tito.）
+- **g116a**：¿Has probado alguna vez esto?（舊音檔唸的是 ¿Alguna vez has comido chapulines?）
+- **g116d**：Ya he comido.（舊音檔唸的是 Ya he comido, gracias.）
+- **g118a**：El gato duerme encima del sofá.（舊音檔唸的是 El gato duerme en el sofá.）
+
+處理方式：直接錄新句子（已含在上面的腳本裡）。舊檔案會變成孤兒檔，留著不影響功能，
+要不要清掉等 VERA 決定——目前 `audio/` 底下總共有 254 個沒被任何對照表引用的 mp3，
+多半是這種歷史殘留（例如 `audio/e2/41_nita_y_papa_pig.mp3` 是換皮前的舊檔名）。
 
 ---
 
-## ✅ 已確認覆蓋完整，不用管
+## 🟡 缺口③：劇情逐字語塊 41%（維持現況，不建議一次補齊）
 
-- 💬心田深耕 CORAZON_DATA（34句，含最新的🕯️跨國際不孤單）：`CORAZON_AUDIO_MAP` 六類全部對得上
-- 🧺語塊採集籃 fire_daily（200句）：`AMMO_DAILY_AUDIO_MAP` 100張卡×2句全部對得上
-- 🔤前後綴歡心前42字：上一輪已重新接上VERA的真人錄音
-- E1-E10、E12-E16 共15集劇情：`AUDIO_MANIFEST` 全部覆蓋
-- 🛌peppa_chunks第1-24句、sel_phrases全部4句、mom_daily全部7句
-- 🌳GP_AUDIO_MAP（自戀鏡子/太極變身鏡人稱練習）、STAGE2_AUDIO_MAP（封存醞釀）：兩者都是小規模封閉集合，數量比對一致
+點劇情句子裡的單一語塊時，520 個不同語塊中有 260 個沒有專屬短音檔，會 fallback 回 TTS。
+CLAUDE.md 已定案**不要一次補齊全部**，先照高頻順序慢慢錄。目前實際跑出來的高頻缺口：
+
+| 出現次數 | 語塊 |
+|---|---|
+| 7 次 | `gusta` |
+| 6 次 | `Nita.` |
+| 6 次 | `Yo soy` |
+| 5 次 | `Soy` |
+| 3 次 | `vive` |
+| 3 次 | `Cansancio.` |
+| 3 次 | `Somos` |
+| 2 次 | `A Nita le` |
+| 2 次 | `El Yo Pequeñito` |
+| 2 次 | `A veces` |
+| 2 次 | `cuando` |
+
+跟 CLAUDE.md 記錄的優先清單一致（SER/GUSTAR 句型骨架 → 高頻連接詞/動詞 → 角色專屬呼名）。
 
 ---
 
-## ✅ 四批錄音腳本已產生（2026-07-19，依VERA指示分批）
+## 📝 錄音腳本規格（工作守則第12條，之後產生新腳本照這個）
 
-- **第1批 `grammar_batch1_of2.txt`**：文法儲水槽缺口 前83句 ✅ **已完成（2026-07-19）**——
-  83個mp3全部驗證通過，接進`GRAM_AUDIO_MAP`（839→922筆），存在`audio/gram/gram_missing_a_001~083.mp3`
-- **第2批 `grammar_batch2_of2.txt`**：文法儲水槽缺口 後83句 ✅ **已完成（2026-07-19）**——
-  83個mp3全部驗證通過，接進`GRAM_AUDIO_MAP`（922→1005筆），存在`audio/gram/gram_missing_b_001~083.mp3`。
-  至此grammar.js全部467句不重複例句都有真人錄音，文法儲水槽這條線完成
-- **第3批 `songs_and_news.txt`**：歌曲填空25句＋新聞填空53句，合計78句 ✅ **已完成**——
-  查證發現這批其實在本輪對話更早之前就已經處理過（commit 21e6cc8「接進第3/4份真人錄音」），
-  `GRAM_AUDIO_MAP`裡25句歌詞（`audio/lyrics/lyrics_lf01~25.mp3`）+53句新聞
-  （`audio/news/news_nw01~53.mp3`）全部已存在且對應正確，78句0缺漏。2026-07-19再次收到
-  VERA上傳的`songs_news_batch.zip`是重複批次，比對後確認內容跟既有錄音是同一批，未重新覆蓋
-- **第4批 `e11_and_mom.txt` → 已更新為 `script_D2.txt`（59句）**：原本以為E11要「先錄整句、
-  事後切割分段」（CLAUDE.md那條規則是給真人錄音設計的——真人怕漏字才要求先錄一次完整版）。
-  VERA提醒這批是TTS不是真人錄音，語塊+整句可以直接分開各自產生，不用先錄再切。已重新盤查
-  E11每句的實際語塊（S/V/C/連接詞），跟CHUNK_AUDIO_MAP既有詞彙比對後，扣掉11個已經錄過的
-  重複詞（Hoy/es/y/pero/Tito/está/Nita/Mamá Cata/Papá Tato/Mimi/no entiende），只剩34個真的
-  沒錄過的語塊，加上10句整句、15句mom.js，合計59句一次生成。
-  ✅ **已完成（2026-07-19）**——59個mp3全部驗證通過：34個語塊接進`CHUNK_AUDIO_MAP`（含兩個
-  帶引號的特殊語塊「"Los recordamos」/「los queremos."」，已確認跟episodes.js原文逐字元對齊）、
-  10句整句接進`AUDIO_MANIFEST[10]`（E11從掛零補到完整，16集劇情全數覆蓋）、15句接進
-  `MOM_AUDIO_MAP.chunks`（24→39筆，peppa_chunks分類全數覆蓋）
+- 一律**只給一個 `.txt`**，內容就是可以直接貼進 Colab 執行的 Python 腳本（不要拆成清單+腳本兩個檔）
+- `gTTS`，口音固定 `lang="es", tld="com.mx"`（拉美西語）
+- **每份上限 120 句**（超過 Colab 貼不完整），超過就拆成多份、各自獨立的 zip
+- 每句有進度輸出、失敗重試 3 次（遞增等待）、句間隨機停頓 0.5–1.2 秒（避免整批被擋）
+- 結尾一定要 `files.download()`，並印出 zip 的絕對路徑與檔案大小（自動下載沒跳出來時可手動抓）
 
-四個都是可以直接複製貼進Colab執行的.txt腳本（gTTS，lang='es' tld='com.mx'，含重試機制跟隨機停頓，
-跑完自動打包zip觸發下載）。錄完把zip丟回來，我負責接上audio-manifest.js（CHUNK_AUDIO_MAP／
-AUDIO_MANIFEST／MOM_AUDIO_MAP三個對照表都會用到）。
+---
+
+## ✅ 歷史紀錄：2026-07-19 那輪的四批缺口已全部錄完
+
+E11 整集、mom.js 第 25–39 句、grammar.js 166 句、歌曲 25 句 + 新聞 53 句——都已接上真人錄音。
+那輪的詳細清單已經完成任務，這次改寫成上面的最新狀態，不再保留舊清單避免混淆。
