@@ -615,7 +615,7 @@ const GRAMMAR_DATA = [
   {
     id:"g16", cat:"phrase", level:"a1a2",
     title:"肯定命令句：怎麼對「你」下指令？",
-    rule:"動詞第三人稱單數現在式 = 肯定命令句<br><br>直接對「你」下指令時使用，例如habla（你說）、come（你吃）。",
+    rule:"想直接叫「你」做一件事，就用habla（你說）、come（你吃）這種形式——也就是動詞的第三人稱單數現在式。",
     examples:[
       {es:"Respira hondo.", zh:"深呼吸。（respirar → respira）"},
       {es:"Tose.", zh:"咳嗽。（toser → tose）"},

@@ -223,8 +223,16 @@ try {
 }
 
 // ── Jargon殘留檢查：規則15/19明講禁止的文法術語，不該直接出現在使用者第一眼看到的內容裡 ──
-// 只查 examples/family/extraFamily/conj（使用者「第一眼」會看到的欄位），不查 trap/rule/mnemonic——
-// 那幾欄本來就是進階補充說明的位置，允許帶一點技術性描述（見規則19「🔎想深入」的第二層精神）。
+// 查兩種位置，判準不同：
+// ① examples/family/extraFamily/conj——這些是使用者「第一眼」會看到的欄位，術語出現在
+//    任何位置都算違規（這幾欄本來就該是純白話展示，不該帶技術性描述）。
+// ② rule——2026-08-20 之前這裡被排除，理由寫「本來就是進階補充位置」，但這是錯的：
+//    查CLAUDE.md規則19整段「rule開頭動詞禁用清單」都是在規範rule欄位本身，Track A
+//    一整批（g07/g10/g11/g12/g13/g16/g17/g18…）修的正是「rule用術語當開場」這件事
+//    （例：g16曾經是「動詞第三人稱單數現在式 = 肯定命令句」）。但規則19允許的是「白話
+//    先講，術語當結尾標籤」（見已核准的g08「Me gusta（單數）／Me gustan（複數）」），
+//    所以rule只抓「術語出現在開頭附近」，不是抓「整段完全不能出現術語」——避免誤傷這種
+//    已經是白話開場、術語只是句尾補充標籤的合法寫法。
 // exemptIds：卡片本身的教學主題就是這個文法術語（例如g105整張卡在討論「陽性複數」這個文法概念
 // 本身的社會爭議），這種情況術語不是殘留、是正文，不算違規。
 section('Jargon殘留檢查（規則15/19：術語不該是使用者第一眼看到的內容）');
@@ -232,6 +240,7 @@ try {
   const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
   const JARGON_WORDS = ['第一人稱', '第二人稱', '第三人稱', '單數', '複數', '現在式', '虛擬式',
     '直述式', '不定詞', 'subjuntivo', 'pretérito', '過去式', '陳述式'];
+  const RULE_OPENER_LEN = 16; // rule開頭這個長度以內出現術語，才算「用術語當開場」
   const exemptIds = new Set(['g105']); // 卡片主題本身就是在討論這個文法術語，見grammar.js g105註解
   const jargonHits = [];
   GRAMMAR_DATA.forEach(g => {
@@ -247,11 +256,21 @@ try {
       const hitWord = JARGON_WORDS.find(w => t.includes(w));
       if (hitWord) jargonHits.push({ id: g.id, where, t, label: `文法術語「${hitWord}」直接出現在主要內容裡` });
     });
+    if (typeof g.rule === 'string') {
+      // 「結構→功能」格式是規則裡明訂核准的另一種rule寫法（Rule格式選擇規則，2026-08-06定案，
+      // 官方範例就是「alguna vez + 現在完成式 → 曾經？」）——這種「詞塊 + 術語 → 白話意思」的
+      // 配方寫法裡，術語是配方的一部分（哪個時態/語氣接在哪個詞塊後面），不是抽象開場白，
+      // 不算違規。用「有 + 接著有 →」這個形狀辨識，命中就整條跳過開頭檢查。
+      const isStructureFormula = /[+＋][^→<]{1,20}→/.test(g.rule);
+      const opener = g.rule.replace(/<[^>]+>/g, '').slice(0, RULE_OPENER_LEN);
+      const hitWord = !isStructureFormula && JARGON_WORDS.find(w => opener.includes(w));
+      if (hitWord) jargonHits.push({ id: g.id, where: 'rule開頭', t: g.rule, label: `rule 用術語「${hitWord}」當開場，不是白話先講——規則19要求先講意思/使用情境，術語只能當句尾補充標籤` });
+    }
   });
   if (jargonHits.length) {
     jargonHits.forEach(h => warn(`${h.id} [${h.where}]：${h.label}\n      「${h.t}」`));
   } else {
-    ok('沒有偵測到jargon殘留（examples/family/extraFamily/conj皆乾淨）');
+    ok('沒有偵測到jargon殘留（examples/family/extraFamily/conj皆乾淨，rule也沒有用術語當開場）');
   }
 } catch (e) {
   fail('Jargon殘留檢查失敗：' + e.message);
