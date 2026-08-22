@@ -11,7 +11,16 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="🏡 Mi Pequeña Casa · 拉美西語小莊園">
 <meta name="twitter:description" content="語塊學西語，用真實情境語塊拆解西班牙文，零負擔、隨手練">
-<link rel="stylesheet" href="style.css?v=20260820a1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 字體改成非阻斷載入（"media=print → onload轉all" 是業界標準寫法）：
+     style.css 裡原本用 @import 抓字體，會讓瀏覽器等整個 CSS 解析完才發第二個請求，
+     字體來源連不上/變慢時整頁空白卡住（實測：連不上時卡了快13秒才有畫面）。
+     改成這樣之後，就算 fonts.googleapis.com 連不上，頁面也會立刻用系統字顯示，
+     字體到了才悄悄換上，不擋畫面。 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
+<link rel="stylesheet" href="style.css?v=20260820a2">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">

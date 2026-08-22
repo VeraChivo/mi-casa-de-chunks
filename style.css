@@ -1,5 +1,7 @@
 /* Peppa-Spanish S1 — Stylesheet */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap');
+/* 字體改成 index.html <head> 裡的非阻斷 <link>（2026-08-20），這裡不再用 @import——
+   @import 會讓瀏覽器等整個檔案解析完才發字體請求，字體來源連不上時整頁空白卡住。
+   font-family 全站用法不變，只是換了載入方式，不影響任何視覺樣式。 */
 
 summary::-webkit-details-marker { display: none; }
 summary { list-style: none; outline: none; }
