@@ -239,11 +239,11 @@ const AMMO_DATA = [
   },
   {
     ammo_id:"e2_09", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
-    core_ammo:"Nita y Papá Tato están jugando a las damas.", core_zh:"妮妲和貓爸爸正在下西洋棋。",
+    core_ammo:"Nita y Papá Tato están jugando a las damas.", core_zh:"妮妲和貓爸爸正在玩跳棋。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando = 正在做，正在做某事",
     pattern:"[人] están jugando a [遊戲].", pattern_zh:"___ 正在玩 ___。",
     pattern_note:"están jugando = 正在玩，主角是「妮妲和爸爸」這一群才用están", slots:["人","遊戲"],
-    fire_peppa:{es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸正在下西洋棋。", ts:null,
+    fire_peppa:{es:"Nita y Papá Tato están jugando a las damas.", zh:"妮妲和貓爸爸正在玩跳棋。", ts:null,
       chunks:[{w:"Nita y Papá Tato",role:"s"},{w:"están jugando",role:"v",note:"jugar ➔ jugando + estar ➔ están ➔ 意思：正在玩（複數進行式，estar + -ing形態）"},{w:"a las damas.",role:"o"}]},
     fire_daily:[
       {es:"Los niños están jugando al fútbol.", zh:"孩子們正在踢足球。", chunks:[{w:"Los niños",role:"s"},{w:"están jugando",role:"v"},{w:"al fútbol.",role:"o"}]},
