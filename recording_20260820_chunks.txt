@@ -1,0 +1,94 @@
+# ═══════════════════════════════════════════════════════════
+# 🎙️ 劇情逐字語塊錄音 · 第一批（出現 2 次以上的高頻語塊）
+# 共 25 句　｜　產生日期：2026-08-20
+#
+# 這批是「點劇情句子裡的單一語塊」時會用到的短音檔。
+# 目前 520 個語塊裡有 260 個沒有專屬音檔（會 fallback 瀏覽器 TTS），
+# 依 CLAUDE.md 定案「不要一次補齊全部」，這批只錄出現 2 次以上的 25 個，
+# 一次涵蓋 69 次出現（占缺口的 23%），投報率最高。
+#
+# 用法：整段複製貼進 Google Colab 的一個 cell，按執行。
+# 跑完會自動跳出 audio_chunks_20260820.zip 的下載視窗。
+# 沒跳出來就看最後一行印的絕對路徑，去 Colab 左側檔案面板手動下載。
+#
+# 下載後解壓縮，裡面是 chunks/ 資料夾，直接蓋進專案的 audio/ 即可，
+# 路徑已經在 audio-manifest.js 預留好了。
+# ═══════════════════════════════════════════════════════════
+
+!pip install -q gTTS
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+OUT = "/content/audio_chunks"
+sentences = {
+    "chunks/chunk_gusta.mp3": "gusta",  # 7次 [E1,E20]
+    "chunks/chunk_nita_3.mp3": "Nita.",  # 6次 [E17]
+    "chunks/chunk_yo_soy.mp3": "Yo soy",  # 6次 [E18]
+    "chunks/chunk_soy_2.mp3": "Soy",  # 5次 [E17,E18]
+    "chunks/chunk_cansancio.mp3": "Cansancio.",  # 3次 [E13,E14,E16]
+    "chunks/chunk_somos.mp3": "Somos",  # 3次 [E14,E18]
+    "chunks/chunk_vive.mp3": "vive",  # 3次 [E12,E15,E16]
+    "chunks/chunk_a_nita_le.mp3": "A Nita le",  # 2次 [E1,E20]
+    "chunks/chunk_a_veces.mp3": "A veces",  # 2次 [E13,E14]
+    "chunks/chunk_agrado.mp3": "Agrado.",  # 2次 [E13,E14]
+    "chunks/chunk_agravio.mp3": "Agravio.",  # 2次 [E13,E14]
+    "chunks/chunk_cata.mp3": "Cata",  # 2次 [E16]
+    "chunks/chunk_cuando_2.mp3": "cuando",  # 2次 [E13,E14]
+    "chunks/chunk_culpa.mp3": "Culpa.",  # 2次 [E13,E14]
+    "chunks/chunk_el_yo_pequenito.mp3": "El Yo Pequeñito",  # 2次 [E12]
+    "chunks/chunk_esperanza.mp3": "Esperanza.",  # 2次 [E13,E14]
+    "chunks/chunk_guardian.mp3": "Guardián.",  # 2次 [E13,E14]
+    "chunks/chunk_me_llamo.mp3": "Me llamo",  # 2次 [E17]
+    "chunks/chunk_mi_nombre.mp3": "Mi nombre",  # 2次 [E17]
+    "chunks/chunk_miedo.mp3": "Miedo.",  # 2次 [E13,E14]
+    "chunks/chunk_sin_embargo.mp3": "sin embargo,",  # 2次 [E14]
+    "chunks/chunk_tambien.mp3": "también",  # 2次 [E14,E16]
+    "chunks/chunk_tristeza.mp3": "Tristeza.",  # 2次 [E13,E14]
+    "chunks/chunk_una_gatita.mp3": "una gatita.",  # 2次 [E17]
+    "chunks/chunk_y_2.mp3": "Y",  # 2次 [E13,E20]
+}
+
+os.makedirs(os.path.join(OUT, "chunks"), exist_ok=True)
+
+total = len(sentences)
+done, failed = 0, []
+
+for i, (path, text) in enumerate(sentences.items(), 1):
+    target = os.path.join(OUT, path)
+    print(f"[{i}/{total}] {path}  ←  {text}")
+    for attempt in range(1, 4):
+        try:
+            gTTS(text=text, lang="es", tld="com.mx").save(target)
+            size = os.path.getsize(target)
+            if size < 800:
+                raise RuntimeError(f"檔案只有 {size} bytes，可能是空檔")
+            done += 1
+            break
+        except Exception as e:
+            print(f"    ⚠️ 第 {attempt} 次失敗：{e}")
+            if attempt == 3:
+                failed.append(path)
+            else:
+                time.sleep(attempt * 3)
+    time.sleep(random.uniform(0.5, 1.2))
+
+print("\n" + "=" * 50)
+print(f"完成 {done}/{total} 句")
+if failed:
+    print(f"❌ 失敗 {len(failed)} 句（可以只把這幾句挑出來重跑）：")
+    for f in failed:
+        print("   " + f)
+
+zip_path = "/content/audio_chunks_20260820.zip"
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for root, _, files in os.walk(OUT):
+        for f in files:
+            full = os.path.join(root, f)
+            z.write(full, os.path.relpath(full, OUT))
+
+print(f"\n📦 打包完成：{os.path.abspath(zip_path)}")
+print(f"   檔案大小：{os.path.getsize(zip_path)/1024:.0f} KB")
+
+from google.colab import files
+files.download(zip_path)

@@ -805,6 +805,36 @@ const CHUNK_AUDIO_MAP={
   "natural": "audio/chunks/chunk_natural.mp3",
   "el amor": "audio/chunks/chunk_el_amor_2.mp3",
   "para siempre.": "audio/chunks/chunk_para_siempre.mp3",
+
+  // ── 2026-08-20 劇情逐字語塊第一批：出現 2 次以上的高頻語塊 ──
+  // 路徑先預留、檔案尚未錄製，speakChunkSmart() 找不到檔案會 fallback 回瀏覽器 TTS。
+  // 依 CLAUDE.md 定案「不要一次補齊全部 260 個」，這批只收出現 2 次以上的 25 個，
+  // 一次涵蓋 69 次出現（占缺口 23%）。其餘只出現 1 次的 235 個維持 TTS，之後再分批。
+  "gusta": "audio/chunks/chunk_gusta.mp3",  // 7次 [E1,E20]
+  "Nita.": "audio/chunks/chunk_nita_3.mp3",  // 6次 [E17]
+  "Yo soy": "audio/chunks/chunk_yo_soy.mp3",  // 6次 [E18]
+  "Soy": "audio/chunks/chunk_soy_2.mp3",  // 5次 [E17,E18]
+  "Cansancio.": "audio/chunks/chunk_cansancio.mp3",  // 3次 [E13,E14,E16]
+  "Somos": "audio/chunks/chunk_somos.mp3",  // 3次 [E14,E18]
+  "vive": "audio/chunks/chunk_vive.mp3",  // 3次 [E12,E15,E16]
+  "A Nita le": "audio/chunks/chunk_a_nita_le.mp3",  // 2次 [E1,E20]
+  "A veces": "audio/chunks/chunk_a_veces.mp3",  // 2次 [E13,E14]
+  "Agrado.": "audio/chunks/chunk_agrado.mp3",  // 2次 [E13,E14]
+  "Agravio.": "audio/chunks/chunk_agravio.mp3",  // 2次 [E13,E14]
+  "Cata": "audio/chunks/chunk_cata.mp3",  // 2次 [E16]
+  "cuando": "audio/chunks/chunk_cuando_2.mp3",  // 2次 [E13,E14]
+  "Culpa.": "audio/chunks/chunk_culpa.mp3",  // 2次 [E13,E14]
+  "El Yo Pequeñito": "audio/chunks/chunk_el_yo_pequenito.mp3",  // 2次 [E12]
+  "Esperanza.": "audio/chunks/chunk_esperanza.mp3",  // 2次 [E13,E14]
+  "Guardián.": "audio/chunks/chunk_guardian.mp3",  // 2次 [E13,E14]
+  "Me llamo": "audio/chunks/chunk_me_llamo.mp3",  // 2次 [E17]
+  "Mi nombre": "audio/chunks/chunk_mi_nombre.mp3",  // 2次 [E17]
+  "Miedo.": "audio/chunks/chunk_miedo.mp3",  // 2次 [E13,E14]
+  "sin embargo,": "audio/chunks/chunk_sin_embargo.mp3",  // 2次 [E14]
+  "también": "audio/chunks/chunk_tambien.mp3",  // 2次 [E14,E16]
+  "Tristeza.": "audio/chunks/chunk_tristeza.mp3",  // 2次 [E13,E14]
+  "una gatita.": "audio/chunks/chunk_una_gatita.mp3",  // 2次 [E17]
+  "Y": "audio/chunks/chunk_y_2.mp3",  // 2次 [E13,E20]
 };
 
 // grammar.js 文法例句(含conj.rows例句)真人音檔，key=例句原文
