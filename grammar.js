@@ -2329,7 +2329,7 @@ const GRAMMAR_DATA = [
     title:"影視：一句台詞認一部片，不做完整對話",
     rule:"這兩句台詞都已查證是電影真實原文（多來源交叉確認），只收一句＋場景說明＋語氣解析，不重現完整對話——目標是「聽到這句話能聯想到哪部片、哪個場景、什麼語氣」，這是母語者看戲/聊電影時最自然會用到的文化默契。",
     examples:[
-      {es:"La vida es como la espuma, por eso hay que darse como el mar.", zh:"人生就像泡沫，所以要像大海一樣付出自己。（《你媽媽也一樣》Y tu mamá también，2001年，Alfonso Cuarón導演。場景：公路旅行途中，樸實的漁夫角色Chuy對兩個滿腦子只顧自己戀愛煩惱的青少年主角說的話。語氣：平靜、帶著生活智慧，跟電影其他部分青春期的浮躁形成強烈對比，是全片情感的轉折點之一。）"},
+      {es:"La vida es como la espuma, por eso hay que darse como el mar.", zh:"人生就像泡沫，所以要像大海一樣付出自己。（《你媽媽也一樣》Y tu mamá también，2001年，Alfonso Cuarón導演。場景：旅程尾聲，Luisa（Maribel Verdú飾）向兩個滿腦子只顧自己戀愛煩惱的青少年主角Tenoch和Julio告別時說的話。語氣：平靜、帶著生活智慧，跟電影其他部分青春期的浮躁形成強烈對比，是全片情感的轉折點之一。）"},
       {es:"No puedes entrar en el mismo río dos veces.", zh:"你不能兩次踏入同一條河。（《羊男的迷宮》El laberinto del fauno，2006年，Guillermo del Toro導演。場景：談論改變與無常時說出的一句話。語氣：哲學性、帶著淡淡的憂傷，呼應全片在西班牙內戰背景下「童年純真 vs 殘酷現實」的核心對比。）"}
     ],
     trap:"這句河流的台詞其實源自古希臘哲學家赫拉克利特（Heráclito）的名言，電影只是借用這個哲學典故放進台詞裡——聽到西語作品裡出現「el mismo río dos veces」這個意象，可以聯想到這是在引用一個更古老的西方哲學傳統，不是編劇原創的比喻，這種「借用經典典故」的手法跟文學卡片裡Lorca/Borges的引用邏輯是同一回事，都需要認出「這句話還在呼應誰」。",

@@ -1467,7 +1467,14 @@ function checkMakeFree(){
 
   // Case 2: check key verbs present
   const inputWords=input.split(/\s+/);
-  let verbsFound=pat.keyVerbs.filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
+  // 2026-08-22 修漏洞：原本一律用 v.slice(0,-1) 當前綴比對，短動詞會鬆到形同虛設——
+  // 「está」去尾剩「est」，於是 estoy/este/esta/estudiar/estación 全部算命中，
+  // 實測「Yo estoy en la casa con mi mamá」會被判成「用了 está」而通過。
+  // 改成：5 個字母以上的動詞才允許去尾前綴比對（涵蓋 esperando→esperand 這種變化形），
+  // 4 個字母以下的短動詞一律要求完全相同。正確換人稱造句仍會通過，因為只要命中
+  // keyVerbs 的一半即可（例：把 está 換成 estoy 但保留 esperando，仍算過）。
+  const verbHit=(v,w)=>w===v||(v.length>=5&&w.startsWith(v.slice(0,-1)));
+  let verbsFound=pat.keyVerbs.filter(v=>inputWords.some(w=>verbHit(v,w)));
   let hasVerbs=verbsFound.length>=Math.ceil(pat.keyVerbs.length/2);
 
   // 2026-08-03 補：同一集常常教好幾種同義說法(例如E17「Me llamo Nita./Soy Nita.」
@@ -1488,14 +1495,21 @@ function checkMakeFree(){
         });
       });
     });
-    const epVerbsFound=[...episodeVerbWords].filter(v=>inputWords.some(w=>w===v||w.startsWith(v.slice(0,-1))));
+    const epVerbsFound=[...episodeVerbWords].filter(v=>inputWords.some(w=>verbHit(v,w)));
     if(epVerbsFound.length){ verbsFound=epVerbsFound; hasVerbs=true; }
   }
 
   // Case 3: rough word count check (±3)
   const countOk=Math.abs(inputWords.length-pat.wordCount)<=3;
 
-  if(hasVerbs&&countOk){
+  // 2026-08-22 修漏洞：只看「有動詞 + 字數接近」的話，把同一個字重複貼滿也會過——
+  // 實測「Tito está está está está está está」會通過，還被存進文法酷庫。
+  // 補一道最低限度的檢查：不重複的字要占一半以上。正常句子幾乎不會重複用字，
+  // 而「A Nita le gusta... y a Tito le gusta...」這種合理重複也還在一半以上，不會誤擋。
+  const uniqueWords=new Set(inputWords).size;
+  const notPadded=inputWords.length<=3||uniqueWords>=Math.ceil(inputWords.length/2);
+
+  if(hasVerbs&&countOk&&notPadded){
     res.className='make-result ok';
     document.getElementById('makeFreeInput').className='make-free-input ok';
     if(!makeAnswered.includes(idx)){makeAnswered.push(idx);makeScore++;}
