@@ -239,7 +239,12 @@ section('Jargon殘留檢查（規則15/19：術語不該是使用者第一眼看
 try {
   const { GRAMMAR_DATA } = loadArray('grammar.js', ['GRAMMAR_DATA']);
   const JARGON_WORDS = ['第一人稱', '第二人稱', '第三人稱', '單數', '複數', '現在式', '虛擬式',
-    '直述式', '不定詞', 'subjuntivo', 'pretérito', '過去式', '陳述式'];
+    '直述式', '不定詞', 'subjuntivo', 'pretérito', '過去式', '陳述式',
+    // 西語拼法的文法術語（2026-08-20 補）：規則19 的禁用清單只列了中文「不定詞」，
+    // 漏了西語拼法，導致 g09/g10/g11/g12/g18/g19/g20/g58a/g58b/g58c 十張卡用
+    // 「poder + infinitivo」「tener + sustantivo」這種術語當 rule 開場，全部躲過檢查
+    // ——而且對台灣中文母語新手來說，infinitivo 比「不定詞」更難懂，更該擋。
+    'infinitivo', 'sustantivo', 'participio', 'adjetivo', 'gerundio'];
   const RULE_OPENER_LEN = 16; // rule開頭這個長度以內出現術語，才算「用術語當開場」
   const exemptIds = new Set(['g105']); // 卡片主題本身就是在討論這個文法術語，見grammar.js g105註解
   const jargonHits = [];

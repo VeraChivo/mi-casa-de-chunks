@@ -423,7 +423,7 @@ const GRAMMAR_DATA = [
   {
     id:"g09", cat:"gustar", level:"a1a2",
     title:"A + 人 + le gusta：某人喜歡",
-    rule:"A + persona + le/les + gusta(n) + sustantivo/infinitivo<br><br>用來說某人喜歡某件事，不是「我喜歡」的直接翻譯。",
+    rule:"想說「某個人喜歡什麼」，就用 A + 那個人 + le/les + gusta(n)，後面接名詞或動詞原形。<br><br>這不是中文「我喜歡」的直接翻譯。",
     examples:[
       {es:"A Tito no le gusta jugar solo.", zh:"迪多不喜歡一個人玩。"},
       {es:"A todos les encanta chapotear en los charcos.", zh:"所有人都超愛在水坑裡玩水。"}
@@ -446,7 +446,7 @@ const GRAMMAR_DATA = [
   {
     id:"g10", cat:"verb-pattern", level:"a1a2",
     title:"¿Podemos + 動詞?：我們可以…嗎？",
-    rule:"poder + infinitivo<br><br>用來問能不能做一件事。",
+    rule:"想問能不能做某件事，就用 poder 加上動詞原形。",
     examples:[
       {es:"¿Podemos salir a jugar?", zh:"我們可以出去玩嗎？"},
       {es:"¿Podemos comer ahora?", zh:"我們現在可以吃了嗎？"},
@@ -498,7 +498,7 @@ const GRAMMAR_DATA = [
   {
     id:"g11", cat:"verb-pattern", level:"a1a2",
     title:"Deber + 動詞：你應該、必須",
-    rule:"deber + infinitivo<br><br>用來表達應該做、必須做一件事。",
+    rule:"想表達「應該／必須做某事」，就用 deber 加上動詞原形。",
     examples:[
       {es:"Debes ponerte las botas de agua.", zh:"你該穿上雨鞋。"},
       {es:"Debes lavarte las manos.", zh:"你該洗手。"},
@@ -550,7 +550,7 @@ const GRAMMAR_DATA = [
   {
     id:"g12", cat:"verb-pattern", level:"a1a2",
     title:"Para + 動詞：為了做什麼？",
-    rule:"para + infinitivo<br><br>用來表達做一件事的目的。",
+    rule:"想表達「為了做某事」，就用 para 加上動詞原形。",
     examples:[
       {es:"Todos necesitan galletas para curarse.", zh:"所有人都需要餅乾才能康復。"},
       {es:"Necesitas agua para vivir.", zh:"你需要水才能生存。"},
@@ -681,7 +681,7 @@ const GRAMMAR_DATA = [
   {
     id:"g18", cat:"verb-pattern", level:"a1a2",
     title:"Vamos a + 動詞：接下來要做什麼？",
-    rule:"vamos a + infinitivo<br><br>用來表達接下來要做的事。",
+    rule:"想說「我們要做某事了」，可以用 vamos a 加上動詞原形。",
     examples:[
       {es:"Vamos a respirar.", zh:"來，我們一起深呼吸。"},
       {es:"Vamos al parque.", zh:"我們去公園吧！"},
@@ -734,7 +734,7 @@ const GRAMMAR_DATA = [
   {
     id:"g19", cat:"tense", level:"a1a2",
     title:"IR + a + 動詞：從「去」長出行動路線",
-    rule:"voy / vas / va / vamos / van + a + infinitivo<br><br>用來說要去做什麼，任何人稱都能用。",
+    rule:"想說「接下來要去做什麼」，就用 voy / vas / va / vamos / van 加上 a，再加動詞原形。<br><br>不管主角是誰都能用。",
     examples:[
       {es:"Todo va a salir bien.", zh:"一切都會順利的。（劇情原句：No te preocupes, todo va a salir bien.）"},
       {es:"Mamá siempre te va a cuidar.", zh:"媽媽會一直守護你喔。（🛌床邊低語呢原句）"},
@@ -763,7 +763,7 @@ const GRAMMAR_DATA = [
   {
     id:"g20", cat:"verb-pattern", level:"a1a2",
     title:"TENER：從「有」長出我的生活狀態",
-    rule:"tener + sustantivo<br><br>用來表達擁有某物，以及西語裡用tener表達的身體感受、年齡等狀態（tener hambre、tener sueño、tener seis años）。",
+    rule:"想說「我有什麼」，就用 tener 加上名詞。<br><br>西語還會用 tener 講身體感受和年齡，這是中文不會這樣說的地方（tener hambre、tener sueño、tener seis años）。",
     examples:[
       {es:"Nita tiene mucho sueño.", zh:"妮妲很想睡。（劇情原句，E7）"},
       {es:"Mamá Cata tiene prisa.", zh:"貓媽媽在趕時間。（劇情原句，E7）"},
@@ -1558,7 +1558,7 @@ const GRAMMAR_DATA = [
     id:"g58a", cat:"verb-pattern", level:"b2c1",
     title:"Ponerse：突然變",
     img:"img/g58a_ponerse.svg",
-    rule:"ponerse + adjetivo<br><br>形容情緒或狀態突然改變，來得快也退得快。",
+    rule:"想形容情緒或狀態突然改變、來得快也退得快，就用 ponerse 加上形容詞。",
     examples:[
       {es:"Nita se puso muy feliz cuando vio los dibujos.", zh:"妮妲看到畫的時候，突然很開心。"},
       {es:"Tito se puso rojo de vergüenza.", zh:"迪多害羞得臉都紅了。"}
@@ -1571,7 +1571,7 @@ const GRAMMAR_DATA = [
     id:"g58b", cat:"verb-pattern", level:"b2c1",
     title:"Quedarse：留下來",
     img:"img/g58b_quedarse.svg",
-    rule:"quedarse + adjetivo / participio<br><br>形容一件事發生後留下的狀態。",
+    rule:"想形容一件事發生之後留下來的狀態，就用 quedarse 加上形容詞或過去分詞。",
     examples:[
       {es:"Tito se quedó dormido en el sofá.", zh:"迪多在沙發上睡著了。"},
       {es:"Nita se quedó callada un momento.", zh:"妮妲安靜了一會兒。"}
@@ -1584,7 +1584,7 @@ const GRAMMAR_DATA = [
     id:"g58c", cat:"verb-pattern", level:"b2c1",
     title:"Volverse：慢慢變",
     img:"img/g58c_volverse.svg",
-    rule:"volverse + adjetivo<br><br>形容人或事慢慢發生根本的改變。",
+    rule:"想形容人或事慢慢發生根本的改變，就用 volverse 加上形容詞。",
     examples:[
       {es:"El cielo se volvió naranja al atardecer.", zh:"黃昏時，天空慢慢變成橘色。"},
       {es:"Con los años, Cata se volvió más paciente.", zh:"這些年下來，卡妲變得更有耐心了。"}
