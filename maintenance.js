@@ -244,7 +244,11 @@ try {
     // 漏了西語拼法，導致 g09/g10/g11/g12/g18/g19/g20/g58a/g58b/g58c 十張卡用
     // 「poder + infinitivo」「tener + sustantivo」這種術語當 rule 開場，全部躲過檢查
     // ——而且對台灣中文母語新手來說，infinitivo 比「不定詞」更難懂，更該擋。
-    'infinitivo', 'sustantivo', 'participio', 'adjetivo', 'gerundio'];
+    'infinitivo', 'sustantivo', 'participio', 'adjetivo', 'gerundio',
+    // 教學品質盤查再補（2026-08-20）：oración（=句子）跟「反身」同樣是 A1 看不懂的術語，
+    // 分別藏在 g13「Creo que + oración」與 g117「llamarse（反身動詞）」的 rule 開場。
+    // 注意 g52a-d 用的「定冠詞」是 b1 卡的標準中文術語，依 VERA 判準 B1+ 可保留，故不列入。
+    'oración', '反身'];
   const RULE_OPENER_LEN = 16; // rule開頭這個長度以內出現術語，才算「用術語當開場」
   const exemptIds = new Set(['g105']); // 卡片主題本身就是在討論這個文法術語，見grammar.js g105註解
   const jargonHits = [];

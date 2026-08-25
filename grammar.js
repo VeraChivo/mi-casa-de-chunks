@@ -563,7 +563,7 @@ const GRAMMAR_DATA = [
   {
     id:"g13", cat:"verb-pattern", level:"a1a2",
     title:"Creo que：讓別人知道我腦中怎麼理解這件事",
-    rule:"Creo que + oración<br><br>用來表達自己的想法、意見或判斷。",
+    rule:"想讓別人知道你的想法、意見或判斷，就用 Creo que 加上一個完整句子。",
     examples:[
       {es:"Creo que tienes el corazón un poco flojo.", zh:"我覺得你的心臟有點虛弱。（劇情原句，E3扮醫生場景）"},
       {es:"Creo que todo es mi error.", zh:"我以為都是我的錯。（劇情原句，SEL線）"},
@@ -2735,7 +2735,7 @@ const GRAMMAR_DATA = [
   {
     id:"g117", cat:"verb-pattern", level:"a1a2",
     title:"Llamarse：從名字開始建立自己的位置",
-    rule:"llamarse（反身動詞）<br><br>用來說自己或別人的名字，是自我介紹的第一句話。",
+    rule:"想說自己或別人叫什麼名字，就用 llamarse（反身動詞）。<br><br>這是自我介紹的第一句話。",
     examples:[
       {es:"Me llamo Nita.", zh:"我叫妮妲。（劇情原句，E17）"},
       {es:"¿Cómo te llamas?", zh:"你叫什麼名字？（新編例句，A1核心問句，目前劇情裡還沒出現）"},
