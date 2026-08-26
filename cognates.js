@@ -551,6 +551,92 @@ const COGNATE_LIBRARY = [
   {en:'cure',      es:'curar',     art:'',    zh:'治療／康復',      ep:'Cap.3 · 最好的朋友',
     cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'curare（拉丁語，照顧、治療）',
       source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
+  {en:'major',     es:'mayor',     art:'',    zh:'較年長的／較大的',  ep:'Cap.4 · Mimi 出生了',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'maior（拉丁語magnus「大」的不規則比較級，源自PIE字根*meg-「大」）',
+      originChain:{branches:[
+        {language:'English', path:'maior → major', meaningShift:'較大的 → 較重要的、主要的（形容詞）'},
+        {language:'Spanish', path:'maior → mayor', meaningShift:'較大的 → 較年長的、較大的'}
+      ]},
+      note:'英文另有一個字面上跟mayor完全一樣的詞：市長mayor，也是同一個maior詞根演變來的雙生詞（doublet），只是走進不同語意（「較大／較重要」→「一城之首」），算是額外的教學彩蛋',
+      source:'etymonline.com、Wiktionary，2026-08-26查證'
+    }},
+  {en:'force',     es:'fuerte',    art:'',    zh:'強壯的／有力的',  ep:'Cap.9 · 我終於知道自己是誰',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'fortis（拉丁語，強壯的、堅定的）',
+      originChain:{branches:[
+        {language:'English', path:'fortis → 通俗拉丁*fortia → 古法語force → force', meaningShift:'強壯的 → 力量（名詞）'},
+        {language:'Spanish', path:'fortis → fortem → fuerte（o變ue是西語常見音變）', meaningShift:'強壯的 → 強壯的（形容詞，詞性保留最原本的樣子）'}
+      ]},
+      note:'英文fort（堡壘、要塞）也是同一個fortis家族，字面意思更接近fuerte原本的「堅固」',
+      source:'etymonline.com、buenospanish.com，2026-08-26查證'
+    }},
+  {en:'necessary', es:'necesitar', art:'',    zh:'需要',           ep:'Cap.10 · 我們不是故意對衝的／Cap.13 · 小情緒們的自我介紹',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'necesse（拉丁語，不可迴避的、必要的，字面ne-「不」+cedere「退讓」＝「無法退讓」）',
+      originChain:{branches:[
+        {language:'English', path:'necesse → necessarius → necessary；動詞necessitate則是後來從necessitas另外造出來的', meaningShift:'無法迴避的 → 必要的'},
+        {language:'Spanish', path:'necesse → necessitare → necesitar', meaningShift:'無法迴避的 → 需要（動詞）'}
+      ]},
+      note:'necesitar是動詞，英文詞性最接近的是necessitate（強制、使成為必要），但那個字對初學者太生僻，necessary（形容詞，必要的）比較常見好記，兩個都同一個字根',
+      source:'etymonline.com，2026-08-26查證'
+    }},
+  {en:'change',    es:'cambiar',   art:'',    zh:'改變／換',        ep:'Cap.5 · 照顧 Mimi',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'凱爾特語*kambos（彎曲的、扭轉的）借入通俗拉丁語cambiare（交換、以物易物）',
+      originChain:{branches:[
+        {language:'English', path:'cambiare → 古法語changier → change', meaningShift:'交換 → 改變'},
+        {language:'Spanish', path:'cambiare → cambiar', meaningShift:'交換 → 改變（詞義路徑跟英文幾乎一樣）'}
+      ]},
+      source:'etymonline.com、Wiktionary，2026-08-26查證（源頭是凱爾特語借入拉丁語，不是純拉丁本字，但英西兩邊確實是同一條借入路徑）'
+    }},
+  {en:'desperate', es:'esperanza', art:'la',  zh:'希望',           ep:'Cap.12 · 小小自我在閣樓',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'spes/sperare（拉丁語，希望）',
+      originChain:{branches:[
+        {language:'English', path:'de-「沒有」+sperare「希望」→ desperatus → desperate', meaningShift:'沒有希望的 → 絕望的、拚命的'},
+        {language:'Spanish', path:'sperare → esperar → esperanza', meaningShift:'希望（動詞）→ 希望（名詞）'}
+      ]},
+      note:'esperanza本身是「希望」，desperate反而是esperanza的反義詞根（de-＝去掉），這組是「同詞根、反方向語意」的典型例子，很適合當教學驚喜點',
+      source:'etymonline.com、buenospanish.com，2026-08-26查證'
+    }},
+  {en:'survive',   es:'vivir',     art:'',    zh:'住／活著',        ep:'Cap.12 · 小小自我在閣樓',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'vivere（拉丁語，活著）',
+      originChain:{branches:[
+        {language:'English', path:'super-「超過、之上」+vivere「活」→ supervivere → survive', meaningShift:'活著 → 活過…、倖存'},
+        {language:'Spanish', path:'vivere → 古西語bevir → vivir', meaningShift:'活著（詞義幾乎沒變）'}
+      ]},
+      note:'英文vivid（生動的、鮮明的）是同一詞根更直接的親戚，字面也是「充滿生命力」',
+      source:'etymonline.com、buenospanish.com，2026-08-26查證'
+    }},
+  {en:'tardy',     es:'tarde',     art:'',    zh:'遲、晚',          ep:'Cap.7 · 手忙腳亂的早晨',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'tardus（拉丁語，遲緩的、緩慢的）',
+      originChain:{branches:[
+        {language:'English', path:'tardus → tardivus（通俗拉丁）→ 古法語tardif → tardy', meaningShift:'遲緩的 → 遲到的'},
+        {language:'Spanish', path:'tardus → tardē（拉丁副詞）→ tarde', meaningShift:'遲緩地 → 晚、遲到（副詞／名詞，後來也變成「下午」的意思）'}
+      ]},
+      source:'etymonline.com、Wiktionary，2026-08-26查證'
+    }},
+  {en:'famine',    es:'hambre',    art:'el',  zh:'飢餓、餓',        ep:'Cap.7 · 手忙腳亂的早晨',
+    cognateInfo:{
+      relationType:'confirmed', confidence:'high',
+      originRoot:'fames（拉丁語，飢餓）',
+      originChain:{branches:[
+        {language:'English', path:'fames → 通俗拉丁*famina → 古法語famine → famine', meaningShift:'飢餓 → 飢荒'},
+        {language:'Spanish', path:'fames的賓格faminem → 古西語famne/fambre → hambre（f→h是西語常見音變）', meaningShift:'飢餓（詞義沒變，只有讀音一路變softer）'}
+      ]},
+      note:'跟英文hunger完全無關（hunger是日耳曼語根，跟拉丁fames是兩條不同的語言家族），這組同源要對到famine/famished才對，音變f→h本身也是很典型的西語規律，可以順便提醒學生',
+      source:'etymonline.com、Wiktionary，2026-08-26查證'
+    }},
 ];
 
 // ── 同源詞「依規律」分類標籤（key=en，純瀏覽用的覆蓋分類，不影響上面依集數的原始資料）──
