@@ -316,8 +316,8 @@ const SENTENCE_COGNATES = {
 
 // ── 英西同源詞庫總覽（從 SENTENCE_COGNATES 整理出的扁平清單，供 #cogLibraryBody 瀏覽搜尋）──
 const COGNATE_LIBRARY = [
-  // E1 · 泥巴坑
-  {en:'germane',   es:'hermano',   art:'el',  zh:'相關的、切題的（germane）／兄弟（hermano）', ep:'Cap.1 · 泥巴坑',
+  // E1 · 妮妲的角落
+  {en:'germane',   es:'hermano',   art:'el',  zh:'相關的、切題的（germane）／兄弟（hermano）', ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'germanus（同父母的、親生的，用於兄弟姊妹）',
@@ -329,7 +329,7 @@ const COGNATE_LIBRARY = [
       },
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'potent',    es:'poder',     art:'',    zh:'能夠／有力的', ep:'Cap.1 · 泥巴坑',
+  {en:'potent',    es:'poder',     art:'',    zh:'能夠／有力的', ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'potis/posse（能夠、有力量）',
@@ -339,7 +339,7 @@ const COGNATE_LIBRARY = [
       ]},
       source:'etymonline.com、buenospanish.com，2026-07-19查證'
     }},
-  {en:'juggle',    es:'jugar',     art:'',    zh:'玩',         ep:'Cap.1 · 泥巴坑',
+  {en:'juggle',    es:'jugar',     art:'',    zh:'玩',         ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'iocus/iocari（笑話、玩笑、開玩笑）',
@@ -349,7 +349,7 @@ const COGNATE_LIBRARY = [
       ]},
       source:'etymonline.com、spanishetymology.com，2026-07-19查證（英文joke也是同一家族）'
     }},
-  {en:'boots',     es:'botas',     art:'las', zh:'靴子',       ep:'Cap.1 · 泥巴坑',
+  {en:'boots',     es:'botas',     art:'las', zh:'靴子',       ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'medium',
       originRoot:'古法語bote/botte（源頭不明，可能來自法蘭克語*butt「切短、鈍」）',
@@ -359,7 +359,7 @@ const COGNATE_LIBRARY = [
       ]},
       source:'etymonline.com、Wiktionary，2026-07-19查證（英西各自從古法語借入，不是直接互相衍生，但共同源頭確認）'
     }},
-  {en:'duty',      es:'deber',     art:'',    zh:'必須／義務',  ep:'Cap.1 · 泥巴坑',
+  {en:'duty',      es:'deber',     art:'',    zh:'必須／義務',  ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'debere（虧欠、應該）',
@@ -369,31 +369,31 @@ const COGNATE_LIBRARY = [
       ]},
       source:'etymonline.com、buenospanish.com，2026-07-19查證'
     }},
-  {en:'charcoal',  es:'charco',    art:'el',  zh:'水坑',       ep:'Cap.1 · 泥巴坑',
+  {en:'charcoal',  es:'charco',    art:'el',  zh:'水坑',       ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'falseFriend', confidence:'high',
       note:'charcoal源自古英語charren(轉變)+cole(煤炭)，純日耳曼語構詞；charco是西班牙前羅馬時期的伊比利語底層詞，兩者詞源完全不相干，只是拼字剛好相似，純屬巧合，連🌐語感橋樑都不適合放',
       source:'etymonline.com，2026-07-19查證'
     }},
-  {en:'enchant',   es:'encantar',  art:'',    zh:'使著迷／超愛', ep:'Cap.1 · 泥巴坑',
+  {en:'enchant',   es:'encantar',  art:'',    zh:'使著迷／超愛', ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'incantare（唱咒語）',
       source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
-  {en:'counter',   es:'contra',    art:'',    zh:'相對／遇見',  ep:'Cap.1 · 泥巴坑',
+  {en:'counter',   es:'contra',    art:'',    zh:'相對／遇見',  ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'contra（相對、反對）',
       source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
-  {en:'encounter', es:'encontrar', art:'',    zh:'找到／遭遇',  ep:'Cap.1 · 泥巴坑',
+  {en:'encounter', es:'encontrar', art:'',    zh:'找到／遭遇',  ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'in+contra（通俗拉丁incontrare，與counter/contra同一詞根）',
       source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
-  {en:'grand',     es:'grande',    art:'',    zh:'宏大／大的',  ep:'Cap.1 · 泥巴坑',
+  {en:'grand',     es:'grande',    art:'',    zh:'宏大／大的',  ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{relationType:'confirmed', confidence:'high', originRoot:'grandis（大的）',
       source:'標準拉丁詞源規律，2026-07-19依既有詞源知識歸類，本輪未逐一重新WebSearch'}},
-  {en:'barren',    es:'barro',     art:'el',  zh:'泥巴',       ep:'Cap.1 · 泥巴坑',
+  {en:'barren',    es:'barro',     art:'el',  zh:'泥巴',       ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'uncertain', confidence:'low',
       note:'兩者詞源都指向可能的凱爾特語根，但查證後是不同的凱爾特詞根（barro←*barr-「泥土」；barren←bar-/baraigne「休耕地/裸露」），現有學術文獻對兩者是否真的同源持懷疑態度',
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'pass',      es:'pasar',     art:'',    zh:'通過／發生',  ep:'Cap.1 · 泥巴坑',
+  {en:'pass',      es:'pasar',     art:'',    zh:'通過／發生',  ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'passus（腳步）',
@@ -403,7 +403,7 @@ const COGNATE_LIBRARY = [
       ]},
       source:'etymonline.com、Wiktionary，2026-07-19查證'
     }},
-  {en:'total',     es:'todos',     art:'',    zh:'全部／所有人', ep:'Cap.1 · 泥巴坑',
+  {en:'total',     es:'todos',     art:'',    zh:'全部／所有人', ep:'Cap.1 · 妮妲的角落',
     cognateInfo:{
       relationType:'confirmed', confidence:'high',
       originRoot:'totus（全部、整個）',
