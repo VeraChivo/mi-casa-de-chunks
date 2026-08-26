@@ -2,7 +2,7 @@
 const AMMO_DATA = [
   // ══════════ E1 · El Rincón de Nita ══════════
   {
-    ammo_id:"e1_01", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_01", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"Yo soy Gatita Nita.", core_zh:"我是小貓妮妲。",
     be_verb_type:"ser", be_verb_note:"Ser 用在身分本質：Yo soy = 我是（恆久不變的身分）",
     pattern:"Yo soy [身分/名字].", pattern_zh:"我是 ___。",
@@ -15,7 +15,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_02", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_02", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"Este es mi hermano pequeño Tito.", core_zh:"這是我的小弟弟迪多。",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分關係：Este es = 這是（介紹某人）",
     pattern:"Este es mi [關係] [名字].", pattern_zh:"這是我的 ___ ___。",
@@ -28,7 +28,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_03", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_03", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"Hoy está lloviendo así que no pueden jugar fuera.", core_zh:"今天在下雨，所以不能去外面玩。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando/-iendo = 正在做，描述正在發生的事",
     pattern:"Hoy está [動詞-ndo].", pattern_zh:"今天正在 ___。",
@@ -41,7 +41,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_04", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_04", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"¿Podemos salir a jugar?", core_zh:"我們可以出去玩嗎？",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¿Podemos [原形動詞]?", pattern_zh:"我們可以 ___ 嗎？",
@@ -54,7 +54,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_05", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_05", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"Nita, debes ponerte las botas de agua.", core_zh:"妮妲，你該穿上雨鞋。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Debes [原形動詞] [受詞].", pattern_zh:"你必須 ___ ___。",
@@ -67,7 +67,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_06", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_06", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"¡Me encanta chapotear en los charcos!", core_zh:"我超愛在水坑裡玩水！",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¡Me encanta [原形動詞]!", pattern_zh:"我超愛 ___！",
@@ -80,7 +80,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_07", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_07", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"Nita ha encontrado un charco pequeño.", core_zh:"妮妲找到了一個小水坑。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] ha encontrado [受詞].", pattern_zh:"___ 找到了 ___。",
@@ -93,7 +93,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_08", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_08", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"¡Ese charco sí que es grande!", core_zh:"那個水坑真的好大！",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：sí que es = 真的是（強調語氣）",
     pattern:"¡Ese [名詞] sí que es [形容詞]!", pattern_zh:"那個 ___ 真的好 ___！",
@@ -106,7 +106,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_09", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_09", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"No pasa nada. Sólo es barro.", core_zh:"沒關係，只是泥巴而已。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質：Sólo es = 只是（描述事物本質）",
     pattern:"No pasa nada. Sólo es [名詞].", pattern_zh:"沒關係，只是 ___ 而已。",
@@ -119,7 +119,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e1_10", ep:"E1 · El Rincón de Nita",
+    ammo_id:"e1_10", ep:"Cap.1 · El Rincón de Nita",
     core_ammo:"A todos les encanta chapotear en los charcos de barro.", core_zh:"所有人都超愛在泥巴坑裡玩水！",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A todos les encanta [原形動詞].", pattern_zh:"所有人都超愛 ___。",
@@ -134,7 +134,7 @@ const AMMO_DATA = [
 
   // ══════════ E2 · El Señor Esqueleto Se Ha Perdido ══════════
   {
-    ammo_id:"e2_01", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_01", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"El juguete favorito de Tito es el señor Esqueleto.", core_zh:"迪多最喜歡的玩具是骷髏先生。",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分本質：es = 是（介紹事物）",
     pattern:"El juguete favorito de [人] es [名詞].", pattern_zh:"___ 最喜歡的玩具是 ___。",
@@ -147,7 +147,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_02", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_02", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Cuando Tito se va a la cama el señor Esqueleto se acurruca a su lado.", core_zh:"當迪多上床睡覺時，骷髏先生就蜷縮在他身旁。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Cuando [人] se va a la cama...", pattern_zh:"當 ___ 上床睡覺時…",
@@ -160,7 +160,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_03", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_03", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Tito ha perdido al señor Esqueleto.", core_zh:"迪多把骷髏先生弄丟了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] ha perdido [受詞].", pattern_zh:"___ 把 ___ 弄丟了。",
@@ -173,7 +173,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_04", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_04", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"No te preocupes Tito, entre todos lo encontraremos.", core_zh:"不要擔心迪多，我們大家一起會找到牠的。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"No te preocupes, [理由].", pattern_zh:"不要擔心，___。",
@@ -186,7 +186,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_05", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_05", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Un detective es una persona muy buena encontrando cosas.", core_zh:"偵探是一個非常擅長找東西的人。",
     be_verb_type:"ser", be_verb_note:"Ser 定義身分職業：detective es = 偵探是…（本質定義）",
     pattern:"Un [職業] es una persona muy buena [-ing形態].", pattern_zh:"___ 是一個非常擅長 ___ 的人。",
@@ -199,7 +199,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_06", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_06", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Tito siempre se trae al señor Esqueleto a la bañera.", core_zh:"迪多總是帶著骷髏先生去洗澡。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] siempre se trae [物] a [地點].", pattern_zh:"___ 總是帶著 ___ 去 ___。",
@@ -212,7 +212,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_07", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_07", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"¡Ya lo sé dónde está el señor Esqueleto!", core_zh:"我知道骷髏先生在哪裡了！",
     be_verb_type:"estar", be_verb_note:"Estar 表示位置：dónde está = 在哪裡（位置用 estar）",
     pattern:"¡Ya lo sé dónde está [名詞]!", pattern_zh:"我知道 ___ 在哪裡了！",
@@ -225,7 +225,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_08", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_08", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"El señor Esqueleto no está en la cama de Tito.", core_zh:"骷髏先生不在迪多的床上。",
     be_verb_type:"estar", be_verb_note:"Estar 表示位置：no está en = 不在（estar 管位置）",
     pattern:"[名詞] no está en [地點].", pattern_zh:"___ 不在 ___。",
@@ -238,7 +238,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_09", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_09", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"Nita y Papá Tato están jugando a las damas.", core_zh:"妮妲和貓爸爸正在玩跳棋。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando = 正在做，正在做某事",
     pattern:"[人] están jugando a [遊戲].", pattern_zh:"___ 正在玩 ___。",
@@ -251,7 +251,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e2_10", ep:"E2 · El Señor Esqueleto Se Ha Perdido",
+    ammo_id:"e2_10", ep:"Cap.2 · El Señor Esqueleto Se Ha Perdido",
     core_ammo:"¡Ya lo sé, ustedes han estado chapoteando en los charcos de barro!", core_zh:"我知道了，你們一直在泥巴坑裡玩水！",
     be_verb_type:"estar", be_verb_note:"han estado + -ando = 一直做到現在，一直在做某事（拉美用 ustedes，不用 vosotros）",
     pattern:"Ustedes han estado [動詞-ndo] en [地點].", pattern_zh:"你們一直在 ___ ___。",
@@ -266,7 +266,7 @@ const AMMO_DATA = [
 
   // ══════════ E3 · La Mejor Amiga ══════════
   {
-    ammo_id:"e3_01", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_01", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Nita está esperando a su mejor amiga, Vera Oveja.", core_zh:"妮妲正在等她最好的朋友薇拉羊。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando = 正在做，正在等待",
     pattern:"[人] está esperando a [人2].", pattern_zh:"___ 正在等 ___。",
@@ -279,7 +279,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_02", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_02", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Nita quiere mucho a Vera y Vera quiere mucho a Nita.", core_zh:"妮妲非常喜歡薇拉，薇拉也非常喜歡妮妲。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人1] quiere mucho a [人2].", pattern_zh:"___ 非常喜歡 ___。",
@@ -292,7 +292,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_03", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_03", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Son las mejores amigas.", core_zh:"她們是最好的朋友。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質關係：Son = 她們是（恆久身分關係）",
     pattern:"Son [形容詞最高級] [名詞複數].", pattern_zh:"她們是 ___ ___。",
@@ -305,7 +305,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_04", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_04", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"¡No Tito! Este juego es solo para niñas mayores.", core_zh:"不行迪多！這個遊戲只給大一點的女孩玩。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質規則：es solo para = 只是給…（規則限定）",
     pattern:"Este [名詞] es solo para [對象].", pattern_zh:"這個 ___ 只給 ___。",
@@ -318,7 +318,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_05", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_05", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"¡Soy una princesa salida de un cuento!", core_zh:"我是從故事書裡走出來的公主！",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分：Soy = 我是（角色扮演）",
     pattern:"¡Soy [角色] salida de [來源]!", pattern_zh:"我是從 ___ 走出來的 ___！",
@@ -331,7 +331,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_06", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_06", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"A Tito no le gusta jugar solo.", core_zh:"迪多不喜歡一個人玩。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人] no le gusta [原形動詞].", pattern_zh:"___ 不喜歡 ___。",
@@ -344,7 +344,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_07", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_07", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Yo seré la doctora y tú serás la enfermera.", core_zh:"我來當醫生，你來當護士。",
     be_verb_type:"ser", be_verb_note:"Ser 以後要做：seré / serás，角色扮演的身分用 Ser",
     pattern:"Yo seré [身份A] y tú serás [身份B].", pattern_zh:"我當 ___，你當 ___。",
@@ -357,7 +357,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_08", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_08", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Ahora Tito, respira hondo. Después tose.", core_zh:"現在迪多，深呼吸。然後咳嗽。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人], respira hondo.", pattern_zh:"___，深呼吸。",
@@ -370,7 +370,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_09", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_09", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Creo que tienes el corazón un poco flojo.", core_zh:"我覺得你的心臟有點虛弱。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Creo que tienes [身體部位] un poco [形容詞].", pattern_zh:"我認為你的 ___ 有點 ___。",
@@ -383,7 +383,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e3_10", ep:"E3 · La Mejor Amiga",
+    ammo_id:"e3_10", ep:"Cap.3 · La Mejor Amiga",
     core_ammo:"Todos necesitan muchas galletas para curarse.", core_zh:"所有人都需要很多餅乾才能康復。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Todos necesitan [名詞] para [原形動詞].", pattern_zh:"所有人都需要 ___ 才能 ___。",
@@ -398,7 +398,7 @@ const AMMO_DATA = [
 
   // ══════════ E4 · La Nueva Hermanita ══════════
   {
-    ammo_id:"e4_01", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_01", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Mamá Cata ha tenido un bebé.", core_zh:"貓媽媽生了一個寶寶。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] ha tenido un bebé.", pattern_zh:"___ 生了一個寶寶。",
@@ -411,7 +411,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_02", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_02", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Se llama Mimi.", core_zh:"她叫做咪咪。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Se llama [名字].", pattern_zh:"她／他叫做 ___。",
@@ -424,7 +424,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_03", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_03", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Nita y Tito tienen una hermana nueva.", core_zh:"妮妲和迪多有了一個新妹妹。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] tienen [名詞].", pattern_zh:"___ 有 ___。",
@@ -437,7 +437,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_04", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_04", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Mimi es muy pequeñita.", core_zh:"咪咪非常小小的。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：es muy pequeñita = 非常小（本質狀態）",
     pattern:"[人/物] es muy [形容詞-ita/ito].", pattern_zh:"___ 非常 ___。",
@@ -450,7 +450,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_05", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_05", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Tito quiere mucho a su hermanita.", core_zh:"迪多非常愛他的小妹妹。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] quiere mucho a [受詞].", pattern_zh:"___ 非常愛 ___。",
@@ -463,7 +463,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_06", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_06", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Papá Tato está muy feliz.", core_zh:"貓爸爸非常開心。",
     be_verb_type:"estar", be_verb_note:"Estar + 形容詞 = 描述當下心情狀態（暫時的）",
     pattern:"[人] está muy [心情形容詞].", pattern_zh:"___ 非常 ___（心情）。",
@@ -476,7 +476,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_07", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_07", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Toda la familia está esperando a Mimi.", core_zh:"全家人都在等咪咪。",
     be_verb_type:"estar", be_verb_note:"Estar + -ando/-iendo = 正在做（進行式）",
     pattern:"[人] está esperando a [受詞].", pattern_zh:"___ 正在等 ___。",
@@ -489,7 +489,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_08", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_08", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"¡Nita ya es una hermana mayor!", core_zh:"妮妲已經是大姊姊了！",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分：ya es = 已經是了（ya 強調狀態改變）",
     pattern:"¡[人] ya es [身分]!", pattern_zh:"___ 已經是 ___ 了！",
@@ -502,7 +502,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_09", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_09", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"Vamos a cuidar a Mimi juntos.", core_zh:"我們要一起照顧咪咪。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Vamos a [原形動詞] juntos.", pattern_zh:"我們要一起 ___。",
@@ -515,7 +515,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e4_10", ep:"E4 · La Nueva Hermanita",
+    ammo_id:"e4_10", ep:"Cap.4 · La Nueva Hermanita",
     core_ammo:"¡Bienvenida a la familia, Mimi!", core_zh:"歡迎來到這個家，咪咪！",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¡Bienvenida/o a [地方], [名字]!", pattern_zh:"歡迎來到 ___，___！",
@@ -530,7 +530,7 @@ const AMMO_DATA = [
 
   // ══════════ E5 · Cuidando a Mimi ══════════
   {
-    ammo_id:"e5_01", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_01", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Mimi llora mucho por la noche.", core_zh:"咪咪晚上常常哭。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] llora mucho [時間].", pattern_zh:"___ 常常在 ___ 哭。",
@@ -543,7 +543,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_02", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_02", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Mamá Cata le da de comer a Mimi.", core_zh:"貓媽媽餵咪咪吃東西。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] le da de comer a [受詞].", pattern_zh:"___ 餵 ___ 吃東西。",
@@ -556,7 +556,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_03", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_03", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Papá Tato cambia el pañal de Mimi.", core_zh:"貓爸爸幫咪咪換尿布。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] cambia el pañal de [受詞].", pattern_zh:"___ 幫 ___ 換尿布。",
@@ -569,7 +569,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_04", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_04", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Nita canta una canción para Mimi.", core_zh:"妮妲唱一首歌給咪咪聽。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] canta [受詞] para [受詞].", pattern_zh:"___ 唱 ___ 給 ___ 聽。",
@@ -582,7 +582,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_05", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_05", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Tito le enseña su esqueleto a Mimi.", core_zh:"迪多給咪咪看他的骷髏。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] le enseña [受詞] a [受詞].", pattern_zh:"___ 給 ___ 看 ___。",
@@ -595,7 +595,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_06", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_06", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Mimi duerme en su cuna.", core_zh:"咪咪睡在她的搖籃裡。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] duerme en [地方].", pattern_zh:"___ 睡在 ___。",
@@ -608,7 +608,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_07", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_07", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Toda la familia ayuda a cuidar a Mimi.", core_zh:"全家人都幫忙照顧咪咪。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] ayuda a [原形動詞].", pattern_zh:"___ 幫忙 ___。",
@@ -621,7 +621,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_08", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_08", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Mimi sonríe por primera vez.", core_zh:"咪咪第一次微笑了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] [動詞] por primera vez.", pattern_zh:"___ 第一次 ___了。",
@@ -634,7 +634,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_09", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_09", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"Nita está muy orgullosa de ser hermana mayor.", core_zh:"妮妲非常自豪能當大姊姊。",
     be_verb_type:"estar", be_verb_note:"Estar + 形容詞 = 描述當下的情緒狀態",
     pattern:"[人] está muy orgullosa/o de [原形動詞].", pattern_zh:"___ 非常自豪能 ___。",
@@ -647,7 +647,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e5_10", ep:"E5 · Cuidando a Mimi",
+    ammo_id:"e5_10", ep:"Cap.5 · Cuidando a Mimi",
     core_ammo:"¡Cuidar a un bebé es mucho trabajo!", core_zh:"照顧寶寶真的是很多工作！",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質：es mucho trabajo = 是很多工作（本質說法）",
     pattern:"¡[原形動詞] es mucho trabajo!", pattern_zh:"___ 真的是很多工作！",
@@ -662,7 +662,7 @@ const AMMO_DATA = [
 
   // ══════════ E6 · Cosas Ricas para Comer ══════════
   {
-    ammo_id:"e6_01", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_01", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"A Nita le encanta el helado de chocolate.", core_zh:"妮妲超愛巧克力冰淇淋。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人] le encanta [名詞].", pattern_zh:"___ 超愛 ___。",
@@ -675,7 +675,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_02", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_02", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"Tito come muchas manzanas.", core_zh:"迪多吃很多蘋果。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] come muchas/muchos [食物（複數）].", pattern_zh:"___ 吃很多 ___。",
@@ -688,7 +688,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_03", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_03", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"Mamá Cata hace un pastel de fresa.", core_zh:"貓媽媽做草莓蛋糕。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] hace un pastel de [口味].", pattern_zh:"___ 做 ___ 口味的蛋糕。",
@@ -701,7 +701,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_04", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_04", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"Papá Tato quiere un plátano.", core_zh:"貓爸爸想吃一根香蕉。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] quiere [食物].", pattern_zh:"___ 想要 ___。",
@@ -714,7 +714,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_05", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_05", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"Vera Oveja trae galletas para todos.", core_zh:"薇拉羊帶餅乾給大家吃。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] trae [食物] para todos.", pattern_zh:"___ 帶 ___ 給大家。",
@@ -727,7 +727,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_06", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_06", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"¿Quieres un poco de queso?", core_zh:"你想吃一點起司嗎？",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¿Quieres un poco de [食物]?", pattern_zh:"你想吃一點 ___ 嗎？",
@@ -740,7 +740,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_07", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_07", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"El pan está muy caliente.", core_zh:"麵包還很燙。",
     be_verb_type:"estar", be_verb_note:"Estar + 形容詞 = 當下的狀態（暫時的）",
     pattern:"[食物] está muy [狀態形容詞].", pattern_zh:"___ 還很 ___。",
@@ -753,7 +753,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_08", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_08", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"A todos les gustan las naranjas.", core_zh:"大家都喜歡柳橙。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A todos les gustan [食物（複數）].", pattern_zh:"大家都喜歡 ___。",
@@ -766,7 +766,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_09", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_09", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"Tito no quiere comer verduras.", core_zh:"迪多不想吃蔬菜。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] no quiere comer [食物].", pattern_zh:"___ 不想吃 ___。",
@@ -779,7 +779,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e6_10", ep:"E6 · Cosas Ricas para Comer",
+    ammo_id:"e6_10", ep:"Cap.6 · Cosas Ricas para Comer",
     core_ammo:"¡Vamos a comer pizza esta noche!", core_zh:"我們今晚要吃披薩！",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¡Vamos a comer [食物] esta noche!", pattern_zh:"我們今晚要吃 ___！",
@@ -793,7 +793,7 @@ const AMMO_DATA = [
   },
   // ══════════ E7 · Buenos Días, Casa Gato ══════════
   {
-    ammo_id:"e7_01", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_01", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Nita tiene mucho sueño.", core_zh:"妮妲很想睡。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] tiene mucho sueño.", pattern_zh:"___ 很想睡。",
@@ -806,7 +806,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_02", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_02", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Mamá Cata despierta a Nita, pero Nita llega tarde.", core_zh:"貓媽媽叫醒妮妲，但妮妲還是遲到了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物1] despierta a [人物2], pero llega tarde.", pattern_zh:"___ 叫醒 ___，但還是遲到了。",
@@ -819,7 +819,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_03", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_03", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Tito tiene hambre.", core_zh:"迪多肚子餓了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] tiene hambre.", pattern_zh:"___ 肚子餓了。",
@@ -832,7 +832,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_04", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_04", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Papá Tato tiene frío.", core_zh:"貓爸爸覺得冷。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] tiene frío.", pattern_zh:"___ 覺得冷。",
@@ -845,7 +845,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_05", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_05", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Hay pan y leche en la mesa.", core_zh:"桌上有麵包和牛奶。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Hay [東西] en la mesa.", pattern_zh:"桌上有 ___。",
@@ -858,7 +858,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_06", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_06", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Quiero desayunar con Mimi.", core_zh:"我想跟咪咪一起吃早餐。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Quiero desayunar con [人物].", pattern_zh:"我想跟 ___ 一起吃早餐。",
@@ -871,7 +871,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_07", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_07", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Mamá Cata tiene prisa.", core_zh:"貓媽媽在趕時間。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] tiene prisa.", pattern_zh:"___ 在趕時間。",
@@ -884,7 +884,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_08", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_08", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"¿Tienes tiempo para un café?", core_zh:"你有時間喝杯咖啡嗎？",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¿Tienes tiempo para [活動]?", pattern_zh:"你有時間 ___ 嗎？",
@@ -897,7 +897,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_09", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_09", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Kito tiene miedo de llegar tarde.", core_zh:"哥哥害怕遲到。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] tiene miedo de [原形動詞].", pattern_zh:"___ 害怕 ___。",
@@ -910,7 +910,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e7_10", ep:"E7 · Buenos Días, Casa Gato",
+    ammo_id:"e7_10", ep:"Cap.7 · Buenos Días, Casa Gato",
     core_ammo:"Nita se duerme en clase y Vivi la despierta.", core_zh:"妮妲在課堂上睡著了，薇薇老師把她叫醒。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] se duerme en clase.", pattern_zh:"___ 在課堂上睡著了。",
@@ -925,7 +925,7 @@ const AMMO_DATA = [
 
   // ══════════ E8 · Tito y el Carrito ══════════
   {
-    ammo_id:"e8_01", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_01", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Tito juega con su carrito, Chito.", core_zh:"迪多在玩他的車車奇奇。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] juega con su [物品].", pattern_zh:"___ 在玩他的 ___。",
@@ -938,7 +938,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_02", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_02", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Mamá Cata le pregunta algo.", core_zh:"卡妲媽媽問他一件事。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] le pregunta [事情].", pattern_zh:"___ 問他/她 ___。",
@@ -951,7 +951,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_03", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_03", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Tito solo asiente con la cabeza.", core_zh:"迪多只是點點頭。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] solo asiente con la cabeza.", pattern_zh:"___ 只是點點頭。",
@@ -964,7 +964,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_04", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_04", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Para el \"no\", Tito simplemente no responde.", core_zh:"遇到「不」的時候，迪多就是不回應。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] simplemente no responde.", pattern_zh:"___ 就是不回應。",
@@ -977,7 +977,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_05", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_05", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Tito la escucha, pero actúa como si no la oyera.", core_zh:"迪多聽到了，卻裝作沒聽到。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] actúa como si no la oyera.", pattern_zh:"___ 裝作沒聽到。",
@@ -990,7 +990,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_06", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_06", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Por dentro, Mamá Cata se siente un poco frustrada.", core_zh:"卡妲媽媽心裡有點火大。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] se siente un poco frustrada/o.", pattern_zh:"___ 心裡有點火大。",
@@ -1003,7 +1003,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_07", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_07", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Respira hondo y se sienta a su lado.", core_zh:"她深呼吸，坐到他旁邊。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Respira hondo y se sienta [地點].", pattern_zh:"她深呼吸，坐 ___。",
@@ -1016,7 +1016,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_08", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_08", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Ella sabe que su niño no lo hace a propósito.", core_zh:"她清楚知道孩子不是故意的。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Ella sabe que [人物] no lo hace a propósito.", pattern_zh:"她知道 ___ 不是故意的。",
@@ -1029,7 +1029,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_09", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_09", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Pero no entiende de dónde viene su propio enojo.", core_zh:"但她不懂自己的怒火是從哪裡來的。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"No entiende de dónde viene su propio [情緒].", pattern_zh:"她不懂自己的 ___ 是從哪裡來的。",
@@ -1042,7 +1042,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e8_10", ep:"E8 · Tito y el Carrito",
+    ammo_id:"e8_10", ep:"Cap.8 · Tito y el Carrito",
     core_ammo:"Esa noche, Mamá Cata se queda pensando en sí misma.", core_zh:"那天晚上，卡妲媽媽開始想起自己。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Esa noche, [人物] se queda pensando en sí misma/o.", pattern_zh:"那天晚上，___ 開始想起自己。",
@@ -1057,7 +1057,7 @@ const AMMO_DATA = [
 
   // ══════════ E9 · Por Fin Sé Quién Soy ══════════
   {
-    ammo_id:"e9_01", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_01", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Mamá Cata siempre pierde las llaves.", core_zh:"卡妲媽媽總是找不到鑰匙。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] siempre pierde [物品].", pattern_zh:"___ 總是弄丟 ___。",
@@ -1070,7 +1070,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_02", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_02", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Pero puede concentrarse en un proyecto por horas y horas.", core_zh:"但她可以對一個計畫專注好幾個小時。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Puede concentrarse en [事情] por horas.", pattern_zh:"她可以對 ___ 專注好幾個小時。",
@@ -1083,7 +1083,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_03", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_03", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Su mente es un volcán de ideas y un caos de horarios.", core_zh:"她的腦子是滿滿的點子，也是一團亂的時間表。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：es = 是（隱喻句的本質描述）",
     pattern:"Su mente es un volcán de [東西].", pattern_zh:"她的腦子是滿滿的 ___。",
@@ -1096,7 +1096,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_04", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_04", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Un día, ve a Nita jugando de una manera muy familiar.", core_zh:"有一天，她看見妮妲玩耍的樣子很眼熟。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Ve a [人物] jugando de una manera muy familiar.", pattern_zh:"她看見 ___ 玩耍的樣子很眼熟。",
@@ -1109,7 +1109,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_05", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_05", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"\"Yo también hacía eso de pequeña,\" piensa Mamá Cata.", core_zh:"「我小時候也是這樣，」卡妲媽媽心想。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Yo también hacía eso [時期].", pattern_zh:"我 ___ 也是這樣。",
@@ -1122,7 +1122,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_06", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_06", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Empieza a leer sobre el TDAH.", core_zh:"她開始讀關於ADHD的資料。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Empieza a leer sobre [主題].", pattern_zh:"她開始讀關於 ___ 的資料。",
@@ -1135,7 +1135,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_07", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_07", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Cada síntoma es un espejo de su propia vida.", core_zh:"每一條症狀都像照到自己的人生。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質：es = 是（隱喻句）",
     pattern:"Cada síntoma es un espejo de [東西].", pattern_zh:"每一條症狀都像照到 ___。",
@@ -1148,7 +1148,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_08", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_08", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Ahora entiende por qué es tan fuerte y tan dispersa a la vez.", core_zh:"現在她懂了，為什麼自己同時這麼堅韌又這麼散亂。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質特徵：es = 是（描述兩種對比的特質）",
     pattern:"Entiende por qué es tan [特質1] y tan [特質2] a la vez.", pattern_zh:"她懂了為什麼自己同時這麼 ___ 又這麼 ___。",
@@ -1161,7 +1161,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_09", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_09", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"No es un defecto, es su manera de ser.", core_zh:"這不是缺陷，是她本來的樣子。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質：no es/es = 不是/是（身分本質的否定與肯定對照）",
     pattern:"No es un defecto, es su manera de [動詞].", pattern_zh:"這不是缺陷，是她 ___ 的樣子。",
@@ -1174,7 +1174,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e9_10", ep:"E9 · Por Fin Sé Quién Soy",
+    ammo_id:"e9_10", ep:"Cap.9 · Por Fin Sé Quién Soy",
     core_ammo:"Mamá Cata sonríe: \"Por fin sé quién soy.\"", core_zh:"卡妲媽媽笑了：「我終於知道自己是誰了。」",
     be_verb_type:"ser", be_verb_note:"Ser 描述身分：soy = 我是（quién soy = 我是誰，身分認同）",
     pattern:"Por fin sé [知道的內容].", pattern_zh:"我終於知道 ___ 了。",
@@ -1189,7 +1189,7 @@ const AMMO_DATA = [
 
   // ══════════ E10 · Chocamos Sin Querer ══════════
   {
-    ammo_id:"e10_01", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_01", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Mamá Cata hace un plan para el día.", core_zh:"卡妲媽媽排好了今天的行程。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] hace un plan para el día.", pattern_zh:"___ 排好了今天的行程。",
@@ -1202,7 +1202,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_02", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_02", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"A Tito no le gustan los cambios repentinos.", core_zh:"迪多不喜歡突如其來的改變。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人物] no le gustan los cambios repentinos.", pattern_zh:"___ 不喜歡突如其來的改變。",
@@ -1215,7 +1215,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_03", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_03", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Él necesita todo en el mismo orden, todos los días.", core_zh:"他需要每天都一樣的順序。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Necesita todo en el mismo [東西].", pattern_zh:"他需要每天都一樣的 ___。",
@@ -1228,7 +1228,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_04", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_04", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Tito quiere las cosas ahora mismo.", core_zh:"迪多想要的是「馬上」。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人物] quiere las cosas ahora mismo.", pattern_zh:"___ 想要的是「馬上」。",
@@ -1241,7 +1241,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_05", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_05", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"El plan de Mamá Cata se rompe, otra vez.", core_zh:"卡妲媽媽的計畫又被打亂了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"El plan de [人物] se rompe, otra vez.", pattern_zh:"___ 的計畫又被打亂了。",
@@ -1254,7 +1254,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_06", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_06", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Rehacer el plan le cuesta muchísima energía.", core_zh:"重新安排這件事，耗掉她非常多的能量。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Le cuesta muchísima [東西].", pattern_zh:"這件事耗掉她非常多的 ___。",
@@ -1267,7 +1267,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_07", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_07", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Chocan, una y otra vez, sin querer.", core_zh:"他們一次又一次地對衝，誰都不是故意的。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Chocan, [頻率], sin querer.", pattern_zh:"他們 ___ 地對衝，誰都不是故意的。",
@@ -1280,7 +1280,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_08", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_08", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Una noche, se pregunta: \"¿Por qué me cuesta tanto?\"", core_zh:"一天晚上，她問自己：「為什麼這件事讓我這麼累？」",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Se pregunta: ¿Por qué [問題]?", pattern_zh:"她問自己：「為什麼 ___？」",
@@ -1293,7 +1293,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_09", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_09", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Empieza a leer sobre el TDAH.", core_zh:"她開始讀關於ADHD的資料。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Empieza a leer sobre [主題].", pattern_zh:"她開始讀關於 ___ 的資料。",
@@ -1306,7 +1306,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e10_10", ep:"E10 · Chocamos Sin Querer",
+    ammo_id:"e10_10", ep:"Cap.10 · Chocamos Sin Querer",
     core_ammo:"Entiende: su energía y la regularidad de él son diferentes, no incorrectas.", core_zh:"她懂了：她的能量模式和他的規律，只是不同，不是誰錯了。",
     be_verb_type:"ser", be_verb_note:"Ser 描述本質：son = 是（描述兩種特質的對照，不是暫時狀態）",
     pattern:"Su [東西] y la regularidad de él son diferentes, no incorrectas.", pattern_zh:"她的 ___ 和他的規律，只是不同，不是誰錯了。",
@@ -1320,7 +1320,7 @@ const AMMO_DATA = [
   },
   // ══════════ E17 · Me Llamo Nita（2026-07-24 第一站最小核心彈藥，只挑CHUNK_ECOLOGY判定的reusableChunk，不是10句全建）══════════
   {
-    ammo_id:"e17_01", ep:"E17 · Me Llamo Nita",
+    ammo_id:"e17_01", ep:"Cap.17 · Me Llamo Nita",
     core_ammo:"Me llamo Nita.", core_zh:"我叫妮妲。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Me llamo [名字].", pattern_zh:"我叫 ___。",
@@ -1333,7 +1333,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e17_02", ep:"E17 · Me Llamo Nita",
+    ammo_id:"e17_02", ep:"Cap.17 · Me Llamo Nita",
     core_ammo:"Soy Nita.", core_zh:"我是妮妲。",
     be_verb_type:"ser", be_verb_note:"Ser用在身分本質：Soy = 我是",
     pattern:"Soy [名字].", pattern_zh:"我是 ___。",
@@ -1346,7 +1346,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e17_03", ep:"E17 · Me Llamo Nita",
+    ammo_id:"e17_03", ep:"Cap.17 · Me Llamo Nita",
     core_ammo:"Soy una gatita.", core_zh:"我是一隻小貓咪。",
     be_verb_type:"ser", be_verb_note:"Ser描述身分本質：Soy un/una + 名詞 = 我是一個/一隻___",
     pattern:"Soy un/una [名詞].", pattern_zh:"我是一個/一隻 ___。",
@@ -1359,7 +1359,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e17_04", ep:"E17 · Me Llamo Nita",
+    ammo_id:"e17_04", ep:"Cap.17 · Me Llamo Nita",
     core_ammo:"Mucho gusto, soy Nita.", core_zh:"很高興認識你，我是妮妲。",
     be_verb_type:"ser", be_verb_note:"見面問候慣用語 + ser自我介紹",
     pattern:"Mucho gusto, soy [名字].", pattern_zh:"很高興認識你，我是 ___。",
@@ -1375,7 +1375,7 @@ const AMMO_DATA = [
   // CHUNK_ECOLOGY.reusableChunk清單建卡，只挑「拿掉這集情境換場景還有人會這樣講」的
   // 15句，episodeOnly/emotionalNarrative/culturalInfo不建卡，跟E17同一套判準 ══════════
   {
-    ammo_id:"e12_03", ep:"E12 · El Desván",
+    ammo_id:"e12_03", ep:"Cap.12 · El Desván",
     core_ammo:"Asoma la cabeza y pregunta: \"¿Puedo jugar también?\"", core_zh:"他探出頭，問：「我也可以加入嗎？」",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¿Puedo [動詞原形] también?", pattern_zh:"我也可以 ___ 嗎？",
@@ -1388,7 +1388,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e12_04", ep:"E12 · El Desván",
+    ammo_id:"e12_04", ep:"Cap.12 · El Desván",
     core_ammo:"Ellos le dicen: \"Eres muy pequeño todavía.\"", core_zh:"他們對他說：「你還太小了。」",
     be_verb_type:"ser", be_verb_note:"Ser描述本質特質：Eres muy + 形容詞 = 你很___",
     pattern:"Eres muy [形容詞] todavía.", pattern_zh:"你還太 ___ 了。",
@@ -1401,7 +1401,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e12_10", ep:"E12 · El Desván",
+    ammo_id:"e12_10", ep:"Cap.12 · El Desván",
     core_ammo:"La Esperanza dice: \"¡Hoy es el día!\"", core_zh:"希望說：「今天就是那一天！」",
     be_verb_type:"none", be_verb_note:"",
     pattern:"¡Hoy es el día!", pattern_zh:"今天就是那一天！",
@@ -1414,7 +1414,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_01", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_01", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Agravio. Guardo lo que duele, sin embargo, no lo hago para siempre.", core_zh:"我是曲屈。我藏著那些傷，然而，我不會永遠藏著。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[事實], sin embargo, [轉折].", pattern_zh:"___，然而，___。",
@@ -1427,7 +1427,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_02", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_02", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Tristeza. A veces solo quiero llorar, de hecho, no tengo que buscar una razón inmediata.", core_zh:"我是茫茫。有時候我只想哭，其實，我不需要立刻找一個理由。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[陳述], de hecho, [補充事實].", pattern_zh:"___，其實，___。",
@@ -1440,7 +1440,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_03", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_03", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Agrado. Quiero que todos estén bien, a pesar de eso, también necesito cuidarme a mí.", core_zh:"我是唆嗦。我想讓大家都好，即便如此，我也需要照顧自己。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[願望/事實], a pesar de eso, [另一件也重要的事].", pattern_zh:"___，即便如此，___。",
@@ -1453,7 +1453,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_04", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_04", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Miedo. Cuando algo cambia, me paralizo, por eso, necesito tiempo para adaptarme.", core_zh:"我是糾揪。有變化的時候我就凍住，所以，我需要時間來適應。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[原因], por eso, [結果].", pattern_zh:"___，所以，___。",
@@ -1466,7 +1466,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_05", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_05", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Cansancio. Necesito descanso, además, pedir descanso no es rendirse.", core_zh:"我是倦倦。我需要休息，而且，要求休息不是放棄。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[陳述], además, [追加的重點].", pattern_zh:"___，而且，___。",
@@ -1479,7 +1479,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_06", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_06", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Culpa. Creo que todo es mi error, en realidad, no todo depende de mí.", core_zh:"我是譴譴。我以為什麼都是我的錯，但其實，並不是所有事都取決於我。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[以為的想法], en realidad, [真正的情況].", pattern_zh:"___，但其實，___。",
@@ -1492,7 +1492,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_07", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_07", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Esperanza. Busco la salida al mismo tiempo que acompaño al Yo Pequeñito.", core_zh:"我是嬉汐。我一邊找出路，同時，也陪伴著小小自我。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[動作A] al mismo tiempo que [動作B].", pattern_zh:"___，同時，也 ___。",
@@ -1505,7 +1505,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_08", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_08", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Guardián. Protejo el Corazón Verdadero, sobre todo, cuando Juicio ataca.", core_zh:"我是憨憨。我守護著本心，尤其是，當錐心魘發動攻擊的時候。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[一般情況], sobre todo, cuando [特別情況].", pattern_zh:"___，尤其是，當 ___ 的時候。",
@@ -1518,7 +1518,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e14_09", ep:"E14 · Conectores del Corazón",
+    ammo_id:"e14_09", ep:"Cap.14 · Conectores del Corazón",
     core_ammo:"Yo soy Juicio. Juzgo cada palabra, sin embargo, mis palabras más duras son para mí.", core_zh:"我是錐心魘。我評判每一句話，然而，我最狠的話，都是留給自己的。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[行為], sin embargo, [轉折的對象是自己].", pattern_zh:"___，然而，___。",
@@ -1531,7 +1531,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e16_05", ep:"E16 · La Batería Social",
+    ammo_id:"e16_05", ep:"Cap.16 · La Batería Social",
     core_ammo:"\"Ya no puedo sonreír más,\" susurra Cansancio.", core_zh:"「我沒辦法再多笑一次了」，倦倦小小聲說。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Ya no puedo [動詞原形] más.", pattern_zh:"我沒辦法再 ___ 了。",
@@ -1544,7 +1544,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e16_07", ep:"E16 · La Batería Social",
+    ammo_id:"e16_07", ep:"Cap.16 · La Batería Social",
     core_ammo:"No es que Cata no quiera estar contigo, es que necesita recargar.", core_zh:"不是卡妲不想陪你，是她需要充電。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"No es que [誤解的說法], es que [真正原因].", pattern_zh:"不是 ___，是 ___。",
@@ -1557,7 +1557,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e16_09", ep:"E16 · La Batería Social",
+    ammo_id:"e16_09", ep:"Cap.16 · La Batería Social",
     core_ammo:"Un rincón silencioso, un poco de tiempo a solas: eso basta.", core_zh:"一個安靜的角落，一點獨處的時間，這樣就夠了。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[簡單的需求]: eso basta.", pattern_zh:"___：這樣就夠了。",
@@ -1574,7 +1574,7 @@ const AMMO_DATA = [
   // 30句裡挑出12句最具代表性、彼此不重疊的語塊，跟E17精選比例(4/10)一致，不做E1-E10
   // 那種每句都建的舊模式 ── */
   {
-    ammo_id:"e18_01", ep:"E18 · Mi Familia y Mis Amigos",
+    ammo_id:"e18_01", ep:"Cap.18 · Mi Familia y Mis Amigos",
     core_ammo:"Tengo una familia y una amiga.", core_zh:"我有一個家庭和一個朋友。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"Tengo [名詞] y [名詞].", pattern_zh:"我有 ___ 和 ___。",
@@ -1587,7 +1587,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e18_02", ep:"E18 · Mi Familia y Mis Amigos",
+    ammo_id:"e18_02", ep:"Cap.18 · Mi Familia y Mis Amigos",
     core_ammo:"Yo soy Mamá Cata, la mamá de Nita.", core_zh:"我是卡妲媽媽，妮妲的媽媽。",
     be_verb_type:"ser", be_verb_note:"Ser介紹身分關係：Soy X, el/la Y de Z = 我是X，Z的Y",
     pattern:"Soy [名字], el/la [關係] de [人名].", pattern_zh:"我是 ___，___ 的 ___。",
@@ -1600,7 +1600,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e18_05", ep:"E18 · Mi Familia y Mis Amigos",
+    ammo_id:"e18_05", ep:"Cap.18 · Mi Familia y Mis Amigos",
     core_ammo:"Soy el hermano mayor de Nita.", core_zh:"我是妮妲的哥哥。",
     be_verb_type:"ser", be_verb_note:"Ser+排行：el/la hermano/a mayor/menor de X = X的哥哥/姊姊/弟弟/妹妹",
     pattern:"Soy el/la hermano/a mayor/menor de [人名].", pattern_zh:"我是 ___ 的哥哥/姊姊/弟弟/妹妹。",
@@ -1613,7 +1613,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e18_09", ep:"E18 · Mi Familia y Mis Amigos",
+    ammo_id:"e18_09", ep:"Cap.18 · Mi Familia y Mis Amigos",
     core_ammo:"Soy la mejor amiga de Nita.", core_zh:"我是妮妲最好的朋友。",
     be_verb_type:"ser", be_verb_note:"Ser+最高級：el/la mejor amigo/a de X = X最好的朋友",
     pattern:"Soy el/la mejor amigo/a de [人名].", pattern_zh:"我是 ___ 最好的朋友。",
@@ -1626,7 +1626,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e19_01", ep:"E19 · Mi Día a Día",
+    ammo_id:"e19_01", ep:"Cap.19 · Mi Día a Día",
     core_ammo:"Nita tiene sueño.", core_zh:"妮妲想睡。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] tiene sueño.", pattern_zh:"___ 想睡。",
@@ -1639,7 +1639,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e19_06", ep:"E19 · Mi Día a Día",
+    ammo_id:"e19_06", ep:"Cap.19 · Mi Día a Día",
     core_ammo:"Mimi tiene hambre y llora un poco.", core_zh:"咪咪肚子餓了，哭了一下下。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] tiene hambre.", pattern_zh:"___ 肚子餓了。",
@@ -1652,7 +1652,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e19_08", ep:"E19 · Mi Día a Día",
+    ammo_id:"e19_08", ep:"Cap.19 · Mi Día a Día",
     core_ammo:"Toda la familia está en casa hoy.", core_zh:"今天全家人都在家。",
     be_verb_type:"estar", be_verb_note:"Estar+en+地點：está en casa＝在家（暫時的位置狀態）",
     pattern:"[主詞] está/están en casa.", pattern_zh:"___ 在家。",
@@ -1665,7 +1665,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e19_09", ep:"E19 · Mi Día a Día",
+    ammo_id:"e19_09", ep:"Cap.19 · Mi Día a Día",
     core_ammo:"Nita tiene ganas de jugar con Tito.", core_zh:"妮妲很想跟迪多一起玩。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"[人] tiene ganas de [動詞原形].", pattern_zh:"___ 很想 ___。",
@@ -1678,7 +1678,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e20_01", ep:"E20 · Lo Que Nos Gusta",
+    ammo_id:"e20_01", ep:"Cap.20 · Lo Que Nos Gusta",
     core_ammo:"A Nita le gusta el helado.", core_zh:"妮妲喜歡冰淇淋。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人] le gusta [名詞].", pattern_zh:"___ 喜歡 ___。",
@@ -1691,7 +1691,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e20_03", ep:"E20 · Lo Que Nos Gusta",
+    ammo_id:"e20_03", ep:"Cap.20 · Lo Que Nos Gusta",
     core_ammo:"A Papá Tato le encanta cocinar para su familia.", core_zh:"達多爸爸超愛為家人下廚。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人] le encanta [動詞原形].", pattern_zh:"___ 超愛 ___。",
@@ -1704,7 +1704,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e20_06", ep:"E20 · Lo Que Nos Gusta",
+    ammo_id:"e20_06", ep:"Cap.20 · Lo Que Nos Gusta",
     core_ammo:"A Mimi le encantan las galletas.", core_zh:"咪咪超愛餅乾。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人] le encantan [複數名詞].", pattern_zh:"___ 超愛 ___。",
@@ -1717,7 +1717,7 @@ const AMMO_DATA = [
     ]
   },
   {
-    ammo_id:"e20_08", ep:"E20 · Lo Que Nos Gusta",
+    ammo_id:"e20_08", ep:"Cap.20 · Lo Que Nos Gusta",
     core_ammo:"A Tito no le gusta el ruido fuerte.", core_zh:"迪多不喜歡很大的聲音。",
     be_verb_type:"none", be_verb_note:"",
     pattern:"A [人] no le gusta [名詞].", pattern_zh:"___ 不喜歡 ___。",

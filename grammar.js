@@ -160,7 +160,7 @@ const GRAMMAR_DATA = [
     },
     crossLang:"快速對接：SER＝「是」——華語「是」、台語「是（sī）」、客語「係（he）」，四種語言在『本質認同』這個字上都對得起來，比死背 DOCTOR 口訣更直覺！",
     quirk:"📍 事件發生地點 → SER；物體本身的位置 → ESTAR。<br>❌ 直覺：婚禮在哪裡？= 地點 = ESTAR？<br>✅ 其實是：什麼事情在哪裡發生？= SER<br>La boda es en la iglesia.（婚禮在教堂舉行——事件發生地點，用SER，跟tener lugar「舉行」同義）<br>≠ La iglesia está en el centro.（教堂位於市中心——這是教堂這個「東西」本身的位置，才輪到ESTAR）",
-    source:"E17·S2／E18·S5／E3·S3",
+    source:"Cap.17·S2／Cap.18·S5／Cap.3·S3",
     conj:{
       verb:"ser（是）",
       rows:[
@@ -225,7 +225,7 @@ const GRAMMAR_DATA = [
     },
     crossLang:"快速對接：ESTAR＝「在」——華語「在」、台語「在、佇（tī）」、客語「在」，四種語言在『位置／暫時狀態』這個字上也對得起來。記法：SER 是本質的『是』，ESTAR 是暫時的『在』。",
     quirk:"❌ 直覺：死亡很永久，應該是本質身分 = SER？<br>✅ 其實是：西語把死亡當成「外力造成、改變後的狀態」= ESTAR<br>Está muerto.（他死了——跟está roto壞掉了、está cansado累了是同一掛邏輯，不是在描述這個人的本質身分）",
-    source:"E2·S8 / E19·S4",
+    source:"Cap.2·S8 / Cap.19·S4",
     conj:{
       verb:"estar（在／處於狀態）",
       rows:[
@@ -279,7 +279,7 @@ const GRAMMAR_DATA = [
       {es:"Nita está esperando a su mejor amiga, Vera Oveja.", zh:"妮妲正在等她最好的朋友薇拉羊。（劇情原句，E3；está + esperar → esperando）"}
     ],
     trap:"-ar 動詞字尾換 -ando（jugar → jugando）；-er/-ir 動詞字尾換 -iendo（comer → comiendo）",
-    source:"E2·S9 / E3·S1",
+    source:"Cap.2·S9 / Cap.3·S1",
     conj:{
       verb:"estar + -ando（西語的-ing形態）",
       rows:[
@@ -317,7 +317,7 @@ const GRAMMAR_DATA = [
       {es:"He perdido mi mochila.", zh:"我把我的書包弄丟了。（「我」用 he）"}
     ],
     trap:"字尾規則：-ar → -ado（encontrar→encontrado）；-er/-ir → -ido（perder→perdido）",
-    source:"E2·S3",
+    source:"Cap.2·S3",
     conj:{
       verb:"haber（幫忙的動詞）",
       rows:[
@@ -370,7 +370,7 @@ const GRAMMAR_DATA = [
       {es:"Mamá ha estado cocinando.", zh:"媽媽一直在煮飯。"}
     ],
     trap:"拉美用 ustedes + han + estado；vosotros + habéis + estado 是西班牙用法，這個網站教拉美西語優先練 han。英語對應：have been + -ing",
-    source:"E2·S10"
+    source:"Cap.2·S10"
   },
 
   {
@@ -382,7 +382,7 @@ const GRAMMAR_DATA = [
       {es:"Tú serás una estrella.", zh:"你將成為一顆明星。"},
       {es:"¿Qué serás de mayor?", zh:"你長大想做什麼？（字面：你將成為什麼？）"}
     ],
-    source:"E3·S7",
+    source:"Cap.3·S7",
     conj:{
       verb:"ser（以後要做：將成為）",
       rows:[
@@ -417,7 +417,7 @@ const GRAMMAR_DATA = [
       ],
       note:"encanta比gusta語氣強很多，講出來對方就聽得出你比較想要哪一個。"
     }],
-    source:"E20·S1（全集10句皆示範gusta/encanta，見SENTENCE_GRAMMAR_MAP globalIdx190-199）"
+    source:"Cap.20·S1（全集10句皆示範gusta/encanta，見SENTENCE_GRAMMAR_MAP globalIdx190-199）"
   },
 
   {
@@ -438,7 +438,7 @@ const GRAMMAR_DATA = [
       ],
       note:"這句型是介紹/詢問「某人喜不喜歡」最常用的講法，聊天問候小孩、朋友喜好時很常出現。"
     }],
-    source:"E3·S6"
+    source:"Cap.3·S6"
   },
 
   // ══ 動詞句型 ══
@@ -452,7 +452,7 @@ const GRAMMAR_DATA = [
       {es:"¿Podemos comer ahora?", zh:"我們現在可以吃了嗎？"},
       {es:"¿Podemos ver la tele?", zh:"我們可以看電視嗎？"}
     ],
-    source:"E12·S3（¿Puedo jugar también?，劇情現行例句）",
+    source:"Cap.12·S3（¿Puedo jugar también?，劇情現行例句）",
     conj:{
       verb:"poder（能夠／可以）",
       rows:[
@@ -557,7 +557,7 @@ const GRAMMAR_DATA = [
       {es:"Estudio español para viajar.", zh:"我學西語是為了旅行。"}
     ],
     trap:"para（目的）vs por（原因）：Estudio por dinero = 我讀書是因為錢（原因）",
-    source:"E3·S10"
+    source:"Cap.3·S10"
   },
 
   {
@@ -609,7 +609,7 @@ const GRAMMAR_DATA = [
       {es:"No te preocupes, todo va a salir bien.", zh:"不要擔心，一切都會順利的。"}
     ],
     trap:"正式場合用：No se preocupe（對 usted）；跟朋友/家人用 No te preocupes",
-    source:"E2·S4"
+    source:"Cap.2·S4"
   },
 
   {
@@ -622,7 +622,7 @@ const GRAMMAR_DATA = [
       {es:"Abre la boca, por favor.", zh:"請張開嘴巴。（abrir → abre）"}
     ],
     trap:"否定命令改用另一套規則；例外：ir → ve，ser → sé，hacer → haz。",
-    source:"E3·S8"
+    source:"Cap.3·S8"
   },
 
   {
@@ -1053,7 +1053,7 @@ const GRAMMAR_DATA = [
       {es:"No fuimos al parque porque estaba lloviendo.", zh:"我們沒去公園，因為在下雨。（新編例句）"}
     ],
     trap:"No fuimos al parque por la lluvia.／因為下雨，我們沒去公園。這樣是對的——lluvia只是一個名詞，接por不接porque；porque la lluvia是常見誤用，因為porque後面一定要接完整句子。",
-    source:"E11·S6（文法補充）"
+    source:"Cap.11·S6（文法補充）"
   },
 
   {
@@ -1079,7 +1079,7 @@ const GRAMMAR_DATA = [
     ],
     note:"pero 和 sino 都是在改變前面內容的走向，但動作不同。<br><br>pero：前面說的成立，只是補上一個限制，像「好是好，只是……」。<br><br>sino：前面說法被推翻，後面才是真正答案，像「哪裡是 A，根本是 B」。",
     trap:"判斷口訣：後面的內容是不是在「取代/糾正」前面被否定掉的東西——是的話用 sino；如果只是單純語氣轉折（不管前面正負），就用 pero。兩者通常不會互換：前面沒有先否定的句子，很少會用到sino；只是想補充另一件事而不是要換掉，也不適合硬套sino。",
-    source:"E11·S9／E1·S7（sino為文法補充）"
+    source:"Cap.11·S9／Cap.1·S7（sino為文法補充）"
   },
 
   // ══ 易混淆詞組 ══
@@ -2751,7 +2751,7 @@ const GRAMMAR_DATA = [
       ]
     },
     trap:"Me llamo跟Soy都能用在自我介紹（Me llamo Nita. / Soy Nita.意思很接近），差別是llamarse更專注在「名字」這件事本身，soy則是更廣泛的身分描述（可以接名字，也可以接職業/國籍等）——初學者兩句都要會，混著用沒問題。",
-    source:"劇情E17·S1／E4·S2／文法補充（問句為新編）",
+    source:"劇情Cap.17·S1／Cap.4·S2／文法補充（問句為新編）",
     storyRoles:[
       {es:"Me llamo Nita.", semanticRole:"self-identity", communicationGoal:"我想讓對方知道我的名字", scene:"E17劇情（真實例句）"},
       {es:"¿Cómo te llamas?", semanticRole:"inquiry", communicationGoal:"我想知道對方的名字", scene:"新編（A1核心問句，目前劇情裡還沒出現）"},

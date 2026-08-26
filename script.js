@@ -293,7 +293,7 @@ const NEWCOMER_ROADMAP = {
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:19}},
         {icon:'🐱', label:'妮妲的角落', chunks:[
           {es:'A Nita le gusta estar en los rincones.', zh:'妮妲喜歡待在角落裡。'}
-        ], jumpLabel:'▶ 看劇情 E1', jump:{type:'episode', ep:0}}
+        ], jumpLabel:'▶ 看劇情 Cap.1', jump:{type:'episode', ep:0}}
       ]
     }
     // 之後第二章/第三章：{title,description,scenes:[...]} 直接加進這個陣列
@@ -708,7 +708,7 @@ function renderAmmo(){
       const star = GARDEN_STAGES[(_ammoGardenDB[a.core_ammo]||{stage:0}).stage||0];
       const dailyRows = a.fire_daily.map((f,fi)=>renderAmmoFireRow(f,'daily',a.ammo_id,fi)).join('');
       const num = parseInt((a.ammo_id.match(/(\d+)$/)||['','0'])[1],10);
-      const numDisplay = `<span class="ammo-num-ep">EP${epNum}-${num}</span><span class="ammo-num-sep">·</span><span class="ammo-num-text">${NUM_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-text">${ORD_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-emoji">${NUM_EMOJI[num]}</span>`;
+      const numDisplay = `<span class="ammo-num-ep">Cap.${epNum}-${num}</span><span class="ammo-num-sep">·</span><span class="ammo-num-text">${NUM_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-text">${ORD_WORDS[num]}</span><span class="ammo-num-sep">/</span><span class="ammo-num-emoji">${NUM_EMOJI[num]}</span>`;
       return `<div class="ammo-card ammo-collapsed" id="ammo-${a.ammo_id}">
         <div class="ammo-header" onclick="toggleAmmoCard('${a.ammo_id}')">
           <span class="ammo-num">${numDisplay}</span>
