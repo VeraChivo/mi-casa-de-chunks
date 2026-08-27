@@ -2515,7 +2515,7 @@ const GRAMMAR_DATA = [
   {
     id:"g108", cat:"preposition", level:"a1a2",
     title:"介系詞場景<br>en在、a去、從de來，con一起、para給，por穿過來",
-    img:"img/g108_prepositions.png",
+    img:"img/g108_prepositions.webp",
     rule:"📦 en：在空間裡面。<br>🎯 a：朝向目的地。<br>🛫 de：從起點來。<br>🤝 con：一起、連在一起。<br>🎁 para：指向對象。<br>🌉 por：經過一段路。<br><br>看圖手指方向。<br><br>一句話記住：<br>Estoy en casa.（在家）<br>Voy a casa.（去家裡）<br>Vengo de casa.（從家裡來）<br>Voy con ella.（和她一起去）<br>Esto es para ti.（這是給你的）<br>Paso por tu casa.（經過你家）",
     examples:[
       {es:"Estoy en casa.", zh:"我在家。（en：被包在裡面）"},
@@ -2766,7 +2766,7 @@ const GRAMMAR_DATA = [
   {
     id:"g118a", cat:"preposition", level:"b1",
     title:"encima de：在……上面",
-    img:"img/g118a_encima_de.png",
+    img:"img/g118a_encima_de.webp",
     rule:"encima de + 名詞 → 在……上面（浮在上方，不一定貼著）",
     examples:[
       {es:"El ovillo está encima de la mesa.", zh:"毛線球在桌子上面。"},
@@ -2778,7 +2778,7 @@ const GRAMMAR_DATA = [
   {
     id:"g118b", cat:"preposition", level:"b1",
     title:"debajo de：在……下面",
-    img:"img/g118b_debajo_de.png",
+    img:"img/g118b_debajo_de.webp",
     rule:"debajo de + 名詞 → 在……下面",
     examples:[
       {es:"El ovillo está debajo de la mesa.", zh:"毛線球在桌子下面。"},
@@ -2790,7 +2790,7 @@ const GRAMMAR_DATA = [
   {
     id:"g119a", cat:"preposition", level:"b1",
     title:"delante de：在……前面",
-    img:"img/g119a_delante_de.png",
+    img:"img/g119a_delante_de.webp",
     rule:"delante de + 名詞 → 在……前面",
     examples:[
       {es:"El ovillo está delante del camión.", zh:"毛線球在貨車前面。"},
@@ -2803,7 +2803,7 @@ const GRAMMAR_DATA = [
   {
     id:"g119b", cat:"preposition", level:"b1",
     title:"detrás de：在……後面",
-    img:"img/g119b_detras_de.png",
+    img:"img/g119b_detras_de.webp",
     rule:"detrás de + 名詞 → 在……後面",
     examples:[
       {es:"El ovillo está detrás del camión.", zh:"毛線球在貨車後面。"},
@@ -2815,7 +2815,7 @@ const GRAMMAR_DATA = [
   {
     id:"g120a", cat:"preposition", level:"b1",
     title:"dentro de：在……裡面",
-    img:"img/g120a_dentro_de.png",
+    img:"img/g120a_dentro_de.webp",
     rule:"dentro de + 名詞 → 在……裡面",
     examples:[
       {es:"El ovillo está dentro de la caja.", zh:"毛線球在箱子裡面。"},
@@ -2827,7 +2827,7 @@ const GRAMMAR_DATA = [
   {
     id:"g120b", cat:"preposition", level:"b1",
     title:"fuera de：在……外面",
-    img:"img/g120b_fuera_de.png",
+    img:"img/g120b_fuera_de.webp",
     rule:"fuera de + 名詞 → 在……外面",
     examples:[
       {es:"El ovillo está fuera de la caja.", zh:"毛線球在箱子外面。"},
@@ -2839,7 +2839,7 @@ const GRAMMAR_DATA = [
   {
     id:"g121a", cat:"preposition", level:"b1",
     title:"cerca de：離……很近",
-    img:"img/g121a_cerca_de.png",
+    img:"img/g121a_cerca_de.webp",
     rule:"cerca de + 名詞 → 離……很近",
     examples:[
       {es:"La mariposa está cerca de la flor.", zh:"蝴蝶離花很近。"},
@@ -2851,7 +2851,7 @@ const GRAMMAR_DATA = [
   {
     id:"g121b", cat:"preposition", level:"b1",
     title:"lejos de：離……很遠",
-    img:"img/g121b_lejos_de.png",
+    img:"img/g121b_lejos_de.webp",
     rule:"lejos de + 名詞 → 離……很遠",
     examples:[
       {es:"La mariposa está lejos de la flor.", zh:"蝴蝶離花很遠。"},
@@ -2863,7 +2863,7 @@ const GRAMMAR_DATA = [
   {
     id:"g122a", cat:"preposition", level:"b1",
     title:"a la derecha de：在……右邊",
-    img:"img/g122a_a_la_derecha_de.png",
+    img:"img/g122a_a_la_derecha_de.webp",
     rule:"a la derecha de + 名詞 → 在……右邊",
     examples:[
       {es:"La colmena está a la derecha del árbol.", zh:"蜂巢在樹的右邊。"},
@@ -2875,7 +2875,7 @@ const GRAMMAR_DATA = [
   {
     id:"g122b", cat:"preposition", level:"b1",
     title:"a la izquierda de：在……左邊",
-    img:"img/g122b_a_la_izquierda_de.png",
+    img:"img/g122b_a_la_izquierda_de.webp",
     rule:"a la izquierda de + 名詞 → 在……左邊",
     examples:[
       {es:"La colmena está a la izquierda del árbol.", zh:"蜂巢在樹的左邊。"},
@@ -2887,7 +2887,7 @@ const GRAMMAR_DATA = [
   {
     id:"g123", cat:"preposition", level:"b1",
     title:"al lado de：在……旁邊",
-    img:"img/g123_al_lado_de.png",
+    img:"img/g123_al_lado_de.webp",
     rule:"al lado de + 名詞 → 在……旁邊（不特別指定左邊還是右邊，只是靠在一起）",
     examples:[
       {es:"La regadera está al lado del árbol.", zh:"澆花器在樹的旁邊。"},
@@ -2900,7 +2900,7 @@ const GRAMMAR_DATA = [
   {
     id:"g124", cat:"preposition", level:"b1",
     title:"entre：在……之間",
-    img:"img/g124_entre.png",
+    img:"img/g124_entre.webp",
     rule:"entre + A y B → 在A和B之間",
     examples:[
       {es:"El bolígrafo está entre el teléfono y la taza.", zh:"筆在手機和杯子之間。"},
