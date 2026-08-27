@@ -2644,7 +2644,26 @@ function showPronBackup(word){
 }
 
 // ── 🧳 資料保險箱：全站 localStorage 備份 / 還原 ──
-const BACKUP_KEYS = ['peppa_es_v4','peppa_es_vocab_v1','peppa_es_grammar_v1','peppa_es_familiarity_v1','peppa_garden_v1','peppa_garden_watered_v1','dynamic_phrases_db','peppa_mom_diary_v1','peppa_mom_notes_v1','peppa_talk_diary_v1','peppa_milestones_v1','peppa_first_chunk_date_v1','peppa_daily_task_v1','peppa_chunk_fam_seen_v1','peppa_pron_v1'];
+// ── 🧳 資料保險箱：哪些 key 該進備份、哪些刻意不進 ──
+// 判準是「這是使用者累積/選擇的東西嗎」，不是「這是不是 peppa_ 開頭」。
+// ⚠️ 下面「刻意不備份」那批不要好心加進來，加了會出事，原因各自註明。
+const BACKUP_KEYS = [
+  // 學習進度與收藏
+  'peppa_es_v4', 'peppa_es_vocab_v1', 'peppa_es_grammar_v1', 'peppa_es_familiarity_v1',
+  'peppa_garden_v1', 'peppa_garden_watered_v1', 'peppa_chunk_fam_seen_v1', 'peppa_pron_v1',
+  // 日記與手札（使用者自己寫的內容，最不能掉）
+  'dynamic_phrases_db', 'peppa_mom_diary_v1', 'peppa_mom_notes_v1', 'peppa_talk_diary_v1',
+  // 里程碑與任務
+  'peppa_milestones_v1', 'peppa_first_chunk_date_v1', 'peppa_daily_task_v1',
+  // 使用者的選擇／已看過的一次性提示（不還原的話，換手機會重跳導覽、提醒被關掉）
+  'peppa_reminder_enabled', 'peppa_welcome_tour_seen_v1', 'peppa_talk_grow_intro_seen_v1'
+];
+// 刻意不備份（還原到別台裝置會出錯，不是漏掉）：
+//   peppa_garden_junk_cleaned_v1 — 一次性資料清理的擋門旗標。還原到沒清理過的裝置會直接跳過清理。
+//   peppa_reminder_last_study / peppa_reminder_last_diary / peppa_brief_day_v1 — 「上次跳過提醒的時間」，
+//       還原舊時間戳會讓提醒/農間小報在錯的時機跳出來。
+//   peppa_storage_warn_last — 容量警告的節流時間，同上。
+//   peppa_active_tab — 上次停在哪個分頁，是這台裝置當下的畫面狀態，不是使用者資產。
 
 function exportBackup(){
   const data = {};
