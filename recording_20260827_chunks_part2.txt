@@ -1,0 +1,140 @@
+# ══════════════════════════════════════════════════════════════
+# 🌻 mi-casa-de-chunks 劇情逐字語塊錄音　第 2 / 3 份（共 80 句）
+# 直接整段複製貼進 Google Colab 執行，跑完會自動跳出下載視窗。
+# ══════════════════════════════════════════════════════════════
+!pip install gTTS --quiet
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+OUT_DIR = "chunks_part2"
+ZIP_NAME = "chunk_audio_part2.zip"
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# 檔名 → 要唸的西語
+sentences = {
+    "chunk_en_esa_herida.mp3": "En esa herida,",
+    "chunk_en_la_casa_gato.mp3": "en la Casa Gato.",
+    "chunk_en_la_cocina.mp3": "en la cocina.",
+    "chunk_en_la_puerta.mp3": "en la puerta,",
+    "chunk_en_los_charcos.mp3": "en los charcos,",
+    "chunk_en_realidad.mp3": "en realidad,",
+    "chunk_en_su_rincon_favorito.mp3": "en su rincón favorito.",
+    "chunk_encantan.mp3": "encantan",
+    "chunk_es_2.mp3": "Es",
+    "chunk_es_que_necesita_recargar.mp3": "es que necesita recargar.",
+    "chunk_escuchar_a_sus_amigos.mp3": "escuchar a sus amigos.",
+    "chunk_eso.mp3": "eso",
+    "chunk_esperan_juntos.mp3": "Esperan juntos",
+    "chunk_esperanza_2.mp3": "Esperanza",
+    "chunk_esta_escondido.mp3": "Está escondido,",
+    "chunk_esta_llena.mp3": "está llena,",
+    "chunk_esta_trabajando.mp3": "está trabajando",
+    "chunk_estar_en_los_rincones.mp3": "estar en los rincones.",
+    "chunk_estar_junta.mp3": "estar junta.",
+    "chunk_este_es.mp3": "Este es",
+    "chunk_fluye.mp3": "fluye",
+    "chunk_fue.mp3": "Fue",
+    "chunk_fue_herido.mp3": "fue herido",
+    "chunk_gastan.mp3": "gastan",
+    "chunk_guardian_2.mp3": "Guardián",
+    "chunk_guardo.mp3": "Guardo",
+    "chunk_gusta_mucho.mp3": "gusta mucho",
+    "chunk_hablar_escuchar_y_fingir.mp3": "hablar, escuchar y fingir",
+    "chunk_hoy_2.mp3": "Hoy,",
+    "chunk_jugar_a_las_escondidas.mp3": "jugar a las escondidas.",
+    "chunk_juicio.mp3": "Juicio",
+    "chunk_juicio_ataca.mp3": "Juicio ataca.",
+    "chunk_juicio_2.mp3": "Juicio,",
+    "chunk_juicio_3.mp3": "Juicio.",
+    "chunk_junto_con_las_emociones_pequenas.mp3": "junto con las emociones pequeñas.",
+    "chunk_juzgo.mp3": "Juzgo",
+    "chunk_kito_2.mp3": "Kito.",
+    "chunk_la_bateria.mp3": "la batería",
+    "chunk_la_bateria_2.mp3": "la batería,",
+    "chunk_la_cabeza.mp3": "la cabeza",
+    "chunk_la_escalera_de_madera.mp3": "la escalera de madera.",
+    "chunk_la_esperanza.mp3": "La Esperanza",
+    "chunk_la_familia_y_los_amigos_de_nita.mp3": "la familia y los amigos de Nita.",
+    "chunk_la_gente.mp3": "la gente",
+    "chunk_la_hermanita_bebe_de_nita.mp3": "la hermanita bebé de Nita.",
+    "chunk_la_mama_de_nita.mp3": "la mamá de Nita.",
+    "chunk_la_mejor_amiga_de_nita.mp3": "la mejor amiga de Nita.",
+    "chunk_la_puerta_muy_adentro.mp3": "la puerta, muy adentro.",
+    "chunk_la_puerta.mp3": "la puerta.",
+    "chunk_la_ropa_mojada.mp3": "La ropa mojada",
+    "chunk_la_ropa_se_moja.mp3": "la ropa se moja.",
+    "chunk_la_salida.mp3": "la salida",
+    "chunk_la_tristeza_y_el_miedo.mp3": "La Tristeza y el Miedo",
+    "chunk_las_galletas.mp3": "las galletas.",
+    "chunk_le_dicen.mp3": "le dicen:",
+    "chunk_le_molesta_mucho.mp3": "le molesta mucho",
+    "chunk_lista_para_entrar.mp3": "lista para entrar.",
+    "chunk_llora_un_poco.mp3": "llora un poco.",
+    "chunk_lo_abrazan.mp3": "lo abrazan.",
+    "chunk_lo_que_duele.mp3": "lo que duele,",
+    "chunk_lo_que_se_traga_sin_decir.mp3": "lo que se traga sin decir.",
+    "chunk_mama_cata_2.mp3": "Mamá Cata,",
+    "chunk_mas_llena_y_mas_ella_misma.mp3": "más llena y más ella misma.",
+    "chunk_mas.mp3": "más,\"",
+    "chunk_me_dicen.mp3": "Me dicen",
+    "chunk_me_escondo.mp3": "Me escondo",
+    "chunk_me_paralizo.mp3": "me paralizo,",
+    "chunk_mi_pequeno_mundo.mp3": "mi pequeño mundo.",
+    "chunk_mimi_2.mp3": "Mimi,",
+    "chunk_mis_palabras_mas_duras.mp3": "mis palabras más duras",
+    "chunk_mucho_gusto.mp3": "Mucho gusto,",
+    "chunk_muy_adentro_del_corazon.mp3": "Muy adentro del Corazón,",
+    "chunk_muy_tranquilo.mp3": "muy tranquilo.",
+    "chunk_nadie.mp3": "Nadie",
+    "chunk_nadie_la_puede_encontrar.mp3": "nadie la puede encontrar.",
+    "chunk_necesito.mp3": "Necesito",
+    "chunk_necesito_cuidarme.mp3": "necesito cuidarme",
+    "chunk_necesito_descansar.mp3": "Necesito descansar",
+    "chunk_necesito_tiempo.mp3": "necesito tiempo",
+    "chunk_no_entiende_2.mp3": "no entiende.",
+}
+
+total = len(sentences)
+ok, failed = 0, []
+print(f"開始錄製 {total} 句…\n")
+
+for i, (fname, text) in enumerate(sentences.items(), 1):
+    path = os.path.join(OUT_DIR, fname)
+    done = False
+    for attempt in range(1, 4):                      # 失敗重試 3 次，等待遞增
+        try:
+            gTTS(text=text, lang="es", tld="com.mx").save(path)
+            size = os.path.getsize(path)
+            if size < 500:
+                raise ValueError(f"檔案只有 {size} bytes，可能是空檔")
+            print(f"  [{i:>3}/{total}] ✅ {fname:<44} {text}")
+            ok += 1
+            done = True
+            break
+        except Exception as e:
+            wait = attempt * 3
+            print(f"  [{i:>3}/{total}] ⚠️ 第{attempt}次失敗（{e}），{wait}秒後重試…")
+            time.sleep(wait)
+    if not done:
+        print(f"  [{i:>3}/{total}] ❌ 放棄：{fname}")
+        failed.append(fname)
+    time.sleep(random.uniform(0.5, 1.2))             # 避免被判定成批次攻擊
+
+print(f"\n完成：成功 {ok} / 失敗 {len(failed)}")
+if failed:
+    print("失敗清單（這幾個要再跑一次）：")
+    for f in failed:
+        print("   " + f)
+
+with zipfile.ZipFile(ZIP_NAME, "w", zipfile.ZIP_DEFLATED) as z:
+    for f in sorted(os.listdir(OUT_DIR)):
+        z.write(os.path.join(OUT_DIR, f), f)
+
+zip_path = os.path.abspath(ZIP_NAME)
+print(f"\n📦 打包完成：{zip_path}")
+print(f"   檔案大小：{os.path.getsize(ZIP_NAME)/1024/1024:.2f} MB")
+print("   若下面的自動下載沒跳出來，就到 Colab 左側檔案面板照上面路徑手動右鍵下載。")
+
+from google.colab import files
+files.download(ZIP_NAME)

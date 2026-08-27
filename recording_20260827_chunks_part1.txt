@@ -1,0 +1,140 @@
+# ══════════════════════════════════════════════════════════════
+# 🌻 mi-casa-de-chunks 劇情逐字語塊錄音　第 1 / 3 份（共 80 句）
+# 直接整段複製貼進 Google Colab 執行，跑完會自動跳出下載視窗。
+# ══════════════════════════════════════════════════════════════
+!pip install gTTS --quiet
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+OUT_DIR = "chunks_part1"
+ZIP_NAME = "chunk_audio_part1.zip"
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# 檔名 → 要唸的西語
+sentences = {
+    "chunk_hola.mp3": "¡Hola!",
+    "chunk_hoy_es_el_dia.mp3": "\"¡Hoy es el día!\"",
+    "chunk_puedo_jugar_tambien.mp3": "\"¿Puedo jugar también?\"",
+    "chunk_eres_muy_pequeno_todavia.mp3": "\"Eres muy pequeño todavía.\"",
+    "chunk_ya_no.mp3": "\"Ya no",
+    "chunk_a_casa.mp3": "a casa",
+    "chunk_a_mama_cata_le.mp3": "A Mamá Cata le",
+    "chunk_a_mi.mp3": "a mí.",
+    "chunk_a_mimi_le.mp3": "A Mimi le",
+    "chunk_a_nita_le_2.mp3": "a Nita le",
+    "chunk_a_nita_tambien_le.mp3": "A Nita también le",
+    "chunk_a_papa_tato_le.mp3": "A Papá Tato le",
+    "chunk_a_pesar_de_eso.mp3": "a pesar de eso,",
+    "chunk_a_tito_le.mp3": "A Tito le",
+    "chunk_a_tito_no_le.mp3": "A Tito no le",
+    "chunk_a_toda_la_familia_le.mp3": "A toda la familia le",
+    "chunk_a_veces_2.mp3": "a veces",
+    "chunk_a_vera_le.mp3": "A Vera le",
+    "chunk_acompano.mp3": "acompaño",
+    "chunk_ademas.mp3": "además,",
+    "chunk_ahi.mp3": "Ahí",
+    "chunk_al_jardin.mp3": "al jardín.",
+    "chunk_al_mismo_tiempo_que.mp3": "al mismo tiempo que",
+    "chunk_al_yo_pequenito.mp3": "al Yo Pequeñito.",
+    "chunk_algo_2.mp3": "algo",
+    "chunk_algo_cambia.mp3": "algo cambia,",
+    "chunk_algo_cambia_2.mp3": "algo cambia.",
+    "chunk_aparecio.mp3": "apareció",
+    "chunk_asoma.mp3": "Asoma",
+    "chunk_basta.mp3": "basta.",
+    "chunk_bateria.mp3": "batería.",
+    "chunk_buscando_el_camino.mp3": "buscando el camino.",
+    "chunk_busco.mp3": "busco",
+    "chunk_busco_2.mp3": "Busco",
+    "chunk_cada_palabra.mp3": "cada palabra,",
+    "chunk_cansancio_2.mp3": "Cansancio",
+    "chunk_cerca.mp3": "cerca,",
+    "chunk_chapotea.mp3": "chapotea",
+    "chunk_cocinar_para_su_familia.mp3": "cocinar para su familia.",
+    "chunk_completo.mp3": "completo.",
+    "chunk_con_tito.mp3": "con Tito.",
+    "chunk_con_todos.mp3": "con todos.",
+    "chunk_contigo.mp3": "contigo,",
+    "chunk_corre.mp3": "corre",
+    "chunk_creo_que_todo_es_mi_error.mp3": "Creo que todo es mi error,",
+    "chunk_cuidar_el_corazon_verdadero.mp3": "cuidar el Corazón Verdadero.",
+    "chunk_de_hecho.mp3": "de hecho,",
+    "chunk_de_mi.mp3": "de mí.",
+    "chunk_de_repente.mp3": "De repente,",
+    "chunk_dentro_de_cata.mp3": "Dentro de Cata",
+    "chunk_dentro_del_corazon_verdadero.mp3": "dentro del Corazón Verdadero.",
+    "chunk_dentro_del_corazon.mp3": "dentro del Corazón,",
+    "chunk_depende.mp3": "depende",
+    "chunk_descanso.mp3": "descanso,",
+    "chunk_dibujar.mp3": "dibujar.",
+    "chunk_distintos.mp3": "distintos,",
+    "chunk_egoismo.mp3": "egoísmo,",
+    "chunk_el_corazon.mp3": "el Corazón",
+    "chunk_el_corazon_verdadero.mp3": "el Corazón Verdadero",
+    "chunk_el_corazon_verdadero_2.mp3": "El Corazón Verdadero",
+    "chunk_el_corazon_verdadero_3.mp3": "el Corazón Verdadero,",
+    "chunk_el_desvan.mp3": "El desván",
+    "chunk_el_helado.mp3": "el helado.",
+    "chunk_el_hermano_de_nita.mp3": "el hermano de Nita.",
+    "chunk_el_hermano_mayor_de_nita.mp3": "el hermano mayor de Nita.",
+    "chunk_el_lugar_original_el_mas_profundo.mp3": "el lugar original, el más profundo.",
+    "chunk_el_papa_de_nita.mp3": "el papá de Nita.",
+    "chunk_el_primero.mp3": "el primero.",
+    "chunk_el_rincon_favorito_de_nita.mp3": "El rincón favorito de Nita",
+    "chunk_el_ruido_fuerte.mp3": "el ruido fuerte.",
+    "chunk_el_yo_pequenito_2.mp3": "el Yo Pequeñito,",
+    "chunk_ella_2.mp3": "ella",
+    "chunk_ellos.mp3": "Ellos",
+    "chunk_empieza_a_crecer.mp3": "empieza a crecer.",
+    "chunk_empieza_a_llover.mp3": "empieza a llover.",
+    "chunk_en_casa_hoy.mp3": "en casa hoy.",
+    "chunk_en_el_desvan.mp3": "En el desván",
+    "chunk_en_el_desvan_2.mp3": "en el desván.",
+    "chunk_en_el_jardin.mp3": "en el jardín.",
+    "chunk_en_el_rincon.mp3": "en el rincón",
+}
+
+total = len(sentences)
+ok, failed = 0, []
+print(f"開始錄製 {total} 句…\n")
+
+for i, (fname, text) in enumerate(sentences.items(), 1):
+    path = os.path.join(OUT_DIR, fname)
+    done = False
+    for attempt in range(1, 4):                      # 失敗重試 3 次，等待遞增
+        try:
+            gTTS(text=text, lang="es", tld="com.mx").save(path)
+            size = os.path.getsize(path)
+            if size < 500:
+                raise ValueError(f"檔案只有 {size} bytes，可能是空檔")
+            print(f"  [{i:>3}/{total}] ✅ {fname:<44} {text}")
+            ok += 1
+            done = True
+            break
+        except Exception as e:
+            wait = attempt * 3
+            print(f"  [{i:>3}/{total}] ⚠️ 第{attempt}次失敗（{e}），{wait}秒後重試…")
+            time.sleep(wait)
+    if not done:
+        print(f"  [{i:>3}/{total}] ❌ 放棄：{fname}")
+        failed.append(fname)
+    time.sleep(random.uniform(0.5, 1.2))             # 避免被判定成批次攻擊
+
+print(f"\n完成：成功 {ok} / 失敗 {len(failed)}")
+if failed:
+    print("失敗清單（這幾個要再跑一次）：")
+    for f in failed:
+        print("   " + f)
+
+with zipfile.ZipFile(ZIP_NAME, "w", zipfile.ZIP_DEFLATED) as z:
+    for f in sorted(os.listdir(OUT_DIR)):
+        z.write(os.path.join(OUT_DIR, f), f)
+
+zip_path = os.path.abspath(ZIP_NAME)
+print(f"\n📦 打包完成：{zip_path}")
+print(f"   檔案大小：{os.path.getsize(ZIP_NAME)/1024/1024:.2f} MB")
+print("   若下面的自動下載沒跳出來，就到 Colab 左側檔案面板照上面路徑手動右鍵下載。")
+
+from google.colab import files
+files.download(ZIP_NAME)
