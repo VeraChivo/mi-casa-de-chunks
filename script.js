@@ -60,12 +60,6 @@ function updateStarDisplay(){
   el.style.color = unlockedStars.size >= epTotal ? '#D97706' : '#F59E0B';
 }
 
-// ── YOUGLISH PRONUNCIATION（僅手動複製，不做自動跳轉）──
-function openYG(word, lang){
-  const url = `https://youglish.com/pronounce/${encodeURIComponent(word)}/${lang}`;
-  window.open(url, '_blank', 'noopener');
-}
-
 function openWordReference(word){
   if(!word) return;
   window.open('https://www.wordreference.com/es/translation.asp?spen='+encodeURIComponent(word),'_blank','noopener');
@@ -217,14 +211,6 @@ function speakMapSmart(map, catKey, idx, text){
   _activeAudio = player;
   player.onerror = () => speakFull(text);
   player.play().catch(()=>speakFull(text));
-}
-
-function testTTS(){
-  if(_ttsUnsupported()) return;
-  // Force init voices on first user tap
-  if(!ttsReady){ initTTS(); }
-  speakWord('Hola amigos', document.querySelector('.tts-badge'));
-  toast('🔊 點語塊聽西語！點句子聽整句！');
 }
 
 /* EPS data → episodes.js */
@@ -1214,24 +1200,9 @@ function loadVocabFromLS(){
 }
 
 
-// 舊句型存摺已整合進語塊彈藥庫，stub 保留相容性
-function togglePatternBook(){}
-function addToPatternBook(){}
-function renderPatternBook(){}
-function cyclePatternStar(){}
-
-function togglePatternBook(){}
 // familiarity: 0=off, 1=half, 2=full
 const STAR_STATES = ['☆','✨','⭐'];  // kept for compat
 const GARDEN_STAGES = ['𑁍', '🌱', '🍃', '🍀', '🌻'];
-
-function addToPassbook(sentence){ /* passbook removed */ }
-
-function cycleStar(idx){/* removed */}
-
-function renderPassbook(){/* removed */}
-
-function togglePassbook(){/* removed */}
 
 // ── MAKE SENTENCE — free type with pattern check ──
 // Each sentence has a "pattern" = the structural slots
@@ -1938,7 +1909,6 @@ function revealAnswer(){
       if(fb){fb.className='make-result err';fb.innerHTML=`${_fb.emoji} ${_fb.text}下面附正確範例，也可以重新輸入一次試試看<br><button class="retry-btn" onclick="event.stopPropagation();retryAnswer()">🔄 重新嘗試</button>`;fb.style.display='block';}
     }
     else{const _fb=getRandomFeedback('reveal');toast(_fb.emoji+' '+_fb.text);}
-    addToPassbook(s);
     const globalIdx = ep * 10 + idx;
     unlockAmmo(globalIdx); unlockStar(globalIdx); accumulateSVOPool(globalIdx);
     saveToLS();
@@ -4357,10 +4327,6 @@ function renderDynamicConjugationExamples(verbForm) {
       ${zh ? `<span class="conj-zh">${zh}</span>` : ''}
     </div>`;
   }).join('');
-}
-
-function gestaltTapAndSave(sentence, _zh, _doSave) {
-  speakFull(sentence);
 }
 
 // 渲染帶完形偵測標記的句子 HTML（只偵測，不自動寫入）
