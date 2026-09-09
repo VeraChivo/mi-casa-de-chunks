@@ -1552,3 +1552,17 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 /* 版權頁腳 */
 .news-footer{font-size:10px;color:var(--tlight);text-align:center;padding:8px 14px 14px;line-height:1.6}
 .news-footer a{color:var(--misora);text-decoration:none}
+
+/* ── ⏱️ 莊園工具間：方法卡（AI prompt 傳送門）──
+   跟上面的 .query-link 外連 chip 是兩種東西：chip 是「點了離開網站」，
+   方法卡是「照著做 + 複製一段字」，所以給它自己的框，不混進 .query-links-row。 */
+.workshop-method{margin:14px 0 4px;padding:10px 12px;border:1px solid var(--usumizu);border-radius:12px;background:var(--bg2)}
+.workshop-method-title{font-size:13px;font-weight:900;color:var(--konpeki);margin-bottom:2px}
+.workshop-method-tagline{font-size:11px;font-weight:700;color:var(--tmid);margin-bottom:6px}
+.workshop-method-why{font-size:11px;line-height:1.6;color:var(--tmid);margin-bottom:8px}
+.workshop-method-steps{margin:0 0 10px;padding-left:18px}
+.workshop-method-steps li{font-size:11.5px;line-height:1.75;color:var(--tdark);margin-bottom:3px}
+.workshop-method-steps b{color:var(--konpeki)}
+.workshop-method-copy{display:block;width:100%;font-size:12px;font-weight:900;color:#fff;background:var(--misora);border:none;border-radius:999px;padding:8px 12px;cursor:pointer}
+.workshop-method-copy:active{background:var(--sora)}
+.workshop-method-note{font-size:10.5px;line-height:1.6;color:var(--tlight);margin-top:7px}

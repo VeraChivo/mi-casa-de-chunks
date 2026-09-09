@@ -2909,7 +2909,7 @@ function jumpToPronounLibrary(){
 // 內容＝原本頁尾攤平的6個查詢工具連結，分3類收起來，避免重複入口
 const WORKSHOP_TOOLS = {
   title: '🧰 莊園工具間',
-  subtitle: '查發音、找例句、製作素材',
+  subtitle: '查發音、找例句、製作素材、生成練習',
   categories: [
     { icon:'👂', label:'聽音工具', tools:[
       {label:'🔊 Forvo', url:'https://forvo.com'},
@@ -2925,6 +2925,58 @@ const WORKSHOP_TOOLS = {
     ]}
   ]
 };
+// ── ⏱️ 暫停回答練習（方法卡 + AI 傳送門）──
+// 這不是站內功能，是「教方法」：使用者自己挑影片/podcast，自己貼給他慣用的 AI，
+// 由 AI 生成暫停問題。網站只負責給一段可複製的 prompt。
+// 這樣做的原因（實際評估後的決定，不是偷懶）：
+//   1. 零版權風險——不存任何他人影片的逐字台詞，跟 Peppa 台詞/歌詞那兩條血淚教訓同一個問題。
+//   2. 不用嵌 YouTube 播放器—— 2026-07-07 已定案丟棄這條路，不回頭推翻。
+//   3. 語言無關——想練英文/客語，使用者自己把 prompt 裡的語言換掉就好，不用建三套資料檔。
+// prompt 本身要守站上規則：拉美西語（不用 vosotros）、語塊為單位、
+// 自然中文不要翻譯腔（規則19）、不拿文法術語當第一眼解釋（規則19）。
+const WORKSHOP_PROMPTS = [
+  {
+    icon: '⏱️',
+    label: '暫停回答練習',
+    tagline: '先自己答，再看母語者怎麼說',
+    why: '平常聽力練習是「聽懂就好」，這個是「先停下來逼自己講一句」——練的是反應速度，不是理解力。',
+    steps: [
+      '挑一支你<b>真的想看</b>的影片或 podcast（不用挑教材，喜歡才聽得下去）',
+      'YouTube 點「…→顯示逐字稿」整段複製；沒有逐字稿就貼連結',
+      '複製下面這段 prompt，貼進你慣用的 AI，再把內容貼上去',
+      '照它給的時間點按暫停，<b>先自己講一次</b>，再往下看答案',
+      '覺得好用的語塊，回莊園存進語塊採集籃'
+    ],
+    note: '想練英文、客語或別的語言：把 prompt 裡的「西語」跟「拉丁美洲」換掉就好，其他不用改。',
+    prompt: [
+      '你是我的西語聽力教練。我會貼一支影片或 podcast 的逐字稿（或連結）給你。',
+      '',
+      '請幫我做「暫停回答練習」：',
+      '',
+      '1. 從內容裡挑 5 個適合停下來的地方，優先挑「有人被問問題」或「有人表達意見」的時刻。',
+      '2. 每個暫停點給我：',
+      '   ⏱ 時間點（幾分幾秒）',
+      '   ❓ 問題：先西語，下一行中文',
+      '   ─── 先到這裡，我自己答 ───',
+      '   🧩 會用到的語塊 2～3 個（要是整個片語，不要單字）',
+      '   💬 影片裡的人實際怎麼回答（原話，下一行自然中文）',
+      '3. 請真的把分隔線打出來，問題跟答案中間要隔開——我要先自己答完才看。',
+      '',
+      '規則：',
+      '• 西語用拉丁美洲的講法（用 ustedes，不要用 vosotros）',
+      '• 中文講人話，不要逐字對照的翻譯腔',
+      '• 不要拿文法術語當解釋（不要寫「虛擬式」「第三人稱」），直接說這句話在做什麼',
+      '• 語塊要挑可以換到別的句子重複用的，不要挑只有這集才用得到的專有名詞',
+      '• 如果某個時間點你不確定，寧可說不確定，不要編一個給我',
+      '',
+      '先不要開始，等我貼內容給你。'
+    ].join('\n')
+  }
+];
+function copyWorkshopPrompt(idx){
+  const p = WORKSHOP_PROMPTS[idx];
+  if(p) copyTextWithFeedback(p.prompt);
+}
 // ── 🌎 拉美巡禮入口分層（原西語世界，2026-07-26更名；2026-07-24 第一階段收斂，只做入口層，不搬移grammar C1/C2
 // 文化卡、不建文化資料庫、不做收藏/推薦系統）：Header點🌎拉美巡禮不再直接掉進DW新聞
 // 全列表，先看到這個小入口頁，讓使用者知道「這是一個探索入口」，選了「世界新聞」才
@@ -2979,6 +3031,15 @@ function openWorkshopPanel(){
       <div class="workshop-cat">
         <div class="workshop-cat-title">${cat.icon} ${cat.label}</div>
         <div class="query-links-row">${cat.tools.map(t=>`<a href="${t.url}" target="_blank" rel="noopener" class="query-link">${t.label}</a>`).join('')}</div>
+      </div>`).join('')}
+    ${WORKSHOP_PROMPTS.map((p,i)=>`
+      <div class="workshop-method">
+        <div class="workshop-method-title">${p.icon} ${p.label}</div>
+        <div class="workshop-method-tagline">${p.tagline}</div>
+        <div class="workshop-method-why">${p.why}</div>
+        <ol class="workshop-method-steps">${p.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+        <button class="workshop-method-copy" onclick="copyWorkshopPrompt(${i})">📋 複製這段 prompt</button>
+        <div class="workshop-method-note">${p.note}</div>
       </div>`).join('')}
   `;
   openGrammarSheet(html);
