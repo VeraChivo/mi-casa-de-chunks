@@ -2203,13 +2203,14 @@ const GRAMMAR_DATA = [
       {es:"No hay mal que por bien no venga.", zh:"塞翁失馬，焉知非福。（字面：沒有一件壞事不帶來一些好事）"}
     ],
     family:{
-      title:"📚 再補四句",
+      title:"📚 再補幾句",
       intro:"",
       items:[
         {es:"El hábito no hace al monje.", zh:"人不可貌相（字面「習慣不能造就修士」，別以外表判斷人）"},
         {es:"En boca cerrada no entran moscas.", zh:"禍從口出（字面「閉著的嘴蒼蠅飛不進去」，話少惹禍少）"},
         {es:"Más vale prevenir que curar.", zh:"預防勝於治療。"},
-        {es:"El tiempo pone todo en su lugar.", zh:"時間會證明一切。"}
+        {es:"El tiempo pone todo en su lugar.", zh:"時間會證明一切。"},
+        {es:"A donde el corazón se inclina, el pie camina.", zh:"心之所向，腳便會走向那裡。（字面：心往哪邊傾斜，腳就往哪邊走）"}
       ]
     },
     trap:"諺語適合「認得就好」，日常對話裡母語者確實會引用（尤其長輩），但初學者硬要在對話中主動使用諺語容易顯得刻意或用錯場合，優先目標是聽到/讀到時能理解，之後聽多了自然知道什麼場合適合接一句。",
