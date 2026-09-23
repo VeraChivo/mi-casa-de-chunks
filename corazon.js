@@ -64,7 +64,8 @@ const CORAZON_DATA = [
       { es: "Mi cerebro funciona diferente, y eso es un regalo.", zh: "我的大腦運作方式不一樣，而這是一份禮物。", tag: "神經多樣性" },
       { es: "Hoy elijo ser amable conmigo misma.",         zh: "今天我選擇溫柔對待自己。",       tag: "自我疼惜" },
       { es: "No he terminado de crecer.",                  zh: "我還沒長完，還在長大。",         tag: "成長心態" },
-      { es: "Mi única ambición es ser libre toda mi vida.", zh: "自由一生，是我全部的野心。",     tag: "自由" }
+      { es: "Mi única ambición es ser libre toda mi vida.", zh: "自由一生，是我全部的野心。",     tag: "自由" },
+      { es: "Nunca es tarde para empezar de nuevo.",       zh: "重新開始，永遠都不算太晚。",     tag: "重新開始" }
     ]
   },
   {

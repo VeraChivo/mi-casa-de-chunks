@@ -1,5 +1,6 @@
 # ══════════════════════════════════════════════════════════════
-# 🌻 mi-casa-de-chunks 心田深耕錄音　🌱自我成長新增句（共 1 句）
+# 🌻 mi-casa-de-chunks 心田深耕錄音　🌱自我成長新增句（共 2 句）
+# ※ 這份取代 recording_20260911_corazon.txt（那份的 1 句已併進來，跑這份就好）
 # 直接整段複製貼進 Google Colab 執行，跑完會自動跳出下載視窗。
 # 解壓後把 mp3 放進 repo 的 audio/corazon/ 資料夾即可。
 # ══════════════════════════════════════════════════════════════
@@ -9,12 +10,13 @@ import os, time, random, zipfile
 from gtts import gTTS
 
 OUT_DIR = "corazon"
-ZIP_NAME = "corazon_audio_20260911.zip"
+ZIP_NAME = "corazon_audio_20260923.zip"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # 檔名 → 要唸的西語
 sentences = {
     "corazon_crecimiento_06.mp3": "Mi única ambición es ser libre toda mi vida.",
+    "corazon_crecimiento_07.mp3": "Nunca es tarde para empezar de nuevo.",
 }
 
 total = len(sentences)
