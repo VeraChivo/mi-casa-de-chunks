@@ -1329,6 +1329,12 @@ details.mom-category .mom-cards-col{margin-top:8px}
 .quiz-ex-es{display:block;font-size:17px;font-weight:800;color:var(--konpeki);cursor:pointer}
 .quiz-ex-es:active{opacity:.7}
 .quiz-ex-zh{display:block;font-size:14px;color:var(--tmid);margin-top:2px}
+/* 🃏隨手翻幾張：核心句中文劇透（預設收起，視覺刻意比例句淡，不搶主視覺） */
+.flip-zh-spoiler{margin:0 0 4px}
+.flip-zh-spoiler>summary{list-style:none;display:inline-flex;align-items:center;min-height:40px;padding:0 12px;font-size:12.5px;font-weight:700;color:var(--tlight);cursor:pointer;border-radius:999px}
+.flip-zh-spoiler>summary::-webkit-details-marker{display:none}
+.flip-zh-spoiler[open]>summary{color:var(--tmid)}
+.flip-zh-text{font-size:14px;color:var(--tmid);padding:2px 12px 6px;line-height:1.5}
 .quiz-no-ex{font-size:11px;color:var(--tlight);text-align:center;padding:8px;margin-bottom:8px}
 .quiz-check-label{font-size:12px;font-weight:700;color:var(--tmid);text-align:center;margin-bottom:8px}
 .quiz-action-row{display:flex;gap:8px}

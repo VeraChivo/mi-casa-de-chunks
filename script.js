@@ -5158,6 +5158,7 @@ const ENTRY_MATRIX_ITEMS = [
   {icon:'🎵', label:'想聽歌學西語', sub:'聽歌填空', target:'lyrics'},
   {icon:'🌎', label:'想看世界時事', sub:'拉美巡禮：時事與文化', target:'news'},
   {icon:'📔', label:'想放鬆說說話', sub:'床邊低語呢', target:'mom'},
+  {icon:'🃏', label:'隨手翻幾張', sub:'讀過的彈藥卡', target:'flip'},
   {icon:'🎲', label:'小蜜蜂選給你', sub:'驚喜包（建置中）', target:'surprise', disabled:true}
 ];
 function entryMatrixJump(target){
@@ -5176,6 +5177,7 @@ function entryMatrixJump(target){
   }
   if(target==='lyrics'){ dtaskJump('lyrics'); return; }
   if(target==='news'){ dtaskJump('news'); return; }
+  if(target==='flip'){ setTimeout(()=>openFlipCards(), 60); return; }
   if(target==='mom'){
     switchMainTab('mom');
     setTimeout(()=>{ const s=document.getElementById('talkCardTop'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }, 60);
@@ -5183,6 +5185,53 @@ function entryMatrixJump(target){
   }
   // surprise：建置中，不跳轉
 }
+// ── 🃏 隨手翻幾張（2026-09-29）：從「讀過的彈藥卡」隨機抽，純翻看，不計分、不寫花園熟練度 ──
+// 翻面主要內容＝1~2句生活例句（西＋既有中文）；核心句中文 core_zh 收在「💬看中文意思」劇透裡，使用者主動點才看得到，
+// 避免變成「西語→中文答案」的翻譯卡（學習順序：西語→回想→語境→需要時才確認中文）
+// 收藏≠學會：這裡刻意不呼叫 markWatered／gardenQuizRate／任何 garden DB 寫入
+const FLIP_FALLBACK_IDS = ['e17_01','e17_02','e17_03','e17_04']; // 還沒讀過任何句子時，用第一站4張核心句
+let _flipCurrentId = null, _flipFlipped = false;
+function _flipPool(){
+  const banned = new Set((typeof AMMO_LIFECYCLE!=='undefined' && AMMO_LIFECYCLE.historical) || []); // 舊版劇情殘留卡不抽
+  let pool = AMMO_DATA.filter(a => ammoUnlocked.includes(a.ammo_id) && !banned.has(a.ammo_id));
+  if(!pool.length) pool = AMMO_DATA.filter(a => FLIP_FALLBACK_IDS.includes(a.ammo_id));
+  return pool;
+}
+function openFlipCards(){
+  _flipCurrentId = null; _flipFlipped = false;
+  _flipDraw();
+  document.getElementById('grammarSheetContent').innerHTML = _flipHtml();
+  openGrammarSheet(document.getElementById('grammarSheetContent').innerHTML);
+}
+function _flipDraw(){
+  const pool = _flipPool();
+  if(!pool.length){ _flipCurrentId = null; return; }
+  const others = pool.length > 1 ? pool.filter(a => a.ammo_id !== _flipCurrentId) : pool;
+  _flipCurrentId = others[Math.floor(Math.random()*others.length)].ammo_id;
+  _flipFlipped = false;
+}
+function _flipHtml(){
+  const a = AMMO_DATA.find(x => x.ammo_id === _flipCurrentId);
+  if(!a) return '<div class="quiz-done-msg"><div class="quiz-done-text">還沒有可以翻的卡，先去田間讀幾句吧 🌱</div></div>';
+  const back = _flipFlipped ? `<div class="quiz-back">
+      <div class="quiz-examples-block">
+        ${(a.fire_daily||[]).slice(0,2).map((f,fi)=>`<div class="quiz-example-row">
+          <span class="quiz-ex-es" onclick="speakAmmoDaily('${escAttr(a.ammo_id)}',${fi},'${escAttr(f.es)}')">${f.es}</span>
+          <span class="quiz-ex-zh">${f.zh}</span></div>`).join('')}
+      </div>
+      <details class="flip-zh-spoiler"><summary>💬 看中文意思</summary><div class="flip-zh-text">${a.core_zh}</div></details>
+      <button class="quiz-next-btn" onclick="flipNext()">再翻一張 →</button>
+    </div>`
+    : `<button class="quiz-next-btn" onclick="flipReveal()">翻面看看</button>`;
+  return `<div class="garden-quiz-card">
+    <div class="quiz-check-label">🃏 隨手翻翻，不計分、不用記</div>
+    <div class="quiz-chunk-display" onclick="speakAmmoCore('${escAttr(a.ammo_id)}','${escAttr(a.core_ammo)}')">${a.core_ammo} <span class="quiz-speak-icon">▶</span></div>
+    ${back}
+  </div>`;
+}
+function _flipRender(){ document.getElementById('grammarSheetContent').innerHTML = _flipHtml(); }
+function flipReveal(){ _flipFlipped = true; _flipRender(); }
+function flipNext(){ _flipDraw(); _flipRender(); }
 let _welcomeTourStep = 0;
 function showWelcomeTour(force){
   let seen = false;
