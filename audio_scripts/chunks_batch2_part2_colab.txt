@@ -1,0 +1,131 @@
+# 🐝 劇情逐字語塊音檔 第二批 Part 2（共 80 句）
+# 用法：整份複製貼進 Google Colab 一格，按執行。跑完會自動下載 zip。
+# 解壓後把 mp3 全部放進 repo 的 audio/chunks/ 資料夾（檔名不要改）。
+!pip install -q gTTS
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+sentences = {
+    "chunk_necesito_tiempo.mp3": "necesito tiempo",
+    "chunk_para_adaptarme.mp3": "para adaptarme.",
+    "chunk_necesito.mp3": "Necesito",
+    "chunk_descanso.mp3": "descanso,",
+    "chunk_ademas.mp3": "además,",
+    "chunk_pedir_descanso_no_es_rendirse.mp3": "pedir descanso no es rendirse.",
+    "chunk_creo_que_todo_es_mi_error.mp3": "Creo que todo es mi error,",
+    "chunk_en_realidad.mp3": "en realidad,",
+    "chunk_no_todo.mp3": "no todo",
+    "chunk_depende.mp3": "depende",
+    "chunk_de_mi.mp3": "de mí.",
+    "chunk_busco_2.mp3": "Busco",
+    "chunk_la_salida.mp3": "la salida",
+    "chunk_al_mismo_tiempo_que.mp3": "al mismo tiempo que",
+    "chunk_acompano.mp3": "acompaño",
+    "chunk_al_yo_pequenito.mp3": "al Yo Pequeñito.",
+    "chunk_protejo.mp3": "Protejo",
+    "chunk_el_corazon_verdadero_3.mp3": "el Corazón Verdadero,",
+    "chunk_sobre_todo.mp3": "sobre todo,",
+    "chunk_juicio_ataca.mp3": "Juicio ataca.",
+    "chunk_juicio_3.mp3": "Juicio.",
+    "chunk_juzgo.mp3": "Juzgo",
+    "chunk_cada_palabra.mp3": "cada palabra,",
+    "chunk_mis_palabras_mas_duras.mp3": "mis palabras más duras",
+    "chunk_para_mi.mp3": "para mí.",
+    "chunk_nueve.mp3": "nueve.",
+    "chunk_distintos.mp3": "distintos,",
+    "chunk_por_lo_tanto.mp3": "por lo tanto,",
+    "chunk_no_necesitamos_estar_de_acuerdo.mp3": "no necesitamos estar de acuerdo",
+    "chunk_para_estar_juntos.mp3": "para estar juntos.",
+    "chunk_el_corazon_verdadero_2.mp3": "El Corazón Verdadero",
+    "chunk_el_lugar_original_el_mas_profundo.mp3": "el lugar original, el más profundo.",
+    "chunk_el_desvan.mp3": "El desván",
+    "chunk_dentro_del_corazon_verdadero.mp3": "dentro del Corazón Verdadero.",
+    "chunk_el_corazon.mp3": "el Corazón",
+    "chunk_fue_herido.mp3": "fue herido",
+    "chunk_el_primero.mp3": "el primero.",
+    "chunk_en_esa_herida.mp3": "En esa herida,",
+    "chunk_aparecio.mp3": "apareció",
+    "chunk_una_esquina_oscura.mp3": "una esquina oscura.",
+    "chunk_ahi.mp3": "Ahí",
+    "chunk_se_escondio.mp3": "se escondió",
+    "chunk_el_yo_pequenito_2.mp3": "el Yo Pequeñito,",
+    "chunk_junto_con_las_emociones_pequenas.mp3": "junto con las emociones pequeñas.",
+    "chunk_muy_adentro_del_corazon.mp3": "Muy adentro del Corazón,",
+    "chunk_guardian_2.mp3": "Guardián",
+    "chunk_vigila.mp3": "vigila",
+    "chunk_la_puerta.mp3": "la puerta.",
+    "chunk_fue.mp3": "Fue",
+    "chunk_juicio.mp3": "Juicio",
+    "chunk_quien_hirio_al_corazon_desde_afuera.mp3": "quien hirió al Corazón desde afuera.",
+    "chunk_esperanza_2.mp3": "Esperanza",
+    "chunk_fluye.mp3": "fluye",
+    "chunk_dentro_del_corazon.mp3": "dentro del Corazón,",
+    "chunk_buscando_el_camino.mp3": "buscando el camino.",
+    "chunk_quien_empuja_al_yo_pequenito_a_salir_del_desvan.mp3": "quien empuja al Yo Pequeñito a salir del desván.",
+    "chunk_el_corazon_verdadero.mp3": "el Corazón Verdadero",
+    "chunk_volvera_a_estar.mp3": "volverá a estar",
+    "chunk_completo.mp3": "completo.",
+    "chunk_dentro_de_cata.mp3": "Dentro de Cata",
+    "chunk_una_bateria_social_invisible.mp3": "una batería social invisible.",
+    "chunk_esta_llena.mp3": "está llena,",
+    "chunk_ella_2.mp3": "ella",
+    "chunk_puede_reir_escuchar_y_estar.mp3": "puede reír, escuchar y estar",
+    "chunk_con_todos.mp3": "con todos.",
+    "chunk_hablar_escuchar_y_fingir.mp3": "hablar, escuchar y fingir",
+    "chunk_gastan.mp3": "gastan",
+    "chunk_bateria.mp3": "batería.",
+    "chunk_cansancio_2.mp3": "Cansancio",
+    "chunk_quien_primero_nota_cuando_la_bateria_baja.mp3": "quien primero nota cuando la batería baja.",
+    "chunk_ya_no.mp3": "Ya no",
+    "chunk_puedo_sonreir.mp3": "puedo sonreír",
+    "chunk_mas.mp3": "más,",
+    "chunk_susurra.mp3": "susurra",
+    "chunk_nadie.mp3": "Nadie",
+    "chunk_la_bateria_2.mp3": "la batería,",
+    "chunk_por_eso.mp3": "por eso",
+    "chunk_a_veces_2.mp3": "a veces",
+    "chunk_la_gente.mp3": "la gente",
+    "chunk_no_entiende_2.mp3": "no entiende.",
+}
+
+out_dir = "chunks_batch2_part2"
+os.makedirs(out_dir, exist_ok=True)
+failed = []
+total = len(sentences)
+for i, (fname, text) in enumerate(sentences.items(), 1):
+    path = os.path.join(out_dir, fname)
+    print(f"[{i}/{total}] 錄製中：{fname} ← {text}")
+    ok = False
+    for attempt in range(1, 4):
+        try:
+            gTTS(text=text, lang='es', tld='com.mx').save(path)
+            if os.path.getsize(path) > 500:
+                ok = True
+                break
+            print(f"   ⚠️ 檔案太小，重試 {attempt}/3")
+        except Exception as e:
+            print(f"   ⚠️ 失敗（{e}），重試 {attempt}/3")
+        time.sleep(2 * attempt)
+    print("   ✅ 完成" if ok else "   ❌ 放棄")
+    if not ok:
+        failed.append(fname)
+    time.sleep(random.uniform(0.5, 1.2))
+
+zip_path = f"audio_chunks_batch2_part2.zip"
+with zipfile.ZipFile(zip_path, 'w') as z:
+    for f in os.listdir(out_dir):
+        fp = os.path.join(out_dir, f)
+        if os.path.getsize(fp) > 500:
+            z.write(fp, f)
+
+print("\n==============================")
+print(f"成功 {total - len(failed)} / {total}")
+if failed:
+    print("❌ 失敗清單（之後再補錄）：", failed)
+print("zip 路徑：", os.path.abspath(zip_path))
+print("zip 大小：", os.path.getsize(zip_path), "bytes")
+print("如果下載視窗沒跳出來：左側📁檔案面板 → 對 zip 按右鍵 → 下載")
+
+from google.colab import files
+files.download(zip_path)

@@ -1,0 +1,126 @@
+# 🐝 劇情逐字語塊音檔 第二批 Part 3（共 75 句）
+# 用法：整份複製貼進 Google Colab 一格，按執行。跑完會自動下載 zip。
+# 解壓後把 mp3 全部放進 repo 的 audio/chunks/ 資料夾（檔名不要改）。
+!pip install -q gTTS
+
+import os, time, random, zipfile
+from gtts import gTTS
+
+sentences = {
+    "chunk_no_es_que.mp3": "No es que",
+    "chunk_no_quiera_estar.mp3": "no quiera estar",
+    "chunk_contigo.mp3": "contigo,",
+    "chunk_es_que_necesita_recargar.mp3": "es que necesita recargar.",
+    "chunk_recargar.mp3": "Recargar",
+    "chunk_no_es_2.mp3": "no es",
+    "chunk_egoismo.mp3": "egoísmo,",
+    "chunk_cuidar_el_corazon_verdadero.mp3": "cuidar el Corazón Verdadero.",
+    "chunk_un_rincon_silencioso_un_poco_de_tiempo_a_solas.mp3": "Un rincón silencioso, un poco de tiempo a solas:",
+    "chunk_eso.mp3": "eso",
+    "chunk_basta.mp3": "basta.",
+    "chunk_la_bateria.mp3": "la batería",
+    "chunk_vuelve_a_subir.mp3": "vuelve a subir,",
+    "chunk_regresa.mp3": "regresa,",
+    "chunk_mas_llena_y_mas_ella_misma.mp3": "más llena y más ella misma.",
+    "chunk_me_dicen.mp3": "Me dicen",
+    "chunk_hola.mp3": "¡Hola!",
+    "chunk_una_gata_pequena.mp3": "una gata pequeña.",
+    "chunk_mucho_gusto.mp3": "Mucho gusto,",
+    "chunk_este_es.mp3": "Este es",
+    "chunk_mi_pequeno_mundo.mp3": "mi pequeño mundo.",
+    "chunk_tengo.mp3": "Tengo",
+    "chunk_una_familia.mp3": "una familia",
+    "chunk_una_amiga.mp3": "una amiga.",
+    "chunk_mama_cata_2.mp3": "Mamá Cata,",
+    "chunk_la_mama_de_nita.mp3": "la mamá de Nita.",
+    "chunk_papa_tato_2.mp3": "Papá Tato,",
+    "chunk_el_papa_de_nita.mp3": "el papá de Nita.",
+    "chunk_kito_2.mp3": "Kito.",
+    "chunk_el_hermano_mayor_de_nita.mp3": "el hermano mayor de Nita.",
+    "chunk_el_hermano_de_nita.mp3": "el hermano de Nita.",
+    "chunk_mimi_2.mp3": "Mimi,",
+    "chunk_la_hermanita_bebe_de_nita.mp3": "la hermanita bebé de Nita.",
+    "chunk_vera_2.mp3": "Vera.",
+    "chunk_la_mejor_amiga_de_nita.mp3": "la mejor amiga de Nita.",
+    "chunk_la_familia_y_los_amigos_de_nita.mp3": "la familia y los amigos de Nita.",
+    "chunk_tiene_sueno.mp3": "tiene sueño.",
+    "chunk_ocupada.mp3": "ocupada",
+    "chunk_en_la_cocina.mp3": "en la cocina.",
+    "chunk_esta_trabajando.mp3": "está trabajando",
+    "chunk_en_el_jardin.mp3": "en el jardín.",
+    "chunk_su_turno_para_jugar.mp3": "su turno para jugar.",
+    "chunk_en_la_puerta.mp3": "en la puerta,",
+    "chunk_lista_para_entrar.mp3": "lista para entrar.",
+    "chunk_tiene_hambre.mp3": "tiene hambre",
+    "chunk_llora_un_poco.mp3": "llora un poco.",
+    "chunk_tranquila.mp3": "tranquila",
+    "chunk_en_su_rincon_favorito.mp3": "en su rincón favorito.",
+    "chunk_en_casa_hoy.mp3": "en casa hoy.",
+    "chunk_tiene_ganas_de_jugar.mp3": "tiene ganas de jugar",
+    "chunk_con_tito.mp3": "con Tito.",
+    "chunk_es_2.mp3": "Es",
+    "chunk_un_dia_tranquilo.mp3": "un día tranquilo",
+    "chunk_en_la_casa_gato.mp3": "en la Casa Gato.",
+    "chunk_el_helado.mp3": "el helado.",
+    "chunk_a_tito_le.mp3": "A Tito le",
+    "chunk_su_carrito_rojo.mp3": "su carrito rojo.",
+    "chunk_a_papa_tato_le.mp3": "A Papá Tato le",
+    "chunk_cocinar_para_su_familia.mp3": "cocinar para su familia.",
+    "chunk_a_mama_cata_le.mp3": "A Mamá Cata le",
+    "chunk_tomar_cafe_por_la_manana.mp3": "tomar café por la mañana.",
+    "chunk_a_vera_le.mp3": "A Vera le",
+    "chunk_escuchar_a_sus_amigos.mp3": "escuchar a sus amigos.",
+    "chunk_a_mimi_le.mp3": "A Mimi le",
+    "chunk_encantan.mp3": "encantan",
+    "chunk_las_galletas.mp3": "las galletas.",
+    "chunk_a_nita_tambien_le.mp3": "A Nita también le",
+    "chunk_dibujar.mp3": "dibujar.",
+    "chunk_a_tito_no_le.mp3": "A Tito no le",
+    "chunk_el_ruido_fuerte.mp3": "el ruido fuerte.",
+    "chunk_a_toda_la_familia_le.mp3": "A toda la familia le",
+    "chunk_estar_junta.mp3": "estar junta.",
+    "chunk_a_nita_le_2.mp3": "a Nita le",
+    "chunk_gusta_mucho.mp3": "gusta mucho",
+    "chunk_su_pequena_casa.mp3": "su pequeña casa.",
+}
+
+out_dir = "chunks_batch2_part3"
+os.makedirs(out_dir, exist_ok=True)
+failed = []
+total = len(sentences)
+for i, (fname, text) in enumerate(sentences.items(), 1):
+    path = os.path.join(out_dir, fname)
+    print(f"[{i}/{total}] 錄製中：{fname} ← {text}")
+    ok = False
+    for attempt in range(1, 4):
+        try:
+            gTTS(text=text, lang='es', tld='com.mx').save(path)
+            if os.path.getsize(path) > 500:
+                ok = True
+                break
+            print(f"   ⚠️ 檔案太小，重試 {attempt}/3")
+        except Exception as e:
+            print(f"   ⚠️ 失敗（{e}），重試 {attempt}/3")
+        time.sleep(2 * attempt)
+    print("   ✅ 完成" if ok else "   ❌ 放棄")
+    if not ok:
+        failed.append(fname)
+    time.sleep(random.uniform(0.5, 1.2))
+
+zip_path = f"audio_chunks_batch2_part3.zip"
+with zipfile.ZipFile(zip_path, 'w') as z:
+    for f in os.listdir(out_dir):
+        fp = os.path.join(out_dir, f)
+        if os.path.getsize(fp) > 500:
+            z.write(fp, f)
+
+print("\n==============================")
+print(f"成功 {total - len(failed)} / {total}")
+if failed:
+    print("❌ 失敗清單（之後再補錄）：", failed)
+print("zip 路徑：", os.path.abspath(zip_path))
+print("zip 大小：", os.path.getsize(zip_path), "bytes")
+print("如果下載視窗沒跳出來：左側📁檔案面板 → 對 zip 按右鍵 → 下載")
+
+from google.colab import files
+files.download(zip_path)
