@@ -1915,6 +1915,7 @@ Object.assign(GRAM_AUDIO_MAP, {
   "Hoy elijo ser amable conmigo misma.": "audio/corazon/corazon_crecimiento_04.mp3",
   "No he terminado de crecer.": "audio/corazon/corazon_crecimiento_05.mp3",
   "Mi única ambición es ser libre toda mi vida.": "audio/corazon/corazon_crecimiento_06.mp3",
+  "Nunca es tarde para empezar de nuevo.": "audio/corazon/corazon_crecimiento_07.mp3",
 });
 
 // 🏰莊園人物冊(PRONOUN_LIBRARY/PRONOUN_COMBO_RULES)真人音檔

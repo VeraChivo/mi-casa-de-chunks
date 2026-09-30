@@ -2210,7 +2210,8 @@ const GRAMMAR_DATA = [
         {es:"En boca cerrada no entran moscas.", zh:"禍從口出（字面「閉著的嘴蒼蠅飛不進去」，話少惹禍少）"},
         {es:"Más vale prevenir que curar.", zh:"預防勝於治療。"},
         {es:"El tiempo pone todo en su lugar.", zh:"時間會證明一切。"},
-        {es:"A donde el corazón se inclina, el pie camina.", zh:"心之所向，腳便會走向那裡。（字面：心往哪邊傾斜，腳就往哪邊走）"}
+        {es:"A donde el corazón se inclina, el pie camina.", zh:"心之所向，腳便會走向那裡。（字面：心往哪邊傾斜，腳就往哪邊走）"},
+        {es:"Las palabras se las lleva el viento.", zh:"說出口的話，隨風而逝。（對應中文「口說無憑」）"}
       ]
     },
     trap:"諺語適合「認得就好」，日常對話裡母語者確實會引用（尤其長輩），但初學者硬要在對話中主動使用諺語容易顯得刻意或用錯場合，優先目標是聽到/讀到時能理解，之後聽多了自然知道什麼場合適合接一句。",
