@@ -233,6 +233,7 @@ function buildNav(){
   const existing=nav.querySelectorAll('.ep-chip');
   if(existing.length===EPS.length){
     existing.forEach((c,i)=>c.classList.toggle('active',i===ep));
+    _centerActiveEpChip(nav);
     return;
   }
   nav.innerHTML='';
@@ -243,6 +244,22 @@ function buildNav(){
     chip.onclick=()=>selectEp(i);
     nav.appendChild(chip);
   });
+  _centerActiveEpChip(nav);
+  _bindHScrollFade(nav);
+}
+// 單排左右滑動的選單：右邊還有東西時淡出提示「可以往右滑」，滑到底就消失
+function _bindHScrollFade(el){
+  if(!el) return;
+  el.classList.add('hscroll-fade');
+  const upd=()=>el.classList.toggle('at-end', el.scrollLeft+el.clientWidth>=el.scrollWidth-4);
+  if(!el._hsFadeBound){el.addEventListener('scroll',upd,{passive:true});el._hsFadeBound=true;}
+  requestAnimationFrame(upd);
+}
+// 集數選單改成單排左右滑動後，目前這集要自動滑到中間（只動水平捲動，不讓整頁跳動）
+function _centerActiveEpChip(nav){
+  const a=nav&&nav.querySelector('.ep-chip.active');
+  if(!a) return;
+  requestAnimationFrame(()=>{nav.scrollLeft=a.offsetLeft-(nav.clientWidth-a.offsetWidth)/2;});
 }
 
 // ── 🏡 A1-A2 劇情索引：不改episodes.js，只是把已有內容重新串成新手路線 ──
@@ -302,7 +319,7 @@ function renderStoryIndex(){
   const el = document.getElementById('storyIndexBody');
   if(!el) return;
   el.innerHTML = `<div class="story-idx-box card-container">
-    <div class="ammo-book-top" onclick="toggleStoryIndex()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--mizu),var(--misora))">
+    <div class="ammo-book-top hdr-learn" onclick="toggleStoryIndex()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center">
       <div>
         <div class="pb-book-title">${NEWCOMER_ROADMAP.title}</div>
         <div class="pb-book-sub">${NEWCOMER_ROADMAP.subtitle}</div>
@@ -3405,6 +3422,7 @@ function renderGrammarSupplement(){
     // 「全部」跟等級chip寬度不一，換行位置很亂；三排各自獨立又覺得單顆chip那排太空）
     filterEl.innerHTML = `<div class="gsup-level-row">${chip('all','📋','全部')}${catGroupsChip}</div>`
       + `<div class="gsup-level-row gsup-level-row-scroll">${tiersInPool.map(t=>chip(t.key, t.icon, t.label)).join('')}</div>`;
+    _bindHScrollFade(filterEl.querySelector('.gsup-level-row-scroll'));
   }
   if(introEl){
     const introText = GSUP_LEVEL_INTRO[_gsupLevelFilter] || GSUP_LEVEL_INTRO.all;
@@ -5244,6 +5262,9 @@ function showWelcomeTour(force){
   }
   if(!seen){
     // First visit: show 4-step tour
+    // 第一次來的當天不再自動彈農間小報（2026-09-30 VERA確認）：把「今天看過小報」記成今天，
+    // 隔天回來才開始每日一次，避免新手看完導覽、重新整理後又被小報蓋住第一課
+    try{ if(!localStorage.getItem('peppa_brief_day_v1')) localStorage.setItem('peppa_brief_day_v1', String(Math.floor(Date.now()/86400000))); }catch(e){}
     _welcomeTourStep = 0;
     renderWelcomeTourStep();
     if(overlay) overlay.style.display = 'flex';

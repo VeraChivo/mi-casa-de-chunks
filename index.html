@@ -23,7 +23,7 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20260929a1">
+<link rel="stylesheet" href="style.css?v=20260930a2">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -36,7 +36,7 @@
   <!-- HEADER -->
   <div class="header">
     <div class="header-title-row">
-      <img class="header-title-icon" src="img/header_icon.png?v=20260811a4" alt="" width="48" height="48">
+      <img class="header-title-icon" src="img/header_icon.png?v=20260811a4" alt="" aria-hidden="true" width="48" height="48">
       <div class="header-title-col">
         <div class="header-title">Mi Pequeña Casa</div>
         <div class="header-subtitle">捻起拉美生活語塊，築起你的西語小莊園</div>
@@ -282,7 +282,7 @@
        ammo-book-top 標題列結構，修正原本 cog-header/cog-sub 雙層舊樣式
        跟其他卡片長得不一樣的問題） ── -->
   <div class="pron-lib-wrap card-container">
-    <div class="ammo-book-top" onclick="toggleCogLibrary()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--misora),var(--konpeki))">
+    <div class="ammo-book-top hdr-learn" onclick="toggleCogLibrary()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;,var(--konpeki))">
       <div>
         <div class="pb-book-title">🫐 遍地捻野莓</div>
         <div class="pb-book-sub">零學習成本！看英文秒猜西語意思</div>
@@ -296,7 +296,7 @@
        💎☁️是・在對照站／🪞眼前現實↔心裡想像已移除獨立入口，內容已埋進對應文法卡片內，
        見2026-07-25「☀️育苗場入口整併」） ── -->
   <div class="pron-lib-wrap card-container">
-    <div class="ammo-book-top" onclick="toggleGenderPairs()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C9BD2)">
+    <div class="ammo-book-top hdr-learn" onclick="toggleGenderPairs()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;,#6C9BD2)">
       <div>
         <div class="pb-book-title">⚧ 太極定裝鏡</div>
         <div class="pb-book-sub">點字尾切換 o/a，聽真實例句</div>
@@ -310,7 +310,7 @@
   <!-- ── 👅 口腔健舌坊（原🗣️西語純發音特區，2026-08-11 VERA定案改名；第一輪僅R/RR，2026-08-10 VERA定案：
        最小可行版，聽→看→錄→回放→自己判斷→🌱聽出差異了，六步不接花園熟練度/不做AI評分/不做技能樹） ── -->
   <div class="pron-skill-wrap card-container" id="pronunciationSection">
-    <div class="ammo-book-top" onclick="togglePronunciationSection()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--mizu),var(--misora))">
+    <div class="ammo-book-top hdr-learn" onclick="togglePronunciationSection()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;,var(--misora))">
       <div>
         <div class="pb-book-title">👅 口腔健舌坊</div>
         <div class="pb-book-sub">肌肉重訓形成記憶，打磨你的眼耳口心</div>
@@ -322,7 +322,7 @@
 
   <!-- ── 🏰 莊園人物冊（原人稱代名詞查詢庫） ── -->
   <div class="pron-lib-wrap card-container" id="pronounLibWrap">
-    <div class="ammo-book-top" onclick="togglePronounLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+    <div class="ammo-book-top hdr-learn" onclick="togglePronounLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
       <div>
         <div class="pb-book-title">🏰 莊園人物冊</div>
         <div class="pb-book-sub">認識西語句子裡不同角色的位置</div>
@@ -334,7 +334,7 @@
 
   <!-- ── 🎵 歌詞填空 · 聽歌學語法 ── -->
   <div class="pron-lib-wrap card-container" id="lyricsFillSection">
-    <div class="ammo-book-top" onclick="toggleLyricsFill()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#6C6FAF)">
+    <div class="ammo-book-top hdr-voice" onclick="toggleLyricsFill()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;,#6C6FAF)">
       <div>
         <div class="pb-book-title">🎵 聽歌填空 · 語法闖關</div>
         <div class="pb-book-sub">從A0兒歌到B2拉美名曲，聽片段回來填動詞</div>
@@ -346,7 +346,7 @@
 
   <!-- ── 💧 文法儲水槽 ── -->
   <div class="pron-lib-wrap card-container" id="grammarSupplementSection">
-    <div class="ammo-book-top" onclick="toggleGrammarSupplement()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+    <div class="ammo-book-top hdr-learn" onclick="toggleGrammarSupplement()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
       <div>
         <div class="pb-book-title">💧 文法儲水槽</div>
         <div class="pb-book-sub">詞序／TENER／IR未來式…從外面引進來的文法水源</div>
@@ -368,7 +368,7 @@
          不能直接刪除，改成不佔第一眼版面的次要工具，仍可透過卡片內「🔄查完整變位庫」
          按鈕(jumpToConjLib)跳轉進來 ── -->
     <div class="conj-lib-wrap">
-      <div class="ammo-book-top" onclick="toggleConjLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8AC4DE,#6C9BD2)">
+      <div class="ammo-book-top hdr-learn" onclick="toggleConjLib()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
         <div>
           <div class="pb-book-title">🔄 進階：完整變位庫</div>
           <div class="pb-book-sub">ser／estar／poder／deber…含虛擬式／條件式時態切換</div>
@@ -386,7 +386,7 @@
          🔄進階：完整變位庫子區塊的既有模式——外層一個標題，裡面三個各自獨立收合的
          子區塊，不是三張各自散開的卡片） ══════════ -->
     <div class="pron-lib-wrap card-container" id="worldSection">
-      <div class="ammo-book-top" onclick="toggleWorldSection()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#6C9BD2,#4A7C5F)">
+      <div class="ammo-book-top hdr-world" onclick="toggleWorldSection()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
         <div>
           <div class="pb-book-title">🌎 拉美巡禮</div>
           <div class="pb-book-sub">用西語看見真實的拉丁美洲：新聞・母語・文化</div>
@@ -400,7 +400,7 @@
         <!-- 🗣️街頭母語（2026-07-25從💧文法儲水槽分流，「人怎麼說話」——口語/俚語/網路縮寫/
              口頭禪/固定搭配(locuciones)/易混淆地雷/語用詞，見grammar.js WORLD_ZONE_MAP.slang） -->
         <div class="pron-lib-wrap" id="worldSlangSection">
-          <div class="ammo-book-top" onclick="toggleWorldSlang()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#8491C3,#6C6FAF)">
+          <div class="ammo-book-top hdr-world" onclick="toggleWorldSlang()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
             <div>
               <div class="pb-book-title">🗣️ 街頭母語</div>
               <div class="pb-book-sub">俚語地圖／口頭禪／網路縮寫／固定搭配，母語者實際怎麼講話</div>
@@ -413,7 +413,7 @@
         <!-- 🎭文化深度（2026-07-25從💧文法儲水槽分流，「人為什麼這樣說」——歷史/政治/文學/
              影視/禮儀/社會議題/飲食/節慶，見grammar.js WORLD_ZONE_MAP.culture） -->
         <div class="pron-lib-wrap" id="worldCultureSection">
-          <div class="ammo-book-top" onclick="toggleWorldCulture()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#6C9BD2,#4A7C5F)">
+          <div class="ammo-book-top hdr-world" onclick="toggleWorldCulture()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
             <div>
               <div class="pb-book-title">🎭 文化深度</div>
               <div class="pb-book-sub">歷史／節慶／社會議題／文學影視，理解語言背後的世界</div>
@@ -434,7 +434,7 @@
 
     <!-- ── 💬 心田深耕 · Hablar de corazón（五大人生主題真心話句庫） ── -->
     <div class="corazon-wrap card-container">
-      <div class="ammo-book-top" onclick="toggleCorazon()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#B08BBB,#8491C3)">
+      <div class="ammo-book-top hdr-voice" onclick="toggleCorazon()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
         <div>
           <div class="pb-book-title">💬 心田深耕 · Hablar de corazón</div>
           <div class="pb-book-sub">表達感受・關係界線・育兒・照顧者心語・自我成長，用西語說真心話</div>
@@ -460,7 +460,7 @@
 
   <!-- ── 🍯 醞釀私語窖 ── -->
   <div class="vocab-wrap card-container">
-    <div class="ammo-book-top" onclick="toggleVocabBox()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,var(--benikake),#5A6BA8)">
+    <div class="ammo-book-top hdr-voice" onclick="toggleVocabBox()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;,#5A6BA8)">
       <div>
         <div class="pb-book-title">🍯 醞釀私語窖<span class="pb-title-sep">｜</span>語塊 <span id="vocabCount" class="pb-count-num">0</span> quilates</div>
         <div class="pb-book-sub">收藏你喜愛的西語語塊。收藏，是珍愛🌟<br>練習請移步點選花園 🍀 開始培養熟練度</div>
@@ -475,7 +475,7 @@
 
   <!-- ── 🌻 語塊花園 ── -->
   <div class="garden-wrap card-container">
-    <div class="ammo-book-top garden-header" onclick="toggleGardenView()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#7B9E87,#4A7C5F)">
+    <div class="ammo-book-top garden-header hdr-grow" onclick="toggleGardenView()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
       <div>
         <div class="pb-book-title">🌻 語塊花園 🐝 <span id="gardenTotalCount" class="pb-count-num">0</span></div>
         <div class="pb-book-sub">🌱 初萌芽 → 🍃 猛漲期 → 🍀 幸運草 → 🌻 日頭花開</div>
@@ -491,7 +491,7 @@
 
   <!-- ── 🌳 語塊家族：不是新的庫存數量，是既有語塊之間的關聯與成長 ── -->
   <div class="chunk-fam-wrap card-container">
-    <div class="ammo-book-top" onclick="toggleChunkFamilies()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#7B9E87,#4A7C5F)">
+    <div class="ammo-book-top hdr-grow" onclick="toggleChunkFamilies()" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
       <div>
         <div class="pb-book-title">🌳 語塊茁壯</div>
         <div class="pb-book-sub">Chunk↔劇情↔歌曲↔新聞的語塊家族樹</div>
@@ -651,6 +651,6 @@
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20260929a3"></script>
+  <script src="script.js?v=20260930a1"></script>
 </body>
 </html>
