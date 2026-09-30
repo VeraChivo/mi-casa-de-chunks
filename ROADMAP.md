@@ -48,6 +48,7 @@
 - **🧺 參考客語工具後的需求收攏（2026-09-29，參考ChouInn的5款客語學習工具：隨機詞卡／氣球挑戰／客話大樹／題庫練習／四縣拼音楷）**：
   - ✅ **音檔優先（VERA排第一，2026-09-29 完成）**：第二批235個長尾語塊mp3已由VERA錄好交付、放進`audio/chunks/`，實測檔名與`CHUNK_AUDIO_MAP`缺口100%吻合、全為有效MPEG、maintenance.js 0錯誤、Playwright實測播放回200不再fallback TTS。以下為當時的診斷記錄：：Reality Check發現CLAUDE.md「260個語塊缺音檔」已過時——第一批25個高頻語塊（Yo soy/Soy/Somos/gusta/A Nita le/vive/cuando/Y/también…）真人音檔早已上傳；`CHUNK_AUDIO_MAP`路徑覆蓋520/520，但**第二批235個長尾語塊的mp3還沒上傳**（2026-08-27預留路徑，當時的錄音腳本放在scratchpad已遺失）。已重新產生3份Colab腳本存進repo `audio_scripts/`（80/80/75句），**等VERA跑完上傳到`audio/chunks/`**，找不到檔案前會自動fallback TTS不會壞。
   - ✅ **A. 🃏 隨手翻幾張（2026-09-29 完成，VERA拍板）**：詞庫＝讀過的彈藥卡（`ammoUnlocked`），排除`AMMO_LIFECYCLE.historical`的E1舊10張；還沒讀過任何句子時改抽第一站e17_01~04。入口＝🎁入園巧遇（今日耕耘卡片「選一條自己的路」新增chip）。正面只放核心西語句（可點聽），翻面主要內容＝1~2句`fire_daily`（西語＋既有中文）；**核心句中文`core_zh`收進「💬看中文意思」劇透**（原生`<details>`，預設收起、點開才顯示、再點收回、換卡自動收回），VERA定案：避免變成「西語→中文答案」的翻譯卡，學習順序＝西語→回想→語境→需要時才確認中文；中文全讀既有欄位、不新增不改寫。**純翻看，不計分、不寫花園熟練度、不呼叫markWatered**（收藏≠學會）。見script.js `openFlipCards()`。已用Playwright驗證：新手fallback／E1舊卡被排除／花園localStorage前後不變／返回鍵可關／390px無橫向溢出。
+  - ✅ **🧭探索路線不再重複說明（2026-09-30）**：VERA回報切不同選項一直跳同樣說明。測出🧭每次開都重複顯示「從第一句西語開始…」那段；已看過導覽／按過跳過的人，🧭改成只顯示標題＋4個選項（沿用`peppa_welcome_tour_seen_v1`，未新增儲存欄位）。第一次進站的完整導覽、🗺️莊園導覽維持完整說明。順手修既有bug：🧭開啟時沒有補history，手機按返回會直接離開網站，已補`_pushTourOverlayState()`。
   - ❌ **記得上次的設定**（等級篩選／分頁，localStorage個人便利，🟢小工程，排在A之後）
   - ❌ **首頁「3步驟開始」一張圖講完**（改寫導覽文案參考，屬首頁第一眼印象，併入Sprint 3的①）
   - 🚫 參考工具裡評估後不借的：見下方「已評估、明確不做」

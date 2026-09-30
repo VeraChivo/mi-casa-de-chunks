@@ -3359,11 +3359,16 @@ function jumpToStoryStart(){
 }
 // 給「不是第一次來」的人直接跳進等級路標，不用重播整輪導覽（🗝️莊園導覽對回訪者會改跳農間小報，這個是專門的捷徑）
 function openLevelNavDirect(){
+  // 已看過導覽／按過「跳過」的人，🧭探索路線只給標題＋選項，不再重複同一段說明（2026-09-30 VERA回報：切不同選項一直跳同樣說明）
+  try{ _tourDirectMode = !!localStorage.getItem('peppa_welcome_tour_seen_v1'); }catch(e){ _tourDirectMode = false; }
   const overlay = document.getElementById('welcomeTourOverlay');
   if(overlay){
     const nav = overlay.querySelector('.welcome-tour-nav');
     if(nav) nav.style.display = '';
+    // 彈窗原本沒開才補一筆history，手機按返回才會先關彈窗、不會直接離開網站（見_pushTourOverlayState）
+    const wasOpen = overlay.style.display === 'flex';
     overlay.style.display = 'flex';
+    if(!wasOpen && !_tourOverlayPushed) _pushTourOverlayState();
   }
   // 找「程度路標」那一步的實際索引，不要假設它是最後一步——
   // 之後加新的導覽步驟（例如入口盤查）會讓「最後一步」變成別的東西
@@ -5264,6 +5269,7 @@ function showWelcomeTour(force){
 // 🗺️莊園導覽：header按鈕專用，一律從頭顯示導覽內容，不受「今天看過小報了嗎」狀態影響
 // （showWelcomeTour(true) 對老用戶其實是開農間小報，兩個功能名字撞在一起會誤導，故分開）
 function showWorldTour(){
+  _tourDirectMode = false;
   const overlay = document.getElementById('welcomeTourOverlay');
   if(!overlay) return;
   const nav = overlay.querySelector('.welcome-tour-nav');
@@ -5275,6 +5281,7 @@ function showWorldTour(){
   overlay.style.display = 'flex';
   _pushTourOverlayState();
 }
+let _tourDirectMode = false; // true＝🧭探索路線精簡模式（只顯示選項，不顯示說明段落）；關閉導覽／開🗺️莊園導覽時歸零
 function renderWelcomeTourStep(){
   const s = WELCOME_TOUR_STEPS[_welcomeTourStep];
   const btnsHtml = s.levelButtons ? `
@@ -5289,7 +5296,7 @@ function renderWelcomeTourStep(){
   document.getElementById('welcomeTourBody').innerHTML = `
     <div class="welcome-tour-icon">${s.icon}</div>
     <div class="welcome-tour-title">${s.title}</div>
-    <div class="welcome-tour-desc">${s.desc}</div>
+    ${(s.levelButtons && _tourDirectMode) ? '' : `<div class="welcome-tour-desc">${s.desc}</div>`}
     ${btnsHtml}`;
   document.getElementById('welcomeTourDots').innerHTML = WELCOME_TOUR_STEPS
     .map((_,i)=>`<span class="welcome-tour-dot${i===_welcomeTourStep?' active':''}"></span>`).join('');
@@ -5309,6 +5316,7 @@ function welcomeTourPrev(){
   renderWelcomeTourStep();
 }
 function closeWelcomeTour(_fromPop){
+  _tourDirectMode = false;
   document.getElementById('welcomeTourOverlay').style.display = 'none';
   try{ localStorage.setItem('peppa_welcome_tour_seen_v1', '1'); }catch(e){}
   _popTourOverlayState(_fromPop);
