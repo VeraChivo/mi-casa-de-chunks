@@ -3,6 +3,7 @@
 // 用法：drawNita(ctx, {x, y, s, pose:'sit'|'paw', expr:'aloof'|'blink'|'talk'|'side'|'soft', tail, headTilt, chinUp, headOnly})
 (function(){
 const C = {
+  goth:'#6E4A9E', gothDeep:'#47306A', gothLace:'#3A2752', charm:'#DCE1EA',
   fur:'#8391A6', furDark:'#6C7A8F', furLight:'#A1ADBD', lid:'#6A788C',
   earIn:'#C9A2AB', nose:'#8C7280', iris:'#D2A23F', irisIn:'#AFA949', pupil:'#1E2430', eyeRim:'#4B5668',
   sock:'#FAF8F4', tuft:'#F4F2EE', whisker:'#F6F8FA', mouth:'#4B5668', shadow:'rgba(60,50,40,.16)'
@@ -29,21 +30,27 @@ function eye(ctx, cx, cy, st){
   // 杏仁眼：上下兩條弧線組成，外眼角微微上揚
   const almond=()=>{ ctx.beginPath(); ctx.moveTo(cx-rx,cy+2); ctx.quadraticCurveTo(cx,cy-ry*2.1,cx+rx,cy-3); ctx.quadraticCurveTo(cx,cy+ry*1.7,cx-rx,cy+2); ctx.closePath(); };
   if(e==='blink'){ ctx.save(); ctx.strokeStyle=C.eyeRim; ctx.lineWidth=4; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(cx-rx,cy+3); ctx.quadraticCurveTo(cx,cy+9,cx+rx,cy); ctx.stroke(); ctx.restore(); return; }
-  const lid = e==='soft' ? .30 : .44;              // 上眼皮蓋住的比例：高傲＝半垂
-  const lookX = e==='side' ? 9 : 0, lookY = e==='soft'? 1 : 3; // 預設眼神微微往下看人
+  const lid = e==='soft' ? .18 : .28;              // 上眼皮只蓋一點點（蓋太多會像沒精神、衰衰的）
+  const lookX = e==='side' ? 9 : 0, lookY = 0;     // 平視，不往下看
   ctx.save(); almond(); ctx.clip();
   E(ctx,cx,cy,rx+4,ry+6,C.iris); E(ctx,cx+lookX,cy+lookY,rx*.58,ry*.8,C.irisIn);
   E(ctx,cx+lookX,cy+lookY,5,ry*.85,C.pupil);
   E(ctx,cx+lookX+7,cy+lookY-5,3,3,'rgba(255,255,255,.85)');
   // 上眼皮：跟臉同色、平直蓋下來，只在邊緣留一條細睫毛線＝看起來懶得理人
   const top=cy-ry*2.2, edge=cy-ry+lid*2*ry;
-  P(ctx,[[cx-rx-4,top],[cx+rx+4,top],[cx+rx+4,edge-2],[cx-rx-4,edge+2]],C.fur);
+  const sideL = 0, sideR = 0;   // 眼皮平的：內眼角低＝像生氣、內眼角高＝像難過，平的才是冷淡
+  P(ctx,[[cx-rx-4,top],[cx+rx+4,top],[cx+rx+4,edge+sideR],[cx-rx-4,edge+sideL]],C.fur);
   ctx.restore();
   ctx.save(); ctx.strokeStyle=C.eyeRim; ctx.lineWidth=3.2; ctx.lineCap='round';
-  ctx.beginPath(); ctx.moveTo(cx-rx+2,edge+2); ctx.lineTo(cx+rx-1,edge-2); ctx.stroke();
-  const out = cx<0 ? -1 : 1, ox = cx + out*(rx-1), oy = edge + (out<0?2:-2); ctx.lineWidth=2.6;
+  const sL = 0, sR = 0;
+  ctx.beginPath(); ctx.moveTo(cx-rx+2,edge+sL); ctx.lineTo(cx+rx-1,edge+sR); ctx.stroke();
+  const out = cx<0 ? -1 : 1, ox = cx + out*(rx-1), oy = edge - 2; ctx.lineWidth=2.6;
   ctx.beginPath(); ctx.moveTo(ox,oy); ctx.quadraticCurveTo(ox+out*8,oy-4,ox+out*13,oy-11); ctx.moveTo(ox-out*5,oy); ctx.quadraticCurveTo(ox+out*2,oy-6,ox+out*4,oy-14); ctx.stroke();
-  if(e==='soft'){ ctx.strokeStyle=C.furLight; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(cx-rx+4,cy+6); ctx.quadraticCurveTo(cx,cy+1,cx+rx-4,cy+3); ctx.stroke(); } // 下眼皮微推＝放鬆
+  ctx.restore();
+  // 下眼皮往上推＝瞇眼的自信高傲（不是半垂眼皮的沒精神）；放鬆時推得更多、弧度更彎＝眼神帶笑
+  ctx.save(); almond(); ctx.clip(); const push = e==='soft' ? 9 : 6;
+  ctx.fillStyle=C.fur; ctx.beginPath(); ctx.moveTo(cx-rx-4,cy+ry*1.2); ctx.lineTo(cx-rx-4,cy+ry-push+4); ctx.quadraticCurveTo(cx,cy+ry-push*2.2,cx+rx+4,cy+ry-push); ctx.lineTo(cx+rx+4,cy+ry*1.2); ctx.closePath(); ctx.fill();
+  ctx.restore(); ctx.save();
   ctx.restore();
 }
 function head(ctx, st){
@@ -69,9 +76,28 @@ function head(ctx, st){
   [[-1,-6],[-1,6],[1,-6],[1,6]].forEach(([m,dy])=>{ ctx.beginPath(); ctx.moveTo(m*40,-256-up+dy); ctx.quadraticCurveTo(m*95,-262-up+dy*1.4,m*122,-258-up+dy*2.6); ctx.stroke(); });
   ctx.restore();
 }
+// 🦇 紫色哥德裝飾：絲絨頸鍊（下緣蕾絲＋銀色小月亮）、右耳蝴蝶結
+function choker(ctx){
+  ctx.save();
+  // 蕾絲：頸鍊下緣一排小半圓
+  // 蕾絲：沿著頸鍊下緣弧線排一圈小圓，上半被頸鍊蓋住，只露出下半＝蕾絲邊
+  for(let i=-6;i<=6;i++){ const x=i*10, y=-193-10*Math.pow(x/60,2); E(ctx,x,y,5.2,5.2,C.gothDeep); }
+  ctx.beginPath(); ctx.moveTo(-62,-218); ctx.quadraticCurveTo(0,-198,62,-218); ctx.lineTo(60,-202); ctx.quadraticCurveTo(0,-182,-60,-202); ctx.closePath(); ctx.fillStyle=C.goth; ctx.fill();
+  // 銀色小月亮
+  P(ctx,[[0,-198],[-2,-190],[2,-190]],C.charm);
+  E(ctx,0,-178,11,11,C.charm); E(ctx,6,-182,9.5,9.5,C.furLight);   // 彎月：銀色圓＋用胸口顏色切掉一角
+  ctx.restore();
+}
+function earBow(ctx){
+  ctx.save(); ctx.translate(74,-392); ctx.rotate(0.35);
+  P(ctx,[[0,0],[-30,-17],[-34,4],[-26,16]],C.goth); P(ctx,[[0,0],[30,-17],[34,4],[26,16]],C.goth);
+  P(ctx,[[-4,2],[-14,30],[-6,28]],C.gothDeep); P(ctx,[[4,2],[14,30],[6,28]],C.gothDeep);
+  E(ctx,0,0,8,8,C.gothDeep); E(ctx,0,0,3,3,C.charm);
+  ctx.restore();
+}
 function drawNita(ctx, st){
   ctx.save(); ctx.translate(st.x, st.y); ctx.scale(st.s||1, st.s||1);
-  if(st.headOnly){ ctx.translate(0,300); ctx.rotate(st.headTilt||0); ctx.translate(0,-300); head(ctx,st); ctx.restore(); return; }
+  if(st.headOnly){ ctx.translate(0,300); ctx.rotate(st.headTilt||0); ctx.translate(0,-300); head(ctx,st); if(st.goth!==false) earBow(ctx); ctx.restore(); return; }
   E(ctx,0,4,150,20,C.shadow);                                        // 腳下柔和影子（取代輪廓線，讓貓從背景跳出來）
   // 抬手指東西時尾巴換到另一側，不跟抬起的手疊在一起
   if(st.pose==='paw'){ ctx.save(); ctx.scale(-1,1); tail(ctx, st.tail||0); ctx.restore(); } else tail(ctx, st.tail||0);
@@ -86,7 +112,8 @@ function drawNita(ctx, st){
     ctx.restore(); };
   leg(-24, 0);
   if(st.pose!=='paw') leg(24, 0);
-  ctx.save(); ctx.translate(0,-222); ctx.rotate(st.headTilt||0); ctx.translate(0,222); head(ctx,st); ctx.restore();
+  if(st.goth!==false) choker(ctx);
+  ctx.save(); ctx.translate(0,-222); ctx.rotate(st.headTilt||0); ctx.translate(0,222); head(ctx,st); if(st.goth!==false) earBow(ctx); ctx.restore();
   if(st.pose==='paw'){ ctx.save(); ctx.translate(26,-20); leg(24, st.pawAng ?? -1.85); ctx.restore(); }
   ctx.restore();
 }

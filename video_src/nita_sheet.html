@@ -11,14 +11,16 @@ function panel(x,y,w,h,c='#FBF7F0'){ctx.save();ctx.fillStyle=c;ctx.beginPath();c
 function callout(x1,y1,x2,y2,label){ctx.save();ctx.strokeStyle='#A0917E';ctx.lineWidth=2;ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#A0917E';ctx.beginPath();ctx.arc(x1,y1,5,0,7);ctx.fill();ctx.restore();text(label,x2+(x2>x1?10:-10),y2-(x2<x1?22:0),24,'#5E5244',700,x2>x1?'left':'left');}
 
 text('Nita 妮妲｜角色定稿圖（草稿，待確認）',60,58,40,'#3E352C',900);
-text('混血藍貓・高傲、不好親近・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
+text('混血藍貓・高傲、不好親近・紫色哥德小配件・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
 
 // ① 全身正面（坐姿）
 panel(40,140,640,940);
 NITA.draw(ctx,{x:330,y:1020,s:1.2,expr:'aloof',tail:0});
 callout(218,580,80,300,'左耳外側一撮白毛');
-callout(390,648,420,380,'琥珀綠眼、眼皮半垂');
+callout(390,648,420,380,'琥珀綠眼、瞇眼平視');
 callout(345,708,460,480,'嘴角平、不笑');
+callout(330,815,470,860,'紫色頸鍊＋銀月亮');
+callout(415,560,470,300,'右耳紫色蝴蝶結');
 callout(372,1003,470,1052,'白襪子只到腳趾');
 text('① 預設姿勢：坐直',70,178,26,'#5E5244',800);
 
@@ -45,8 +47,8 @@ zoom(-70,-40,150,70,1110,925,270,120,{x:0,y:0,s:1,expr:'aloof'});   text('腳趾
 panel(1440,640,320,440);
 text('⑤ 配色',1470,678,26,'#5E5244',800);
 const C=NITA.colors;
-[['毛色',C.fur],['深毛色',C.furDark],['淺毛色',C.furLight],['眼睛',C.iris],['耳朵內側',C.earIn],['白色部分',C.sock]].forEach(([n,c],i)=>{
-  const y=730+i*56; ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(1470,y-20,52,40,10); ctx.fill();
+[['毛色',C.fur],['深毛色',C.furDark],['淺毛色',C.furLight],['眼睛',C.iris],['耳朵內側',C.earIn],['白色部分',C.sock],['哥德紫',C.goth]].forEach(([n,c],i)=>{
+  const y=722+i*50; ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(1470,y-20,52,40,10); ctx.fill();
   if(c===C.sock){ctx.strokeStyle='#D9CFC0';ctx.lineWidth=2;ctx.stroke();}
   text(n,1540,y,22,'#5E5244',700); text(c.toUpperCase(),1740,y,18,'#A0917E',600,'right'); });
 </script></body></html>
