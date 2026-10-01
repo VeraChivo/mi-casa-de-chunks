@@ -5,7 +5,7 @@
 const C = {
   fur:'#8391A6', furDark:'#6C7A8F', furLight:'#A1ADBD', lid:'#6A788C',
   earIn:'#C9A2AB', nose:'#8C7280', iris:'#D2A23F', irisIn:'#AFA949', pupil:'#1E2430', eyeRim:'#4B5668',
-  sock:'#FAF8F4', tuft:'#F4F2EE', whisker:'#EEF2F6', mouth:'#4B5668', shadow:'rgba(60,50,40,.16)'
+  sock:'#FAF8F4', tuft:'#F4F2EE', whisker:'#F6F8FA', mouth:'#4B5668', shadow:'rgba(60,50,40,.16)'
 };
 function E(ctx,cx,cy,rx,ry,fill,rot=0){ ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,rot,0,Math.PI*2); ctx.fillStyle=fill; ctx.fill(); }
 function P(ctx,pts,fill){ ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]); for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i][0],pts[i][1]); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); }
@@ -65,28 +65,29 @@ function head(ctx, st){
   if(e==='talk'){ E(ctx,0,-246-up,9,7,'#3E2F3A'); }
   else if(e==='soft'){ ctx.beginPath(); ctx.moveTo(0,-263-up); ctx.lineTo(0,-255-up); ctx.moveTo(-12,-250-up); ctx.quadraticCurveTo(-6,-246-up,0,-255-up); ctx.quadraticCurveTo(6,-246-up,12,-250-up); ctx.stroke(); }
   else { ctx.beginPath(); ctx.moveTo(0,-263-up); ctx.lineTo(0,-254-up); ctx.moveTo(-10,-251-up); ctx.lineTo(0,-254-up); ctx.lineTo(10,-251-up); ctx.stroke(); } // 高傲：嘴角平，不笑
-  ctx.strokeStyle=C.whisker; ctx.lineWidth=2.2;
-  [[-1,-6],[-1,6],[1,-6],[1,6]].forEach(([m,dy])=>{ ctx.beginPath(); ctx.moveTo(m*40,-256-up+dy); ctx.quadraticCurveTo(m*95,-262-up+dy*1.4,m*146,-258-up+dy*2.8); ctx.stroke(); });
+  ctx.strokeStyle=C.whisker; ctx.lineWidth=2.8;
+  [[-1,-6],[-1,6],[1,-6],[1,6]].forEach(([m,dy])=>{ ctx.beginPath(); ctx.moveTo(m*40,-256-up+dy); ctx.quadraticCurveTo(m*95,-262-up+dy*1.4,m*122,-258-up+dy*2.6); ctx.stroke(); });
   ctx.restore();
 }
 function drawNita(ctx, st){
   ctx.save(); ctx.translate(st.x, st.y); ctx.scale(st.s||1, st.s||1);
   if(st.headOnly){ ctx.translate(0,300); ctx.rotate(st.headTilt||0); ctx.translate(0,-300); head(ctx,st); ctx.restore(); return; }
   E(ctx,0,4,150,20,C.shadow);                                        // 腳下柔和影子（取代輪廓線，讓貓從背景跳出來）
-  tail(ctx, st.tail||0);
+  // 抬手指東西時尾巴換到另一側，不跟抬起的手疊在一起
+  if(st.pose==='paw'){ ctx.save(); ctx.scale(-1,1); tail(ctx, st.tail||0); ctx.restore(); } else tail(ctx, st.tail||0);
   E(ctx,-46,-58,48,58,C.furDark); E(ctx,46,-58,48,58,C.furDark);      // 後腿（坐姿）
   E(ctx,-56,-10,30,12,C.furDark); E(ctx,56,-10,30,12,C.furDark);
   E(ctx,0,-152,64,116,C.fur);                                          // 身體（坐直）
   E(ctx,0,-162,34,72,C.furLight);                                      // 胸口淡色
   // 前腳：左腳直立；右腳可以抬起來指東西（pose:'paw'）
   const leg=(sx, raise)=>{ ctx.save(); ctx.translate(sx,-150); if(raise) ctx.rotate(raise);
-    E(ctx,0,70,17,74,C.fur); E(ctx,0,136,21,14,C.fur);
-    ctx.save(); ctx.beginPath(); ctx.ellipse(0,136,21,14,0,0,Math.PI*2); ctx.clip(); E(ctx,0,146,20,8,C.sock); ctx.restore(); // 白襪子：只有腳趾一小截
+    S(ctx,[[-19,-4],[19,-4],[17,50],[13,110],[12,130],[-12,130],[-13,110],[-17,50]],C.fur); E(ctx,0,136,19,13,C.fur);
+    ctx.save(); ctx.beginPath(); ctx.ellipse(0,136,19,13,0,0,Math.PI*2); ctx.clip(); E(ctx,0,145,18,7,C.sock); ctx.restore(); // 白襪子：只有腳趾一小截
     ctx.restore(); };
   leg(-24, 0);
   if(st.pose!=='paw') leg(24, 0);
   ctx.save(); ctx.translate(0,-222); ctx.rotate(st.headTilt||0); ctx.translate(0,222); head(ctx,st); ctx.restore();
-  if(st.pose==='paw'){ ctx.save(); ctx.translate(18,-30); leg(24, st.pawAng ?? -2.25); ctx.restore(); }
+  if(st.pose==='paw'){ ctx.save(); ctx.translate(26,-20); leg(24, st.pawAng ?? -1.85); ctx.restore(); }
   ctx.restore();
 }
 const NITA = {draw:drawNita, colors:C};
