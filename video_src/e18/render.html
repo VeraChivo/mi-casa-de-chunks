@@ -25,14 +25,14 @@ function steam(x,y,t){ ctx.save(); ctx.strokeStyle='rgba(150,130,110,.55)'; ctx.
 // 開場：家庭樹（爸媽在上、四個孩子在下，連線一條條長出來；妮妲有金色外圈）
 function headIn(id,x,y,R,t0,t,ring){ const p=pop((t-t0)/0.35); if(p<=0) return; ctx.save(); ctx.translate(x,y); ctx.scale(p,p);
   if(ring){ ctx.fillStyle='#E8C766'; ctx.beginPath(); ctx.arc(0,0,R+14,0,7); ctx.fill(); }
-  ctx.fillStyle='#FFFDF8'; ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.fill(); ctx.save(); ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.clip();
-  ctx.fillStyle=id==='nita'?'#E3DCF3':'#EDE3F6'; ctx.fillRect(-R,-R,2*R,2*R); ctx.scale(R/58,R/58);
-  if(id==='nita') NITA.draw(ctx,{x:0,y:112+40,s:0.28*1.0,expr:'aloof',headOnly:true}); else { const sp=FAMILY.spec[id]; FAMILY.draw(ctx,id,{x:0,y:112,s:0.28/sp.scale,expr:'smile',headOnly:true}); }
+  ctx.fillStyle='#FFFFFF'; ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.fill(); ctx.save(); ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.clip();
+  ctx.fillStyle=id==='nita'?'#E3D8F5':'#E9E0F7'; ctx.fillRect(-R,-R,2*R,2*R); ctx.scale(R/58,R/58);
+  if(id==='nita') NITA.draw(ctx,{x:0,y:112+18,s:0.26,expr:'aloof',headOnly:true}); else { const sp=FAMILY.spec[id]; FAMILY.draw(ctx,id,{x:0,y:112,s:0.28/sp.scale,expr:'smile',headOnly:true}); }
   ctx.restore(); ctx.restore(); }
-function treeLine(x1,y1,x2,y2,t0,t){ const p=E01((t-t0)/0.3); if(p<=0) return; ctx.save(); ctx.strokeStyle='#C9B28F'; ctx.lineWidth=10; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x1+(x2-x1)*p,y1+(y2-y1)*p); ctx.stroke(); ctx.restore(); }
+function treeLine(x1,y1,x2,y2,t0,t){ const p=E01((t-t0)/0.3); if(p<=0) return; ctx.save(); ctx.strokeStyle='#B79BE0'; ctx.lineWidth=9; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x1+(x2-x1)*p,y1+(y2-y1)*p); ctx.stroke(); ctx.restore(); }
 function treeLabel(x,y,text,t0,t){ const p=E01((t-t0)/0.25); if(p<=0) return; ctx.save(); ctx.globalAlpha=p; ctx.font=`800 38px ${FONT}`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(text,x,y); ctx.restore(); }
 function familyTree(t,t0){
-  ctx.save(); ctx.fillStyle='#FFFDF8'; ctx.beginPath(); ctx.roundRect(50,130,980,900,56); ctx.fill(); ctx.restore();
+  ctx.save(); ctx.fillStyle='#F7F2FD'; ctx.beginPath(); ctx.roundRect(50,130,980,900,56); ctx.fill(); ctx.restore();
   const PY=330, KY=720, R=108, kids=[['kito',190,'Kito'],['nita',405,'Nita'],['tito',640,'Tito'],['mimi',860,'Mimi']];
   treeLine(330,PY,750,PY,t0+0.25,t); const h=pop((t-t0-0.45)/0.3); if(h>0){ ctx.save(); ctx.translate(540,PY); ctx.scale(h,h); ctx.font='64px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#E8869B'; ctx.fillText('♥',0,0); ctx.restore(); }
   treeLine(540,PY+34,540,520,t0+0.6,t); treeLine(190,520,860,520,t0+0.7,t); kids.forEach(([id,x],i)=>treeLine(x,520,x,KY-R,t0+0.8+i*0.08,t));
