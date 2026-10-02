@@ -1,0 +1,58 @@
+<!doctype html><html><head><meta charset="utf-8"><title>貓家族｜角色定稿圖</title>
+<style>html,body{margin:0;background:#EFE8DC}canvas{display:block}</style></head><body>
+<canvas id="c" width="1800" height="1500"></canvas>
+<script src="lib/nita.js"></script><script src="lib/family.js"></script>
+<script>
+const cv=document.getElementById('c'), ctx=cv.getContext('2d'), W=1800, H=1500;
+const FONT='"Noto Sans CJK TC","Noto Sans TC","Liberation Sans",sans-serif';
+ctx.fillStyle='#F6F0E6'; ctx.fillRect(0,0,W,H);
+function text(t,x,y,size=26,color='#4A4036',w=700,align='left'){ctx.font=`${w} ${size}px ${FONT}`;ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(t,x,y);}
+function panel(x,y,w,h,c='#FBF7F0'){ctx.save();ctx.fillStyle=c;ctx.beginPath();ctx.roundRect(x,y,w,h,22);ctx.fill();ctx.restore();}
+
+text('貓家族｜角色定稿圖（E18 出場：爸爸、媽媽、哥哥、弟弟、妹妹、薇拉＋妮妲）',60,58,38,'#3E352C',900);
+text('同一套 Q 版 2.5 頭身・扁平插畫，無輪廓線・每人靠「耳朵＋髮型＋主色」就能分出來',60,104,24,'#8A7B69',600);
+
+// ① 合照（比身高）
+panel(40,140,1720,640);
+const B=0.70, base=690, order=[
+  ['dad','達多爸爸','柴郡粉紫・龐克馬尾・鮮綠衣'],['mom','卡妲媽媽','水藍毛帽・低馬尾'],['kito','奇托哥哥','橘黃外套・翹毛'],
+  ['nita','妮妲','灰藍髮・紫色哥德'],['tito','迪多弟弟','淺黃・蓬髮・抱車車'],['mimi','咪咪妹妹','粉紅・丸子頭・抱骷髏兔'],['vera','薇拉（朋友）','擬人羊・捲毛彎角']];
+order.forEach(([id,name,desc],i)=>{
+  const x=170+i*245+(i===6?30:0);
+  if(id==='nita') NITA.draw(ctx,{x,y:base,s:B*1.0,expr:'aloof'});
+  else FAMILY.draw(ctx,id,{x,y:base,s:B,expr:'smile',pose:(id==='tito'||id==='mimi')?'hold':'stand',look:id==='kito'?1:0});
+  text(name,x,base+34,26,'#4A3168',900,'center'); text(desc,x,base+66,18,'#8A7B69',700,'center');
+});
+text('① 合照（身高比例：爸爸最高→媽媽→哥哥→妮妲→薇拉→弟弟→妹妹最矮）',70,178,24,'#5E5244',800);
+
+// ② 爸爸彩蛋
+panel(40,800,720,670);
+text('② 爸爸「功能很多」：依情境出彩蛋',70,838,24,'#5E5244',800);
+const dadSet=[['stand','一般站著'],['cook','煮菜：鍋鏟＋香氣'],['repair','修東西：螺絲起子＋火花']];
+dadSet.forEach(([pose,lab],i)=>{ const x=165+i*235, y=1390;
+  FAMILY.draw(ctx,'dad',{x,y,s:0.62,expr:'smile',pose});
+  text(lab,x,1428,17,'#5E5244',700,'center');
+  if(pose==='cook'){ ctx.save(); ctx.strokeStyle='rgba(150,130,110,.55)'; ctx.lineWidth=5; ctx.lineCap='round'; [[x+70,1180],[x+92,1160],[x+114,1180]].forEach(([a,b])=>{ ctx.beginPath(); ctx.moveTo(a,b+40); ctx.quadraticCurveTo(a-12,b+20,a,b); ctx.quadraticCurveTo(a+12,b-20,a,b-40); ctx.stroke(); }); ctx.restore(); }
+  if(pose==='repair'){ ctx.save(); ctx.strokeStyle='#D4A93A'; ctx.lineWidth=4; ctx.lineCap='round'; [[x+98,1196,x+112,1180],[x+110,1214,x+130,1212],[x+90,1180,x+90,1160]].forEach(([a,b,c,d])=>{ ctx.beginPath(); ctx.moveTo(a,b); ctx.lineTo(c,d); ctx.stroke(); }); ctx.restore(); }
+});
+
+// ③ 弟弟：車車抱著／圍繞
+panel(780,800,500,670);
+text('③ 弟弟的車車 Chito',810,838,24,'#5E5244',800);
+FAMILY.draw(ctx,'tito',{x:930,y:1390,s:0.86,expr:'smile',pose:'hold'});
+FAMILY.draw(ctx,'tito',{x:1160,y:1390,s:0.86,expr:'smile',pose:'stand'});
+[['#E04C4C',1062,1396],['#4C86D8',1100,1416],['#5DBB63',1222,1416],['#F0A33C',1262,1396]].forEach(([c,x,y],i)=>{ ctx.save(); ctx.translate(x,y); ctx.scale(i%2?0.34:0.3,i%2?0.34:0.3);
+  ctx.fillStyle='rgba(60,50,40,.12)'; ctx.beginPath(); ctx.ellipse(0,26,52,8,0,0,7); ctx.fill();
+  ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(-52,-4,104,34,12); ctx.fill(); ctx.beginPath(); ctx.moveTo(-26,-4); ctx.lineTo(-14,-30); ctx.lineTo(22,-30); ctx.lineTo(38,-4); ctx.fill();
+  ctx.fillStyle='#CFE6EC'; ctx.fillRect(-18,-24,14,18); ctx.fillRect(8,-24,14,18); ctx.fillStyle='#3B3550'; [-30,30].forEach(wx=>{ ctx.beginPath(); ctx.arc(wx,32,13,0,7); ctx.fill(); }); ctx.restore(); });
+text('抱著（平常）',930,1456,18,'#5E5244',700,'center'); text('圍繞在腳邊（安靜待著時）',1160,1456,18,'#5E5244',700,'center');
+
+// ④ 細節特寫＋咪咪
+panel(1300,800,460,670);
+text('④ 細節特寫＋咪咪',1330,838,24,'#5E5244',800);
+const headAt=(id,cx,cy,extra={})=>{ const sp=FAMILY.spec[id], k=0.3, s=k/sp.scale; FAMILY.draw(ctx,id,Object.assign({x:cx,y:cy+430*k,s,expr:'smile',headOnly:true},extra)); };
+[['mom',1380,'毛帽'],['vera',1492,'羊角'],['dad',1604,'馬尾'],['kito',1716,'眼神飄']].forEach(([id,cx,lab],i)=>{ headAt(id,cx,950,id==='kito'?{look:1}:{}); text(lab,cx,1040,18,'#5E5244',700,'center'); });
+FAMILY.draw(ctx,'mimi',{x:1420,y:1410,s:0.82,expr:'smile',pose:'hold'});
+text('咪咪（最矮）',1420,1440,18,'#5E5244',700,'center');
+ctx.save(); ctx.translate(1640,1280); ctx.scale(1.7,1.7); FAMILY.helpers.skullBunny(ctx,0,0,1); ctx.restore(); text('兔耳骷髏 Leto',1640,1400,18,'#5E5244',700,'center');
+</script></body></html>
