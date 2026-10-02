@@ -17,10 +17,10 @@ function S(ctx,pts,f){ ctx.beginPath(); ctx.moveTo((pts[0][0]+pts[1][0])/2,(pts[
 function R(ctx,x,y,w,h,r,f){ ctx.beginPath(); ctx.roundRect(x,y,w,h,r); ctx.fillStyle=f; ctx.fill(); }
 
 const SPEC = {
-  dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, noEars:true, shoulder:70, armW:1.3,
+  dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, shoulder:70, armW:1.3,
     hair:'#4B2D6B', hairD:'#2F1A47', earIn:'#D9A9E6', tail:'#4B2D6B', stripe:'#C27BD6',
     eye:'#D6DE5A', eyeIn:'#B7C93A', eyeR:[27,32], lid:0.10, slit:true, ear:{h:-566, xs:1, stripe:true},
-    type:'pants', top:'#5DBB63', sleeve:'#5DBB63', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut' },
+    type:'pants', top:'#2E2A36', sleeve:'#2E2A36', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut', apron:'#6E6680', pocket:'#837B95' },
   mom:{ name:'卡妲媽媽', scale:1.06, bw:1.0,
     hair:'#8497AD', hairD:'#6F8299', earIn:'#E6B9C2', tail:'#8497AD',
     eye:'#9A7B52', eyeIn:'#C4A06A', eyeR:[24,29], lid:0.14, ear:{h:-552, xs:1},
@@ -101,12 +101,12 @@ const HAIR = {
       S(ctx,[[-100,-440],[-104,-380],[-92,-350],[-60,-380],[60,-380],[96,-300],[120,-300],[118,-430],[0,-500]],sp.hairD); },
     front(ctx,sp){
       // 左側剃短：短短的深色＋刻兩條弧線
-      S(ctx,[[-102,-470],[-110,-420],[-104,-372],[-88,-360],[-80,-410],[-74,-462]],'#3A2852');
+      S(ctx,[[-108,-470],[-96,-500],[-62,-516],[-40,-500],[-56,-470],[-74,-430],[-84,-380],[-100,-360],[-112,-410]],'#3A2852');
       ctx.save(); ctx.strokeStyle='#8A6FA0'; ctx.lineWidth=3.5; ctx.lineCap='round';
       ctx.beginPath(); ctx.moveTo(-100,-446); ctx.quadraticCurveTo(-88,-430,-96,-410); ctx.quadraticCurveTo(-104,-396,-92,-384); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(-90,-460); ctx.quadraticCurveTo(-80,-446,-86,-430); ctx.stroke(); ctx.restore();
       // 頭頂往右掃的長髮，垂到右邊下巴
-      const hairPts=[[-78,-470],[-60,-506],[-10,-526],[50,-520],[100,-490],[122,-440],[128,-380],[124,-320],[112,-292],[98,-300],[96,-350],[84,-400],[56,-424],[20,-430],[-20,-440],[-56,-454]];
+      const hairPts=[[-66,-478],[-52,-512],[-10,-526],[50,-520],[100,-490],[122,-440],[128,-380],[124,-320],[112,-292],[98,-300],[96,-350],[84,-400],[56,-424],[20,-430],[-20,-440],[-56,-454]];
       S(ctx,hairPts,sp.hair);
       // 髮尾挑染：右側下半段換亮粉紫
       ctx.save(); S(ctx,hairPts,sp.hair); ctx.clip(); P(ctx,[[60,-370],[160,-400],[160,-280],[60,-280]],sp.stripe);
@@ -274,9 +274,9 @@ function body(ctx,id,sp,st){
 }
 function frontGear(ctx,id,sp,st){
   if(id==='dad'){ // 多口袋工作圍裙＋口袋露出的工具
-    S(ctx,[[-38,-300],[38,-300],[68,-250],[78,-190],[64,-146],[0,-140],[-64,-146],[-78,-190],[-68,-250]],'#4B4458');
-    [-30,-6,18].forEach(x=>R(ctx,x-2,-206,34,36,6,'#5D566B')); R(ctx,-34,-170,68,22,6,'#5D566B');
-    ctx.save(); ctx.strokeStyle='#4B4458'; ctx.lineWidth=5; ctx.beginPath(); ctx.moveTo(-34,-296); ctx.lineTo(-44,-318); ctx.moveTo(34,-296); ctx.lineTo(44,-318); ctx.stroke(); ctx.restore();
+    S(ctx,[[-38,-300],[38,-300],[68,-250],[78,-190],[64,-146],[0,-140],[-64,-146],[-78,-190],[-68,-250]],sp.apron||'#4B4458');
+    [-30,-6,18].forEach(x=>R(ctx,x-2,-206,34,36,6,sp.pocket||'#5D566B')); R(ctx,-34,-170,68,22,6,sp.pocket||'#5D566B');
+    ctx.save(); ctx.strokeStyle=sp.apron||'#4B4458'; ctx.lineWidth=5; ctx.beginPath(); ctx.moveTo(-34,-296); ctx.lineTo(-44,-318); ctx.moveTo(34,-296); ctx.lineTo(44,-318); ctx.stroke(); ctx.restore();
     ctx.save(); ctx.translate(-14,-204); ctx.rotate(-0.25); R(ctx,-5,-26,10,34,4,'#C9CED6'); E(ctx,0,-30,9,9,'#C9CED6'); ctx.restore();           // 扳手
     ctx.save(); ctx.translate(36,-204); ctx.rotate(0.2); ctx.scale(.55,.55); screwdriver(ctx); ctx.restore();                                         // 螺絲起子
     ctx.save(); ctx.translate(-4,-198); ctx.rotate(-0.1); R(ctx,-3,-30,6,32,3,'#D4A93A'); ctx.restore(); }                                              // 鍋鏟柄
@@ -287,7 +287,8 @@ function frontGear(ctx,id,sp,st){
 }
 // ───── 主函式 ─────
 function draw(ctx,id,st){
-  const sp=SPEC[id]; if(!sp) throw new Error('unknown '+id);
+  let sp=SPEC[id]; if(!sp) throw new Error('unknown '+id);
+  if(st&&st.shirt) sp=Object.assign({},sp,{top:st.shirt,sleeve:st.shirt},st.apron?{apron:st.apron,pocket:st.pocket}:{});
   st=Object.assign({x:0,y:0,s:1,pose:'stand'},st);
   ctx.save(); ctx.translate(st.x,st.y); const k=st.s*sp.scale; ctx.scale(k,k);
   if(st.headOnly){ ctx.translate(0,400); ctx.rotate(st.headTilt||0); ctx.translate(0,-400); head(ctx,id,sp,st); ctx.restore(); return; }

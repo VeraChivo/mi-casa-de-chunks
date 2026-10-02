@@ -27,10 +27,10 @@ text('① 合照（身高比例：爸爸最高→媽媽→哥哥→妮妲→薇�
 
 // ② 爸爸彩蛋
 panel(40,800,720,670);
-text('② 爸爸「功能很多」：依情境出彩蛋',70,838,24,'#5E5244',800);
-const dadSet=[['stand','一般站著'],['cook','煮菜：鍋鏟＋香氣'],['repair','修東西：螺絲起子＋火花']];
-dadSet.forEach(([pose,lab],i)=>{ const x=165+i*235, y=1390;
-  FAMILY.draw(ctx,'dad',{x,y,s:0.62,expr:'smile',pose});
+text('② 爸爸彩蛋＋上衣配色候選（A/B/C）',70,838,24,'#5E5244',800);
+const dadSet=[['stand','A 黑色龐克T・一般站著',{}],['cook','B 酒紅・煮菜',{shirt:'#8E3446'}],['repair','C 芥末金・修東西',{shirt:'#D9A43A',apron:'#4B4458',pocket:'#5D566B'}]];
+dadSet.forEach(([pose,lab,opt],i)=>{ const x=165+i*235, y=1390;
+  FAMILY.draw(ctx,'dad',Object.assign({x,y,s:0.62,expr:'smile',pose},opt));
   text(lab,x,1428,17,'#5E5244',700,'center');
   if(pose==='cook'){ ctx.save(); ctx.strokeStyle='rgba(150,130,110,.55)'; ctx.lineWidth=5; ctx.lineCap='round'; [[x+70,1180],[x+92,1160],[x+114,1180]].forEach(([a,b])=>{ ctx.beginPath(); ctx.moveTo(a,b+40); ctx.quadraticCurveTo(a-12,b+20,a,b); ctx.quadraticCurveTo(a+12,b-20,a,b-40); ctx.stroke(); }); ctx.restore(); }
   if(pose==='repair'){ ctx.save(); ctx.strokeStyle='#D4A93A'; ctx.lineWidth=4; ctx.lineCap='round'; [[x+98,1196,x+112,1180],[x+110,1214,x+130,1212],[x+90,1180,x+90,1160]].forEach(([a,b,c,d])=>{ ctx.beginPath(); ctx.moveTo(a,b); ctx.lineTo(c,d); ctx.stroke(); }); ctx.restore(); }
