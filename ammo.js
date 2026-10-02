@@ -1575,12 +1575,12 @@ const AMMO_DATA = [
   // 那種每句都建的舊模式 ── */
   {
     ammo_id:"e18_01", ep:"Cap.18 · Mi Familia y Mis Amigos",
-    core_ammo:"Tengo una familia y una amiga.", core_zh:"我有一個家庭和一個朋友。",
+    core_ammo:"Tengo una familia.", core_zh:"我有一個家庭。",
     be_verb_type:"none", be_verb_note:"",
-    pattern:"Tengo [名詞] y [名詞].", pattern_zh:"我有 ___ 和 ___。",
-    pattern_note:"tener列出自己擁有/身邊有的人事物", slots:["名詞","名詞"],
-    fire_peppa:{es:"Tengo una familia y una amiga.", zh:"我有一個家庭和一個朋友。", ts:null,
-      chunks:[{w:"Tengo",role:"v"},{w:"una familia",role:"o"},{w:"y",role:"c"},{w:"una amiga.",role:"o"}]},
+    pattern:"Tengo [名詞].", pattern_zh:"我有 ___。",
+    pattern_note:"tener列出自己擁有/身邊有的人事物", slots:["名詞"],
+    fire_peppa:{es:"Tengo una familia.", zh:"我有一個家庭。", ts:null,
+      chunks:[{w:"Tengo",role:"v"},{w:"una familia.",role:"o"}]},
     fire_daily:[
       {es:"Tengo un hermano y una hermana.", zh:"我有一個哥哥和一個姊姊。", chunks:[{w:"Tengo",role:"v"},{w:"un hermano",role:"o"},{w:"y",role:"c"},{w:"una hermana.",role:"o"}]},
       {es:"Tengo un perro y un gato.", zh:"我有一隻狗和一隻貓。", chunks:[{w:"Tengo",role:"v"},{w:"un perro",role:"o"},{w:"y",role:"c"},{w:"un gato.",role:"o"}]}

@@ -3012,17 +3012,17 @@ const SENTENCE_GRAMMAR_MAP = {
   167:'g01',  // Mi nombre es Nita y soy una gatita → SER
   168:'g01',  // Mucho gusto, soy Nita → SER
   169:'g01',  // Este es mi pequeño mundo → SER
-  // E18 我的家人與朋友（2026-07-24 第一站定稿）
-  170:'g20',  // Tengo una familia y una amiga → TENER家族
+  // E18 我的家人（2026-10-02 朋友拆出去，改家人版；2026-07-24 第一站定稿）
+  170:'g20',  // Tengo una familia → TENER家族
   171:'g01',  // Yo soy Mamá Cata, la mamá de Nita → SER
   172:'g01',  // Yo soy Papá Tato, el papá de Nita → SER
   173:'g01',  // Yo soy Kito → SER
   174:'g01',  // Soy el hermano mayor de Nita → SER
   175:'g01',  // Yo soy Tito, el hermano de Nita → SER
   176:'g01',  // Yo soy Mimi, la hermanita bebé de Nita → SER
-  177:'g01',  // Yo soy Vera → SER
-  178:'g01',  // Soy la mejor amiga de Nita → SER
-  179:'g01',  // Somos la familia y los amigos de Nita → SER（複數somos）
+  177:'g01',  // Yo soy Nita, la hermana de Kito, Tito y Mimi → SER
+  178:'g01',  // Somos seis en la familia → SER（複數somos）
+  179:'g01',  // Somos la familia de Nita → SER（複數somos）
   // E19 我的日常（2026-07-24，ESTAR/TENER並存不拆集，逐句對應各自文法卡）
   180:'g20',  // Nita tiene sueño → TENER家族
   181:'g02',  // Mamá Cata está ocupada en la cocina → ESTAR

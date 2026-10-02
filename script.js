@@ -284,9 +284,9 @@ const NEWCOMER_ROADMAP = {
           {es:'Me llamo Nita.', zh:'我叫妮妲。'},
           {es:'Soy una gatita.', zh:'我是一隻小貓咪。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
-        {icon:'🏡', label:'我的家人與朋友', chunks:[
+        {icon:'🏡', label:'我的家人', chunks:[
           {es:'Yo soy Mamá Cata, la mamá de Nita.', zh:'我是卡妲媽媽，妮妲的媽媽。'},
-          {es:'Yo soy Vera.', zh:'我是薇拉。'}
+          {es:'Somos la familia de Nita.', zh:'我們是妮妲的家人。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
         {icon:'☀️', label:'我的日常', chunks:[
           {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
@@ -556,7 +556,7 @@ const SENTENCE_AMMO_MAP2 = {
   154:['e16_05'], 156:['e16_07'], 158:['e16_09'],
   // E18/E19/E20 reusableChunk彈藥（2026-08-19，補做這三集的CHUNK_ECOLOGY分類後，
   // 只挑12句最具代表性、彼此不重疊的語塊，比例跟E17的4/10一致）
-  170:['e18_01'], 171:['e18_02'], 174:['e18_05'], 178:['e18_09'],
+  170:['e18_01'], 171:['e18_02'], 174:['e18_05'],
   180:['e19_01'], 185:['e19_06'], 187:['e19_08'], 188:['e19_09'],
   190:['e20_01'], 192:['e20_03'], 195:['e20_06'], 197:['e20_08'],
 };
