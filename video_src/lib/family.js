@@ -35,7 +35,7 @@ const SPEC = {
     hair:'#A9B8C9', hairD:'#8C9DB2', earIn:'#E6B9C2', tail:'#A9B8C9',
     eye:'#4B3B35', eyeIn:'#6B574D', eyeR:[26,32], lid:0, ear:{h:-534, xs:1, round:true},
     type:'shorts', top:'#F6D66B', sleeve:'#F6D66B', bottom:'#9A7A58', shoe:'#6B5B4B', hairStyle:'fluffy' },
-  mimi:{ name:'咪咪妹妹', scale:0.49, bw:0.96,
+  mimi:{ name:'咪咪妹妹', scale:0.545, bw:0.96,
     hair:'#B7C4D6', hairD:'#9AABC2', earIn:'#F2B6C4', tail:'#B7C4D6',
     eye:'#B5656F', eyeIn:'#D88A94', eyeR:[27,33], lid:0, ear:{h:-552, xs:0.78, round:true},
     type:'dress', top:'#F4A9BC', sleeve:'#F7C3D0', bottom:'#F4A9BC', shoe:'#C1768A', hairStyle:'buns' },
