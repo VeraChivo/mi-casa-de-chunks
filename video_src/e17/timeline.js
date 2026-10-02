@@ -2,16 +2,16 @@
 // speech＝audio/e17 每句去掉尾端靜音後的實際講話秒數（ffmpeg silencedetect 量測，2026-09-30）
 (function(){
 const SENTENCES = [
-  {es:'Me llamo Nita.',                     key:'Me llamo',          file:'01_me_llamo_nita.mp3',                 speech:1.18},
-  {es:'Soy Nita.',                          key:'Soy',               file:'02_soy_nita.mp3',                      speech:0.95},
-  {es:'Soy una gatita.',                    key:'una gatita',        file:'03_soy_una_gatita.mp3',                speech:1.26},
-  {es:'Mi nombre es Nita.',                 key:'Mi nombre es',      file:'04_mi_nombre_es_nita.mp3',             speech:1.42},
-  {es:'Me dicen Nita.',                     key:'Me dicen',          file:'05_me_dicen_nita.mp3',                 speech:1.15},
-  {es:'¡Hola! Me llamo Nita.',              key:'¡Hola!',            file:'06_hola_me_llamo_nita.mp3',            speech:1.92},
-  {es:'Soy una gata pequeña.',              key:'pequeña',           file:'07_soy_una_gata_pequena.mp3',          speech:1.64},
-  {es:'Mi nombre es Nita y soy una gatita.',key:'y',                 file:'08_mi_nombre_es_nita_y_soy_gatita.mp3',speech:2.70},
-  {es:'Mucho gusto, soy Nita.',             key:'Mucho gusto',       file:'09_mucho_gusto_soy_nita.mp3',          speech:2.07},
-  {es:'Este es mi pequeño mundo.',          key:'mi pequeño mundo',  file:'10_este_es_mi_pequeno_mundo.mp3',      speech:1.79},
+  {es:'Me llamo Nita.',                     key:'Me llamo', file:'01_me_llamo_nita.mp3',                 speech:1.18},
+  {es:'Soy Nita.',                          key:'Soy', file:'02_soy_nita.mp3',                      speech:0.95},
+  {es:'Soy una gatita.',                    key:'Soy', file:'03_soy_una_gatita.mp3',                speech:1.26},
+  {es:'Mi nombre es Nita.',                 key:'Mi nombre es', file:'04_mi_nombre_es_nita.mp3',             speech:1.42},
+  {es:'Me dicen Nita.',                     key:'Me dicen', file:'05_me_dicen_nita.mp3',                 speech:1.15},
+  {es:'¡Hola! Me llamo Nita.',              key:'Me llamo', file:'06_hola_me_llamo_nita.mp3',            speech:1.92},
+  {es:'Soy una gata pequeña.',              key:'Soy', file:'07_soy_una_gata_pequena.mp3',          speech:1.64},
+  {es:'Mi nombre es Nita y soy una gatita.',key:'Mi nombre es', file:'08_mi_nombre_es_nita_y_soy_gatita.mp3',speech:2.70},
+  {es:'Mucho gusto, soy Nita.',             key:'soy', file:'09_mucho_gusto_soy_nita.mp3',          speech:2.07},
+  {es:'Este es mi pequeño mundo.',          key:'Este es', file:'10_este_es_mi_pequeno_mundo.mp3',      speech:1.79},
 ];
 const TR = 0.5;      // 撕紙轉場長度（跨在兩個場景交界的中間）
 const LEAD = 0.35;   // 場景開始到開口的空檔（第一幕給角色登場時間，另外加長）

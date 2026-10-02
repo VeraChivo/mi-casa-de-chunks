@@ -343,6 +343,29 @@ function renderStoryIndex(){
   </div>`;
 }
 
+// ── 🎬 每集短影片（2026-10-02）：只有列在這裡的集數才會顯示「先看 30 秒」/「再看一次」──
+const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1' };
+let _epVideoPushed = false;
+function updateEpVideoUI(){
+  const has = !!EPISODE_VIDEOS[ep];
+  const bar = document.getElementById('epVideoBar'); if(bar) bar.style.display = has ? 'block' : 'none';
+  const rb = document.getElementById('epVideoReplayBtn'); if(rb) rb.style.display = has ? '' : 'none';
+}
+function openEpVideo(){
+  const src = EPISODE_VIDEOS[ep]; if(!src) return;
+  const v = document.getElementById('epVideoPlayer'); v.src = src;
+  document.getElementById('epVideoOverlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  history.pushState({sheet:'epvideo'}, ''); _epVideoPushed = true;
+  const p = v.play(); if(p && p.catch) p.catch(()=>{});
+}
+function closeEpVideo(_fromPop){
+  const v = document.getElementById('epVideoPlayer'); v.pause(); v.removeAttribute('src'); v.load();
+  document.getElementById('epVideoOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+  if(_epVideoPushed && !_fromPop){ _epVideoPushed = false; history.back(); } else { _epVideoPushed = false; }
+}
+
 function selectEp(n){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
@@ -357,6 +380,7 @@ function selectEp(n){
   // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
   if(mainCardWrap) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
+  updateEpVideoUI();
   _epSwitching=false;
 }
 
@@ -2556,6 +2580,7 @@ function showComplete(){
   document.querySelectorAll('.nav-row').forEach(r=>r.style.display='none');
   const cs = document.getElementById('completeScreen');
   cs.classList.add('show');
+  updateEpVideoUI();
 
   const n = total();
   document.getElementById('completeStars').innerHTML = renderLevelUpCert(buildLevelUpData(ep));
@@ -4134,6 +4159,8 @@ function closeGrammarSheet(_fromPop){
 }
 
 window.addEventListener('popstate', ()=>{
+  const vo = document.getElementById('epVideoOverlay');
+  if(vo && vo.style.display === 'flex'){ closeEpVideo(true); return; }
   const sheet = document.getElementById('grammarSheet');
   if(sheet && sheet.style.display === 'block'){
     closeGrammarSheet(true);
