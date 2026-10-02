@@ -288,6 +288,10 @@ const NEWCOMER_ROADMAP = {
           {es:'Yo soy Mamá Cata, la mamá de Nita.', zh:'我是卡妲媽媽，妮妲的媽媽。'},
           {es:'Somos la familia de Nita.', zh:'我們是妮妲的家人。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
+        {icon:'🐑', label:'我的朋友', chunks:[
+          {es:'Vera es una oveja.', zh:'薇拉是一隻綿羊。'},
+          {es:'Es mi mejor amiga.', zh:'她是我最好的朋友。'}
+        ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:20}},
         {icon:'☀️', label:'我的日常', chunks:[
           {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:18}},
@@ -702,8 +706,8 @@ function renderBeVerbNote(a){
 
 // 西語數字 1-10：基數/序數/emoji 三態並列
 const NUM_EMOJI=['','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'];
-const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte'];
-const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto','decimoséptimo','decimoctavo','decimonoveno','vigésimo'];
+const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte','veintiuno'];
+const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto','decimoséptimo','decimoctavo','decimonoveno','vigésimo','vigésimo primero'];
 
 function renderAmmo(){
   document.getElementById('ammoCount').textContent = ammoUnlocked.length;
@@ -2607,7 +2611,7 @@ function showComplete(){
   if(isRouteComplete){
     nextEpBtn.classList.remove('locked');
     nextEpBtn.textContent = '🐱 妮妲的角落等你 →';
-  } else if(ep < EPS.length-1){
+  } else if(ep < EPS.length-1 || EPISODE_NEXT[ep]!=null){
     nextEpBtn.classList.remove('locked');
     nextEpBtn.textContent = '下一集 →';
   } else {
@@ -2632,6 +2636,7 @@ function restartEp(){
 
 function goNextEp(){
   if(EPISODE_COMPLETION_MARKERS.routeComplete.includes(ep)){ selectEp(0); return; }
+  if(EPISODE_NEXT[ep]!=null){ selectEp(EPISODE_NEXT[ep]); return; }
   if(ep < EPS.length-1) selectEp(ep+1);
 }
 

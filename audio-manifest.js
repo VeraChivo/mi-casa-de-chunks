@@ -250,6 +250,19 @@ const AUDIO_MANIFEST={
     ["audio/e20/09_a_toda_la_familia_le_gusta_estar_junta.mp3"],
     ["audio/e20/10_y_a_nita_le_gusta_su_casa.mp3"],
   ],
+  // E21 我的朋友薇拉（2026-10-02 新增，整句音檔尚未錄製，找不到會 fallback 瀏覽器TTS）
+  20:[
+    ["audio/e21/01_esta_es_mi_amiga_vera.mp3"],
+    ["audio/e21/02_vera_es_una_oveja.mp3"],
+    ["audio/e21/03_es_blanca_y_suave.mp3"],
+    ["audio/e21/04_es_muy_divertida.mp3"],
+    ["audio/e21/05_tambien_es_amable_con_todos.mp3"],
+    ["audio/e21/06_es_muy_lista.mp3"],
+    ["audio/e21/07_es_mi_mejor_amiga.mp3"],
+    ["audio/e21/08_ella_simpatica_yo_timida.mp3"],
+    ["audio/e21/09_y_somos_buenas_amigas.mp3"],
+    ["audio/e21/10_vera_es_mi_amiga.mp3"],
+  ],
 };
 
 // mom.js（🛡️情緒會說話／🎀馬麻有話講／👩🏻馬麻小情緒＆情緒這樣說）真人整句音檔

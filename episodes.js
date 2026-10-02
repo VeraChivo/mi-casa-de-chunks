@@ -1478,6 +1478,18 @@ const EPS=[
   {es:"A Tito no le gusta el ruido fuerte.",chunks:[{w:"A Tito no le",role:"s"},{w:"gusta",role:"v"},{w:"el ruido fuerte.",role:"o"}],zh:"迪多不喜歡很大的聲音。",en:"Tito doesn't like loud noise.",noteZh:"否定句：no放在le前面",noteEn:"negation: 'no' goes right before 'le'"},
   {es:"A toda la familia le gusta estar junta.",chunks:[{w:"A toda la familia le",role:"s"},{w:"gusta",role:"v"},{w:"estar junta.",role:"o"}],zh:"全家人都喜歡待在一起。",en:"The whole family likes being together.",noteZh:"estar junta = 在一起（大家聚在一起的感覺）",noteEn:"'estar junta' = being together (the feeling of everyone gathered)"},
   {es:"Y a Nita le gusta mucho su pequeña casa.",chunks:[{w:"Y",role:"c"},{w:"a Nita le",role:"s"},{w:"gusta mucho",role:"v"},{w:"su pequeña casa.",role:"o"}],zh:"而妮妲很喜歡她的小房子。",en:"And Nita likes her little house a lot.",noteZh:"le gusta mucho = 非常喜歡（mucho加強語氣，收尾呼應「我的小房子」這個主題）",noteEn:"'le gusta mucho' = likes it a lot (mucho adds emphasis, echoing the site's 'my little house' theme)"}
+]},
+{title:"Mi Amiga Vera",titleZh:"我的朋友薇拉",dur:150,sentences:[
+  {es:"Esta es mi amiga Vera.",chunks:[{w:"Esta",role:"s"},{w:"es",role:"v"},{w:"mi amiga Vera.",role:"o"}],zh:"這是我的朋友薇拉。",en:"This is my friend Vera.",noteZh:"Esta es + 人 = 這是（介紹眼前的人）",noteEn:"'Esta es + person' = this is (introducing someone in front of you)"},
+  {es:"Vera es una oveja.",chunks:[{w:"Vera",role:"s"},{w:"es",role:"v"},{w:"una oveja.",role:"o"}],zh:"薇拉是一隻綿羊。",en:"Vera is a sheep.",noteZh:"es = 是（說她是誰／是什麼）",noteEn:"'es' = is (saying who or what she is)"},
+  {es:"Es blanca y suave.",chunks:[{w:"Es",role:"v"},{w:"blanca",role:"o"},{w:"y",role:"c"},{w:"suave.",role:"o"}],zh:"她白白的、軟軟的。",en:"She is white and soft.",noteZh:"blanca 用 a 結尾，因為說的是女生",noteEn:"'blanca' ends in -a because it describes a girl"},
+  {es:"Es muy divertida.",chunks:[{w:"Es",role:"v"},{w:"muy divertida.",role:"o"}],zh:"她很有趣。",en:"She is very fun.",noteZh:"muy = 很，放在形容詞前面",noteEn:"'muy' = very, goes before the adjective"},
+  {es:"También es amable con todos.",chunks:[{w:"También",role:"c"},{w:"es",role:"v"},{w:"amable con todos.",role:"o"}],zh:"她對大家也都很好。",en:"She is also kind to everyone.",noteZh:"también = 也；con todos = 對所有人",noteEn:"'también' = also; 'con todos' = to everyone"},
+  {es:"Es muy lista.",chunks:[{w:"Es",role:"v"},{w:"muy lista.",role:"o"}],zh:"她很聰明。",en:"She is very smart.",noteZh:"lista 放在 ser 後面是「聰明」的意思",noteEn:"'lista' after 'ser' means smart"},
+  {es:"Es mi mejor amiga.",chunks:[{w:"Es",role:"v"},{w:"mi mejor amiga.",role:"o"}],zh:"她是我最好的朋友。",en:"She is my best friend.",noteZh:"mi mejor amiga = 我最好的朋友（女生）",noteEn:"'mi mejor amiga' = my best friend (female)"},
+  {es:"Ella es muy simpática y yo soy un poco tímida.",chunks:[{w:"Ella",role:"s"},{w:"es",role:"v"},{w:"muy simpática",role:"o"},{w:"y",role:"c"},{w:"yo",role:"s"},{w:"soy",role:"v"},{w:"un poco tímida.",role:"o"}],zh:"她很親切，而我有一點害羞。",en:"She is very nice, and I am a little shy.",noteZh:"un poco = 有一點；用 y 把兩個人的個性並排說",noteEn:"'un poco' = a little; 'y' puts two people's personalities side by side"},
+  {es:"Y somos buenas amigas.",chunks:[{w:"Y",role:"c"},{w:"somos",role:"v"},{w:"buenas amigas.",role:"o"}],zh:"而且我們是好朋友。",en:"And we are good friends.",noteZh:"somos = 我們是；buenas amigas = 好朋友（兩個女生）",noteEn:"'somos' = we are; 'buenas amigas' = good friends (two girls)"},
+  {es:"Vera es mi amiga.",chunks:[{w:"Vera",role:"s"},{w:"es",role:"v"},{w:"mi amiga.",role:"o"}],zh:"薇拉是我的朋友。",en:"Vera is my friend.",noteZh:"最後回到開頭那句的說法，把整集收起來",noteEn:"closing by coming back to the opening idea"}
 ]}
 ];
 
@@ -1490,7 +1502,7 @@ const EPS=[
 // 🌍 cultureImmersion 文化沉浸劇情：特輯型，補文化背景知識，長背景
 // 💞 emotionalNarrative 情緒敘事劇情：核心目的是情緒/身份/關係的理解與陪伴，長連結
 const EPISODE_LIFECYCLE = {
-  abilityBuilding:   [0,1,2,6,16,17,18,19], // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）＋2026-07-20新增第一章重鋪4集（認識自己/我的家人/我的日常狀態/我的喜歡，系統性教llamarse/SER/ESTAR/TENER/gustar，尚未接grammar/ammo連結，等內容定案後再重整）
+  abilityBuilding:   [0,1,2,6,16,17,18,19,20], // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）＋2026-07-20新增第一章重鋪4集（認識自己/我的家人/我的日常狀態/我的喜歡，系統性教llamarse/SER/ESTAR/TENER/gustar，尚未接grammar/ammo連結，等內容定案後再重整）
   chunkInput:        [3,4,5,13],          // E4 E5 E6 E14（日常敘事/連接詞複習，重點在產出語塊不在教單一能力，E14即使包裝成情緒角色，設計初衷是連接詞練習）
   cultureImmersion:  [10],                // E11（亡靈節特輯，明確以文化背景為主，porque/pero教學是附帶收穫）
   emotionalNarrative:[7,8,9,11,12,14,15]  // E8 E9 E10 E12 E13 E15 E16（迪多溝通方式/媽媽自我覺察/媽媽與迪多排程衝突/小小自我系列/社交電量，核心是情緒理解與陪伴）
@@ -1507,6 +1519,9 @@ const EPISODE_LIFECYCLE = {
 //   暫不顯示，等未來真的確認要用在哪裡再補。
 // routeComplete：新手引導路線的完成點，完成時顯示「完成這個路線」的專屬文案+導向下一步
 //   (目前是接回E1)，不使用容易誤導的「S1全集完成」通用文案。
+// 播放順序補充（2026-10-02）：不重新編號，只標「這集播完接哪一集」；沒列出的集數照 ep+1
+const EPISODE_NEXT = { 20:18 };   // E21（我的朋友薇拉）從路線圖進入，播完接 E19
+
 const EPISODE_COMPLETION_MARKERS = {
   storyFinale: [],
   routeComplete: [19] // E20，第一站(E17-E20)完成點
