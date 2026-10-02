@@ -212,17 +212,34 @@ function redCar(ctx,x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
   E(ctx,0,26,52,8,'rgba(60,50,40,.12)');
   R(ctx,-52,-4,104,34,12,'#E04C4C'); P(ctx,[[-26,-4],[-14,-30],[22,-30],[38,-4]],'#E86262'); P(ctx,[[-18,-6],[-10,-24],[2,-24],[2,-6]],'#CFE6EC'); P(ctx,[[8,-6],[8,-24],[20,-24],[30,-6]],'#CFE6EC');
   E(ctx,-30,32,13,13,'#3B3550'); E(ctx,30,32,13,13,'#3B3550'); E(ctx,-30,32,5,5,'#DCE1EA'); E(ctx,30,32,5,5,'#DCE1EA'); E(ctx,46,12,5,5,'#F6D66B'); ctx.restore(); }
-function skullBunny(ctx,x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
-  // 萌版：圓胖頭、一隻耳朵折下來、亮晶晶大眼睛、小 w 嘴、粉紅腮紅、小蝴蝶結（不畫嚇人的牙齒）
-  ctx.save(); ctx.translate(-22,-34); ctx.rotate(-0.18); E(ctx,0,-30,14,36,'#FFF7F9'); E(ctx,0,-28,7,26,'#F7BFCD'); ctx.restore();
-  ctx.save(); ctx.translate(24,-36); ctx.rotate(0.5); E(ctx,0,-16,14,22,'#FFF7F9'); E(ctx,0,-14,7,14,'#F7BFCD'); ctx.restore();
-  E(ctx,0,2,44,40,'#FFF7F9'); E(ctx,0,30,26,14,'#FFF7F9');
-  [-1,1].forEach(m=>{ E(ctx,m*17,0,12,14,'#4A3E5C'); E(ctx,m*17-4,-5,4.5,4.5,'#FFFFFF'); E(ctx,m*17+4,4,2,2,'#FFFFFF'); });
-  P(ctx,[[0,14],[-4,20],[4,20]],'#E58FA6');
-  ctx.save(); ctx.strokeStyle='#4A3E5C'; ctx.lineWidth=2.6; ctx.lineCap='round'; ctx.beginPath(); ctx.arc(-5,24,5,0.15*Math.PI,0.85*Math.PI); ctx.arc(5,24,5,0.15*Math.PI,0.85*Math.PI); ctx.stroke(); ctx.restore();
-  E(ctx,-29,16,8,5,'rgba(240,140,160,.55)'); E(ctx,29,16,8,5,'rgba(240,140,160,.55)');
-  ctx.save(); ctx.translate(22,-30); P(ctx,[[0,0],[-11,-7],[-12,5]],'#B38BD9'); P(ctx,[[0,0],[11,-7],[12,5]],'#B38BD9'); E(ctx,0,0,4,4,'#D4A93A'); ctx.restore();
+// 骷髏玩偶 Leto（2026-10-02 VERA 參考粉彩萌系骷髏）：variant 'horn'＝粉綠小角版、'bunny'＝兔耳睫毛蝴蝶結版
+function skullBunny(ctx,x,y,s,variant){ variant=variant||SKULL_VARIANT; ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
+  const W='#FFF8FB', EYE='#4B3A7A', EYE2='#7B62B8';
+  if(variant==='horn'){
+    // 一粉一綠的彎角
+    S(ctx,[[-34,-22],[-58,-38],[-62,-64],[-46,-84],[-48,-62],[-40,-44],[-24,-32]],'#EE8DBB');   // 彎月形小角（尖端往內彎）
+    S(ctx,[[34,-22],[58,-38],[62,-64],[46,-84],[48,-62],[40,-44],[24,-32]],'#86D9CB');
+    E(ctx,-14,-36,6,9,'#F4B3CF'); E(ctx,14,-36,6,9,'#A9E6DB');
+    // 小腳（一粉一藍）
+    E(ctx,-22,48,15,12,'#E58FC2'); E(ctx,22,48,15,12,'#7FC8E6');
+  } else {
+    ctx.save(); ctx.translate(-22,-34); ctx.rotate(-0.18); E(ctx,0,-30,14,36,W); E(ctx,0,-28,7,26,'#F7BFCD'); ctx.restore();
+    ctx.save(); ctx.translate(24,-36); ctx.rotate(0.5); E(ctx,0,-16,14,22,W); E(ctx,0,-14,7,14,'#F7BFCD'); ctx.restore();
+  }
+  // 圓圓的頭＋下巴
+  E(ctx,0,2,46,42,W); E(ctx,0,30,28,15,W);
+  // 大眼睛：深紫＋淺紫圈＋兩顆亮點
+  [-1,1].forEach(m=>{ E(ctx,m*18,0,14,16,EYE); E(ctx,m*18,4,9,9,EYE2); E(ctx,m*18-5,-6,5.5,5.5,'#FFFFFF'); E(ctx,m*18+5,6,2.4,2.4,'#FFFFFF');
+    if(variant==='bunny'){ ctx.save(); ctx.strokeStyle=EYE; ctx.lineWidth=2.6; ctx.lineCap='round'; [[-0.6],[0],[0.6]].forEach(([a])=>{ ctx.beginPath(); ctx.moveTo(m*18+m*12*Math.cos(a)*0.9,-12+a*4); ctx.lineTo(m*18+m*20*Math.cos(a)*0.9,-18+a*6); ctx.stroke(); }); ctx.restore(); } });
+  // 倒愛心鼻子＋小牙齒＋腮紅
+  ctx.save(); ctx.translate(0,18); ctx.fillStyle='#C7A3D6'; ctx.beginPath(); ctx.moveTo(0,4); ctx.bezierCurveTo(-7,-2,-4,-6,0,-2); ctx.bezierCurveTo(4,-6,7,-2,0,4); ctx.fill(); ctx.restore();
+  [-9,0,9].forEach(tx=>{ ctx.fillStyle='#FFFFFF'; ctx.beginPath(); ctx.roundRect(tx-4,30,8,9,3); ctx.fill(); ctx.strokeStyle='rgba(75,58,122,.35)'; ctx.lineWidth=1.5; ctx.stroke(); });
+  E(ctx,-32,16,8,5,'rgba(240,140,170,.55)'); E(ctx,32,16,8,5,'rgba(240,140,170,.55)');
+  if(variant==='bunny'){ ctx.save(); ctx.translate(26,-30); P(ctx,[[0,0],[-14,-9],[-15,7]],'#F49AB4'); P(ctx,[[0,0],[14,-9],[15,7]],'#F49AB4'); E(ctx,0,0,5,5,'#E5799B'); ctx.restore(); }
+  else { // 小星星、小愛心
+    ctx.fillStyle='#C7A3D6'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center'; ctx.fillText('✦',-52,-4); ctx.fillStyle='#EE8DBB'; ctx.fillText('♥',54,-14); }
   ctx.restore(); }
+let SKULL_VARIANT='horn';
 function spatula(ctx){ ctx.save(); ctx.fillStyle='#D4A93A'; ctx.beginPath(); ctx.roundRect(-4,-4,8,60,4); ctx.fill(); R(ctx,-16,-46,32,46,8,'#C9CED6'); ctx.strokeStyle='#A8AEB8'; ctx.lineWidth=3; [-8,0,8].forEach(x=>{ ctx.beginPath(); ctx.moveTo(x,-38); ctx.lineTo(x,-10); ctx.stroke(); }); ctx.restore(); }
 function screwdriver(ctx){ ctx.save(); R(ctx,-9,-6,18,52,7,'#E04C4C'); R(ctx,-3,-50,6,46,2,'#C9CED6'); P(ctx,[[-5,-50],[5,-50],[0,-60]],'#C9CED6'); ctx.restore(); }
 
@@ -297,6 +314,6 @@ function draw(ctx,id,st){
   ctx.save(); ctx.translate(0,-310*bk); ctx.rotate(st.headTilt||0); ctx.translate(0,310); head(ctx,id,sp,st); ctx.restore();
   ctx.restore();
 }
-const FAMILY={draw, spec:SPEC, helpers:{redCar,skullBunny,spatula,screwdriver}};
+const FAMILY={draw, spec:SPEC, helpers:{redCar,skullBunny,spatula,screwdriver}, setSkullVariant:v=>{SKULL_VARIANT=v;}};
 if(typeof module!=='undefined') module.exports=FAMILY; else window.FAMILY=FAMILY;
 })();
