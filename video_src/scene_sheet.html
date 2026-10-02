@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><title>妮妲的角落｜場景定稿圖</title>
+<style>html,body{margin:0;background:#EFE8DC}canvas{display:block}</style></head><body>
+<canvas id="c" width="1800" height="1120"></canvas>
+<script src="lib/nita.js"></script><script src="lib/scene.js"></script>
+<script>
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+const FONT='"Noto Sans CJK TC","Noto Sans TC","Liberation Sans",sans-serif';
+ctx.fillStyle='#F6F0E6'; ctx.fillRect(0,0,1800,1120);
+function text(t,x,y,size=26,color='#4A4036',w=700,align='left'){ctx.font=`${w} ${size}px ${FONT}`;ctx.fillStyle=color;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(t,x,y);}
+// 在 (dx,dy) 畫一格 4:5 畫面：w 寬，套用鏡頭
+function frame(dx,dy,w,cam,draw){ const h=w*1.25, k=w/1080; ctx.save(); ctx.beginPath(); ctx.roundRect(dx,dy,w,h,14); ctx.clip(); ctx.translate(dx,dy); ctx.scale(k,k); SCENE.camera(ctx,cam[0],cam[1],cam[2]); draw(); ctx.restore(); }
+text('妮妲的角落｜場景定稿圖（草稿，待確認）',60,58,40,'#3E352C',900);
+text('暖色低彩度背景，讓灰藍＋紫色的妮妲跳出來・4:5 直式・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
+// 主畫面：全景
+frame(60,150,700,[1,540,675],()=>{ SCENE.room(ctx); NITA.draw(ctx,{x:540,y:1180,s:1.0,expr:'aloof'}); });
+text('① 全景（第10句「Este es mi pequeño mundo」會用到）',60,1100,22,'#5E5244',700);
+// 其他鏡頭
+const shots=[
+  ['② 近景：講話',[1.55,540,860],()=>{ SCENE.room(ctx); NITA.draw(ctx,{x:540,y:1180,s:1.0,expr:'talk'}); }],
+  ['③ 指木牌（第4句）',[1.15,690,800],()=>{ SCENE.room(ctx,{signGlow:1}); NITA.draw(ctx,{x:560,y:1180,s:1.0,expr:'side',pose:'point'}); }],
+  ['④ 大沙發比大小（第7句）',[0.95,620,760],()=>{ SCENE.room(ctx,{chair:1}); NITA.draw(ctx,{x:400,y:1190,s:0.75,expr:'aloof'}); }],
+];
+shots.forEach(([lab,cam,draw],i)=>{ const x=820+i*320; frame(x,150,300,cam,draw); text(lab,x,550,20,'#5E5244',700); });
+// 字幕位置示意
+frame(820,600,300,[1,540,675],()=>{ SCENE.room(ctx); NITA.draw(ctx,{x:540,y:1180,s:1.0,expr:'talk'});
+  ctx.fillStyle='rgba(255,253,248,.94)'; ctx.beginPath(); ctx.roundRect(90,1200,900,110,30); ctx.fill();
+  ctx.font='800 54px "Liberation Sans",sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillStyle='rgba(212,169,58,.35)'; ctx.fillRect(298,1230,230,52); ctx.fillStyle='#3B3550'; ctx.fillText('Me llamo Nita.',540,1256); });
+text('⑤ 字幕位置（底部，重點語塊金色底）',820,1100,20,'#5E5244',700);
+// 配色
+const C=SCENE.colors; text('⑥ 場景配色',1180,630,24,'#5E5244',800);
+[['左牆',C.wallL],['右牆',C.wallR],['地板',C.floor],['窗',C.glass],['木牌',C.wood],['坐墊',C.cushion],['紙箱',C.box]].forEach(([n,c],i)=>{ const y=680+i*58; ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(1180,y-20,52,40,10); ctx.fill(); ctx.strokeStyle='#D9CFC0'; ctx.lineWidth=1.5; ctx.stroke(); text(n,1250,y,22,'#5E5244',700); text(c.toUpperCase(),1450,y,18,'#A0917E',600); });
+</script></body></html>

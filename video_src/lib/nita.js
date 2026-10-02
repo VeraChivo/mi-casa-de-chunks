@@ -30,7 +30,7 @@ function eye(ctx, cx, cy, st){
   if(e==='blink'){ ctx.save(); ctx.strokeStyle=C.lash; ctx.lineWidth=5; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(cx-rx,cy+4); ctx.quadraticCurveTo(cx,cy+12,cx+rx,cy+4); ctx.stroke(); ctx.restore(); return; }
   if(e==='soft'){ // 放鬆：眼睛彎成笑眼
     ctx.save(); ctx.strokeStyle=C.lash; ctx.lineWidth=5.5; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(cx-rx,cy+6); ctx.quadraticCurveTo(cx,cy-14,cx+rx,cy+6); ctx.stroke(); ctx.restore(); return; }
-  const lookX = e==='side' ? 8 : 0;
+  const lookX = e==='side' ? 8*(st.look||1) : 0;   // look:-1 往左看、1 往右看
   ctx.save(); ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,0,0,Math.PI*2); ctx.clip();
   E(ctx,cx,cy,rx,ry,C.white);
   E(ctx,cx+lookX,cy+3,rx*.82,ry*.86,C.iris); E(ctx,cx+lookX,cy+10,rx*.6,ry*.55,C.irisIn);

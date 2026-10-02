@@ -1,14 +1,13 @@
-# 🎬 集數短影片產生器（手工紙藝拼貼風）
+# 🎬 集數短影片產生器（擬人妮妲・扁平插畫）
 
-每集一個資料夾（例：`e17/`），裡面兩個檔：
-- `timeline.js`：10 句西語＋每句真人音檔的實際講話秒數 → 自動排出每幕時間
-- `render.html`：canvas 逐格畫面（撕紙白邊、紙紋、投影、角色零件、字卡、撕紙轉場）
+- `lib/nita.js`：妮妲角色模組（2026-10-02 定稿：擬人貓 Q 版、左耳尖微折、紫色哥德＋金色點綴）
+- `lib/scene.js`：妮妲的角落（場景模組，4:5 世界座標＋鏡頭推拉）
+- `nita_sheet.html`／`scene_sheet.html`：角色、場景定稿圖
+- `eNN/timeline.js`：每句西語＋真人音檔實際講話秒數 → 自動排出每幕時間
+- `eNN/render.html`：每一幕的鏡頭、動作、字幕（只有西語字幕，重點語塊金色底）
 
-產生方式（1080×1920 直式，12fps 定格感畫面，輸出 24fps mp4）：
+一鍵產生（1080×1350、24fps、真人人聲＋程式合成配樂音效）：
 ```
-node video_src/render_frames.js video_src/e17 <畫面資料夾>
-node video_src/audio.js video_src/e17 <out.wav>            # 預覽：配樂＋音效
-node video_src/audio.js video_src/e17 <out.wav> --voice    # 成品：另外輸出人聲時間表，講話時配樂自動壓低
-ffmpeg -framerate 12 -i <畫面資料夾>/f%04d.jpg -i <out.wav> -vf "fps=24,format=yuv420p" -c:v libx264 -crf 22 -c:a aac -shortest out.mp4
+node video_src/build.js e17 <輸出資料夾>
 ```
-人聲一律用 `audio/eNN/` 的真人錄音，不另外用 TTS。
+規則：做好的影片先給 VERA 看過、點頭後才放進網站。

@@ -26,6 +26,6 @@ const scenes = SENTENCES.map((s,i)=>{
   return sc;
 });
 const endCard = {start:t, end:t+END_CARD};
-const TL = {W:1080, H:1920, FPS_DRAW:12, FPS_OUT:24, TR, scenes, endCard, duration:endCard.end};
+const TL = {W:1080, H:1350, FPS_DRAW:24, FPS_OUT:24, audioDir:'audio/e17', TR, scenes, endCard, duration:endCard.end};
 if(typeof module!=='undefined') module.exports = TL; else window.TL = TL;
 })();
