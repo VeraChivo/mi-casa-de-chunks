@@ -15,8 +15,8 @@ text('同一套 Q 版 2.5 頭身・扁平插畫，無輪廓線・每人靠「耳
 // ① 合照（比身高）
 panel(40,140,1720,640);
 const B=0.70, base=690, order=[
-  ['dad','達多爸爸','深紫柴郡・胖胖・單側剃短'],['mom','卡妲媽媽','水藍毛帽・低馬尾'],['kito','奇托哥哥','橘黃外套・翹毛'],
-  ['nita','妮妲','灰藍髮・紫色哥德'],['tito','迪多弟弟','淺黃・蓬髮・抱車車'],['mimi','咪咪妹妹','2歲寶寶・抱萌骷髏兔'],['vera','薇拉（朋友）','擬人羊・捲毛彎角']];
+  ['dad','達多爸爸','深紫柴郡・胖肚肚・龐克馬尾'],['mom','卡妲媽媽','水藍毛帽・低馬尾'],['kito','奇托哥哥','橘黃外套・翹毛'],
+  ['nita','妮妲','灰藍髮・紫色哥德'],['tito','迪多弟弟','淺黃・蓬髮・抱車車'],['mimi','咪咪妹妹','粉紅・丸子頭・抱萌骷髏兔'],['vera','薇拉（朋友）','擬人羊・捲毛彎角']];
 order.forEach(([id,name,desc],i)=>{
   const x=170+i*245+(i===6?30:0);
   if(id==='nita') NITA.draw(ctx,{x,y:base,s:B*1.0,expr:'aloof'});
@@ -51,8 +51,8 @@ text('抱著（平常）',930,1456,18,'#5E5244',700,'center'); text('圍繞在�
 panel(1300,800,460,670);
 text('④ 細節特寫＋咪咪',1330,838,24,'#5E5244',800);
 const headAt=(id,cx,cy,extra={})=>{ const sp=FAMILY.spec[id], k=0.3, s=k/sp.scale; FAMILY.draw(ctx,id,Object.assign({x:cx,y:cy+430*k,s,expr:'smile',headOnly:true},extra)); };
-[['mom',1380,'毛帽'],['vera',1492,'羊角'],['dad',1604,'單側剃短'],['kito',1716,'眼神飄']].forEach(([id,cx,lab],i)=>{ headAt(id,cx,950,id==='kito'?{look:1}:{}); text(lab,cx,1040,18,'#5E5244',700,'center'); });
+[['mom',1380,'毛帽'],['vera',1492,'羊角'],['dad',1604,'龐克馬尾'],['kito',1716,'眼神飄']].forEach(([id,cx,lab],i)=>{ headAt(id,cx,950,id==='kito'?{look:1}:{}); text(lab,cx,1040,18,'#5E5244',700,'center'); });
 FAMILY.draw(ctx,'mimi',{x:1420,y:1410,s:0.82,expr:'smile',pose:'hold'});
-text('咪咪（2歲寶寶）',1420,1440,18,'#5E5244',700,'center');
+text('咪咪（最矮）',1420,1440,18,'#5E5244',700,'center');
 ctx.save(); ctx.translate(1640,1280); ctx.scale(1.7,1.7); FAMILY.helpers.skullBunny(ctx,0,0,1); ctx.restore(); text('兔耳骷髏 Leto',1640,1400,18,'#5E5244',700,'center');
 </script></body></html>

@@ -17,7 +17,7 @@ function S(ctx,pts,f){ ctx.beginPath(); ctx.moveTo((pts[0][0]+pts[1][0])/2,(pts[
 function R(ctx,x,y,w,h,r,f){ ctx.beginPath(); ctx.roundRect(x,y,w,h,r); ctx.fillStyle=f; ctx.fill(); }
 
 const SPEC = {
-  dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, shoulder:70, armW:1.3,
+  dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, noEars:true, shoulder:70, armW:1.3,
     hair:'#4B2D6B', hairD:'#2F1A47', earIn:'#D9A9E6', tail:'#4B2D6B', stripe:'#C27BD6',
     eye:'#D6DE5A', eyeIn:'#B7C93A', eyeR:[27,32], lid:0.10, slit:true, ear:{h:-566, xs:1, stripe:true},
     type:'pants', top:'#5DBB63', sleeve:'#5DBB63', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut' },
@@ -33,10 +33,10 @@ const SPEC = {
     hair:'#A9B8C9', hairD:'#8C9DB2', earIn:'#E6B9C2', tail:'#A9B8C9',
     eye:'#4B3B35', eyeIn:'#6B574D', eyeR:[26,32], lid:0, ear:{h:-534, xs:1, round:true},
     type:'shorts', top:'#F6D66B', sleeve:'#F6D66B', bottom:'#9A7A58', shoe:'#6B5B4B', hairStyle:'fluffy' },
-  mimi:{ name:'咪咪妹妹', scale:0.70, bw:1.0, toddler:true, legW:15,
+  mimi:{ name:'咪咪妹妹', scale:0.62, bw:0.96,
     hair:'#B7C4D6', hairD:'#9AABC2', earIn:'#F2B6C4', tail:'#B7C4D6',
     eye:'#B5656F', eyeIn:'#D88A94', eyeR:[27,33], lid:0, ear:{h:-552, xs:0.78, round:true},
-    type:'dress', top:'#F4A9BC', sleeve:'#F7C3D0', bottom:'#F4A9BC', shoe:'#C1768A', hairStyle:'baby' },
+    type:'dress', top:'#F4A9BC', sleeve:'#F7C3D0', bottom:'#F4A9BC', shoe:'#C1768A', hairStyle:'buns' },
   vera:{ name:'薇拉（羊）', scale:0.92, bw:1.02,
     hair:'#FAF3E4', hairD:'#E9DCC2', earIn:'#F2B6C4', tail:'#FAF3E4',
     eye:'#5F9A70', eyeIn:'#86BB93', eyeR:[25,30], lid:0, sheep:true,
@@ -93,8 +93,11 @@ const HAIR = {
       S(ctx,[[-88,-436],[-40,-452],[10,-456],[60,-452],[90,-436],[84,-420],[40,-432],[0,-420],[-40,-430],[-84,-420]],sp.hair); } },
   undercut:{ // 賽博龐克單側剃短（2026-10-02 VERA 參考圖）：左邊剃短刻紋、頭髮往右掃到下巴、髮尾挑染亮粉紫、後腦一小截馬尾
     back(ctx,sp){
-      S(ctx,[[104,-430],[136,-400],[150,-350],[140,-300],[124,-296],[118,-340],[110,-390]],sp.hair);           // 後腦小馬尾
-      E(ctx,116,-420,9,11,'#D4A93A');
+      // 高馬尾：從後腦高處往右上甩出去再垂下，尾段挑染亮粉紫
+      const pony=[[74,-498],[110,-530],[150,-528],[172,-494],[170,-436],[158,-380],[142,-350],[136,-388],[144,-436],[140,-470],[118,-478],[94,-470]];
+      S(ctx,pony,sp.hair); ctx.save(); S(ctx,pony,sp.hair); ctx.clip(); P(ctx,[[120,-440],[200,-440],[200,-330],[120,-330]],sp.stripe); ctx.restore();
+      ctx.save(); ctx.strokeStyle=sp.hairD; ctx.lineWidth=5; ctx.lineCap='round'; [[126,-512,158,-480],[146,-476,162,-440]].forEach(([a,b,c,d])=>{ ctx.beginPath(); ctx.moveTo(a,b); ctx.quadraticCurveTo((a+c)/2+8,(b+d)/2,c,d); ctx.stroke(); }); ctx.restore();
+      E(ctx,96,-482,12,14,'#D4A93A');
       S(ctx,[[-100,-440],[-104,-380],[-92,-350],[-60,-380],[60,-380],[96,-300],[120,-300],[118,-430],[0,-500]],sp.hairD); },
     front(ctx,sp){
       // 左側剃短：短短的深色＋刻兩條弧線
@@ -176,17 +179,16 @@ function mouth(ctx,id,sp,st){
 function head(ctx,id,sp,st){
   const H=HAIR[sp.hairStyle]; H.back(ctx,sp);
   if(sp.sheep){ horn(ctx,-1,sp); horn(ctx,1,sp); sheepEar(ctx,-1,sp); sheepEar(ctx,1,sp); }
-  else { catEar(ctx,-1,sp); catEar(ctx,1,sp); }
+  else if(!sp.noEars){ catEar(ctx,-1,sp); catEar(ctx,1,sp); }
   S(ctx,[[-98,-430],[-100,-370],[-80,-325],[-40,-305],[0,-300],[40,-305],[80,-325],[100,-370],[98,-430],[0,-470]],SK);
-  if(sp.chubby||sp.toddler){ E(ctx,-56,-330,54,40,SK); E(ctx,56,-330,54,40,SK); E(ctx,0,-312,50,22,SK); }
+  if(sp.toddler){ E(ctx,-56,-330,54,40,SK); E(ctx,56,-330,54,40,SK); E(ctx,0,-312,50,22,SK); }
   E(ctx,-58,-350,18,10,BL); E(ctx,58,-350,18,10,BL);
   eye(ctx,-42,-388,sp,st); eye(ctx,42,-388,sp,st); mouth(ctx,id,sp,st);
   H.front(ctx,sp);
   if(id==='mom') beanie(ctx);
   if(id==='vera'){ // 小花蝴蝶結
     ctx.save(); ctx.translate(-70,-478); [0,72,144,216,288].forEach(a=>{ ctx.save(); ctx.rotate(a*Math.PI/180); E(ctx,0,-16,10,14,'#F2B6C4'); ctx.restore(); }); E(ctx,0,0,8,8,'#D4A93A'); ctx.restore(); }
-  if(id==='dad'){ // 耳環：金色小圈
-    ctx.save(); ctx.strokeStyle='#D4A93A'; ctx.lineWidth=4.5; ctx.beginPath(); ctx.arc(-118,-470,8,0,Math.PI*2); ctx.stroke(); ctx.restore(); }
+  // 爸爸沒有貓耳（2026-10-02 VERA），原本掛在貓耳上的金耳環一併拿掉
 }
 function beanie(ctx){
   ctx.save(); ctx.translate(0,-478); ctx.rotate(0.09);
