@@ -10,45 +10,50 @@ function text(t,x,y,size=26,color='#4A4036',w=700,align='left'){ctx.font=`${w} $
 function panel(x,y,w,h,c='#FBF7F0'){ctx.save();ctx.fillStyle=c;ctx.beginPath();ctx.roundRect(x,y,w,h,22);ctx.fill();ctx.restore();}
 function callout(x1,y1,x2,y2,label){ctx.save();ctx.strokeStyle='#A0917E';ctx.lineWidth=2;ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#A0917E';ctx.beginPath();ctx.arc(x1,y1,5,0,7);ctx.fill();ctx.restore();text(label,x2+(x2>x1?10:-10),y2-(x2<x1?22:0),24,'#5E5244',700,x2>x1?'left':'left');}
 
-text('Nita 妮妲｜角色定稿圖（草稿，待確認）',60,58,40,'#3E352C',900);
-text('混血藍貓・高傲、不好親近・紫色哥德小配件・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
+text('Nita 妮妲｜角色定稿圖（擬人貓・草稿，待確認）',60,58,40,'#3E352C',900);
+text('Q版約2.5頭身・灰藍髮＋貓耳貓尾・高傲不衰・紫色哥德・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
 
-// ① 全身正面（坐姿）
+// ① 全身正面
 panel(40,140,640,940);
-NITA.draw(ctx,{x:330,y:1020,s:1.2,expr:'aloof',tail:0});
-callout(218,580,80,300,'左耳外側一撮白毛');
-callout(390,648,420,380,'琥珀綠眼、瞇眼平視');
-callout(345,708,460,480,'嘴角平、不笑');
-callout(330,815,470,860,'紫色頸鍊＋銀月亮');
-callout(415,560,470,300,'右耳紫色蝴蝶結');
-callout(372,1003,470,1052,'白襪子只到腳趾');
-text('① 預設姿勢：坐直',70,178,26,'#5E5244',800);
+text('① 預設姿勢：站著',70,178,26,'#5E5244',800);
+const K=1.42, OX=330, OY=1030, at=(x,y)=>[OX+x*K, OY+y*K];
+NITA.draw(ctx,{x:OX,y:OY,s:K,expr:'aloof',tail:0});
+const co=(pt,lx,ly,label)=>{ const [x,y]=at(pt[0],pt[1]); callout(x,y,lx,ly,label); };
+co([-102,-488],60,250,'左耳外側一撮白毛');
+co([86,-500],470,250,'右耳紫色蝴蝶結');
+co([42,-392],500,400,'琥珀綠眼、平視');
+co([0,-334],500,470,'嘴角平、不笑');
+co([0,-298],500,560,'頸鍊＋銀彎月');
+co([60,-270],500,640,'紫色連帽小斗篷');
+co([110,-300],500,720,'灰藍貓尾巴');
+co([24,-30],500,1050,'白色短襪');
 
 // ② 表情
 panel(710,140,1050,470);
 text('② 表情',740,178,26,'#5E5244',800);
 const ex=[['aloof','高傲（預設）'],['blink','眨眼'],['talk','說話'],['side','往旁邊看'],['soft','放鬆（最後一句）']];
-ex.forEach(([e,lab],i)=>{ const cx=815+i*205; NITA.draw(ctx,{x:cx,y:690,s:.7,expr:e,headOnly:true}); text(lab,cx,588,22,'#5E5244',700,'center'); });
+ex.forEach(([e,lab],i)=>{ const cx=815+i*205; NITA.draw(ctx,{x:cx,y:590,s:.62,expr:e,headOnly:true}); text(lab,cx,588,22,'#5E5244',700,'center'); });
 
-// ③ 抬手指東西的姿勢（例：第4句指木牌）
+// ③ 抬手指東西
 panel(710,640,340,440);
 text('③ 抬手指東西',740,678,26,'#5E5244',800);
-NITA.draw(ctx,{x:880,y:1045,s:.62,expr:'side',pose:'paw',pawAng:-1.85});
+NITA.draw(ctx,{x:860,y:1050,s:.62,expr:'side',pose:'point'});
 
-// ④ 特寫：白襪子、左耳白毛
+// ④ 特寫
 panel(1080,640,330,440);
 text('④ 特寫',1110,678,26,'#5E5244',800);
 function zoom(sx,sy,sw,sh,dx,dy,dw,dh,st){ ctx.save(); ctx.beginPath(); ctx.roundRect(dx,dy,dw,dh,16); ctx.clip(); ctx.fillStyle='#EFE7DA'; ctx.fillRect(dx,dy,dw,dh);
   const k=dw/sw; ctx.translate(dx-sx*k, dy-sy*k); ctx.scale(k,k); NITA.draw(ctx,st); ctx.restore(); }
-zoom(-140,-450,120,140,1110,710,270,170,{x:0,y:0,s:1,expr:'aloof'}); text('左耳白毛（右耳沒有）',1245,900,20,'#5E5244',700,'center');
-zoom(-70,-40,150,70,1110,925,270,120,{x:0,y:0,s:1,expr:'aloof'});   text('腳趾白襪子',1245,1062,20,'#5E5244',700,'center');
+zoom(-150,-560,150,95,1110,710,270,170,{x:0,y:0,s:1,expr:'aloof'}); text('左耳白毛／右耳蝴蝶結',1245,900,20,'#5E5244',700,'center');
+zoom(-70,-62,140,62,1110,925,270,120,{x:0,y:0,s:1,expr:'aloof'});   text('白色短襪＋瑪莉珍鞋',1245,1062,20,'#5E5244',700,'center');
 
 // ⑤ 配色
 panel(1440,640,320,440);
 text('⑤ 配色',1470,678,26,'#5E5244',800);
 const C=NITA.colors;
-[['毛色',C.fur],['深毛色',C.furDark],['淺毛色',C.furLight],['眼睛',C.iris],['耳朵內側',C.earIn],['白色部分',C.sock],['哥德紫',C.goth]].forEach(([n,c],i)=>{
+[['頭髮／耳朵',C.hair],['膚色',C.skin],['眼睛',C.iris],['洋裝紫',C.dress],['斗篷深紫',C.cape],['耳朵內側',C.earIn],['白色部分',C.sock]].forEach(([n,c],i)=>{
   const y=722+i*50; ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(1470,y-20,52,40,10); ctx.fill();
-  if(c===C.sock){ctx.strokeStyle='#D9CFC0';ctx.lineWidth=2;ctx.stroke();}
+  if(c===C.sock||c===C.skin){ctx.strokeStyle='#D9CFC0';ctx.lineWidth=2;ctx.stroke();}
   text(n,1540,y,22,'#5E5244',700); text(c.toUpperCase(),1740,y,18,'#A0917E',600,'right'); });
-</script></body></html>
+</script>
+</body></html>
