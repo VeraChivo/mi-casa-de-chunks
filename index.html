@@ -90,9 +90,9 @@
     <div class="star-label" id="starLabel"></div>
   </div>
 
-  <!-- 🎬 本集短影片入口（只有有影片的集數才顯示，見 EPISODE_VIDEOS） -->
+  <!-- 🎬 本集短影片入口 -->
   <div class="ep-video-bar" id="epVideoBar" style="display:none">
-    <button class="ep-video-btn" onclick="openEpVideo()">🎬 先看 30 秒</button>
+    <button class="ep-video-btn" onclick="openEpVideo()">🎬 看短片</button>
   </div>
 
   <!-- MAIN CARD -->
@@ -195,7 +195,7 @@
       🌱 你已經認識了自己，現在來看看妮妲如何開始她的故事吧。
     </div>
 
-    <button class="btn-restart" id="epVideoReplayBtn" style="display:none" onclick="openEpVideo()">🎬 再看一次影片</button>
+    <button class="btn-restart" id="epVideoReplayBtn" style="display:none" onclick="openEpVideo()">🎬 再看一次</button>
     <button class="btn-restart" onclick="restartEp()">🔁 重來一次</button>
     <button class="btn-next-ep" id="nextEpBtn" onclick="goNextEp()">下一集 →</button>
   </div>
@@ -657,7 +657,7 @@
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20261002a2"></script>
+  <script src="script.js?v=20261002a3"></script>
   <!-- 🎬 本集短影片彈窗 -->
   <div class="ep-video-overlay" id="epVideoOverlay" style="display:none" onclick="if(event.target===this)closeEpVideo()">
     <div class="ep-video-box">
