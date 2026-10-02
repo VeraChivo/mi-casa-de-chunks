@@ -23,9 +23,9 @@ const SPEC = {
     type:'pants', top:'#2E2A36', sleeve:'#2E2A36', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut', apron:'#6E6680', pocket:'#837B95',
     outfits:{ cook:{shirt:'#8E3446'}, repair:{shirt:'#D9A43A',apron:'#4B4458',pocket:'#5D566B'} } }, // 視場合換衣服：日常黑T／煮菜酒紅／修東西芥末金
   mom:{ name:'卡妲媽媽', scale:1.06, bw:1.0,
-    hair:'#8497AD', hairD:'#6F8299', earIn:'#E6B9C2', tail:'#8497AD',
+    hair:'#A9D8F2', hairD:'#8EC4E8', earIn:'#F6C4D0', tail:'#A9D8F2',
     eye:'#9A7B52', eyeIn:'#C4A06A', eyeR:[24,29], lid:0.14, ear:{h:-552, xs:1},
-    type:'skirt', top:'#F3E9D8', sleeve:'#F3E9D8', bottom:'#6FA3BE', shoe:'#5A6B7A', hairStyle:'momLow' },
+    type:'skirt', top:'#F3E9D8', sleeve:'#F3E9D8', bottom:'#8FCDEE', shoe:'#9CC6E8', hairStyle:'momLow' },
   kito:{ name:'奇托哥哥', scale:0.98, bw:1.04,
     hair:'#5E6F8A', hairD:'#48587A', earIn:'#E6B9C2', tail:'#5E6F8A',
     eye:'#B8742F', eyeIn:'#D9A25C', eyeR:[25,30], lid:0, ear:{h:-560, xs:1},
@@ -34,7 +34,7 @@ const SPEC = {
     hair:'#A9B8C9', hairD:'#8C9DB2', earIn:'#E6B9C2', tail:'#A9B8C9',
     eye:'#4B3B35', eyeIn:'#6B574D', eyeR:[26,32], lid:0, ear:{h:-534, xs:1, round:true},
     type:'shorts', top:'#F6D66B', sleeve:'#F6D66B', bottom:'#9A7A58', shoe:'#6B5B4B', hairStyle:'fluffy' },
-  mimi:{ name:'咪咪妹妹', scale:0.62, bw:0.96,
+  mimi:{ name:'咪咪妹妹', scale:0.46, bw:0.96,
     hair:'#B7C4D6', hairD:'#9AABC2', earIn:'#F2B6C4', tail:'#B7C4D6',
     eye:'#B5656F', eyeIn:'#D88A94', eyeR:[27,33], lid:0, ear:{h:-552, xs:0.78, round:true},
     type:'dress', top:'#F4A9BC', sleeve:'#F7C3D0', bottom:'#F4A9BC', shoe:'#C1768A', hairStyle:'buns' },
@@ -79,7 +79,7 @@ const HAIR = {
     back(ctx,sp){ S(ctx,[[-112,-430],[-124,-340],[-110,-286],[-70,-296],[-60,-370],[60,-370],[70,-296],[110,-286],[124,-340],[112,-430],[0,-500]],sp.hairD);
       // 低馬尾：垂在右肩後面，髮尾鬆鬆的
       S(ctx,[[104,-330],[132,-318],[142,-270],[130,-220],[112,-196],[104,-232],[106,-290]],sp.hair);
-      E(ctx,112,-322,10,12,'#6FA3BE'); },
+      E(ctx,112,-322,10,12,'#F4A9BC'); },
     front(ctx,sp){ S(ctx,[[-112,-430],[-122,-360],[-112,-300],[-92,-290],[-94,-340],[-98,-410]],sp.hair); S(ctx,[[112,-430],[122,-360],[112,-300],[92,-290],[94,-340],[98,-410]],sp.hair);
       S(ctx,[[-104,-430],[-60,-448],[10,-452],[70,-430],[96,-410],[40,-404],[-10,-420],[-60,-402],[-100,-408]],sp.hair); } },
   punk:{
@@ -194,11 +194,11 @@ function head(ctx,id,sp,st){
 }
 function beanie(ctx){
   ctx.save(); ctx.translate(0,-478); ctx.rotate(0.09);
-  S(ctx,[[70,-34],[120,-26],[146,22],[134,72],[110,46]],'#5E96B3');                 // 鬆垮垂下來的帽尾
-  E(ctx,0,-8,98,60,'#6FB5D1');
-  ctx.save(); ctx.strokeStyle='rgba(60,110,140,.35)'; ctx.lineWidth=3; for(let i=-3;i<=3;i++){ ctx.beginPath(); ctx.moveTo(i*26,-56); ctx.quadraticCurveTo(i*30,-20,i*26,16); ctx.stroke(); } ctx.restore();
-  R(ctx,-104,16,208,40,16,'#A9D8E6');                                                   // 帽緣：水色毛線一圈
-  ctx.save(); ctx.strokeStyle='#8EC5D8'; ctx.lineWidth=4; ctx.lineCap='round'; for(let i=-4;i<=4;i++){ ctx.beginPath(); ctx.moveTo(i*22-6,22); ctx.lineTo(i*22+6,50); ctx.stroke(); } ctx.restore();
+  S(ctx,[[70,-34],[120,-26],[146,22],[134,72],[110,46]],'#F0D58A');                 // 鬆垮垂下來的帽尾
+  E(ctx,0,-8,98,60,'#F8E5A8');
+  ctx.save(); ctx.strokeStyle='rgba(190,150,60,.28)'; ctx.lineWidth=3; for(let i=-3;i<=3;i++){ ctx.beginPath(); ctx.moveTo(i*26,-56); ctx.quadraticCurveTo(i*30,-20,i*26,16); ctx.stroke(); } ctx.restore();
+  R(ctx,-104,16,208,40,16,'#FBC9D6');                                                   // 帽緣：水色毛線一圈
+  ctx.save(); ctx.strokeStyle='#F4A9BC'; ctx.lineWidth=4; ctx.lineCap='round'; for(let i=-4;i<=4;i++){ ctx.beginPath(); ctx.moveTo(i*22-6,22); ctx.lineTo(i*22+6,50); ctx.stroke(); } ctx.restore();
   ctx.restore();
 }
 // ───── 手臂（姿勢）─────
@@ -260,7 +260,7 @@ function skullCat(ctx){
   [-8,0,8].forEach(tx=>R(ctx,tx-3.5,30,7,8,2.5,'#FFFFFF')); R(ctx,-13,29,26,1.6,1,SH);
   E(ctx,-31,16,7,4.5,'rgba(232,150,168,.5)'); E(ctx,31,16,7,4.5,'rgba(232,150,168,.5)');
 }
-let SKULL_VARIANT='cat';
+let SKULL_VARIANT='bunny';
 function spatula(ctx){ ctx.save(); ctx.fillStyle='#D4A93A'; ctx.beginPath(); ctx.roundRect(-4,-4,8,60,4); ctx.fill(); R(ctx,-16,-46,32,46,8,'#C9CED6'); ctx.strokeStyle='#A8AEB8'; ctx.lineWidth=3; [-8,0,8].forEach(x=>{ ctx.beginPath(); ctx.moveTo(x,-38); ctx.lineTo(x,-10); ctx.stroke(); }); ctx.restore(); }
 function screwdriver(ctx){ ctx.save(); R(ctx,-9,-6,18,52,7,'#E04C4C'); R(ctx,-3,-50,6,46,2,'#C9CED6'); P(ctx,[[-5,-50],[5,-50],[0,-60]],'#C9CED6'); ctx.restore(); }
 
