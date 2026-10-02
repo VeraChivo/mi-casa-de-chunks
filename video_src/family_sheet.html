@@ -54,7 +54,8 @@ const headAt=(id,cx,cy,extra={})=>{ const sp=FAMILY.spec[id], k=0.3, s=k/sp.scal
 [['mom',1380,'毛帽'],['vera',1492,'羊角'],['dad',1604,'龐克馬尾'],['kito',1716,'眼神飄']].forEach(([id,cx,lab],i)=>{ headAt(id,cx,950,id==='kito'?{look:1}:{}); text(lab,cx,1040,18,'#5E5244',700,'center'); });
 FAMILY.draw(ctx,'mimi',{x:1420,y:1410,s:0.82,expr:'smile',pose:'hold'});
 text('咪咪（最矮）',1420,1440,18,'#5E5244',700,'center');
-text('Leto 候選',1640,1150,18,'#8A7B69',700,'center');
-FAMILY.helpers.skullBunny(ctx,1588,1290,0.95,'horn'); text('A 粉綠小角',1588,1380,17,'#5E5244',800,'center');
-FAMILY.helpers.skullBunny(ctx,1700,1290,0.95,'bunny'); text('B 兔耳蝴蝶結',1700,1380,17,'#5E5244',800,'center');
+text('Leto 候選',1620,1150,18,'#8A7B69',700,'center');
+FAMILY.helpers.skullBunny(ctx,1532,1290,0.78,'horn'); text('A 粉綠小角',1532,1380,16,'#5E5244',800,'center');
+FAMILY.helpers.skullBunny(ctx,1618,1290,0.78,'bunny'); text('B 兔耳',1618,1380,16,'#5E5244',800,'center');
+FAMILY.helpers.skullBunny(ctx,1700,1290,0.78,'cat'); text('C 貓耳象牙',1700,1380,16,'#4A3168',900,'center');
 </script></body></html>

@@ -214,6 +214,7 @@ function redCar(ctx,x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
   E(ctx,-30,32,13,13,'#3B3550'); E(ctx,30,32,13,13,'#3B3550'); E(ctx,-30,32,5,5,'#DCE1EA'); E(ctx,30,32,5,5,'#DCE1EA'); E(ctx,46,12,5,5,'#F6D66B'); ctx.restore(); }
 // 骷髏玩偶 Leto（2026-10-02 VERA 參考粉彩萌系骷髏）：variant 'horn'＝粉綠小角版、'bunny'＝兔耳睫毛蝴蝶結版
 function skullBunny(ctx,x,y,s,variant){ variant=variant||SKULL_VARIANT; ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
+  if(variant==='cat') return skullCat(ctx), ctx.restore();
   const W='#FFF8FB', EYE='#4B3A7A', EYE2='#7B62B8';
   if(variant==='horn'){
     // 一粉一綠的彎角
@@ -239,7 +240,25 @@ function skullBunny(ctx,x,y,s,variant){ variant=variant||SKULL_VARIANT; ctx.save
   else { // 小星星、小愛心
     ctx.fillStyle='#C7A3D6'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center'; ctx.fillText('✦',-52,-4); ctx.fillStyle='#EE8DBB'; ctx.fillText('♥',54,-14); }
   ctx.restore(); }
-let SKULL_VARIANT='horn';
+// C：貓耳小骷髏——象牙白＋深紫貓耳＋一點點粉，跟全家紫色系同一國，不搶戲
+function skullCat(ctx){
+  const W='#FBF4EA', SH='#EADFD0', PL='#3A2852', PL2='#5C4A7E';
+  // 小小骨頭身體（抱著時露出一點）
+  E(ctx,0,58,24,22,W); [44,56,68].forEach(y=>{ R(ctx,-14,y-2,28,4,2,SH); }); R(ctx,-2,40,4,36,2,SH);
+  E(ctx,-26,54,9,7,W); E(ctx,26,54,9,7,W);
+  // 貓耳（深紫，內側淺一點）
+  P(ctx,[[-40,-16],[-38,-62],[-12,-36]],PL); P(ctx,[[-34,-22],[-33,-50],[-18,-34]],PL2);
+  P(ctx,[[40,-16],[38,-62],[12,-36]],PL);   P(ctx,[[34,-22],[33,-50],[18,-34]],PL2);
+  // 頭＋下巴（下緣一點陰影，沒有輪廓線）
+  E(ctx,0,6,46,42,SH); E(ctx,0,2,46,41,W); E(ctx,0,30,28,15,W);
+  // 大眼窩（深紫，一顆亮點）
+  [-1,1].forEach(m=>{ E(ctx,m*17,2,13,15,PL); E(ctx,m*17-4,-4,4.2,4.2,'#FFFFFF'); });
+  // 小鼻子＋牙齒＋腮紅
+  P(ctx,[[-4,16],[4,16],[0,22]],PL2);
+  [-8,0,8].forEach(tx=>R(ctx,tx-3.5,30,7,8,2.5,'#FFFFFF')); R(ctx,-13,29,26,1.6,1,SH);
+  E(ctx,-31,16,7,4.5,'rgba(232,150,168,.5)'); E(ctx,31,16,7,4.5,'rgba(232,150,168,.5)');
+}
+let SKULL_VARIANT='cat';
 function spatula(ctx){ ctx.save(); ctx.fillStyle='#D4A93A'; ctx.beginPath(); ctx.roundRect(-4,-4,8,60,4); ctx.fill(); R(ctx,-16,-46,32,46,8,'#C9CED6'); ctx.strokeStyle='#A8AEB8'; ctx.lineWidth=3; [-8,0,8].forEach(x=>{ ctx.beginPath(); ctx.moveTo(x,-38); ctx.lineTo(x,-10); ctx.stroke(); }); ctx.restore(); }
 function screwdriver(ctx){ ctx.save(); R(ctx,-9,-6,18,52,7,'#E04C4C'); R(ctx,-3,-50,6,46,2,'#C9CED6'); P(ctx,[[-5,-50],[5,-50],[0,-60]],'#C9CED6'); ctx.restore(); }
 
