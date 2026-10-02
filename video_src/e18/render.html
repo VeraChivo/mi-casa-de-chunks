@@ -84,7 +84,7 @@ const SHOTS=[
  (t,sc)=>{ const o=GROUP(t,sc,false);
    return {cam:[0.7,620,790], nita:o.n, order:o.list, world:()=>counting(GX.map(([id,x])=>[x,HEADY[id]]),t,sc.voice+0.1)}; },
  // 10 Somos la familia de Nita.：爸爸（煮菜）香氣，全家看向鏡頭
- (t,sc)=>{ const o=GROUP(t,sc,true); return {cam:camLerp([0.7,620,790],[0.78,620,830],ease((t-sc.start)/3)), nita:o.n, order:o.list, world:()=>steam(GX[0][1]+120,GY-330,t)}; },
+ (t,sc)=>{ const o=GROUP(t,sc,true); return {cam:camLerp([0.7,620,790],[0.78,620,830],ease((t-sc.start)/3)), nita:o.n, order:o.list}; },
 ];
 function subtitle(sc,t){ if(t<sc.voice-0.1) return; ctx.save(); ctx.globalAlpha=E01((t-(sc.voice-0.1))/0.15);
   ctx.font=`800 54px ${FONT}`; ctx.textAlign='left'; ctx.textBaseline='middle';
