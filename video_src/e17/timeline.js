@@ -16,7 +16,7 @@ const SENTENCES = [
 const TR = 0.5;      // 撕紙轉場長度（跨在兩個場景交界的中間）
 const LEAD = 0.35;   // 場景開始到開口的空檔（第一幕給角色登場時間，另外加長）
 const TAIL = 0.85;   // 講完後停留
-const END_CARD = 2.4;
+const END_CARD = 0;   // 2026-10-02 VERA：不要結尾字卡，影片停在第10句
 let t = 0;
 const scenes = SENTENCES.map((s,i)=>{
   const lead = i===0 ? 0.7 : LEAD;

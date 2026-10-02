@@ -94,7 +94,7 @@ function endCard(t){
   ctx.restore();
   NITA.draw(ctx,{x:540,y:1250,s:0.95,expr:'soft',pose:'point',pointAng:wave(t),tail:Math.sin(t*3)*0.2});
 }
-function sceneAt(t){ for(let i=0;i<TL.scenes.length;i++) if(t<TL.scenes[i].end) return i; return TL.scenes.length; }
+function sceneAt(t){ for(let i=0;i<TL.scenes.length;i++) if(t<TL.scenes[i].end) return i; return TL.endCard.end>TL.endCard.start ? TL.scenes.length : TL.scenes.length-1; }
 function render(frame){
   const t=frame/TL.FPS_DRAW, i=sceneAt(t);
   ctx.fillStyle='#F3EADF'; ctx.fillRect(0,0,W,H);

@@ -54,7 +54,7 @@ const boundaries=TL.scenes.slice(1).map(s=>s.start).concat([TL.endCard.start]);
 boundaries.forEach(b=>tone(sfx,b,620,520,0.08,0.10));                              // 換幕：很輕的「啵」（硬切，不用轉場聲）
 TL.scenes.forEach(s=>tone(sfx,s.voice-0.15,900,380,0.12,0.25));                    // 字卡「啵」
 tone(sfx,TL.scenes[0].start+0.05,500,1100,0.18,0.22);                              // 妮妲登場
-[88,91,95,100].forEach((m,i)=>tone(sfx,TL.endCard.start+0.45+i*0.09,hz(m),hz(m),0.7,0.12)); // 結尾叮鈴
+if(TL.endCard.end>TL.endCard.start) [88,91,95,100].forEach((m,i)=>tone(sfx,TL.endCard.start+0.45+i*0.09,hz(m),hz(m),0.7,0.12)); // 結尾叮鈴（有結尾字卡才響）
 
 // ── 講話時配樂自動壓低（成品版才有人聲）──
 const duck=new Float32Array(N).fill(1);
