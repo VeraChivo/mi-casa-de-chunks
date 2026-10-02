@@ -11,7 +11,7 @@ function panel(x,y,w,h,c='#FBF7F0'){ctx.save();ctx.fillStyle=c;ctx.beginPath();c
 function callout(x1,y1,x2,y2,label){ctx.save();ctx.strokeStyle='#A0917E';ctx.lineWidth=2;ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#A0917E';ctx.beginPath();ctx.arc(x1,y1,5,0,7);ctx.fill();ctx.restore();text(label,x2+(x2>x1?10:-10),y2-(x2<x1?22:0),24,'#5E5244',700,x2>x1?'left':'left');}
 
 text('Nita 妮妲｜角色定稿圖（擬人貓・草稿，待確認）',60,58,40,'#3E352C',900);
-text('Q版約2.5頭身・灰藍髮＋貓耳貓尾・高傲不衰・紫色哥德・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
+text('Q版約2.5頭身・灰藍髮＋貓耳貓尾・高傲不衰・紫色哥德＋互補色金黃點綴・扁平插畫，無輪廓線',60,104,24,'#8A7B69',600);
 
 // ① 全身正面
 panel(40,140,640,940);
@@ -19,13 +19,13 @@ text('① 預設姿勢：站著',70,178,26,'#5E5244',800);
 const K=1.42, OX=330, OY=1030, at=(x,y)=>[OX+x*K, OY+y*K];
 NITA.draw(ctx,{x:OX,y:OY,s:K,expr:'aloof',tail:0});
 const co=(pt,lx,ly,label)=>{ const [x,y]=at(pt[0],pt[1]); callout(x,y,lx,ly,label); };
-co([-102,-488],60,250,'左耳外側一撮白毛');
+co([-118,-524],60,250,'左耳尖微折（混血折耳感）');
 co([86,-500],470,250,'右耳紫色蝴蝶結');
 co([42,-392],500,400,'琥珀綠眼、平視');
 co([0,-334],500,470,'嘴角平、不笑');
-co([0,-298],500,560,'頸鍊＋銀彎月');
+co([0,-298],500,560,'頸鍊＋金色彎月');
 co([60,-270],500,640,'紫色連帽小斗篷');
-co([110,-300],500,720,'灰藍貓尾巴');
+co([140,-200],500,720,'尾巴在腰邊捲起');
 co([24,-30],500,1050,'白色短襪');
 
 // ② 表情
@@ -44,14 +44,15 @@ panel(1080,640,330,440);
 text('④ 特寫',1110,678,26,'#5E5244',800);
 function zoom(sx,sy,sw,sh,dx,dy,dw,dh,st){ ctx.save(); ctx.beginPath(); ctx.roundRect(dx,dy,dw,dh,16); ctx.clip(); ctx.fillStyle='#EFE7DA'; ctx.fillRect(dx,dy,dw,dh);
   const k=dw/sw; ctx.translate(dx-sx*k, dy-sy*k); ctx.scale(k,k); NITA.draw(ctx,st); ctx.restore(); }
-zoom(-150,-560,150,95,1110,710,270,170,{x:0,y:0,s:1,expr:'aloof'}); text('左耳白毛／右耳蝴蝶結',1245,900,20,'#5E5244',700,'center');
+['fold','ring','tip'].forEach((m,i)=>{ const cx=1150+i*95; NITA.draw(ctx,{x:cx,y:960,s:.36,expr:'aloof',earMark:m,headOnly:true}); text(['A 微折','B 金耳環','C 深耳尖'][i],cx,880,18,'#5E5244',800,'center'); });
+text('左耳候選（主圖用A）',1245,712,20,'#8A7B69',700,'center');
 zoom(-70,-62,140,62,1110,925,270,120,{x:0,y:0,s:1,expr:'aloof'});   text('白色短襪＋瑪莉珍鞋',1245,1062,20,'#5E5244',700,'center');
 
 // ⑤ 配色
 panel(1440,640,320,440);
 text('⑤ 配色',1470,678,26,'#5E5244',800);
 const C=NITA.colors;
-[['頭髮／耳朵',C.hair],['膚色',C.skin],['眼睛',C.iris],['洋裝紫',C.dress],['斗篷深紫',C.cape],['耳朵內側',C.earIn],['白色部分',C.sock]].forEach(([n,c],i)=>{
+[['頭髮／耳朵',C.hair],['膚色',C.skin],['眼睛',C.iris],['洋裝紫',C.dress],['斗篷深紫',C.cape],['耳朵內側',C.earIn],['互補色金',C.gold]].forEach(([n,c],i)=>{
   const y=722+i*50; ctx.fillStyle=c; ctx.beginPath(); ctx.roundRect(1470,y-20,52,40,10); ctx.fill();
   if(c===C.sock||c===C.skin){ctx.strokeStyle='#D9CFC0';ctx.lineWidth=2;ctx.stroke();}
   text(n,1540,y,22,'#5E5244',700); text(c.toUpperCase(),1740,y,18,'#A0917E',600,'right'); });
