@@ -1,0 +1,88 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>E18 render（我的家人與朋友）</title>
+<style>html,body{margin:0;background:#222}canvas{display:block;width:432px;height:540px}</style></head><body>
+<canvas id="c"></canvas>
+<script src="timeline.js"></script><script src="../lib/nita.js"></script><script src="../lib/family.js"></script><script src="../lib/scene.js"></script>
+<script>
+const {W,H}=TL; const cv=document.getElementById('c'); cv.width=W; cv.height=H; const ctx=cv.getContext('2d');
+const FONT='"Liberation Sans","DejaVu Sans",sans-serif', GY=1180;
+const E01=x=>x<0?0:x>1?1:x, ease=p=>{p=E01(p);return p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;};
+const pop=p=>{p=E01(p);const c=1.7;return 1+(c+1)*Math.pow(p-1,3)+c*Math.pow(p-1,2);};
+const lerp=(a,b,p)=>a+(b-a)*p, camLerp=(a,b,p)=>[lerp(a[0],b[0],p),lerp(a[1],b[1],p),lerp(a[2],b[2],p)];
+// 共用狀態：呼吸、眨眼、講話時嘴巴開合（talker＝這一幕誰在說話）
+function st(t,sc,extra={},talk=false,k=0){ const o=Object.assign({x:540,y:GY,s:1,expr:'smile',tail:Math.sin(t*2+k)*0.12,headTilt:Math.sin(t*1.3+k)*0.02},extra);
+  o.y+=Math.sin(t*2.4+k)*2.5; const rest=o.expr;
+  if(talk && t>=sc.voice && t<sc.voiceEnd) o.expr=(Math.floor((t-sc.voice)/0.15)%2===0)?'talk':rest;
+  else if(((t+k*0.9+sc.idx*0.7)%3.1)<0.12 && rest!=='soft') o.expr='blink'; return o; }
+function nita(t,sc,extra={}){ const o=st(t,sc,Object.assign({expr:'aloof',x:820},extra)); return o; }
+function fam(id,o){ FAMILY.draw(ctx,id,o); }
+const slide=(t,sc,from,to,dur=0.55)=>lerp(from,to,ease((t-sc.start)/dur));
+function tag(x,y,text,t0,t){ const s=pop((t-t0)/0.3); if(s<=0) return; ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
+  ctx.font=`800 46px ${FONT}`; const w=ctx.measureText(text).width+60; ctx.fillStyle='#FFFDF8'; ctx.beginPath(); ctx.roundRect(-w/2,-36,w,72,36); ctx.fill();
+  ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(text,0,3); ctx.restore(); }
+function steam(x,y,t){ ctx.save(); ctx.strokeStyle='rgba(150,130,110,.55)'; ctx.lineWidth=7; ctx.lineCap='round';
+  [0,34,68].forEach((dx,i)=>{ const ph=t*3+i*1.7, h=60; ctx.beginPath(); ctx.moveTo(x+dx,y); ctx.quadraticCurveTo(x+dx-14+Math.sin(ph)*8,y-h/2,x+dx,y-h); ctx.quadraticCurveTo(x+dx+14+Math.sin(ph)*8,y-h*1.5,x+dx,y-h*2); ctx.stroke(); }); ctx.restore(); }
+function sil(id,x,s,i,t,t0){ const p=pop((t-t0)/0.35); if(p<=0) return; ctx.save(); ctx.filter='brightness(0.1) opacity(0.22)'; ctx.translate(x,0); ctx.scale(p,p); ctx.translate(-x,0); fam(id,{x,y:GY-30,s,expr:'smile',pose:(id==='tito'||id==='mimi')?'hold':'stand'}); ctx.restore(); }
+const pos10={dad:-50,kito:220,nita:450,vera:690,mom:945,tito:1145,mimi:1280};
+const SHOTS=[
+ // 1 Tengo una familia y una amiga：妮妲左右比劃，後面剪影一個個亮起
+ (t,sc)=>{ const n=nita(t,sc,{x:780,pose:'point',pointAng:-2.1+Math.sin(t*5)*0.3,expr:'soft'});
+   return {cam:camLerp([0.85,540,830],[0.8,520,820],ease((t-sc.start)/2.6)), nita:n,
+     world:()=>{ ['mom','dad','kito','tito','mimi'].forEach((id,i)=>sil(id,110+i*105,0.5,i,t,sc.voice+0.2+i*0.18)); sil('vera',640,0.5,5,t,sc.voice+1.3); }}; },
+ // 2 Mamá Cata：媽媽走進來，摸妮妲的頭
+ (t,sc)=>{ const mx=slide(t,sc,-120,520,0.7); const m=st(t,sc,{x:mx,expr:'smile',headTilt:0.05*Math.sin(t*3)},true,1);
+   const n=nita(t,sc,{x:840,expr:'side',look:-1});
+   return {cam:camLerp([0.95,600,800],[1.05,640,800],ease((t-sc.start)/2.5)), nita:n, order:[['mom',m]], world:()=>tag(mx,GY-640,'Mamá Cata',sc.voice,t)}; },
+ // 3 Papá Tato：爸爸（修東西）螺絲起子，口袋工具
+ (t,sc)=>{ const dx=slide(t,sc,-200,470,0.7); const d=st(t,sc,{x:dx,expr:'smile',pose:t>sc.voice?'repair':'stand'},true,2); if(t>sc.voice) d.y-=Math.abs(Math.sin((t-sc.voice)*4))*8;
+   const n=nita(t,sc,{x:870,expr:'side',look:-1});
+   return {cam:camLerp([0.9,620,780],[1.0,650,790],ease((t-sc.start)/2.7)), nita:n, order:[['dad',d]], world:()=>tag(dx,GY-690,'Papá Tato',sc.voice,t)}; },
+ // 4 Kito：單獨近鏡，眼神飄開、小聲揮手
+ (t,sc)=>{ const k=st(t,sc,{x:540,expr:'smile',look:1,headTilt:0.05*Math.sin(t*3)},true,3);
+   return {cam:camLerp([1.35,540,900],[1.5,540,880],ease((t-sc.start)/(sc.end-sc.start))), order:[['kito',k]], world:()=>tag(540,GY-640,'Kito',sc.voice,t)}; },
+ // 5 hermano mayor：哥哥走到妮妲旁，手搭肩（兩人靠近）
+ (t,sc)=>{ const kx=slide(t,sc,330,470,1.0); const k=st(t,sc,{x:kx,expr:'smile',look:1,headTilt:-0.06*ease((t-sc.voice)/0.4)},true,3);
+   const n=nita(t,sc,{x:700,expr:'side',look:-1,headTilt:0.05*ease((t-sc.voice)/0.4)});
+   return {cam:camLerp([1.1,590,830],[1.2,590,830],ease((t-sc.start)/2.5)), nita:n, order:[['kito',k]]}; },
+ // 6 Tito：抱小紅車跑進來
+ (t,sc)=>{ const tx=slide(t,sc,-150,540,0.6); const ti=st(t,sc,{x:tx,expr:'smile',pose:'hold',headTilt:0.04*Math.sin(t*3)},true,4); if(t<sc.start+0.7) ti.y-=Math.abs(Math.sin((t-sc.start)*9))*14;
+   return {cam:camLerp([1.35,540,930],[1.45,540,930],ease((t-sc.start)/2.5)), order:[['tito',ti]], world:()=>tag(tx,GY-430,'Tito',sc.voice,t)}; },
+ // 7 Mimi：抱兔耳骷髏蹦跳到鏡頭前，妮妲彎腰看
+ (t,sc)=>{ const mx=slide(t,sc,150,470,0.6); const m=st(t,sc,{x:mx,expr:'smile',pose:'hold'},true,5); m.y-=Math.abs(Math.sin((t-sc.start)*5))*(t<sc.voiceEnd?18:4);
+   const n=nita(t,sc,{x:820,expr:'soft',headTilt:0.16*ease((t-sc.voice)/0.5),look:-1});
+   return {cam:camLerp([1.3,640,950],[1.4,640,950],ease((t-sc.start)/2.5)), nita:n, order:[['mimi',m]], world:()=>tag(mx,GY-340,'Mimi',sc.voice,t)}; },
+ // 8 Vera：從畫面旁探出頭、揮手
+ (t,sc)=>{ const vx=slide(t,sc,1300,620,0.55); const v=st(t,sc,{x:vx,expr:'smile',headTilt:0.05*Math.sin(t*3)},true,6);
+   return {cam:camLerp([1.3,620,880],[1.4,620,880],ease((t-sc.start)/2.2)), order:[['vera',v]], world:()=>tag(vx,GY-610,'Vera',sc.voice,t)}; },
+ // 9 mejor amiga：薇拉靠過去，妮妲放鬆（soft）
+ (t,sc)=>{ const vx=slide(t,sc,620,470,0.9); const v=st(t,sc,{x:vx,expr:'smile',headTilt:-0.08*ease((t-sc.voice)/0.5)},true,6);
+   const n=nita(t,sc,{x:720,expr:'soft',look:-1,headTilt:0.06*ease((t-sc.voice)/0.5)});
+   return {cam:camLerp([1.1,600,830],[1.2,600,830],ease((t-sc.start)/2.3)), nita:n, order:[['vera',v]]}; },
+ // 10 Somos：鏡頭拉遠，全員站好，爸爸拿鍋鏟（煮菜）冒香氣
+ (t,sc)=>{ const p=ease((t-sc.start)/0.9); const o=[]; const d=st(t,sc,{x:pos10.dad,pose:'cook',expr:'smile'},true,2);
+   o.push(['dad',d]); o.push(['kito',st(t,sc,{x:pos10.kito,expr:'smile',look:1},false,3)]);
+   o.push(['vera',st(t,sc,{x:pos10.vera,expr:'smile'},false,6)]); o.push(['mom',st(t,sc,{x:pos10.mom,expr:'smile'},false,1)]);
+   o.push(['tito',st(t,sc,{x:pos10.tito,expr:'smile',pose:'hold'},false,4)]); const mi=st(t,sc,{x:pos10.mimi,expr:'smile',pose:'hold'},false,5); mi.y-=Math.abs(Math.sin(t*4))*(t>sc.voice?8:0); o.push(['mimi',mi]);
+   const n=nita(t,sc,{x:pos10.nita,expr:'soft'});
+   return {cam:camLerp([1.05,620,880],[0.6,585,840],p), nita:n, order:o, world:()=>steam(pos10.dad+120,GY-330,t)}; },
+];
+function subtitle(sc,t){ if(t<sc.voice-0.1) return; ctx.save(); ctx.globalAlpha=E01((t-(sc.voice-0.1))/0.15);
+  ctx.font=`800 54px ${FONT}`; ctx.textAlign='left'; ctx.textBaseline='middle';
+  const words=sc.es.split(' '),lines=[]; let cur=''; words.forEach(w=>{ const n=cur?cur+' '+w:w; if(ctx.measureText(n).width>880){lines.push(cur);cur=w;}else cur=n;}); lines.push(cur);
+  const lh=70,h=lines.length*lh+44,y0=H-60-h; ctx.fillStyle='rgba(255,253,248,.95)'; ctx.beginPath(); ctx.roundRect(70,y0,W-140,h,32); ctx.fill();
+  lines.forEach((ln,k)=>{ const y=y0+22+lh*k+lh/2,wl=ctx.measureText(ln).width,x0=W/2-wl/2,i=ln.indexOf(sc.key);
+    if(i>=0){ const pre=ctx.measureText(ln.slice(0,i)).width,kw=ctx.measureText(sc.key).width; ctx.fillStyle='rgba(212,169,58,.38)'; ctx.beginPath(); ctx.roundRect(x0+pre-8,y-24,kw+16,50,12); ctx.fill(); }
+    ctx.fillStyle='#3B3550'; ctx.fillText(ln,x0,y); }); ctx.restore(); }
+function counter(i){ ctx.save(); ctx.fillStyle='rgba(255,253,248,.85)'; ctx.beginPath(); ctx.roundRect(40,40,150,62,31); ctx.fill(); ctx.font=`800 34px ${FONT}`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#7A55A8'; ctx.fillText(`${i+1} / 10`,115,72); ctx.restore(); }
+function sceneAt(t){ for(let i=0;i<TL.scenes.length;i++) if(t<TL.scenes[i].end) return i; return TL.scenes.length-1; }
+function render(frame){ const t=frame/TL.FPS_DRAW,i=sceneAt(t),sc=TL.scenes[i],shot=SHOTS[i](t,sc);
+  ctx.fillStyle='#F3EADF'; ctx.fillRect(0,0,W,H);
+  ctx.save(); SCENE.camera(ctx,...shot.cam); SCENE.room(ctx,shot.roomOpts||{});
+  const items=[]; if(shot.nita) items.push(['nita',shot.nita]); (shot.order||[]).forEach(x=>items.push(x));
+  if(shot.world && i===0) shot.world();           // 剪影在後面
+  items.sort((a,b)=>a[1].x-b[1].x||0);
+  items.forEach(([id,s])=>{ if(id==='nita') NITA.draw(ctx,s); else fam(id,s); });
+  if(shot.world && i!==0) shot.world();
+  ctx.restore(); counter(i); subtitle(sc,t); }
+window.render=render; window.renderToData=f=>{render(f);return cv.toDataURL('image/jpeg',.92);};
+</script></body></html>
