@@ -22,18 +22,35 @@ function tag(x,y,text,t0,t){ const s=pop((t-t0)/0.3); if(s<=0) return; ctx.save(
   ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(text,0,3); ctx.restore(); }
 function steam(x,y,t){ ctx.save(); ctx.strokeStyle='rgba(150,130,110,.55)'; ctx.lineWidth=7; ctx.lineCap='round';
   [0,34,68].forEach((dx,i)=>{ const ph=t*3+i*1.7, h=60; ctx.beginPath(); ctx.moveTo(x+dx,y); ctx.quadraticCurveTo(x+dx-14+Math.sin(ph)*8,y-h/2,x+dx,y-h); ctx.quadraticCurveTo(x+dx+14+Math.sin(ph)*8,y-h*1.5,x+dx,y-h*2); ctx.stroke(); }); ctx.restore(); }
-// 開場：一排圓形頭像徽章（家人五位＋朋友一位），一個個彈出來，取代原本的灰色剪影
-function badges(t,t0){ const ids=['mom','dad','kito','tito','mimi','vera'], x0=300, dx=128;
-  ids.forEach((id,i)=>{ const p=pop((t-t0-i*0.2)/0.35); if(p<=0) return; const x=x0+i*dx, y=300;
-    ctx.save(); ctx.translate(x,y); ctx.scale(p,p); ctx.fillStyle='#FFFDF8'; ctx.beginPath(); ctx.arc(0,0,58,0,7); ctx.fill();
-    ctx.beginPath(); ctx.arc(0,0,58,0,7); ctx.clip(); ctx.fillStyle=i===5?'#E6F1E4':'#EDE3F6'; ctx.fillRect(-58,-58,116,116);
-    const sp=FAMILY.spec[id], k=0.28/sp.scale; FAMILY.draw(ctx,id,{x:0,y:112,s:k*1.0,expr:'smile',headOnly:true}); ctx.restore(); }); }
+// 開場：家庭樹（爸媽在上、四個孩子在下，連線一條條長出來；妮妲有金色外圈）
+function headIn(id,x,y,R,t0,t,ring){ const p=pop((t-t0)/0.35); if(p<=0) return; ctx.save(); ctx.translate(x,y); ctx.scale(p,p);
+  if(ring){ ctx.fillStyle='#E8C766'; ctx.beginPath(); ctx.arc(0,0,R+14,0,7); ctx.fill(); }
+  ctx.fillStyle='#FFFDF8'; ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.fill(); ctx.save(); ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.clip();
+  ctx.fillStyle=id==='nita'?'#E3DCF3':'#EDE3F6'; ctx.fillRect(-R,-R,2*R,2*R); ctx.scale(R/58,R/58);
+  if(id==='nita') NITA.draw(ctx,{x:0,y:112+40,s:0.28*1.0,expr:'aloof',headOnly:true}); else { const sp=FAMILY.spec[id]; FAMILY.draw(ctx,id,{x:0,y:112,s:0.28/sp.scale,expr:'smile',headOnly:true}); }
+  ctx.restore(); ctx.restore(); }
+function treeLine(x1,y1,x2,y2,t0,t){ const p=E01((t-t0)/0.3); if(p<=0) return; ctx.save(); ctx.strokeStyle='#C9B28F'; ctx.lineWidth=10; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x1+(x2-x1)*p,y1+(y2-y1)*p); ctx.stroke(); ctx.restore(); }
+function treeLabel(x,y,text,t0,t){ const p=E01((t-t0)/0.25); if(p<=0) return; ctx.save(); ctx.globalAlpha=p; ctx.font=`800 38px ${FONT}`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(text,x,y); ctx.restore(); }
+function familyTree(t,t0){
+  ctx.save(); ctx.fillStyle='#FFFDF8'; ctx.beginPath(); ctx.roundRect(50,130,980,900,56); ctx.fill(); ctx.restore();
+  const PY=330, KY=720, R=108, kids=[['kito',190,'Kito'],['nita',405,'Nita'],['tito',640,'Tito'],['mimi',860,'Mimi']];
+  treeLine(330,PY,750,PY,t0+0.25,t); const h=pop((t-t0-0.45)/0.3); if(h>0){ ctx.save(); ctx.translate(540,PY); ctx.scale(h,h); ctx.font='64px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#E8869B'; ctx.fillText('♥',0,0); ctx.restore(); }
+  treeLine(540,PY+34,540,520,t0+0.6,t); treeLine(190,520,860,520,t0+0.7,t); kids.forEach(([id,x],i)=>treeLine(x,520,x,KY-R,t0+0.8+i*0.08,t));
+  headIn('dad',330,PY,R,t0,t); headIn('mom',750,PY,R,t0+0.1,t); treeLabel(330,PY+R+42,'Papá',t0+0.3,t); treeLabel(750,PY+R+42,'Mamá',t0+0.4,t);
+  kids.forEach(([id,x,nm],i)=>{ headIn(id,x,KY,R,t0+0.9+i*0.15,t,id==='nita'); treeLabel(x,KY+R+(id==='nita'?54:42),nm,t0+1.1+i*0.15,t); }); }
+// 數人頭：數字一個個彈出
+function counting(list,t,t0){ list.forEach(([x,y],i)=>{ const p=pop((t-t0-i*0.22)/0.3); if(p<=0) return; ctx.save(); ctx.translate(x,y); ctx.scale(p,p);
+  ctx.fillStyle='#E8C766'; ctx.beginPath(); ctx.arc(0,0,38,0,7); ctx.fill(); ctx.font=`900 44px ${FONT}`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(String(i+1),0,3); ctx.restore(); }); }
 const pos10={dad:-50,kito:220,nita:450,vera:690,mom:945,tito:1145,mimi:1280};
+const GX=[['dad',90],['kito',330],['nita',560],['mom',790],['tito',990],['mimi',1130]];
+const HEADY={dad:GY-690,kito:GY-640,nita:GY-640,mom:GY-610,tito:GY-440,mimi:GY-340};
+function GROUP(t,sc,cook){ const list=[]; let n;
+  GX.forEach(([id,x],i)=>{ if(id==='nita'){ n=nita(t,sc,{x,expr:'soft'}); return; }
+    const o=st(t,sc,{x,expr:'smile',pose:id==='dad'&&cook?'cook':(id==='tito'||id==='mimi')?'hold':'stand',look:id==='kito'?1:0},id==='dad'&&cook&&t>=sc.voice,i); if(id==='mimi'&&t>sc.voice) o.y-=Math.abs(Math.sin(t*4))*6; list.push([id,o]); });
+  return {n,list}; }
 const SHOTS=[
- // 1 Tengo una familia y una amiga：妮妲左右比劃，後面剪影一個個亮起
- (t,sc)=>{ const n=nita(t,sc,{x:780,pose:'point',pointAng:-2.1+Math.sin(t*5)*0.3,expr:'soft'});
-   return {cam:camLerp([0.85,540,830],[0.8,520,820],ease((t-sc.start)/2.6)), nita:n,
-     world:()=>badges(t,sc.voice+0.2)}; },
+ // 1 Tengo una familia.：家庭樹（全螢幕卡片，蓋在房間上）
+ (t,sc)=>({cam:[0.9,540,830], overlay:()=>familyTree(t,sc.voice+0.05)}),
  // 2 Mamá Cata：媽媽走進來，摸妮妲的頭
  (t,sc)=>{ const mx=slide(t,sc,-120,520,0.7); const m=st(t,sc,{x:mx,expr:'smile',headTilt:0.05*Math.sin(t*3)},true,1);
    const n=nita(t,sc,{x:840,expr:'side',look:-1});
@@ -56,20 +73,16 @@ const SHOTS=[
  (t,sc)=>{ const mx=slide(t,sc,150,470,0.6); const m=st(t,sc,{x:mx,expr:'smile',pose:'hold'},true,5); m.y-=Math.abs(Math.sin((t-sc.start)*5))*(t<sc.voiceEnd?18:4);
    const n=nita(t,sc,{x:820,expr:'soft',headTilt:0.16*ease((t-sc.voice)/0.5),look:-1});
    return {cam:camLerp([1.3,640,950],[1.4,640,950],ease((t-sc.start)/2.5)), nita:n, order:[['mimi',m]], world:()=>tag(mx,GY-340,'Mimi',sc.voice,t)}; },
- // 8 Vera：從畫面旁探出頭、揮手
- (t,sc)=>{ const vx=slide(t,sc,1300,620,0.55); const v=st(t,sc,{x:vx,expr:'smile',headTilt:0.05*Math.sin(t*3)},true,6);
-   return {cam:camLerp([1.3,620,880],[1.4,620,880],ease((t-sc.start)/2.2)), order:[['vera',v]], world:()=>tag(vx,GY-610,'Vera',sc.voice,t)}; },
- // 9 mejor amiga：薇拉靠過去，妮妲放鬆（soft）
- (t,sc)=>{ const vx=slide(t,sc,620,470,0.9); const v=st(t,sc,{x:vx,expr:'smile',headTilt:-0.08*ease((t-sc.voice)/0.5)},true,6);
-   const n=nita(t,sc,{x:720,expr:'soft',look:-1,headTilt:0.06*ease((t-sc.voice)/0.5)});
-   return {cam:camLerp([1.1,600,830],[1.2,600,830],ease((t-sc.start)/2.3)), nita:n, order:[['vera',v]]}; },
- // 10 Somos：鏡頭拉遠，全員站好，爸爸拿鍋鏟（煮菜）冒香氣
- (t,sc)=>{ const p=ease((t-sc.start)/0.9); const o=[]; const d=st(t,sc,{x:pos10.dad,pose:'cook',expr:'smile'},true,2);
-   o.push(['dad',d]); o.push(['kito',st(t,sc,{x:pos10.kito,expr:'smile',look:1},false,3)]);
-   o.push(['vera',st(t,sc,{x:pos10.vera,expr:'smile'},false,6)]); o.push(['mom',st(t,sc,{x:pos10.mom,expr:'smile'},false,1)]);
-   o.push(['tito',st(t,sc,{x:pos10.tito,expr:'smile',pose:'hold'},false,4)]); const mi=st(t,sc,{x:pos10.mimi,expr:'smile',pose:'hold'},false,5); mi.y-=Math.abs(Math.sin(t*4))*(t>sc.voice?8:0); o.push(['mimi',mi]);
-   const n=nita(t,sc,{x:pos10.nita,expr:'soft'});
-   return {cam:camLerp([1.05,620,880],[0.6,585,840],p), nita:n, order:o, world:()=>steam(pos10.dad+120,GY-330,t)}; },
+ // 8 Yo soy Nita, la hermana de Kito, Tito y Mimi.：妮妲在中間，三個手足依序在身邊彈出
+ (t,sc)=>{ const n=nita(t,sc,{x:540,expr:'soft'}); n.s=1;
+   const extra=[['kito',250,sc.voice+1.2],['tito',830,sc.voice+1.8],['mimi',1010,sc.voice+2.3]];
+   const o=extra.map(([id,x,t0],i)=>[id,st(t,sc,{x:x,expr:'smile',pose:(id==='tito'||id==='mimi')?'hold':'stand',s:t<t0?0.001:Math.min(1,pop((t-t0)/0.35))*1},false,i)]);
+   return {cam:camLerp([0.95,590,860],[0.85,590,830],ease((t-sc.start)/3)), nita:n, order:o}; },
+ // 9 Somos seis en la familia.：全員站好，頭上的數字一個個數到六
+ (t,sc)=>{ const o=GROUP(t,sc,false);
+   return {cam:[0.7,620,790], nita:o.n, order:o.list, world:()=>counting(GX.map(([id,x])=>[x,HEADY[id]]),t,sc.voice+0.1)}; },
+ // 10 Somos la familia de Nita.：爸爸（煮菜）香氣，全家看向鏡頭
+ (t,sc)=>{ const o=GROUP(t,sc,true); return {cam:camLerp([0.7,620,790],[0.78,620,830],ease((t-sc.start)/3)), nita:o.n, order:o.list, world:()=>steam(GX[0][1]+120,GY-330,t)}; },
 ];
 function subtitle(sc,t){ if(t<sc.voice-0.1) return; ctx.save(); ctx.globalAlpha=E01((t-(sc.voice-0.1))/0.15);
   ctx.font=`800 54px ${FONT}`; ctx.textAlign='left'; ctx.textBaseline='middle';
@@ -84,10 +97,9 @@ function render(frame){ const t=frame/TL.FPS_DRAW,i=sceneAt(t),sc=TL.scenes[i],s
   ctx.fillStyle='#F3EADF'; ctx.fillRect(0,0,W,H);
   ctx.save(); SCENE.camera(ctx,...shot.cam); SCENE.room(ctx,shot.roomOpts||{});
   const items=[]; if(shot.nita) items.push(['nita',shot.nita]); (shot.order||[]).forEach(x=>items.push(x));
-  if(shot.world && i===0) shot.world();           // 剪影在後面
-  items.sort((a,b)=>a[1].x-b[1].x||0);
+    items.sort((a,b)=>a[1].x-b[1].x||0);
   items.forEach(([id,s])=>{ if(id==='nita') NITA.draw(ctx,s); else fam(id,s); });
-  if(shot.world && i!==0) shot.world();
-  ctx.restore(); counter(i); subtitle(sc,t); }
+  if(shot.world) shot.world();
+  ctx.restore(); if(shot.overlay) shot.overlay(); counter(i); subtitle(sc,t); }
 window.render=render; window.renderToData=f=>{render(f);return cv.toDataURL('image/jpeg',.92);};
 </script></body></html>
