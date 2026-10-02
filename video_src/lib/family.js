@@ -16,29 +16,30 @@ function S(ctx,pts,f){ ctx.beginPath(); ctx.moveTo((pts[0][0]+pts[1][0])/2,(pts[
   ctx.closePath(); ctx.fillStyle=f; ctx.fill(); }
 function R(ctx,x,y,w,h,r,f){ ctx.beginPath(); ctx.roundRect(x,y,w,h,r); ctx.fillStyle=f; ctx.fill(); }
 
+// 身高（VERA 2026-10-02）：爸爸173／哥哥160／妮妲155／薇拉150(暫定)／媽媽147／迪多100／咪咪75 cm；scale 依此換算（含耳朵的像素高 ≈ 3.6px/cm）
 const SPEC = {
   dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, shoulder:70, armW:1.3,
     hair:'#4B2D6B', hairD:'#2F1A47', earIn:'#D9A9E6', tail:'#4B2D6B', stripe:'#C27BD6',
     eye:'#D6DE5A', eyeIn:'#B7C93A', eyeR:[27,32], lid:0.10, slit:true, ear:{h:-566, xs:1, stripe:true},
     type:'pants', top:'#2E2A36', sleeve:'#2E2A36', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut', apron:'#6E6680', pocket:'#837B95',
     outfits:{ cook:{shirt:'#8E3446'}, repair:{shirt:'#D9A43A',apron:'#4B4458',pocket:'#5D566B'} } }, // 視場合換衣服：日常黑T／煮菜酒紅／修東西芥末金
-  mom:{ name:'卡妲媽媽', scale:1.06, bw:1.0,
+  mom:{ name:'卡妲媽媽', scale:0.96, bw:1.0,
     hair:'#A9D8F2', hairD:'#8EC4E8', earIn:'#F6C4D0', tail:'#A9D8F2',
     eye:'#9A7B52', eyeIn:'#C4A06A', eyeR:[24,29], lid:0.14, ear:{h:-552, xs:1},
     type:'skirt', top:'#F3E9D8', sleeve:'#F3E9D8', bottom:'#8FCDEE', shoe:'#9CC6E8', hairStyle:'momLow' },
-  kito:{ name:'奇托哥哥', scale:0.98, bw:1.04,
+  kito:{ name:'奇托哥哥', scale:1.01, bw:1.04,
     hair:'#5E6F8A', hairD:'#48587A', earIn:'#E6B9C2', tail:'#5E6F8A',
     eye:'#B8742F', eyeIn:'#D9A25C', eyeR:[25,30], lid:0, ear:{h:-560, xs:1},
     type:'pants', top:'#F0A33C', sleeve:'#F0A33C', bottom:'#4C5670', shoe:'#FFFFFF', hairStyle:'kito' },
-  tito:{ name:'迪多弟弟', scale:0.78, bw:0.98,
+  tito:{ name:'迪多弟弟', scale:0.675, bw:0.98,
     hair:'#A9B8C9', hairD:'#8C9DB2', earIn:'#E6B9C2', tail:'#A9B8C9',
     eye:'#4B3B35', eyeIn:'#6B574D', eyeR:[26,32], lid:0, ear:{h:-534, xs:1, round:true},
     type:'shorts', top:'#F6D66B', sleeve:'#F6D66B', bottom:'#9A7A58', shoe:'#6B5B4B', hairStyle:'fluffy' },
-  mimi:{ name:'咪咪妹妹', scale:0.46, bw:0.96,
+  mimi:{ name:'咪咪妹妹', scale:0.49, bw:0.96,
     hair:'#B7C4D6', hairD:'#9AABC2', earIn:'#F2B6C4', tail:'#B7C4D6',
     eye:'#B5656F', eyeIn:'#D88A94', eyeR:[27,33], lid:0, ear:{h:-552, xs:0.78, round:true},
     type:'dress', top:'#F4A9BC', sleeve:'#F7C3D0', bottom:'#F4A9BC', shoe:'#C1768A', hairStyle:'buns' },
-  vera:{ name:'薇拉（羊）', scale:0.92, bw:1.02,
+  vera:{ name:'薇拉（羊）', scale:0.984, bw:1.02,
     hair:'#FAF3E4', hairD:'#E9DCC2', earIn:'#F2B6C4', tail:'#FAF3E4',
     eye:'#5F9A70', eyeIn:'#86BB93', eyeR:[25,30], lid:0, sheep:true,
     type:'dress', top:'#FAF3E4', sleeve:'#FAF3E4', bottom:'#F0E4CC', shoe:'#D79AA8', hairStyle:'curly' },
