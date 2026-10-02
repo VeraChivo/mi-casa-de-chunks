@@ -20,7 +20,7 @@ const SPEC = {
   dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, shoulder:70, armW:1.3,
     hair:'#4B2D6B', hairD:'#2F1A47', earIn:'#D9A9E6', tail:'#4B2D6B', stripe:'#C27BD6',
     eye:'#D6DE5A', eyeIn:'#B7C93A', eyeR:[27,32], lid:0.10, slit:true, ear:{h:-566, xs:1, stripe:true},
-    type:'pants', top:'#5DBB63', sleeve:'#5DBB63', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'punk' },
+    type:'pants', top:'#5DBB63', sleeve:'#5DBB63', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut' },
   mom:{ name:'卡妲媽媽', scale:1.06, bw:1.0,
     hair:'#8497AD', hairD:'#6F8299', earIn:'#E6B9C2', tail:'#8497AD',
     eye:'#9A7B52', eyeIn:'#C4A06A', eyeR:[24,29], lid:0.14, ear:{h:-552, xs:1},
@@ -91,6 +91,25 @@ const HAIR = {
       P(ctx,[[-62,-448],[-70,-540],[-40,-500],[-30,-598],[-6,-520],[14,-614],[34,-520],[56,-588],[66,-500],[84,-540],[80,-444],[0,-470]],sp.hair);
       [[-30,-540,-26,-590],[14,-548,14,-606],[56,-536,54,-578]].forEach(([a,b,c,d])=>{ ctx.save(); ctx.strokeStyle=sp.stripe; ctx.lineWidth=7; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(a,b); ctx.lineTo(c,d); ctx.stroke(); ctx.restore(); });
       S(ctx,[[-88,-436],[-40,-452],[10,-456],[60,-452],[90,-436],[84,-420],[40,-432],[0,-420],[-40,-430],[-84,-420]],sp.hair); } },
+  undercut:{ // 賽博龐克單側剃短（2026-10-02 VERA 參考圖）：左邊剃短刻紋、頭髮往右掃到下巴、髮尾挑染亮粉紫、後腦一小截馬尾
+    back(ctx,sp){
+      S(ctx,[[104,-430],[136,-400],[150,-350],[140,-300],[124,-296],[118,-340],[110,-390]],sp.hair);           // 後腦小馬尾
+      E(ctx,116,-420,9,11,'#D4A93A');
+      S(ctx,[[-100,-440],[-104,-380],[-92,-350],[-60,-380],[60,-380],[96,-300],[120,-300],[118,-430],[0,-500]],sp.hairD); },
+    front(ctx,sp){
+      // 左側剃短：短短的深色＋刻兩條弧線
+      S(ctx,[[-102,-470],[-110,-420],[-104,-372],[-88,-360],[-80,-410],[-74,-462]],'#3A2852');
+      ctx.save(); ctx.strokeStyle='#8A6FA0'; ctx.lineWidth=3.5; ctx.lineCap='round';
+      ctx.beginPath(); ctx.moveTo(-100,-446); ctx.quadraticCurveTo(-88,-430,-96,-410); ctx.quadraticCurveTo(-104,-396,-92,-384); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-90,-460); ctx.quadraticCurveTo(-80,-446,-86,-430); ctx.stroke(); ctx.restore();
+      // 頭頂往右掃的長髮，垂到右邊下巴
+      const hairPts=[[-78,-470],[-60,-506],[-10,-526],[50,-520],[100,-490],[122,-440],[128,-380],[124,-320],[112,-292],[98,-300],[96,-350],[84,-400],[56,-424],[20,-430],[-20,-440],[-56,-454]];
+      S(ctx,hairPts,sp.hair);
+      // 髮尾挑染：右側下半段換亮粉紫
+      ctx.save(); S(ctx,hairPts,sp.hair); ctx.clip(); P(ctx,[[60,-370],[160,-400],[160,-280],[60,-280]],sp.stripe);
+      P(ctx,[[60,-370],[160,-400],[160,-392],[60,-362]],'#A35FBF'); ctx.restore();
+      // 頭頂光澤
+      ctx.save(); ctx.strokeStyle='rgba(255,255,255,.18)'; ctx.lineWidth=8; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(-30,-506); ctx.quadraticCurveTo(40,-512,96,-470); ctx.stroke(); ctx.restore(); } },
   kito:{
     back(ctx,sp){ S(ctx,[[-108,-430],[-112,-370],[-96,-340],[-60,-380],[60,-380],[96,-340],[112,-370],[108,-430],[0,-490]],sp.hairD); },
     front(ctx,sp){ S(ctx,[[-110,-430],[-100,-486],[-50,-512],[10,-518],[70,-506],[106,-470],[112,-420],[96,-410],[84,-436],[60,-412],[40,-440],[14,-414],[-10,-444],[-34,-412],[-60,-440],[-86,-410],[-100,-420]],sp.hair);
