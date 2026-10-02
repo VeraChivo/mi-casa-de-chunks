@@ -20,7 +20,8 @@ const SPEC = {
   dad:{ name:'達多爸爸', scale:1.10, bw:1.5, chubby:true, shoulder:70, armW:1.3,
     hair:'#4B2D6B', hairD:'#2F1A47', earIn:'#D9A9E6', tail:'#4B2D6B', stripe:'#C27BD6',
     eye:'#D6DE5A', eyeIn:'#B7C93A', eyeR:[27,32], lid:0.10, slit:true, ear:{h:-566, xs:1, stripe:true},
-    type:'pants', top:'#2E2A36', sleeve:'#2E2A36', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut', apron:'#6E6680', pocket:'#837B95' },
+    type:'pants', top:'#2E2A36', sleeve:'#2E2A36', bottom:'#B59B72', shoe:'#4A3B35', hairStyle:'undercut', apron:'#6E6680', pocket:'#837B95',
+    outfits:{ cook:{shirt:'#8E3446'}, repair:{shirt:'#D9A43A',apron:'#4B4458',pocket:'#5D566B'} } }, // 視場合換衣服：日常黑T／煮菜酒紅／修東西芥末金
   mom:{ name:'卡妲媽媽', scale:1.06, bw:1.0,
     hair:'#8497AD', hairD:'#6F8299', earIn:'#E6B9C2', tail:'#8497AD',
     eye:'#9A7B52', eyeIn:'#C4A06A', eyeR:[24,29], lid:0.14, ear:{h:-552, xs:1},
@@ -95,7 +96,7 @@ const HAIR = {
     back(ctx,sp){
       // 高馬尾：從後腦高處往右上甩出去再垂下，尾段挑染亮粉紫
       const pony=[[74,-498],[110,-530],[150,-528],[172,-494],[170,-436],[158,-380],[142,-350],[136,-388],[144,-436],[140,-470],[118,-478],[94,-470]];
-      S(ctx,pony,sp.hair); ctx.save(); S(ctx,pony,sp.hair); ctx.clip(); P(ctx,[[120,-440],[200,-440],[200,-330],[120,-330]],sp.stripe); ctx.restore();
+      S(ctx,pony,sp.hair);   // 2026-10-02 VERA：馬尾髮尾不變色
       ctx.save(); ctx.strokeStyle=sp.hairD; ctx.lineWidth=5; ctx.lineCap='round'; [[126,-512,158,-480],[146,-476,162,-440]].forEach(([a,b,c,d])=>{ ctx.beginPath(); ctx.moveTo(a,b); ctx.quadraticCurveTo((a+c)/2+8,(b+d)/2,c,d); ctx.stroke(); }); ctx.restore();
       E(ctx,96,-482,12,14,'#D4A93A');
       S(ctx,[[-100,-440],[-104,-380],[-92,-350],[-60,-380],[60,-380],[96,-300],[120,-300],[118,-430],[0,-500]],sp.hairD); },
@@ -108,9 +109,10 @@ const HAIR = {
       // 頭頂往右掃的長髮，垂到右邊下巴
       const hairPts=[[-66,-478],[-52,-512],[-10,-526],[50,-520],[100,-490],[122,-440],[128,-380],[124,-320],[112,-292],[98,-300],[96,-350],[84,-400],[56,-424],[20,-430],[-20,-440],[-56,-454]];
       S(ctx,hairPts,sp.hair);
-      // 髮尾挑染：右側下半段換亮粉紫
-      ctx.save(); S(ctx,hairPts,sp.hair); ctx.clip(); P(ctx,[[60,-370],[160,-400],[160,-280],[60,-280]],sp.stripe);
-      P(ctx,[[60,-370],[160,-400],[160,-392],[60,-362]],'#A35FBF'); ctx.restore();
+      // 挑染只在瀏海：兩縷亮粉紫順著髮流往右掃（2026-10-02 VERA：髮尾不變色，瀏海跟挑染就好）
+      ctx.save(); S(ctx,hairPts,sp.hair); ctx.clip();
+      S(ctx,[[-6,-528],[14,-528],[40,-480],[54,-428],[38,-430],[22,-478]],sp.stripe);
+      S(ctx,[[34,-524],[48,-520],[80,-474],[96,-420],[84,-414],[66,-468]],'#A35FBF'); ctx.restore();
       // 頭頂光澤
       ctx.save(); ctx.strokeStyle='rgba(255,255,255,.18)'; ctx.lineWidth=8; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(-30,-506); ctx.quadraticCurveTo(40,-512,96,-470); ctx.stroke(); ctx.restore(); } },
   kito:{
@@ -307,6 +309,7 @@ function frontGear(ctx,id,sp,st){
 // ───── 主函式 ─────
 function draw(ctx,id,st){
   let sp=SPEC[id]; if(!sp) throw new Error('unknown '+id);
+  if(st&&!st.shirt&&sp.outfits&&sp.outfits[st.pose]) st=Object.assign({},st,sp.outfits[st.pose]);
   if(st&&st.shirt) sp=Object.assign({},sp,{top:st.shirt,sleeve:st.shirt},st.apron?{apron:st.apron,pocket:st.pocket}:{});
   st=Object.assign({x:0,y:0,s:1,pose:'stand'},st);
   ctx.save(); ctx.translate(st.x,st.y); const k=st.s*sp.scale; ctx.scale(k,k);
