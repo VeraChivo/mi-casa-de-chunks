@@ -24,11 +24,13 @@ function steam(x,y,t){ ctx.save(); ctx.strokeStyle='rgba(150,130,110,.55)'; ctx.
   [0,34,68].forEach((dx,i)=>{ const ph=t*3+i*1.7, h=60; ctx.beginPath(); ctx.moveTo(x+dx,y); ctx.quadraticCurveTo(x+dx-14+Math.sin(ph)*8,y-h/2,x+dx,y-h); ctx.quadraticCurveTo(x+dx+14+Math.sin(ph)*8,y-h*1.5,x+dx,y-h*2); ctx.stroke(); }); ctx.restore(); }
 // 開場：家庭樹（爸媽在上、四個孩子在下，連線一條條長出來；妮妲有金色外圈）
 function headIn(id,x,y,R,t0,t,ring){ const p=pop((t-t0)/0.35); if(p<=0) return; ctx.save(); ctx.translate(x,y); ctx.scale(p,p);
-  if(ring){ ctx.fillStyle='#E8C766'; ctx.beginPath(); ctx.arc(0,0,R+14,0,7); ctx.fill(); }
   ctx.fillStyle='#FFFFFF'; ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.fill(); ctx.save(); ctx.beginPath(); ctx.arc(0,0,R,0,7); ctx.clip();
   ctx.fillStyle=id==='nita'?'#E3D8F5':'#E9E0F7'; ctx.fillRect(-R,-R,2*R,2*R); ctx.scale(R/58,R/58);
-  if(id==='nita') NITA.draw(ctx,{x:0,y:112+18,s:0.26,expr:'aloof',headOnly:true}); else { const sp=FAMILY.spec[id]; FAMILY.draw(ctx,id,{x:0,y:112,s:0.28/sp.scale,expr:'smile',headOnly:true}); }
-  ctx.restore(); ctx.restore(); }
+  if(id==='nita') NITA.draw(ctx,{x:0,y:112-4,s:0.27,expr:'aloof',headOnly:true}); else { const sp=FAMILY.spec[id]; FAMILY.draw(ctx,id,{x:0,y:112,s:0.28/sp.scale,expr:'smile',headOnly:true}); }
+  ctx.restore();
+  if(ring){ ctx.strokeStyle='#7A55A8'; ctx.lineWidth=8; ctx.beginPath(); ctx.arc(0,0,R-2,0,7); ctx.stroke();
+    ctx.save(); ctx.translate(R*0.72,-R*0.72); ctx.fillStyle='#E8C766'; ctx.beginPath(); for(let k=0;k<10;k++){ const a=-Math.PI/2+k*Math.PI/5, r=k%2?11:26; ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r); } ctx.closePath(); ctx.fill(); ctx.restore(); }
+  ctx.restore(); }
 function treeLine(x1,y1,x2,y2,t0,t){ const p=E01((t-t0)/0.3); if(p<=0) return; ctx.save(); ctx.strokeStyle='#B79BE0'; ctx.lineWidth=9; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x1+(x2-x1)*p,y1+(y2-y1)*p); ctx.stroke(); ctx.restore(); }
 function treeLabel(x,y,text,t0,t){ const p=E01((t-t0)/0.25); if(p<=0) return; ctx.save(); ctx.globalAlpha=p; ctx.font=`800 38px ${FONT}`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(text,x,y); ctx.restore(); }
 function familyTree(t,t0){
@@ -37,7 +39,7 @@ function familyTree(t,t0){
   treeLine(330,PY,750,PY,t0+0.25,t); const h=pop((t-t0-0.45)/0.3); if(h>0){ ctx.save(); ctx.translate(540,PY); ctx.scale(h,h); ctx.font='64px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#E8869B'; ctx.fillText('♥',0,0); ctx.restore(); }
   treeLine(540,PY+34,540,520,t0+0.6,t); treeLine(190,520,860,520,t0+0.7,t); kids.forEach(([id,x],i)=>treeLine(x,520,x,KY-R,t0+0.8+i*0.08,t));
   headIn('dad',330,PY,R,t0,t); headIn('mom',750,PY,R,t0+0.1,t); treeLabel(330,PY+R+42,'Papá',t0+0.3,t); treeLabel(750,PY+R+42,'Mamá',t0+0.4,t);
-  kids.forEach(([id,x,nm],i)=>{ headIn(id,x,KY,R,t0+0.9+i*0.15,t,id==='nita'); treeLabel(x,KY+R+(id==='nita'?54:42),nm,t0+1.1+i*0.15,t); }); }
+  kids.forEach(([id,x,nm],i)=>{ headIn(id,x,KY,R,t0+0.9+i*0.15,t,id==='nita'); treeLabel(x,KY+R+42,nm,t0+1.1+i*0.15,t); }); }
 // 數人頭：數字一個個彈出
 function counting(list,t,t0){ list.forEach(([x,y],i)=>{ const p=pop((t-t0-i*0.22)/0.3); if(p<=0) return; ctx.save(); ctx.translate(x,y); ctx.scale(p,p);
   ctx.fillStyle='#E8C766'; ctx.beginPath(); ctx.arc(0,0,38,0,7); ctx.fill(); ctx.font=`900 44px ${FONT}`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#4A3168'; ctx.fillText(String(i+1),0,3); ctx.restore(); }); }
