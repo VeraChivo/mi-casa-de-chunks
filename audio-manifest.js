@@ -530,6 +530,11 @@ const AMMO_DAILY_AUDIO_MAP={
   e20_03:["audio/ammo/ammo_e20_03_daily1.mp3", "audio/ammo/ammo_e20_03_daily2.mp3"],
   e20_06:["audio/ammo/ammo_e20_06_daily1.mp3", "audio/ammo/ammo_e20_06_daily2.mp3"],
   e20_08:["audio/ammo/ammo_e20_08_daily1.mp3", "audio/ammo/ammo_e20_08_daily2.mp3"],
+  // E21 我的朋友薇拉（2026-10-03，音檔用 audio_scripts/e21_ammo_daily.txt 錄製）
+  e21_01:["audio/ammo/ammo_e21_01_daily1.mp3", "audio/ammo/ammo_e21_01_daily2.mp3"],
+  e21_02:["audio/ammo/ammo_e21_02_daily1.mp3", "audio/ammo/ammo_e21_02_daily2.mp3"],
+  e21_03:["audio/ammo/ammo_e21_03_daily1.mp3", "audio/ammo/ammo_e21_03_daily2.mp3"],
+  e21_04:["audio/ammo/ammo_e21_04_daily1.mp3", "audio/ammo/ammo_e21_04_daily2.mp3"],
 };
 
 // 首頁課文S/V/O語塊(handleChunkTap)真人音檔，key=語塊原文(含標點/大小寫)
