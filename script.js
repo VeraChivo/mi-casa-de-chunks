@@ -348,7 +348,7 @@ function renderStoryIndex(){
 }
 
 // ── 🎬 每集短影片（2026-10-02）：只有列在這裡的集數才會顯示「先看 30 秒」/「再看一次」──
-const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1' };
+const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1', 20:'video/e21.mp4?v=20261003a1' };
 let _epVideoPushed = false;
 function updateEpVideoUI(){
   const has = !!EPISODE_VIDEOS[ep];
