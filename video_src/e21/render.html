@@ -14,43 +14,43 @@ function st(t,sc,extra={},talk=false,k=0){ const o=Object.assign({x:540,y:GY,s:1
   o.y+=Math.sin(t*2.4+k)*2.5; const rest=o.expr;
   if(talk && t>=sc.voice && t<sc.voiceEnd) o.expr=(Math.floor((t-sc.voice)/0.15)%2===0)?'talk':rest;
   else if(((t+k*0.9+sc.idx*0.7)%3.1)<0.12 && rest!=='soft') o.expr='blink'; return o; }
-function nita(t,sc,extra={}){ const o=st(t,sc,Object.assign({expr:'aloof',x:820},extra)); return o; }
+function nita(t,sc,extra={}){ const o=st(t,sc,Object.assign({expr:'aloof',x:820},extra),true,0); return o; }
 function fam(id,o){ FAMILY.draw(ctx,id,o); }
 const slide=(t,sc,from,to,dur=0.55)=>lerp(from,to,ease((t-sc.start)/dur));
 const SHOTS=[
  // 1 Esta es mi amiga Vera.：妮妲站著，薇拉從左邊走進來，妮妲看向她
- (t,sc)=>{ const vx=slide(t,sc,-200,420,0.9); const v=st(t,sc,{x:vx,expr:'smile'},true,6); if(t<sc.start+1.0) v.y-=Math.abs(Math.sin((t-sc.start)*8))*10;
+ (t,sc)=>{ const vx=slide(t,sc,-200,420,0.9); const v=st(t,sc,{x:vx,expr:'smile'},false,6); if(t<sc.start+1.0) v.y-=Math.abs(Math.sin((t-sc.start)*8))*10;
    const n=nita(t,sc,{x:760,expr:'side',look:-1,headTilt:0.05*ease((t-sc.voice+0.2)/0.4)});
    return {cam:camLerp([1.0,590,830],[1.1,590,830],ease((t-sc.start)/2.4)), nita:n, order:[['vera',v]]}; },
  // 2 Vera es una oveja.：薇拉近鏡，捲毛和彎角
- (t,sc)=>{ const v=st(t,sc,{x:540,expr:'smile',headTilt:0.06*Math.sin(t*3)},true,6);
+ (t,sc)=>{ const v=st(t,sc,{x:540,expr:'smile',headTilt:0.06*Math.sin(t*3)},false,6);
    return {cam:camLerp([1.35,540,880],[1.5,540,860],ease((t-sc.start)/(sc.end-sc.start))), order:[['vera',v]]}; },
  // 3 Es blanca y suave.：妮妲伸手輕摸薇拉的捲毛
- (t,sc)=>{ const v=st(t,sc,{x:450,expr:'smile',headTilt:-0.05*ease((t-sc.voice)/0.5)},true,6);
+ (t,sc)=>{ const v=st(t,sc,{x:450,expr:'smile',headTilt:-0.05*ease((t-sc.voice)/0.5)},false,6);
    const n=nita(t,sc,{x:710,expr:'soft',look:-1,pose:t>sc.voice-0.1?'point':'stand',pointAng:lerp(-0.5,0.3,ease((t-sc.voice)/0.5)),headTilt:0.08*ease((t-sc.voice)/0.5)});
    return {cam:[1.2,600,830], nita:n, order:[['vera',v]]}; },
  // 4 Es muy divertida.：薇拉開心蹦跳
- (t,sc)=>{ const v=st(t,sc,{x:540,expr:'happy',headTilt:0.1*Math.sin(t*9)},true,6); if(t>sc.voice-0.1) v.y-=Math.abs(Math.sin((t-sc.voice)*7))*34;
+ (t,sc)=>{ const v=st(t,sc,{x:540,expr:'happy',headTilt:0.1*Math.sin(t*9)},false,6); if(t>sc.voice-0.1) v.y-=Math.abs(Math.sin((t-sc.voice)*7))*34;
    return {cam:[1.2,540,830], order:[['vera',v]]}; },
  // 5 También es amable con todos.：迪多和咪咪經過，薇拉朝他們揮手
- (t,sc)=>{ const tx=lerp(1300,-250,E01((t-sc.start)/(sc.end-sc.start))); const ti=st(t,sc,{x:tx,expr:'smile',pose:'hold'},false,4), mi=st(t,sc,{x:tx+230,expr:'smile',pose:'hold'},false,5); mi.y-=Math.abs(Math.sin(t*6))*8;
-   const v=st(t,sc,{x:420,expr:'smile',look:1,headTilt:0.06*Math.sin(t*4)},true,6);
+ (t,sc)=>{ const tx=lerp(1300,-250,E01((t-sc.start)/(sc.end-sc.start))); const ti=st(t,sc,{x:tx,y:GY-90,s:0.8,z:-1,expr:'smile',pose:'hold'},false,4), mi=st(t,sc,{x:tx+210,y:GY-90,s:0.8,z:-1,expr:'smile',pose:'hold'},false,5); mi.y-=Math.abs(Math.sin(t*6))*8;
+   const v=st(t,sc,{x:420,expr:'smile',look:1,headTilt:0.06*Math.sin(t*4)},false,6);
    return {cam:[0.95,620,860], order:[['vera',v],['tito',ti],['mimi',mi]]}; },
  // 6 Es muy lista.：薇拉眼睛一亮，抬頭
- (t,sc)=>{ const p=ease((t-sc.voice)/0.4); const v=st(t,sc,{x:540,expr:p>0.3?'talk':'smile',headTilt:-0.08*p,y:GY-8*p},true,6);
+ (t,sc)=>{ const p=ease((t-sc.voice)/0.4); const v=st(t,sc,{x:540,expr:p>0.3?'happy':'smile',headTilt:-0.08*p,y:GY-8*p},false,6);
    return {cam:camLerp([1.35,540,880],[1.5,540,870],ease((t-sc.start)/(sc.end-sc.start))), order:[['vera',v]]}; },
  // 7 Es mi mejor amiga.：兩人並肩，妮妲眼神放鬆
- (t,sc)=>{ const v=st(t,sc,{x:440,expr:'smile',headTilt:-0.04*ease((t-sc.voice)/0.5)},true,6); const n=nita(t,sc,{x:680,expr:'soft',look:-1,headTilt:0.05*ease((t-sc.voice)/0.5)});
+ (t,sc)=>{ const v=st(t,sc,{x:440,expr:'smile',headTilt:-0.04*ease((t-sc.voice)/0.5)},false,6); const n=nita(t,sc,{x:680,expr:'soft',look:-1,headTilt:0.05*ease((t-sc.voice)/0.5)});
    return {cam:camLerp([1.1,560,830],[1.2,560,830],ease((t-sc.start)/2.0)), nita:n, order:[['vera',v]]}; },
  // 8 Ella es muy simpática y yo soy un poco tímida.：薇拉揮手，妮妲縮一點、看旁邊
- (t,sc)=>{ const v=st(t,sc,{x:760,expr:'smile',headTilt:0.08*Math.sin(t*5)},true,6);
+ (t,sc)=>{ const v=st(t,sc,{x:760,expr:'smile',headTilt:0.08*Math.sin(t*5)},false,6);
    const shy=ease((t-(sc.voice+1.7))/0.5); const n=nita(t,sc,{x:360,expr:'side',look:1,headTilt:-0.07*shy,y:GY+10*shy,s:1-0.03*shy});
    return {cam:[1.0,560,840], nita:n, order:[['vera',v]]}; },
  // 9 Y somos buenas amigas.：兩人靠近
- (t,sc)=>{ const k=ease((t-sc.start)/0.9); const v=st(t,sc,{x:lerp(760,520,k),expr:'smile',headTilt:-0.05*k},true,6); const n=nita(t,sc,{x:lerp(360,700,k),expr:'soft',look:-1,headTilt:0.06*k});
+ (t,sc)=>{ const k=ease((t-sc.start)/0.9); const v=st(t,sc,{x:lerp(760,520,k),expr:'smile',headTilt:-0.05*k},false,6); const n=nita(t,sc,{x:lerp(360,700,k),expr:'soft',look:-1,headTilt:0.06*k});
    return {cam:camLerp([1.0,560,840],[1.2,610,830],ease((t-sc.start)/2.2)), nita:n, order:[['vera',v]]}; },
  // 10 Vera es mi amiga.：鏡頭拉遠，兩人在角落房間裡
- (t,sc)=>{ const v=st(t,sc,{x:500,expr:'smile'},true,6); const n=nita(t,sc,{x:700,expr:'soft',look:-1});
+ (t,sc)=>{ const v=st(t,sc,{x:500,expr:'smile'},false,6); const n=nita(t,sc,{x:700,expr:'soft',look:-1});
    return {cam:camLerp([1.2,610,830],[0.9,580,820],ease((t-sc.start)/2.2)), nita:n, order:[['vera',v]]}; },
 ];
 function subtitle(sc,t){ if(t<sc.voice-0.1) return; ctx.save(); ctx.globalAlpha=E01((t-(sc.voice-0.1))/0.15);
@@ -66,7 +66,7 @@ function render(frame){ const t=frame/TL.FPS_DRAW,i=sceneAt(t),sc=TL.scenes[i],s
   ctx.fillStyle='#F3EADF'; ctx.fillRect(0,0,W,H);
   ctx.save(); SCENE.camera(ctx,...shot.cam); SCENE.room(ctx,shot.roomOpts||{});
   const items=[]; if(shot.nita) items.push(['nita',shot.nita]); (shot.order||[]).forEach(x=>items.push(x));
-    items.sort((a,b)=>a[1].x-b[1].x||0);
+    items.sort((a,b)=>((a[1].z||0)-(b[1].z||0))||(a[1].x-b[1].x));
   items.forEach(([id,s])=>{ if(id==='nita') NITA.draw(ctx,s); else fam(id,s); });
   if(shot.world) shot.world();
   ctx.restore(); if(shot.overlay) shot.overlay(); counter(i); subtitle(sc,t); }
