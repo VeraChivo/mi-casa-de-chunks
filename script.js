@@ -2939,6 +2939,9 @@ const WORKSHOP_TOOLS = {
       {label:'🎬 CapCut', url:'https://www.capcut.com'},
       {label:'🗣️ Ondoku 音讀', url:'https://ondoku3.com/ja'},
       {label:'🎧 Luvvoice', url:'https://luvvoice.com'}
+    ]},
+    { icon:'📚', label:'學習參考', tools:[
+      {label:'📷 not_just_spanish', url:'https://www.instagram.com/not_just_spanish/'}
     ]}
   ]
 };
