@@ -240,7 +240,7 @@ const EPS=[
     note:"互相喜歡句型：兩邊的［好朋友］要選同一個人",
     template:[{t:"Nita quiere mucho a"},{g:"friend"},{t:"y"},{g:"friend"},{t:"quiere mucho a Nita."}],
     groups:[{label:"好朋友",key:"friend",options:[
-      {es:"Kito",zh:"奇托"},
+      {es:"Vera",zh:"薇拉"},
       {es:"Tito",zh:"迪多"},
       {es:"Coco",zh:"可可兔"},
     ]}]
