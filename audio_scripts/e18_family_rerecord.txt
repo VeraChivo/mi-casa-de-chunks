@@ -1,0 +1,29 @@
+!pip install gTTS --quiet
+import os, time, random, zipfile
+from gtts import gTTS
+from google.colab import files
+
+sentences = {
+    "01_tengo_una_familia.mp3": "Tengo una familia.",
+    "08_yo_soy_nita_la_hermana.mp3": "Yo soy Nita, la hermana de Kito, Tito y Mimi.",
+    "09_somos_seis.mp3": "Somos seis en la familia.",
+    "10_somos_la_familia_de_nita.mp3": "Somos la familia de Nita.",
+}
+out_dir = "e18"
+os.makedirs(out_dir, exist_ok=True)
+for i, (name, text) in enumerate(sentences.items(), 1):
+    for attempt in range(3):
+        try:
+            print(f"[{i}/{len(sentences)}] {name}: {text}")
+            gTTS(text=text, lang="es", tld="com.mx").save(os.path.join(out_dir, name))
+            break
+        except Exception as e:
+            print("  失敗，重試", attempt + 1, e)
+            time.sleep(2 * (attempt + 1))
+    time.sleep(random.uniform(0.5, 1.2))
+zip_path = "e18_audio.zip"
+with zipfile.ZipFile(zip_path, "w") as z:
+    for name in sentences:
+        z.write(os.path.join(out_dir, name), name)
+print("zip:", os.path.abspath(zip_path), os.path.getsize(zip_path), "bytes")
+files.download(zip_path)

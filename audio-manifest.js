@@ -211,18 +211,18 @@ const AUDIO_MANIFEST={
     ["audio/e17/09_mucho_gusto_soy_nita.mp3"],
     ["audio/e17/10_este_es_mi_pequeno_mundo.mp3"],
   ],
-  // E18 我的家人與朋友（2026-07-24 第一站定稿，音檔尚未錄製，同E17先預留整句key）
+  // E18 我的家人（2026-10-02 朋友拆出去，改家人版；2026-07-24 第一站定稿，音檔尚未錄製，同E17先預留整句key）
   17:[
-    ["audio/e18/01_tengo_una_familia_y_una_amiga.mp3"],
+    ["audio/e18/01_tengo_una_familia.mp3"],
     ["audio/e18/02_yo_soy_mama_cata.mp3"],
     ["audio/e18/03_yo_soy_papa_tato.mp3"],
     ["audio/e18/04_yo_soy_kito.mp3"],
     ["audio/e18/05_soy_el_hermano_mayor.mp3"],
     ["audio/e18/06_yo_soy_tito.mp3"],
     ["audio/e18/07_yo_soy_mimi.mp3"],
-    ["audio/e18/08_yo_soy_vera.mp3"],
-    ["audio/e18/09_soy_la_mejor_amiga.mp3"],
-    ["audio/e18/10_somos_la_familia_y_los_amigos.mp3"],
+    ["audio/e18/08_yo_soy_nita_la_hermana.mp3"],
+    ["audio/e18/09_somos_seis.mp3"],
+    ["audio/e18/10_somos_la_familia_de_nita.mp3"],
   ],
   // E19 我的日常（2026-07-24 盤查後預留，同E17/E18先預留整句key，尚未錄製）
   18:[
@@ -249,6 +249,19 @@ const AUDIO_MANIFEST={
     ["audio/e20/08_a_tito_no_le_gusta_el_ruido.mp3"],
     ["audio/e20/09_a_toda_la_familia_le_gusta_estar_junta.mp3"],
     ["audio/e20/10_y_a_nita_le_gusta_su_casa.mp3"],
+  ],
+  // E21 我的朋友薇拉（2026-10-02 新增，整句音檔尚未錄製，找不到會 fallback 瀏覽器TTS）
+  20:[
+    ["audio/e21/01_esta_es_mi_amiga_vera.mp3"],
+    ["audio/e21/02_vera_es_una_oveja.mp3"],
+    ["audio/e21/03_es_blanca_y_suave.mp3"],
+    ["audio/e21/04_es_muy_divertida.mp3"],
+    ["audio/e21/05_tambien_es_amable_con_todos.mp3"],
+    ["audio/e21/06_es_muy_lista.mp3"],
+    ["audio/e21/07_es_mi_mejor_amiga.mp3"],
+    ["audio/e21/08_ella_simpatica_yo_timida.mp3"],
+    ["audio/e21/09_y_somos_buenas_amigas.mp3"],
+    ["audio/e21/10_vera_es_mi_amiga.mp3"],
   ],
 };
 
@@ -517,6 +530,11 @@ const AMMO_DAILY_AUDIO_MAP={
   e20_03:["audio/ammo/ammo_e20_03_daily1.mp3", "audio/ammo/ammo_e20_03_daily2.mp3"],
   e20_06:["audio/ammo/ammo_e20_06_daily1.mp3", "audio/ammo/ammo_e20_06_daily2.mp3"],
   e20_08:["audio/ammo/ammo_e20_08_daily1.mp3", "audio/ammo/ammo_e20_08_daily2.mp3"],
+  // E21 我的朋友薇拉（2026-10-03，音檔用 audio_scripts/e21_ammo_daily.txt 錄製）
+  e21_01:["audio/ammo/ammo_e21_01_daily1.mp3", "audio/ammo/ammo_e21_01_daily2.mp3"],
+  e21_02:["audio/ammo/ammo_e21_02_daily1.mp3", "audio/ammo/ammo_e21_02_daily2.mp3"],
+  e21_03:["audio/ammo/ammo_e21_03_daily1.mp3", "audio/ammo/ammo_e21_03_daily2.mp3"],
+  e21_04:["audio/ammo/ammo_e21_04_daily1.mp3", "audio/ammo/ammo_e21_04_daily2.mp3"],
 };
 
 // 首頁課文S/V/O語塊(handleChunkTap)真人音檔，key=語塊原文(含標點/大小寫)

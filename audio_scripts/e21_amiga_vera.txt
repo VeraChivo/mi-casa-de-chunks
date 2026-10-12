@@ -1,0 +1,35 @@
+!pip install gTTS --quiet
+import os, time, random, zipfile
+from gtts import gTTS
+from google.colab import files
+
+sentences = {
+    "01_esta_es_mi_amiga_vera.mp3": "Esta es mi amiga Vera.",
+    "02_vera_es_una_oveja.mp3": "Vera es una oveja.",
+    "03_es_blanca_y_suave.mp3": "Es blanca y suave.",
+    "04_es_muy_divertida.mp3": "Es muy divertida.",
+    "05_tambien_es_amable_con_todos.mp3": "También es amable con todos.",
+    "06_es_muy_lista.mp3": "Es muy lista.",
+    "07_es_mi_mejor_amiga.mp3": "Es mi mejor amiga.",
+    "08_ella_simpatica_yo_timida.mp3": "Ella es muy simpática y yo soy un poco tímida.",
+    "09_y_somos_buenas_amigas.mp3": "Y somos buenas amigas.",
+    "10_vera_es_mi_amiga.mp3": "Vera es mi amiga.",
+}
+out_dir = "e21"
+os.makedirs(out_dir, exist_ok=True)
+for i, (name, text) in enumerate(sentences.items(), 1):
+    for attempt in range(3):
+        try:
+            print(f"[{i}/{len(sentences)}] {name}: {text}")
+            gTTS(text=text, lang="es", tld="com.mx").save(os.path.join(out_dir, name))
+            break
+        except Exception as e:
+            print("  失敗，重試", attempt + 1, e)
+            time.sleep(2 * (attempt + 1))
+    time.sleep(random.uniform(0.5, 1.2))
+zip_path = "e21_audio.zip"
+with zipfile.ZipFile(zip_path, "w") as z:
+    for name in sentences:
+        z.write(os.path.join(out_dir, name), name)
+print("zip:", os.path.abspath(zip_path), os.path.getsize(zip_path), "bytes")
+files.download(zip_path)

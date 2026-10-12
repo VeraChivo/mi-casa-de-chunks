@@ -1440,18 +1440,18 @@ const EPS=[
   {es:"Mucho gusto, soy Nita.",chunks:[{w:"Mucho gusto,"},{w:"soy",role:"v"},{w:"Nita.",role:"o"}],zh:"很高興認識你，我是妮妲。",en:"Nice to meet you, I'm Nita.",noteZh:"mucho gusto = 第一次見面時說的「很高興認識你」",noteEn:"'mucho gusto' = 'nice to meet you', said the first time you meet someone"},
   {es:"Este es mi pequeño mundo.",chunks:[{w:"Este es",role:"v"},{w:"mi pequeño mundo.",role:"o"}],zh:"這就是我的小世界。",en:"This is my little world.",noteZh:"Este es = 這是（介紹眼前的東西/地方）",noteEn:"'Este es' = this is (introducing something right in front of you)"}
 ]},
-{title:"Mi Familia y Mis Amigos",titleZh:"我的家人與朋友",dur:150,sentences:[
-  {es:"Tengo una familia y una amiga.",chunks:[{w:"Tengo",role:"v"},{w:"una familia",role:"o"},{w:"y",role:"c"},{w:"una amiga.",role:"o"}],zh:"我有一個家庭和一個朋友。",en:"I have a family and a friend.",noteZh:"tengo = 我有（開場先帶出接下來要介紹的人）",noteEn:"'tengo' = I have (introducing who's about to be introduced)"},
+{title:"Mi Familia",titleZh:"我的家人",dur:150,sentences:[
+  {es:"Tengo una familia.",chunks:[{w:"Tengo",role:"v"},{w:"una familia.",role:"o"}],zh:"我有一個家庭。",en:"I have a family.",noteZh:"tengo = 我有（開場先帶出接下來要介紹的人）",noteEn:"'tengo' = I have (introducing who's about to be introduced)"},
   {es:"Yo soy Mamá Cata, la mamá de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Mamá Cata,",role:"o"},{w:"la mamá de Nita.",role:"o"}],zh:"我是卡妲媽媽，妮妲的媽媽。",en:"I am Mamá Cata, Nita's mom.",noteZh:"Yo soy + 名字 + 關係 = 一句話介紹自己是誰",noteEn:"'Yo soy + name + relation' = introducing yourself in one line",
-  expand:{note:"Yo soy ___, ___ de Nita. = 換角色自我介紹",template:[{t:"Yo soy"},{g:"who"},{t:","},{g:"relation"},{t:"de Nita."}],groups:[{label:"是誰",key:"who",options:[{es:"Mamá Cata",zh:"卡妲媽媽"},{es:"Papá Tato",zh:"達多爸爸"},{es:"Vera",zh:"薇拉"}]},{label:"關係",key:"relation",options:[{es:"la mamá",zh:"媽媽"},{es:"el papá",zh:"爸爸"},{es:"la mejor amiga",zh:"最好的朋友"}]}]}},
+  expand:{note:"Yo soy ___, ___ de Nita. = 換角色自我介紹",template:[{t:"Yo soy"},{g:"who"},{t:","},{g:"relation"},{t:"de Nita."}],groups:[{label:"是誰",key:"who",options:[{es:"Mamá Cata",zh:"卡妲媽媽"},{es:"Papá Tato",zh:"達多爸爸"},{es:"Kito",zh:"奇托"}]},{label:"關係",key:"relation",options:[{es:"la mamá",zh:"媽媽"},{es:"el papá",zh:"爸爸"},{es:"el hermano",zh:"兄弟"}]}]}},
   {es:"Yo soy Papá Tato, el papá de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Papá Tato,",role:"o"},{w:"el papá de Nita.",role:"o"}],zh:"我是達多爸爸，妮妲的爸爸。",en:"I am Papá Tato, Nita's dad.",noteZh:"el papá de Nita = 妮妲的爸爸（用de表示誰是誰的家人）",noteEn:"'el papá de Nita' = Nita's dad (using 'de' to show family relation)"},
   {es:"Yo soy Kito.",chunks:[{w:"Yo soy",role:"v"},{w:"Kito.",role:"o"}],zh:"我是奇托。",en:"I am Kito.",noteZh:"介紹名字不一定要加關係，簡單說「我是Kito」也可以",noteEn:"you don't always need to add a relationship word — simply saying 'I am Kito' works too"},
   {es:"Soy el hermano mayor de Nita.",chunks:[{w:"Soy",role:"v"},{w:"el hermano mayor de Nita.",role:"o"}],zh:"我是妮妲的哥哥。",en:"I am Nita's older brother.",noteZh:"hermano mayor = 哥哥（比自己年長的手足）",noteEn:"'hermano mayor' = older brother"},
   {es:"Yo soy Tito, el hermano de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Tito,",role:"o"},{w:"el hermano de Nita.",role:"o"}],zh:"我是迪多，妮妲的弟弟。",en:"I am Tito, Nita's little brother.",noteZh:"el hermano de... = ...的兄弟姐妹（沒有特別說是哥哥還弟弟）",noteEn:"'el hermano de...' = ...'s sibling (without saying older or younger)"},
   {es:"Yo soy Mimi, la hermanita bebé de Nita.",chunks:[{w:"Yo soy",role:"v"},{w:"Mimi,",role:"o"},{w:"la hermanita bebé de Nita.",role:"o"}],zh:"我是咪咪，妮妲最小的妹妹。",en:"I am Mimi, Nita's baby sister.",noteZh:"la hermanita bebé = 年紀最小的妹妹（bebé強調還是小寶寶）",noteEn:"'la hermanita bebé' = the youngest little sister (bebé emphasizes she's still a baby)"},
-  {es:"Yo soy Vera.",chunks:[{w:"Yo soy",role:"v"},{w:"Vera.",role:"o"}],zh:"我是薇拉。",en:"I am Vera.",noteZh:"介紹朋友一樣可以用Yo soy，不是只有家人才這樣說",noteEn:"'Yo soy' works for introducing friends too, not just family"},
-  {es:"Soy la mejor amiga de Nita.",chunks:[{w:"Soy",role:"v"},{w:"la mejor amiga de Nita.",role:"o"}],zh:"我是妮妲最好的朋友。",en:"I am Nita's best friend.",noteZh:"la mejor amiga de... = ...最好的朋友",noteEn:"'la mejor amiga de...' = ...'s best friend"},
-  {es:"Somos la familia y los amigos de Nita.",chunks:[{w:"Somos",role:"v"},{w:"la familia y los amigos de Nita.",role:"o"}],zh:"我們是妮妲的家人與朋友。",en:"We are Nita's family and friends.",noteZh:"somos = 我們是（第一次用「我們」做SER收尾）",noteEn:"'somos' = we are (first time using 'we' to close)"}
+  {es:"Yo soy Nita, la hermana de Kito, Tito y Mimi.",chunks:[{w:"Yo soy",role:"v"},{w:"Nita,",role:"o"},{w:"la hermana de Kito, Tito y Mimi.",role:"o"}],zh:"我是妮妲，奇托、迪多和咪咪的姊姊。",en:"I am Nita, Kito, Tito and Mimi's sister.",noteZh:"la hermana de ... = ...的姊妹（de後面可以一次列出好幾個人）",noteEn:"'la hermana de...' = ...'s sister (you can list several people after 'de')"},
+  {es:"Somos seis en la familia.",chunks:[{w:"Somos",role:"v"},{w:"seis",role:"o"},{w:"en la familia.",role:"o"}],zh:"我們家有六個人。",en:"There are six of us in the family.",noteZh:"somos seis = 我們一共六個人（somos+數字 = 我們有幾個人）",noteEn:"'somos seis' = there are six of us ('somos' + number = how many of us)"},
+  {es:"Somos la familia de Nita.",chunks:[{w:"Somos",role:"v"},{w:"la familia de Nita.",role:"o"}],zh:"我們是妮妲的家人。",en:"We are Nita's family.",noteZh:"somos = 我們是（第一次用「我們」做SER收尾）",noteEn:"'somos' = we are (first time using 'we' to close)"}
 ]},
 {title:"Mi Día a Día",titleZh:"我的日常／我的狀態",dur:150,sentences:[
   {es:"Nita tiene sueño.",chunks:[{w:"Nita",role:"s"},{w:"tiene sueño.",role:"v"}],zh:"妮妲想睡。",en:"Nita is sleepy.",noteZh:"tener sueño = 想睡（TENER+名詞 = 表達身體/生理感覺）；要加時間可以說 por la mañana(早上)",noteEn:"'tener sueño' = to be sleepy (TENER+noun expresses a physical feeling); add 'por la mañana' (in the morning) later if you want to say when",
@@ -1468,7 +1468,7 @@ const EPS=[
 ]},
 {title:"Lo Que Nos Gusta",titleZh:"我的喜歡",dur:150,sentences:[
   {es:"A Nita le gusta el helado.",chunks:[{w:"A Nita le",role:"s"},{w:"gusta",role:"v"},{w:"el helado.",role:"o"}],zh:"妮妲喜歡冰淇淋。",en:"Nita likes ice cream.",noteZh:"A + 人 + le gusta = 某人喜歡（gustar句型正式登場：喜歡的東西才是主詞）",noteEn:"'A + person + le gusta' = someone likes... (the thing liked is the real subject)",
-  expand:{note:"A ___ le gusta el helado. = 換誰喜歡冰淇淋",template:[{t:"A"},{g:"who"},{t:"le gusta el helado."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Vera",zh:"薇拉"},{es:"Tato",zh:"達多"}]}]}},
+  expand:{note:"A ___ le gusta el helado. = 換誰喜歡冰淇淋",template:[{t:"A"},{g:"who"},{t:"le gusta el helado."}],groups:[{label:"誰",key:"who",options:[{es:"Nita",zh:"妮妲"},{es:"Kito",zh:"奇托"},{es:"Tato",zh:"達多"}]}]}},
   {es:"A Tito le encanta su carrito rojo.",chunks:[{w:"A Tito le",role:"s"},{w:"encanta",role:"v"},{w:"su carrito rojo.",role:"o"}],zh:"迪多超愛他的紅色小車車。",en:"Tito loves his little red car.",noteZh:"encanta比gusta語氣更強，像中文的「超愛」",noteEn:"'encanta' is stronger than 'gusta' — like saying 'loves' instead of just 'likes'"},
   {es:"A Papá Tato le encanta cocinar para su familia.",chunks:[{w:"A Papá Tato le",role:"s"},{w:"encanta",role:"v"},{w:"cocinar para su familia.",role:"o"}],zh:"達多爸爸超愛為家人下廚。",en:"Papá Tato loves cooking for his family.",noteZh:"encanta後面接動詞原形，表示喜歡做某件事",noteEn:"'encanta' followed by a plain verb means loving to do that activity"},
   {es:"A Mamá Cata le gusta tomar café por la mañana.",chunks:[{w:"A Mamá Cata le",role:"s"},{w:"gusta",role:"v"},{w:"tomar café por la mañana.",role:"o"}],zh:"卡妲媽媽喜歡早上喝杯咖啡。",en:"Mamá Cata likes having coffee in the morning.",noteZh:"por la mañana = 在早上（幫喜歡的事情加上時間）",noteEn:"'por la mañana' = in the morning (adding a time to what someone likes doing)"},
@@ -1478,6 +1478,18 @@ const EPS=[
   {es:"A Tito no le gusta el ruido fuerte.",chunks:[{w:"A Tito no le",role:"s"},{w:"gusta",role:"v"},{w:"el ruido fuerte.",role:"o"}],zh:"迪多不喜歡很大的聲音。",en:"Tito doesn't like loud noise.",noteZh:"否定句：no放在le前面",noteEn:"negation: 'no' goes right before 'le'"},
   {es:"A toda la familia le gusta estar junta.",chunks:[{w:"A toda la familia le",role:"s"},{w:"gusta",role:"v"},{w:"estar junta.",role:"o"}],zh:"全家人都喜歡待在一起。",en:"The whole family likes being together.",noteZh:"estar junta = 在一起（大家聚在一起的感覺）",noteEn:"'estar junta' = being together (the feeling of everyone gathered)"},
   {es:"Y a Nita le gusta mucho su pequeña casa.",chunks:[{w:"Y",role:"c"},{w:"a Nita le",role:"s"},{w:"gusta mucho",role:"v"},{w:"su pequeña casa.",role:"o"}],zh:"而妮妲很喜歡她的小房子。",en:"And Nita likes her little house a lot.",noteZh:"le gusta mucho = 非常喜歡（mucho加強語氣，收尾呼應「我的小房子」這個主題）",noteEn:"'le gusta mucho' = likes it a lot (mucho adds emphasis, echoing the site's 'my little house' theme)"}
+]},
+{title:"Mi Amiga Vera",titleZh:"我的朋友薇拉",dur:150,sentences:[
+  {es:"Esta es mi amiga Vera.",chunks:[{w:"Esta",role:"s"},{w:"es",role:"v"},{w:"mi amiga Vera.",role:"o"}],zh:"這是我的朋友薇拉。",en:"This is my friend Vera.",noteZh:"Esta es + 人 = 這是（介紹眼前的人）",noteEn:"'Esta es + person' = this is (introducing someone in front of you)"},
+  {es:"Vera es una oveja.",chunks:[{w:"Vera",role:"s"},{w:"es",role:"v"},{w:"una oveja.",role:"o"}],zh:"薇拉是一隻綿羊。",en:"Vera is a sheep.",noteZh:"es = 是（說她是誰／是什麼）",noteEn:"'es' = is (saying who or what she is)"},
+  {es:"Es blanca y suave.",chunks:[{w:"Es",role:"v"},{w:"blanca",role:"o"},{w:"y",role:"c"},{w:"suave.",role:"o"}],zh:"她白白的、軟軟的。",en:"She is white and soft.",noteZh:"blanca 用 a 結尾，因為說的是女生",noteEn:"'blanca' ends in -a because it describes a girl"},
+  {es:"Es muy divertida.",chunks:[{w:"Es",role:"v"},{w:"muy divertida.",role:"o"}],zh:"她很有趣。",en:"She is very fun.",noteZh:"muy = 很，放在形容詞前面",noteEn:"'muy' = very, goes before the adjective"},
+  {es:"También es amable con todos.",chunks:[{w:"También",role:"c"},{w:"es",role:"v"},{w:"amable con todos.",role:"o"}],zh:"她對大家也都很好。",en:"She is also kind to everyone.",noteZh:"también = 也；con todos = 對所有人",noteEn:"'también' = also; 'con todos' = to everyone"},
+  {es:"Es muy lista.",chunks:[{w:"Es",role:"v"},{w:"muy lista.",role:"o"}],zh:"她很聰明。",en:"She is very smart.",noteZh:"lista 放在 ser 後面是「聰明」的意思",noteEn:"'lista' after 'ser' means smart"},
+  {es:"Es mi mejor amiga.",chunks:[{w:"Es",role:"v"},{w:"mi mejor amiga.",role:"o"}],zh:"她是我最好的朋友。",en:"She is my best friend.",noteZh:"mi mejor amiga = 我最好的朋友（女生）",noteEn:"'mi mejor amiga' = my best friend (female)"},
+  {es:"Ella es muy simpática y yo soy un poco tímida.",chunks:[{w:"Ella",role:"s"},{w:"es",role:"v"},{w:"muy simpática",role:"o"},{w:"y",role:"c"},{w:"yo",role:"s"},{w:"soy",role:"v"},{w:"un poco tímida.",role:"o"}],zh:"她很親切，而我有一點害羞。",en:"She is very nice, and I am a little shy.",noteZh:"un poco = 有一點；用 y 把兩個人的個性並排說",noteEn:"'un poco' = a little; 'y' puts two people's personalities side by side"},
+  {es:"Y somos buenas amigas.",chunks:[{w:"Y",role:"c"},{w:"somos",role:"v"},{w:"buenas amigas.",role:"o"}],zh:"而且我們是好朋友。",en:"And we are good friends.",noteZh:"somos = 我們是；buenas amigas = 好朋友（兩個女生）",noteEn:"'somos' = we are; 'buenas amigas' = good friends (two girls)"},
+  {es:"Vera es mi amiga.",chunks:[{w:"Vera",role:"s"},{w:"es",role:"v"},{w:"mi amiga.",role:"o"}],zh:"薇拉是我的朋友。",en:"Vera is my friend.",noteZh:"最後回到開頭那句的說法，把整集收起來",noteEn:"closing by coming back to the opening idea"}
 ]}
 ];
 
@@ -1490,7 +1502,7 @@ const EPS=[
 // 🌍 cultureImmersion 文化沉浸劇情：特輯型，補文化背景知識，長背景
 // 💞 emotionalNarrative 情緒敘事劇情：核心目的是情緒/身份/關係的理解與陪伴，長連結
 const EPISODE_LIFECYCLE = {
-  abilityBuilding:   [0,1,2,6,16,17,18,19], // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）＋2026-07-20新增第一章重鋪4集（認識自己/我的家人/我的日常狀態/我的喜歡，系統性教llamarse/SER/ESTAR/TENER/gustar，尚未接grammar/ammo連結，等內容定案後再重整）
+  abilityBuilding:   [0,1,2,6,16,17,18,19,20], // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）＋2026-07-20新增第一章重鋪4集（認識自己/我的家人/我的日常狀態/我的喜歡，系統性教llamarse/SER/ESTAR/TENER/gustar，尚未接grammar/ammo連結，等內容定案後再重整）
   chunkInput:        [3,4,5,13],          // E4 E5 E6 E14（日常敘事/連接詞複習，重點在產出語塊不在教單一能力，E14即使包裝成情緒角色，設計初衷是連接詞練習）
   cultureImmersion:  [10],                // E11（亡靈節特輯，明確以文化背景為主，porque/pero教學是附帶收穫）
   emotionalNarrative:[7,8,9,11,12,14,15]  // E8 E9 E10 E12 E13 E15 E16（迪多溝通方式/媽媽自我覺察/媽媽與迪多排程衝突/小小自我系列/社交電量，核心是情緒理解與陪伴）
@@ -1507,6 +1519,9 @@ const EPISODE_LIFECYCLE = {
 //   暫不顯示，等未來真的確認要用在哪裡再補。
 // routeComplete：新手引導路線的完成點，完成時顯示「完成這個路線」的專屬文案+導向下一步
 //   (目前是接回E1)，不使用容易誤導的「S1全集完成」通用文案。
+// 播放順序補充（2026-10-02）：不重新編號，只標「這集播完接哪一集」；沒列出的集數照 ep+1
+const EPISODE_NEXT = { 20:18 };   // E21（我的朋友薇拉）從路線圖進入，播完接 E19
+
 const EPISODE_COMPLETION_MARKERS = {
   storyFinale: [],
   routeComplete: [19] // E20，第一站(E17-E20)完成點
@@ -1523,9 +1538,9 @@ const EPISODE_COMPLETION_MARKERS = {
 // 只分reusableChunk／episodeOnly兩類（不勉強塞進另外兩類）
 const CHUNK_ECOLOGY = {
   reusableChunk: [112,113,119, 130,131,132,133,134,135,136,137,138, 154,156,158,
-    170,171,174,178, 180,185,187,188, 190,192,195,197],
+    170,171,174,178, 180,185,187,188, 190,192,195,197, 200,203,206,207],
   episodeOnly: [102,103,104,106, 110,114,115,116,117,118, 120, 141,143,144,145,146,147,148, 150,153,
-    172,173,175,176,177,179, 181,182,183,184,186,189, 191,193,194,196,198,199],
+    172,173,175,176,177,179, 181,182,183,184,186,189, 191,193,194,196,198,199, 201,202,204,205,208,209],
   emotionalNarrative: [105,108,109, 111, 121,122,123,124,125,126,127,128,129, 139, 140,142,149, 151,152,155,157,159],
   culturalInfo: [100,101,107]
 };

@@ -1575,12 +1575,12 @@ const AMMO_DATA = [
   // 那種每句都建的舊模式 ── */
   {
     ammo_id:"e18_01", ep:"Cap.18 · Mi Familia y Mis Amigos",
-    core_ammo:"Tengo una familia y una amiga.", core_zh:"我有一個家庭和一個朋友。",
+    core_ammo:"Tengo una familia.", core_zh:"我有一個家庭。",
     be_verb_type:"none", be_verb_note:"",
-    pattern:"Tengo [名詞] y [名詞].", pattern_zh:"我有 ___ 和 ___。",
-    pattern_note:"tener列出自己擁有/身邊有的人事物", slots:["名詞","名詞"],
-    fire_peppa:{es:"Tengo una familia y una amiga.", zh:"我有一個家庭和一個朋友。", ts:null,
-      chunks:[{w:"Tengo",role:"v"},{w:"una familia",role:"o"},{w:"y",role:"c"},{w:"una amiga.",role:"o"}]},
+    pattern:"Tengo [名詞].", pattern_zh:"我有 ___。",
+    pattern_note:"tener列出自己擁有/身邊有的人事物", slots:["名詞"],
+    fire_peppa:{es:"Tengo una familia.", zh:"我有一個家庭。", ts:null,
+      chunks:[{w:"Tengo",role:"v"},{w:"una familia.",role:"o"}]},
     fire_daily:[
       {es:"Tengo un hermano y una hermana.", zh:"我有一個哥哥和一個姊姊。", chunks:[{w:"Tengo",role:"v"},{w:"un hermano",role:"o"},{w:"y",role:"c"},{w:"una hermana.",role:"o"}]},
       {es:"Tengo un perro y un gato.", zh:"我有一隻狗和一隻貓。", chunks:[{w:"Tengo",role:"v"},{w:"un perro",role:"o"},{w:"y",role:"c"},{w:"un gato.",role:"o"}]}
@@ -1727,6 +1727,58 @@ const AMMO_DATA = [
     fire_daily:[
       {es:"A mi hermana no le gusta el pescado.", zh:"我姊姊不喜歡魚。", chunks:[{w:"A mi hermana no le",role:"s"},{w:"gusta",role:"v"},{w:"el pescado.",role:"o"}]},
       {es:"A Vera no le gusta madrugar.", zh:"薇拉不喜歡早起。", chunks:[{w:"A Vera no le",role:"s"},{w:"gusta",role:"v"},{w:"madrugar.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e21_01", ep:"Cap.21 · Mi Amiga Vera",
+    core_ammo:"Esta es mi amiga Vera.", core_zh:"這是我的朋友薇拉。",
+    be_verb_type:"ser", be_verb_note:"Ser介紹眼前的人：Esta es + 人 = 這是……",
+    pattern:"Esta es [人名].", pattern_zh:"這是 ___。",
+    pattern_note:"女生用 Esta，男生換成 Este", slots:["人名"],
+    fire_peppa:{es:"Esta es mi amiga Vera.", zh:"這是我的朋友薇拉。", ts:null,
+      chunks:[{w:"Esta",role:"s"},{w:"es",role:"v"},{w:"mi amiga Vera.",role:"o"}]},
+    fire_daily:[
+      {es:"Esta es mi hermana Ana.", zh:"這是我的妹妹安娜。", chunks:[{w:"Esta",role:"s"},{w:"es",role:"v"},{w:"mi hermana Ana.",role:"o"}]},
+      {es:"Este es mi amigo Luis.", zh:"這是我的朋友路易斯。", chunks:[{w:"Este",role:"s"},{w:"es",role:"v"},{w:"mi amigo Luis.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e21_02", ep:"Cap.21 · Mi Amiga Vera",
+    core_ammo:"Es muy divertida.", core_zh:"她很有趣。",
+    be_verb_type:"ser", be_verb_note:"Ser+muy+形容詞：描述一個人的個性",
+    pattern:"Es muy [形容詞].", pattern_zh:"他／她很 ___。",
+    pattern_note:"muy 放在形容詞前面；說女生用 -a 結尾，說男生用 -o 結尾", slots:["形容詞"],
+    fire_peppa:{es:"Es muy divertida.", zh:"她很有趣。", ts:null,
+      chunks:[{w:"Es",role:"v"},{w:"muy divertida.",role:"o"}]},
+    fire_daily:[
+      {es:"Es muy amable.", zh:"她很親切。", chunks:[{w:"Es",role:"v"},{w:"muy amable.",role:"o"}]},
+      {es:"Es muy inteligente.", zh:"他很聰明。", chunks:[{w:"Es",role:"v"},{w:"muy inteligente.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e21_03", ep:"Cap.21 · Mi Amiga Vera",
+    core_ammo:"Es mi mejor amiga.", core_zh:"她是我最好的朋友。",
+    be_verb_type:"ser", be_verb_note:"Ser+mi mejor amigo/a：說誰是我最好的朋友",
+    pattern:"Es mi mejor amigo/a.", pattern_zh:"他／她是我最好的朋友。",
+    pattern_note:"女生用 amiga，男生用 amigo；mejor 不分陰陽", slots:["amigo/a"],
+    fire_peppa:{es:"Es mi mejor amiga.", zh:"她是我最好的朋友。", ts:null,
+      chunks:[{w:"Es",role:"v"},{w:"mi mejor amiga.",role:"o"}]},
+    fire_daily:[
+      {es:"Es mi mejor amigo.", zh:"他是我最好的朋友。", chunks:[{w:"Es",role:"v"},{w:"mi mejor amigo.",role:"o"}]},
+      {es:"Eres mi mejor amiga.", zh:"你是我最好的朋友。", chunks:[{w:"Eres",role:"v"},{w:"mi mejor amiga.",role:"o"}]}
+    ]
+  },
+  {
+    ammo_id:"e21_04", ep:"Cap.21 · Mi Amiga Vera",
+    core_ammo:"Ella es muy simpática y yo soy un poco tímida.", core_zh:"她很親切，而我有一點害羞。",
+    be_verb_type:"ser", be_verb_note:"Ser+形容詞：用 y 把兩個人的個性並排說",
+    pattern:"[人] es [形容詞] y yo soy [形容詞].", pattern_zh:"___ 很 ___，而我 ___。",
+    pattern_note:"un poco = 有一點；兩邊的形容詞各自配合說的人", slots:["人","形容詞","形容詞"],
+    fire_peppa:{es:"Ella es muy simpática y yo soy un poco tímida.", zh:"她很親切，而我有一點害羞。", ts:null,
+      chunks:[{w:"Ella",role:"s"},{w:"es",role:"v"},{w:"muy simpática",role:"o"},{w:"y",role:"c"},{w:"yo",role:"s"},{w:"soy",role:"v"},{w:"un poco tímida.",role:"o"}]},
+    fire_daily:[
+      {es:"Él es muy alto y yo soy un poco bajo.", zh:"他很高，而我有點矮。", chunks:[{w:"Él",role:"s"},{w:"es",role:"v"},{w:"muy alto",role:"o"},{w:"y",role:"c"},{w:"yo",role:"s"},{w:"soy",role:"v"},{w:"un poco bajo.",role:"o"}]},
+      {es:"Ella es muy tranquila y yo soy muy activa.", zh:"她很安靜，而我很活潑。", chunks:[{w:"Ella",role:"s"},{w:"es",role:"v"},{w:"muy tranquila",role:"o"},{w:"y",role:"c"},{w:"yo",role:"s"},{w:"soy",role:"v"},{w:"muy activa.",role:"o"}]}
     ]
   },
 ];

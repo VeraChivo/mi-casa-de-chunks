@@ -23,7 +23,7 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20260930a2">
+<link rel="stylesheet" href="style.css?v=20261002a1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -88,6 +88,11 @@
   <div class="star-progress">
     <div class="star-row" id="starRow"></div>
     <div class="star-label" id="starLabel"></div>
+  </div>
+
+  <!-- 🎬 本集短影片入口 -->
+  <div class="ep-video-bar" id="epVideoBar" style="display:none">
+    <button class="ep-video-btn" onclick="openEpVideo()">🎬 動畫放映</button>
   </div>
 
   <!-- MAIN CARD -->
@@ -190,6 +195,7 @@
       🌱 你已經認識了自己，現在來看看妮妲如何開始她的故事吧。
     </div>
 
+    <button class="btn-restart" id="epVideoReplayBtn" style="display:none" onclick="openEpVideo()">🎬 再放映一次</button>
     <button class="btn-restart" onclick="restartEp()">🔁 重來一次</button>
     <button class="btn-next-ep" id="nextEpBtn" onclick="goNextEp()">下一集 →</button>
   </div>
@@ -640,17 +646,24 @@
     </div>
   </div>
 
-  <script src="episodes.js?v=20260819a1"></script>
-  <script src="audio-manifest.js?v=20260923a1"></script>
-  <script src="ammo.js?v=20260826a1"></script>
+  <script src="episodes.js?v=20261002a3"></script>
+  <script src="audio-manifest.js?v=20261003a1"></script>
+  <script src="ammo.js?v=20261002a2"></script>
   <script src="cognates.js?v=20260826a3"></script>
-  <script src="grammar.js?v=20260918a1"></script>
+  <script src="grammar.js?v=20261002a2"></script>
   <script src="stages.js?v=20260820a1"></script>
   <script src="mom.js?v=20260719a1"></script>
   <script src="diary.js?v=20260810a2"></script>
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20260930a1"></script>
+  <script src="script.js?v=20261003a2"></script>
+  <!-- 🎬 本集短影片彈窗 -->
+  <div class="ep-video-overlay" id="epVideoOverlay" style="display:none" onclick="if(event.target===this)closeEpVideo()">
+    <div class="ep-video-box">
+      <button class="ep-video-close" onclick="closeEpVideo()" aria-label="關閉">✕</button>
+      <video id="epVideoPlayer" controls playsinline preload="none"></video>
+    </div>
+  </div>
 </body>
 </html>

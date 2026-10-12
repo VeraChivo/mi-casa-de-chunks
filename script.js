@@ -284,10 +284,14 @@ const NEWCOMER_ROADMAP = {
           {es:'Me llamo Nita.', zh:'我叫妮妲。'},
           {es:'Soy una gatita.', zh:'我是一隻小貓咪。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:16}},
-        {icon:'🏡', label:'我的家人與朋友', chunks:[
+        {icon:'🏡', label:'我的家人', chunks:[
           {es:'Yo soy Mamá Cata, la mamá de Nita.', zh:'我是卡妲媽媽，妮妲的媽媽。'},
-          {es:'Yo soy Vera.', zh:'我是薇拉。'}
+          {es:'Somos la familia de Nita.', zh:'我們是妮妲的家人。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:17}},
+        {icon:'🐑', label:'我的朋友', chunks:[
+          {es:'Vera es una oveja.', zh:'薇拉是一隻綿羊。'},
+          {es:'Es mi mejor amiga.', zh:'她是我最好的朋友。'}
+        ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:20}},
         {icon:'☀️', label:'我的日常', chunks:[
           {es:'Nita tiene sueño.', zh:'妮妲想睡。'}
         ], jumpLabel:'▶ 看劇情', jump:{type:'episode', ep:18}},
@@ -343,6 +347,29 @@ function renderStoryIndex(){
   </div>`;
 }
 
+// ── 🎬 每集短影片（2026-10-02）：只有列在這裡的集數才會顯示「先看 30 秒」/「再看一次」──
+const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1', 20:'video/e21.mp4?v=20261003a2' };
+let _epVideoPushed = false;
+function updateEpVideoUI(){
+  const has = !!EPISODE_VIDEOS[ep];
+  const bar = document.getElementById('epVideoBar'); if(bar) bar.style.display = has ? 'block' : 'none';
+  const rb = document.getElementById('epVideoReplayBtn'); if(rb) rb.style.display = has ? '' : 'none';
+}
+function openEpVideo(){
+  const src = EPISODE_VIDEOS[ep]; if(!src) return;
+  const v = document.getElementById('epVideoPlayer'); v.src = src;
+  document.getElementById('epVideoOverlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  history.pushState({sheet:'epvideo'}, ''); _epVideoPushed = true;
+  const p = v.play(); if(p && p.catch) p.catch(()=>{});
+}
+function closeEpVideo(_fromPop){
+  const v = document.getElementById('epVideoPlayer'); v.pause(); v.removeAttribute('src'); v.load();
+  document.getElementById('epVideoOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+  if(_epVideoPushed && !_fromPop){ _epVideoPushed = false; history.back(); } else { _epVideoPushed = false; }
+}
+
 function selectEp(n){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
@@ -357,6 +384,7 @@ function selectEp(n){
   // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
   if(mainCardWrap) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
+  updateEpVideoUI();
   _epSwitching=false;
 }
 
@@ -556,9 +584,11 @@ const SENTENCE_AMMO_MAP2 = {
   154:['e16_05'], 156:['e16_07'], 158:['e16_09'],
   // E18/E19/E20 reusableChunk彈藥（2026-08-19，補做這三集的CHUNK_ECOLOGY分類後，
   // 只挑12句最具代表性、彼此不重疊的語塊，比例跟E17的4/10一致）
-  170:['e18_01'], 171:['e18_02'], 174:['e18_05'], 178:['e18_09'],
+  170:['e18_01'], 171:['e18_02'], 174:['e18_05'],
   180:['e19_01'], 185:['e19_06'], 187:['e19_08'], 188:['e19_09'],
   190:['e20_01'], 192:['e20_03'], 195:['e20_06'], 197:['e20_08'],
+  // E21 我的朋友薇拉（2026-10-02，挑4句可換場景再用的語塊）
+  200:['e21_01'], 203:['e21_02'], 206:['e21_03'], 207:['e21_04'],
 };
 
 function unlockAmmo(globalIdx){
@@ -678,8 +708,8 @@ function renderBeVerbNote(a){
 
 // 西語數字 1-10：基數/序數/emoji 三態並列
 const NUM_EMOJI=['','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟'];
-const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte'];
-const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto','decimoséptimo','decimoctavo','decimonoveno','vigésimo'];
+const NUM_WORDS=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte','veintiuno'];
+const ORD_WORDS=['','primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo','decimotercero','decimocuarto','decimoquinto','decimosexto','decimoséptimo','decimoctavo','decimonoveno','vigésimo','vigésimo primero'];
 
 function renderAmmo(){
   document.getElementById('ammoCount').textContent = ammoUnlocked.length;
@@ -2556,6 +2586,7 @@ function showComplete(){
   document.querySelectorAll('.nav-row').forEach(r=>r.style.display='none');
   const cs = document.getElementById('completeScreen');
   cs.classList.add('show');
+  updateEpVideoUI();
 
   const n = total();
   document.getElementById('completeStars').innerHTML = renderLevelUpCert(buildLevelUpData(ep));
@@ -2582,7 +2613,7 @@ function showComplete(){
   if(isRouteComplete){
     nextEpBtn.classList.remove('locked');
     nextEpBtn.textContent = '🐱 妮妲的角落等你 →';
-  } else if(ep < EPS.length-1){
+  } else if(ep < EPS.length-1 || EPISODE_NEXT[ep]!=null){
     nextEpBtn.classList.remove('locked');
     nextEpBtn.textContent = '下一集 →';
   } else {
@@ -2607,6 +2638,7 @@ function restartEp(){
 
 function goNextEp(){
   if(EPISODE_COMPLETION_MARKERS.routeComplete.includes(ep)){ selectEp(0); return; }
+  if(EPISODE_NEXT[ep]!=null){ selectEp(EPISODE_NEXT[ep]); return; }
   if(ep < EPS.length-1) selectEp(ep+1);
 }
 
@@ -4134,6 +4166,8 @@ function closeGrammarSheet(_fromPop){
 }
 
 window.addEventListener('popstate', ()=>{
+  const vo = document.getElementById('epVideoOverlay');
+  if(vo && vo.style.display === 'flex'){ closeEpVideo(true); return; }
   const sheet = document.getElementById('grammarSheet');
   if(sheet && sheet.style.display === 'block'){
     closeGrammarSheet(true);

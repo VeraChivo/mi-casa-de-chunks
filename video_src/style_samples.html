@@ -1,0 +1,84 @@
+<!doctype html><html><head><meta charset="utf-8"><title>E17 風格範例（A平面 B幾何 C手繪）</title>
+<style>body{margin:0;background:#f3f1ec;font-family:"Liberation Sans",sans-serif;display:flex;gap:22px;padding:22px;justify-content:center}
+figure{margin:0;text-align:center}canvas{width:480px;height:600px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.18);display:block}
+figcaption{margin-top:10px;font-size:22px;font-weight:800;color:#2f4f6e}</style></head><body>
+<figure><canvas id="a" width="720" height="900"></canvas><figcaption>A　平面向量</figcaption></figure>
+<figure><canvas id="b" width="720" height="900"></canvas><figcaption>B　極簡幾何</figcaption></figure>
+<figure><canvas id="c" width="720" height="900"></canvas><figcaption>C　手繪線條</figcaption></figure>
+<script>
+let ctx, S, seed;
+const rnd=()=>{seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;};
+const INK='#2c3040';
+function ell(cx,cy,rx,ry,n=40){ if(S.geo){rx=ry=(rx+ry)/2;} const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2;p.push([cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]);}return p;}
+function sub(pts,step){const q=[];for(let i=0;i<pts.length;i++){const a=pts[i],b=pts[(i+1)%pts.length];const n=Math.max(1,Math.round(Math.hypot(b[0]-a[0],b[1]-a[1])/step));for(let j=0;j<n;j++)q.push([a[0]+(b[0]-a[0])*j/n,a[1]+(b[1]-a[1])*j/n]);}return q;}
+function jit(pts,a,dx=0,dy=0){return pts.map(([x,y])=>[x+dx+(rnd()-.5)*a*2,y+dy+(rnd()-.5)*a*2]);}
+function trace(p){ctx.beginPath();ctx.moveTo(p[0][0],p[0][1]);for(let i=1;i<p.length;i++)ctx.lineTo(p[i][0],p[i][1]);ctx.closePath();}
+function shape(pts,color,o={}){
+  if(S.hand){
+    const q=sub(pts,16);
+    ctx.save();ctx.globalAlpha=o.alpha??.92;trace(jit(q,1.6,-3,-2));ctx.fillStyle=color;ctx.fill();ctx.restore();
+    if(o.ink!==false){ctx.save();ctx.strokeStyle=INK;ctx.lineWidth=o.lw||4.2;ctx.lineJoin='round';ctx.lineCap='round';trace(jit(q,1.8));ctx.stroke();ctx.globalAlpha=.45;ctx.lineWidth=2;trace(jit(q,2.4,1.5,1));ctx.stroke();ctx.restore();}
+  } else { ctx.save(); if(o.alpha)ctx.globalAlpha=o.alpha; trace(pts); ctx.fillStyle=color; ctx.fill(); ctx.restore(); }
+}
+function line(x1,y1,x2,y2,w,c){ctx.save();ctx.strokeStyle=c;ctx.lineWidth=w;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(x1,y1);if(S.hand){ctx.quadraticCurveTo((x1+x2)/2+(rnd()-.5)*5,(y1+y2)/2+(rnd()-.5)*5,x2,y2);}else ctx.lineTo(x2,y2);ctx.stroke();ctx.restore();}
+function rect(x,y,w,h,c,o){shape([[x,y],[x+w,y],[x+w,y+h],[x,y+h]],c,o);}
+
+function nita(x,y,s,armAng){
+  const FUR=S.fur,DK=S.furD,CR=S.cream,PK='#F2B6C4',WH='#FFFFFF';
+  ctx.save();ctx.translate(x,y);ctx.scale(s,s);
+  if(!S.hand){ctx.globalAlpha=.14;ctx.fillStyle='#2c3040';ctx.beginPath();ctx.ellipse(0,4,140,22,0,0,7);ctx.fill();ctx.globalAlpha=1;}
+  // 尾巴
+  shape(S.geo?[[70,-60],[120,-70],[150,-130],[150,-200],[172,-210],[176,-130],[140,-50],[80,-30]]:[[70,-70],[112,-92],[138,-150],[132,-204],[154,-218],[164,-186],[152,-118],[112,-48],[70,-38]],FUR);
+  // 腳＋白襪子
+  [-46,46].forEach(sx=>{shape(ell(sx,-40,32,36),FUR);shape(ell(sx,-16,37,20),WH);});
+  // 身體、肚子
+  shape(ell(0,-128,98,102),FUR); shape(ell(0,-112,58,66),CR,{ink:S.hand});
+  // 手（左手垂下，右手舉起指向門牌）
+  const arm=(sx,ang)=>{ctx.save();ctx.translate(sx,-176);ctx.rotate(ang);shape(ell(0,46,25,54),FUR);ctx.restore();};
+  arm(-88,.22); arm(88,armAng);
+  // 耳朵（左耳有一搓白毛，右耳沒有→不對稱）
+  shape([[-122,-360],[-96,-476],[-30,-392]],FUR); shape([[-100,-382],[-92,-440],[-58,-396]],PK,{ink:false});
+  shape([[122,-360],[96,-476],[30,-392]],FUR);   shape([[100,-382],[92,-440],[58,-396]],PK,{ink:false});
+  shape([[-108,-452],[-118,-500],[-99,-480],[-92,-510],[-80,-474],[-66,-492],[-74,-440]],WH);
+  // 頭
+  shape(ell(0,-300,130,108),FUR);
+  [[-36,-392],[0,-398],[36,-392]].forEach(([a,b])=>shape([[a-9,b],[a+9,b],[a+5,b+32],[a-5,b+32]],DK,{ink:false}));
+  shape(ell(0,-262,58,40),CR,{ink:false});
+  ctx.save();ctx.globalAlpha=.6;shape(ell(-88,-276,19,12),PK,{ink:false});shape(ell(88,-276,19,12),PK,{ink:false});ctx.restore();
+  // 眼睛（看向門牌的方向）
+  [-52,52].forEach(ex=>{shape(ell(ex+10,-306,15,20),INK,{ink:false});ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(ex+16,-314,6,0,7);ctx.fill();});
+  shape([[-12,-278],[12,-278],[0,-264]],'#E88BA0',{ink:false});
+  ctx.strokeStyle=INK;ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.arc(-9,-262,9,.1*Math.PI,.9*Math.PI);ctx.arc(9,-262,9,.1*Math.PI,.9*Math.PI);ctx.stroke();
+  ctx.save();ctx.globalAlpha=.6;[[-1,-6],[-1,8],[1,-6],[1,8]].forEach(([m,dy])=>line(m*62,-264+dy,m*142,-272+dy*2.2,2.5,INK));ctx.restore();
+  ctx.restore();
+}
+function scene(st){
+  S=st;ctx=S.ctx;seed=77;
+  ctx.fillStyle=S.bg;ctx.fillRect(0,0,720,900);
+  // 牆（以角落為中心：左牆亮、右牆暗）、地板
+  shape([[0,0],[470,0],[470,690],[0,760]],S.wallL,{ink:false}); shape([[470,0],[720,0],[720,740],[470,690]],S.wallR,{ink:false}); shape([[0,760],[470,690],[720,740],[720,900],[0,900]],S.floor,{ink:false});
+  if(S.hand){ctx.save();ctx.strokeStyle='rgba(90,110,140,.35)';ctx.lineWidth=2;for(let i=0;i<34;i++){const x=10+i*14;line(x,40+rnd()*30,x+22,70+rnd()*30,2,'rgba(90,110,140,.3)');}ctx.restore();
+    line(470,0,470,690,4,INK);line(0,760,470,690,4,INK);line(470,690,720,740,4,INK);}
+  // 窗
+  if(S.geo){shape(ell(150,250,80,80),S.win,{ink:false});shape(ell(150,250,62,62),'#FFFFFF',{ink:false,alpha:.5});}
+  else {rect(70,170,170,190,S.win);rect(151,170,8,190,S.winBar,{ink:false});rect(70,260,170,8,S.winBar,{ink:false});}
+  // 木門牌（掛在右牆，用兩條細繩吊著）——融入場景、不是道具
+  ctx.save();ctx.translate(585,300);ctx.rotate(S.geo?0:-.04);
+  line(-50,-46,-20,-92,4,S.cordC);line(50,-46,20,-92,4,S.cordC);shape(ell(0,-96,7,7),'#8a6a48');
+  shape([[-92,-48],[92,-48],[92,48],[-92,48]],S.wood);
+  if(!S.geo){ctx.save();ctx.globalAlpha=.2;ctx.strokeStyle='#7a5530';ctx.lineWidth=3;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-82,k*26);ctx.lineTo(82,k*26+(rnd()-.5)*4);ctx.stroke();}ctx.restore();}
+  ctx.fillStyle='#fff8ea';ctx.font=(S.hand?'italic ':'')+'800 58px "Liberation Sans","DejaVu Sans",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('Nita',0,4);
+  // 小葉子
+  shape([[72,42],[104,30],[96,62]],S.leaf); shape([[88,52],[118,56],[100,78]],S.leaf);
+  ctx.restore();
+  // 道具：紙箱、毛線球、坐墊（都貼在角落，融入場景）
+  shape([[540,610],[690,600],[700,720],[545,730]],S.box); shape([[540,610],[620,572],[690,600]],S.boxTop);
+  shape(ell(560,830,150,44),S.cushion); shape(ell(560,818,112,26),S.cushion2,{ink:false});
+  shape(ell(660,842,36,34),'#F2B6C4'); ctx.strokeStyle=S.hand?INK:'rgba(180,90,110,.6)';ctx.lineWidth=3;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.arc(660,842,12+Math.abs(k)*10,.3+k*.4,2.7+k*.4);ctx.stroke();}
+  nita(255,810,.86,-2.25);
+}
+function mk(id,extra){const c=document.getElementById(id);return Object.assign({ctx:c.getContext('2d'),fur:'#8FA6C0',furD:'#6E87A3',cream:'#F3EEE2'},extra);}
+scene(mk('a',{bg:'#DCEEF2',wallL:'#E6F3F5',wallR:'#CBE3EA',floor:'#E2C7A3',win:'#BFE3EE',winBar:'#fff',wood:'#D9A66B',cordC:'#8a6a48',leaf:'#6FA37A',box:'#D9B58A',boxTop:'#C49E72',cushion:'#8AC4DE',cushion2:'#B8DCE8'}));
+scene(mk('b',{geo:true,fur:'#8FA6C0',furD:'#6E87A3',bg:'#E7F0F2',wallL:'#F4E9D8',wallR:'#E8D4B8',floor:'#8AC4DE',win:'#BFE3EE',wood:'#D9A66B',cordC:'#8a6a48',leaf:'#6FA37A',box:'#E39A6B',boxTop:'#D08454',cushion:'#F2C46E',cushion2:'#F7D98E'}));
+scene(mk('c',{hand:true,bg:'#FBF7EE',wallL:'#E9F2F3',wallR:'#D6E6EC',floor:'#EBD5B5',win:'#C8E6F0',winBar:'#FFFFFF',wood:'#E2B47A',cordC:'#8a6a48',leaf:'#7FB48A',box:'#E0BE92',boxTop:'#CDA779',cushion:'#9BCDE3',cushion2:'#C3E1EE'}));
+</script></body></html>

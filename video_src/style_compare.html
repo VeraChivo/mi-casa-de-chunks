@@ -1,0 +1,77 @@
+<!doctype html><html><head><meta charset="utf-8"><title>E17 扁平 vs 美式卡通</title>
+<style>body{margin:0;background:#f3f1ec;font-family:"Liberation Sans",sans-serif;display:flex;gap:26px;padding:22px;justify-content:center}
+figure{margin:0;text-align:center}canvas{width:480px;height:600px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.18);display:block}
+figcaption{margin-top:10px;font-size:22px;font-weight:800;color:#2f4f6e}</style></head><body>
+<figure><canvas id="a" width="720" height="900"></canvas><figcaption>扁平插畫（沒有輪廓線）</figcaption></figure>
+<figure><canvas id="b" width="720" height="900"></canvas><figcaption>美式卡通（粗輪廓、誇張表情）</figcaption></figure>
+<script>
+let ctx,S;const INK='#1f2230';
+function ell(cx,cy,rx,ry,n=44){const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2;p.push([cx+Math.cos(a)*rx,cy+Math.sin(a)*ry]);}return p;}
+function trace(p){ctx.beginPath();ctx.moveTo(p[0][0],p[0][1]);for(let i=1;i<p.length;i++)ctx.lineTo(p[i][0],p[i][1]);ctx.closePath();}
+function shape(pts,color,o={}){ctx.save();if(o.alpha)ctx.globalAlpha=o.alpha;trace(pts);ctx.fillStyle=color;ctx.fill();
+  if(S.toon&&o.ink!==false){ctx.globalAlpha=1;ctx.strokeStyle=INK;ctx.lineWidth=o.lw||8;ctx.lineJoin='round';ctx.stroke();}ctx.restore();}
+function line(x1,y1,x2,y2,w,c){ctx.save();ctx.strokeStyle=c;ctx.lineWidth=w;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.restore();}
+function rect(x,y,w,h,c,o){shape([[x,y],[x+w,y],[x+w,y+h],[x,y+h]],c,o);}
+
+function nita(x,y,s,armAng){
+  const FUR=S.fur,DK=S.furD,CR=S.cream,PK='#F5A9BC',WH='#FFFFFF',T=S.toon;
+  ctx.save();ctx.translate(x,y);ctx.scale(s,s);
+  ctx.globalAlpha=.16;ctx.fillStyle='#1f2230';ctx.beginPath();ctx.ellipse(0,4,140,22,0,0,7);ctx.fill();ctx.globalAlpha=1;
+  // 尾巴改到身體左側，舉起的右手才不會跟尾巴糊在一起
+  shape([[-70,-70],[-112,-92],[-138,-150],[-132,-204],[-154,-218],[-164,-186],[-152,-118],[-112,-48],[-70,-38]],FUR);
+  [-46,46].forEach(sx=>{shape(ell(sx,-40,32,36),FUR);shape(ell(sx,-16,38,21),WH);});            // 腳＋白襪子
+  shape(ell(0,-128,98,102),FUR); shape(ell(0,-112,58,66),CR,{ink:T?false:false});
+  if(T){ctx.save();ctx.globalAlpha=.22;ctx.fillStyle='#1f2a5a';ctx.beginPath();ctx.ellipse(62,-118,34,88,.2,0,7);ctx.fill();ctx.restore();} // 賽璐璐單色陰影
+  const arm=(sx,ang)=>{ctx.save();ctx.translate(sx,-176);ctx.rotate(ang);shape(ell(0,46,25,54),FUR);shape(ell(0,92,27,20),WH);ctx.restore();};
+  arm(-88,.22); arm(88,armAng);
+  // 耳朵：左耳外側有一塊白毛（貼在耳朵邊緣），右耳乾淨
+  shape([[-122,-360],[-96,-476],[-30,-392]],FUR); shape([[-100,-382],[-92,-440],[-58,-396]],PK,{ink:false});
+  shape([[122,-360],[96,-476],[30,-392]],FUR);   shape([[100,-382],[92,-440],[58,-396]],PK,{ink:false});
+  shape([[-119,-366],[-100,-436],[-87,-420],[-101,-374]],WH,{ink:false});
+  shape([[-100,-436],[-114,-452],[-104,-424]],WH,{ink:false}); shape([[-96,-446],[-90,-470],[-86,-436]],WH,{ink:false});
+  shape(ell(0,-300,T?142:130,T?118:108),FUR);
+  [[-36,-398],[0,-404],[36,-398]].forEach(([a,b])=>shape([[a-9,b],[a+9,b],[a+5,b+32],[a-5,b+32]],DK,{ink:false}));
+  shape(ell(0,-262,60,42),CR,{ink:false});
+  ctx.save();ctx.globalAlpha=.65;shape(ell(-92,-270,20,13),PK,{ink:false});shape(ell(92,-270,20,13),PK,{ink:false});ctx.restore();
+  if(T){ // 大眼睛：白底＋黑瞳＋亮點，眉毛上揚
+    [-56,56].forEach(ex=>{shape(ell(ex,-314,28,34),'#fff',{lw:6});shape(ell(ex+9,-310,14,21),INK,{ink:false});ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(ex+15,-320,6,0,7);ctx.fill();});
+    line(-84,-366,-34,-376,7,INK);line(84,-366,34,-376,7,INK);
+    shape([[-12,-280],[12,-280],[0,-266]],'#E9708D',{lw:5});
+    // 大大的開口笑
+    ctx.save();ctx.beginPath();ctx.moveTo(-34,-258);ctx.quadraticCurveTo(0,-208,34,-258);ctx.closePath();ctx.fillStyle='#6B2338';ctx.fill();ctx.strokeStyle=INK;ctx.lineWidth=6;ctx.lineJoin='round';ctx.stroke();
+    ctx.clip();ctx.fillStyle='#F2788F';ctx.beginPath();ctx.ellipse(0,-226,20,14,0,0,7);ctx.fill();ctx.restore();
+    [[-1,-8],[-1,8],[1,-8],[1,8]].forEach(([m,dy])=>line(m*70,-268+dy,m*150,-278+dy*2.4,4,INK));
+  } else {
+    [-52,52].forEach(ex=>{shape(ell(ex+10,-306,15,20),INK,{ink:false});ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(ex+16,-314,6,0,7);ctx.fill();});
+    shape([[-12,-278],[12,-278],[0,-264]],'#E88BA0',{ink:false});
+    ctx.strokeStyle=INK;ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.arc(-9,-262,9,.1*Math.PI,.9*Math.PI);ctx.arc(9,-262,9,.1*Math.PI,.9*Math.PI);ctx.stroke();
+    ctx.save();ctx.globalAlpha=.55;[[-1,-6],[-1,8],[1,-6],[1,8]].forEach(([m,dy])=>line(m*62,-264+dy,m*142,-272+dy*2.2,2.5,INK));ctx.restore();
+  }
+  ctx.restore();
+}
+function scene(st){
+  S=st;ctx=S.ctx;
+  ctx.fillStyle=S.bg;ctx.fillRect(0,0,720,900);
+  const tl=S.toon?6:0; const L=(pts,c)=>shape(pts,c,{ink:false});
+  L([[0,0],[470,0],[470,690],[0,760]],S.wallL); L([[470,0],[720,0],[720,740],[470,690]],S.wallR); L([[0,760],[470,690],[720,740],[720,900],[0,900]],S.floor);
+  if(S.toon){ctx.save();ctx.strokeStyle=INK;ctx.lineWidth=8;ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(470,0);ctx.lineTo(470,690);ctx.lineTo(0,760);ctx.moveTo(470,690);ctx.lineTo(720,740);ctx.stroke();ctx.restore();}
+  rect(70,170,170,190,S.win); rect(151,170,8,190,S.winBar,{ink:false}); rect(70,260,170,8,S.winBar,{ink:false});
+  // 木門牌：掛在右牆
+  ctx.save();ctx.translate(590,420);ctx.rotate(-.04);
+  line(-50,-46,-20,-92,S.toon?7:4,S.toon?INK:S.cordC);line(50,-46,20,-92,S.toon?7:4,S.toon?INK:S.cordC);shape(ell(0,-96,8,8),'#8a6a48');
+  shape([[-92,-48],[92,-48],[92,48],[-92,48]],S.wood);
+  ctx.save();ctx.globalAlpha=.2;ctx.strokeStyle='#7a5530';ctx.lineWidth=3;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-82,k*26);ctx.lineTo(82,k*26);ctx.stroke();}ctx.restore();
+  ctx.font='800 58px "Liberation Sans","DejaVu Sans",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  if(S.toon){ctx.lineWidth=9;ctx.strokeStyle=INK;ctx.lineJoin='round';ctx.strokeText('Nita',0,4);}
+  ctx.fillStyle='#fff8ea';ctx.fillText('Nita',0,4);
+  shape([[-96,40],[-126,26],[-118,60]],S.leaf); shape([[-104,54],[-136,54],[-118,82]],S.leaf);
+  ctx.restore();
+  shape([[545,640],[690,630],[700,740],[550,750]],S.box); shape([[545,640],[620,602],[690,630]],S.boxTop);
+  shape(ell(500,850,118,34),S.cushion); shape(ell(500,840,86,20),S.cushion2,{ink:false});
+  shape(ell(640,852,34,32),'#F5A9BC'); ctx.strokeStyle=S.toon?INK:'rgba(180,90,110,.6)';ctx.lineWidth=3;for(let k=-1;k<=1;k++){ctx.beginPath();ctx.arc(640,852,11+Math.abs(k)*9,.3+k*.4,2.7+k*.4);ctx.stroke();}
+  nita(290,830,.92,-2.45);
+}
+const mk=(id,e)=>Object.assign({ctx:document.getElementById(id).getContext('2d')},e);
+scene(mk('a',{bg:'#DCEEF2',wallL:'#E6F3F5',wallR:'#CBE3EA',floor:'#E2C7A3',win:'#BFE3EE',winBar:'#fff',wood:'#D9A66B',cordC:'#8a6a48',leaf:'#6FA37A',box:'#D9B58A',boxTop:'#C49E72',cushion:'#8AC4DE',cushion2:'#B8DCE8',fur:'#8FA6C0',furD:'#6E87A3',cream:'#F3EEE2'}));
+scene(mk('b',{toon:true,bg:'#BDE8F5',wallL:'#C9EEF8',wallR:'#8ECBE8',floor:'#F6C77E',win:'#9ADCF5',winBar:'#fff',wood:'#E59A45',cordC:INK,leaf:'#4DBE6E',box:'#F0A35E',boxTop:'#DE8A42',cushion:'#4FB3E8',cushion2:'#8AD0F2',fur:'#7D9BC8',furD:'#56719E',cream:'#FFF4DC'}));
+</script></body></html>
