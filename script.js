@@ -229,18 +229,22 @@ function total(){return epData().sentences.length}
 
 // ── INIT NAV ──
 function buildNav(){
+  const current=document.getElementById('episodePickerCurrent');
+  if(current) current.textContent='E'+(ep+1)+' · '+EPS[ep].title;
   const nav=document.getElementById('seasonNav');
   const existing=nav.querySelectorAll('.ep-chip');
   if(existing.length===EPS.length){
-    existing.forEach((c,i)=>c.classList.toggle('active',i===ep));
+    existing.forEach((c,i)=>{c.classList.toggle('active',i===ep);c.setAttribute('aria-current',i===ep?'true':'false');});
     return;
   }
   nav.innerHTML='';
   EPS.forEach((e,i)=>{
-    const chip=document.createElement('div');
+    const chip=document.createElement('button');
+    chip.type='button';
     chip.className='ep-chip'+(i===ep?' active':'');
-    chip.textContent=NUM_WORDS[i+1] ? NUM_WORDS[i+1].charAt(0).toUpperCase()+NUM_WORDS[i+1].slice(1) : `${i+1}`;
-    chip.onclick=()=>selectEp(i);
+    chip.textContent='E'+(i+1)+' · '+e.title;
+    chip.setAttribute('aria-current',i===ep?'true':'false');
+    chip.onclick=()=>{document.getElementById('episodePicker').open=false;selectEp(i);};
     nav.appendChild(chip);
   });
 
@@ -347,41 +351,46 @@ function renderStoryIndex(){
 
 // ── 🎬 每集短影片（2026-10-02）：只有列在這裡的集數才會顯示「先看 30 秒」/「再看一次」──
 const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1', 20:'video/e21.mp4?v=20261003a2' };
-let _epVideoPushed = false;
+let _activeVideoEpisode = 16;
 function updateEpVideoUI(){
-  const bar = document.getElementById('epVideoBar'); if(bar) bar.style.display = 'block';
-  const videoEpisodes = [16,17,20];
+  if(EPISODE_VIDEOS[ep]) _activeVideoEpisode=ep;
+  const videoEpisodes=[16,17,20];
   videoEpisodes.forEach(i=>{
-    const button = document.getElementById('videoEpisode'+i+'Btn');
+    const button=document.getElementById('videoEpisode'+i+'Btn');
     if(button){
-      const selected = ep === i;
-      button.classList.toggle('active', selected);
-      button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      const selected=_activeVideoEpisode===i;
+      button.classList.toggle('active',selected);
+      button.setAttribute('aria-pressed',String(selected));
     }
   });
-  const rb = document.getElementById('epVideoReplayBtn'); if(rb) rb.style.display = EPISODE_VIDEOS[ep] ? '' : 'none';
+  const v=document.getElementById('epVideoPlayer');
+  const src=EPISODE_VIDEOS[_activeVideoEpisode];
+  const title=document.getElementById('videoEpisode'+_activeVideoEpisode+'Btn').querySelector('.video-episode-name').textContent;
+  if(v && v.getAttribute('src')!==src){v.pause();v.src=src;v.load();}
+  document.getElementById('epVideoNumber').textContent='E'+(_activeVideoEpisode+1);
+  document.getElementById('epVideoName').textContent=title;
+  if(v) v.setAttribute('aria-label','E'+(_activeVideoEpisode+1)+' · '+title);
+  const rb=document.getElementById('epVideoReplayBtn');
+  if(rb) rb.style.display=EPISODE_VIDEOS[ep]?'':'none';
 }
 function playEpisodeVideo(episodeIndex){
   if(!EPISODE_VIDEOS[episodeIndex]) return;
-  selectEp(episodeIndex);
+  selectEp(episodeIndex,true);
   openEpVideo();
 }
 function openEpVideo(){
-  const src = EPISODE_VIDEOS[ep]; if(!src) return;
-  const v = document.getElementById('epVideoPlayer'); v.src = src;
-  document.getElementById('epVideoOverlay').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  history.pushState({sheet:'epvideo'}, ''); _epVideoPushed = true;
-  const p = v.play(); if(p && p.catch) p.catch(()=>{});
+  if(!EPISODE_VIDEOS[ep]) return;
+  updateEpVideoUI();
+  document.getElementById('epVideoBar').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+  const v=document.getElementById('epVideoPlayer');
+  const p=v.play();if(p&&p.catch)p.catch(()=>{});
 }
-function closeEpVideo(_fromPop){
-  const v = document.getElementById('epVideoPlayer'); v.pause(); v.removeAttribute('src'); v.load();
-  document.getElementById('epVideoOverlay').style.display = 'none';
-  document.body.style.overflow = '';
-  if(_epVideoPushed && !_fromPop){ _epVideoPushed = false; history.back(); } else { _epVideoPushed = false; }
+function closeEpVideo(){
+  const v=document.getElementById('epVideoPlayer');
+  if(v) v.pause();
 }
 
-function selectEp(n){
+function selectEp(n,skipScroll=false){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
   document.getElementById('completeScreen').classList.remove('show');
@@ -393,7 +402,7 @@ function selectEp(n){
   // 2026-08-03 修：原本window.scrollTo({top:0})捲的是整頁最頂端，從展開的新人路線圖
   // 深處點「看劇情」時，最頂端只會停在路線圖標題，真正更新的卡片內容遠在畫面外看不到，
   // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
-  if(mainCardWrap) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
+  if(mainCardWrap && !skipScroll) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
   updateEpVideoUI();
   _epSwitching=false;

@@ -23,7 +23,7 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20261013a1">
+<link rel="stylesheet" href="style.css?v=20261013c1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -82,9 +82,10 @@
 
   <!-- 🎬 Videos: tres episodios, un solo reproductor -->
   <section class="ep-video-bar" id="epVideoBar" aria-labelledby="epVideoTitle">
-    <h2 class="ep-video-title" id="epVideoTitle">🎬 Videos</h2>
-    <p class="ep-video-subtitle">Elige un episodio para ver la historia.</p>
-    <div class="ep-video-list">
+    <h2 class="ep-video-title" id="epVideoTitle" lang="es">🎬 Historias en video</h2>
+    <div class="ep-video-now" lang="es"><span id="epVideoNumber">E17</span><strong id="epVideoName">Me Llamo Nita</strong></div>
+    <video class="ep-inline-player" id="epVideoPlayer" controls playsinline preload="metadata" src="video/e17.mp4?v=20261002a1" aria-label="E17 · Me Llamo Nita"></video>
+    <div class="ep-video-list" lang="es">
       <button class="video-episode-row" id="videoEpisode16Btn" type="button" aria-pressed="false" onclick="playEpisodeVideo(16)">
         <span class="video-episode-number">E17</span><span class="video-episode-name">Me Llamo Nita</span><span class="video-episode-action">▶ Ver</span>
       </button>
@@ -98,8 +99,10 @@
   </section>
 
   <!-- EPISODE NAV -->
-  <div class="season-nav-label">📖 選一集劇情</div>
-  <div class="season-nav" id="seasonNav"></div>
+  <details class="episode-picker" id="episodePicker" lang="es">
+    <summary class="episode-picker-summary"><span><small>Elige un episodio 👉 選一集</small><strong id="episodePickerCurrent">E1 · El Rincón de Nita</strong></span><span class="episode-picker-action">Elegir <span class="episode-picker-arrow" aria-hidden="true">⌄</span></span></summary>
+    <div class="season-nav" id="seasonNav"></div>
+  </details>
 
   <!-- STAR PROGRESS -->
   <div class="star-progress">
@@ -669,13 +672,6 @@
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20261013a1"></script>
-  <!-- 🎬 本集短影片彈窗 -->
-  <div class="ep-video-overlay" id="epVideoOverlay" style="display:none" onclick="if(event.target===this)closeEpVideo()">
-    <div class="ep-video-box">
-      <button class="ep-video-close" onclick="closeEpVideo()" aria-label="關閉">✕</button>
-      <video id="epVideoPlayer" controls playsinline preload="none"></video>
-    </div>
-  </div>
+  <script src="script.js?v=20261013c1"></script>
 </body>
 </html>
