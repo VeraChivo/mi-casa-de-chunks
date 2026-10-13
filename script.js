@@ -233,7 +233,6 @@ function buildNav(){
   const existing=nav.querySelectorAll('.ep-chip');
   if(existing.length===EPS.length){
     existing.forEach((c,i)=>c.classList.toggle('active',i===ep));
-    _centerActiveEpChip(nav);
     return;
   }
   nav.innerHTML='';
@@ -244,8 +243,7 @@ function buildNav(){
     chip.onclick=()=>selectEp(i);
     nav.appendChild(chip);
   });
-  _centerActiveEpChip(nav);
-  _bindHScrollFade(nav);
+
 }
 // 單排左右滑動的選單：右邊還有東西時淡出提示「可以往右滑」，滑到底就消失
 function _bindHScrollFade(el){
@@ -351,9 +349,22 @@ function renderStoryIndex(){
 const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1', 20:'video/e21.mp4?v=20261003a2' };
 let _epVideoPushed = false;
 function updateEpVideoUI(){
-  const has = !!EPISODE_VIDEOS[ep];
-  const bar = document.getElementById('epVideoBar'); if(bar) bar.style.display = has ? 'block' : 'none';
-  const rb = document.getElementById('epVideoReplayBtn'); if(rb) rb.style.display = has ? '' : 'none';
+  const bar = document.getElementById('epVideoBar'); if(bar) bar.style.display = 'block';
+  const videoEpisodes = [16,17,20];
+  videoEpisodes.forEach(i=>{
+    const button = document.getElementById('videoEpisode'+i+'Btn');
+    if(button){
+      const selected = ep === i;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+    }
+  });
+  const rb = document.getElementById('epVideoReplayBtn'); if(rb) rb.style.display = EPISODE_VIDEOS[ep] ? '' : 'none';
+}
+function playEpisodeVideo(episodeIndex){
+  if(!EPISODE_VIDEOS[episodeIndex]) return;
+  selectEp(episodeIndex);
+  openEpVideo();
 }
 function openEpVideo(){
   const src = EPISODE_VIDEOS[ep]; if(!src) return;

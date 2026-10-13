@@ -23,7 +23,7 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20261002a1">
+<link rel="stylesheet" href="style.css?v=20261013a1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -80,6 +80,23 @@
   <!-- ── 🏡 A1-A2 劇情索引（把已有劇情/文法卡串成新手第一章，不是新內容） ── -->
   <div id="storyIndexBody"></div>
 
+  <!-- 🎬 Videos: tres episodios, un solo reproductor -->
+  <section class="ep-video-bar" id="epVideoBar" aria-labelledby="epVideoTitle">
+    <h2 class="ep-video-title" id="epVideoTitle">🎬 Videos</h2>
+    <p class="ep-video-subtitle">Elige un episodio para ver la historia.</p>
+    <div class="ep-video-list">
+      <button class="video-episode-row" id="videoEpisode16Btn" type="button" aria-pressed="false" onclick="playEpisodeVideo(16)">
+        <span class="video-episode-number">E17</span><span class="video-episode-name">Me Llamo Nita</span><span class="video-episode-action">▶ Ver</span>
+      </button>
+      <button class="video-episode-row" id="videoEpisode17Btn" type="button" aria-pressed="false" onclick="playEpisodeVideo(17)">
+        <span class="video-episode-number">E18</span><span class="video-episode-name">Mi Familia</span><span class="video-episode-action">▶ Ver</span>
+      </button>
+      <button class="video-episode-row" id="videoEpisode20Btn" type="button" aria-pressed="false" onclick="playEpisodeVideo(20)">
+        <span class="video-episode-number">E21</span><span class="video-episode-name">Mi Amiga Vera</span><span class="video-episode-action">▶ Ver</span>
+      </button>
+    </div>
+  </section>
+
   <!-- EPISODE NAV -->
   <div class="season-nav-label">📖 選一集劇情</div>
   <div class="season-nav" id="seasonNav"></div>
@@ -88,11 +105,6 @@
   <div class="star-progress">
     <div class="star-row" id="starRow"></div>
     <div class="star-label" id="starLabel"></div>
-  </div>
-
-  <!-- 🎬 本集短影片入口 -->
-  <div class="ep-video-bar" id="epVideoBar" style="display:none">
-    <button class="ep-video-btn" onclick="openEpVideo()">🎬 動畫放映</button>
   </div>
 
   <!-- MAIN CARD -->
@@ -657,7 +669,7 @@
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20261003a2"></script>
+  <script src="script.js?v=20261013a1"></script>
   <!-- 🎬 本集短影片彈窗 -->
   <div class="ep-video-overlay" id="epVideoOverlay" style="display:none" onclick="if(event.target===this)closeEpVideo()">
     <div class="ep-video-box">
