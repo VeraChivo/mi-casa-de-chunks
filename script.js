@@ -242,7 +242,7 @@ function buildNav(){
     const chip=document.createElement('button');
     chip.type='button';
     chip.className='ep-chip'+(i===ep?' active':'');
-    chip.textContent='E'+(i+1)+' · '+e.title;
+    chip.textContent='E'+(i+1)+' · '+e.title+(EPISODE_VIDEOS[i]?' 🎬':'');
     chip.setAttribute('aria-current',i===ep?'true':'false');
     chip.onclick=()=>{document.getElementById('episodePicker').open=false;selectEp(i);};
     nav.appendChild(chip);
@@ -351,50 +351,48 @@ function renderStoryIndex(){
 
 // ── 🎬 每集短影片（2026-10-02）：只有列在這裡的集數才會顯示「先看 30 秒」/「再看一次」──
 const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1', 20:'video/e21.mp4?v=20261003a2' };
+let _epVideoPushed=false, _epVideoReturnFocus=null, _epVideoScroll=0, _epVideoBodyOverflow='';
 function updateEpVideoUI(){
-  const videoEpisodes=[16,17,20];
-  videoEpisodes.forEach(i=>{
-    const button=document.getElementById('videoEpisode'+i+'Btn');
-    if(button){
-      const selected=ep===i;
-      button.classList.toggle('active',selected);
-      button.setAttribute('aria-pressed',String(selected));
-    }
-  });
-  const v=document.getElementById('epVideoPlayer');
-  const src=EPISODE_VIDEOS[ep];
-  const title=EPS[ep].title;
-  if(v){
-    if(v.getAttribute('src')!==(src||null)){
-      v.pause();
-      if(src) v.setAttribute('src',src); else v.removeAttribute('src');
-      v.load();
-    }
-    v.hidden=!src;
-  }
-  document.getElementById('epVideoEmpty').hidden=!!src;
-  document.getElementById('epVideoNumber').textContent='E'+(ep+1);
-  document.getElementById('epVideoName').textContent=title;
-  if(v) v.setAttribute('aria-label','E'+(ep+1)+' · '+title);
+  const hasVideo=!!EPISODE_VIDEOS[ep];
+  document.getElementById('epVideoBar').style.display=hasVideo?'':'none';
   const rb=document.getElementById('epVideoReplayBtn');
-  if(rb) rb.style.display=EPISODE_VIDEOS[ep]?'':'none';
-}
-function playEpisodeVideo(episodeIndex){
-  if(!EPISODE_VIDEOS[episodeIndex]) return;
-  selectEp(episodeIndex,true);
-  openEpVideo();
+  if(rb) rb.style.display=hasVideo?'':'none';
 }
 function openEpVideo(){
-  if(!EPISODE_VIDEOS[ep]) return;
-  updateEpVideoUI();
-  document.getElementById('epVideoBar').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+  const src=EPISODE_VIDEOS[ep];
+  if(!src || _epVideoPushed) return;
+  _epVideoReturnFocus=document.activeElement;
+  _epVideoScroll=window.scrollY;
+  _epVideoBodyOverflow=document.body.style.overflow;
+  document.getElementById('epVideoDialogTitle').textContent='E'+(ep+1)+' · '+EPS[ep].title;
   const v=document.getElementById('epVideoPlayer');
+  v.src=src;v.setAttribute('aria-label','E'+(ep+1)+' · '+EPS[ep].title);
+  document.getElementById('epVideoOverlay').style.display='flex';
+  document.body.style.overflow='hidden';
+  history.pushState({sheet:'epvideo'},'');_epVideoPushed=true;
+  document.getElementById('epVideoCloseBtn').focus({preventScroll:true});
   const p=v.play();if(p&&p.catch)p.catch(()=>{});
 }
-function closeEpVideo(){
+function closeEpVideo(fromPop=false){
+  const overlay=document.getElementById('epVideoOverlay');
+  if(overlay.style.display!=='flex') return;
   const v=document.getElementById('epVideoPlayer');
-  if(v) v.pause();
+  v.pause();v.removeAttribute('src');v.load();
+  overlay.style.display='none';document.body.style.overflow=_epVideoBodyOverflow;
+  if(_epVideoReturnFocus && _epVideoReturnFocus.isConnected) _epVideoReturnFocus.focus({preventScroll:true});
+  window.scrollTo({top:_epVideoScroll,behavior:'instant'});
+  const pushed=_epVideoPushed;_epVideoPushed=false;
+  if(pushed&&!fromPop) history.back();
 }
+document.addEventListener('keydown',event=>{
+  if(document.getElementById('epVideoOverlay').style.display!=='flex') return;
+  if(event.key==='Escape'){event.preventDefault();closeEpVideo();}
+  if(event.key==='Tab'){
+    const close=document.getElementById('epVideoCloseBtn'),video=document.getElementById('epVideoPlayer');
+    if(event.shiftKey&&document.activeElement===close){event.preventDefault();video.focus();}
+    else if(!event.shiftKey&&document.activeElement===video){event.preventDefault();close.focus();}
+  }
+});
 
 function selectEp(n,skipScroll=false){
   _epSwitching=true;
@@ -5712,6 +5710,7 @@ function renderChangelog(){
   renderDailyTask();
   renderStoryIndex();
   renderChunkFamilies();
+  updateEpVideoUI();
   initTTS();
   initGroupButtons();
   restoreActiveTab();
