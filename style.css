@@ -1598,3 +1598,27 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .ep-video-box{position:relative;width:100%;max-width:420px;max-height:92vh}
 .ep-video-box video{display:block;width:100%;max-height:88vh;border-radius:18px;background:#000;aspect-ratio:4/5;object-fit:contain}
 .ep-video-close{position:absolute;top:-14px;right:-6px;width:40px;height:40px;border-radius:20px;border:none;background:#fff;color:#4A3168;font-size:18px;font-weight:800;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+
+/* Compact inline video and disclosure episode picker (mobile first). */
+.ep-video-bar{width:100%;margin:0 0 12px;padding:12px;border-radius:18px}
+.ep-video-title{font-size:14px;margin:0 0 9px}
+.ep-video-now{display:flex;gap:8px;align-items:center;margin:0 0 8px;color:var(--konpeki);font-size:13px}
+.ep-video-now>span{font-size:11px;color:var(--misora);font-weight:800}
+.ep-inline-player{display:block;width:100%;height:auto;aspect-ratio:4/5;max-height:46svh;object-fit:contain;background:#152536;border-radius:12px;margin-bottom:9px}
+.ep-video-list{gap:5px}
+.video-episode-row{grid-template-columns:30px minmax(0,1fr) auto;min-height:44px;padding:6px 9px;border-radius:10px;font-family:inherit}
+.video-episode-name{font-size:12px}
+.video-episode-number,.video-episode-action{font-size:11px}
+.episode-picker{width:100%;max-width:480px;box-sizing:border-box;border:1px solid var(--usumizu);border-radius:14px;background:rgba(255,255,255,.75);margin:0 0 12px}
+.episode-picker-summary{display:flex;align-items:center;justify-content:space-between;gap:10px;list-style:none;cursor:pointer;padding:10px 12px}
+.episode-picker-summary::-webkit-details-marker{display:none}
+.episode-picker-summary>span:first-child{display:grid;gap:3px;min-width:0}
+.episode-picker-summary small{font-size:10px;color:var(--tmid)}
+.episode-picker-summary strong{font-size:13px;color:var(--konpeki)}
+.episode-picker-action{font-size:12px;color:var(--misora);font-weight:800;white-space:nowrap}
+.episode-picker-arrow{display:inline-block;transition:transform .18s}
+.episode-picker[open] .episode-picker-arrow{transform:rotate(180deg)}
+.episode-picker .season-nav{grid-template-columns:repeat(2,minmax(0,1fr));width:auto;margin:0 10px 10px;padding-top:8px;border-top:1px solid var(--usumizu)}
+.episode-picker .ep-chip{font-family:inherit;font-size:12px;min-height:44px;white-space:normal;text-align:left;line-height:1.4;border-radius:10px;padding:8px;overflow-wrap:anywhere}
+.episode-picker-summary:focus-visible,.video-episode-row:focus-visible,.ep-chip:focus-visible{outline:2px solid var(--konpeki);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.episode-picker-arrow{transition:none}}
