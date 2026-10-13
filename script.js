@@ -351,25 +351,31 @@ function renderStoryIndex(){
 
 // ── 🎬 每集短影片（2026-10-02）：只有列在這裡的集數才會顯示「先看 30 秒」/「再看一次」──
 const EPISODE_VIDEOS = { 16:'video/e17.mp4?v=20261002a1', 17:'video/e18.mp4?v=20261002a1', 20:'video/e21.mp4?v=20261003a2' };
-let _activeVideoEpisode = 16;
 function updateEpVideoUI(){
-  if(EPISODE_VIDEOS[ep]) _activeVideoEpisode=ep;
   const videoEpisodes=[16,17,20];
   videoEpisodes.forEach(i=>{
     const button=document.getElementById('videoEpisode'+i+'Btn');
     if(button){
-      const selected=_activeVideoEpisode===i;
+      const selected=ep===i;
       button.classList.toggle('active',selected);
       button.setAttribute('aria-pressed',String(selected));
     }
   });
   const v=document.getElementById('epVideoPlayer');
-  const src=EPISODE_VIDEOS[_activeVideoEpisode];
-  const title=document.getElementById('videoEpisode'+_activeVideoEpisode+'Btn').querySelector('.video-episode-name').textContent;
-  if(v && v.getAttribute('src')!==src){v.pause();v.src=src;v.load();}
-  document.getElementById('epVideoNumber').textContent='E'+(_activeVideoEpisode+1);
+  const src=EPISODE_VIDEOS[ep];
+  const title=EPS[ep].title;
+  if(v){
+    if(v.getAttribute('src')!==(src||null)){
+      v.pause();
+      if(src) v.setAttribute('src',src); else v.removeAttribute('src');
+      v.load();
+    }
+    v.hidden=!src;
+  }
+  document.getElementById('epVideoEmpty').hidden=!!src;
+  document.getElementById('epVideoNumber').textContent='E'+(ep+1);
   document.getElementById('epVideoName').textContent=title;
-  if(v) v.setAttribute('aria-label','E'+(_activeVideoEpisode+1)+' · '+title);
+  if(v) v.setAttribute('aria-label','E'+(ep+1)+' · '+title);
   const rb=document.getElementById('epVideoReplayBtn');
   if(rb) rb.style.display=EPISODE_VIDEOS[ep]?'':'none';
 }

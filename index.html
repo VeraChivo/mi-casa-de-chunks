@@ -23,7 +23,7 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20261013c1">
+<link rel="stylesheet" href="style.css?v=20261013d1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -83,8 +83,9 @@
   <!-- 🎬 Videos: tres episodios, un solo reproductor -->
   <section class="ep-video-bar" id="epVideoBar" aria-labelledby="epVideoTitle">
     <h2 class="ep-video-title" id="epVideoTitle" lang="es">🎬 Historias en video</h2>
-    <div class="ep-video-now" lang="es"><span id="epVideoNumber">E17</span><strong id="epVideoName">Me Llamo Nita</strong></div>
-    <video class="ep-inline-player" id="epVideoPlayer" controls playsinline preload="metadata" src="video/e17.mp4?v=20261002a1" aria-label="E17 · Me Llamo Nita"></video>
+    <div class="ep-video-now" lang="es"><span id="epVideoNumber">E1</span><strong id="epVideoName">El Rincón de Nita</strong></div>
+    <video class="ep-inline-player" id="epVideoPlayer" controls playsinline preload="none" hidden aria-label="Video del episodio"></video>
+    <p class="ep-video-empty" id="epVideoEmpty" lang="es">Este episodio no tiene video. Puedes practicar con el texto.</p>
     <div class="ep-video-list" lang="es">
       <button class="video-episode-row" id="videoEpisode16Btn" type="button" aria-pressed="false" onclick="playEpisodeVideo(16)">
         <span class="video-episode-number">E17</span><span class="video-episode-name">Me Llamo Nita</span><span class="video-episode-action">▶ Ver</span>
@@ -672,6 +673,6 @@
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20261013c1"></script>
+  <script src="script.js?v=20261013d1"></script>
 </body>
 </html>
