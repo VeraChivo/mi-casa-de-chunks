@@ -2979,12 +2979,13 @@ function jumpToPronounLibrary(){
 }
 
 // 🧰 莊園工具間（2026-07-24 header入口，重用openGrammarSheet()面板，不新增另一套UI）
-// 內容＝原本頁尾攤平的6個查詢工具連結，分3類收起來，避免重複入口
+// 外部工具連結分3類收起來，避免重複入口
 const WORKSHOP_TOOLS = {
   title: '🧰 莊園工具間',
   subtitle: '查發音、找例句、製作素材',
   categories: [
     { icon:'👂', label:'聽音工具', tools:[
+      {label:'🗣️ Escribe y escucha｜輸入西語聽發音', url:'https://dt-espanol-tts.sandiego634.workers.dev/'},
       {label:'🔊 Forvo', url:'https://forvo.com'},
       {label:'🎙️ YouGlish', url:'https://youglish.com'}
     ]},
