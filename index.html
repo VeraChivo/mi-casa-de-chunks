@@ -23,7 +23,8 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20261013e1">
+<link rel="stylesheet" href="style.css?v=20261105a1">
+<link rel="stylesheet" href="guide.css?v=20261105a1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
 <link rel="apple-touch-icon" href="icon.png?v=20260815a2">
@@ -43,7 +44,7 @@
       </div>
     </div>
     <div class="header-entry-row">
-      <button class="header-entry-btn" onclick="openLevelNavDirect()" title="不是新手？直接挑一條適合的路線">🧭 探索路線</button>
+      <button class="header-entry-btn" onclick="openLevelNavDirect()" title="調整練習起點、時間與能量">🧭 探索路線</button>
       <button class="header-entry-btn" onclick="showWorldTour()" title="了解整座莊園">🗺️ 莊園導覽</button>
       <button class="header-entry-btn" onclick="entryMatrixJump('daily')" title="今天做什麼？">🎁 入園巧遇</button>
       <span id="headerStartSlot"></span>
@@ -52,8 +53,8 @@
     </div>
   </div>
 
-  <!-- ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從上面「❓ 莊園導覽」重新打開） ── -->
-  <div id="welcomeTourOverlay" style="display:none">
+  <!-- 導覽改為頁內自選展開；此共用彈窗保留給農間小報。 -->
+  <div id="welcomeTourOverlay" style="display:none" role="dialog" aria-modal="true" aria-label="農間小報">
     <div class="welcome-tour-card">
       <div id="welcomeTourBody"></div>
       <div class="welcome-tour-dots" id="welcomeTourDots"></div>
@@ -77,6 +78,8 @@
   <!-- ══════════ TAB A：語塊遊樂場 ══════════ -->
   <div id="tabPlay" class="main-tab-panel">
 
+  <section id="learningEntry" class="learning-entry" aria-labelledby="learningEntryTitle"></section>
+
   <!-- ── 🏡 A1-A2 劇情索引（把已有劇情/文法卡串成新手第一章，不是新內容） ── -->
   <div id="storyIndexBody"></div>
 
@@ -93,6 +96,8 @@
     <div class="star-row" id="starRow"></div>
     <div class="star-label" id="starLabel"></div>
   </div>
+
+  <section id="guidedPractice" class="guided-practice" aria-label="這次的練習" hidden></section>
 
   <!-- MAIN CARD -->
   <div class="card-container" id="mainCardWrap">
@@ -673,6 +678,7 @@
   <script src="corazon.js?v=20260923a1"></script>
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
-  <script src="script.js?v=20261013e1"></script>
+  <script src="guide.js?v=20261105a1"></script>
+  <script src="script.js?v=20261105a1"></script>
 </body>
 </html>
