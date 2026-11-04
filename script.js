@@ -215,7 +215,7 @@ function speakMapSmart(map, catKey, idx, text){
 
 /* EPS data → episodes.js */
 // ── STATE ──
-let ep=0,idx=0,revealed=false,score=0,makeScore=0,answered=[],makeAnswered=[];
+let ep=16,idx=0,revealed=false,score=0,makeScore=0,answered=[],makeAnswered=[];
 let answeredByEp={};
 let _epSwitching=false;
 function currentGlobalIdx(){ return ep*10+idx; }
@@ -1927,6 +1927,7 @@ function render(){
 
   switchLang('zh');renderStars();
   syncGroupBtn();
+  LearningGuide.onSentence();
 }
 
 function smartMatch(input,s){
@@ -1985,6 +1986,7 @@ function revealAnswer(){
     saveToLS();
     renderStars();
   }
+  LearningGuide.onReveal();
 }
 
 function retryAnswer(){
@@ -2729,7 +2731,8 @@ const BACKUP_KEYS = [
   // 里程碑與任務
   'peppa_milestones_v1', 'peppa_first_chunk_date_v1', 'peppa_daily_task_v1',
   // 使用者的選擇／已看過的一次性提示（不還原的話，換手機會重跳導覽、提醒被關掉）
-  'peppa_reminder_enabled', 'peppa_welcome_tour_seen_v1', 'peppa_talk_grow_intro_seen_v1'
+  'peppa_reminder_enabled', 'peppa_welcome_tour_seen_v1', 'peppa_talk_grow_intro_seen_v1',
+  'peppa_learning_preferences_v1'
 ];
 // 刻意不備份（還原到別台裝置會出錯，不是漏掉）：
 //   peppa_garden_junk_cleaned_v1 — 一次性資料清理的擋門旗標。還原到沒清理過的裝置會直接跳過清理。
@@ -3407,16 +3410,7 @@ function toggleGsupCatGroups(){
 function _gsupLevelInfo(levelKey){
   return GRAMMAR_LEVEL_TIERS.find(t=>t.key===levelKey) || {icon:'', label:''};
 }
-// ── 🧭 我是什麼程度？等級路標——不是獨立新區塊，掛在莊園導覽最後一步裡 ──
-// ⚠️ 2026-08-03修復：「我想深入文化」原本用level:'c1'接jumpToLevelFilter，但2026-07-25
-// 街頭母語/文化深度內容已整批搬去🌎拉美巡禮，儲水槽c1篩選只剩2張不相干的卡（新聞動詞/
-// 正式連接詞），c2篩選則是完全空的死路——改成action:'worldzone'，直接開拉美巡禮入口面板。
-const LEVEL_NAV_ITEMS = [
-  {icon:'🌱', label:'我是第一次來', sub:'從第一句西語開始', action:'start'},
-  {icon:'🌿', label:'我學過一點了', sub:'繼續我的生活語塊', level:'b1'},
-  {icon:'🏆', label:'我想驗收成果', sub:'測試自己的西語能力', level:'b2c1'},
-  {icon:'🌎', label:'我想深入文化', sub:'俚語與拉美故事', action:'worldzone'}
-];
+// 🧭 路線選擇使用頁內指引，興趣探索仍由拉美巡禮負責。
 function jumpToWorldZoneFromNav(){
   closeWelcomeTour();
   setTimeout(()=>openWorldEntryPanel(), 60);
@@ -3432,17 +3426,7 @@ function jumpToStoryStart(){
 }
 // 給「不是第一次來」的人直接跳進等級路標，不用重播整輪導覽（🗝️莊園導覽對回訪者會改跳農間小報，這個是專門的捷徑）
 function openLevelNavDirect(){
-  const overlay = document.getElementById('welcomeTourOverlay');
-  if(overlay){
-    const nav = overlay.querySelector('.welcome-tour-nav');
-    if(nav) nav.style.display = '';
-    overlay.style.display = 'flex';
-  }
-  // 找「程度路標」那一步的實際索引，不要假設它是最後一步——
-  // 之後加新的導覽步驟（例如入口盤查）會讓「最後一步」變成別的東西
-  const idx = WELCOME_TOUR_STEPS.findIndex(s => s.levelButtons);
-  _welcomeTourStep = idx >= 0 ? idx : WELCOME_TOUR_STEPS.length - 1;
-  renderWelcomeTourStep();
+  LearningGuide.openSettings();
 }
 function jumpToLevelFilter(levelKey){
   closeWelcomeTour();
@@ -4806,6 +4790,7 @@ function _dtaskAltPathHtml(){
   </div>`;
 }
 function renderDailyTask(){
+  LearningGuide.syncHome();
   const el = document.getElementById('dailyTaskBody');
   if(!el) return;
   const st = getDailyTaskState();
@@ -5218,15 +5203,7 @@ function jumpToLyricAnswer(lfId){
   }, 200);
 }
 
-// ── 🗺️ 歡迎導覽彈窗（首次進入自動彈出，之後可從「❓ 莊園導覽」重新打開）──
-const WELCOME_TOUR_STEPS = [
-  {icon:"🌾", title:"田間播語塊", desc:"這裡是妳每日播種語言的田地。點開劇中精選片段，跟著莊園主人拆解句子；一詞一句學西語，完成句子還能解鎖彈藥庫語塊。"},
-  {icon:"☀️", title:"日光育苗場", desc:"這座莊園收藏的所有養分：從文法蘊藏、動詞變位指引、SEL 情緒篇章，到假同源詞的避雷指南……時不時都可以光顧一下。"},
-  {icon:"🛌", title:"床邊低語呢", desc:"深夜的燈還亮著。情緒語塊、真心話句、日記手札，都在這裡。想說什麼就說什麼。"},
-  {icon:"🗃️", title:"穀倉大豐收", desc:"妳收成的所有語塊都堆在這裡：語塊花園熟練度、詞彙本、資料備份保險箱，一次看見自己的進度。"},
-  {icon:"💎🌻🐛", title:"莊園裡的三種紀錄", desc:"💎 醞釀私語窖<br>喜歡的句子，先收藏。讓時間發酵，留心上。<br><br>🌻 語塊花園<br>遇見練習，就生長。日日澆灌，成日常。<br><br>🐛 抓蟲複習<br>忘記卡住，就回訪。重新照顧，再發光。"},
-  {icon:"🌱", title:"開始我的西語小日子", desc:"從第一句西語開始。<br><br>不管妳是第一次來，還是已經學過一點生活語塊，先選一個最貼近妳現在狀態的入口，我們直接帶妳過去：", levelButtons:true}
-];
+// ── 🗺️ 新手指引改為頁內入口（guide.js），共用彈窗仍供農間小報使用。 ──
 // 「入口盤查」矩陣：不再是導覽裡要點過6步才看得到的一頁，2026-07-19莊園巡園週併進☀️今日耕耘卡片常駐顯示
 const ENTRY_MATRIX_ITEMS = [
   {icon:'🌱', label:'今天只有10分鐘', sub:'今日耕耘任務', target:'daily'},
@@ -5308,85 +5285,27 @@ function _flipHtml(){
 function _flipRender(){ document.getElementById('grammarSheetContent').innerHTML = _flipHtml(); }
 function flipReveal(){ _flipFlipped = true; _flipRender(); }
 function flipNext(){ _flipDraw(); _flipRender(); }
-let _welcomeTourStep = 0;
 function showWelcomeTour(force){
   let seen = false;
   try{ seen = !!localStorage.getItem('peppa_welcome_tour_seen_v1'); }catch(e){}
-  // Ensure tour nav is restored before any rendering
-  const overlay = document.getElementById('welcomeTourOverlay');
-  if(overlay){
-    const nav = overlay.querySelector('.welcome-tour-nav');
-    if(nav) nav.style.display = '';
-  }
   if(!seen){
-    // First visit: show 4-step tour
-    // 第一次來的當天不再自動彈農間小報（2026-09-30 VERA確認）：把「今天看過小報」記成今天，
-    // 隔天回來才開始每日一次，避免新手看完導覽、重新整理後又被小報蓋住第一課
-    try{ if(!localStorage.getItem('peppa_brief_day_v1')) localStorage.setItem('peppa_brief_day_v1', String(Math.floor(Date.now()/86400000))); }catch(e){}
-    _welcomeTourStep = 0;
-    renderWelcomeTourStep();
-    if(overlay) overlay.style.display = 'flex';
-    _pushTourOverlayState();
+    // 初次進站直接顯示頁內起點，不以導覽彈窗擋住第一句。
+    try{
+      localStorage.setItem('peppa_welcome_tour_seen_v1', '1');
+      if(!localStorage.getItem('peppa_brief_day_v1')) localStorage.setItem('peppa_brief_day_v1', String(Math.floor(Date.now()/86400000)));
+    }catch(e){}
     return;
   }
-  // Returning visitor
   if(!force){
-    // Auto page-load: only show once per day
-    const todayDay = Math.floor(Date.now()/86400000);
-    let lastDay = 0;
-    try{ lastDay = parseInt(localStorage.getItem('peppa_brief_day_v1')||'0')||0; }catch(e){}
-    if(lastDay === todayDay) return;
+    const today = Math.floor(Date.now()/86400000);
+    try{ if(Number(localStorage.getItem('peppa_brief_day_v1')) === today) return; }catch(e){}
   }
-  // Show 農間小報 (forced via ❓ button, or first auto-load of the day)
   showMorningBrief();
 }
-// 🗺️莊園導覽：header按鈕專用，一律從頭顯示導覽內容，不受「今天看過小報了嗎」狀態影響
-// （showWelcomeTour(true) 對老用戶其實是開農間小報，兩個功能名字撞在一起會誤導，故分開）
-function showWorldTour(){
-  const overlay = document.getElementById('welcomeTourOverlay');
-  if(!overlay) return;
-  const nav = overlay.querySelector('.welcome-tour-nav');
-  if(nav) nav.style.display = '';
-  const dots = document.getElementById('welcomeTourDots');
-  if(dots) dots.style.display = '';
-  _welcomeTourStep = 0;
-  renderWelcomeTourStep();
-  overlay.style.display = 'flex';
-  _pushTourOverlayState();
-}
-function renderWelcomeTourStep(){
-  const s = WELCOME_TOUR_STEPS[_welcomeTourStep];
-  const btnsHtml = s.levelButtons ? `
-    <div class="lvlnav-grid">
-      ${LEVEL_NAV_ITEMS.map(it => `
-        <button class="lvlnav-btn" onclick="${it.action==='start' ? 'jumpToStoryStart()' : it.action==='worldzone' ? 'jumpToWorldZoneFromNav()' : `jumpToLevelFilter('${it.level}')`}">
-          <span class="lvlnav-icon">${it.icon}</span>
-          <span class="lvlnav-label">${it.label}</span>
-          <span class="lvlnav-sub">${it.sub}</span>
-        </button>`).join('')}
-    </div>` : '';
-  document.getElementById('welcomeTourBody').innerHTML = `
-    <div class="welcome-tour-icon">${s.icon}</div>
-    <div class="welcome-tour-title">${s.title}</div>
-    <div class="welcome-tour-desc">${s.desc}</div>
-    ${btnsHtml}`;
-  document.getElementById('welcomeTourDots').innerHTML = WELCOME_TOUR_STEPS
-    .map((_,i)=>`<span class="welcome-tour-dot${i===_welcomeTourStep?' active':''}"></span>`).join('');
-  const prevBtn = document.getElementById('welcomeTourPrevBtn');
-  const nextBtn = document.getElementById('welcomeTourNextBtn');
-  prevBtn.disabled = _welcomeTourStep === 0;
-  nextBtn.textContent = _welcomeTourStep === WELCOME_TOUR_STEPS.length-1 ? '開始探索莊園吧！' : '下一步 ▶';
-}
-function welcomeTourNext(){
-  if(_welcomeTourStep >= WELCOME_TOUR_STEPS.length-1){ closeWelcomeTour(); return; }
-  _welcomeTourStep++;
-  renderWelcomeTourStep();
-}
-function welcomeTourPrev(){
-  if(_welcomeTourStep <= 0) return;
-  _welcomeTourStep--;
-  renderWelcomeTourStep();
-}
+function showWorldTour(){ LearningGuide.showHow(); }
+// 保留舊彈窗導航的函式入口，避免既有書籤或內嵌事件失效。
+function welcomeTourNext(){ closeWelcomeTour(); }
+function welcomeTourPrev(){ LearningGuide.showHow(); }
 function closeWelcomeTour(_fromPop){
   document.getElementById('welcomeTourOverlay').style.display = 'none';
   try{ localStorage.setItem('peppa_welcome_tour_seen_v1', '1'); }catch(e){}
@@ -5714,6 +5633,7 @@ function renderChangelog(){
   initTTS();
   initGroupButtons();
   restoreActiveTab();
+  LearningGuide.init();
   initReminders();
   const _deepLinked = handleReminderDeepLink();
   if(!_deepLinked) showWelcomeTour(false);

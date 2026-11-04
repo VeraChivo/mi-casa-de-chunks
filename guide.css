@@ -1,0 +1,73 @@
+/* 沿用莊園藍、紙色與圓角；此處只作用於新手入口和本次練習。 */
+.learning-entry{width:100%;margin-bottom:16px;padding:24px 20px 10px;border:1px solid var(--usumizu);border-radius:20px;background:linear-gradient(145deg,#fff 45%,#f1f8fa);box-shadow:0 8px 24px rgba(26,46,59,.04);text-align:left}
+.learning-entry button,.learning-entry input,.guided-practice button,.guided-practice textarea{font:inherit}
+.learning-entry button,.guided-practice button,.learning-entry a{touch-action:manipulation}
+.guide-eyebrow{color:var(--konpeki);font-size:10px;font-weight:800;letter-spacing:.14em;margin-bottom:10px}
+.learning-entry h1{font-family:'Noto Serif TC',serif;font-size:25px;line-height:1.55;font-weight:700;color:var(--tdark);letter-spacing:.01em}
+.guide-intro{font-size:14px;line-height:1.85;color:var(--tmid);margin:10px 0 20px}
+.guide-sample{background:#fff;border:1px solid var(--hairline);border-radius:14px;padding:14px;margin-bottom:16px}
+.guide-sample-head{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:var(--tmid);line-height:1.5}
+.guide-sample-head>span{min-width:0}
+.guide-listen{border:0;background:var(--bg);border-radius:10px;min-height:44px;padding:8px 10px;color:var(--konpeki);white-space:nowrap;cursor:pointer;flex-shrink:0;font-size:12px!important;font-weight:800!important}
+.guide-sample-es{font-size:22px;line-height:1.5;font-weight:700;color:var(--konpeki);margin:10px 0 2px;overflow-wrap:anywhere}
+.guide-translation summary{min-height:38px;font-size:12px;color:var(--tmid);cursor:pointer;display:flex;align-items:center;gap:10px;width:fit-content}
+.guide-translation p{font-size:14px;line-height:1.7;margin:4px 0;color:var(--tmid)}
+.guide-primary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;width:100%;background:var(--konpeki);color:white;border:none;border-radius:12px;padding:12px 16px;cursor:pointer;font-size:15px!important;font-weight:800!important}
+.guide-primary:active{background:#034c7b}
+.guide-primary>span{font-size:20px}
+.guide-plan{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:6px 0 8px;color:var(--tmid);font-size:12px}
+.guide-text-btn{border:0;background:none;color:var(--konpeki);font-size:12px!important;line-height:1.6;font-weight:700!important;cursor:pointer;min-height:44px;padding:8px 5px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;gap:4px}
+.guide-settings{margin:4px -4px 12px;padding:16px 4px 8px;border-top:1px solid var(--hairline);scroll-margin-top:16px}
+.guide-settings[hidden],.guided-practice[hidden]{display:none}
+.guide-settings fieldset{border:0;min-width:0;margin-bottom:16px;padding:0}
+.guide-settings legend{font-size:14px;font-weight:800;color:var(--tdark);margin-bottom:10px}
+.guide-note{font-size:12px;color:var(--tmid);line-height:1.8}
+.guide-route-list>.guide-note{margin-bottom:12px}
+.guide-route{display:flex;align-items:flex-start;gap:10px;padding:14px 12px;border:1px solid var(--hairline);background:white;border-radius:12px;margin-bottom:10px;cursor:pointer;position:relative}
+.guide-route:has(input:checked){border-color:var(--konpeki);background:#f0f7fb;box-shadow:inset 0 0 0 1px var(--konpeki)}
+.guide-route input{margin-top:5px;width:17px;height:17px;accent-color:var(--konpeki);flex-shrink:0}
+.guide-route-content{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.guide-route-head{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.guide-route-head strong{font-size:14px;line-height:1.6;color:var(--tdark)}
+.guide-level{font-size:10px;font-weight:800;white-space:nowrap;line-height:1.8;padding:1px 7px;color:var(--konpeki);background:#e4eef7;border-radius:6px}
+.guide-route-desc{font-size:12px;color:var(--tmid);line-height:1.7}
+.guide-route-example{font-size:14px;font-weight:700;color:var(--konpeki);line-height:1.6;overflow-wrap:anywhere}
+.guide-route-task{font-size:11px;color:var(--tmid);line-height:1.7;border-top:1px solid var(--hairline);padding-top:6px}
+.guide-unsure{margin:-8px 0 12px}
+.guide-choice-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.guide-choice-row label{position:relative;min-width:0;cursor:pointer}
+.guide-choice-row input{position:absolute;opacity:0;width:100%;height:100%;inset:0;cursor:pointer}
+.guide-choice-row span{display:flex;align-items:center;justify-content:center;border:1px solid var(--hairline);background:white;border-radius:10px;padding:8px 4px;min-height:44px;font-size:13px;font-weight:700;color:var(--tmid)}
+.guide-choice-row input:checked+span{background:var(--konpeki);border-color:var(--konpeki);color:white}
+.guide-choice-row input:focus-visible+span{outline:3px solid #b7843a;outline-offset:3px}
+.guide-secondary{border:1px solid var(--usumizu);border-radius:10px;background:white;color:var(--konpeki);font-size:12px!important;font-weight:800!important;min-height:44px;display:inline-flex;justify-content:center;align-items:center;gap:6px;padding:9px 12px;cursor:pointer;text-decoration:none;line-height:1.5}
+.guide-save{width:100%;margin-top:12px}
+.guide-details{border-top:1px solid var(--hairline)}
+.guide-details>summary,.guide-ai>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;font-size:13px;font-weight:700;color:var(--tmid);cursor:pointer;line-height:1.7}
+.guide-details[open]>summary>span,.guide-translation[open]>summary>span,.guide-ai[open]>summary>span{transform:rotate(45deg)}
+.guide-details-body{padding:0 0 16px;font-size:13px;line-height:1.8;color:var(--tmid)}
+.guide-steps{list-style:none;counter-reset:guide-step;display:grid;gap:12px;margin:10px 0 20px}
+.guide-steps li{counter-increment:guide-step;display:grid;grid-template-columns:24px 1fr;gap:2px 10px}
+.guide-steps li:before{content:counter(guide-step,decimal-leading-zero);grid-row:span 2;font-size:11px;line-height:24px;color:var(--konpeki);font-weight:800}
+.guide-steps strong{font-size:13px;color:var(--tdark)}
+.guide-steps span{font-size:12px;line-height:1.7}
+.guide-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.guide-map button{border:1px solid var(--hairline);background:white;border-radius:10px;min-height:68px;padding:10px 8px;text-align:left;cursor:pointer;min-width:0}
+.guide-map strong,.guide-map span{display:block;font-size:11px;line-height:1.7;color:var(--tmid)}
+.guide-map strong{font-size:12px;color:var(--konpeki)}
+.guide-helper-links{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.guide-status{font-size:12px;color:var(--konpeki);line-height:1.7}
+.guide-status:empty{display:none}
+.guide-status:not(:empty){padding:12px 0 4px}
+.guided-practice{background:#f4f8fc;border:1px solid var(--usumizu);border-radius:14px;padding:14px 16px;margin-bottom:14px;scroll-margin-top:16px;text-align:left}
+.guide-session-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;font-weight:800;color:var(--konpeki)}
+.guided-practice h2{font-size:15px;line-height:1.7;font-weight:800;color:var(--tdark);margin:2px 0 8px}
+.guided-practice p{font-size:12px;color:var(--tmid);line-height:1.8}
+.guide-session-count{margin:10px 0 6px}
+.guide-session-actions{display:flex;flex-wrap:wrap;gap:8px}
+.guide-ai{border-top:1px solid var(--hairline);margin-top:12px}
+.guide-ai>summary{font-size:12px;min-height:44px}
+.guide-ai textarea{display:block;resize:vertical;width:100%;min-height:100px;border:1px solid var(--hairline);border-radius:8px;padding:10px;margin:10px 0;font-size:13px!important;line-height:1.7;background:white;color:var(--tdark)}
+.learning-entry :is(button,a,summary,input):focus-visible,.guided-practice :is(button,a,summary,textarea):focus-visible{outline:3px solid #b7843a;outline-offset:3px}
+@media(max-width:360px){.learning-entry{padding:20px 16px 8px}.learning-entry h1{font-size:23px}.guide-sample{padding:12px}.guide-sample-head{flex-wrap:wrap}.guide-sample-es{font-size:20px}.guide-route{padding:12px 10px}.guide-map{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.main-tab-panel{animation:none}.guide-details[open]>summary>span,.guide-translation[open]>summary>span,.guide-ai[open]>summary>span{transform:none}}
