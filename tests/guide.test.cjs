@@ -22,10 +22,12 @@ function setup({saved, completed = [0], progress = true} = {}){
   form.elements = {guideRoute:{set value(v){fields.guideRoute=v;}}};
   const nodes = new Map();
   const node = id => {
+    if(id==='guideFirstCount' && !node('guidedPractice').innerHTML.includes('id="guideFirstCount"')) return null;
     if(!nodes.has(id)) nodes.set(id, {innerHTML:'',textContent:'',hidden:id==='guideSettings',
+      classList:{toggle(){},remove(){}},
       focus(){},scrollIntoView(){},setAttribute(){},querySelector(selector){
         if(selector==='form') return form;
-        return selector==='details[open]' ? null : button;
+        return selector.endsWith('[open]') ? null : button;
       }});
     return nodes.get(id);
   };
@@ -90,7 +92,7 @@ test('試一句可隨時回 A1；重看同一句不重複計數，也不限制�
   assert.equal(f.context.ep,16); assert.equal(f.context.idx,0);
   assert.match(f.node('guidedPractice').innerHTML,/建議 1 句/);
   f.context.guide.onReveal(); f.context.guide.onReveal();
-  assert.match(f.node('guidedPractice').innerHTML,/已看過 1 句/);
+  assert.match(f.node('guideFirstCount').textContent,/已看過 1 句/);
   f.context.idx=1; f.context.guide.onSentence(); f.context.guide.onReveal();
   assert.match(f.node('guidedPractice').innerHTML,/已看過 2 句/);
 });

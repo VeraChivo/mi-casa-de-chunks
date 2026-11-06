@@ -406,8 +406,12 @@ function selectEp(n,skipScroll=false){
   // 2026-08-03 修：原本window.scrollTo({top:0})捲的是整頁最頂端，從展開的新人路線圖
   // 深處點「看劇情」時，最頂端只會停在路線圖標題，真正更新的卡片內容遠在畫面外看不到，
   // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
-  if(mainCardWrap && !skipScroll) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
+  if(!skipScroll){
+    const guide = document.getElementById('guidedPractice');
+    const target = guide?.classList.contains('guide-first') ? guide : mainCardWrap;
+    target?.scrollIntoView({behavior:'instant', block:'start'});
+  }
   updateEpVideoUI();
   _epSwitching=false;
 }
