@@ -163,19 +163,55 @@ const LearningGuide = (() => {
   function renderSession(){
     if(!initialized) return;
     const root = $('guidedPractice');
+    const first = session?.route === 'a1' && ep === 16 && idx === 0;
+    root.classList.toggle('guide-first', first);
+    root.classList.remove('guide-first-expanded');
     if(!session){ root.hidden=true; return; }
     const r = routeFor(session.route), done = session.count.size >= session.portion;
     const gId = SENTENCE_GRAMMAR_MAP[currentGlobalIdx()];
     const canMake = (SENTENCE_AMMO_MAP2[currentGlobalIdx()]||[]).length > 0;
     root.hidden=false; root.tabIndex=-1;
-    const helperOpen = !!root.querySelector('details[open]');
+    root.onclick=handleClick;
+    if(first){
+      root.innerHTML = `<div class="guide-session-head"><span>A1 · E17 第一句</span></div>
+        <h2>用西語介紹自己</h2>
+        <p class="guide-sample-es guide-first-example" lang="es">${escapeHTML(cur().es)}</p>
+        <div class="guide-session-actions">
+          <button type="button" class="guide-secondary" data-guide-action="current-audio">▷ 聽這一句</button>
+          <button type="button" class="guide-secondary" data-guide-action="first-translation" aria-controls="guideFirstMeaning" aria-expanded="false">看中文意思</button>
+        </div>
+        <p id="guideFirstMeaning" class="guide-first-meaning" hidden>${escapeHTML(cur().zh)}</p>
+        <div class="guide-first-output">
+          <h3>換成你的名字</h3>
+          <p class="guide-first-pattern" lang="es">Me llamo ____.</p>
+          <p>直接把空格換成你的名字，念一次就好。</p>
+          <details>
+            <summary>我想打字練習</summary>
+            <label class="guide-first-input"><span lang="es">Me llamo</span><input type="text" aria-label="你的名字" autocomplete="off" placeholder="你的名字"></label>
+          </details>
+        </div>
+        <div class="guide-first-nav">
+          <button type="button" class="guide-primary" data-guide-action="first-next">下一句 <span aria-hidden="true">→</span></button>
+          <button type="button" class="guide-text-btn" data-guide-action="finish">今天先到這裡</button>
+        </div>
+        <p id="guideFirstCount" class="guide-session-count" role="status">${sessionCount()}</p>
+        <button type="button" class="guide-text-btn" data-guide-action="first-details" aria-controls="mainCardWrap" aria-expanded="false">語塊拆解與文法</button>
+        ${aiHelp(false)}`;
+      return;
+    }
+    const helperOpen = !!root.querySelector('.guide-ai[open]');
     root.innerHTML = `<div class="guide-session-head"><span>${r.level} · ${ENERGY[session.energy]}練習</span><button type="button" class="guide-text-btn" data-guide-action="finish">先到這裡</button></div>
       <h2>${done ? '這一小段，走完了。' : '先聽這一句，再換成自己的話。'}</h2>
       <p>${done ? '想休息就先停在這裡，也可以繼續往下讀。' : session.energy==='low' ? '今天只聽、只看也可以。中文需要時再打開。' : r.tip}</p>
-      <p class="guide-session-count" role="status">這次已看過 ${session.count.size} 句 · 建議 ${session.portion} 句</p>
+      <p class="guide-session-count" role="status">${sessionCount()}</p>
       <div class="guide-session-actions"><button type="button" class="guide-secondary" data-guide-action="current-audio">▷ 聽這一句</button>${canMake&&session.energy!=='low'?'<button type="button" class="guide-secondary" data-guide-action="make">換成自己的話 →</button>':''}${session.route==='b1'&&session.energy!=='low'?'<button type="button" class="guide-secondary" data-guide-action="diary">寫下自己的經驗 →</button>':''}${gId&&session.route==='b1'?`<button type="button" class="guide-text-btn" data-guide-action="grammar">看這句的用法 →</button>`:''}</div>
-      <details class="guide-ai" ${helperOpen?'open':''}><summary>想用這句，和 AI 多聊幾句 <span aria-hidden="true">＋</span></summary><p>複製下方文字，貼進你使用的 AI 對話。</p><textarea id="guideAIPrompt" readonly rows="5" aria-label="AI 陪練提示詞">${escapeHTML(aiPrompt())}</textarea><div class="guide-helper-links"><button type="button" class="guide-secondary" data-guide-action="copy">複製陪練提示詞</button><a href="ai-companion-starter.txt" download class="guide-text-btn">小伴侶設定包 ↓</a></div><p id="guideCopyStatus" role="status"></p></details>`;
-    root.onclick=handleClick;
+      ${aiHelp(helperOpen)}`;
+  }
+  function sessionCount(){
+    return `這次已看過 ${session.count.size} 句 · 建議 ${session.portion} 句`;
+  }
+  function aiHelp(open){
+    return `<details class="guide-ai" ${open?'open':''}><summary>想用這句，和 AI 多聊幾句 <span aria-hidden="true">＋</span></summary><p>複製下方文字，貼進你使用的 AI 對話。</p><textarea id="guideAIPrompt" readonly rows="5" aria-label="AI 陪練提示詞">${escapeHTML(aiPrompt())}</textarea><div class="guide-helper-links"><button type="button" class="guide-secondary" data-guide-action="copy">複製陪練提示詞</button><a href="ai-companion-starter.txt" download class="guide-text-btn">小伴侶設定包 ↓</a></div><p id="guideCopyStatus" role="status"></p></details>`;
   }
   function aiPrompt(){
     const r = routeFor(session ? session.route : choice.route);
@@ -214,6 +250,21 @@ const LearningGuide = (() => {
       $('learningEntry').querySelector('[data-guide-action="start"]').focus({preventScroll:true});
     }
     else if(action==='current-audio') speakSentenceSmart(ep,idx,cur().es);
+    else if(action==='first-translation'){
+      const meaning = $('guideFirstMeaning');
+      meaning.hidden = !meaning.hidden;
+      button.setAttribute('aria-expanded', String(!meaning.hidden));
+      if(!meaning.hidden) revealAnswer();
+    }
+    else if(action==='first-details'){
+      const expanded = $('guidedPractice').classList.toggle('guide-first-expanded');
+      button.setAttribute('aria-expanded', String(expanded));
+      if(expanded) revealAnswer();
+    }
+    else if(action==='first-next'){
+      nextCard();
+      scrollTo('guidedPractice',true);
+    }
     else if(action==='make'){
       const id=(SENTENCE_AMMO_MAP2[currentGlobalIdx()]||[])[0]; if(id) jumpToMake(id);
     }
@@ -228,7 +279,14 @@ const LearningGuide = (() => {
     if(initialized && $('guideSettings')?.hidden && !$('learningEntry').querySelector('details[open]')) renderHome();
   }
   function onSentence(){ if(initialized){ renderSession(); syncHome(); } }
-  function onReveal(){ if(session){ session.count.add(currentGlobalIdx()); renderSession(); syncHome(); } }
+  function onReveal(){
+    if(!session) return;
+    session.count.add(currentGlobalIdx());
+    const count = $('guideFirstCount');
+    if(count) count.textContent = sessionCount();
+    else renderSession();
+    syncHome();
+  }
   function showHow(){
     switchMainTab('play'); $('guideHow').open=true; scrollTo('guideHow');
     $('guideHow').querySelector('summary').focus({preventScroll:true});

@@ -65,6 +65,18 @@
 .guided-practice p{font-size:12px;color:var(--tmid);line-height:1.8}
 .guide-session-count{margin:10px 0 6px}
 .guide-session-actions{display:flex;flex-wrap:wrap;gap:8px}
+.guide-first:not(.guide-first-expanded) + #mainCardWrap{display:none!important}
+.guided-practice .guide-first-example{font-size:22px;font-weight:700;color:var(--konpeki);margin:8px 0 12px}
+.guide-first .guide-session-actions>*{flex:1}
+.guide-first .guide-first-meaning{margin:10px 0;color:var(--tdark);font-size:14px}
+.guide-first-output{margin:16px 0 12px;padding:14px;background:white;border:1px solid var(--hairline);border-radius:12px}
+.guide-first-output h3{font-size:14px;color:var(--tdark)}
+.guide-first-output .guide-first-pattern{font-size:18px;font-weight:700;color:var(--konpeki)}
+.guide-first-output summary{display:flex;align-items:center;min-height:44px;color:var(--konpeki);font-size:13px;font-weight:700;cursor:pointer}
+.guide-first-output summary:focus-visible,.guide-first-input input:focus-visible{outline:3px solid #b7843a;outline-offset:3px}
+.guide-first-input{display:flex;align-items:center;gap:8px;color:var(--tdark)}
+.guide-first-input input{flex:1;min-width:0;width:100%;min-height:44px;font:inherit;font-size:16px;padding:6px 8px;border:1px solid var(--hairline);border-radius:8px}
+.guide-first-nav{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
 .guide-ai{border-top:1px solid var(--hairline);margin-top:12px}
 .guide-ai>summary{font-size:12px;min-height:44px}
 .guide-ai textarea{display:block;resize:vertical;width:100%;min-height:100px;border:1px solid var(--hairline);border-radius:8px;padding:10px;margin:10px 0;font-size:13px!important;line-height:1.7;background:white;color:var(--tdark)}
