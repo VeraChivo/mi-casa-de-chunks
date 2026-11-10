@@ -132,6 +132,27 @@ const GRAMMAR_CATS = [
 ];
 
 
+const REGANAR_TIME_GROUPS = [
+  {title:"現在｜她現在就在罵", examples:[
+    {"es":"Mi mamá me regaña todos los días.","zh":"我媽每天都罵我。"},
+    {"es":"Mi mamá me está regañando ahora mismo.","zh":"我媽現在正在罵我。"},
+    {"es":"Hoy mi mamá ya me regañó tres veces.","zh":"我媽今天已經罵我三次了。"},
+    {"es":"Mi mamá lleva una hora regañándome.","zh":"我媽已經罵我一小時了。"}
+  ]},
+  {title:"過去｜你打來的時候，我正在挨罵", examples:[
+    {"es":"Ayer mi mamá me regañó.","zh":"我媽昨天罵了我。"},
+    {"es":"Mi mamá me estaba regañando cuando me llamaste.","zh":"你打來時，我媽正在罵我。"},
+    {"es":"Antes de cenar, mi mamá ya me había regañado.","zh":"吃晚飯前，我媽就已經罵過我了。"},
+    {"es":"Cuando llegó mi papá, mi mamá ya llevaba una hora regañándome.","zh":"我爸到家時，我媽已經罵我一小時了。"}
+  ]},
+  {title:"未來｜肉還沒退冰，挨罵先預約", examples:[
+    {"es":"Mañana mi mamá me va a regañar.","zh":"我媽明天會罵我。"},
+    {"es":"Mañana a las nueve, seguro que mi mamá me va a estar regañando.","zh":"明天早上九點，我媽肯定正在罵我。"},
+    {"es":"Para el viernes, mi mamá ya me habrá regañado cinco veces.","zh":"到週五，我媽就已經罵我五次了。"},
+    {"es":"Para el viernes, mi mamá ya llevará cinco días regañándome.","zh":"到週五，我媽就已經連罵我五天了。"}
+  ]}
+];
+
 const GRAMMAR_DATA = [
 
   // ══ SER vs ESTAR ══
@@ -2910,8 +2931,21 @@ const GRAMMAR_DATA = [
     ],
     trap:"entre是這一批介系詞裡唯一不接de的——不是「entre de」，是entre直接接兩個錨點，中間用y連起來（entre A y B）。",
     source:"文法補充"
+  },
+  {
+    id:"g125", cat:"tense", level:"b1",
+    title:"同一句話，換個時間說｜regañar",
+    rule:"想說某一刻正在做什麼，用 estar + -ando／-iendo。想回頭看已經持續多久，用 llevar + 時間 + -ando／-iendo。",
+    examples:[
+      REGANAR_TIME_GROUPS[0].examples[1],
+      REGANAR_TIME_GROUPS[0].examples[3],
+      REGANAR_TIME_GROUPS[2].examples[2],
+      REGANAR_TIME_GROUPS[2].examples[3]
+    ],
+    note:"Hoy ya me regañó 在拉美許多地方很自然，有些地區也會說 Hoy ya me ha regañado。用 lleva、llevaba 或 llevará，就能分別從現在、過去或未來看動作已經持續多久。",
+    source:"文法補充 · E22 忘了退冰",
+    episode:21
   }
-
 ];
 
 /* CEFR 等級標籤（不當內容鎖，只當導覽用的視覺標籤＋篩選）

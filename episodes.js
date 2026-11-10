@@ -1490,6 +1490,20 @@ const EPS=[
   {es:"Ella es muy simpática y yo soy un poco tímida.",chunks:[{w:"Ella",role:"s"},{w:"es",role:"v"},{w:"muy simpática",role:"o"},{w:"y",role:"c"},{w:"yo",role:"s"},{w:"soy",role:"v"},{w:"un poco tímida.",role:"o"}],zh:"她很親切，而我有一點害羞。",en:"She is very nice, and I am a little shy.",noteZh:"un poco = 有一點；用 y 把兩個人的個性並排說",noteEn:"'un poco' = a little; 'y' puts two people's personalities side by side"},
   {es:"Y somos buenas amigas.",chunks:[{w:"Y",role:"c"},{w:"somos",role:"v"},{w:"buenas amigas.",role:"o"}],zh:"而且我們是好朋友。",en:"And we are good friends.",noteZh:"somos = 我們是；buenas amigas = 好朋友（兩個女生）",noteEn:"'somos' = we are; 'buenas amigas' = good friends (two girls)"},
   {es:"Vera es mi amiga.",chunks:[{w:"Vera",role:"s"},{w:"es",role:"v"},{w:"mi amiga.",role:"o"}],zh:"薇拉是我的朋友。",en:"Vera is my friend.",noteZh:"最後回到開頭那句的說法，把整集收起來",noteEn:"closing by coming back to the opening idea"}
+]},
+
+// ── E22 忘了退冰 ──
+{title:"Se me olvidó",titleZh:"忘了退冰",dur:30,grammarId:"g125",sentences:[
+  {"speaker":"貓媽媽","es":"¿Sacaste la carne del congelador?","chunks":[{"w":"¿Sacaste","role":"v"},{"w":"la carne del congelador?"}],"zh":"你有把肉從冷凍庫拿出來嗎？","en":"Did you take the meat out of the freezer?","noteZh":"sacar … de … = 把……從……拿出來"},
+  {"speaker":"妮妲","es":"Ay, se me olvidó.","chunks":[{"w":"Ay,"},{"w":"se me olvidó.","role":"v"}],"zh":"啊，我忘了。","en":"Oh, I forgot.","noteZh":"Se me olvidó = 我忘了。也可以接要做的事，例如 Se me olvidó llamar."},
+  {"speaker":"妮妲・小聲","es":"Mi mamá me va a regañar.","chunks":[{"w":"Mi mamá"},{"w":"me va a regañar.","role":"v"}],"zh":"我媽要罵我了。","en":"My mom is going to scold me.","noteZh":"va a + 動詞原形 = 接下來要做……"},
+  {"speaker":"貓媽媽","es":"Te lo pedí esta mañana.","chunks":[{"w":"Te lo pedí","role":"v"},{"w":"esta mañana."}],"zh":"我今天早上有請你先拿出來呀。","en":"I asked you to do it this morning.","noteZh":"lo 指前面說的那件事，te 是「請你」。"},
+  {"speaker":"妮妲","es":"Perdón, ma.","chunks":[{"w":"Perdón,","role":"v"},{"w":"ma."}],"zh":"對不起，媽。","en":"Sorry, Mom.","noteZh":"Perdón 可以直接拿來道歉。"},
+  {"speaker":"妮妲","es":"¿Y si hacemos quesadillas?","chunks":[{"w":"¿Y si"},{"w":"hacemos","role":"v"},{"w":"quesadillas?"}],"zh":"那我們改做墨西哥起司餅呢？","en":"What if we make quesadillas?","noteZh":"¿Y si + 現在式? = 要不然我們……？"},
+  {"speaker":"貓媽媽","es":"Bueno, saca el queso, por favor.","chunks":[{"w":"Bueno,"},{"w":"saca","role":"v"},{"w":"el queso, por favor."}],"zh":"好，那麻煩你把起司拿出來。","en":"Okay, take out the cheese, please.","noteZh":"saca … = 把……拿出來。"},
+  {"speaker":"妮妲","es":"Esta vez no se me va a olvidar.","chunks":[{"w":"Esta vez no"},{"w":"se me va a olvidar.","role":"v"}],"zh":"這次我不會忘了。","en":"This time I won't forget.","noteZh":"esta vez = 這一次。"},
+  {"speaker":"貓媽媽・吃完飯","es":"¿Quieres fruta?","chunks":[{"w":"¿Quieres","role":"v"},{"w":"fruta?"}],"zh":"要不要吃水果？","en":"Do you want some fruit?","noteZh":"¿Quieres + 東西? = 你想要……嗎？"},
+  {"speaker":"妮妲","es":"Sí, ma.","chunks":[{"w":"Sí,","role":"v"},{"w":"ma."}],"zh":"要啊，媽。","en":"Yes, Mom.","noteZh":"ma 是家裡叫媽媽的親暱說法。"}
 ]}
 ];
 
@@ -1503,7 +1517,7 @@ const EPS=[
 // 💞 emotionalNarrative 情緒敘事劇情：核心目的是情緒/身份/關係的理解與陪伴，長連結
 const EPISODE_LIFECYCLE = {
   abilityBuilding:   [0,1,2,6,16,17,18,19,20], // E1 E2 E3 E7（皆有grammar+ammo完整連結，系統性教SER/ESTAR/gustar/未來式/命令句/TENER/HAY家族）＋2026-07-20新增第一章重鋪4集（認識自己/我的家人/我的日常狀態/我的喜歡，系統性教llamarse/SER/ESTAR/TENER/gustar，尚未接grammar/ammo連結，等內容定案後再重整）
-  chunkInput:        [3,4,5,13],          // E4 E5 E6 E14（日常敘事/連接詞複習，重點在產出語塊不在教單一能力，E14即使包裝成情緒角色，設計初衷是連接詞練習）
+  chunkInput:        [3,4,5,13,21],          // E4 E5 E6 E14（日常敘事/連接詞複習，重點在產出語塊不在教單一能力，E14即使包裝成情緒角色，設計初衷是連接詞練習）
   cultureImmersion:  [10],                // E11（亡靈節特輯，明確以文化背景為主，porque/pero教學是附帶收穫）
   emotionalNarrative:[7,8,9,11,12,14,15]  // E8 E9 E10 E12 E13 E15 E16（迪多溝通方式/媽媽自我覺察/媽媽與迪多排程衝突/小小自我系列/社交電量，核心是情緒理解與陪伴）
 };

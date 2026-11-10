@@ -1635,3 +1635,17 @@ details[open] .hv-tier-arrow{transform:rotate(90deg)}
 .companion-card{max-width:480px;width:100%;box-sizing:border-box;margin:16px 0;padding:12px;border:1px solid var(--usumizu);border-radius:14px;background:rgba(255,255,255,.65);font-size:13px;line-height:1.7}
 .companion-card summary{cursor:pointer;font-weight:800;color:var(--konpeki)}
 .companion-card p{margin:10px 0}
+
+/* E22 劇情逐字稿與時間對照，沿用選集卡的配色與欄寬 */
+.episode-extra{width:100%;max-width:480px;box-sizing:border-box;margin:0 0 12px;padding:12px;border:1px solid var(--usumizu);border-radius:14px;background:rgba(255,255,255,.75);overflow-wrap:anywhere}
+.episode-extra h2,.episode-extra h3{margin:0;color:var(--konpeki);font-size:1rem}
+.episode-extra p,.episode-extra ol{margin:8px 0}
+.episode-extra ol{padding-inline-start:1.4rem}
+.episode-extra li{padding:6px 0}
+.episode-extra li+li{border-top:1px solid var(--usumizu)}
+.episode-extra small{display:block;color:var(--tmid)}
+.episode-extra summary{cursor:pointer;min-height:44px;line-height:1.4;padding:10px 0;box-sizing:border-box;font-weight:700;color:var(--konpeki)}
+.episode-extra-nav{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.episode-extra button,.episode-grammar-btn{min-height:44px;max-width:100%;font:inherit;font-size:.875rem;text-align:start;color:var(--konpeki);background:#fff;border:1px solid var(--usumizu);border-radius:8px;padding:6px 10px;cursor:pointer}
+.episode-extra button[aria-disabled="true"]{opacity:.55;cursor:default}
+.episode-grammar-btn{margin-top:8px}

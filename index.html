@@ -23,7 +23,7 @@
      字體到了才悄悄換上，不擋畫面。 -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;700;800;900&family=Kosugi+Maru&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=20261105a1">
+<link rel="stylesheet" href="style.css?v=20261111a1">
 <link rel="stylesheet" href="guide.css?v=20261105a1">
 <link rel="manifest" href="manifest.json?v=20260815a2">
 <link rel="icon" href="icon.png?v=20260815a2" type="image/png">
@@ -90,6 +90,8 @@
   </details>
 
   <div class="ep-video-bar" id="epVideoBar" style="display:none"><button type="button" class="ep-video-btn" id="epVideoOpenBtn" onclick="openEpVideo()" lang="es">▶ Ver el video</button></div>
+
+  <section class="episode-extra" id="episodeTranscript" hidden></section>
 
   <!-- STAR PROGRESS -->
   <div class="star-progress">
@@ -203,6 +205,17 @@
     <button class="btn-restart" onclick="restartEp()">🔁 重來一次</button>
     <button class="btn-next-ep" id="nextEpBtn" onclick="goNextEp()">下一集 →</button>
   </div>
+
+  <details class="episode-extra" id="episodeTimeCards" hidden>
+    <summary>同一句話，換個時間說 · 12 句延伸</summary>
+    <div id="episodeTimePage" aria-live="polite"></div>
+    <div class="episode-extra-nav">
+      <button type="button" onclick="turnEpisodeTimePage(-1)">‹ 上一張</button>
+      <span id="episodeTimeCount"></span>
+      <button type="button" onclick="turnEpisodeTimePage(1)">下一張 ›</button>
+    </div>
+    <button type="button" class="episode-grammar-btn" onclick="openGrammarCard(epData().grammarId)">💧 看 B1 文法卡</button>
+  </details>
 
   <!-- ── 🧺 語塊採集籃 ── -->
   <div class="ammo-wrap card-container">
@@ -667,11 +680,11 @@
     </div>
   </div>
 
-  <script src="episodes.js?v=20261002a3"></script>
+  <script src="episodes.js?v=20261111a1"></script>
   <script src="audio-manifest.js?v=20261003a1"></script>
   <script src="ammo.js?v=20261002a2"></script>
   <script src="cognates.js?v=20260826a3"></script>
-  <script src="grammar.js?v=20261002a2"></script>
+  <script src="grammar.js?v=20261111a1"></script>
   <script src="stages.js?v=20260820a1"></script>
   <script src="mom.js?v=20260719a1"></script>
   <script src="diary.js?v=20260810a2"></script>
@@ -679,6 +692,6 @@
   <script src="news.js?v=20260719a3"></script>
   <script src="pronunciation.js?v=20260811a1"></script>
   <script src="guide.js?v=20261105a1"></script>
-  <script src="script.js?v=20261105a1"></script>
+  <script src="script.js?v=20261111a1"></script>
 </body>
 </html>

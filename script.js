@@ -394,6 +394,58 @@ document.addEventListener('keydown',event=>{
   }
 });
 
+let episodeTimePage = 0;
+
+function turnEpisodeTimePage(delta){
+  const pages = [
+    {title:'你媽早就用西文罵給你聽了', text:'從每天都罵，到週五就罵滿五天。往下一張看 12 句。'},
+    ...REGANAR_TIME_GROUPS,
+    {title:'罵完還是會問你要不要吃水果', examples:epData().sentences.slice(-2)}
+  ];
+  episodeTimePage = Math.max(0, Math.min(pages.length - 1, episodeTimePage + delta));
+  const page = pages[episodeTimePage];
+  document.getElementById('episodeTimePage').innerHTML = `
+    <h3>${page.title}</h3>
+    ${page.text ? `<p>${page.text}</p>` : `<ol>${page.examples.map(line => `
+      <li><span lang="es">${line.es}</span><small>${line.zh}</small></li>`).join('')}</ol>`}`;
+  document.getElementById('episodeTimeCount').textContent = `${episodeTimePage + 1} / ${pages.length}`;
+  const [prev, next] = document.querySelectorAll('.episode-extra-nav button');
+  prev.setAttribute('aria-disabled', episodeTimePage === 0);
+  next.setAttribute('aria-disabled', episodeTimePage === pages.length - 1);
+}
+
+function renderEpisodeExtras(){
+  const transcript = document.getElementById('episodeTranscript');
+  const cards = document.getElementById('episodeTimeCards');
+  const episode = epData();
+  transcript.hidden = cards.hidden = !episode.grammarId;
+  cards.open = false;
+  if(cards.hidden) return;
+  transcript.innerHTML = `
+    <h2><span lang="es">${episode.title}</span> · ${episode.titleZh}</h2>
+    <p>冷凍庫一打開，妮妲才想起來，晚餐的肉還沒退冰。</p>
+    <details>
+      <summary>看雙語逐字稿 · 點西語聽台詞</summary>
+      <ol>${episode.sentences.map((line, i) => `
+        <li><small>${line.speaker}</small>
+          <button type="button" lang="es" onclick="speakSentenceSmart(ep, ${i}, epData().sentences[${i}].es)">🔊 ${line.es}</button>
+          <small>${line.zh}</small>
+        </li>`).join('')}</ol>
+    </details>`;
+  episodeTimePage = 0;
+  turnEpisodeTimePage(0);
+}
+
+function jumpToEpisodeTimeCards(episodeIndex){
+  closeGrammarSheet();
+  switchMainTab('play');
+  if(ep !== episodeIndex) selectEp(episodeIndex, true);
+  const cards = document.getElementById('episodeTimeCards');
+  cards.open = true;
+  cards.querySelector('summary').focus({preventScroll:true});
+  cards.scrollIntoView({block:'start'});
+}
+
 function selectEp(n,skipScroll=false){
   _epSwitching=true;
   ep=n;idx=0;score=0;makeScore=0;answered=(answeredByEp[n]||[]).slice();makeAnswered=[];makeOpen=false;builtTokens=[];unlockedStars.clear();updateStarDisplay();
@@ -406,9 +458,11 @@ function selectEp(n,skipScroll=false){
   // 2026-08-03 修：原本window.scrollTo({top:0})捲的是整頁最頂端，從展開的新人路線圖
   // 深處點「看劇情」時，最頂端只會停在路線圖標題，真正更新的卡片內容遠在畫面外看不到，
   // 使用者以為按鈕沒反應——改成直接捲到主卡片本身，不管從哪裡觸發都能看到結果
-  if(mainCardWrap && !skipScroll) mainCardWrap.scrollIntoView({behavior:'instant', block:'start'});
   buildNav();render();
   updateEpVideoUI();
+  renderEpisodeExtras();
+  const entry = epData().grammarId ? document.getElementById('episodeTranscript') : mainCardWrap;
+  if(entry && !skipScroll) entry.scrollIntoView({behavior:'instant', block:'start'});
   _epSwitching=false;
 }
 
@@ -4118,6 +4172,7 @@ function openGrammarCard(gId){
     ${g.quirk?`<div class="grammar-tag-box tag-quirk"><div class="grammar-tag-badge">🐛 調皮特例</div><div class="grammar-tag-body">${g.quirk}</div></div>`:''}
     ${skillGraphHtml}
     ${userExHtml}
+    ${Number.isInteger(g.episode) ? `<button type="button" class="episode-grammar-btn" onclick="jumpToEpisodeTimeCards(${g.episode})">📺 回 E${g.episode + 1} 看完整 12 句</button>` : ''}
     <div class="grammar-source">📍 ${g.source}</div>
   `);
 }
@@ -5630,6 +5685,7 @@ function renderChangelog(){
   renderStoryIndex();
   renderChunkFamilies();
   updateEpVideoUI();
+  renderEpisodeExtras();
   initTTS();
   initGroupButtons();
   restoreActiveTab();
