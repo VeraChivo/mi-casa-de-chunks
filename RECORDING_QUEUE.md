@@ -5,6 +5,14 @@
 
 ---
 
+## E22〈忘了退冰〉待錄
+
+- 劇情 10 句，貓媽媽 4 句、妮妲 6 句。分角色錄音稿在 [audio_scripts/e22_se_me_olvido.txt](audio_scripts/e22_se_me_olvido.txt)。
+- B1 文法卡 g125 有 4 句待錄，可與 E22 錄音排同批。從 `grammar.js` 的 g125 取得原句。
+- 收到錄音後，把劇情音檔放到 `audio/e22/`，更新 `AUDIO_MANIFEST` 和 `GRAM_AUDIO_MAP`，確認逐字稿和文法卡都能播放。現階段使用瀏覽器語音。
+
+---
+
 ## 📋 2026-08-20 全站音檔盤查（目前狀態）
 
 直接從 `audio-manifest.js` 對照各資料檔實際內容算出來的，不是憑記憶：
